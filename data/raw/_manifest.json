@@ -1,0 +1,322 @@
+{
+  "sagas": {
+    "url": "https://api.api-onepiece.com/v2/sagas/en",
+    "http_status": 200,
+    "record_count": 10,
+    "bytes": 1431,
+    "fetched_at": "2026-07-14T06:00:48.646608+00:00",
+    "sha256": "f453ece1b33c8ed37b0005f5ba562848995335aa8526c0a9fd41829974d99598",
+    "file": "data/raw/sagas.json",
+    "ok": true,
+    "error": null,
+    "attempts": [
+      {
+        "url": "https://api.api-onepiece.com/v2/sagas/en",
+        "status": 200,
+        "error": null
+      }
+    ]
+  },
+  "arcs": {
+    "url": "https://api.api-onepiece.com/v2/arcs/en",
+    "http_status": 200,
+    "record_count": 50,
+    "bytes": 36614,
+    "fetched_at": "2026-07-14T06:00:50.431359+00:00",
+    "sha256": "ae23e177a041bb1a6be5a21c37e65349e8eaf2f66bd23edf46dac53dbbbaaafa",
+    "file": "data/raw/arcs.json",
+    "ok": true,
+    "error": null,
+    "attempts": [
+      {
+        "url": "https://api.api-onepiece.com/v2/arcs/en",
+        "status": 200,
+        "error": null
+      }
+    ]
+  },
+  "chapters": {
+    "url": "https://api.api-onepiece.com/v2/chapters/en",
+    "http_status": 200,
+    "record_count": 1185,
+    "bytes": 341327,
+    "fetched_at": "2026-07-14T06:00:54.939240+00:00",
+    "sha256": "f985248057f00310bfb0a09ad5feba5db0a96a7baaa6fa5e8006d1ca23baa9a2",
+    "file": "data/raw/chapters.json",
+    "ok": true,
+    "error": null,
+    "attempts": [
+      {
+        "url": "https://api.api-onepiece.com/v2/chapters/en",
+        "status": 200,
+        "error": null
+      }
+    ]
+  },
+  "episodes": {
+    "url": "https://api.api-onepiece.com/v2/episodes/en",
+    "http_status": 200,
+    "record_count": 1162,
+    "bytes": 3071756,
+    "fetched_at": "2026-07-14T06:00:58.985819+00:00",
+    "sha256": "f96499773034ccd44a5819f79eefdf5d1158277746da6f3a83ff5e6fc35d2b38",
+    "file": "data/raw/episodes.json",
+    "ok": true,
+    "error": null,
+    "attempts": [
+      {
+        "url": "https://api.api-onepiece.com/v2/episodes/en",
+        "status": 200,
+        "error": null
+      }
+    ]
+  },
+  "characters": {
+    "url": "https://api.api-onepiece.com/v2/characters/en",
+    "http_status": 200,
+    "record_count": 786,
+    "bytes": 242236,
+    "fetched_at": "2026-07-14T06:01:02.276420+00:00",
+    "sha256": "98ed61056fc11b6e415b5c4f5330022e81ca31d0af043d6c860e233dc323ee98",
+    "file": "data/raw/characters.json",
+    "ok": true,
+    "error": null,
+    "attempts": [
+      {
+        "url": "https://api.api-onepiece.com/v2/characters/en",
+        "status": 200,
+        "error": null
+      }
+    ]
+  },
+  "crews": {
+    "url": "https://api.api-onepiece.com/v2/crews/en",
+    "http_status": 200,
+    "record_count": 149,
+    "bytes": 20355,
+    "fetched_at": "2026-07-14T06:01:04.125042+00:00",
+    "sha256": "60c0ff660c566c102129c8689d49a7c7bd7e0c679679fbb13dda0d9e3490cf46",
+    "file": "data/raw/crews.json",
+    "ok": true,
+    "error": null,
+    "attempts": [
+      {
+        "url": "https://api.api-onepiece.com/v2/crews/en",
+        "status": 200,
+        "error": null
+      }
+    ]
+  },
+  "fruits": {
+    "url": "https://api.api-onepiece.com/v2/fruits/en",
+    "http_status": 200,
+    "record_count": 213,
+    "bytes": 58785,
+    "fetched_at": "2026-07-14T06:01:06.234748+00:00",
+    "sha256": "4ed1577b803f17da47aed5fdca06ecbe6d63d15a6fe83613539b20b00c542215",
+    "file": "data/raw/fruits.json",
+    "ok": true,
+    "error": null,
+    "attempts": [
+      {
+        "url": "https://api.api-onepiece.com/v2/fruits/en",
+        "status": 200,
+        "error": null
+      }
+    ]
+  },
+  "boats": {
+    "url": "https://api.api-onepiece.com/v2/boats/en",
+    "http_status": 200,
+    "record_count": 99,
+    "bytes": 53769,
+    "fetched_at": "2026-07-14T06:01:08.327492+00:00",
+    "sha256": "98cb2d23b8aac20d11d3eb325f9c048cef6e13ae074ad749c7040b98e2bfeea6",
+    "file": "data/raw/boats.json",
+    "ok": true,
+    "error": null,
+    "attempts": [
+      {
+        "url": "https://api.api-onepiece.com/v2/boats/en",
+        "status": 200,
+        "error": null
+      }
+    ]
+  },
+  "locates": {
+    "url": "https://api.api-onepiece.com/v2/locates/en",
+    "http_status": 200,
+    "record_count": 128,
+    "bytes": 17449,
+    "fetched_at": "2026-07-14T06:01:10.266648+00:00",
+    "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+    "file": "data/raw/locates.json",
+    "ok": true,
+    "error": null,
+    "attempts": [
+      {
+        "url": "https://api.api-onepiece.com/v2/locates/en",
+        "status": 200,
+        "error": null
+      }
+    ]
+  },
+  "tomes": {
+    "url": "https://api.api-onepiece.com/v2/tomes/en",
+    "http_status": 200,
+    "record_count": 116,
+    "bytes": 16554,
+    "fetched_at": "2026-07-14T06:01:12.238864+00:00",
+    "sha256": "9c0532d619bbea8db1becfa04a66ece7b25799e50af3829a37152a7717030caf",
+    "file": "data/raw/tomes.json",
+    "ok": true,
+    "error": null,
+    "attempts": [
+      {
+        "url": "https://api.api-onepiece.com/v2/tomes/en",
+        "status": 200,
+        "error": null
+      }
+    ]
+  },
+  "dials": {
+    "url": "https://api.api-onepiece.com/v2/dials/en",
+    "http_status": 200,
+    "record_count": 34,
+    "bytes": 1709,
+    "fetched_at": "2026-07-14T06:01:13.811292+00:00",
+    "sha256": "bb415dd3763a68ea0d606774922311acaade4bb7a11d176422126ea11630c6d1",
+    "file": "data/raw/dials.json",
+    "ok": true,
+    "error": null,
+    "attempts": [
+      {
+        "url": "https://api.api-onepiece.com/v2/dials/en",
+        "status": 200,
+        "error": null
+      }
+    ]
+  },
+  "films": {
+    "url": "https://api.api-onepiece.com/v2/movies/en",
+    "http_status": 200,
+    "record_count": 15,
+    "bytes": 4010,
+    "fetched_at": "2026-07-14T06:01:49.629576+00:00",
+    "sha256": "055ee4fc1fac6b7542690b8a8e2f92e960da8fcdc077e87f8a54c3c961f51dd6",
+    "file": "data/raw/films.json",
+    "ok": true,
+    "error": null,
+    "attempts": [
+      {
+        "url": "https://api.api-onepiece.com/v2/movies/en",
+        "status": 200,
+        "error": null
+      }
+    ]
+  },
+  "swords": {
+    "url": "https://api.api-onepiece.com/v2/swords/en",
+    "http_status": 200,
+    "record_count": 21,
+    "bytes": 6462,
+    "fetched_at": "2026-07-14T06:01:18.005746+00:00",
+    "sha256": "661f0b9c6c608495a3d30d22d42f6a0e23d721d930fe506c3abb8a2ad9f29167",
+    "file": "data/raw/swords.json",
+    "ok": true,
+    "error": null,
+    "attempts": [
+      {
+        "url": "https://api.api-onepiece.com/v2/swords/en",
+        "status": 200,
+        "error": null
+      }
+    ]
+  },
+  "haki": {
+    "url": "https://api.api-onepiece.com/v2/hakis/en",
+    "http_status": 200,
+    "record_count": 3,
+    "bytes": 1265,
+    "fetched_at": "2026-07-14T06:01:21.057517+00:00",
+    "sha256": "4f154225873146d0752a050a314ed6a56bf9d50d9b54b18d141c0ab73aa1a796",
+    "file": "data/raw/haki.json",
+    "ok": true,
+    "error": null,
+    "attempts": [
+      {
+        "url": "https://api.api-onepiece.com/v2/haki/en",
+        "status": 404,
+        "error": "HTTP 404 Not Found"
+      },
+      {
+        "url": "https://api.api-onepiece.com/v2/hakis/en",
+        "status": 200,
+        "error": null
+      }
+    ]
+  },
+  "luffy_gears": {
+    "url": "https://api.api-onepiece.com/v2/luffy-gears/en",
+    "http_status": 200,
+    "record_count": 7,
+    "bytes": 1991,
+    "fetched_at": "2026-07-14T06:01:25.476159+00:00",
+    "sha256": "e8532348163cc26517e64f3b062aef531fb15ed3bcbc9e971d3bcd524b9193f3",
+    "file": "data/raw/luffy_gears.json",
+    "ok": true,
+    "error": null,
+    "attempts": [
+      {
+        "url": "https://api.api-onepiece.com/v2/luffy/gears/en",
+        "status": 404,
+        "error": "HTTP 404 Not Found"
+      },
+      {
+        "url": "https://api.api-onepiece.com/v2/gears/en",
+        "status": 404,
+        "error": "HTTP 404 Not Found"
+      },
+      {
+        "url": "https://api.api-onepiece.com/v2/luffy-gears/en",
+        "status": 200,
+        "error": null
+      }
+    ]
+  },
+  "luffy_techniques": {
+    "url": "https://api.api-onepiece.com/v2/luffy-techniques/en",
+    "http_status": 200,
+    "record_count": 110,
+    "bytes": 46957,
+    "fetched_at": "2026-07-14T06:01:30.353346+00:00",
+    "sha256": "a61567b7536c71f2fba6dea2464d610dd937ff253d806ffc5bcc02a14ba1b134",
+    "file": "data/raw/luffy_techniques.json",
+    "ok": true,
+    "error": null,
+    "attempts": [
+      {
+        "url": "https://api.api-onepiece.com/v2/luffy/techniques/en",
+        "status": 404,
+        "error": "HTTP 404 Not Found"
+      },
+      {
+        "url": "https://api.api-onepiece.com/v2/techniques/en",
+        "status": 404,
+        "error": "HTTP 404 Not Found"
+      },
+      {
+        "url": "https://api.api-onepiece.com/v2/luffy-techniques/en",
+        "status": 200,
+        "error": null
+      }
+    ]
+  },
+  "_meta": {
+    "base": "https://api.api-onepiece.com/v2",
+    "lang": "en",
+    "user_agent": "dead-reckoning/0.1 (One Piece fan atlas; contact: shawn@leadalchemy.co)",
+    "generated_at": "2026-07-14T06:01:50.632169+00:00",
+    "note": "Machine-owned mirror. Do not hand-edit data/raw/. Regenerate with scripts/sync_api.py --force."
+  }
+}

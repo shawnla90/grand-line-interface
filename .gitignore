@@ -39,3 +39,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Raw wiki response cache — a local accelerator, NOT a build artifact.
+# Two reasons this must never be committed:
+#   1. LICENSE: the cached action=parse responses contain full rendered article
+#      HTML, i.e. CC-BY-SA article PROSE. Only FACTS may live in this repo.
+#      The generated JSON below is facts-only and is safe to commit.
+#   2. SIZE: ~18MB of HTML for ~250KB of extracted facts.
+# Delete it freely; `python3 scripts/sync_wiki.py` rebuilds it in ~50 requests.
+data/generated/_wiki_cache/
+
+# NOTE: data/generated/*.json IS committed on purpose. The app reads committed
+# JSON only and never fetches at request time. Do not ignore it.

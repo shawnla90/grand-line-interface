@@ -1,65 +1,52 @@
-import Image from "next/image";
+/**
+ * app/page.tsx — the server half. It exists to do exactly two things:
+ * read the committed build artifact, and hand a compact payload to the client.
+ *
+ * ZERO REQUEST-TIME FETCHES. loadCanon() reads data/canon.json off disk with
+ * node:fs and validates it against the zod schema, which throws if the artifact
+ * is malformed — a bad canon.json must fail the build, not render a wrong map.
+ * There is no database, no ORM and no external API anywhere in the request path.
+ *
+ * NOTE (Next.js 16): `searchParams` is a Promise. Synchronous access was removed
+ * in this major, so it is awaited here.
+ */
 
-export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+import { loadCanon } from "@/lib/schema";
+import { buildWorld, chapterForEpisode, clampChapter, clampEpisode, type Axis } from "@/lib/canon";
+import Atlas from "@/components/Atlas";
+
+function one(v: string | string[] | undefined): string | undefined {
+  return Array.isArray(v) ? v[0] : v;
+}
+
+function int(v: string | undefined): number | null {
+  if (!v) return null;
+  const n = Number.parseInt(v, 10);
+  return Number.isFinite(n) ? n : null;
+}
+
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const world = buildWorld(loadCanon());
+  const sp = await searchParams;
+
+  const ch = int(one(sp.ch));
+  const ep = int(one(sp.ep));
+
+  // ?ep= is accepted as a convenience and folded straight back onto the chapter
+  // axis — the chapter is the only state the app actually keeps.
+  let initialChapter: number | null = null;
+  let initialAxis: Axis = one(sp.axis) === "episode" ? "episode" : "chapter";
+
+  if (ep !== null) {
+    initialChapter = chapterForEpisode(world, clampEpisode(world, ep));
+    initialAxis = "episode";
+  } else if (ch !== null) {
+    initialChapter = clampChapter(world, ch);
+  }
+
+  return <Atlas world={world} initialChapter={initialChapter} initialAxis={initialAxis} />;
 }

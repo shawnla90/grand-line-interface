@@ -1,26 +1,215 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   Dead Reckoning — an instrument, not a wiki.
+   Deep navy/ink, parchment cream, one warm bounty-poster gold.
+   No official art, no logos, no character images. Typography + geometry + colour.
+   ========================================================================== */
+
+@theme {
+  /* ink — the hull */
+  --color-abyss: #03060d;
+  --color-ink: #060b16;
+  --color-hull: #0a1120;
+  --color-hull-2: #101a2c;
+  --color-rope: #1d2941;
+  --color-rope-2: #2b3a56;
+
+  /* the sea */
+  --color-ocean: #071324;
+  --color-ocean-lit: #0d2036;
+
+  /* parchment — the chart */
+  --color-parchment: #efe6d4;
+  --color-parchment-2: #cfc6b6;
+  --color-muted: #8c9ab5;
+  --color-muted-2: #5b6880;
+
+  /* one warm accent: bounty-poster gold */
+  --color-gold: #e3b04b;
+  --color-gold-2: #f0c877;
+  --color-gold-dim: #7a5e26;
+
+  /* the crew */
+  --color-straw: #c4402b;
+
+  --font-display: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", monospace;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-abyss);
+  color: var(--color-parchment);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+/* Tabular numerals everywhere a number changes. A chapter counter that reflows
+   as it ticks reads as a bug; an instrument's digits hold their column. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* --------------------------------------------------------------------------
+   The chapter slider. This is the hero control — it cannot look like a default
+   range input. Track is a chart rule; thumb is a brass fitting.
+   -------------------------------------------------------------------------- */
+
+.dial {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 26px;
+  background: transparent;
+  cursor: ew-resize;
+}
+
+.dial::-webkit-slider-runnable-track {
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--color-gold) 0%,
+    var(--color-gold) var(--pct, 0%),
+    var(--color-rope) var(--pct, 0%),
+    var(--color-rope) 100%
+  );
+}
+
+.dial::-moz-range-track {
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--color-gold) 0%,
+    var(--color-gold) var(--pct, 0%),
+    var(--color-rope) var(--pct, 0%),
+    var(--color-rope) 100%
+  );
+}
+
+.dial::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -6px;
+  border-radius: 999px;
+  background: var(--color-gold-2);
+  border: 1px solid #2a1d06;
+  box-shadow:
+    0 0 0 4px rgba(227, 176, 75, 0.16),
+    0 0 18px 2px rgba(227, 176, 75, 0.5);
+  transition: box-shadow 140ms ease;
+}
+
+.dial::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: var(--color-gold-2);
+  border: 1px solid #2a1d06;
+  box-shadow:
+    0 0 0 4px rgba(227, 176, 75, 0.16),
+    0 0 18px 2px rgba(227, 176, 75, 0.5);
+}
+
+.dial:focus-visible::-webkit-slider-thumb,
+.dial:hover::-webkit-slider-thumb {
+  box-shadow:
+    0 0 0 6px rgba(227, 176, 75, 0.22),
+    0 0 26px 4px rgba(227, 176, 75, 0.65);
+}
+
+.dial:focus {
+  outline: none;
+}
+
+/* --------------------------------------------------------------------------
+   Map furniture
+   -------------------------------------------------------------------------- */
+
+.maplibregl-canvas:focus {
+  outline: none;
+}
+
+/* Cartographic labels drawn as HTML markers (a symbol layer would need a glyphs
+   PBF endpoint — the one external asset this map refuses to have). */
+.mapLabel {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.9);
+}
+
+/* --------------------------------------------------------------------------
+   Motion. The fog fades; it never snaps.
+   -------------------------------------------------------------------------- */
+
+@keyframes dr-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dr-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.dr-enter {
+  animation: dr-fade-up 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.dr-fade {
+  animation: dr-fade-in 700ms ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dr-enter,
+  .dr-fade {
+    animation: none;
+  }
+  * {
+    transition-duration: 1ms !important;
+  }
+}
+
+/* Thin scrollbars — the panels are instrument gutters, not documents. */
+.gutter {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-rope) transparent;
+}
+.gutter::-webkit-scrollbar {
+  width: 6px;
+}
+.gutter::-webkit-scrollbar-thumb {
+  background: var(--color-rope);
+  border-radius: 999px;
+}
+.gutter::-webkit-scrollbar-track {
+  background: transparent;
 }

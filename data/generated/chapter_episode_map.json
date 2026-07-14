@@ -1,0 +1,810 @@
+{
+  "granularity": "arc",
+  "canon_confidence": "derived",
+  "note": "Arc-granular piecewise map. A per-chapter->episode map is NOT available from the Fandom wiki: Chapter Box has no episode field and Episode Box has no chapter field, and episode pages never reference chapters. Given a chapter, locate its arc segment to get the corresponding episode range.",
+  "warnings": [
+    "Do NOT linearly interpolate inside a segment: anime pacing makes the chapter->episode relationship non-linear within an arc.",
+    "episode_segments is authoritative, NOT [episode_start, episode_end]. The gaps between segments are FILLER episodes that belong to no canon arc (e.g. Impel Down runs 422-425 and 430-452 — episodes 426-429 are filler). Use segments for membership tests."
+  ],
+  "segments": [
+    {
+      "arc": "Romance Dawn Arc",
+      "slug": "romance-dawn",
+      "saga": "East Blue Saga",
+      "order": 0,
+      "chapter_start": 1,
+      "chapter_end": 7,
+      "chapter_segments": [
+        [
+          1,
+          7
+        ]
+      ],
+      "episode_start": 1,
+      "episode_end": 4,
+      "episode_segments": [
+        [
+          1,
+          4
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Orange Town Arc",
+      "slug": "orange-town",
+      "saga": "East Blue Saga",
+      "order": 1,
+      "chapter_start": 8,
+      "chapter_end": 21,
+      "chapter_segments": [
+        [
+          8,
+          21
+        ]
+      ],
+      "episode_start": 4,
+      "episode_end": 8,
+      "episode_segments": [
+        [
+          4,
+          8
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Syrup Village Arc",
+      "slug": "syrup-village",
+      "saga": "East Blue Saga",
+      "order": 2,
+      "chapter_start": 22,
+      "chapter_end": 41,
+      "chapter_segments": [
+        [
+          22,
+          41
+        ]
+      ],
+      "episode_start": 9,
+      "episode_end": 18,
+      "episode_segments": [
+        [
+          9,
+          18
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Baratie Arc",
+      "slug": "baratie",
+      "saga": "East Blue Saga",
+      "order": 3,
+      "chapter_start": 42,
+      "chapter_end": 68,
+      "chapter_segments": [
+        [
+          42,
+          68
+        ]
+      ],
+      "episode_start": 19,
+      "episode_end": 30,
+      "episode_segments": [
+        [
+          19,
+          30
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Arlong Park Arc",
+      "slug": "arlong-park",
+      "saga": "East Blue Saga",
+      "order": 4,
+      "chapter_start": 69,
+      "chapter_end": 95,
+      "chapter_segments": [
+        [
+          69,
+          95
+        ]
+      ],
+      "episode_start": 31,
+      "episode_end": 44,
+      "episode_segments": [
+        [
+          31,
+          44
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Loguetown Arc",
+      "slug": "loguetown",
+      "saga": "East Blue Saga",
+      "order": 5,
+      "chapter_start": 96,
+      "chapter_end": 100,
+      "chapter_segments": [
+        [
+          96,
+          100
+        ]
+      ],
+      "episode_start": 45,
+      "episode_end": 53,
+      "episode_segments": [
+        [
+          45,
+          45
+        ],
+        [
+          48,
+          53
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Reverse Mountain Arc",
+      "slug": "reverse-mountain",
+      "saga": "Arabasta Saga",
+      "order": 6,
+      "chapter_start": 101,
+      "chapter_end": 105,
+      "chapter_segments": [
+        [
+          101,
+          105
+        ]
+      ],
+      "episode_start": 62,
+      "episode_end": 63,
+      "episode_segments": [
+        [
+          62,
+          63
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Whisky Peak Arc",
+      "slug": "whisky-peak",
+      "saga": "Arabasta Saga",
+      "order": 7,
+      "chapter_start": 106,
+      "chapter_end": 114,
+      "chapter_segments": [
+        [
+          106,
+          114
+        ]
+      ],
+      "episode_start": 64,
+      "episode_end": 67,
+      "episode_segments": [
+        [
+          64,
+          67
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Little Garden Arc",
+      "slug": "little-garden",
+      "saga": "Arabasta Saga",
+      "order": 8,
+      "chapter_start": 115,
+      "chapter_end": 129,
+      "chapter_segments": [
+        [
+          115,
+          129
+        ]
+      ],
+      "episode_start": 70,
+      "episode_end": 77,
+      "episode_segments": [
+        [
+          70,
+          77
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Drum Island Arc",
+      "slug": "drum-island",
+      "saga": "Arabasta Saga",
+      "order": 9,
+      "chapter_start": 130,
+      "chapter_end": 154,
+      "chapter_segments": [
+        [
+          130,
+          154
+        ]
+      ],
+      "episode_start": 78,
+      "episode_end": 91,
+      "episode_segments": [
+        [
+          78,
+          91
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Arabasta Arc",
+      "slug": "arabasta",
+      "saga": "Arabasta Saga",
+      "order": 10,
+      "chapter_start": 155,
+      "chapter_end": 217,
+      "chapter_segments": [
+        [
+          155,
+          217
+        ]
+      ],
+      "episode_start": 92,
+      "episode_end": 130,
+      "episode_segments": [
+        [
+          92,
+          130
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Jaya Arc",
+      "slug": "jaya",
+      "saga": "Sky Island Saga",
+      "order": 11,
+      "chapter_start": 218,
+      "chapter_end": 236,
+      "chapter_segments": [
+        [
+          218,
+          236
+        ]
+      ],
+      "episode_start": 144,
+      "episode_end": 152,
+      "episode_segments": [
+        [
+          144,
+          152
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Skypiea Arc",
+      "slug": "skypiea",
+      "saga": "Sky Island Saga",
+      "order": 12,
+      "chapter_start": 237,
+      "chapter_end": 302,
+      "chapter_segments": [
+        [
+          237,
+          302
+        ]
+      ],
+      "episode_start": 153,
+      "episode_end": 195,
+      "episode_segments": [
+        [
+          153,
+          195
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Long Ring Long Land Arc",
+      "slug": "long-ring-long-land",
+      "saga": "Water 7 Saga",
+      "order": 13,
+      "chapter_start": 303,
+      "chapter_end": 321,
+      "chapter_segments": [
+        [
+          303,
+          321
+        ]
+      ],
+      "episode_start": 207,
+      "episode_end": 219,
+      "episode_segments": [
+        [
+          207,
+          219
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Water 7 Arc",
+      "slug": "water-7",
+      "saga": "Water 7 Saga",
+      "order": 14,
+      "chapter_start": 322,
+      "chapter_end": 374,
+      "chapter_segments": [
+        [
+          322,
+          374
+        ]
+      ],
+      "episode_start": 229,
+      "episode_end": 263,
+      "episode_segments": [
+        [
+          229,
+          263
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Enies Lobby Arc",
+      "slug": "enies-lobby",
+      "saga": "Water 7 Saga",
+      "order": 15,
+      "chapter_start": 375,
+      "chapter_end": 430,
+      "chapter_segments": [
+        [
+          375,
+          430
+        ]
+      ],
+      "episode_start": 264,
+      "episode_end": 312,
+      "episode_segments": [
+        [
+          264,
+          290
+        ],
+        [
+          293,
+          302
+        ],
+        [
+          304,
+          312
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Post-Enies Lobby Arc",
+      "slug": "post-enies-lobby",
+      "saga": "Water 7 Saga",
+      "order": 16,
+      "chapter_start": 431,
+      "chapter_end": 441,
+      "chapter_segments": [
+        [
+          431,
+          441
+        ]
+      ],
+      "episode_start": 313,
+      "episode_end": 325,
+      "episode_segments": [
+        [
+          313,
+          325
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Thriller Bark Arc",
+      "slug": "thriller-bark",
+      "saga": "Thriller Bark Saga",
+      "order": 17,
+      "chapter_start": 442,
+      "chapter_end": 489,
+      "chapter_segments": [
+        [
+          442,
+          489
+        ]
+      ],
+      "episode_start": 337,
+      "episode_end": 381,
+      "episode_segments": [
+        [
+          337,
+          381
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Sabaody Archipelago Arc",
+      "slug": "sabaody-archipelago",
+      "saga": "Summit War Saga",
+      "order": 18,
+      "chapter_start": 490,
+      "chapter_end": 513,
+      "chapter_segments": [
+        [
+          490,
+          513
+        ]
+      ],
+      "episode_start": 385,
+      "episode_end": 405,
+      "episode_segments": [
+        [
+          385,
+          405
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Amazon Lily Arc",
+      "slug": "amazon-lily",
+      "saga": "Summit War Saga",
+      "order": 19,
+      "chapter_start": 514,
+      "chapter_end": 524,
+      "chapter_segments": [
+        [
+          514,
+          524
+        ]
+      ],
+      "episode_start": 408,
+      "episode_end": 421,
+      "episode_segments": [
+        [
+          408,
+          421
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Impel Down Arc",
+      "slug": "impel-down",
+      "saga": "Summit War Saga",
+      "order": 20,
+      "chapter_start": 525,
+      "chapter_end": 549,
+      "chapter_segments": [
+        [
+          525,
+          549
+        ]
+      ],
+      "episode_start": 422,
+      "episode_end": 452,
+      "episode_segments": [
+        [
+          422,
+          425
+        ],
+        [
+          430,
+          452
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Marineford Arc",
+      "slug": "marineford",
+      "saga": "Summit War Saga",
+      "order": 21,
+      "chapter_start": 550,
+      "chapter_end": 580,
+      "chapter_segments": [
+        [
+          550,
+          580
+        ]
+      ],
+      "episode_start": 457,
+      "episode_end": 489,
+      "episode_segments": [
+        [
+          457,
+          489
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Post-War Arc",
+      "slug": "post-war",
+      "saga": "Summit War Saga",
+      "order": 22,
+      "chapter_start": 581,
+      "chapter_end": 597,
+      "chapter_segments": [
+        [
+          581,
+          597
+        ]
+      ],
+      "episode_start": 490,
+      "episode_end": 516,
+      "episode_segments": [
+        [
+          490,
+          491
+        ],
+        [
+          493,
+          516
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Return to Sabaody Arc",
+      "slug": "return-to-sabaody",
+      "saga": "Fish-Man Island Saga",
+      "order": 23,
+      "chapter_start": 598,
+      "chapter_end": 602,
+      "chapter_segments": [
+        [
+          598,
+          602
+        ]
+      ],
+      "episode_start": 517,
+      "episode_end": 522,
+      "episode_segments": [
+        [
+          517,
+          522
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Fish-Man Island Arc",
+      "slug": "fish-man-island",
+      "saga": "Fish-Man Island Saga",
+      "order": 24,
+      "chapter_start": 603,
+      "chapter_end": 653,
+      "chapter_segments": [
+        [
+          603,
+          653
+        ]
+      ],
+      "episode_start": 523,
+      "episode_end": 574,
+      "episode_segments": [
+        [
+          523,
+          541
+        ],
+        [
+          543,
+          574
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Punk Hazard Arc",
+      "slug": "punk-hazard",
+      "saga": "Dressrosa Saga",
+      "order": 25,
+      "chapter_start": 654,
+      "chapter_end": 699,
+      "chapter_segments": [
+        [
+          654,
+          699
+        ]
+      ],
+      "episode_start": 579,
+      "episode_end": 625,
+      "episode_segments": [
+        [
+          579,
+          589
+        ],
+        [
+          591,
+          625
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Dressrosa Arc",
+      "slug": "dressrosa",
+      "saga": "Dressrosa Saga",
+      "order": 26,
+      "chapter_start": 700,
+      "chapter_end": 801,
+      "chapter_segments": [
+        [
+          700,
+          801
+        ]
+      ],
+      "episode_start": 629,
+      "episode_end": 746,
+      "episode_segments": [
+        [
+          629,
+          746
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Zou Arc",
+      "slug": "zou",
+      "saga": "Whole Cake Island Saga",
+      "order": 27,
+      "chapter_start": 802,
+      "chapter_end": 824,
+      "chapter_segments": [
+        [
+          802,
+          824
+        ]
+      ],
+      "episode_start": 751,
+      "episode_end": 779,
+      "episode_segments": [
+        [
+          751,
+          779
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Whole Cake Island Arc",
+      "slug": "whole-cake-island",
+      "saga": "Whole Cake Island Saga",
+      "order": 28,
+      "chapter_start": 825,
+      "chapter_end": 902,
+      "chapter_segments": [
+        [
+          825,
+          902
+        ]
+      ],
+      "episode_start": 783,
+      "episode_end": 877,
+      "episode_segments": [
+        [
+          783,
+          877
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Levely Arc",
+      "slug": "levely",
+      "saga": "Whole Cake Island Saga",
+      "order": 29,
+      "chapter_start": 903,
+      "chapter_end": 908,
+      "chapter_segments": [
+        [
+          903,
+          908
+        ]
+      ],
+      "episode_start": 878,
+      "episode_end": 889,
+      "episode_segments": [
+        [
+          878,
+          889
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Wano Country Arc",
+      "slug": "wano-country",
+      "saga": "Wano Country Saga",
+      "order": 30,
+      "chapter_start": 909,
+      "chapter_end": 1057,
+      "chapter_segments": [
+        [
+          909,
+          1057
+        ]
+      ],
+      "episode_start": 890,
+      "episode_end": 1085,
+      "episode_segments": [
+        [
+          890,
+          894
+        ],
+        [
+          897,
+          906
+        ],
+        [
+          908,
+          1028
+        ],
+        [
+          1031,
+          1085
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Egghead Arc",
+      "slug": "egghead",
+      "saga": "Final Saga",
+      "order": 31,
+      "chapter_start": 1058,
+      "chapter_end": 1125,
+      "chapter_segments": [
+        [
+          1058,
+          1125
+        ]
+      ],
+      "episode_start": 1086,
+      "episode_end": 1155,
+      "episode_segments": [
+        [
+          1086,
+          1155
+        ]
+      ],
+      "ongoing": false
+    },
+    {
+      "arc": "Elbaph Arc",
+      "slug": "elbaph",
+      "saga": "Final Saga",
+      "order": 32,
+      "chapter_start": 1126,
+      "chapter_end": null,
+      "chapter_segments": [
+        [
+          1126,
+          null
+        ]
+      ],
+      "episode_start": 1156,
+      "episode_end": null,
+      "episode_segments": [
+        [
+          1156,
+          null
+        ]
+      ],
+      "ongoing": true
+    }
+  ]
+}

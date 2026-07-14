@@ -1,0 +1,74 @@
+{
+  "fetched_at": "2026-07-14T06:10:01.361958+00:00",
+  "source": {
+    "api": "https://onepiece.fandom.com/api.php",
+    "license": "CC-BY-SA 3.0 (One Piece Fandom). Facts only; no prose copied. Attributed in UI footer.",
+    "usage": "Structured facts only (numbers, names, ranges, link targets). No prose, descriptions, or summaries are extracted or stored.",
+    "attribution_required_in_ui": true
+  },
+  "politeness": {
+    "user_agent": "dead-reckoning/0.1 (One Piece fan atlas; contact: shawn@leadalchemy.co)",
+    "delay_seconds": 1.0,
+    "maxlag": 5,
+    "batch_size": 50
+  },
+  "requests": {
+    "network_requests": 0,
+    "cache_hits": 45,
+    "retries": 0
+  },
+  "duration_seconds": 0.1,
+  "files": {
+    "arcs.json": {
+      "records": 33,
+      "with_chapter_range": 33,
+      "with_episode_range": 33,
+      "with_resolved_order": 33,
+      "chain_problems": []
+    },
+    "islands.json": {
+      "records": 413,
+      "pages_transcluding_template": 414,
+      "islands_with_parsed_box": 413,
+      "pages_missing_box": 1,
+      "with_debut_chapter": 256,
+      "with_debut_episode": 262,
+      "with_region": 370,
+      "by_canon_status": {
+        "unknown": 1,
+        "manga": 256,
+        "non_canon": 123,
+        "anime": 33
+      },
+      "mappable_manga_canon": 256,
+      "note_on_missing_chapters": "123 'islands' debut only in non-canon media (movies, games, ONAs, magazines, stage shows) and 33 are anime-only. They have no chapter because they are not in the manga — this is correct, not missing data. Filter on canon_status == 'manga' for the fog-able set.",
+      "top_params": {
+        "first": 412,
+        "jname": 411,
+        "rname": 408,
+        "colorscheme": 400,
+        "region": 375,
+        "ename": 346,
+        "affiliation": 140,
+        "image": 66,
+        "type": 21,
+        "name": 14,
+        "log": 9,
+        "population": 5,
+        "extra1title": 4,
+        "extra1": 4,
+        "backcolor": 3
+      }
+    },
+    "chapter_episode_map.json": {
+      "records": 33,
+      "granularity": "arc",
+      "canon_confidence": "derived"
+    }
+  },
+  "notes": [
+    "MACHINE-OWNED output. Safe to overwrite. Never hand-edit.",
+    "This script never writes to canon/ (asserted at runtime).",
+    "No crew join data is produced here. Crew joins are hand-authored: the wiki's 'Debut' field is NOT the join chapter (Jinbe debuts ~ep430, joins ~ep977)."
+  ]
+}

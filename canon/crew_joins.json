@@ -1,0 +1,121 @@
+{
+  "_warning": "HAND-AUTHORED. A sync script that overwrites this file is a bug. verified:false means Shawn has not confirmed against the manga yet.",
+  "_why_this_file_exists": "No upstream source has this data. The One Piece Fandom wiki, api-onepiece.com, and every scraped dataset carry a 'Debut' field — and Debut is NOT Join. It is wrong for 10 out of 10 Straw Hats. Jinbe DEBUTS at episode 430 and JOINS at episode 977: off by 547 episodes. If crew membership is ever scraped from a Debut field, Jinbe stands on the Thousand Sunny for 550 episodes of the timeline in front of the most pedantic fandom on earth. That is why this file is typed by a human and why every row is verified:false until a human checks it against the manga.",
+  "_before_any_content_ships": "Shawn must confirm every join_chapter / join_episode below against the manga and flip verified to true. Until then the UI must render these as unverified. scripts/check_canon.py enforces that nothing here is silently marked verified by a machine.",
+  "_source_of_values": "Best-known community figures (fan wikis, chapter reads). NOT machine-scraped. Not yet human-verified.",
+  "crew": "Straw Hat Pirates",
+  "crew_slug": "straw-hat-pirates",
+  "crew_joins": [
+    {
+      "name": "Monkey D. Luffy",
+      "slug": "monkey-d-luffy",
+      "join_chapter": 1,
+      "join_episode": 1,
+      "join_arc": "romance-dawn",
+      "order": 1,
+      "source_ref": "Hand-authored. Founder — the crew begins when he sets out from Foosha Village, Chapter 1 / Episode 1 (Romance Dawn). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "name": "Roronoa Zoro",
+      "slug": "roronoa-zoro",
+      "join_chapter": 6,
+      "join_episode": 3,
+      "join_arc": "romance-dawn",
+      "order": 2,
+      "source_ref": "Hand-authored. Agrees to sail with Luffy after the Morgan fight, Chapter 6 / Episode 3 (Romance Dawn). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "name": "Usopp",
+      "slug": "usopp",
+      "join_chapter": 41,
+      "join_episode": 18,
+      "join_arc": "syrup-village",
+      "order": 3,
+      "source_ref": "Hand-authored. Joins at the end of Syrup Village, Chapter 41 / Episode 18. NEEDS HUMAN VERIFICATION against the manga. (Note: he also departs the crew during Water 7 and rejoins at Ch 438 — this file records the first join only; a departures table is future work.) (3rd by join chapter, behind Nami in the traditional roster count — see Nami's ORDER NOTE.)",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "name": "Sanji",
+      "slug": "sanji",
+      "join_chapter": 68,
+      "join_episode": 30,
+      "join_arc": "baratie",
+      "order": 4,
+      "source_ref": "Hand-authored. Leaves the Baratie to join, Chapter 68 / Episode 30. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "name": "Nami",
+      "slug": "nami",
+      "join_chapter": 95,
+      "join_episode": 44,
+      "join_arc": "arlong-park",
+      "order": 5,
+      "source_ref": "Hand-authored. AMBIGUOUS BY DESIGN — Nami first 'joins' around Chapter 8 (Orange Town) as a thief working an angle, then leaves, robs the crew, and only truly joins after Arlong Park. This row uses the Arlong Park figure (Ch 95 / Ep 44) because that is the join the story treats as real. A reader at Chapter 50 will see Nami on the ship in the anime and NOT in this dataset; that is a deliberate call, not a bug. NEEDS HUMAN VERIFICATION and a decision on which join the atlas should honour. ORDER NOTE: because this row uses the Arlong Park join (ch 95) rather than the Orange Town one (ch 8), Nami is the 5th Straw Hat by join chapter, not the 3rd the fandom counts. `order` here means join sequence, not roster position. If Shawn decides the atlas should honour the ch 8 join, this row and the order of Usopp and Sanji all move.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "name": "Tony Tony Chopper",
+      "slug": "tony-tony-chopper",
+      "join_chapter": 153,
+      "join_episode": 91,
+      "join_arc": "drum-island",
+      "order": 6,
+      "source_ref": "Hand-authored. Joins leaving Drum Island, Chapter 153 / Episode 91. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "name": "Nico Robin",
+      "slug": "nico-robin",
+      "join_chapter": 218,
+      "join_episode": 130,
+      "join_arc": "arabasta",
+      "order": 7,
+      "source_ref": "Hand-authored. Invites herself aboard at the end of Arabasta, Chapter 218 / Episode 130. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "name": "Franky",
+      "slug": "franky",
+      "join_chapter": 437,
+      "join_episode": 321,
+      "join_arc": "post-enies-lobby",
+      "order": 8,
+      "source_ref": "Hand-authored. Joins after Enies Lobby / the Thousand Sunny reveal, Chapter 437 / Episode 321. His DEBUT is ~Chapter 329 — over 100 chapters earlier. Classic debut-vs-join gap. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "name": "Brook",
+      "slug": "brook",
+      "join_chapter": 489,
+      "join_episode": 381,
+      "join_arc": "thriller-bark",
+      "order": 9,
+      "source_ref": "Hand-authored. Joins during Thriller Bark, Chapter 489 / Episode 381. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "name": "Jinbe",
+      "slug": "jinbe",
+      "join_chapter": 976,
+      "join_episode": 977,
+      "join_arc": "wano-country",
+      "order": 10,
+      "source_ref": "Hand-authored. THE LANDMINE. Jinbe DEBUTS at Chapter 528 / Episode 430 and formally JOINS at Chapter 976 / Episode 977, during Wano. The gap is 547 EPISODES. Every wiki has a Debut field and it is not this number. scripts/check_canon.py has a dedicated jinbe_test asserting join_episode > 900 — if that test ever fires, someone scraped a Debut field into a join field. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    }
+  ],
+  "_order_note": "`order` is the sequence in which the crew ACTUALLY joined, ascending by join_chapter — not the roster order fans recite. They differ: Nami is 5th here, 3rd there. scripts/check_canon.py asserts join_chapter is monotonic in `order`, which is what caught it."
+}

@@ -1,0 +1,3736 @@
+{
+  "_warning": "SEEDED, THEN HUMAN-OWNED. canon/ is hand-authored. Every row here was machine-derived once (scratchpad seed script, sha256-deterministic) and is marked canon_confidence:'derived' or 'guess'. Hand-editing a pin should set canon_confidence:'canon' and rewrite source_ref. A sync script that overwrites this file is a bug.",
+  "_model": "The One Piece planet: Grand Line = equator (lat 0), Red Line = the 0/180 meridian. They quarter the globe: North Blue upper-left, West Blue upper-right, East Blue lower-left, South Blue lower-right. Paradise runs lng -180..0, New World 0..180, so longitude reads as voyage progress.",
+  "_counts": {
+    "New World": 137,
+    "Paradise": 136,
+    "East Blue": 51,
+    "Grand Line": 34,
+    "South Blue": 13,
+    "North Blue": 12,
+    "West Blue": 10,
+    "Sky": 8,
+    "Calm Belt": 6,
+    "Red Line": 4,
+    "Outer Space": 2
+  },
+  "islands": [
+    {
+      "slug": "100-island",
+      "name": "100% Island",
+      "lng": 15.1504,
+      "lat": -2.6353,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "153rd-branch",
+      "name": "153rd Branch",
+      "lng": -148.0272,
+      "lat": -36.1281,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "16th-branch",
+      "name": "16th Branch",
+      "lng": -124.8565,
+      "lat": -51.7824,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "2000-year-island",
+      "name": "2000 Year Island",
+      "lng": 134.9477,
+      "lat": -7.9461,
+      "sea": "Grand Line",
+      "canon_confidence": "guess",
+      "source_ref": "derived: no region, no debut chapter | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "77th-branch",
+      "name": "77th Branch",
+      "lng": -140.5383,
+      "lat": -60.9741,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "80th-branch",
+      "name": "80th Branch",
+      "lng": 43.0646,
+      "lat": 53.169,
+      "sea": "West Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='West Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "8th-branch",
+      "name": "8th Branch",
+      "lng": -87.1664,
+      "lat": -21.6582,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "abyss-zone",
+      "name": "Abyss Zone",
+      "lng": -30.2074,
+      "lat": 1.4344,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "acacia",
+      "name": "Acacia",
+      "lng": 47.8533,
+      "lat": -5.2903,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Dressrosa'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "alchemi",
+      "name": "Alchemi",
+      "lng": 123.9612,
+      "lat": 7.2271,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World, inside Bonbori' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "all-blue",
+      "name": "All Blue",
+      "lng": -153.1406,
+      "lat": -6.6613,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=baratie (ch 56); lng by voyage order 3 (baratie, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "alubarna",
+      "name": "Alubarna",
+      "lng": -120.1992,
+      "lat": -0.7873,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Arabasta'; lng by voyage order 8 (little-garden, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "amazon-lily",
+      "name": "Amazon Lily",
+      "lng": 165.1452,
+      "lat": 12.0706,
+      "sea": "Calm Belt",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Calm Belt' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "aoi-kingdom",
+      "name": "Aoi Kingdom",
+      "lng": 85.4257,
+      "lat": -3.5191,
+      "sea": "Grand Line",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Grand Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "applenine-island",
+      "name": "Applenine Island",
+      "lng": 43.3911,
+      "lat": 2.0463,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "arabasta-kingdom",
+      "name": "Arabasta Kingdom",
+      "lng": -125.4532,
+      "lat": -2.0675,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 7 (whisky-peak, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "arlong-park",
+      "name": "Arlong Park",
+      "lng": -121.1536,
+      "lat": -39.3092,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Conomi Islands' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "asuka-island",
+      "name": "Asuka Island",
+      "lng": -41.7523,
+      "lat": 4.8529,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "atarashi-island",
+      "name": "Atarashi Island",
+      "lng": 76.0327,
+      "lat": 6.8323,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "atoll",
+      "name": "Atoll",
+      "lng": -168.7848,
+      "lat": -2.5446,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "aurust-castle",
+      "name": "Aurust Castle",
+      "lng": 173.1456,
+      "lat": 8.6131,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Branch Route 8 (Sun World)'; lng by voyage order 32 (elbaph, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "badland",
+      "name": "Badland",
+      "lng": -112.4131,
+      "lat": -5.7059,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Arabasta' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "ballon-terminal",
+      "name": "Ballon Terminal",
+      "lng": 40.2051,
+      "lat": 15.8813,
+      "sea": "Sky",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Sky'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "ballywood-kingdom",
+      "name": "Ballywood Kingdom",
+      "lng": 167.0441,
+      "lat": 55.5816,
+      "sea": "West Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='West Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "baltigo",
+      "name": "Baltigo",
+      "lng": 11.5568,
+      "lat": -7.4339,
+      "sea": "Grand Line",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Grand Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "banana-peninsula",
+      "name": "Banana Peninsula",
+      "lng": -138.9135,
+      "lat": -37.2904,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "banaro-island",
+      "name": "Banaro Island",
+      "lng": -62.5182,
+      "lat": -1.6668,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 16 (post-enies-lobby, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "baterilla",
+      "name": "Baterilla",
+      "lng": 81.4425,
+      "lat": -27.7292,
+      "sea": "South Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='South Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "bighorn",
+      "name": "Bighorn",
+      "lng": -112.4648,
+      "lat": 3.492,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Drum Island'; lng by voyage order 9 (drum-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "birka",
+      "name": "Birka",
+      "lng": -88.8392,
+      "lat": 17.8477,
+      "sea": "Sky",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Sky'; lng by voyage order 12 (skypiea, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "biscuits-island",
+      "name": "Biscuits Island",
+      "lng": 70.9799,
+      "lat": 1.7671,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "black-island",
+      "name": "Black Island",
+      "lng": 152.5899,
+      "lat": 0.1037,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "blacksmith-village",
+      "name": "Blacksmith Village",
+      "lng": -141.7278,
+      "lat": -28.4512,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "blue-planet",
+      "name": "Blue Planet",
+      "lng": 170.8033,
+      "lat": 79.2709,
+      "sea": "Outer Space",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Outer Space' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "blue-sea",
+      "name": "Blue Sea",
+      "lng": -171.52,
+      "lat": 2.9296,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=romance-dawn (ch 1); lng by voyage order 0 (romance-dawn, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "boin-archipelago",
+      "name": "Boin Archipelago",
+      "lng": -44.8546,
+      "lat": 3.4545,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 19 (amazon-lily, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "bourgeois-kingdom",
+      "name": "Bourgeois Kingdom",
+      "lng": -136.9754,
+      "lat": -5.949,
+      "sea": "Grand Line",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Grand Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "branchi",
+      "name": "Branchi",
+      "lng": -114.4216,
+      "lat": 2.8451,
+      "sea": "Grand Line",
+      "canon_confidence": "guess",
+      "source_ref": "derived: no region, no debut chapter | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "briss-kingdom",
+      "name": "Briss Kingdom",
+      "lng": 24.7479,
+      "lat": -21.8097,
+      "sea": "South Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='South Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "broc-coli-island",
+      "name": "Broc Coli Island",
+      "lng": 89.7072,
+      "lat": 2.5539,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "buggyland",
+      "name": "Buggyland",
+      "lng": -91.2616,
+      "lat": 3.2433,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "bunt-kingdom",
+      "name": "Bunt Kingdom",
+      "lng": 159.4749,
+      "lat": -5.7913,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 32 (elbaph, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "cacao-island",
+      "name": "Cacao Island",
+      "lng": 81.5004,
+      "lat": 7.9972,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "cactus-island",
+      "name": "Cactus Island",
+      "lng": -121.5765,
+      "lat": -5.8639,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 7 (whisky-peak, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "cactus-saloon",
+      "name": "Cactus Saloon",
+      "lng": -71.426,
+      "lat": -2.3392,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=enies-lobby (ch 409); lng by voyage order 15 (enies-lobby, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "calm-belt",
+      "name": "Calm Belt",
+      "lng": -133.0486,
+      "lat": -1.5531,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=reverse-mountain (ch 101); lng by voyage order 6 (reverse-mountain, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "candy-factory",
+      "name": "Candy Factory",
+      "lng": -7.6731,
+      "lat": 0.0053,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Fish-Man Island'; lng by voyage order 24 (fish-man-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "candy-island",
+      "name": "Candy Island",
+      "lng": 79.5751,
+      "lat": 7.4515,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "carbador-island",
+      "name": "Carbador Island",
+      "lng": 48.1339,
+      "lat": 0.3187,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "carta",
+      "name": "Carta",
+      "lng": 39.0304,
+      "lat": 5.2061,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Dressrosa'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "cave-island",
+      "name": "Cave Island",
+      "lng": -120.3541,
+      "lat": 0.6373,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "cave-zone",
+      "name": "Cave Zone",
+      "lng": -44.1727,
+      "lat": -6.1676,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "centaurea",
+      "name": "Centaurea",
+      "lng": 78.6474,
+      "lat": -37.3273,
+      "sea": "South Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='South Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "cheese-island",
+      "name": "Cheese Island",
+      "lng": 69.8538,
+      "lat": -0.5771,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "clockwork-island",
+      "name": "Clockwork Island",
+      "lng": -146.5601,
+      "lat": -25.8104,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "cloud-end",
+      "name": "Cloud End",
+      "lng": -92.4684,
+      "lat": 19.826,
+      "sea": "Sky",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Sky'; lng by voyage order 12 (skypiea, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "cocoa-weed",
+      "name": "Cocoa Weed",
+      "lng": -109.3987,
+      "lat": 0.0132,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Drum Island'; lng by voyage order 9 (drum-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "cocoyasi-village",
+      "name": "Cocoyasi Village",
+      "lng": -110.078,
+      "lat": -25.3729,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Conomi Islands' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "conomi-islands",
+      "name": "Conomi Islands",
+      "lng": -51.3013,
+      "lat": -33.3334,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "corrida-colosseum",
+      "name": "Corrida Colosseum",
+      "lng": 28.9164,
+      "lat": 6.6618,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Dressrosa'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "cozia",
+      "name": "Cozia",
+      "lng": -127.4528,
+      "lat": -34.4701,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "cream-mist",
+      "name": "Cream Mist",
+      "lng": -90.3075,
+      "lat": -5.5706,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "crescent-island",
+      "name": "Crescent Island",
+      "lng": -43.7692,
+      "lat": -22.761,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "cutlery-island",
+      "name": "Cutlery Island",
+      "lng": 82.6133,
+      "lat": 5.4654,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "dawn-island",
+      "name": "Dawn Island",
+      "lng": -114.6835,
+      "lat": -67.8116,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "delta-island",
+      "name": "Delta Island",
+      "lng": 63.5298,
+      "lat": 2.6433,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "devil-s-tower",
+      "name": "Devil's Tower",
+      "lng": -139.6037,
+      "lat": -29.1839,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "digital-art-island",
+      "name": "Digital Art Island",
+      "lng": 142.7911,
+      "lat": -6.2319,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "dimension-zone",
+      "name": "Dimension Zone",
+      "lng": -40.4375,
+      "lat": 4.3652,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "dock-1",
+      "name": "Dock 1",
+      "lng": -78.6699,
+      "lat": -2.401,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Water 7'; lng by voyage order 14 (water-7, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "dock-island",
+      "name": "Dock Island",
+      "lng": 151.2022,
+      "lat": 2.6659,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "doerena-kingdom",
+      "name": "Doerena Kingdom",
+      "lng": 32.7972,
+      "lat": 4.7344,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "door-hoverka-colosseum",
+      "name": "Door Hoverka Colosseum",
+      "lng": -153.5512,
+      "lat": 5.8935,
+      "sea": "Grand Line",
+      "canon_confidence": "guess",
+      "source_ref": "derived: no region, no debut chapter | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "downs",
+      "name": "Downs",
+      "lng": -24.8073,
+      "lat": 22.0291,
+      "sea": "North Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='North Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "dressrosa",
+      "name": "Dressrosa",
+      "lng": 42.463,
+      "lat": 7.6766,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 26 (dressrosa, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "drum-castle",
+      "name": "Drum Castle",
+      "lng": -109.5368,
+      "lat": -5.8273,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Drum Island'; lng by voyage order 9 (drum-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "drum-island",
+      "name": "Drum Island",
+      "lng": -108.7954,
+      "lat": -6.3428,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 9 (drum-island, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "drum-rockies",
+      "name": "Drum Rockies",
+      "lng": -111.3163,
+      "lat": -1.3008,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Drum Island'; lng by voyage order 9 (drum-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "egghead",
+      "name": "Egghead",
+      "lng": 149.0991,
+      "lat": -0.4304,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 31 (egghead, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "eight-nine-island",
+      "name": "Eight Nine Island",
+      "lng": -129.9376,
+      "lat": -7.074,
+      "sea": "Grand Line",
+      "canon_confidence": "guess",
+      "source_ref": "derived: no region, no debut chapter | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "eigis-kingdom",
+      "name": "Eigis Kingdom",
+      "lng": 70.4683,
+      "lat": -2.5349,
+      "sea": "Grand Line",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Grand Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "elbaph",
+      "name": "Elbaph",
+      "lng": 154.2701,
+      "lat": -7.171,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 32 (elbaph, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "elegia",
+      "name": "Elegia",
+      "lng": -107.1486,
+      "lat": 12.3955,
+      "sea": "Calm Belt",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue, South Blue, Paradise, or Calm Belt' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "elena",
+      "name": "Elena",
+      "lng": -106.3931,
+      "lat": -2.1068,
+      "sea": "Grand Line",
+      "canon_confidence": "guess",
+      "source_ref": "derived: no region, no debut chapter | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "emerald-city",
+      "name": "Emerald City",
+      "lng": -95.3319,
+      "lat": 7.8238,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=jaya (ch 224); lng by voyage order 11 (jaya, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "endpoints",
+      "name": "Endpoints",
+      "lng": 92.6267,
+      "lat": 0.1952,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "enies-lobby",
+      "name": "Enies Lobby",
+      "lng": -68.3696,
+      "lat": -7.1283,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 15 (enies-lobby, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "enishi",
+      "name": "Enishi",
+      "lng": 172.3175,
+      "lat": -1.8626,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 32 (elbaph, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "enkai-island",
+      "name": "Enkai Island",
+      "lng": -170.8908,
+      "lat": -2.3458,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "erumalu",
+      "name": "Erumalu",
+      "lng": -105.667,
+      "lat": 3.6337,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Arabasta'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "esperia-kingdom",
+      "name": "Esperia Kingdom",
+      "lng": 162.4116,
+      "lat": 23.8999,
+      "sea": "West Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='West Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "euro-peninsula",
+      "name": "Euro Peninsula",
+      "lng": 159.6,
+      "lat": -1.8253,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=elbaph (ch 1184); lng by voyage order 32 (elbaph, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "evil-black-drum-kingdom",
+      "name": "Evil Black Drum Kingdom",
+      "lng": 141.5528,
+      "lat": -44.2917,
+      "sea": "South Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='South Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "farce-island",
+      "name": "Farce Island",
+      "lng": -82.8725,
+      "lat": -54.0789,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "festa-circle",
+      "name": "Festa Circle",
+      "lng": -121.8856,
+      "lat": 7.0382,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "fireworks",
+      "name": "Fireworks",
+      "lng": -166.6308,
+      "lat": 7.4754,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "firs-island",
+      "name": "Firs Island",
+      "lng": 161.6525,
+      "lat": 6.5457,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "fish-man-district",
+      "name": "Fish-Man District",
+      "lng": -9.5808,
+      "lat": 6.6556,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=fish-man-island (ch 608); lng by voyage order 24 (fish-man-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "fish-man-island",
+      "name": "Fish-Man Island",
+      "lng": -5.9349,
+      "lat": -2.8548,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Grand Line (under the Red Line)'; lng by voyage order 24 (fish-man-island, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "fisherman-island",
+      "name": "Fisherman Island",
+      "lng": -168.0992,
+      "lat": 4.0377,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "flavor-island",
+      "name": "Flavor Island",
+      "lng": 72.1537,
+      "lat": -4.8002,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "flevance",
+      "name": "Flevance",
+      "lng": -156.946,
+      "lat": 60.8389,
+      "sea": "North Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='North Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "florian-triangle",
+      "name": "Florian Triangle",
+      "lng": -58.3636,
+      "lat": -0.666,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 17 (thriller-bark, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "flower-capital",
+      "name": "Flower Capital",
+      "lng": 125.7485,
+      "lat": -2.85,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Wano Country'; lng by voyage order 30 (wano-country, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "flower-hill",
+      "name": "Flower Hill",
+      "lng": 44.6171,
+      "lat": 0.3143,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Dressrosa'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "foodvalten",
+      "name": "Foodvalten",
+      "lng": 83.6002,
+      "lat": -3.7086,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; debut arc post-war is in Paradise but region says New World — region wins, lng not by voyage order | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "foolshout-island",
+      "name": "Foolshout Island",
+      "lng": -5.9558,
+      "lat": -7.1297,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 24 (fish-man-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "foosha-village",
+      "name": "Foosha Village",
+      "lng": -169.4318,
+      "lat": 7.1022,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=romance-dawn (ch 1); lng by voyage order 0 (romance-dawn, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "forest-island",
+      "name": "Forest Island",
+      "lng": -113.3115,
+      "lat": -2.7874,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "franky-house",
+      "name": "Franky House",
+      "lng": -74.6932,
+      "lat": 0.6749,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Water 7'; lng by voyage order 14 (water-7, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "fron-island",
+      "name": "Fron Island",
+      "lng": 135.6955,
+      "lat": -6.3304,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "fruits-island",
+      "name": "Fruits Island",
+      "lng": 86.8832,
+      "lat": -4.5112,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "funwari-island",
+      "name": "Funwari Island",
+      "lng": 86.0557,
+      "lat": 3.2103,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "futoru-island",
+      "name": "Futoru Island",
+      "lng": 82.3839,
+      "lat": -2.6673,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "g-1",
+      "name": "G-1",
+      "lng": -13.6515,
+      "lat": 4.4918,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise (currently), New World (formerly)'; lng by voyage order 23 (return-to-sabaody, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "g-14",
+      "name": "G-14",
+      "lng": 143.6181,
+      "lat": -4.485,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 31 (egghead, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "g-2",
+      "name": "G-2",
+      "lng": -88.5856,
+      "lat": 5.331,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise, Grand Line'; lng by voyage order 12 (skypiea, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "g-3",
+      "name": "G-3",
+      "lng": -78.0014,
+      "lat": 5.8304,
+      "sea": "Grand Line",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Grand Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "g-5",
+      "name": "G-5",
+      "lng": 24.8576,
+      "lat": -2.5387,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 25 (punk-hazard, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "g-8",
+      "name": "G-8",
+      "lng": -104.8918,
+      "lat": 0.7181,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "g-rard",
+      "name": "Gérard",
+      "lng": 28.8901,
+      "lat": 2.2557,
+      "sea": "Grand Line",
+      "canon_confidence": "guess",
+      "source_ref": "derived: no region, no debut chapter | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "gacha-gacha-island",
+      "name": "Gacha Gacha Island",
+      "lng": -141.8301,
+      "lat": -8.5282,
+      "sea": "Grand Line",
+      "canon_confidence": "guess",
+      "source_ref": "derived: no region, no debut chapter | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "galzburg",
+      "name": "Galzburg",
+      "lng": 54.0354,
+      "lat": -0.8848,
+      "sea": "Grand Line",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Grand Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "gartel-island",
+      "name": "Gartel Island",
+      "lng": 87.9799,
+      "lat": -0.0479,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "gates-of-justice",
+      "name": "Gates of Justice",
+      "lng": -66.7953,
+      "lat": 6.1997,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 15 (enies-lobby, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "gecko-islands",
+      "name": "Gecko Islands",
+      "lng": -133.3825,
+      "lat": -42.0278,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "germa-kingdom",
+      "name": "Germa Kingdom",
+      "lng": -152.4088,
+      "lat": 19.69,
+      "sea": "North Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='North Blue (formerly); New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "goa-kingdom",
+      "name": "Goa Kingdom",
+      "lng": -14.6215,
+      "lat": -29.2997,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Dawn Island' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "goat-island",
+      "name": "Goat Island",
+      "lng": -11.6159,
+      "lat": -29.2213,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "goat-island-non-canon",
+      "name": "Goat Island (Non-Canon)",
+      "lng": -57.1263,
+      "lat": 1.821,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "god-valley",
+      "name": "God Valley",
+      "lng": 11.3459,
+      "lat": 69.3317,
+      "sea": "West Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='West Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "gold-island",
+      "name": "Gold Island",
+      "lng": -120.13,
+      "lat": -63.0909,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "goldfish-empire",
+      "name": "Goldfish Empire",
+      "lng": -106.7194,
+      "lat": 3.2097,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Sea Floor'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "gonarock-island",
+      "name": "Gonarock Island",
+      "lng": -144.8857,
+      "lat": -25.588,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "gorge-island",
+      "name": "Gorge Island",
+      "lng": -99.7886,
+      "lat": -2.4303,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "gosa-village",
+      "name": "Gosa Village",
+      "lng": -49.8626,
+      "lat": -61.9085,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Conomi Islands' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "gourmet-island",
+      "name": "Gourmet Island",
+      "lng": -71.7151,
+      "lat": 0.6335,
+      "sea": "Grand Line",
+      "canon_confidence": "guess",
+      "source_ref": "derived: no region, no debut chapter | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "gray-terminal",
+      "name": "Gray Terminal",
+      "lng": -69.2409,
+      "lat": -66.5552,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Goa Kingdom' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "great-ground",
+      "name": "Great Ground",
+      "lng": -8.4949,
+      "lat": 0.0483,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "great-kingdom",
+      "name": "Great Kingdom",
+      "lng": -67.7847,
+      "lat": -3.5121,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=enies-lobby (ch 395); lng by voyage order 15 (enies-lobby, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "green-bit",
+      "name": "Green Bit",
+      "lng": 33.445,
+      "lat": -6.0878,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "guanhao",
+      "name": "Guanhao",
+      "lng": -38.2936,
+      "lat": -2.2209,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 19 (amazon-lily, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "gyasta",
+      "name": "Gyasta",
+      "lng": -106.9855,
+      "lat": 0.9738,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Drum Island'; lng by voyage order 9 (drum-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "gyoncorde-plaza",
+      "name": "Gyoncorde Plaza",
+      "lng": -9.7897,
+      "lat": -4.2651,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Fish-Man Island'; lng by voyage order 24 (fish-man-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "gyoverly-hills",
+      "name": "Gyoverly Hills",
+      "lng": -8.0161,
+      "lat": 2.4945,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Fish-Man Island'; lng by voyage order 24 (fish-man-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "hachinosu",
+      "name": "Hachinosu",
+      "lng": 149.8426,
+      "lat": 6.1778,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; debut arc long-ring-long-land is in Paradise but region says New World — region wins, lng not by voyage order | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "hakumai",
+      "name": "Hakumai",
+      "lng": 132.1463,
+      "lat": -8.1091,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Wano Country'; lng by voyage order 30 (wano-country, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "hand-island",
+      "name": "Hand Island",
+      "lng": 78.6173,
+      "lat": -4.6121,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "hannabal",
+      "name": "Hannabal",
+      "lng": -80.4795,
+      "lat": 3.0257,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "headband-catfish-village",
+      "name": "Headband Catfish Village",
+      "lng": -100.875,
+      "lat": 0.9645,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Sea Floor'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "human-auctioning-house",
+      "name": "Human Auctioning House",
+      "lng": -51.2008,
+      "lat": 6.2035,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 18 (sabaody-archipelago, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "hungry-la-island",
+      "name": "Hungry-La Island",
+      "lng": -93.207,
+      "lat": -4.897,
+      "sea": "Grand Line",
+      "canon_confidence": "guess",
+      "source_ref": "derived: no region, no debut chapter | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "hyokaido",
+      "name": "Hyokaido",
+      "lng": -97.8208,
+      "lat": -2.456,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "hyoutan-island",
+      "name": "Hyoutan Island",
+      "lng": -73.6057,
+      "lat": -34.2488,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue (Conomi Islands)' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "ice-island",
+      "name": "Ice Island",
+      "lng": 79.9846,
+      "lat": 0.9734,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "iceberg-island",
+      "name": "Iceberg Island",
+      "lng": -12.3698,
+      "lat": 5.1251,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "ido",
+      "name": "Ido",
+      "lng": -40.1612,
+      "lat": 4.3571,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Arabasta Kingdom, Sandy Island' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "ilisia-kingdom",
+      "name": "Ilisia Kingdom",
+      "lng": 159.5733,
+      "lat": 31.5284,
+      "sea": "West Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='West Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "impel-down",
+      "name": "Impel Down",
+      "lng": -48.4536,
+      "lat": 13.4248,
+      "sea": "Calm Belt",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Calm Belt' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "island-of-rare-animals",
+      "name": "Island of Rare Animals",
+      "lng": -93.189,
+      "lat": -28.7487,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "iyasare-island",
+      "name": "Iyasare Island",
+      "lng": -16.7284,
+      "lat": -47.8559,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "jail-island",
+      "name": "Jail Island",
+      "lng": 135.9652,
+      "lat": 0.6906,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "jam-island",
+      "name": "Jam Island",
+      "lng": 88.5957,
+      "lat": 1.6132,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "jaya",
+      "name": "Jaya",
+      "lng": -96.4286,
+      "lat": 6.9118,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 11 (jaya, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "jelly-island",
+      "name": "Jelly Island",
+      "lng": 82.1102,
+      "lat": 3.5421,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "jewel-ice-sheet",
+      "name": "Jewel Ice Sheet",
+      "lng": 34.252,
+      "lat": -5.1191,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "judo-island",
+      "name": "Judo Island",
+      "lng": 72.1043,
+      "lat": -0.705,
+      "sea": "Grand Line",
+      "canon_confidence": "guess",
+      "source_ref": "derived: no region, no debut chapter | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "jump-worlds",
+      "name": "Jump Worlds",
+      "lng": 115.6866,
+      "lat": 2.928,
+      "sea": "Grand Line",
+      "canon_confidence": "guess",
+      "source_ref": "derived: no region, no debut chapter | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "jungle-zone",
+      "name": "Jungle Zone",
+      "lng": -76.8011,
+      "lat": -3.0658,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "kamigata",
+      "name": "Kamigata",
+      "lng": 168.6467,
+      "lat": 0.2288,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=elbaph (ch 1185); lng by voyage order 32 (elbaph, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "kano-country",
+      "name": "Kano Country",
+      "lng": 43.387,
+      "lat": 64.4392,
+      "sea": "West Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='West Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "karai-bari-island",
+      "name": "Karai Bari Island",
+      "lng": 58.052,
+      "lat": -1.1137,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 27 (zou, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "karakuri-island",
+      "name": "Karakuri Island",
+      "lng": -53.0321,
+      "lat": -5.9954,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 17 (thriller-bark, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "karate-island",
+      "name": "Karate Island",
+      "lng": 21.5322,
+      "lat": -60.2352,
+      "sea": "South Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='South Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "katorea",
+      "name": "Katorea",
+      "lng": -104.6587,
+      "lat": 8.0187,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Arabasta'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "kenzan-island",
+      "name": "Kenzan Island",
+      "lng": -23.3258,
+      "lat": 6.7854,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 22 (post-war, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "kibo-island",
+      "name": "Kibo Island",
+      "lng": 161.0808,
+      "lat": 5.7211,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "kilauea",
+      "name": "Kilauea",
+      "lng": -114.5933,
+      "lat": 1.3664,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "kimi-island",
+      "name": "Kimi Island",
+      "lng": 97.0653,
+      "lat": -1.9723,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "kinko-island",
+      "name": "Kinko Island",
+      "lng": 90.2752,
+      "lat": -1.8087,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "kinoko-island",
+      "name": "Kinoko Island",
+      "lng": 173.9156,
+      "lat": -8.3874,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "kinoko-islands",
+      "name": "Kinoko Islands",
+      "lng": -146.6191,
+      "lat": -19.4151,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "komugi-island",
+      "name": "Komugi Island",
+      "lng": 75.6469,
+      "lat": -2.0485,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "kuen-village",
+      "name": "Kuen Village",
+      "lng": -100.1835,
+      "lat": 56.0133,
+      "sea": "North Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='North Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "kuma-island",
+      "name": "Kuma (Island)",
+      "lng": 83.6003,
+      "lat": -1.3288,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "kumate-island",
+      "name": "Kumate Island",
+      "lng": -91.3932,
+      "lat": -25.7473,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "kuraigana-island",
+      "name": "Kuraigana Island",
+      "lng": -43.6519,
+      "lat": -3.0795,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 19 (amazon-lily, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "kuri",
+      "name": "Kuri",
+      "lng": 123.6642,
+      "lat": -5.1735,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Wano Country'; lng by voyage order 30 (wano-country, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "kutsukku-island",
+      "name": "Kutsukku Island",
+      "lng": 34.2735,
+      "lat": -54.3542,
+      "sea": "South Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='South Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "kyuka-island",
+      "name": "Kyuka Island",
+      "lng": -116.0869,
+      "lat": -7.1738,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 8 (little-garden, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "land-of-gods",
+      "name": "Land of Gods",
+      "lng": 166.0901,
+      "lat": -4.4714,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Underworld (Elbaph)'; lng by voyage order 32 (elbaph, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "land-of-ice",
+      "name": "Land of Ice",
+      "lng": -57.4899,
+      "lat": -4.0015,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=thriller-bark (ch 456); lng by voyage order 17 (thriller-bark, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "las-camp",
+      "name": "Las Camp",
+      "lng": 41.461,
+      "lat": 41.9795,
+      "sea": "West Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='West Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "laugh-tale",
+      "name": "Laugh Tale",
+      "lng": 129.0302,
+      "lat": -5.3482,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 30 (wano-country, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "liqueur-island",
+      "name": "Liqueur Island",
+      "lng": 70.0222,
+      "lat": 3.5719,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "little-east-blue",
+      "name": "Little East Blue",
+      "lng": -139.2705,
+      "lat": 7.9178,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "little-garden",
+      "name": "Little Garden",
+      "lng": -118.6519,
+      "lat": -5.3635,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 8 (little-garden, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "lodestar-island",
+      "name": "Lodestar Island",
+      "lng": 64.6829,
+      "lat": 2.6148,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 27 (zou, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "loguetown",
+      "name": "Loguetown",
+      "lng": -72.585,
+      "lat": -35.947,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "long-ring-long-land",
+      "name": "Long Ring Long Land",
+      "lng": -83.0667,
+      "lat": -2.0718,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 13 (long-ring-long-land, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "lost-island",
+      "name": "Lost Island",
+      "lng": -41.6963,
+      "lat": -6.6366,
+      "sea": "Grand Line",
+      "canon_confidence": "guess",
+      "source_ref": "derived: no region, no debut chapter | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "lovely-land",
+      "name": "Lovely Land",
+      "lng": 56.5688,
+      "lat": -6.6342,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Hyokaido' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "loving-island",
+      "name": "Loving Island",
+      "lng": 61.6962,
+      "lat": -5.8285,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "lulusia-kingdom",
+      "name": "Lulusia Kingdom",
+      "lng": -92.5638,
+      "lat": 6.6483,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 12 (skypiea, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "lvneel-kingdom",
+      "name": "Lvneel Kingdom",
+      "lng": -19.3334,
+      "lat": 42.6476,
+      "sea": "North Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='North Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "madatascar-island",
+      "name": "Madatascar Island",
+      "lng": 44.274,
+      "lat": 3.8264,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "majiatsuka-kingdom",
+      "name": "Majiatsuka Kingdom",
+      "lng": 44.9515,
+      "lat": -4.178,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "mamana-island",
+      "name": "Mamana Island",
+      "lng": -111.1488,
+      "lat": -1.6771,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "margarine-island",
+      "name": "Margarine Island",
+      "lng": 143.4218,
+      "lat": 3.4355,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "marine-gs-general-hospital",
+      "name": "Marine GS General Hospital",
+      "lng": 154.6013,
+      "lat": 6.8882,
+      "sea": "Grand Line",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Grand Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "marineford",
+      "name": "Marineford",
+      "lng": -30.6541,
+      "lat": -6.3056,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 21 (marineford, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "marriage-greenland",
+      "name": "Marriage Greenland",
+      "lng": 137.4645,
+      "lat": 7.484,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "mary-geoise",
+      "name": "Mary Geoise",
+      "lng": -2.7363,
+      "lat": -9.3782,
+      "sea": "Red Line",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Red Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "maze-island",
+      "name": "Maze Island",
+      "lng": 31.3183,
+      "lat": -1.7508,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "mecha-island",
+      "name": "Mecha Island",
+      "lng": -75.3123,
+      "lat": -1.3767,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "melias",
+      "name": "Melias",
+      "lng": -136.3687,
+      "lat": -2.0732,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Arabasta' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "memoria",
+      "name": "Memoria",
+      "lng": 58.0158,
+      "lat": -4.0895,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Waford (New World)' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "mermaid-cove",
+      "name": "Mermaid Cove",
+      "lng": -5.5003,
+      "lat": 3.9374,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Coral Hill'; lng by voyage order 24 (fish-man-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "merveille",
+      "name": "Merveille",
+      "lng": -143.1627,
+      "lat": 17.4168,
+      "sea": "Sky",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Sky' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "meshi",
+      "name": "Meshi",
+      "lng": -161.3859,
+      "lat": -6.0576,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=syrup-village (ch 23); lng by voyage order 2 (syrup-village, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "micqueot",
+      "name": "Micqueot",
+      "lng": -152.192,
+      "lat": -7.6348,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=baratie (ch 43); lng by voyage order 3 (baratie, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "midori-island",
+      "name": "Midori Island",
+      "lng": 10.8557,
+      "lat": 3.3753,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "midway-forest",
+      "name": "Midway Forest",
+      "lng": -85.7022,
+      "lat": -46.4528,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Goa Kingdom' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "milenge-island",
+      "name": "Milenge Island",
+      "lng": 86.1322,
+      "lat": 0.1495,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "minion-island",
+      "name": "Minion Island",
+      "lng": -119.3544,
+      "lat": 25.1657,
+      "sea": "North Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='North Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "miraba-elementary-school",
+      "name": "Miraba Elementary School",
+      "lng": -76.1476,
+      "lat": 6.2305,
+      "sea": "Grand Line",
+      "canon_confidence": "guess",
+      "source_ref": "derived: no region, no debut chapter | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "mirro-world",
+      "name": "Mirro-World",
+      "lng": 83.5492,
+      "lat": 3.3787,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "mirror-ball-island",
+      "name": "Mirror Ball Island",
+      "lng": -139.5751,
+      "lat": -39.8019,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "mock-town",
+      "name": "Mock Town",
+      "lng": -98.0806,
+      "lat": -1.6775,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Jaya'; lng by voyage order 11 (jaya, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "mogaro-kingdom",
+      "name": "Mogaro Kingdom",
+      "lng": 46.0901,
+      "lat": -6.7312,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "mokomo-dukedom",
+      "name": "Mokomo Dukedom",
+      "lng": 54.1236,
+      "lat": 2.9703,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World (Zou)'; lng by voyage order 27 (zou, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "moku-moku-branch",
+      "name": "Moku Moku Branch",
+      "lng": -103.0581,
+      "lat": -42.446,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "momoiro-island",
+      "name": "Momoiro Island",
+      "lng": -41.5685,
+      "lat": -0.5285,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 19 (amazon-lily, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "moon",
+      "name": "Moon",
+      "lng": -79.9511,
+      "lat": 84.0662,
+      "sea": "Outer Space",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Outer space' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "mountain-zone",
+      "name": "Mountain Zone",
+      "lng": -125.6264,
+      "lat": -3.1786,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "mt-colubo",
+      "name": "Mt. Colubo",
+      "lng": -33.3187,
+      "lat": -26.6185,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Dawn Island' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "mt-kintoki",
+      "name": "Mt. Kintoki",
+      "lng": 157.4228,
+      "lat": 5.1821,
+      "sea": "Grand Line",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Grand Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "mt-mauri",
+      "name": "Mt. Mauri",
+      "lng": 74.5682,
+      "lat": 1.5062,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=whole-cake-island (ch 860); lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "mystoria-island",
+      "name": "Mystoria Island",
+      "lng": 18.8731,
+      "lat": 7.5364,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 25 (punk-hazard, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "nagagutsu-kingdom",
+      "name": "Nagagutsu Kingdom",
+      "lng": -137.6366,
+      "lat": -26.8296,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "nakrowa",
+      "name": "Nakrowa",
+      "lng": -11.4846,
+      "lat": 8.0161,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=fish-man-island (ch 643); lng by voyage order 24 (fish-man-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "namakura-island",
+      "name": "Namakura Island",
+      "lng": -41.9945,
+      "lat": -7.2984,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 19 (amazon-lily, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "namonaki-village",
+      "name": "Namonaki Village",
+      "lng": -147.251,
+      "lat": -0.7721,
+      "sea": "Grand Line",
+      "canon_confidence": "guess",
+      "source_ref": "derived: no region, no debut chapter | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "nanatsu-islands",
+      "name": "Nanatsu Islands",
+      "lng": -140.2867,
+      "lat": 3.254,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "nanimonai-island",
+      "name": "Nanimonai Island",
+      "lng": -122.996,
+      "lat": -6.3403,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 7 (whisky-peak, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "nanohana",
+      "name": "Nanohana",
+      "lng": -102.8707,
+      "lat": 0.4813,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Arabasta'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "natsuyasumi-island",
+      "name": "Natsuyasumi Island",
+      "lng": 152.2524,
+      "lat": 0.2054,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "navarone-island",
+      "name": "Navarone Island",
+      "lng": -47.4608,
+      "lat": 5.9779,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "nazawaka-city",
+      "name": "Nazawaka City",
+      "lng": -98.3251,
+      "lat": -54.9618,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "nebulandia",
+      "name": "Nebulandia",
+      "lng": 74.0583,
+      "lat": -2.7633,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "new-marineford",
+      "name": "New Marineford",
+      "lng": 45.1661,
+      "lat": -0.0577,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "new-world",
+      "name": "New World",
+      "lng": -98.7492,
+      "lat": 0.6227,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=jaya (ch 234); lng by voyage order 11 (jaya, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "noko-island",
+      "name": "Noko Island",
+      "lng": 120.4563,
+      "lat": 2.7914,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "notice",
+      "name": "Notice",
+      "lng": -24.9113,
+      "lat": 23.6395,
+      "sea": "North Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='North Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "nuts-island",
+      "name": "Nuts Island",
+      "lng": 88.3633,
+      "lat": -0.9931,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "o-kan-island",
+      "name": "O-Kan Island",
+      "lng": -60.6282,
+      "lat": 2.3482,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "ocean-s-navel",
+      "name": "Ocean's Navel",
+      "lng": -76.5301,
+      "lat": -63.5989,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "ohara",
+      "name": "Ohara",
+      "lng": 158.826,
+      "lat": 56.7155,
+      "sea": "West Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='West Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "omatsuri-island",
+      "name": "Omatsuri Island",
+      "lng": -150.7585,
+      "lat": -6.2153,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "onigashima",
+      "name": "Onigashima",
+      "lng": 33.4161,
+      "lat": 3.9116,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Wano Country'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "orange-town",
+      "name": "Orange Town",
+      "lng": -71.0682,
+      "lat": -45.3781,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Organ Islands' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "organ-islands",
+      "name": "Organ Islands",
+      "lng": -83.8919,
+      "lat": -66.1211,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "owl-library",
+      "name": "Owl Library",
+      "lng": 153.7491,
+      "lat": -1.6538,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Branch Route 8 (Sun World)'; lng by voyage order 32 (elbaph, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "oykot-kingdom",
+      "name": "Oykot Kingdom",
+      "lng": -78.7347,
+      "lat": -34.9355,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "package-island",
+      "name": "Package Island",
+      "lng": 144.1255,
+      "lat": -6.5583,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "pangaea-castle",
+      "name": "Pangaea Castle",
+      "lng": -0.739,
+      "lat": -70.1224,
+      "sea": "Red Line",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Mary Geoise (Red Line)' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "pants-hazard",
+      "name": "Pants Hazard",
+      "lng": -10.5241,
+      "lat": 5.397,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "papanapple-island",
+      "name": "Papanapple Island",
+      "lng": -139.8132,
+      "lat": -6.4686,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "paradise-farm",
+      "name": "Paradise Farm",
+      "lng": 122.2245,
+      "lat": -6.6607,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Kuri'; lng by voyage order 30 (wano-country, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "paradise-island",
+      "name": "Paradise Island",
+      "lng": 97.7926,
+      "lat": -1.9733,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "partia",
+      "name": "Partia",
+      "lng": -144.0282,
+      "lat": -5.0272,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "pasta-lake",
+      "name": "Pasta Lake",
+      "lng": -89.9769,
+      "lat": -6.4039,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Lulusia Kingdom'; lng by voyage order 12 (skypiea, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "peak-ode-island",
+      "name": "Peak Ode Island",
+      "lng": 110.9133,
+      "lat": 4.2124,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "pepe-kingdom",
+      "name": "Pepe Kingdom",
+      "lng": 147.2979,
+      "lat": 6.7871,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=egghead (ch 1082); lng by voyage order 31 (egghead, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "pescatore-island",
+      "name": "Pescatore Island",
+      "lng": -146.529,
+      "lat": -30.2259,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "piepie-island",
+      "name": "Piepie Island",
+      "lng": 73.7019,
+      "lat": 4.218,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "pineapple-island",
+      "name": "Pineapple Island",
+      "lng": 72.0507,
+      "lat": 2.9399,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "pinwhale-village",
+      "name": "Pinwhale Village",
+      "lng": -59.321,
+      "lat": -1.7396,
+      "sea": "Grand Line",
+      "canon_confidence": "guess",
+      "source_ref": "derived: no region, no debut chapter | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "piriodo",
+      "name": "Piriodo",
+      "lng": 88.4165,
+      "lat": -1.2457,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "plain-zone",
+      "name": "Plain Zone",
+      "lng": -93.6239,
+      "lat": 1.4249,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "porco-kingdom",
+      "name": "Porco Kingdom",
+      "lng": -50.2039,
+      "lat": -3.4584,
+      "sea": "Grand Line",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Grand Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "poripori-island",
+      "name": "Poripori Island",
+      "lng": 82.868,
+      "lat": -2.8184,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "port-chibaralta-island",
+      "name": "Port Chibaralta Island",
+      "lng": 59.5584,
+      "lat": 4.5581,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "potato-island",
+      "name": "Potato Island",
+      "lng": 85.9036,
+      "lat": -6.8019,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "primula",
+      "name": "Primula",
+      "lng": 40.4624,
+      "lat": 1.5156,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Dressrosa'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "prisoner-mine",
+      "name": "Prisoner Mine",
+      "lng": 126.7887,
+      "lat": 0.9978,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Wano Country (Udon)'; lng by voyage order 30 (wano-country, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "prodence-kingdom",
+      "name": "Prodence Kingdom",
+      "lng": 66.0997,
+      "lat": 1.3159,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 27 (zou, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "promise-land",
+      "name": "Promise Land",
+      "lng": 152.473,
+      "lat": -2.9781,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "pucci",
+      "name": "Pucci",
+      "lng": -109.2305,
+      "lat": 7.2998,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; debut arc punk-hazard is in New World but region says Paradise — region wins, lng not by voyage order | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "punk-hazard",
+      "name": "Punk Hazard",
+      "lng": 18.7035,
+      "lat": -5.2418,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 25 (punk-hazard, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "raijin-island",
+      "name": "Raijin Island",
+      "lng": 155.5067,
+      "lat": -6.1854,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; debut arc post-war is in Paradise but region says New World — region wins, lng not by voyage order | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "rainbase",
+      "name": "Rainbase",
+      "lng": -116.2875,
+      "lat": 6.0506,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Arabasta'; lng by voyage order 8 (little-garden, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "rainbow-island",
+      "name": "Rainbow Island",
+      "lng": -40.5396,
+      "lat": 7.011,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "rainbow-mist",
+      "name": "Rainbow Mist",
+      "lng": -16.0124,
+      "lat": 5.9851,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "rainbow-tower",
+      "name": "Rainbow Tower",
+      "lng": -51.6822,
+      "lat": -66.111,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Ruluka' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "rakesh",
+      "name": "Rakesh",
+      "lng": -162.5386,
+      "lat": 25.6012,
+      "sea": "North Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='North Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "red-line",
+      "name": "Red Line",
+      "lng": -158.293,
+      "lat": -1.0213,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=syrup-village (ch 22); lng by voyage order 2 (syrup-village, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "renaisse",
+      "name": "Renaisse",
+      "lng": -115.0311,
+      "lat": -4.6839,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 8 (little-garden, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "resorto",
+      "name": "Resorto",
+      "lng": 152.3123,
+      "lat": 6.8638,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "reverse-mountain",
+      "name": "Reverse Mountain",
+      "lng": 1.399,
+      "lat": 28.0434,
+      "sea": "Red Line",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Red Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "ringo",
+      "name": "Ringo",
+      "lng": 111.3831,
+      "lat": 3.6927,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Wano Country'; lng by voyage order 30 (wano-country, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "risky-red-island",
+      "name": "Risky Red Island",
+      "lng": 23.7816,
+      "lat": 5.8046,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 25 (punk-hazard, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "robelle",
+      "name": "Robelle",
+      "lng": -110.7136,
+      "lat": 1.6266,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Drum Island'; lng by voyage order 9 (drum-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "rokumitsu-island",
+      "name": "Rokumitsu Island",
+      "lng": 82.9449,
+      "lat": 4.8698,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "rommel-kingdom",
+      "name": "Rommel Kingdom",
+      "lng": 37.6097,
+      "lat": -0.6343,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=dressrosa (ch 734); lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "roshwan-kingdom",
+      "name": "Roshwan Kingdom",
+      "lng": 88.0871,
+      "lat": -54.921,
+      "sea": "South Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='South Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "royal-sun-island",
+      "name": "Royal Sun Island",
+      "lng": -124.7813,
+      "lat": 0.2539,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "rubeck-island",
+      "name": "Rubeck Island",
+      "lng": -83.6213,
+      "lat": 52.1456,
+      "sea": "North Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='North Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "ruins-zone",
+      "name": "Ruins Zone",
+      "lng": -23.1324,
+      "lat": -5.2485,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "ruluka",
+      "name": "Ruluka",
+      "lng": -23.8568,
+      "lat": 1.8982,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "rusukaina",
+      "name": "Rusukaina",
+      "lng": -15.9002,
+      "lat": 12.402,
+      "sea": "Calm Belt",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Calm Belt' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "ryugu-kingdom",
+      "name": "Ryugu Kingdom",
+      "lng": -8.3274,
+      "lat": -0.1305,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Sea Floor'; lng by voyage order 24 (fish-man-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "ryugu-palace",
+      "name": "Ryugu Palace",
+      "lng": -9.4398,
+      "lat": 4.2596,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=fish-man-island (ch 612); lng by voyage order 24 (fish-man-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "s-mart",
+      "name": "S.Mart",
+      "lng": -7.8915,
+      "lat": -1.1441,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Arabasta'; lng by voyage order 24 (fish-man-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "sabaody-archipelago",
+      "name": "Sabaody Archipelago",
+      "lng": -48.2843,
+      "lat": 3.7912,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 18 (sabaody-archipelago, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "sabaody-park",
+      "name": "Sabaody Park",
+      "lng": -47.1958,
+      "lat": 4.2902,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 18 (sabaody-archipelago, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "sakura-kingdom",
+      "name": "Sakura Kingdom",
+      "lng": -113.1145,
+      "lat": 7.768,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Drum Island'; lng by voyage order 9 (drum-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "samba-island",
+      "name": "Samba Island",
+      "lng": 21.5594,
+      "lat": 0.3152,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "samua-island",
+      "name": "Samua Island",
+      "lng": -38.5724,
+      "lat": -4.4655,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "samuwanai-island",
+      "name": "Samuwanai Island",
+      "lng": 55.9616,
+      "lat": -64.9634,
+      "sea": "South Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='South Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "san-faldo",
+      "name": "San Faldo",
+      "lng": -77.5522,
+      "lat": -2.4804,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 14 (water-7, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "sandora-desert",
+      "name": "Sandora Desert",
+      "lng": -100.9057,
+      "lat": 6.7642,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Arabasta Kingdom'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "sandora-river",
+      "name": "Sandora River",
+      "lng": -102.2394,
+      "lat": -0.8817,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Arabasta Kingdom'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "sanshoku-island",
+      "name": "Sanshoku Island",
+      "lng": 64.0474,
+      "lat": 8.6516,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "sapoten-graveyard",
+      "name": "Sapoten Graveyard",
+      "lng": -126.0886,
+      "lat": 4.7063,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Cactus Island'; lng by voyage order 7 (whisky-peak, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "satsuruzo-kingdom",
+      "name": "Satsuruzo Kingdom",
+      "lng": -168.8733,
+      "lat": -62.4479,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "scrap-island",
+      "name": "Scrap Island",
+      "lng": -79.9949,
+      "lat": -3.8724,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Water 7'; lng by voyage order 14 (water-7, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "sea-forest",
+      "name": "Sea Forest",
+      "lng": -4.7587,
+      "lat": -4.9572,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=fish-man-island (ch 615); lng by voyage order 24 (fish-man-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "seaside-zone",
+      "name": "Seaside Zone",
+      "lng": -38.0054,
+      "lat": -7.6253,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "sebio",
+      "name": "Sebio",
+      "lng": 40.9605,
+      "lat": -4.151,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Dressrosa'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "secon-island",
+      "name": "Secon Island",
+      "lng": 22.5056,
+      "lat": -5.5297,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "shade-port",
+      "name": "Shade Port",
+      "lng": 89.3599,
+      "lat": -0.9904,
+      "sea": "Grand Line",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Grand Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "shakky-s-rip-off-bar",
+      "name": "Shakky's Rip-off Bar",
+      "lng": -48.8149,
+      "lat": -3.8915,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Sabaody Archipelago (Grove 13); Hachinosu'; lng by voyage order 18 (sabaody-archipelago, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "shandora",
+      "name": "Shandora",
+      "lng": -89.9611,
+      "lat": 15.9676,
+      "sea": "Sky",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Sky; Paradise (former)'; lng by voyage order 12 (skypiea, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "sheep-s-house",
+      "name": "Sheep's House",
+      "lng": 87.944,
+      "lat": -7.0924,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Sun World (Elbaph); Whole Cake Island'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "shellfish-island",
+      "name": "Shellfish Island",
+      "lng": -5.2296,
+      "lat": 5.1206,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "shells-town",
+      "name": "Shells Town",
+      "lng": -78.0207,
+      "lat": -47.3813,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue (Yotsuba Island Region)' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "shift-station",
+      "name": "Shift Station",
+      "lng": -77.7092,
+      "lat": -5.9823,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 14 (water-7, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "shimotsuki-village",
+      "name": "Shimotsuki Village",
+      "lng": -58.1654,
+      "lat": -62.6174,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "shishano-kingdom",
+      "name": "Shishano Kingdom",
+      "lng": 94.7871,
+      "lat": -2.3577,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=levely (ch 905); lng by voyage order 29 (levely, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "silver-arrow-island",
+      "name": "Silver Arrow Island",
+      "lng": -32.3659,
+      "lat": 2.3403,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "silver-mine",
+      "name": "Silver Mine",
+      "lng": 31.3669,
+      "lat": 6.7378,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "sixis",
+      "name": "Sixis",
+      "lng": -80.5901,
+      "lat": -44.98,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "skull-dome",
+      "name": "Skull Dome",
+      "lng": 38.2585,
+      "lat": 6.0264,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Onigashima'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "skypiea",
+      "name": "Skypiea",
+      "lng": -91.1362,
+      "lat": 17.0745,
+      "sea": "Sky",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Sky'; lng by voyage order 12 (skypiea, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "smile-factory",
+      "name": "SMILE Factory",
+      "lng": 40.2226,
+      "lat": -0.8683,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Dressrosa (Underground Trade Port)'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "soil-island",
+      "name": "Soil Island",
+      "lng": -140.5635,
+      "lat": -7.181,
+      "sea": "Grand Line",
+      "canon_confidence": "guess",
+      "source_ref": "derived: no region, no debut chapter | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "soja-island",
+      "name": "Soja Island",
+      "lng": 70.3668,
+      "lat": 59.7817,
+      "sea": "West Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='West Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "sorbet-kingdom",
+      "name": "Sorbet Kingdom",
+      "lng": 46.5031,
+      "lat": -55.7936,
+      "sea": "South Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='South Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "sphinx-location",
+      "name": "Sphinx (Location)",
+      "lng": 130.806,
+      "lat": -3.9901,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 30 (wano-country, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "spice-bean",
+      "name": "Spice Bean",
+      "lng": -103.1091,
+      "lat": -0.4214,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Nanohana'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "spider-miles",
+      "name": "Spider Miles",
+      "lng": -151.606,
+      "lat": 58.8694,
+      "sea": "North Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='North Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "spiders-cafe",
+      "name": "Spiders Cafe",
+      "lng": -102.3266,
+      "lat": -3.7567,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Arabasta Kingdom; Unknown'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "st-poplar",
+      "name": "St. Poplar",
+      "lng": -52.0394,
+      "lat": 1.7874,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 18 (sabaody-archipelago, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "standing-kingdom",
+      "name": "Standing Kingdom",
+      "lng": 27.4295,
+      "lat": 6.0388,
+      "sea": "Grand Line",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Grand Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "strumia",
+      "name": "Strumia",
+      "lng": 122.9124,
+      "lat": -7.4325,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "suiren",
+      "name": "Suiren",
+      "lng": -57.9118,
+      "lat": -2.9238,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Arabasta Kingdom' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "sun-world",
+      "name": "Sun World",
+      "lng": 75.6652,
+      "lat": -4.1597,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World (Elbaph)'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "swallow-island",
+      "name": "Swallow Island",
+      "lng": -27.8208,
+      "lat": 20.4062,
+      "sea": "North Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='North Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "sword-obsessed-branch",
+      "name": "Sword Obsessed Branch",
+      "lng": -47.7048,
+      "lat": -57.2571,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "syrup-village",
+      "name": "Syrup Village",
+      "lng": -132.8436,
+      "lat": -54.1873,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Gecko Islands' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "tabetsukusare-island",
+      "name": "Tabetsukusare Island",
+      "lng": -63.4639,
+      "lat": -42.6064,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "tajine-kingdom",
+      "name": "Tajine Kingdom",
+      "lng": 106.3594,
+      "lat": -6.4248,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: arc=levely (ch 905); lng by voyage order 29 (levely, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "tamarisk",
+      "name": "Tamarisk",
+      "lng": -104.1647,
+      "lat": -0.165,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Arabasta Kingdom'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "tanega-island",
+      "name": "Tanega Island",
+      "lng": 54.128,
+      "lat": -5.6703,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "tarai-current",
+      "name": "Tarai Current",
+      "lng": -92.4053,
+      "lat": 11.8445,
+      "sea": "Calm Belt",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise Calm Belt' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "taya-kingdom",
+      "name": "Taya Kingdom",
+      "lng": 66.4756,
+      "lat": -36.1549,
+      "sea": "South Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='South Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "tequila-wolf",
+      "name": "Tequila Wolf",
+      "lng": -50.1267,
+      "lat": -66.5011,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "third-research-institute",
+      "name": "Third Research Institute",
+      "lng": 20.3369,
+      "lat": -2.4047,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Punk Hazard (Ice Lands)'; lng by voyage order 25 (punk-hazard, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "tomb-of-the-kings",
+      "name": "Tomb of the Kings",
+      "lng": -103.9584,
+      "lat": 2.39,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Arabasta Kingdom'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "tomoshibi-island",
+      "name": "Tomoshibi Island",
+      "lng": 111.5229,
+      "lat": 4.376,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "tongari-island",
+      "name": "Tongari Island",
+      "lng": 154.7437,
+      "lat": 5.0998,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "tontatta-kingdom",
+      "name": "Tontatta Kingdom",
+      "lng": 27.3924,
+      "lat": 0.9399,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Green Bit, New World'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "tony-tony-island",
+      "name": "Tony-Tony Island",
+      "lng": -86.4421,
+      "lat": -22.6668,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "topping-island",
+      "name": "Topping Island",
+      "lng": 15.0295,
+      "lat": -1.8504,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "torino-kingdom",
+      "name": "Torino Kingdom",
+      "lng": 94.801,
+      "lat": -49.8435,
+      "sea": "South Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='South Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "toroa",
+      "name": "Toroa",
+      "lng": 34.3143,
+      "lat": 57.1662,
+      "sea": "West Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='West Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "totto-land",
+      "name": "Totto Land",
+      "lng": 125.3841,
+      "lat": -2.2459,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; debut arc fish-man-island is in Paradise but region says New World — region wins, lng not by voyage order | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "tou-chuka-island",
+      "name": "Tou-Chuka Island",
+      "lng": -171.6656,
+      "lat": -3.1443,
+      "sea": "Grand Line",
+      "canon_confidence": "guess",
+      "source_ref": "derived: no region, no debut chapter | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "trans-town",
+      "name": "Trans Town",
+      "lng": 67.4113,
+      "lat": 3.6938,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "trap-tower",
+      "name": "Trap Tower",
+      "lng": -44.3357,
+      "lat": -3.7156,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "trump-castle",
+      "name": "Trump Castle",
+      "lng": -115.361,
+      "lat": -26.0399,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Clockwork Island' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "tsui-village",
+      "name": "Tsui Village",
+      "lng": -91.0287,
+      "lat": 6.0412,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Water 7' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "tumi",
+      "name": "Tumi",
+      "lng": 12.1958,
+      "lat": -57.7165,
+      "sea": "South Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='South Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "twin-cape",
+      "name": "Twin Cape",
+      "lng": -2.2686,
+      "lat": -57.6758,
+      "sea": "Red Line",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Red Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "udon",
+      "name": "Udon",
+      "lng": 119.338,
+      "lat": 4.7162,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Wano Country'; lng by voyage order 30 (wano-country, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "ukkari-hot-spring-island",
+      "name": "Ukkari Hot-Spring Island",
+      "lng": -80.7921,
+      "lat": -0.8315,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 13 (long-ring-long-land, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "unique-island",
+      "name": "Unique Island",
+      "lng": 147.4613,
+      "lat": -4.4282,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "uta-world",
+      "name": "Uta World",
+      "lng": 25.2276,
+      "lat": 13.0916,
+      "sea": "Calm Belt",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Elegia (East Blue, South Blue, Paradise, or Calm Belt)' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "uwazumi-high-school",
+      "name": "Uwazumi High School",
+      "lng": 114.5437,
+      "lat": -1.422,
+      "sea": "Grand Line",
+      "canon_confidence": "guess",
+      "source_ref": "derived: no region, no debut chapter | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "vespa-kingdom",
+      "name": "Vespa Kingdom",
+      "lng": 159.5177,
+      "lat": -20.9147,
+      "sea": "South Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='South Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "vira",
+      "name": "Vira",
+      "lng": -132.6596,
+      "lat": -0.1626,
+      "sea": "Grand Line",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Grand Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "vodka-kingdom",
+      "name": "Vodka Kingdom",
+      "lng": 75.6216,
+      "lat": -0.7375,
+      "sea": "Grand Line",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Grand Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "waford",
+      "name": "Waford",
+      "lng": 59.3036,
+      "lat": -4.8778,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "wagomuland",
+      "name": "Wagomuland",
+      "lng": -7.2824,
+      "lat": 19.6751,
+      "sea": "Sky",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Sky'; lng by voyage order 24 (fish-man-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "walrus-school",
+      "name": "Walrus School",
+      "lng": 161.1512,
+      "lat": 3.2047,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Branch Route 8 (Sun World)'; lng by voyage order 32 (elbaph, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "wano-country",
+      "name": "Wano Country",
+      "lng": 118.2306,
+      "lat": 7.5751,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 30 (wano-country, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "warship-island",
+      "name": "Warship Island",
+      "lng": -89.1324,
+      "lat": -55.7845,
+      "sea": "East Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "water-7",
+      "name": "Water 7",
+      "lng": -73.7901,
+      "lat": 3.1588,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Paradise'; lng by voyage order 14 (water-7, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "weatheria",
+      "name": "Weatheria",
+      "lng": -41.0625,
+      "lat": 14.5509,
+      "sea": "Sky",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Sky'; lng by voyage order 19 (amazon-lily, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "welbems-island",
+      "name": "Welbems Island",
+      "lng": -112.1523,
+      "lat": 33.8537,
+      "sea": "North Blue",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='North Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "whisky-peak",
+      "name": "Whisky Peak",
+      "lng": -121.3706,
+      "lat": 4.162,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Cactus Island'; lng by voyage order 7 (whisky-peak, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "whole-cake-chateau",
+      "name": "Whole Cake Chateau",
+      "lng": 10.4307,
+      "lat": -3.9078,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Whole Cake Island'; debut arc fish-man-island is in Paradise but region says New World — region wins, lng not by voyage order | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "whole-cake-island",
+      "name": "Whole Cake Island",
+      "lng": 72.2778,
+      "lat": -2.819,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 28 (whole-cake-island, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "winner-island",
+      "name": "Winner Island",
+      "lng": 148.0334,
+      "lat": 3.9542,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 31 (egghead, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "yakigashi-island",
+      "name": "Yakigashi Island",
+      "lng": 83.3387,
+      "lat": -3.6016,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "yano-country",
+      "name": "Yano Country",
+      "lng": 161.6477,
+      "lat": -3.2928,
+      "sea": "Grand Line",
+      "canon_confidence": "guess",
+      "source_ref": "derived: no region, no debut chapter | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "yo",
+      "name": "Yo",
+      "lng": 150.6859,
+      "lat": -4.615,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Wano Country' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "yuba",
+      "name": "Yuba",
+      "lng": -103.3064,
+      "lat": 7.2403,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Arabasta'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "yuba-oasis",
+      "name": "Yuba Oasis",
+      "lng": -157.7114,
+      "lat": 2.9063,
+      "sea": "Paradise",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Arabasta' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "yukari",
+      "name": "Yukari",
+      "lng": 7.3607,
+      "lat": 0.9711,
+      "sea": "Grand Line",
+      "canon_confidence": "guess",
+      "source_ref": "derived: no region, no debut chapter | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "yukiryu-island",
+      "name": "Yukiryu Island",
+      "lng": -127.8303,
+      "lat": -1.4237,
+      "sea": "Grand Line",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='Grand Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "zou",
+      "name": "Zou",
+      "lng": 53.1494,
+      "lat": -4.3461,
+      "sea": "New World",
+      "canon_confidence": "derived",
+      "source_ref": "derived: region='New World'; lng by voyage order 27 (zou, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    }
+  ]
+}
