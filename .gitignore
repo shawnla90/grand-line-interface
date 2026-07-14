@@ -51,3 +51,6 @@ data/generated/_wiki_cache/
 
 # NOTE: data/generated/*.json IS committed on purpose. The app reads committed
 # JSON only and never fetches at request time. Do not ignore it.
+
+# 18MB of raw wikitext responses — a re-run cache, not a build input.
+data/generated/_wiki_cache/

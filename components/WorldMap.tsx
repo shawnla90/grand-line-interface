@@ -144,6 +144,14 @@ export default function WorldMap({ world, chapter, projection, showOffCanon, sel
 
   const [hover, setHover] = useState<{ x: number; y: number; island: WorldIsland | null } | null>(null);
 
+  // MapLibre needs a WebGL context and there are real browsers that will not give
+  // it one: hardware acceleration off, a GPU blocklist, a privacy extension, a
+  // headless CI runner. Without a guard the constructor throws, the throw escapes
+  // the effect, and the whole route unmounts behind an error overlay — the chapter
+  // axis, the roster and the scrubber all die with the canvas. They shouldn't: the
+  // panels are plain data and render fine on their own. So the map degrades alone.
+  const [glFailed, setGlFailed] = useState(false);
+
   const bySlug = useMemo(() => new Map(world.islands.map((i) => [i.slug, i])), [world.islands]);
   const features = useMemo(() => islandFeatures(world.islands), [world.islands]);
 
@@ -306,20 +314,30 @@ export default function WorldMap({ world, chapter, projection, showOffCanon, sel
       ],
     };
 
-    const m = new maplibregl.Map({
-      container: holder.current,
-      style,
-      center: [-20, 6],
-      zoom: 1.9,
-      minZoom: 0.4,
-      maxZoom: 7,
-      // NB: `padding` is a CAMERA option, not a MapOptions one — it is applied via
-      // setPadding() on load, below.
-      attributionControl: false,
-      // One world, not an infinite tiling strip. This is a chart of a planet.
-      renderWorldCopies: false,
-      dragRotate: projection === "globe",
-    });
+    let m: MLMap;
+    try {
+      // v5 removed maplibregl.supported(); the constructor itself throws
+      // "Failed to initialize WebGL" when it cannot get a context, so catching it
+      // here is both the check and the handler.
+      m = new maplibregl.Map({
+        container: holder.current,
+        style,
+        center: [-20, 6],
+        zoom: 1.9,
+        minZoom: 0.4,
+        maxZoom: 7,
+        // NB: `padding` is a CAMERA option, not a MapOptions one — it is applied via
+        // setPadding() on load, below.
+        attributionControl: false,
+        // One world, not an infinite tiling strip. This is a chart of a planet.
+        renderWorldCopies: false,
+        dragRotate: projection === "globe",
+      });
+    } catch (err) {
+      console.warn("[dead-reckoning] map disabled, no WebGL context:", err);
+      setGlFailed(true);
+      return;
+    }
     map.current = m;
 
     m.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
@@ -464,6 +482,21 @@ export default function WorldMap({ world, chapter, projection, showOffCanon, sel
           perfectly correct map into a box with no height. Sizing with h-full/w-full
           does not care about `position`, so the cascade race cannot bite. */}
       <div ref={holder} className="h-full w-full" />
+
+      {glFailed && (
+        <div className="absolute inset-0 z-30 grid place-items-center bg-ink/80 px-6 text-center backdrop-blur">
+          <div className="max-w-sm">
+            <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-2">
+              Chart unavailable
+            </div>
+            <p className="mt-2 text-[13px] leading-relaxed text-muted">
+              This browser will not give the atlas a WebGL context, so the globe cannot draw.
+              Everything else on this page is still true — the chapter, the arc, the roster and
+              the count of what you have charted are plain numbers and do not need a GPU.
+            </p>
+          </div>
+        </div>
+      )}
 
       {hover && (
         <div
