@@ -31,6 +31,7 @@
  */
 
 import type { WorldAt, World } from "@/lib/canon";
+import JollyRoger from "./marks/JollyRoger";
 
 export default function CrewRoster({ at, world }: { at: WorldAt; world: World }) {
   const aboard = at.crew;
@@ -39,9 +40,12 @@ export default function CrewRoster({ at, world }: { at: WorldAt; world: World })
 
   return (
     <div className="border-b border-rope/60 px-5 py-4">
-      <div className="flex items-baseline justify-between">
-        <div className="font-mono text-[9px] uppercase tracking-[0.22em] text-muted-2">
-          {world.crewName}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-1.5">
+          <JollyRoger crewSlug={world.voyage.crewSlug} size={16} title={world.crewName} />
+          <div className="font-mono text-[9px] uppercase tracking-[0.22em] text-muted-2">
+            {world.crewName}
+          </div>
         </div>
         <div className="tnum font-mono text-[10px] text-muted">
           {aboard.length}/{total}

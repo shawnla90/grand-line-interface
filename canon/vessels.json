@@ -7,15 +7,24 @@
   "vessels": [
     {
       "order": 1,
-      "name": "Small boat",
-      "slug": "small-boat",
+      "name": "Barrel",
+      "slug": "barrel",
       "from_chapter": 1,
-      "source_ref": "Hand-authored. Before the Going Merry the crew sails small commandeered boats, starting with Luffy's dinghy leaving Foosha Village, Chapter 1. NEEDS HUMAN VERIFICATION against the manga.",
+      "source_ref": "Hand-authored. Chapter 1 opens with Luffy adrift in a barrel — his vessel for roughly half a chapter before he gets a small boat. A wink, not a claim. NEEDS HUMAN VERIFICATION against the manga.",
       "canon_confidence": "canon",
       "verified": false
     },
     {
       "order": 2,
+      "name": "Small boat",
+      "slug": "small-boat",
+      "from_chapter": 2,
+      "source_ref": "Hand-authored. Before the Going Merry the crew sails small commandeered boats, starting with Luffy's dinghy in the East Blue, ~Chapter 2. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 3,
       "name": "Going Merry",
       "slug": "going-merry",
       "from_chapter": 43,
@@ -24,7 +33,7 @@
       "verified": false
     },
     {
-      "order": 3,
+      "order": 4,
       "name": "Thousand Sunny",
       "slug": "thousand-sunny",
       "from_chapter": 437,

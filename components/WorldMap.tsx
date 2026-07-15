@@ -34,6 +34,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 
 import type { World, WorldIsland } from "@/lib/canon";
 import { voyageGeometryAt, vesselAtChapter } from "@/lib/canon";
+import { jollyRogerSvg } from "./marks/jolly-roger";
 import { BLUES, CALM_BELTS, GRAND_LINE, RED_LINE, GRATICULE, WORLD_LABELS } from "./world-geometry";
 
 export type Projection = "globe" | "mercator";
@@ -140,6 +141,13 @@ function vesselGlyph(slug: string | null | undefined): string {
       <path d="M6 5 H18 V13 H6 Z" fill="${P}"/>
       ${hull}</svg>`;
   }
+  if (slug === "barrel") {
+    // Chapter 1: Luffy adrift in a barrel. A stave cask, no sail.
+    return `<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="7" y="5" width="10" height="14" rx="4" fill="${P}" stroke="${G}" stroke-width="0.7"/>
+      <line x1="7.4" y1="9" x2="16.6" y2="9" stroke="${G}" stroke-width="0.8"/>
+      <line x1="7.4" y1="15" x2="16.6" y2="15" stroke="${G}" stroke-width="0.8"/></svg>`;
+  }
   // small boat (default)
   return `<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
     ${mast}
@@ -148,13 +156,25 @@ function vesselGlyph(slug: string | null | undefined): string {
 }
 
 /** Build (once) the DOM element MapLibre re-positions each frame for the ship. */
-function makeShipElement(): { el: HTMLDivElement; glyph: HTMLDivElement; label: HTMLDivElement } {
+function makeShipElement(): {
+  el: HTMLDivElement;
+  flag: HTMLDivElement;
+  glyph: HTMLDivElement;
+  label: HTMLDivElement;
+} {
   const el = document.createElement("div");
   el.className = "shipMarker";
   el.style.display = "none";
   el.style.transform = "translateY(-2px)";
   el.style.pointerEvents = "none";
   el.style.textAlign = "center";
+
+  // The crew's Jolly Roger, flying above the ship. Set once (the crew never
+  // changes); the vessel below it swaps as the reader sails.
+  const flag = document.createElement("div");
+  flag.style.lineHeight = "0";
+  flag.style.marginBottom = "-3px";
+  flag.style.filter = "drop-shadow(0 0 4px rgba(0,0,0,0.6))";
 
   const glyph = document.createElement("div");
   glyph.style.filter = "drop-shadow(0 0 5px rgba(227,176,75,0.55))";
@@ -169,9 +189,10 @@ function makeShipElement(): { el: HTMLDivElement; glyph: HTMLDivElement; label: 
   label.style.whiteSpace = "nowrap";
   label.style.fontFamily = "var(--font-geist-mono), monospace";
 
+  el.appendChild(flag);
   el.appendChild(glyph);
   el.appendChild(label);
-  return { el, glyph, label };
+  return { el, flag, glyph, label };
 }
 
 /** The live handles paint() needs to move and restyle the ship each frame. */
@@ -468,6 +489,7 @@ export default function WorldMap({ world, chapter, projection, showOffCanon, sel
     // The ship. One marker, moved and restyled every frame by paint(). It starts at
     // the first waypoint and hidden; paint() reveals it once the reader reaches ch. 1.
     const parts = makeShipElement();
+    parts.flag.innerHTML = jollyRogerSvg(world.voyage.crewSlug, { size: 22 });
     const start = world.voyage.waypoints[0];
     const shipMarker = new maplibregl.Marker({ element: parts.el, opacityWhenCovered: "0.2" })
       .setLngLat(start ? [start.lng, start.lat] : [0, 0])

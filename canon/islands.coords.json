@@ -3,15 +3,15 @@
   "_model": "The One Piece planet: Grand Line = equator (lat 0), Red Line = the 0/180 meridian. They quarter the globe: North Blue upper-left, West Blue upper-right, East Blue lower-left, South Blue lower-right. Paradise runs lng -180..0, New World 0..180, so longitude reads as voyage progress.",
   "_counts": {
     "New World": 137,
-    "Paradise": 136,
-    "East Blue": 51,
-    "Grand Line": 34,
+    "Paradise": 135,
+    "East Blue": 52,
+    "Grand Line": 35,
     "South Blue": 13,
     "North Blue": 12,
     "West Blue": 10,
     "Sky": 8,
     "Calm Belt": 6,
-    "Red Line": 4,
+    "Red Line": 3,
     "Outer Space": 2
   },
   "islands": [
@@ -540,11 +540,11 @@
     {
       "slug": "conomi-islands",
       "name": "Conomi Islands",
-      "lng": -51.3013,
-      "lat": -33.3334,
+      "lng": -168.0,
+      "lat": -33.0,
       "sea": "East Blue",
       "canon_confidence": "derived",
-      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+      "source_ref": "Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
     },
     {
       "slug": "corrida-colosseum",
@@ -981,11 +981,11 @@
     {
       "slug": "foosha-village",
       "name": "Foosha Village",
-      "lng": -169.4318,
-      "lat": 7.1022,
-      "sea": "Paradise",
-      "canon_confidence": "derived",
-      "source_ref": "derived: arc=romance-dawn (ch 1); lng by voyage order 0 (romance-dawn, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+      "lng": -130.0,
+      "lat": -60.0,
+      "sea": "East Blue",
+      "canon_confidence": "canon",
+      "source_ref": "Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
     },
     {
       "slug": "forest-island",
@@ -1800,11 +1800,11 @@
     {
       "slug": "loguetown",
       "name": "Loguetown",
-      "lng": -72.585,
-      "lat": -35.947,
+      "lng": -174.0,
+      "lat": -20.0,
       "sea": "East Blue",
       "canon_confidence": "derived",
-      "source_ref": "derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+      "source_ref": "Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
     },
     {
       "slug": "long-ring-long-land",
@@ -2358,11 +2358,11 @@
     {
       "slug": "orange-town",
       "name": "Orange Town",
-      "lng": -71.0682,
-      "lat": -45.3781,
+      "lng": -152.0,
+      "lat": -45.0,
       "sea": "East Blue",
       "canon_confidence": "derived",
-      "source_ref": "derived: region='Organ Islands' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+      "source_ref": "Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
     },
     {
       "slug": "organ-islands",
@@ -2709,11 +2709,11 @@
     {
       "slug": "reverse-mountain",
       "name": "Reverse Mountain",
-      "lng": 1.399,
-      "lat": 28.0434,
-      "sea": "Red Line",
+      "lng": -179.0,
+      "lat": -2.0,
+      "sea": "Grand Line",
       "canon_confidence": "derived",
-      "source_ref": "derived: region='Red Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+      "source_ref": "Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
     },
     {
       "slug": "ringo",
@@ -3042,11 +3042,11 @@
     {
       "slug": "shells-town",
       "name": "Shells Town",
-      "lng": -78.0207,
-      "lat": -47.3813,
+      "lng": -142.0,
+      "lat": -52.0,
       "sea": "East Blue",
       "canon_confidence": "derived",
-      "source_ref": "derived: region='East Blue (Yotsuba Island Region)' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+      "source_ref": "Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
     },
     {
       "slug": "shift-station",
@@ -3258,11 +3258,11 @@
     {
       "slug": "syrup-village",
       "name": "Syrup Village",
-      "lng": -132.8436,
-      "lat": -54.1873,
+      "lng": -160.0,
+      "lat": -52.0,
       "sea": "East Blue",
       "canon_confidence": "derived",
-      "source_ref": "derived: region='Gecko Islands' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+      "source_ref": "Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
     },
     {
       "slug": "tabetsukusare-island",

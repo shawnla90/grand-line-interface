@@ -44,8 +44,8 @@
     },
     {
       "order": 5,
-      "lng": -95.0,
-      "lat": -46.0,
+      "lng": -165.0,
+      "lat": -40.0,
       "chapter": 43,
       "label": "Baratie — Sanji",
       "source_ref": "Hand-authored. The sea restaurant Baratie, where Sanji is met, ~Chapter 43 (Baratie arc). Explicit lng/lat: Baratie is a floating restaurant with no island row; position is interpolated between Syrup Village and the Conomi Islands. NEEDS HUMAN VERIFICATION against the manga.",
@@ -85,6 +85,150 @@
       "chapter": 105,
       "label": "Whisky Peak — first Grand Line island",
       "source_ref": "Hand-authored. Whisky Peak, the first island inside the Grand Line, ~Chapter 105 (Whisky Peak arc). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 10,
+      "slug": "little-garden",
+      "chapter": 115,
+      "label": "Little Garden — the prehistoric island",
+      "source_ref": "Hand-authored. Little Garden, ~Chapter 115 (Little Garden arc). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 11,
+      "slug": "drum-island",
+      "chapter": 133,
+      "label": "Drum Island — Chopper joins",
+      "source_ref": "Hand-authored. Drum Island, where Chopper joins, ~Chapter 133 (Drum Island arc). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 12,
+      "slug": "arabasta-kingdom",
+      "chapter": 157,
+      "label": "Alabasta — the desert kingdom; Vivi",
+      "source_ref": "Hand-authored. Alabasta (Arabasta Kingdom), ~Chapter 157 (Alabasta arc). Slug is 'arabasta-kingdom' upstream (French spelling). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 13,
+      "slug": "jaya",
+      "chapter": 223,
+      "label": "Jaya — Mock Town & Cricket",
+      "source_ref": "Hand-authored. Jaya, ~Chapter 223 (Jaya arc). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 14,
+      "slug": "skypiea",
+      "chapter": 237,
+      "label": "Skypiea — the sky island",
+      "source_ref": "Hand-authored. Skypiea, reached by the Knock-Up Stream, ~Chapter 237 (Skypiea arc). A sky island, drawn above the sea line. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 15,
+      "slug": "water-7",
+      "chapter": 323,
+      "label": "Water 7 — Franky & the Sunny",
+      "source_ref": "Hand-authored. Water 7, ~Chapter 323 (Water 7 arc). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 16,
+      "slug": "enies-lobby",
+      "chapter": 375,
+      "label": "Enies Lobby — the buster call",
+      "source_ref": "Hand-authored. Enies Lobby, ~Chapter 375 (Enies Lobby arc). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 17,
+      "slug": "sabaody-archipelago",
+      "chapter": 490,
+      "label": "Sabaody Archipelago — the crew is scattered",
+      "source_ref": "Hand-authored. Sabaody Archipelago, the last island of Paradise, ~Chapter 490 (Sabaody arc). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 18,
+      "slug": "fish-man-island",
+      "chapter": 608,
+      "label": "Fish-Man Island — beneath the Red Line",
+      "source_ref": "Hand-authored. Fish-Man Island, 10,000m down beneath the Red Line, the gateway to the New World, ~Chapter 608 (Fish-Man Island arc). NOTE: the upstream debut_chapter for this island is 68, which is WRONG (that is an early Arlong-flashback reference); the route uses this authored chapter. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 19,
+      "slug": "punk-hazard",
+      "chapter": 655,
+      "label": "Punk Hazard — the burning, frozen island",
+      "source_ref": "Hand-authored. Punk Hazard, first New World island, ~Chapter 655 (Punk Hazard arc). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 20,
+      "slug": "dressrosa",
+      "chapter": 700,
+      "label": "Dressrosa — Doflamingo",
+      "source_ref": "Hand-authored. Dressrosa, ~Chapter 700 (Dressrosa arc). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 21,
+      "slug": "zou",
+      "chapter": 802,
+      "label": "Zou — the island on the elephant",
+      "source_ref": "Hand-authored. Zou, atop the ancient elephant Zunesha, ~Chapter 802 (Zou arc). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 22,
+      "slug": "whole-cake-island",
+      "chapter": 827,
+      "label": "Whole Cake Island — Big Mom; Sanji rescue",
+      "source_ref": "Hand-authored. Whole Cake Island, ~Chapter 827 (Whole Cake Island arc). NOTE: upstream debut_chapter is 651, which is early; the route uses this authored chapter. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 23,
+      "slug": "wano-country",
+      "chapter": 909,
+      "label": "Wano Country — the raid on Onigashima",
+      "source_ref": "Hand-authored. Wano Country, ~Chapter 909 (Wano arc). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 24,
+      "slug": "egghead",
+      "chapter": 1061,
+      "label": "Egghead — Vegapunk's island of the future",
+      "source_ref": "Hand-authored. Egghead, Dr. Vegapunk's island, ~Chapter 1061 (Egghead arc). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 25,
+      "slug": "elbaph",
+      "chapter": 1125,
+      "label": "Elbaf — the land of the giants (the frontier)",
+      "source_ref": "Hand-authored. Elbaf, the current arc as of this writing, ~Chapter 1125 (Elbaf arc). Slug is 'elbaph' upstream. This is the frontier — the edge of the charted world. NEEDS HUMAN VERIFICATION against the manga.",
       "canon_confidence": "canon",
       "verified": false
     }

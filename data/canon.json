@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-15T02:24:24.140999+00:00",
+    "generated_at": "2026-07-15T02:52:10.647935+00:00",
     "generator": "scripts/normalize.py",
     "source_manifest_sha": "be7af436b558b373ae1e6f28cc5007ef89153529fb274cb7efd1a47b4f1ef25a",
     "sources": {
@@ -32,9 +32,9 @@
       "episodes": 1162,
       "crew_joins": 10,
       "crew_joins_verified": 0,
-      "voyage_waypoints": 9,
+      "voyage_waypoints": 25,
       "voyage_waypoints_verified": 0,
-      "vessels": 3,
+      "vessels": 4,
       "vessels_verified": 0
     }
   },
@@ -2322,8 +2322,8 @@
       "romaji": "Konomi Shotō",
       "region": "East Blue",
       "sea": "East Blue",
-      "lng": -51.3013,
-      "lat": -33.3334,
+      "lng": -168.0,
+      "lat": -33.0,
       "debut_chapter": 69,
       "debut_episode": 30,
       "debut_arc": "arlong-park",
@@ -2333,7 +2333,7 @@
       "affiliation": null,
       "wiki_url": "https://onepiece.fandom.com/wiki/Conomi_Islands",
       "canon_confidence": "derived",
-      "source_ref": "onepiece.fandom.com/wiki/Conomi_Islands#Island_Box | position: derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+      "source_ref": "onepiece.fandom.com/wiki/Conomi_Islands#Island_Box | position: Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
     },
     {
       "slug": "corrida-colosseum",
@@ -3301,9 +3301,9 @@
       "japanese": "フーシャ村",
       "romaji": "Fūsha-mura",
       "region": null,
-      "sea": "Paradise",
-      "lng": -169.4318,
-      "lat": 7.1022,
+      "sea": "East Blue",
+      "lng": -130.0,
+      "lat": -60.0,
       "debut_chapter": 1,
       "debut_episode": 4,
       "debut_arc": "romance-dawn",
@@ -3312,8 +3312,8 @@
       "debut_source": null,
       "affiliation": "Goa Kingdom",
       "wiki_url": "https://onepiece.fandom.com/wiki/Foosha_Village",
-      "canon_confidence": "derived",
-      "source_ref": "onepiece.fandom.com/wiki/Foosha_Village#Island_Box | position: derived: arc=romance-dawn (ch 1); lng by voyage order 0 (romance-dawn, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+      "canon_confidence": "canon",
+      "source_ref": "onepiece.fandom.com/wiki/Foosha_Village#Island_Box | position: Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
     },
     {
       "slug": "forest-island",
@@ -5122,8 +5122,8 @@
       "romaji": "Rōgutaun",
       "region": "East Blue",
       "sea": "East Blue",
-      "lng": -72.585,
-      "lat": -35.947,
+      "lng": -174.0,
+      "lat": -20.0,
       "debut_chapter": 1,
       "debut_episode": null,
       "debut_arc": "romance-dawn",
@@ -5133,7 +5133,7 @@
       "affiliation": null,
       "wiki_url": "https://onepiece.fandom.com/wiki/Loguetown",
       "canon_confidence": "derived",
-      "source_ref": "onepiece.fandom.com/wiki/Loguetown#Island_Box | position: derived: region='East Blue' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+      "source_ref": "onepiece.fandom.com/wiki/Loguetown#Island_Box | position: Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
     },
     {
       "slug": "long-ring-long-land",
@@ -6362,8 +6362,8 @@
       "romaji": "Orenji no Machi",
       "region": "Organ Islands",
       "sea": "East Blue",
-      "lng": -71.0682,
-      "lat": -45.3781,
+      "lng": -152.0,
+      "lat": -45.0,
       "debut_chapter": 8,
       "debut_episode": 4,
       "debut_arc": "orange-town",
@@ -6373,7 +6373,7 @@
       "affiliation": null,
       "wiki_url": "https://onepiece.fandom.com/wiki/Orange_Town",
       "canon_confidence": "derived",
-      "source_ref": "onepiece.fandom.com/wiki/Orange_Town#Island_Box | position: derived: region='Organ Islands' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+      "source_ref": "onepiece.fandom.com/wiki/Orange_Town#Island_Box | position: Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
     },
     {
       "slug": "organ-islands",
@@ -7141,9 +7141,9 @@
       "japanese": "リヴァース・マウンテン",
       "romaji": "Rivāsu Maunten",
       "region": "Red Line",
-      "sea": "Red Line",
-      "lng": 1.399,
-      "lat": 28.0434,
+      "sea": "Grand Line",
+      "lng": -179.0,
+      "lat": -2.0,
       "debut_chapter": 101,
       "debut_episode": 61,
       "debut_arc": "reverse-mountain",
@@ -7153,7 +7153,7 @@
       "affiliation": null,
       "wiki_url": "https://onepiece.fandom.com/wiki/Reverse_Mountain",
       "canon_confidence": "derived",
-      "source_ref": "onepiece.fandom.com/wiki/Reverse_Mountain#Island_Box | position: derived: region='Red Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+      "source_ref": "onepiece.fandom.com/wiki/Reverse_Mountain#Island_Box | position: Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
     },
     {
       "slug": "ringo",
@@ -7902,8 +7902,8 @@
       "romaji": "Sheruzu Taun",
       "region": "East Blue (Yotsuba Island Region)",
       "sea": "East Blue",
-      "lng": -78.0207,
-      "lat": -47.3813,
+      "lng": -142.0,
+      "lat": -52.0,
       "debut_chapter": 3,
       "debut_episode": 1,
       "debut_arc": "romance-dawn",
@@ -7913,7 +7913,7 @@
       "affiliation": null,
       "wiki_url": "https://onepiece.fandom.com/wiki/Shells_Town",
       "canon_confidence": "derived",
-      "source_ref": "onepiece.fandom.com/wiki/Shells_Town#Island_Box | position: derived: region='East Blue (Yotsuba Island Region)' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+      "source_ref": "onepiece.fandom.com/wiki/Shells_Town#Island_Box | position: Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
     },
     {
       "slug": "shift-station",
@@ -8362,8 +8362,8 @@
       "romaji": "Shiroppu-mura",
       "region": "Gecko Islands",
       "sea": "East Blue",
-      "lng": -132.8436,
-      "lat": -54.1873,
+      "lng": -160.0,
+      "lat": -52.0,
       "debut_chapter": 23,
       "debut_episode": 8,
       "debut_arc": "syrup-village",
@@ -8373,7 +8373,7 @@
       "affiliation": null,
       "wiki_url": "https://onepiece.fandom.com/wiki/Syrup_Village",
       "canon_confidence": "derived",
-      "source_ref": "onepiece.fandom.com/wiki/Syrup_Village#Island_Box | position: derived: region='Gecko Islands' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+      "source_ref": "onepiece.fandom.com/wiki/Syrup_Village#Island_Box | position: Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
     },
     {
       "slug": "tabetsukusare-island",
@@ -42441,8 +42441,8 @@
         "slug": "foosha-village",
         "label": "Set sail — Foosha Village",
         "chapter": 1,
-        "lng": -169.4318,
-        "lat": 7.1022,
+        "lng": -130.0,
+        "lat": -60.0,
         "source_ref": "Hand-authored. Luffy leaves Foosha Village, East Blue, Chapter 1 (Romance Dawn). NEEDS HUMAN VERIFICATION against the manga.",
         "canon_confidence": "canon",
         "verified": false
@@ -42452,8 +42452,8 @@
         "slug": "shells-town",
         "label": "Shells Town — Zoro",
         "chapter": 3,
-        "lng": -78.0207,
-        "lat": -47.3813,
+        "lng": -142.0,
+        "lat": -52.0,
         "source_ref": "Hand-authored. The Marine base at Shells Town, where Zoro is freed, ~Chapter 3 (Romance Dawn). NEEDS HUMAN VERIFICATION against the manga.",
         "canon_confidence": "canon",
         "verified": false
@@ -42463,8 +42463,8 @@
         "slug": "orange-town",
         "label": "Orange Town — Buggy",
         "chapter": 9,
-        "lng": -71.0682,
-        "lat": -45.3781,
+        "lng": -152.0,
+        "lat": -45.0,
         "source_ref": "Hand-authored. Orange Town, Buggy the Clown's turf, ~Chapter 9 (Orange Town arc). NEEDS HUMAN VERIFICATION against the manga.",
         "canon_confidence": "canon",
         "verified": false
@@ -42474,8 +42474,8 @@
         "slug": "syrup-village",
         "label": "Syrup Village — Usopp & the Going Merry",
         "chapter": 23,
-        "lng": -132.8436,
-        "lat": -54.1873,
+        "lng": -160.0,
+        "lat": -52.0,
         "source_ref": "Hand-authored. Syrup Village, where Usopp joins and Kaya gifts the Going Merry, ~Chapter 23 (Syrup Village arc). NEEDS HUMAN VERIFICATION against the manga.",
         "canon_confidence": "canon",
         "verified": false
@@ -42485,8 +42485,8 @@
         "slug": null,
         "label": "Baratie — Sanji",
         "chapter": 43,
-        "lng": -95.0,
-        "lat": -46.0,
+        "lng": -165.0,
+        "lat": -40.0,
         "source_ref": "Hand-authored. The sea restaurant Baratie, where Sanji is met, ~Chapter 43 (Baratie arc). Explicit lng/lat: Baratie is a floating restaurant with no island row; position is interpolated between Syrup Village and the Conomi Islands. NEEDS HUMAN VERIFICATION against the manga.",
         "canon_confidence": "derived",
         "verified": false
@@ -42496,8 +42496,8 @@
         "slug": "conomi-islands",
         "label": "Conomi Islands — Arlong Park",
         "chapter": 69,
-        "lng": -51.3013,
-        "lat": -33.3334,
+        "lng": -168.0,
+        "lat": -33.0,
         "source_ref": "Hand-authored. The Conomi Islands / Arlong Park, Nami's home, ~Chapter 69 (Arlong Park arc). NEEDS HUMAN VERIFICATION against the manga.",
         "canon_confidence": "canon",
         "verified": false
@@ -42507,8 +42507,8 @@
         "slug": "loguetown",
         "label": "Loguetown — the town of the beginning and the end",
         "chapter": 96,
-        "lng": -72.585,
-        "lat": -35.947,
+        "lng": -174.0,
+        "lat": -20.0,
         "source_ref": "Hand-authored. Loguetown, the last island of East Blue before the Grand Line, ~Chapter 96 (Loguetown arc). NEEDS HUMAN VERIFICATION against the manga.",
         "canon_confidence": "canon",
         "verified": false
@@ -42518,8 +42518,8 @@
         "slug": "reverse-mountain",
         "label": "Reverse Mountain — enter the Grand Line",
         "chapter": 101,
-        "lng": 1.399,
-        "lat": 28.0434,
+        "lng": -179.0,
+        "lat": -2.0,
         "source_ref": "Hand-authored. Reverse Mountain, the only entrance to the Grand Line, ~Chapter 101 (Reverse Mountain arc). NEEDS HUMAN VERIFICATION against the manga.",
         "canon_confidence": "canon",
         "verified": false
@@ -42534,21 +42534,206 @@
         "source_ref": "Hand-authored. Whisky Peak, the first island inside the Grand Line, ~Chapter 105 (Whisky Peak arc). NEEDS HUMAN VERIFICATION against the manga.",
         "canon_confidence": "canon",
         "verified": false
+      },
+      {
+        "order": 10,
+        "slug": "little-garden",
+        "label": "Little Garden — the prehistoric island",
+        "chapter": 115,
+        "lng": -118.6519,
+        "lat": -5.3635,
+        "source_ref": "Hand-authored. Little Garden, ~Chapter 115 (Little Garden arc). NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 11,
+        "slug": "drum-island",
+        "label": "Drum Island — Chopper joins",
+        "chapter": 133,
+        "lng": -108.7954,
+        "lat": -6.3428,
+        "source_ref": "Hand-authored. Drum Island, where Chopper joins, ~Chapter 133 (Drum Island arc). NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 12,
+        "slug": "arabasta-kingdom",
+        "label": "Alabasta — the desert kingdom; Vivi",
+        "chapter": 157,
+        "lng": -125.4532,
+        "lat": -2.0675,
+        "source_ref": "Hand-authored. Alabasta (Arabasta Kingdom), ~Chapter 157 (Alabasta arc). Slug is 'arabasta-kingdom' upstream (French spelling). NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 13,
+        "slug": "jaya",
+        "label": "Jaya — Mock Town & Cricket",
+        "chapter": 223,
+        "lng": -96.4286,
+        "lat": 6.9118,
+        "source_ref": "Hand-authored. Jaya, ~Chapter 223 (Jaya arc). NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 14,
+        "slug": "skypiea",
+        "label": "Skypiea — the sky island",
+        "chapter": 237,
+        "lng": -91.1362,
+        "lat": 17.0745,
+        "source_ref": "Hand-authored. Skypiea, reached by the Knock-Up Stream, ~Chapter 237 (Skypiea arc). A sky island, drawn above the sea line. NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 15,
+        "slug": "water-7",
+        "label": "Water 7 — Franky & the Sunny",
+        "chapter": 323,
+        "lng": -73.7901,
+        "lat": 3.1588,
+        "source_ref": "Hand-authored. Water 7, ~Chapter 323 (Water 7 arc). NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 16,
+        "slug": "enies-lobby",
+        "label": "Enies Lobby — the buster call",
+        "chapter": 375,
+        "lng": -68.3696,
+        "lat": -7.1283,
+        "source_ref": "Hand-authored. Enies Lobby, ~Chapter 375 (Enies Lobby arc). NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 17,
+        "slug": "sabaody-archipelago",
+        "label": "Sabaody Archipelago — the crew is scattered",
+        "chapter": 490,
+        "lng": -48.2843,
+        "lat": 3.7912,
+        "source_ref": "Hand-authored. Sabaody Archipelago, the last island of Paradise, ~Chapter 490 (Sabaody arc). NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 18,
+        "slug": "fish-man-island",
+        "label": "Fish-Man Island — beneath the Red Line",
+        "chapter": 608,
+        "lng": -5.9349,
+        "lat": -2.8548,
+        "source_ref": "Hand-authored. Fish-Man Island, 10,000m down beneath the Red Line, the gateway to the New World, ~Chapter 608 (Fish-Man Island arc). NOTE: the upstream debut_chapter for this island is 68, which is WRONG (that is an early Arlong-flashback reference); the route uses this authored chapter. NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 19,
+        "slug": "punk-hazard",
+        "label": "Punk Hazard — the burning, frozen island",
+        "chapter": 655,
+        "lng": 18.7035,
+        "lat": -5.2418,
+        "source_ref": "Hand-authored. Punk Hazard, first New World island, ~Chapter 655 (Punk Hazard arc). NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 20,
+        "slug": "dressrosa",
+        "label": "Dressrosa — Doflamingo",
+        "chapter": 700,
+        "lng": 42.463,
+        "lat": 7.6766,
+        "source_ref": "Hand-authored. Dressrosa, ~Chapter 700 (Dressrosa arc). NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 21,
+        "slug": "zou",
+        "label": "Zou — the island on the elephant",
+        "chapter": 802,
+        "lng": 53.1494,
+        "lat": -4.3461,
+        "source_ref": "Hand-authored. Zou, atop the ancient elephant Zunesha, ~Chapter 802 (Zou arc). NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 22,
+        "slug": "whole-cake-island",
+        "label": "Whole Cake Island — Big Mom; Sanji rescue",
+        "chapter": 827,
+        "lng": 72.2778,
+        "lat": -2.819,
+        "source_ref": "Hand-authored. Whole Cake Island, ~Chapter 827 (Whole Cake Island arc). NOTE: upstream debut_chapter is 651, which is early; the route uses this authored chapter. NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 23,
+        "slug": "wano-country",
+        "label": "Wano Country — the raid on Onigashima",
+        "chapter": 909,
+        "lng": 118.2306,
+        "lat": 7.5751,
+        "source_ref": "Hand-authored. Wano Country, ~Chapter 909 (Wano arc). NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 24,
+        "slug": "egghead",
+        "label": "Egghead — Vegapunk's island of the future",
+        "chapter": 1061,
+        "lng": 149.0991,
+        "lat": -0.4304,
+        "source_ref": "Hand-authored. Egghead, Dr. Vegapunk's island, ~Chapter 1061 (Egghead arc). NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 25,
+        "slug": "elbaph",
+        "label": "Elbaf — the land of the giants (the frontier)",
+        "chapter": 1125,
+        "lng": 154.2701,
+        "lat": -7.171,
+        "source_ref": "Hand-authored. Elbaf, the current arc as of this writing, ~Chapter 1125 (Elbaf arc). Slug is 'elbaph' upstream. This is the frontier — the edge of the charted world. NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
       }
     ]
   },
   "vessels": [
     {
       "order": 1,
-      "name": "Small boat",
-      "slug": "small-boat",
+      "name": "Barrel",
+      "slug": "barrel",
       "from_chapter": 1,
-      "source_ref": "Hand-authored. Before the Going Merry the crew sails small commandeered boats, starting with Luffy's dinghy leaving Foosha Village, Chapter 1. NEEDS HUMAN VERIFICATION against the manga.",
+      "source_ref": "Hand-authored. Chapter 1 opens with Luffy adrift in a barrel — his vessel for roughly half a chapter before he gets a small boat. A wink, not a claim. NEEDS HUMAN VERIFICATION against the manga.",
       "canon_confidence": "canon",
       "verified": false
     },
     {
       "order": 2,
+      "name": "Small boat",
+      "slug": "small-boat",
+      "from_chapter": 2,
+      "source_ref": "Hand-authored. Before the Going Merry the crew sails small commandeered boats, starting with Luffy's dinghy in the East Blue, ~Chapter 2. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 3,
       "name": "Going Merry",
       "slug": "going-merry",
       "from_chapter": 43,
@@ -42557,7 +42742,7 @@
       "verified": false
     },
     {
-      "order": 3,
+      "order": 4,
       "name": "Thousand Sunny",
       "slug": "thousand-sunny",
       "from_chapter": 437,
