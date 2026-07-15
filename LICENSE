@@ -1,0 +1,38 @@
+MIT License
+
+Copyright (c) 2026 Shawn Tenam
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+NOTE ON DATA AND CONTENT
+
+The MIT license above covers the CODE in this repository.
+
+- Facts under `data/generated/` are derived from the One Piece Fandom
+  (https://onepiece.fandom.com) and are used under CC-BY-SA 3.0. Only facts
+  (chapter/episode ranges, debut chapters, names) are used — no article prose
+  is reproduced. Attribution is carried in the app footer and in the README.
+- Data under `data/raw/` is mirrored from api-onepiece.com and normalized
+  locally; it is credited in the README.
+- "One Piece" and all associated characters and marks are © Eiichiro Oda /
+  Shueisha / Toei Animation. This is an unofficial, non-commercial fan project,
+  not affiliated with or endorsed by the rights holders. No official art or
+  logos are included; every visual mark in this repository is original.
