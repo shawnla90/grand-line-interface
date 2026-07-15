@@ -1,0 +1,92 @@
+{
+  "_warning": "HAND-AUTHORED. A sync script that overwrites this file is a bug. verified:false means Shawn has not confirmed the chapter stamps against the manga yet.",
+  "_why_this_file_exists": "No upstream source has the Straw Hats' route as an ordered, chapter-stamped path. The island coordinates in islands.coords.json are machine-DERIVED (a golden-angle spiral seed), so they are scattered, not in voyage order. Drawing a line straight through them in story order would zigzag through open water. This file is the authored voyage: an ordered list of waypoints, each anchored to an island slug so the drawn line connects the REAL pins the reader sees, in the order the story visits them. When island coordinates are later hand-placed (upgraded from 'derived' to 'canon'), the line improves automatically — it references the pins, it does not duplicate them.",
+  "_before_any_content_ships": "Shawn must confirm every waypoint chapter below against the manga and flip verified to true. Until then the UI renders the route as unverified.",
+  "_coord_resolution": "Each waypoint resolves its position from canon/islands.coords.json by `slug`. A waypoint MAY instead carry explicit lng/lat (used for Baratie, which is a sea restaurant with no island row). scripts/normalize.py FAILS LOUD on a slug that resolves to no coordinate.",
+  "crew": "Straw Hat Pirates",
+  "crew_slug": "straw-hat-pirates",
+  "waypoints": [
+    {
+      "order": 1,
+      "slug": "foosha-village",
+      "chapter": 1,
+      "label": "Set sail — Foosha Village",
+      "source_ref": "Hand-authored. Luffy leaves Foosha Village, East Blue, Chapter 1 (Romance Dawn). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 2,
+      "slug": "shells-town",
+      "chapter": 3,
+      "label": "Shells Town — Zoro",
+      "source_ref": "Hand-authored. The Marine base at Shells Town, where Zoro is freed, ~Chapter 3 (Romance Dawn). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 3,
+      "slug": "orange-town",
+      "chapter": 9,
+      "label": "Orange Town — Buggy",
+      "source_ref": "Hand-authored. Orange Town, Buggy the Clown's turf, ~Chapter 9 (Orange Town arc). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 4,
+      "slug": "syrup-village",
+      "chapter": 23,
+      "label": "Syrup Village — Usopp & the Going Merry",
+      "source_ref": "Hand-authored. Syrup Village, where Usopp joins and Kaya gifts the Going Merry, ~Chapter 23 (Syrup Village arc). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 5,
+      "lng": -95.0,
+      "lat": -46.0,
+      "chapter": 43,
+      "label": "Baratie — Sanji",
+      "source_ref": "Hand-authored. The sea restaurant Baratie, where Sanji is met, ~Chapter 43 (Baratie arc). Explicit lng/lat: Baratie is a floating restaurant with no island row; position is interpolated between Syrup Village and the Conomi Islands. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "order": 6,
+      "slug": "conomi-islands",
+      "chapter": 69,
+      "label": "Conomi Islands — Arlong Park",
+      "source_ref": "Hand-authored. The Conomi Islands / Arlong Park, Nami's home, ~Chapter 69 (Arlong Park arc). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 7,
+      "slug": "loguetown",
+      "chapter": 96,
+      "label": "Loguetown — the town of the beginning and the end",
+      "source_ref": "Hand-authored. Loguetown, the last island of East Blue before the Grand Line, ~Chapter 96 (Loguetown arc). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 8,
+      "slug": "reverse-mountain",
+      "chapter": 101,
+      "label": "Reverse Mountain — enter the Grand Line",
+      "source_ref": "Hand-authored. Reverse Mountain, the only entrance to the Grand Line, ~Chapter 101 (Reverse Mountain arc). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 9,
+      "slug": "whisky-peak",
+      "chapter": 105,
+      "label": "Whisky Peak — first Grand Line island",
+      "source_ref": "Hand-authored. Whisky Peak, the first island inside the Grand Line, ~Chapter 105 (Whisky Peak arc). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    }
+  ]
+}

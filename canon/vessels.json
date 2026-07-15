@@ -1,0 +1,36 @@
+{
+  "_warning": "HAND-AUTHORED. A sync script that overwrites this file is a bug. verified:false means Shawn has not confirmed the chapter stamps against the manga yet.",
+  "_why_this_file_exists": "No upstream source records which ship the Straw Hats sail as of a given chapter. This is the vessel progression, chapter-gated like everything else: a reader at chapter 20 must see the little boat, not the Thousand Sunny. Each entry is the chapter FROM which that vessel is the crew's ship. worldAtChapter() returns the last vessel whose from_chapter <= the reader's chapter.",
+  "_before_any_content_ships": "Shawn must confirm every from_chapter below against the manga and flip verified to true. The Going Merry and Thousand Sunny acquisition chapters especially — these are approximate until checked.",
+  "crew": "Straw Hat Pirates",
+  "crew_slug": "straw-hat-pirates",
+  "vessels": [
+    {
+      "order": 1,
+      "name": "Small boat",
+      "slug": "small-boat",
+      "from_chapter": 1,
+      "source_ref": "Hand-authored. Before the Going Merry the crew sails small commandeered boats, starting with Luffy's dinghy leaving Foosha Village, Chapter 1. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 2,
+      "name": "Going Merry",
+      "slug": "going-merry",
+      "from_chapter": 43,
+      "source_ref": "Hand-authored. Kaya gifts the Going Merry as the crew leaves Syrup Village, ~Chapter 43. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 3,
+      "name": "Thousand Sunny",
+      "slug": "thousand-sunny",
+      "from_chapter": 437,
+      "source_ref": "Hand-authored. Franky builds the Thousand Sunny after Enies Lobby; the crew sets sail on her ~Chapter 437. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    }
+  ]
+}

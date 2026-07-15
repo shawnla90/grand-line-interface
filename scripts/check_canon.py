@@ -274,11 +274,75 @@ def fog_mechanic(doc):
     return "fog monotonic — " + " | ".join(rows[:2]) + " ... " + rows[-2]
 
 
+@check("voyage_route_forward")
+def voyage_route_forward(doc):
+    """The authored route must exist, only move forward, and carry a real position.
+
+    A route that goes backward in the story, or a waypoint the build could not
+    resolve to a coordinate, would draw a broken line across the map. Each waypoint
+    is hand-authored — no upstream source stamps a chapter onto a sea route.
+    """
+    wps = doc.get("voyage", {}).get("waypoints", [])
+    assert wps, "voyage.waypoints is empty — there is no route to draw"
+    unverified = 0
+    last = None
+    for w in wps:
+        assert isinstance(w["lng"], (int, float)) and isinstance(w["lat"], (int, float)), (
+            f"waypoint order {w['order']} ({w['label']!r}) has no numeric position"
+        )
+        assert w["chapter"] >= 1, f"waypoint order {w['order']} has a non-positive chapter"
+        if last is not None:
+            assert w["chapter"] >= last, (
+                f"voyage goes backward: order {w['order']} chapter {w['chapter']} < previous {last}. "
+                "The route only moves forward in the story."
+            )
+        last = w["chapter"]
+        src = w.get("source_ref") or ""
+        assert src.lower().lstrip().startswith("hand-authored"), (
+            f"waypoint order {w['order']} source_ref is not hand-authored"
+        )
+        if not w["verified"]:
+            unverified += 1
+    return f"{len(wps)} waypoints, forward-only, {unverified} still verified:false"
+
+
+@check("vessels_chapter_gated")
+def vessels_chapter_gated(doc):
+    """The ship progression must be chapter-gated and only move forward.
+
+    A reader at chapter 20 must see the small boat, never the Thousand Sunny. The
+    first vessel must start at chapter 1 (the crew always has *a* boat), and
+    from_chapter must be non-decreasing so the swap only ever moves forward.
+    """
+    vs = doc.get("vessels", [])
+    assert vs, "vessels is empty — the ship never appears"
+    assert vs[0]["from_chapter"] == 1, (
+        f"first vessel starts at chapter {vs[0]['from_chapter']}, not 1. The crew has a boat "
+        "from the first chapter, so there must be no chapter with no ship."
+    )
+    unverified = 0
+    last = None
+    for v in vs:
+        if last is not None:
+            assert v["from_chapter"] >= last, (
+                f"vessels go backward: {v['slug']!r} from_chapter {v['from_chapter']} < previous {last}"
+            )
+        last = v["from_chapter"]
+        src = v.get("source_ref") or ""
+        assert src.lower().lstrip().startswith("hand-authored"), (
+            f"vessel {v['slug']!r} source_ref is not hand-authored"
+        )
+        if not v["verified"]:
+            unverified += 1
+    return f"{len(vs)} vessels, first at ch.1, forward-only, {unverified} still verified:false"
+
+
 CHECKS = [
     jinbe_test, crew_joins_are_human, straw_hats_complete,
     islands_have_positions, islands_fog_key, no_mojibake,
     arc_chain_unbroken, status_enum, no_french_leakage,
     types_are_numbers, source_refs_not_null, canon_boundary, fog_mechanic,
+    voyage_route_forward, vessels_chapter_gated,
 ]
 
 

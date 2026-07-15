@@ -198,6 +198,51 @@ export const CrewJoin = z.object({
 });
 export type CrewJoin = z.infer<typeof CrewJoin>;
 
+/**
+ * A waypoint on the crew's authored voyage. Hand-typed in canon/voyage_legs.json.
+ * The normalizer resolves each waypoint's position (from an island slug, or an
+ * explicit lng/lat) and writes lng/lat here, so the app never re-resolves. The
+ * drawn route connects these points in `order`, revealing up to the reader's
+ * chapter. verified:false until a human confirms the chapter against the manga.
+ */
+export const VoyageWaypoint = z.object({
+  order: z.number().int(),
+  /** The island this waypoint sits on, when it is one. null for open-sea points (e.g. Baratie). */
+  slug: z.string().nullable(),
+  label: z.string(),
+  chapter: z.number().int(),
+  lng: z.number(),
+  lat: z.number(),
+  source_ref: z.string().min(1),
+  canon_confidence: CanonConfidence,
+  verified: z.boolean(),
+});
+export type VoyageWaypoint = z.infer<typeof VoyageWaypoint>;
+
+export const Voyage = z.object({
+  crew: z.string(),
+  crew_slug: z.string(),
+  waypoints: z.array(VoyageWaypoint),
+});
+export type Voyage = z.infer<typeof Voyage>;
+
+/**
+ * The crew's ship as of a chapter. Hand-typed in canon/vessels.json. `from_chapter`
+ * is the chapter FROM which this vessel is the ship; the reader sees the last one
+ * whose from_chapter <= their chapter. Chapter-gated so a reader at ch. 20 sees the
+ * small boat, never the Thousand Sunny. verified:false until confirmed.
+ */
+export const Vessel = z.object({
+  order: z.number().int(),
+  name: z.string(),
+  slug: z.string(),
+  from_chapter: z.number().int(),
+  source_ref: z.string().min(1),
+  canon_confidence: CanonConfidence,
+  verified: z.boolean(),
+});
+export type Vessel = z.infer<typeof Vessel>;
+
 export const CanonMeta = z.object({
   generated_at: z.string(),
   generator: z.string(),
@@ -222,6 +267,8 @@ export const Canon = z.object({
   fruits: z.array(Fruit),
   episodes: z.array(Episode),
   crew_joins: z.array(CrewJoin),
+  voyage: Voyage,
+  vessels: z.array(Vessel),
 });
 export type Canon = z.infer<typeof Canon>;
 

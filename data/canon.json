@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-14T06:26:13.423441+00:00",
+    "generated_at": "2026-07-15T02:24:24.140999+00:00",
     "generator": "scripts/normalize.py",
     "source_manifest_sha": "be7af436b558b373ae1e6f28cc5007ef89153529fb274cb7efd1a47b4f1ef25a",
     "sources": {
@@ -16,7 +16,9 @@
     ],
     "warnings": [
       "94 episodes fall in no canon arc segment (filler between arcs, plus the Uta/Film Red tie-ins 1029/1030). This is correct: the gaps between episode_segments ARE filler.",
-      "crew_joins contains UNVERIFIED rows. Shawn has not confirmed them against the manga. The UI must render them as unverified and no content ships on them."
+      "crew_joins contains UNVERIFIED rows. Shawn has not confirmed them against the manga. The UI must render them as unverified and no content ships on them.",
+      "voyage_legs contains UNVERIFIED waypoints. Route chapter stamps are not manga-confirmed. The UI must render the route as unverified.",
+      "vessels contains UNVERIFIED rows. Ship-acquisition chapters are not manga-confirmed. The UI must render them as unverified."
     ],
     "counts": {
       "sagas": 10,
@@ -29,7 +31,11 @@
       "fruits": 213,
       "episodes": 1162,
       "crew_joins": 10,
-      "crew_joins_verified": 0
+      "crew_joins_verified": 0,
+      "voyage_waypoints": 9,
+      "voyage_waypoints_verified": 0,
+      "vessels": 3,
+      "vessels_verified": 0
     }
   },
   "sagas": [
@@ -42422,6 +42428,140 @@
       "join_saga": "Wano Country Saga",
       "order": 10,
       "source_ref": "Hand-authored. THE LANDMINE. Jinbe DEBUTS at Chapter 528 / Episode 430 and formally JOINS at Chapter 976 / Episode 977, during Wano. The gap is 547 EPISODES. Every wiki has a Debut field and it is not this number. scripts/check_canon.py has a dedicated jinbe_test asserting join_episode > 900 — if that test ever fires, someone scraped a Debut field into a join field. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    }
+  ],
+  "voyage": {
+    "crew": "Straw Hat Pirates",
+    "crew_slug": "straw-hat-pirates",
+    "waypoints": [
+      {
+        "order": 1,
+        "slug": "foosha-village",
+        "label": "Set sail — Foosha Village",
+        "chapter": 1,
+        "lng": -169.4318,
+        "lat": 7.1022,
+        "source_ref": "Hand-authored. Luffy leaves Foosha Village, East Blue, Chapter 1 (Romance Dawn). NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 2,
+        "slug": "shells-town",
+        "label": "Shells Town — Zoro",
+        "chapter": 3,
+        "lng": -78.0207,
+        "lat": -47.3813,
+        "source_ref": "Hand-authored. The Marine base at Shells Town, where Zoro is freed, ~Chapter 3 (Romance Dawn). NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 3,
+        "slug": "orange-town",
+        "label": "Orange Town — Buggy",
+        "chapter": 9,
+        "lng": -71.0682,
+        "lat": -45.3781,
+        "source_ref": "Hand-authored. Orange Town, Buggy the Clown's turf, ~Chapter 9 (Orange Town arc). NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 4,
+        "slug": "syrup-village",
+        "label": "Syrup Village — Usopp & the Going Merry",
+        "chapter": 23,
+        "lng": -132.8436,
+        "lat": -54.1873,
+        "source_ref": "Hand-authored. Syrup Village, where Usopp joins and Kaya gifts the Going Merry, ~Chapter 23 (Syrup Village arc). NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 5,
+        "slug": null,
+        "label": "Baratie — Sanji",
+        "chapter": 43,
+        "lng": -95.0,
+        "lat": -46.0,
+        "source_ref": "Hand-authored. The sea restaurant Baratie, where Sanji is met, ~Chapter 43 (Baratie arc). Explicit lng/lat: Baratie is a floating restaurant with no island row; position is interpolated between Syrup Village and the Conomi Islands. NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "derived",
+        "verified": false
+      },
+      {
+        "order": 6,
+        "slug": "conomi-islands",
+        "label": "Conomi Islands — Arlong Park",
+        "chapter": 69,
+        "lng": -51.3013,
+        "lat": -33.3334,
+        "source_ref": "Hand-authored. The Conomi Islands / Arlong Park, Nami's home, ~Chapter 69 (Arlong Park arc). NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 7,
+        "slug": "loguetown",
+        "label": "Loguetown — the town of the beginning and the end",
+        "chapter": 96,
+        "lng": -72.585,
+        "lat": -35.947,
+        "source_ref": "Hand-authored. Loguetown, the last island of East Blue before the Grand Line, ~Chapter 96 (Loguetown arc). NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 8,
+        "slug": "reverse-mountain",
+        "label": "Reverse Mountain — enter the Grand Line",
+        "chapter": 101,
+        "lng": 1.399,
+        "lat": 28.0434,
+        "source_ref": "Hand-authored. Reverse Mountain, the only entrance to the Grand Line, ~Chapter 101 (Reverse Mountain arc). NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 9,
+        "slug": "whisky-peak",
+        "label": "Whisky Peak — first Grand Line island",
+        "chapter": 105,
+        "lng": -121.3706,
+        "lat": 4.162,
+        "source_ref": "Hand-authored. Whisky Peak, the first island inside the Grand Line, ~Chapter 105 (Whisky Peak arc). NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      }
+    ]
+  },
+  "vessels": [
+    {
+      "order": 1,
+      "name": "Small boat",
+      "slug": "small-boat",
+      "from_chapter": 1,
+      "source_ref": "Hand-authored. Before the Going Merry the crew sails small commandeered boats, starting with Luffy's dinghy leaving Foosha Village, Chapter 1. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 2,
+      "name": "Going Merry",
+      "slug": "going-merry",
+      "from_chapter": 43,
+      "source_ref": "Hand-authored. Kaya gifts the Going Merry as the crew leaves Syrup Village, ~Chapter 43. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 3,
+      "name": "Thousand Sunny",
+      "slug": "thousand-sunny",
+      "from_chapter": 437,
+      "source_ref": "Hand-authored. Franky builds the Thousand Sunny after Enies Lobby; the crew sets sail on her ~Chapter 437. NEEDS HUMAN VERIFICATION against the manga.",
       "canon_confidence": "canon",
       "verified": false
     }

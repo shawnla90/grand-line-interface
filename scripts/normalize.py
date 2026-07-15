@@ -272,6 +272,8 @@ def main() -> int:
     ov = load(CANON_DIR / "overrides.json")
     joins_doc = load(CANON_DIR / "crew_joins.json")
     coords_doc = load(CANON_DIR / "islands.coords.json")
+    voyage_doc = load(CANON_DIR / "voyage_legs.json")
+    vessels_doc = load(CANON_DIR / "vessels.json")
 
     status_map = ov["character_status"]
     crew_status_map = ov["crew_status"]
@@ -539,6 +541,97 @@ def main() -> int:
             "The UI must render them as unverified and no content ships on them."
         )
 
+    # ------------------------------------------------------------- voyage
+    # The authored route. Each waypoint resolves to a position (an island slug, or
+    # an explicit lng/lat for open-sea points). Chapters must only move forward — a
+    # voyage that goes backward in the story is a data error, not a shortcut.
+    voyage_waypoints = []
+    last_ch = None
+    for w in sorted(voyage_doc["waypoints"], key=lambda r: r["order"]):
+        src = (w.get("source_ref") or "")
+        if not src.lower().lstrip().startswith("hand-authored"):
+            raise die(
+                "voyage waypoint source_ref must declare itself 'Hand-authored'. The route is "
+                "authored (no upstream source stamps a chapter onto a sea route), not scraped.",
+                w,
+            )
+        slug = w.get("slug")
+        if w.get("lng") is not None and w.get("lat") is not None:
+            lng, lat = float(w["lng"]), float(w["lat"])
+        elif slug is not None:
+            pos = coords.get(slug)
+            if pos is None or pos.get("lng") is None or pos.get("lat") is None:
+                raise die(
+                    f"voyage waypoint slug {slug!r} resolves to no coordinate in "
+                    "canon/islands.coords.json. Every waypoint must have a position; fix the slug "
+                    "or give the waypoint an explicit lng/lat.",
+                    w,
+                )
+            lng, lat = pos["lng"], pos["lat"]
+        else:
+            raise die("voyage waypoint has neither a slug nor an explicit lng/lat.", w)
+        ch = w["chapter"]
+        if last_ch is not None and ch < last_ch:
+            raise die(
+                f"voyage waypoints must be non-decreasing in chapter (order {w['order']} "
+                f"chapter {ch} < previous {last_ch}). The route only moves forward in the story.",
+                w,
+            )
+        last_ch = ch
+        voyage_waypoints.append({
+            "order": w["order"],
+            "slug": slug,
+            "label": w["label"],
+            "chapter": ch,
+            "lng": lng,
+            "lat": lat,
+            "source_ref": src,
+            "canon_confidence": w["canon_confidence"],
+            "verified": bool(w["verified"]),
+        })
+    voyage = {
+        "crew": voyage_doc["crew"],
+        "crew_slug": voyage_doc["crew_slug"],
+        "waypoints": voyage_waypoints,
+    }
+    if any(not w["verified"] for w in voyage_waypoints):
+        warnings.append(
+            "voyage_legs contains UNVERIFIED waypoints. Route chapter stamps are not manga-confirmed. "
+            "The UI must render the route as unverified."
+        )
+
+    # ------------------------------------------------------------- vessels
+    # The ship progression, chapter-gated. A reader at ch. 20 must see the small
+    # boat, never the Thousand Sunny. from_chapter only moves forward.
+    vessels = []
+    last_from = None
+    for v in sorted(vessels_doc["vessels"], key=lambda r: r["order"]):
+        src = (v.get("source_ref") or "")
+        if not src.lower().lstrip().startswith("hand-authored"):
+            raise die("vessel source_ref must declare itself 'Hand-authored'.", v)
+        fr = v["from_chapter"]
+        if last_from is not None and fr < last_from:
+            raise die(
+                f"vessels must be non-decreasing in from_chapter (vessel {v['slug']!r} "
+                f"{fr} < previous {last_from}).",
+                v,
+            )
+        last_from = fr
+        vessels.append({
+            "order": v["order"],
+            "name": v["name"],
+            "slug": v["slug"],
+            "from_chapter": fr,
+            "source_ref": src,
+            "canon_confidence": v["canon_confidence"],
+            "verified": bool(v["verified"]),
+        })
+    if any(not v["verified"] for v in vessels):
+        warnings.append(
+            "vessels contains UNVERIFIED rows. Ship-acquisition chapters are not manga-confirmed. "
+            "The UI must render them as unverified."
+        )
+
     # ------------------------------------------------------------------ out
     payload = {
         "meta": {
@@ -565,6 +658,10 @@ def main() -> int:
                 "episodes": len(episodes),
                 "crew_joins": len(crew_joins),
                 "crew_joins_verified": sum(1 for j in crew_joins if j["verified"]),
+                "voyage_waypoints": len(voyage_waypoints),
+                "voyage_waypoints_verified": sum(1 for w in voyage_waypoints if w["verified"]),
+                "vessels": len(vessels),
+                "vessels_verified": sum(1 for v in vessels if v["verified"]),
             },
         },
         "sagas": sagas,
@@ -575,6 +672,8 @@ def main() -> int:
         "fruits": fruits,
         "episodes": episodes,
         "crew_joins": crew_joins,
+        "voyage": voyage,
+        "vessels": vessels,
     }
 
     hits = scan_mojibake(payload)

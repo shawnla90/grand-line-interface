@@ -24,6 +24,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import maplibregl, {
   type Map as MLMap,
+  type Marker as MLMarker,
+  type GeoJSONSource,
   type StyleSpecification,
   type MapMouseEvent,
   type ExpressionSpecification,
@@ -31,6 +33,7 @@ import maplibregl, {
 import "maplibre-gl/dist/maplibre-gl.css";
 
 import type { World, WorldIsland } from "@/lib/canon";
+import { voyageGeometryAt, vesselAtChapter } from "@/lib/canon";
 import { BLUES, CALM_BELTS, GRAND_LINE, RED_LINE, GRATICULE, WORLD_LABELS } from "./world-geometry";
 
 export type Projection = "globe" | "mercator";
@@ -92,6 +95,88 @@ function islandFeatures(islands: WorldIsland[]) {
   };
 }
 
+/**
+ * The traveled route as a LineString FeatureCollection. Fewer than two points is
+ * not a line — the crew has not left port yet — so it renders as nothing.
+ */
+function voyageLine(path: [number, number][]) {
+  return {
+    type: "FeatureCollection" as const,
+    features:
+      path.length >= 2
+        ? [
+            {
+              type: "Feature" as const,
+              properties: {},
+              geometry: { type: "LineString" as const, coordinates: path },
+            },
+          ]
+        : [],
+  };
+}
+
+/**
+ * The ship marks. Original SVG — a hull and sails, no licensed art. The vessel is
+ * distinguished by its rig so the swap from boat -> Merry -> Sunny reads on screen:
+ * a small boat has one lateen sail, the Going Merry one square sail, the Thousand
+ * Sunny two sails under a small sun. Unknown slugs fall back to the small boat.
+ */
+function vesselGlyph(slug: string | null | undefined): string {
+  const P = C.parchment;
+  const G = C.goldLit;
+  const hull = `<path d="M3 15 H21 L18.2 20 H5.8 Z" fill="${P}" stroke="${G}" stroke-width="0.6"/>`;
+  const mast = `<line x1="12" y1="2.5" x2="12" y2="15" stroke="${P}" stroke-width="1"/>`;
+  if (slug === "thousand-sunny") {
+    return `<svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="3" r="2" fill="${G}"/>
+      ${mast}
+      <path d="M12 6 L7 13 H12 Z" fill="${P}"/>
+      <path d="M12 6 L17 13 H12 Z" fill="${G}" opacity="0.85"/>
+      ${hull}</svg>`;
+  }
+  if (slug === "going-merry") {
+    return `<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+      ${mast}
+      <path d="M6 5 H18 V13 H6 Z" fill="${P}"/>
+      ${hull}</svg>`;
+  }
+  // small boat (default)
+  return `<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+    ${mast}
+    <path d="M12 4 L12 14 L6 14 Z" fill="${P}"/>
+    ${hull}</svg>`;
+}
+
+/** Build (once) the DOM element MapLibre re-positions each frame for the ship. */
+function makeShipElement(): { el: HTMLDivElement; glyph: HTMLDivElement; label: HTMLDivElement } {
+  const el = document.createElement("div");
+  el.className = "shipMarker";
+  el.style.display = "none";
+  el.style.transform = "translateY(-2px)";
+  el.style.pointerEvents = "none";
+  el.style.textAlign = "center";
+
+  const glyph = document.createElement("div");
+  glyph.style.filter = "drop-shadow(0 0 5px rgba(227,176,75,0.55))";
+  glyph.style.lineHeight = "0";
+
+  const label = document.createElement("div");
+  label.style.marginTop = "1px";
+  label.style.fontSize = "8px";
+  label.style.letterSpacing = "0.16em";
+  label.style.textTransform = "uppercase";
+  label.style.color = "rgba(239,230,212,0.82)";
+  label.style.whiteSpace = "nowrap";
+  label.style.fontFamily = "var(--font-geist-mono), monospace";
+
+  el.appendChild(glyph);
+  el.appendChild(label);
+  return { el, glyph, label };
+}
+
+/** The live handles paint() needs to move and restyle the ship each frame. */
+type ShipHandle = { marker: MLMarker; glyph: HTMLDivElement; label: HTMLDivElement };
+
 /* -------------------------------------------------------------------------- */
 /* paint expressions                                                           */
 /* -------------------------------------------------------------------------- */
@@ -132,6 +217,7 @@ export default function WorldMap({ world, chapter, projection, showOffCanon, sel
   const holder = useRef<HTMLDivElement | null>(null);
   const map = useRef<MLMap | null>(null);
   const ready = useRef(false);
+  const ship = useRef<ShipHandle | null>(null);
 
   // The map's event handlers are registered once, on mount, so they close over the
   // first `chapter` forever. This ref is how they read the current one. It is
@@ -179,6 +265,7 @@ export default function WorldMap({ world, chapter, projection, showOffCanon, sel
         grat: { type: "geojson", data: GRATICULE },
         grand: { type: "geojson", data: GRAND_LINE },
         red: { type: "geojson", data: RED_LINE },
+        voyage: { type: "geojson", data: voyageLine([]) },
         islands: { type: "geojson", data: features },
       },
       layers: [
@@ -220,6 +307,31 @@ export default function WorldMap({ world, chapter, projection, showOffCanon, sel
         // The Red Line: the continent. Clay, because it is land.
         { id: "red-glow", type: "line", source: "red", paint: { "line-color": C.redLine, "line-width": 10, "line-blur": 10, "line-opacity": 0.25 } },
         { id: "red", type: "line", source: "red", paint: { "line-color": C.redLine, "line-width": 2.4, "line-opacity": 0.9 } },
+
+        // THE VOYAGE: the crew's actual traveled route, drawn up to the reader's
+        // chapter. Brighter and heavier than the Grand Line (which is the sea's
+        // geometry, not their path) so it reads as "where they have sailed." Its
+        // data is replaced every frame by paint() as the chapter tweens, so the
+        // wake extends leg by leg. `line-round` joins keep the zigzags from spiking.
+        {
+          id: "voyage-glow",
+          type: "line",
+          source: "voyage",
+          layout: { "line-cap": "round", "line-join": "round" },
+          paint: { "line-color": C.goldLit, "line-width": 6, "line-blur": 7, "line-opacity": 0.3 },
+        },
+        {
+          id: "voyage-line",
+          type: "line",
+          source: "voyage",
+          layout: { "line-cap": "round", "line-join": "round" },
+          paint: {
+            "line-color": C.parchment,
+            "line-width": ["interpolate", ["linear"], ["zoom"], 0, 1.4, 3, 2, 6, 2.8],
+            "line-opacity": 0.85,
+            "line-dasharray": [2.5, 1.6],
+          },
+        },
 
         // Off-canon locations: film / anime-only / game. They have no chapter, so
         // they can never be fogged. Hidden by default; the toggle says exactly why.
@@ -353,6 +465,15 @@ export default function WorldMap({ world, chapter, projection, showOffCanon, sel
       new maplibregl.Marker({ element: el, opacityWhenCovered: "0" }).setLngLat(l.lngLat).addTo(m);
     }
 
+    // The ship. One marker, moved and restyled every frame by paint(). It starts at
+    // the first waypoint and hidden; paint() reveals it once the reader reaches ch. 1.
+    const parts = makeShipElement();
+    const start = world.voyage.waypoints[0];
+    const shipMarker = new maplibregl.Marker({ element: parts.el, opacityWhenCovered: "0.2" })
+      .setLngLat(start ? [start.lng, start.lat] : [0, 0])
+      .addTo(m);
+    ship.current = { marker: shipMarker, glyph: parts.glyph, label: parts.label };
+
     const onMove = (e: MapMouseEvent) => {
       const f = m.queryRenderedFeatures(e.point, { layers: ["islands-hit"] })[0];
       if (!f) {
@@ -404,7 +525,7 @@ export default function WorldMap({ world, chapter, projection, showOffCanon, sel
       // behind the left panel.
       m.setPadding(MAP_PADDING);
       m.jumpTo({ center: [-20, 6], zoom: 1.9 });
-      paint(m, chapterRef.current);
+      paint(m, chapterRef.current, world, ship.current);
     });
 
     if (process.env.NODE_ENV !== "production") {
@@ -413,6 +534,7 @@ export default function WorldMap({ world, chapter, projection, showOffCanon, sel
 
     return () => {
       ready.current = false;
+      ship.current = null;
       m.remove();
       map.current = null;
     };
@@ -425,8 +547,8 @@ export default function WorldMap({ world, chapter, projection, showOffCanon, sel
   useEffect(() => {
     const m = map.current;
     if (!m || !ready.current) return;
-    paint(m, chapter);
-  }, [chapter]);
+    paint(m, chapter, world, ship.current);
+  }, [chapter, world]);
 
   /* ------------------------------------------------------------ projection */
   useEffect(() => {
@@ -547,7 +669,24 @@ export default function WorldMap({ world, chapter, projection, showOffCanon, sel
  * ~413 features across 4 layers is nothing for MapLibre to re-evaluate; the cost
  * is bounded by the frame rate, and the tween settles in about a second.
  */
-function paint(m: MLMap, ch: number) {
+function paint(m: MLMap, ch: number, world: World, ship: ShipHandle | null) {
+  // THE VOYAGE. Re-derive the traveled route and the ship's position for this
+  // (fractional) chapter and push both. The line grows leg by leg; the ship glides
+  // along the active leg; the vessel glyph swaps at the acquisition chapters.
+  const { path, ship: pos } = voyageGeometryAt(world.voyage.waypoints, ch);
+  (m.getSource("voyage") as GeoJSONSource | undefined)?.setData(voyageLine(path));
+  if (ship) {
+    const vessel = vesselAtChapter(world.vessels, ch);
+    if (pos && vessel) {
+      ship.marker.setLngLat(pos);
+      ship.glyph.innerHTML = vesselGlyph(vessel.slug);
+      ship.label.textContent = vessel.name;
+      ship.marker.getElement().style.display = "";
+    } else {
+      ship.marker.getElement().style.display = "none";
+    }
+  }
+
   // Revealed islands, styled by how much we actually trust their position.
   m.setPaintProperty("islands", "circle-opacity", [
     "case",

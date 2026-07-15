@@ -33,7 +33,7 @@
  * accidental spoilers. It is not a security boundary, and the UI says so.
  */
 
-import type { Canon, Island, Arc, CrewJoin } from "./schema";
+import type { Canon, Island, Arc, CrewJoin, VoyageWaypoint, Vessel } from "./schema";
 
 /* -------------------------------------------------------------------------- */
 /* types — the serialization contract between server and client                */
@@ -104,6 +104,28 @@ export type WorldCrewMember = {
   sourceRef: string;
 };
 
+/** A waypoint on the crew's authored route. Position already resolved (see schema). */
+export type WorldVoyageWaypoint = {
+  order: number;
+  slug: string | null;
+  label: string;
+  chapter: number;
+  lng: number;
+  lat: number;
+  verified: boolean;
+  confidence: Confidence;
+};
+
+/** The crew's ship as of a chapter. `fromChapter` is when it becomes the ship. */
+export type WorldVessel = {
+  order: number;
+  name: string;
+  slug: string;
+  fromChapter: number;
+  verified: boolean;
+  confidence: Confidence;
+};
+
 export type World = {
   meta: {
     generatedAt: string;
@@ -125,6 +147,10 @@ export type World = {
   arcs: WorldArc[];
   sagas: WorldSaga[];
   crew: WorldCrewMember[];
+  /** The authored crew route: waypoints in voyage order, positions resolved. */
+  voyage: { crewSlug: string; waypoints: WorldVoyageWaypoint[] };
+  /** The crew's ship progression, chapter-gated, ascending by fromChapter. */
+  vessels: WorldVessel[];
   /** episodeToChapter[ep] -> manga chapter reached by the end of that episode. */
   episodeToChapter: number[];
   /** chapterToEpisode[ch] -> first episode that reaches that chapter, or null. */
@@ -157,6 +183,15 @@ export type WorldAt = {
   foggedIslands: WorldIsland[];
   /** The crew standing on the deck. Never a Debut field — see the Jinbe note. */
   crew: WorldCrewMember[];
+  /** The ship they are sailing right now. null before the first vessel's chapter. */
+  vessel: WorldVessel | null;
+  /**
+   * The traveled route as of this chapter: every waypoint reached, plus the ship's
+   * interpolated current position as the final point. Empty until the voyage starts.
+   */
+  voyagePath: [number, number][];
+  /** Where the ship is right now — the one interpolated quantity in the model. */
+  shipPosition: [number, number] | null;
   stats: {
     islandsRevealed: number;
     islandsMappable: number;
@@ -312,6 +347,30 @@ function toCrew(j: CrewJoin): WorldCrewMember {
   };
 }
 
+function toWaypoint(w: VoyageWaypoint): WorldVoyageWaypoint {
+  return {
+    order: w.order,
+    slug: w.slug,
+    label: w.label,
+    chapter: w.chapter,
+    lng: w.lng,
+    lat: w.lat,
+    verified: w.verified,
+    confidence: w.canon_confidence,
+  };
+}
+
+function toVessel(v: Vessel): WorldVessel {
+  return {
+    order: v.order,
+    name: v.name,
+    slug: v.slug,
+    fromChapter: v.from_chapter,
+    verified: v.verified,
+    confidence: v.canon_confidence,
+  };
+}
+
 /**
  * Derive the saga axis FROM THE ARCS, not from canon.sagas.
  *
@@ -368,6 +427,14 @@ export function buildWorld(canon: Canon): World {
   const crew = canon.crew_joins.map(toCrew).sort((a, b) => a.order - b.order);
   const sagas = derivesSagas(arcs);
 
+  const voyage = {
+    crewSlug: canon.voyage.crew_slug,
+    waypoints: canon.voyage.waypoints
+      .map(toWaypoint)
+      .sort((a, b) => a.order - b.order),
+  };
+  const vessels = canon.vessels.map(toVessel).sort((a, b) => a.order - b.order);
+
   const mappable = islands.filter((i) => i.status === "manga" && i.debutChapter !== null);
   const positionConfidence: Record<Confidence, number> = { canon: 0, derived: 0, guess: 0 };
   for (const i of mappable) positionConfidence[i.confidence]++;
@@ -389,6 +456,8 @@ export function buildWorld(canon: Canon): World {
     arcs,
     sagas,
     crew,
+    voyage,
+    vessels,
     episodeToChapter,
     chapterToEpisode,
     counts: {
@@ -446,8 +515,58 @@ export function arcForChapter(world: World, chapter: number): WorldArc | null {
  * 10 crew). The map tweens the chapter value and calls this every frame, which
  * is what makes the world unfurl instead of snap.
  */
+/**
+ * The ship's position and the traveled route at a (possibly fractional) chapter.
+ * Step-then-lerp: every waypoint whose chapter has been reached is a fixed point;
+ * between the last reached waypoint and the next, the ship glides linearly by
+ * chapter. This is the ONE interpolated quantity in the whole model.
+ *
+ * Called per-frame by the map (fractional chapter -> a smooth sail) and once by
+ * worldAtChapter (integer chapter -> the discrete WorldAt). Waypoints are assumed
+ * pre-sorted ascending by chapter — the build enforces non-decreasing chapters.
+ */
+export function voyageGeometryAt(
+  waypoints: WorldVoyageWaypoint[],
+  chapter: number,
+): { path: [number, number][]; ship: [number, number] | null } {
+  if (waypoints.length === 0) return { path: [], ship: null };
+  const first = waypoints[0];
+  if (chapter < first.chapter) return { path: [], ship: null };
+
+  const path: [number, number][] = [];
+  let ship: [number, number] = [first.lng, first.lat];
+  for (let i = 0; i < waypoints.length; i++) {
+    const w = waypoints[i];
+    if (w.chapter > chapter) break;
+    path.push([w.lng, w.lat]);
+    ship = [w.lng, w.lat];
+    const next = waypoints[i + 1];
+    if (next && chapter < next.chapter) {
+      // The reader is mid-leg: glide from w toward next in proportion to chapter.
+      const span = next.chapter - w.chapter;
+      const t = span > 0 ? (chapter - w.chapter) / span : 0;
+      ship = [w.lng + (next.lng - w.lng) * t, w.lat + (next.lat - w.lat) * t];
+      path.push(ship);
+      break;
+    }
+  }
+  return { path, ship };
+}
+
+/** The last vessel whose fromChapter <= chapter. null before the first ship sets sail. */
+export function vesselAtChapter(vessels: WorldVessel[], chapter: number): WorldVessel | null {
+  let cur: WorldVessel | null = null;
+  for (const v of vessels) {
+    if (v.fromChapter <= chapter) cur = v;
+    else break;
+  }
+  return cur;
+}
+
 export function worldAtChapter(world: World, chapter: number): WorldAt {
   const ch = clampChapter(world, chapter);
+  const { path: voyagePath, ship: shipPosition } = voyageGeometryAt(world.voyage.waypoints, ch);
+  const vessel = vesselAtChapter(world.vessels, ch);
 
   const visibleIslands: WorldIsland[] = [];
   const foggedIslands: WorldIsland[] = [];
@@ -472,6 +591,9 @@ export function worldAtChapter(world: World, chapter: number): WorldAt {
     visibleIslands,
     foggedIslands,
     crew,
+    vessel,
+    voyagePath,
+    shipPosition,
     stats: {
       islandsRevealed: visibleIslands.length,
       islandsMappable: world.counts.islandsManga,
