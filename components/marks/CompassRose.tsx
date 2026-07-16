@@ -22,14 +22,17 @@ export default function CompassRose({ size = 74 }: { size?: number }) {
     >
       <circle cx="50" cy="50" r="46" fill="none" stroke={GOLD} strokeWidth="0.8" opacity="0.7" />
       <circle cx="50" cy="50" r="40" fill="none" stroke={PARCH} strokeWidth="0.5" opacity="0.4" />
-      {/* 32-point tick ring */}
+      {/* 32-point tick ring. Coordinates are rounded to 4dp: raw Math.sin/cos
+          floats can differ in the last ULP between the server and the browser,
+          and that one digit is a React hydration mismatch. */}
       {Array.from({ length: 32 }).map((_, i) => {
         const a = (i * Math.PI) / 16;
         const r0 = i % 8 === 0 ? 34 : i % 2 === 0 ? 37 : 39;
-        const x1 = 50 + r0 * Math.sin(a);
-        const y1 = 50 - r0 * Math.cos(a);
-        const x2 = 50 + 40 * Math.sin(a);
-        const y2 = 50 - 40 * Math.cos(a);
+        const fix = (n: number) => Number(n.toFixed(4));
+        const x1 = fix(50 + r0 * Math.sin(a));
+        const y1 = fix(50 - r0 * Math.cos(a));
+        const x2 = fix(50 + 40 * Math.sin(a));
+        const y2 = fix(50 - 40 * Math.cos(a));
         return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke={PARCH} strokeWidth="0.5" opacity="0.55" />;
       })}
       {/* Intercardinal star (X) */}

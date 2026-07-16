@@ -332,12 +332,56 @@ type PresenceHandle = {
   populated: boolean;
 };
 
+/**
+ * Where each active presence entity actually SITS this frame. Anchors come from
+ * the active window; entities sharing an anchor (the Summit War puts six of
+ * them on Marineford) fan out in a deterministic ring — sorted by slug, so the
+ * layout is stable across frames, reloads, and the server/client boundary.
+ */
+type PlacedPresence = { w: NonNullable<ReturnType<typeof presenceWindowAt>>; lng: number; lat: number };
+
+function presenceLayout(world: World, ch: number): Map<string, PlacedPresence> {
+  const active: { slug: string; w: PlacedPresence["w"] }[] = [];
+  for (const c of world.presence.crews) {
+    const w = presenceWindowAt(c.windows, ch);
+    if (w) active.push({ slug: c.slug, w });
+  }
+  for (const c of world.presence.characters) {
+    const w = presenceWindowAt(c.windows, ch);
+    if (w) active.push({ slug: c.slug, w });
+  }
+  const groups = new Map<string, typeof active>();
+  for (const a of active) {
+    const key = `${a.w.lng.toFixed(2)},${a.w.lat.toFixed(2)}`;
+    const g = groups.get(key);
+    if (g) g.push(a);
+    else groups.set(key, [a]);
+  }
+  const out = new Map<string, PlacedPresence>();
+  for (const g of groups.values()) {
+    if (g.length === 1) {
+      out.set(g[0].slug, { w: g[0].w, lng: g[0].w.lng, lat: g[0].w.lat });
+      continue;
+    }
+    g.sort((a, b) => a.slug.localeCompare(b.slug));
+    g.forEach((a, i) => {
+      const ang = (i / g.length) * Math.PI * 2 - Math.PI / 2;
+      out.set(a.slug, {
+        w: a.w,
+        lng: a.w.lng + Math.cos(ang) * 2.6,
+        lat: a.w.lat + Math.sin(ang) * 2.0,
+      });
+    });
+  }
+  return out;
+}
+
 /** The presence-orb source data for one frame: only REVEALED entities exist here. */
-function presenceOrbs(world: World, ch: number) {
+function presenceOrbs(world: World, ch: number, layout: Map<string, PlacedPresence>) {
   const features: GeoJSON.Feature[] = [];
   for (const crew of world.presence.crews) {
-    const w = presenceWindowAt(crew.windows, ch);
-    if (!w) continue;
+    const placed = layout.get(crew.slug);
+    if (!placed) continue;
     const revealedMembers = crew.members.filter((m) => m.fromChapter <= ch);
     const n = revealedMembers.length;
     revealedMembers.forEach((m, i) => {
@@ -358,7 +402,7 @@ function presenceOrbs(world: World, ch: number) {
         },
         geometry: {
           type: "Point",
-          coordinates: [w.lng + Math.cos(a) * 2.1, w.lat + Math.sin(a) * 1.5],
+          coordinates: [placed.lng + Math.cos(a) * 2.1, placed.lat + Math.sin(a) * 1.5],
         },
       });
     });
@@ -369,19 +413,19 @@ function presenceOrbs(world: World, ch: number) {
         slug: crew.slug,
         name: crew.name,
         crewSlug: crew.slug,
-        crewName: w.label,
+        crewName: placed.w.label,
         vesselName: crew.vessel?.name ?? null,
         kind: "crew",
         color: crewColor(crew.slug),
-        confidence: w.confidence,
-        verified: w.verified,
+        confidence: placed.w.confidence,
+        verified: placed.w.verified,
       },
-      geometry: { type: "Point", coordinates: [w.lng, w.lat] },
+      geometry: { type: "Point", coordinates: [placed.lng, placed.lat] },
     });
   }
   for (const c of world.presence.characters) {
-    const w = presenceWindowAt(c.windows, ch);
-    if (!w) continue;
+    const placed = layout.get(c.slug);
+    if (!placed) continue;
     features.push({
       type: "Feature",
       properties: {
@@ -392,10 +436,10 @@ function presenceOrbs(world: World, ch: number) {
         vesselName: null,
         kind: "warlord",
         color: WARLORD_COLOR,
-        confidence: w.confidence,
-        verified: w.verified,
+        confidence: placed.w.confidence,
+        verified: placed.w.verified,
       },
-      geometry: { type: "Point", coordinates: [w.lng, w.lat] },
+      geometry: { type: "Point", coordinates: [placed.lng, placed.lat] },
     });
   }
   return { type: "FeatureCollection" as const, features };
@@ -1213,16 +1257,19 @@ function paint(
         features: [],
       });
     } else {
+      const layout = presenceLayout(world, ch);
       for (const crew of world.presence.crews) {
         const h = pools.crews.get(crew.slug);
         if (!h) continue;
-        const w = presenceWindowAt(crew.windows, ch);
-        if (!w) {
+        const placed = layout.get(crew.slug);
+        if (!placed) {
           hidePresence(h);
           continue;
         }
-        if (h.shown && h.windowOrder === w.order) continue; // nothing changed
-        h.marker.setLngLat([w.lng, w.lat]);
+        // Position is set every frame: the cluster fan moves a flag when a
+        // NEIGHBOUR arrives or leaves, even though its own window is unchanged.
+        h.marker.setLngLat([placed.lng, placed.lat]);
+        if (h.shown && h.windowOrder === placed.w.order) continue; // DOM unchanged
         if (!h.populated) {
           h.parts.flag.innerHTML = jollyRogerSvg(crew.slug, { size: 20 });
           h.parts.hull.innerHTML = crew.vessel ? crewHullGlyph(crewColor(crew.slug)) : "";
@@ -1232,18 +1279,18 @@ function paint(
         }
         h.parts.el.style.display = "";
         h.shown = true;
-        h.windowOrder = w.order;
+        h.windowOrder = placed.w.order;
       }
       for (const c of world.presence.characters) {
         const h = pools.chars.get(c.slug);
         if (!h) continue;
-        const w = presenceWindowAt(c.windows, ch);
-        if (!w) {
+        const placed = layout.get(c.slug);
+        if (!placed) {
           hidePresence(h);
           continue;
         }
-        if (h.shown && h.windowOrder === w.order) continue;
-        h.marker.setLngLat([w.lng, w.lat]);
+        h.marker.setLngLat([placed.lng, placed.lat]);
+        if (h.shown && h.windowOrder === placed.w.order) continue;
         if (!h.populated) {
           h.parts.ring.textContent = c.name[0];
           h.parts.label.textContent = c.name;
@@ -1251,9 +1298,11 @@ function paint(
         }
         h.parts.el.style.display = "";
         h.shown = true;
-        h.windowOrder = w.order;
+        h.windowOrder = placed.w.order;
       }
-      (m.getSource("presence") as GeoJSONSource | undefined)?.setData(presenceOrbs(world, ch));
+      (m.getSource("presence") as GeoJSONSource | undefined)?.setData(
+        presenceOrbs(world, ch, layout),
+      );
     }
   }
 }
