@@ -84,13 +84,26 @@ LICENSE = "© Eiichiro Oda/Shueisha/Toei — official artwork, attributed fan re
 
 # per-kind post-processing: (mode, size). "square" = top-biased square crop;
 # "long" = fit longest side; "width" = fit to width, keep aspect.
+# Sizes are 2-3x the on-map display size so retina markers stay crisp (6E).
 KIND_PROCESS = {
-    "characters": ("square", 256),
-    "flags": ("long", 192),
-    "ships": ("width", 320),
-    "fruits": ("long", 192),
-    "islands": ("width", 480),
+    "characters": ("square", 512),
+    "flags": ("long", 384),
+    "ships": ("width", 960),
+    "fruits": ("long", 320),
+    "islands": ("width", 960),
 }
+
+# 6E: kinds whose wiki art is usually an anime SCREENSHOT (subject + scenery).
+# These get matted to an alpha cutout so the map renders a sprite, not a photo.
+# Model choice is empirical (A/B'd on real wiki art): u2net keeps the whole
+# ship/emblem where isnet-anime swallowed the Merry's aft into shadow.
+# Characters are NOT matted: infobox shots are crowded scenes both models
+# butcher, and the map crops portraits into circular rings regardless.
+# Islands stay rectangular on purpose — they're scenery, shown in the panel.
+# Sources that already carry real transparency skip the matte untouched.
+MATTE_KINDS = {"flags": "u2net", "ships": "u2net"}
+# If the matte eats the subject (alpha coverage below this), keep the original.
+MATTE_MIN_COVERAGE = 0.02
 # Required kinds fail the run if an entry can't be resolved; optional kinds only warn.
 REQUIRED_KINDS = {"characters", "flags", "fruits"}
 
@@ -198,10 +211,22 @@ def api_get(params: dict[str, str], *, refresh: bool) -> dict:
     return data
 
 
-def download_binary(url: str) -> bytes:
+def download_binary(url: str, *, refresh: bool = False) -> bytes:
+    """Fetch image bytes, cached under _art_cache/raw/ so a --reprocess run
+    (and the contact sheet's before/after column) never re-hits the wiki."""
+    cache_file = CACHE_DIR / "raw" / hashlib.sha1(url.encode()).hexdigest()
+    if cache_file.exists() and not refresh:
+        STATS["cache_hits"] += 1
+        return cache_file.read_bytes()
     data = _get(url, binary=True)
     STATS["downloads"] += 1
+    cache_file.parent.mkdir(parents=True, exist_ok=True)
+    cache_file.write_bytes(data)
     return data
+
+
+def raw_cache_path(url: str) -> Path:
+    return CACHE_DIR / "raw" / hashlib.sha1(url.encode()).hexdigest()
 
 
 # ---------------------------------------------------------------------------
@@ -259,14 +284,57 @@ def resolve_file_url(image_name: str, *, refresh: bool) -> str | None:
 # Pillow post-processing
 # ---------------------------------------------------------------------------
 
-def process_image(raw: bytes, mode: str, size: int) -> tuple[bytes, int, int]:
-    """Return (webp_bytes, w, h). Raises on non-image input (fail-loud on HTML)."""
+_REMBG_SESSIONS: dict[str, Any] = {}
+
+
+def _matte(im: Image.Image, model: str) -> Image.Image | None:
+    """AI background removal (rembg). Returns the RGBA cutout, or None when
+    the matte is unusable (subject almost entirely removed) — the caller
+    keeps the original then."""
+    from rembg import new_session, remove  # lazy: model loads once, on demand
+    if model not in _REMBG_SESSIONS:
+        _REMBG_SESSIONS[model] = new_session(model)
+    out = remove(im.convert("RGBA"), session=_REMBG_SESSIONS[model])
+    alpha = out.getchannel("A")
+    coverage = sum(1 for a in alpha.getdata() if a > 24) / (out.width * out.height)
+    if coverage < MATTE_MIN_COVERAGE:
+        return None
+    return out
+
+
+def _trim_to_subject(im: Image.Image, pad_frac: float = 0.04) -> Image.Image:
+    """Crop an RGBA image to its alpha bounding box plus a small margin."""
+    bbox = im.getchannel("A").getbbox()
+    if not bbox:
+        return im
+    pad = round(max(im.width, im.height) * pad_frac)
+    left = max(0, bbox[0] - pad)
+    top = max(0, bbox[1] - pad)
+    right = min(im.width, bbox[2] + pad)
+    bottom = min(im.height, bbox[3] + pad)
+    return im.crop((left, top, right, bottom))
+
+
+def process_image(raw: bytes, mode: str, size: int, *, matte_model: str | None = None) -> tuple[bytes, int, int, bool]:
+    """Return (webp_bytes, w, h, matted). Raises on non-image input (fail-loud on HTML)."""
     im = Image.open(io.BytesIO(raw))
     im.load()
     has_alpha = im.mode in ("RGBA", "LA", "P") and (
         "transparency" in im.info or im.mode in ("RGBA", "LA")
     )
     im = im.convert("RGBA" if has_alpha else "RGB")
+
+    # 6E: screenshots become sprites. A source that already ships transparency
+    # is a clean render — matting it again could only do harm, so skip.
+    matted = False
+    real_alpha = has_alpha and im.getchannel("A").getextrema()[0] < 250
+    if matte_model and not real_alpha:
+        cut = _matte(im, matte_model)
+        if cut is not None:
+            im = _trim_to_subject(cut)
+            matted = True
+    elif matte_model and real_alpha:
+        im = _trim_to_subject(im)
 
     if mode == "square":
         w, h = im.size
@@ -285,8 +353,8 @@ def process_image(raw: bytes, mode: str, size: int) -> tuple[bytes, int, int]:
         raise ValueError(f"unknown process mode {mode!r}")
 
     buf = io.BytesIO()
-    im.save(buf, "WEBP", quality=82, method=6)
-    return buf.getvalue(), im.size[0], im.size[1]
+    im.save(buf, "WEBP", quality=85, method=6)
+    return buf.getvalue(), im.size[0], im.size[1], matted
 
 
 # ---------------------------------------------------------------------------
@@ -371,6 +439,8 @@ def build_wantlist(canon: dict, overrides: dict) -> list[dict]:
 def main() -> int:
     ap = argparse.ArgumentParser(description="Phase 6 official-art pipeline.")
     ap.add_argument("--refresh", action="store_true", help="re-fetch everything, ignore caches")
+    ap.add_argument("--reprocess", action="store_true",
+                    help="re-run Pillow/matte processing from cached raw bytes (no re-scraping)")
     args = ap.parse_args()
 
     started = time.time()
@@ -421,22 +491,24 @@ def main() -> int:
                            "why": "no image resolved (fix page/image in canon/art_sources.json)"})
             continue
 
-        if out_path.exists() and not args.refresh:
+        if out_path.exists() and not args.refresh and not args.reprocess:
             STATS["skipped"] += 1
             # rebuild the manifest row from disk so re-runs keep receipts intact
             existing = out_path.read_bytes()
             with Image.open(io.BytesIO(existing)) as im:
                 w, h = im.size
+                was_matted = im.mode == "RGBA" and im.getchannel("A").getextrema()[0] < 250
             manifest_rows.append({
                 "kind": kind, "slug": slug, "ref_id": it.get("ref_id"), "page": it["page"],
                 "source_url": url, "retrieved": "(cached on disk)",
                 "sha256": hashlib.sha256(existing).hexdigest(),
-                "w": w, "h": h, "file": f"art/{kind}/{slug}.webp", "license": LICENSE,
+                "w": w, "h": h, "matted": was_matted,
+                "file": f"art/{kind}/{slug}.webp", "license": LICENSE,
             })
             continue
 
         try:
-            raw = download_binary(url)
+            raw = download_binary(url, refresh=args.refresh)
         except Exception as exc:  # noqa: BLE001 — any fetch failure is a miss, not a crash
             misses.append({"kind": kind, "slug": slug, "page": it["page"],
                            "why": f"download failed: {exc}"})
@@ -446,7 +518,10 @@ def main() -> int:
             continue
         try:
             mode, size = KIND_PROCESS[kind]
-            webp, w, h = process_image(raw, mode, size)
+            ov = overrides.get(kind, {}).get(slug, {})
+            no_matte = isinstance(ov, dict) and ov.get("no_matte")
+            want_matte = MATTE_KINDS.get(kind) if not no_matte else None
+            webp, w, h, matted = process_image(raw, mode, size, matte_model=want_matte)
         except Exception as exc:  # noqa: BLE001 — non-image (HTML error page) lands here
             misses.append({"kind": kind, "slug": slug, "page": it["page"],
                            "why": f"not a decodable image ({exc}) — likely an HTML error page"})
@@ -457,9 +532,11 @@ def main() -> int:
             "kind": kind, "slug": slug, "ref_id": it.get("ref_id"), "page": it["page"],
             "source_url": url, "retrieved": datetime.now(timezone.utc).isoformat(),
             "sha256": hashlib.sha256(webp).hexdigest(),
-            "w": w, "h": h, "file": f"art/{kind}/{slug}.webp", "license": LICENSE,
+            "w": w, "h": h, "matted": matted,
+            "file": f"art/{kind}/{slug}.webp", "license": LICENSE,
         })
-        print(f"    {kind}/{slug}.webp  ({w}x{h})")
+        flag = " [matted]" if matted else (" [no-matte]" if want_matte else "")
+        print(f"    {kind}/{slug}.webp  ({w}x{h}){flag}")
 
     # 3) Manifest
     counts = {k: sum(1 for r in manifest_rows if r["kind"] == k) for k in KIND_PROCESS}
@@ -519,9 +596,17 @@ def main() -> int:
 def render_contact_sheet(manifest: dict) -> str:
     cells = []
     for r in manifest["images"]:
+        # 6E: before/after — the raw wiki original (if cached) next to our cutout,
+        # so a bad matte is caught by eyeball before it ever reaches the map.
+        before = ""
+        cache = raw_cache_path(r["source_url"])
+        if cache.exists():
+            before = f'<img class="before" src="_art_cache/raw/{cache.name}" alt="" loading="lazy">'
+        matte_badge = ' <span class="matted">✂ matted</span>' if r.get("matted") else ""
         cells.append(
-            f'<figure><img src="../../public/{r["file"]}" alt="{r["slug"]}" loading="lazy">'
-            f'<figcaption><b>{r["kind"]}/{r["slug"]}</b><br>'
+            f'<figure><div class="pair">{before}'
+            f'<img src="../../public/{r["file"]}" alt="{r["slug"]}" loading="lazy"></div>'
+            f'<figcaption><b>{r["kind"]}/{r["slug"]}</b>{matte_badge}<br>'
             f'<span class="page">{r["page"]}</span><br>'
             f'<a href="{r["source_url"]}" target="_blank">source</a> · {r["w"]}×{r["h"]}</figcaption></figure>'
         )
@@ -540,8 +625,11 @@ def render_contact_sheet(manifest: dict) -> str:
   h1{{font-size:20px;margin:0 0 4px}} .sub{{color:#94a3b8;margin:0 0 20px}}
   .grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}}
   figure{{margin:0;background:#111c33;border:1px solid #1e293b;border-radius:10px;padding:8px;text-align:center}}
+  .pair{{display:flex;gap:4px}} .pair img{{min-width:0;flex:1}}
   img{{width:100%;height:130px;object-fit:contain;background:
       repeating-conic-gradient(#1e293b 0% 25%,#0f172a 0% 50%) 50%/16px 16px;border-radius:6px}}
+  img.before{{opacity:0.75}}
+  .matted{{color:#86efac;font-size:10px}}
   figcaption{{font-size:11px;margin-top:6px;color:#cbd5e1;word-break:break-word}}
   .page{{color:#7dd3fc}} a{{color:#fca5a5}}
   .misses{{margin-top:28px;background:#2a0f14;border:1px solid #7f1d1d;border-radius:10px;padding:12px 18px}}

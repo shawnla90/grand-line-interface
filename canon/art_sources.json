@@ -1,6 +1,6 @@
 {
   "_warning": "HAND-AUTHORED override map for scripts/sync_art.py. A sync script that overwrites this file is a bug. This file exists ONLY to correct entries whose wiki page title (derived from our display name) is wrong, or whose page's FIRST image is not the one we want.",
-  "_how_it_works": "For each kind, map our slug -> { page?: exact wiki page title, image?: exact File: name to pull instead of the page's lead pageimage }. Anything not listed resolves by name automatically. The contact sheet + the FAIL-LOUD miss list tell you what to add here.",
+  "_how_it_works": "For each kind, map our slug -> { page?: exact wiki page title, image?: exact File: name to pull instead of the page's lead pageimage, no_matte?: true to skip the 6E background-removal cutout when the AI matte mangles a particular image }. Anything not listed resolves by name automatically. The contact sheet (before/after columns) + the FAIL-LOUD miss list tell you what to add here.",
   "_license": "Downloaded artwork is © Eiichiro Oda / Shueisha / Toei Animation, used as attributed fan reference. It is NOT covered by the repo's MIT license. Every downloaded file carries a manifest row with its source URL.",
   "characters": {
     "kaido": { "page": "Kaidou" },
