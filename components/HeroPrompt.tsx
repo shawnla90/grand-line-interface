@@ -38,15 +38,17 @@ export default function HeroPrompt({ world, axis, onAxis, onCommit }: Props) {
   return (
     <div className="pointer-events-auto absolute inset-0 z-30 flex items-center justify-center bg-abyss/72 backdrop-blur-[3px]">
       <div className="dr-enter w-full max-w-[560px] px-8">
-        <div className="font-mono text-[10px] uppercase tracking-[0.34em] text-gold/80">
+        <div className="font-pirate text-[19px] tracking-[0.06em] text-gold/85">
           {BRAND.name}
         </div>
 
-        <h1 className="mt-5 text-[42px] leading-none font-medium tracking-tight text-parchment sm:text-[52px]">
+        <h1 className="font-pirate mt-5 text-[52px] leading-none tracking-[0.01em] text-parchment sm:text-[64px]">
           {BRAND.prompt}
         </h1>
 
-        <p className="mt-3 max-w-[420px] text-[13px] leading-relaxed text-muted">{BRAND.promise}</p>
+        <p className="font-document mt-3 max-w-[420px] text-[15px] leading-relaxed text-muted italic">
+          {BRAND.promise}
+        </p>
 
         <form
           className="mt-9"

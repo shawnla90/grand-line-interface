@@ -29,7 +29,7 @@ export default function Readout({ at, world }: { at: WorldAt; world: World }) {
       {/* The arc + saga. Both come from the wiki, in English — canon.sagas is
           machine-translated French and the app never reads it. */}
       <div className="mt-2.5">
-        <div className="text-[19px] leading-tight font-medium text-parchment">
+        <div className="font-pirate text-[24px] leading-tight tracking-[0.02em] text-parchment">
           {at.arc ? at.arc.name : "—"}
         </div>
         <div className="mt-1 flex items-center gap-2 text-[11px] text-muted">

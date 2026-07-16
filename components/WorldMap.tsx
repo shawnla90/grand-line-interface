@@ -962,10 +962,17 @@ export default function WorldMap({
       const el = document.createElement("div");
       el.className = "mapLabel";
       el.textContent = l.text;
-      const size = l.kind === "sea" ? "11px" : "9px";
+      const size = l.kind === "sea" ? "13px" : "9px";
       el.style.fontSize = size;
       el.style.color = l.kind === "line" ? "rgba(239,230,212,.66)" : "rgba(140,154,181,.62)";
       if (l.kind === "belt") el.style.color = "rgba(91,104,128,.7)";
+      // Phase 9: the seas are named in the sea-document face, like a real chart.
+      if (l.kind === "sea") {
+        el.style.fontFamily = "var(--font-document), Georgia, serif";
+        el.style.fontStyle = "italic";
+        el.style.textTransform = "none";
+        el.style.letterSpacing = "0.3em";
+      }
       new maplibregl.Marker({ element: el, opacityWhenCovered: "0" }).setLngLat(l.lngLat).addTo(m);
     }
 

@@ -205,10 +205,12 @@ export default function Atlas({ world, art, initialChapter, initialAxis, initial
         {/* masthead */}
         <div className="pointer-events-none absolute top-0 left-0 z-10 p-5">
           <div className="pointer-events-auto">
-            <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold/85">
+            <div className="font-pirate text-[17px] leading-none tracking-[0.06em] text-gold/90">
               {BRAND.name}
             </div>
-            <p className="mt-1 max-w-[230px] text-[10px] leading-snug text-muted-2">{BRAND.tagline}</p>
+            <p className="font-document mt-1 max-w-[230px] text-[11px] leading-snug text-muted-2 italic">
+              {BRAND.tagline}
+            </p>
           </div>
         </div>
 
