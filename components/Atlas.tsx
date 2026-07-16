@@ -27,14 +27,16 @@ import {
   chapterForEpisode,
   episodeForChapter,
   clampChapter,
+  presenceWindowAt,
   type World,
   type Axis,
 } from "@/lib/canon";
 import { BRAND } from "@/config/brand";
-import type { PresenceLens } from "@/lib/lenses";
+import type { Focus, PresenceLens } from "@/lib/lenses";
 import type { BuildLog } from "@/lib/buildlog";
 import type { Art } from "@/lib/art";
 import WorldMap, { type Projection } from "./WorldMap";
+import SearchPalette, { type SearchHit } from "./SearchPalette";
 import ChapterDock from "./ChapterDock";
 import HeroPrompt from "./HeroPrompt";
 import Readout from "./Readout";
@@ -194,10 +196,26 @@ export default function Atlas({ world, art, initialChapter, initialAxis, initial
   // Follow-cam: on by default — scrubbing or sailing keeps the ship in view.
   // Selecting an island or dragging the globe is the reader looking elsewhere.
   const [follow, setFollow] = useState(true);
+  // The isolate filter + the search palette (Unit: identify & filter).
+  const [focus, setFocusRaw] = useState<Focus | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
+  // Camera target for non-island search hits (crews have no selection slug).
+  const [flyTarget, setFlyTarget] = useState<{ lng: number; lat: number; key: number } | null>(null);
+  const flyKey = useRef(0);
 
   const setSelected = useCallback((slug: string | null) => {
     setSelectedRaw(slug);
     if (slug !== null) setFollow(false);
+  }, []);
+
+  // A fruit/haki focus drags the lens with it so the orb colors MEAN the
+  // focused dimension; a crew focus needs presence visible at minimum.
+  const setFocus = useCallback((f: Focus | null) => {
+    setFocusRaw(f);
+    if (!f) return;
+    if (f.kind === "fruit") setLens("fruit");
+    else if (f.kind === "haki") setLens("haki");
+    else setLens((l) => (l === "off" ? "crew" : l));
   }, []);
 
   // The episode axis carries its own thumb position — see the note in
@@ -250,13 +268,21 @@ export default function Atlas({ world, art, initialChapter, initialAxis, initial
     if (hero) return;
     const onKey = (e: KeyboardEvent) => {
       const el = document.activeElement;
+      // Cmd/Ctrl+K opens search from anywhere (before the guards — it is a chord)
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setSearchOpen(true);
+        return;
+      }
       if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) return;
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       if (e.key === "ArrowLeft") setChapter(chapter - (e.shiftKey ? 25 : 1));
       else if (e.key === "ArrowRight") setChapter(chapter + (e.shiftKey ? 25 : 1));
       // a focused button owns Space (native activation) — don't double-fire
       else if (e.key === " " && !(el instanceof HTMLButtonElement)) (playing ? engine.pause : engine.play)();
-      else if (e.key === "Escape") setSelected(null);
+      // Esc unwinds in order: filter first, then the selection
+      else if (e.key === "Escape") (focus ? setFocus(null) : setSelected(null));
+      else if (e.key === "/") setSearchOpen(true);
       else if (e.key.toLowerCase() === "g") setProjection((p) => (p === "globe" ? "mercator" : "globe"));
       else if (e.key.toLowerCase() === "f") setFollow((v) => !v);
       else return;
@@ -264,9 +290,34 @@ export default function Atlas({ world, art, initialChapter, initialAxis, initial
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [chapter, hero, setChapter, playing, engine]);
+  }, [chapter, hero, setChapter, playing, engine, focus, setFocus, setSelected]);
 
   const island = selected ? (world.islands.find((i) => i.slug === selected) ?? null) : null;
+
+  // A search pick: islands select (the existing panel + easeTo); crews and
+  // sailors isolate their crew and, when charted right now, fly the camera to
+  // the active anchor. Any search fly is the reader looking away — follow off.
+  const onSearchPick = useCallback(
+    (h: SearchHit) => {
+      if (h.kind === "island") {
+        setSelected(h.slug);
+        return;
+      }
+      // A warlord focuses on themselves (matchesFocus matches e.slug too);
+      // a member focuses their whole crew.
+      const crewSlug = h.kind === "member" ? h.crewSlug : h.slug;
+      setFocus({ kind: "crew", slug: crewSlug });
+      const roster = h.kind === "warlord" ? world.presence.characters : world.presence.crews;
+      const entity = roster.find((c) => c.slug === crewSlug);
+      const w = entity ? presenceWindowAt(entity.windows, shown) : null;
+      if (w) {
+        setFollow(false);
+        flyKey.current += 1;
+        setFlyTarget({ lng: w.lng, lat: w.lat, key: flyKey.current });
+      }
+    },
+    [world, shown, setFocus, setSelected],
+  );
 
   const share = async () => {
     try {
@@ -292,6 +343,17 @@ export default function Atlas({ world, art, initialChapter, initialAxis, initial
           onSelect={setSelected}
           follow={follow}
           onFollowBreak={() => setFollow(false)}
+          focus={focus}
+          flyTarget={flyTarget}
+        />
+
+        <SearchPalette
+          world={world}
+          shown={shown}
+          offCanon={offCanon}
+          open={searchOpen}
+          onClose={() => setSearchOpen(false)}
+          onPick={onSearchPick}
         />
 
         {/* masthead */}
@@ -425,7 +487,14 @@ export default function Atlas({ world, art, initialChapter, initialAxis, initial
               </div>
             </div>
 
-            <Legend world={world} at={at} showOffCanon={offCanon} lens={lens} />
+            <Legend
+              world={world}
+              at={at}
+              showOffCanon={offCanon}
+              lens={lens}
+              focus={focus}
+              onFocus={setFocus}
+            />
           </div>
         )}
 

@@ -80,6 +80,29 @@ export function topHaki(e: PowerCarrier, ch: number): HakiType | null {
 }
 
 /**
+ * The isolate filter (Phase "identify & filter"): pick one crew, fruit type,
+ * or haki type and everything else on the presence layer dims to near-
+ * invisible. Pure predicate — map orbs, HTML marker pools, and any future
+ * renderer all go through it, so they can never disagree about who matches.
+ */
+export type Focus =
+  | { kind: "crew"; slug: string }
+  | { kind: "fruit"; type: FruitType }
+  | { kind: "haki"; type: HakiType };
+
+export function matchesFocus(
+  focus: Focus,
+  e: PowerCarrier & { slug?: string },
+  ch: number,
+): boolean {
+  if (focus.kind === "crew") return e.crewSlug === focus.slug || e.slug === focus.slug;
+  if (focus.kind === "fruit") return revealedFruit(e, ch)?.type === focus.type;
+  // includes, not top-rank: "focus Armament" shows every revealed armament
+  // user even when Conqueror outranks it for their orb color
+  return revealedHaki(e, ch).some((h) => h.type === focus.type);
+}
+
+/**
  * One color per entity per lens per chapter — the single dispatch the map and
  * legend share. kind matters only to the crew lens (standalone Warlords render
  * in the neutral warlord ink there).

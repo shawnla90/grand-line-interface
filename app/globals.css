@@ -162,6 +162,16 @@ body {
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.9);
 }
 
+/* The isolate filter: presence marks that fail the focus fall to a whisper.
+   Style-only — the DOM content is untouched, so clearing the focus restores
+   the mark without a repopulate. pointer-events off: a dimmed mark should not
+   swallow hovers meant for the one the reader isolated. */
+.gliDim {
+  opacity: 0.07;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
 /* Route A — cartographic overlays. Both are decorative, offline, and never take
    pointer events. The vignette deepens the edges of the chart; the grain is a
    procedural SVG turbulence (inline data-URI, no external asset) that ages the

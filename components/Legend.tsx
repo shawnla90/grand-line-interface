@@ -31,8 +31,34 @@ import {
   UNREVEALED_COLOR,
   revealedFruit,
   revealedHaki,
+  type Focus,
   type PresenceLens,
 } from "@/lib/lenses";
+
+/** A legend chip that doubles as the isolate-filter toggle. */
+function FocusChip({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      title={active ? "Clear filter" : "Show only this on the map"}
+      className={[
+        "-mx-1 flex items-center gap-1.5 rounded-sm border px-1 py-px text-left transition-colors",
+        active ? "border-gold/70 bg-gold/10" : "border-transparent hover:border-rope-2",
+      ].join(" ")}
+    >
+      {children}
+    </button>
+  );
+}
 
 function Swatch({ kind }: { kind: "canon" | "derived" | "guess" | "fog" }) {
   const base = "block rounded-full";
@@ -84,13 +110,28 @@ export default function Legend({
   at,
   showOffCanon,
   lens,
+  focus = null,
+  onFocus,
 }: {
   world: World;
   at: WorldAt;
   showOffCanon: boolean;
   lens: PresenceLens;
+  /** The isolate filter — legend chips toggle it (click again to clear). */
+  focus?: Focus | null;
+  onFocus?: (f: Focus | null) => void;
 }) {
   const pc = world.counts.positionConfidence;
+  const toggle = (f: Focus) => {
+    if (!onFocus) return;
+    const same =
+      focus &&
+      focus.kind === f.kind &&
+      (focus.kind === "crew"
+        ? focus.slug === (f as { slug?: string }).slug
+        : (focus as { type?: string }).type === (f as { type?: string }).type);
+    onFocus(same ? null : f);
+  };
 
   // Who is on the water at the SHOWN chapter. Names render only for entities the
   // reader has met; the rest collapse into one anonymous count — the same
@@ -179,21 +220,31 @@ export default function Legend({
           ) : lens === "crew" ? (
             <ul className="mt-1.5 flex flex-wrap gap-x-2.5 gap-y-1">
               {activeCrews.map((c) => (
-                <li key={c.slug} className="flex items-center gap-1.5">
-                  <span
-                    className="block h-2 w-2 rounded-full"
-                    style={{ background: crewColor(c.slug) }}
-                  />
-                  <span className="text-[10px] text-muted">{c.name}</span>
+                <li key={c.slug}>
+                  <FocusChip
+                    active={focus?.kind === "crew" && focus.slug === c.slug}
+                    onClick={() => toggle({ kind: "crew", slug: c.slug })}
+                  >
+                    <span
+                      className="block h-2 w-2 rounded-full"
+                      style={{ background: crewColor(c.slug) }}
+                    />
+                    <span className="text-[10px] text-muted">{c.name}</span>
+                  </FocusChip>
                 </li>
               ))}
               {activeChars.map((c) => (
-                <li key={c.slug} className="flex items-center gap-1.5">
-                  <span
-                    className="block h-2 w-2 rounded-full border"
-                    style={{ borderColor: WARLORD_COLOR, background: "transparent" }}
-                  />
-                  <span className="text-[10px] text-muted">{c.name}</span>
+                <li key={c.slug}>
+                  <FocusChip
+                    active={focus?.kind === "crew" && focus.slug === c.slug}
+                    onClick={() => toggle({ kind: "crew", slug: c.slug })}
+                  >
+                    <span
+                      className="block h-2 w-2 rounded-full border"
+                      style={{ borderColor: WARLORD_COLOR, background: "transparent" }}
+                    />
+                    <span className="text-[10px] text-muted">{c.name}</span>
+                  </FocusChip>
                 </li>
               ))}
             </ul>
@@ -203,17 +254,22 @@ export default function Legend({
                   the legend never names a category the map is not showing. */}
               <ul className="mt-1.5 flex flex-wrap gap-x-2.5 gap-y-1">
                 {FRUIT_TYPE_ORDER.filter((t) => (fruitCounts.get(t) ?? 0) > 0).map((t) => (
-                  <li key={t} className="flex items-center gap-1.5">
-                    <span
-                      className="block h-2 w-2 rounded-full"
-                      style={{ background: FRUIT_TYPE_STYLE[t].color }}
-                    />
-                    <span className="text-[10px] text-muted">
-                      {FRUIT_TYPE_STYLE[t].label}{" "}
-                      <span className="tnum font-mono text-[9px] text-muted-2">
-                        {fruitCounts.get(t)}
+                  <li key={t}>
+                    <FocusChip
+                      active={focus?.kind === "fruit" && focus.type === t}
+                      onClick={() => toggle({ kind: "fruit", type: t })}
+                    >
+                      <span
+                        className="block h-2 w-2 rounded-full"
+                        style={{ background: FRUIT_TYPE_STYLE[t].color }}
+                      />
+                      <span className="text-[10px] text-muted">
+                        {FRUIT_TYPE_STYLE[t].label}{" "}
+                        <span className="tnum font-mono text-[9px] text-muted-2">
+                          {fruitCounts.get(t)}
+                        </span>
                       </span>
-                    </span>
+                    </FocusChip>
                   </li>
                 ))}
                 {noFruit > 0 && (
@@ -237,17 +293,22 @@ export default function Legend({
             <>
               <ul className="mt-1.5 flex flex-wrap gap-x-2.5 gap-y-1">
                 {HAKI_RANK.filter((t) => hakiCounts[t] > 0).map((t) => (
-                  <li key={t} className="flex items-center gap-1.5">
-                    <span
-                      className="block h-2 w-2 rounded-full"
-                      style={{ background: HAKI_STYLE[t].color }}
-                    />
-                    <span className="text-[10px] text-muted">
-                      {HAKI_STYLE[t].label}{" "}
-                      <span className="tnum font-mono text-[9px] text-muted-2">
-                        {hakiCounts[t]}
+                  <li key={t}>
+                    <FocusChip
+                      active={focus?.kind === "haki" && focus.type === t}
+                      onClick={() => toggle({ kind: "haki", type: t })}
+                    >
+                      <span
+                        className="block h-2 w-2 rounded-full"
+                        style={{ background: HAKI_STYLE[t].color }}
+                      />
+                      <span className="text-[10px] text-muted">
+                        {HAKI_STYLE[t].label}{" "}
+                        <span className="tnum font-mono text-[9px] text-muted-2">
+                          {hakiCounts[t]}
+                        </span>
                       </span>
-                    </span>
+                    </FocusChip>
                   </li>
                 ))}
                 {noHaki > 0 && (
@@ -268,6 +329,15 @@ export default function Legend({
                 Observation.
               </p>
             </>
+          )}
+          {focus && (
+            <button
+              type="button"
+              onClick={() => onFocus?.(null)}
+              className="mt-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-gold hover:text-gold-2"
+            >
+              ✕ clear filter — show everyone
+            </button>
           )}
           {beyond > 0 && (
             <p className="mt-1.5 text-[10px] leading-snug text-muted-2">

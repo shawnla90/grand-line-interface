@@ -32,12 +32,12 @@ import maplibregl, {
 } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 
-import type { World, WorldIsland } from "@/lib/canon";
+import type { World, WorldIsland, WorldFruitReveal, WorldHakiFact } from "@/lib/canon";
 import type { Art } from "@/lib/art";
 import { voyageGeometryAt, vesselAtChapter, presenceWindowAt } from "@/lib/canon";
 import { crewColor, WARLORD_COLOR } from "@/lib/crews";
-import { lensColor, revealedFruit, revealedHaki, HAKI_STYLE } from "@/lib/lenses";
-import type { Lens, PresenceLens } from "@/lib/lenses";
+import { lensColor, matchesFocus, revealedFruit, revealedHaki, HAKI_STYLE } from "@/lib/lenses";
+import type { Focus, Lens, PresenceLens } from "@/lib/lenses";
 import type { HakiType } from "@/lib/canon";
 import { jollyRogerSvg } from "./marks/jolly-roger";
 import CompassRose from "./marks/CompassRose";
@@ -79,6 +79,15 @@ type Props = {
    */
   follow?: boolean;
   onFollowBreak?: () => void;
+  /**
+   * The isolate filter: when set, presence marks that fail lib/lenses'
+   * matchesFocus dim to near-invisible. Geography, the voyage, and the ship
+   * never dim — the filter isolates presence, not the world.
+   */
+  focus?: Focus | null;
+  /** Camera target for non-island destinations (a search hit on a crew). The
+      key forces re-fly when the same anchor is picked twice. */
+  flyTarget?: { lng: number; lat: number; key: number } | null;
   /**
    * Admin placement mode (the /admin/place tool). When both are set, a map click
    * reports its lng/lat instead of selecting an island — that's how a human
@@ -501,7 +510,15 @@ function presenceLayout(world: World, ch: number): Map<string, PlacedPresence> {
  * the property does not exist. The source is rebuilt every frame, so a backward
  * scrub deletes revealed facts the same way it deletes entities.
  */
-function presenceOrbs(world: World, ch: number, layout: Map<string, PlacedPresence>, lens: Lens) {
+function presenceOrbs(
+  world: World, ch: number, layout: Map<string, PlacedPresence>, lens: Lens,
+  focus: Focus | null = null,
+) {
+  // dim: 0|1 stamped per feature — the isolate filter, resolved by the same
+  // matchesFocus predicate the HTML pools use. Rebuilt every frame like the
+  // rest of the source, so clearing the focus un-dims on the next paint.
+  const dimOf = (e: { slug?: string; crewSlug?: string | null; fruit: WorldFruitReveal | null; haki: WorldHakiFact[] }) =>
+    focus && !matchesFocus(focus, e, ch) ? 1 : 0;
   const features: GeoJSON.Feature[] = [];
   for (const crew of world.presence.crews) {
     const placed = layout.get(crew.slug);
@@ -522,6 +539,7 @@ function presenceOrbs(world: World, ch: number, layout: Map<string, PlacedPresen
           crewName: crew.name,
           vesselName: crew.vessel?.name ?? null,
           kind: "member",
+          dim: dimOf({ slug: m.slug, crewSlug: crew.slug, fruit: m.fruit, haki: m.haki }),
           color: lensColor(lens, { crewSlug: crew.slug, fruit: m.fruit, haki: m.haki, kind: "member" }, ch),
           confidence: m.confidence,
           verified: m.verified,
@@ -544,6 +562,7 @@ function presenceOrbs(world: World, ch: number, layout: Map<string, PlacedPresen
         crewName: placed.w.label,
         vesselName: crew.vessel?.name ?? null,
         kind: "crew",
+        dim: dimOf({ slug: crew.slug, crewSlug: crew.slug, fruit: null, haki: [] }),
         color: crewColor(crew.slug),
         confidence: placed.w.confidence,
         verified: placed.w.verified,
@@ -565,6 +584,7 @@ function presenceOrbs(world: World, ch: number, layout: Map<string, PlacedPresen
         crewName: c.affiliation,
         vesselName: null,
         kind: "warlord",
+        dim: dimOf({ slug: c.slug, crewSlug: c.crewSlug, fruit: c.fruit, haki: c.haki }),
         color: lensColor(lens, { crewSlug: c.crewSlug, fruit: c.fruit, haki: c.haki, kind: "warlord" }, ch),
         confidence: placed.w.confidence,
         verified: placed.w.verified,
@@ -624,6 +644,8 @@ export default function WorldMap({
   onSelect,
   follow = false,
   onFollowBreak,
+  focus = null,
+  flyTarget = null,
   placingSlug = null,
   onPlaceAt,
 }: Props) {
@@ -644,6 +666,7 @@ export default function WorldMap({
   useEffect(() => {
     lensRef.current = lens;
   }, [lens]);
+  const focusRef = useRef<Focus | null>(focus);
 
   // Placement mode is read by the click handler, which is registered once on
   // mount and so must read current values through a ref (same pattern as chapter).
@@ -971,10 +994,11 @@ export default function WorldMap({
               6, ["match", ["get", "kind"], "warlord", 6.4, 5.2],
             ],
             "circle-color": ["get", "color"],
-            "circle-opacity": 0.9,
+            // dim=1 is the isolate filter: non-matching orbs fall to a whisper
+            "circle-opacity": ["case", ["==", ["get", "dim"], 1], 0.05, 0.9],
             "circle-stroke-color": C.parchment,
             "circle-stroke-width": ["match", ["get", "kind"], "warlord", 1.2, 0.6],
-            "circle-stroke-opacity": byConfidence(0.85, 0.55, 0.3),
+            "circle-stroke-opacity": ["case", ["==", ["get", "dim"], 1], 0.05, byConfidence(0.85, 0.55, 0.3)],
           },
         },
         {
@@ -1207,6 +1231,7 @@ export default function WorldMap({
         chars: warlordMarks.current,
         members: memberMarks.current,
         lens: lensRef.current,
+        focus: focusRef.current,
       }, art);
     });
 
@@ -1239,6 +1264,7 @@ export default function WorldMap({
       chars: warlordMarks.current,
       members: memberMarks.current,
       lens: lensRef.current,
+      focus: focusRef.current,
     }, art);
     chase(); // one damped camera step per sweep frame; settles on its own after
   }, [chapter, world, art, chase]);
@@ -1256,6 +1282,7 @@ export default function WorldMap({
       chars: warlordMarks.current,
       members: memberMarks.current,
       lens: lensRef.current,
+      focus: focusRef.current,
     }, art);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [features]);
@@ -1303,9 +1330,37 @@ export default function WorldMap({
       chars: warlordMarks.current,
       members: memberMarks.current,
       lens,
+      focus: focusRef.current,
     }, art);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lens]);
+
+  /* ----------------------------------------------------------------- focus */
+  useEffect(() => {
+    focusRef.current = focus;
+    const m = map.current;
+    if (!m || !ready.current) return;
+    // Re-run the sweep so orbs re-stamp their dim flag and pools re-class now.
+    paint(m, chapterRef.current, world, ship.current, {
+      crews: crewFlags.current,
+      chars: warlordMarks.current,
+      members: memberMarks.current,
+      lens: lensRef.current,
+      focus,
+    }, art);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [focus]);
+
+  /* -------------------------------------------------------------- flyTarget */
+  useEffect(() => {
+    const m = map.current;
+    if (!m || !ready.current || !flyTarget) return;
+    m.easeTo({
+      center: [flyTarget.lng, flyTarget.lat],
+      zoom: Math.max(m.getZoom(), 3.2),
+      duration: 900,
+    });
+  }, [flyTarget]);
 
   /* --------------------------------------------------------------- selected */
   useEffect(() => {
@@ -1314,7 +1369,7 @@ export default function WorldMap({
     m.setFilter("islands-selected", ["==", ["get", "slug"], selected ?? " none"]);
     if (selected) {
       const i = bySlug.get(selected);
-      if (i) m.easeTo({ center: [i.lng, i.lat], duration: 900 });
+      if (i) m.easeTo({ center: [i.lng, i.lat], zoom: Math.max(m.getZoom(), 3.2), duration: 900 });
     }
   }, [selected, bySlug]);
 
@@ -1453,6 +1508,7 @@ type PresencePools = {
   chars: Map<string, PresenceHandle>;
   members: Map<string, PresenceHandle>;
   lens: PresenceLens;
+  focus: Focus | null;
 };
 
 /** Hide a pooled presence marker AND scrub its user-visible content out of the DOM. */
@@ -1565,6 +1621,12 @@ function paint(
         // Position is set every frame: the cluster fan moves a flag when a
         // NEIGHBOUR arrives or leaves, even though its own window is unchanged.
         h.marker.setLngLat([placed.lng, placed.lat]);
+        // Isolate filter: style-only class toggle, per-frame like setLngLat —
+        // deliberately NOT part of paintKey (no DOM content changes).
+        h.parts.el.classList.toggle(
+          "gliDim",
+          !!pools.focus && !matchesFocus(pools.focus, { slug: crew.slug, crewSlug: crew.slug, fruit: null, haki: [] }, ch),
+        );
         // The flag stays a crew landmark under every lens, so its key is the
         // window alone — lens flips never touch this DOM.
         if (h.shown && h.paintKey === String(placed.w.order)) continue; // DOM unchanged
@@ -1604,6 +1666,10 @@ function paint(
           }
           const a = (idx / Math.max(1, n)) * Math.PI * 2 - Math.PI / 2;
           mh.marker.setLngLat([placed.lng + Math.cos(a) * 2.1, placed.lat + Math.sin(a) * 1.5]);
+          mh.parts.el.classList.toggle(
+            "gliDim",
+            !!pools.focus && !matchesFocus(pools.focus, { slug: mem.slug, crewSlug: crew.slug, fruit: mem.fruit, haki: mem.haki }, ch),
+          );
           if (!mh.populated) {
             const portrait = art?.characters[mem.slug];
             if (!portrait) {
@@ -1630,6 +1696,10 @@ function paint(
           continue;
         }
         h.marker.setLngLat([placed.lng, placed.lat]);
+        h.parts.el.classList.toggle(
+          "gliDim",
+          !!pools.focus && !matchesFocus(pools.focus, { slug: c.slug, crewSlug: c.crewSlug, fruit: c.fruit, haki: c.haki }, ch),
+        );
         // The ring follows the lens: its key carries the color, so a mid-scrub
         // reveal recolors the ring the frame it happens. Content (portrait or
         // monogram) populates once; colors re-apply on every key change.
@@ -1658,7 +1728,7 @@ function paint(
         h.paintKey = key;
       }
       (m.getSource("presence") as GeoJSONSource | undefined)?.setData(
-        presenceOrbs(world, ch, layout, pools.lens),
+        presenceOrbs(world, ch, layout, pools.lens, pools.focus),
       );
     }
   }
