@@ -45,7 +45,8 @@ HEROES = {
     "skypiea": {"lng": -91.1, "lat": 17.1},
 }
 # every layer that draws island geometry; extend as terrain layers land
-GEO_LAYERS = ["island-shapes", "island-shapes-coast"]
+GEO_LAYERS = ["island-shapes", "island-shapes-coast",
+              "terrain-fill", "terrain-line", "terrain-glow"]
 ZOOM = 4.0
 PATCH = 44  # half-side of the sampled square, px
 

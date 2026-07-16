@@ -42,6 +42,12 @@ OUT_PATH = REPO_ROOT / "public" / "geo" / "islands.silhouettes.json"
 POINTS = 56          # vertices per blob — smooth at every zoom the map allows
 COORD_DECIMALS = 4   # ~11m; plenty for a stylized chart, keeps the file small
 
+# Hero islands carry deep terrain (gen_terrain.py) and survive the z8.5 dive,
+# so their coastlines get more vertices. Extra points draw NOTHING from the
+# rng stream — only hero features change when this set grows.
+HERO_SLUGS = {"punk-hazard", "arabasta-kingdom", "skypiea"}
+HERO_POINTS = 128
+
 
 # ---------------------------------------------------------------------------
 # Deterministic PRNG — sha256 counter stream, no Python random (seed stability
@@ -96,15 +102,20 @@ def profile_for(island: dict, biome: str) -> dict:
     return {"kind": "blob", "freqs": [(2, 0.13), (4, 0.10), (7, 0.07)], "spike": 0.03}
 
 
-def blob(rng: Rng, cx: float, cy: float, r_lng: float, r_lat: float, profile: dict) -> list[list[float]]:
-    """One closed radial-noise ring around (cx, cy)."""
+def radius_fn(rng: Rng, profile: dict):
+    """The radial factor f(theta) for one blob — the SAME draws blob() makes.
+
+    Exposed so gen_terrain.py can re-derive a hero island's exact coastline
+    from the same seed and clip terrain sub-shapes inside it with a cheap
+    radial test (the rings are star-convex around their center by
+    construction). Consumes len(freqs)+1 draws, exactly like blob() did.
+    """
     freqs = [(f, a) for f, a in profile["freqs"]]
     phases = [rng.range(0, 2 * math.pi) for _ in freqs]
     spike = profile.get("spike", 0.0)
     spike_at = rng.range(0, 2 * math.pi)
-    ring: list[list[float]] = []
-    for i in range(POINTS):
-        th = (i / POINTS) * 2 * math.pi
+
+    def f_of(th: float) -> float:
         f = 1.0
         for (freq, amp), ph in zip(freqs, phases):
             f += amp * math.sin(freq * th + ph)
@@ -112,7 +123,19 @@ def blob(rng: Rng, cx: float, cy: float, r_lng: float, r_lat: float, profile: di
             # one headland — a cape the eye can hang a bearing on
             d = math.cos(th - spike_at)
             f += spike * max(0.0, d) ** 3
-        f = max(0.35, f)
+        return max(0.35, f)
+
+    return f_of
+
+
+def blob(rng: Rng, cx: float, cy: float, r_lng: float, r_lat: float, profile: dict,
+         points: int = POINTS) -> list[list[float]]:
+    """One closed radial-noise ring around (cx, cy)."""
+    f_of = radius_fn(rng, profile)
+    ring: list[list[float]] = []
+    for i in range(points):
+        th = (i / points) * 2 * math.pi
+        f = f_of(th)
         ring.append([
             round(cx + math.cos(th) * r_lng * f, COORD_DECIMALS),
             round(cy + math.sin(th) * r_lat * f, COORD_DECIMALS),
@@ -136,7 +159,8 @@ def geometry_for(island: dict, biome: str, lng: float, lat: float, radius: float
             polys.append([blob(rng, lng + ox, lat + oy, r_lng * rs, r_lat * rs,
                                {"freqs": [(2, 0.14), (5, 0.10)], "spike": 0.0})])
         return {"type": "MultiPolygon", "coordinates": polys}
-    return {"type": "Polygon", "coordinates": [blob(rng, lng, lat, r_lng, r_lat, prof)]}
+    points = HERO_POINTS if island["slug"] in HERO_SLUGS else POINTS
+    return {"type": "Polygon", "coordinates": [blob(rng, lng, lat, r_lng, r_lat, prof, points)]}
 
 
 def main() -> int:

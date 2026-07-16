@@ -148,6 +148,31 @@ const BIOME_COAST: Record<string, string> = {
 const byBiome = (table: Record<string, string>, fallback: string): ExpressionSpecification =>
   ["match", ["get", "biome"], ...Object.entries(table).flat(), fallback] as unknown as ExpressionSpecification;
 
+// Landfall terrain inks (gen_terrain.py kinds). Fills only — the true line
+// kinds live in TERRAIN_LINE. Warm ember/frost/sand/cloud values sit inside
+// the same muted chart register as the biome fills they draw on top of.
+const TERRAIN_FILL: Record<string, string> = {
+  "fire-ground": "#4a2318",
+  "ice-ground": "#2e4358",
+  "boundary": "#241a16",
+  "volcano": "#5a3020",
+  "crater": "#1f130d",
+  "dune-a": "#362c1a",
+  "dune-b": "#514226",
+  "delta": "#2f4028",
+  "cloud-puff-a": "#454c58",
+  "cloud-puff-b": "#565e6b",
+  "cloud-puff-c": "#6a7280",
+};
+const TERRAIN_LINE: Record<string, string> = {
+  "crevasse": "#9fb4c8",
+  "river": "#3d6a8a",
+  "riverbank": "#2a2416",
+  "cloud-wisp": "#d5dce6",
+};
+const byKind = (table: Record<string, string>, fallback: string): ExpressionSpecification =>
+  ["match", ["get", "kind"], ...Object.entries(table).flat(), fallback] as unknown as ExpressionSpecification;
+
 /** How long an island keeps glowing after you first read about it, in chapters. */
 const CHART_FLARE = 40;
 /** Fogged islands are visible as a trace, never as an identity. */
@@ -787,6 +812,10 @@ export default function WorldMap({
         // 10B: original generated coastline polygons (public/geo/, MIT — ours).
         // Fetched as a static asset so 311KB of geometry stays out of the bundle.
         silhouettes: { type: "geojson", data: "/geo/islands.silhouettes.json" },
+        // Landfall: hero-island terrain (fire/ice, dunes, cloud terraces).
+        // Static like the silhouettes; features carry {slug, debut, kind, sort}
+        // and their pixels ride the same revealed(ch) gate in paint().
+        terrain: { type: "geojson", data: "/geo/islands.terrain.json" },
         // Presence orbs: rebuilt per frame from the swept chapter. Only REVEALED
         // entities are ever in this source — spoiler safety is structural here,
         // not an opacity trick.
@@ -846,6 +875,34 @@ export default function WorldMap({
         // Opacity is chapter-gated per frame by paint() — fog has no shoreline.
         { id: "island-shapes", type: "fill", source: "silhouettes",
           paint: { "fill-color": byBiome(BIOME_FILL, C.isle), "fill-opacity": 0 } },
+
+        // LANDFALL. Painted ground for the hero islands, between the landmass
+        // fill and its coast stroke so the ink outline always stays on top.
+        // All start at opacity 0; paint() runs the zoom-x-chapter crossfade.
+        { id: "terrain-fill", type: "fill", source: "terrain",
+          layout: { "fill-sort-key": ["get", "sort"] } as never,
+          paint: {
+            "fill-color": byKind(TERRAIN_FILL, C.isle),
+            "fill-opacity": 0,
+          } },
+        { id: "terrain-glow", type: "line", source: "terrain",
+          filter: ["==", ["get", "kind"], "fire-glow"],
+          paint: {
+            "line-color": "#ff7a45",
+            "line-width": 2.6,
+            "line-blur": 6,
+            "line-opacity": 0,
+          } },
+        { id: "terrain-line", type: "line", source: "terrain",
+          // line layers also outline polygons — restrict to the true lines
+          filter: ["in", ["get", "kind"], ["literal", ["crevasse", "river", "riverbank", "cloud-wisp"]]],
+          paint: {
+            "line-color": byKind(TERRAIN_LINE, C.isleCoast),
+            "line-width": ["match", ["get", "kind"],
+              "riverbank", 3.2, "river", 1.3, "cloud-wisp", 0.9, 0.8] as never,
+            "line-opacity": 0,
+          } },
+
         { id: "island-shapes-coast", type: "line", source: "silhouettes",
           paint: {
             "line-color": byBiome(BIOME_COAST, C.isleCoast),
@@ -1022,7 +1079,9 @@ export default function WorldMap({
         center: [-20, 6],
         zoom: 1.9,
         minZoom: 0.4,
-        maxZoom: 7,
+        // 8.5, not deeper: the hero islands' 128-pt rings stay smooth to here;
+        // regular 56-pt coastlines go visibly polygonal much past it.
+        maxZoom: 8.5,
         // NB: `padding` is a CAMERA option, not a MapOptions one — it is applied via
         // setPadding() on load, below.
         attributionControl: false,
@@ -1584,6 +1643,28 @@ function paint(
     1.6, 0,
     2.8, ["case", revealed(ch), 0.55, 0],
     5.5, ["case", revealed(ch), 0.85, 0],
+  ]);
+
+  // LANDFALL. Hero terrain crossfades in on the dive — invisible until the
+  // approach, solid at the deck. Chapter gates WHETHER, exactly like the
+  // coastline above: a fogged hero island never shows a single ember.
+  m.setPaintProperty("terrain-fill", "fill-opacity", [
+    "interpolate", ["linear"], ["zoom"],
+    3.6, 0,
+    4.8, ["case", revealed(ch), 0.55, 0],
+    6.8, ["case", revealed(ch), 0.9, 0],
+  ]);
+  m.setPaintProperty("terrain-line", "line-opacity", [
+    "interpolate", ["linear"], ["zoom"],
+    3.8, 0,
+    5.0, ["case", revealed(ch), 0.6, 0],
+    6.8, ["case", revealed(ch), 0.95, 0],
+  ]);
+  m.setPaintProperty("terrain-glow", "line-opacity", [
+    "interpolate", ["linear"], ["zoom"],
+    3.6, 0,
+    4.8, ["case", revealed(ch), 0.25, 0],
+    6.8, ["case", revealed(ch), 0.5, 0],
   ]);
 
   // The flare on a freshly charted island, decaying over the next ~40 chapters.
