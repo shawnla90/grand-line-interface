@@ -22,6 +22,25 @@ If you build something on top of this, open a PR or a discussion. Credit flows b
 
 ---
 
+## Contributing — help place the islands
+
+Island positions are **close, but not hand-verified**. Every island is auto-placed by a belt-model script (`derived`) and rendered as a hollow ring; a human-confirmed position becomes a solid pin (`canon`). I'm not going to hand-route all 400+ myself — the point is to make it **contributable**, so any brave soul who knows One Piece geography can help.
+
+There's a tool for exactly this:
+
+```bash
+npm run dev
+# then open http://localhost:3000/admin/place   (dev-only; never ships to production)
+```
+
+Pick an island (the list is sorted worst-confidence-first), click the chart where it belongs, and the position is written straight into `canon/islands.coords.json` — **a clean ~4-line diff you can open as a PR**. Keys: `n` next island, `1/2/3` confidence.
+
+**Even better than clicking:** if you know of an authoritative, license-clean **dataset** of One Piece island coordinates (Vivre Card data, a community-maintained map with a compatible license, etc.), open an issue — the goal is to drive accuracy from data so **nobody has to human-review anything**. The `/admin/place` tool is the fallback, not the aspiration.
+
+Same invitation applies to **crew flags, character placements, and lore layers** — see the roadmap.
+
+---
+
 ## Credits — the people this stands on
 
 This project would not exist without them, and they deserve the shout-out:
@@ -93,10 +112,16 @@ Both syncs are polite (sequential, ~1 req/sec, explicit User-Agent, retries) and
 
 ## Roadmap
 
-- **The Straw Hat journey** — a route line that draws itself as the chapter climbs, and the ship morphing from a small boat to the Going Merry to the Thousand Sunny at the right chapters.
-- **Original SVG crew marks + a data-encoding toggle** — view characters by crew (Jolly Roger), by devil fruit (type/subtype), or by haki. All original vectors; no licensed art.
-- **Verify the canon** — flip `verified: false → true` on crew joins, ships, and island positions, one at a time, against the manga.
-- **All crews on the map, chapter-gated** — where everyone is at the moment you're reading.
+**Shipped**
+- **The Straw Hat journey** — a route line that draws itself as the chapter climbs (ch 1 → the current arc), and the ship morphing barrel → small boat → Going Merry → Thousand Sunny at the right chapters.
+- **Original SVG Jolly Rogers** — drawn from primitives, no traced art; flying on the ship and in the crew roster.
+- **A cartographic chart** — the Grand Line as a sea-lane between menacing Calm Belts, the Red Line as a continent, ocean depth + vellum grain, a compass rose, on both globe and flat.
+- **`/admin/place`** — the dev-only coordinate tool (see Contributing).
+
+**Next — make it lively**
+- **Crews & characters on the map, chapter-gated** — the big one. The named crews (Kid, Law/Heart, Red-Hair, the Yonko/Emperors, the Warlords, …) marked with their Jolly Rogers and character orbs, each appearing at its location *as of the chapter you're on* — so you can see who is where at any moment in the story.
+- **The By Crew / By Devil Fruit / By Haki lens** — recolor the world by what a character is.
+- **Verify the canon** — flip `verified: false → true` on crew joins, ships, and island positions.
 - **Iceberg lore & theory layers** — see "Fork it" above.
 
 ---

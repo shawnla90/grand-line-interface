@@ -102,6 +102,14 @@ export default function PlaceEditor({ world: initial }: { world: World }) {
           <div className="mt-1 text-[12px] text-muted">
             {done}/{ordered.length} confirmed · dev-only, writes canon/
           </div>
+          {/* This tool is open. The maintainer is not hand-routing every island —
+              it exists so the community can. */}
+          <div className="mt-2 rounded border border-rope/50 bg-rope/10 px-2.5 py-2 text-[11px] leading-relaxed text-muted">
+            <span className="text-parchment">Contributions welcome.</span> The positions are close,
+            not hand-verified. If you know where an island belongs, place it — each pin is a clean
+            one-line diff you can open as a PR. See <span className="font-mono text-gold">README →
+            Contributing</span>.
+          </div>
           <div className="mt-2 min-h-[16px] font-mono text-[10px] text-muted-2">{note}</div>
           <div className="mt-2 flex gap-1">
             {(["guess", "derived", "canon"] as Confidence[]).map((c, i) => (
