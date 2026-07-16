@@ -338,6 +338,35 @@ function makeWarlordElement(): {
 }
 
 /**
+ * Build (once, per crew member) a small portrait ring. Like the Warlord ring but
+ * smaller and label-less — the flag above carries the crew name, and hovering the
+ * orb underneath names the member. The empty `label` div only keeps hidePresence
+ * uniform across every pooled marker. Portrait + border are set on populate.
+ */
+function makeMemberElement(): { el: HTMLDivElement; ring: HTMLDivElement; label: HTMLDivElement } {
+  const el = document.createElement("div");
+  el.className = "memberMarker";
+  el.style.display = "none";
+  el.style.pointerEvents = "none";
+  el.style.textAlign = "center";
+
+  const ring = document.createElement("div");
+  ring.style.width = "15px";
+  ring.style.height = "15px";
+  ring.style.margin = "0 auto";
+  ring.style.borderRadius = "9999px";
+  ring.style.overflow = "hidden";
+  ring.style.background = "rgba(7,19,36,0.72)";
+  ring.style.filter = "drop-shadow(0 0 2px rgba(0,0,0,0.6))";
+
+  const label = document.createElement("div"); // unused; keeps hidePresence uniform
+
+  el.appendChild(ring);
+  el.appendChild(label);
+  return { el, ring, label };
+}
+
+/**
  * A pooled presence marker. `windowOrder` is the diff key: paint() only touches
  * the DOM when the active window (or visibility) actually changes, so the
  * per-frame cost of the sweep stays allocation-free.
@@ -520,6 +549,9 @@ export default function WorldMap({
   // once on load and diffed per frame by paint(). NEVER created per frame.
   const crewFlags = useRef<Map<string, PresenceHandle>>(new Map());
   const warlordMarks = useRef<Map<string, PresenceHandle>>(new Map());
+  // One portrait ring per named crew member (Phase 6). Keyed by member slug
+  // (unique across crews). Positions track the member-orb ring around the flag.
+  const memberMarks = useRef<Map<string, PresenceHandle>>(new Map());
   // paint() runs on the chapter tween; it reads the live toggle through this ref.
   const showCrewsRef = useRef(showCrews);
   useEffect(() => {
@@ -867,6 +899,7 @@ export default function WorldMap({
     // contains no future crew's name, even after a scrub to 1125 and back.
     const crewPool = crewFlags.current;
     const warlordPool = warlordMarks.current;
+    const memberPool = memberMarks.current;
     for (const crew of world.presence.crews) {
       const p = makeCrewFlagElement();
       const marker = new maplibregl.Marker({ element: p.el, opacityWhenCovered: "0.2" })
@@ -892,6 +925,23 @@ export default function WorldMap({
         windowOrder: null,
         populated: false,
       });
+    }
+    // One portrait ring per named crew member, built once, hidden and EMPTY. paint()
+    // positions and populates them around each active flag; hidePresence clears them.
+    for (const crew of world.presence.crews) {
+      for (const mem of crew.members) {
+        const p = makeMemberElement();
+        const marker = new maplibregl.Marker({ element: p.el, opacityWhenCovered: "0.2" })
+          .setLngLat([0, 0])
+          .addTo(m);
+        memberPool.set(mem.slug, {
+          marker,
+          parts: { el: p.el, ring: p.ring, label: p.label },
+          shown: false,
+          windowOrder: null,
+          populated: false,
+        });
+      }
     }
 
     const onMove = (e: MapMouseEvent) => {
@@ -975,6 +1025,7 @@ export default function WorldMap({
       paint(m, chapterRef.current, world, ship.current, {
         crews: crewFlags.current,
         chars: warlordMarks.current,
+        members: memberMarks.current,
         show: showCrewsRef.current,
       }, art);
     });
@@ -988,6 +1039,7 @@ export default function WorldMap({
       ship.current = null;
       crewPool.clear();
       warlordPool.clear();
+      memberPool.clear();
       m.remove();
       map.current = null;
     };
@@ -1003,6 +1055,7 @@ export default function WorldMap({
     paint(m, chapter, world, ship.current, {
       crews: crewFlags.current,
       chars: warlordMarks.current,
+      members: memberMarks.current,
       show: showCrewsRef.current,
     }, art);
   }, [chapter, world, art]);
@@ -1018,6 +1071,7 @@ export default function WorldMap({
     paint(m, chapter, world, ship.current, {
       crews: crewFlags.current,
       chars: warlordMarks.current,
+      members: memberMarks.current,
       show: showCrewsRef.current,
     }, art);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -1063,6 +1117,7 @@ export default function WorldMap({
     paint(m, chapterRef.current, world, ship.current, {
       crews: crewFlags.current,
       chars: warlordMarks.current,
+      members: memberMarks.current,
       show: showCrews,
     }, art);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -1196,6 +1251,7 @@ export default function WorldMap({
 type PresencePools = {
   crews: Map<string, PresenceHandle>;
   chars: Map<string, PresenceHandle>;
+  members: Map<string, PresenceHandle>;
   show: boolean;
 };
 
@@ -1275,6 +1331,7 @@ function paint(
     if (!pools.show) {
       for (const h of pools.crews.values()) hidePresence(h);
       for (const h of pools.chars.values()) hidePresence(h);
+      for (const h of pools.members.values()) hidePresence(h);
       (m.getSource("presence") as GeoJSONSource | undefined)?.setData({
         type: "FeatureCollection",
         features: [],
@@ -1311,6 +1368,40 @@ function paint(
         h.parts.el.style.display = "";
         h.shown = true;
         h.windowOrder = placed.w.order;
+      }
+      // Member portrait rings (Phase 6). They sit in the same ring as the member
+      // orbs and are RE-POSITIONED EVERY FRAME: a new arrival changes n, which
+      // changes every sibling's angle — so this can't ride the flag's DOM skip.
+      for (const crew of world.presence.crews) {
+        const placed = layout.get(crew.slug);
+        const revealed = placed ? crew.members.filter((mm) => mm.fromChapter <= ch) : [];
+        const n = revealed.length;
+        for (const mem of crew.members) {
+          const mh = pools.members.get(mem.slug);
+          if (!mh) continue;
+          const idx = revealed.findIndex((r) => r.slug === mem.slug);
+          if (!placed || idx === -1) {
+            hidePresence(mh); // crew off the board, or member not yet joined
+            continue;
+          }
+          const a = (idx / Math.max(1, n)) * Math.PI * 2 - Math.PI / 2;
+          mh.marker.setLngLat([placed.lng + Math.cos(a) * 2.1, placed.lat + Math.sin(a) * 1.5]);
+          if (!mh.populated) {
+            const portrait = art?.characters[mem.slug];
+            if (!portrait) {
+              hidePresence(mh); // no art — the GeoJSON orb dot underneath carries it
+              continue;
+            }
+            mh.parts.ring.innerHTML =
+              `<img src="${portrait}" alt="" draggable="false" ` +
+              `style="display:block;width:100%;height:100%;object-fit:cover;border-radius:9999px;">`;
+            mh.parts.ring.style.border = `1.4px solid ${crewColor(crew.slug)}`;
+            mh.populated = true;
+          }
+          mh.parts.el.style.display = "";
+          mh.shown = true;
+          mh.windowOrder = placed.w.order;
+        }
       }
       for (const c of world.presence.characters) {
         const h = pools.chars.get(c.slug);

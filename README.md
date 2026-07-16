@@ -118,10 +118,9 @@ Both syncs are polite (sequential, ~1 req/sec, explicit User-Agent, retries) and
 - **Original SVG marks** — hand-drawn Jolly Rogers and ship glyphs from primitives, no traced art; the fallback layer whenever no real art exists (the barrel, the nameless first boat) or a takedown ever lands.
 - **A cartographic chart** — the Grand Line as a sea-lane between menacing Calm Belts, the Red Line as a continent, ocean depth + vellum grain, a compass rose, on both globe and flat.
 - **`/admin/place`** — the dev-only coordinate tool (see Contributing).
-- **Crews & characters on the map, chapter-gated** — 10 crews (the Yonko, Kid, Law/Heart, Kuja, Donquixote, Buggy) fly their Jolly Rogers at authored *presence windows*, so they **move**: Whitebeard sails the New World, appears at Marineford for the war, and is gone after it. 8 Warlords as portrait rings, member orbs in each crew's ink, a "who sails here" toggle, and live crew chips in the legend. All windows hand-authored in `canon/crew_presence.json`, `verified:false` until manga-checked — same honesty as every pin.
+- **Crews & characters on the map, chapter-gated** — 10 crews (the Yonko, Kid, Law/Heart, Kuja, Donquixote, Buggy) fly their Jolly Rogers at authored *presence windows*, so they **move**: Whitebeard sails the New World, appears at Marineford for the war, and is gone after it. 8 Warlords and ~14 named crew members ride as portrait rings over ink orbs, a "who sails here" toggle, and live crew chips in the legend. All windows hand-authored in `canon/crew_presence.json`, `verified:false` until manga-checked — same honesty as every pin.
 
 **Next**
-- **Member orbs → portraits** — the ~14 named crew members still render as ink dots; give them the same portrait chips the Warlords now carry.
 - **The By Crew / By Devil Fruit / By Haki lens** — recolor the world by what a character is.
 - **Expand the roster** — the rest of the Worst Generation (Hawkins, Drake, Bonney, Capone, Urouge, Apoo), Sun Pirates, Baroque Works. The schema is done; it's authoring + one Jolly Roger each. `scripts/seed_presence.py` prints a scaffold.
 - **Verify the canon** — flip `verified: false → true` on crew joins, ships, presence windows, and island positions.
