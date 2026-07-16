@@ -81,7 +81,9 @@
       "harness": "Claude Code · 1M context",
       "role": "plan + build",
       "commits": [
-        "5bbdf47"
+        "5bbdf47",
+        "0c8804a",
+        "ee70b5d"
       ],
       "verified": true
     }
