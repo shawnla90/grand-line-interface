@@ -274,6 +274,7 @@ def main() -> int:
     coords_doc = load(CANON_DIR / "islands.coords.json")
     voyage_doc = load(CANON_DIR / "voyage_legs.json")
     vessels_doc = load(CANON_DIR / "vessels.json")
+    presence_doc = load(CANON_DIR / "crew_presence.json")
 
     status_map = ov["character_status"]
     crew_status_map = ov["crew_status"]
@@ -632,6 +633,128 @@ def main() -> int:
             "The UI must render them as unverified."
         )
 
+    # ------------------------------------------------------------- presence
+    # Who is WHERE as of a chapter. Authored windows: the active one at chapter
+    # N is the last whose from_chapter <= N, unless its to_chapter has passed
+    # (a death, an arrest, a departure). No upstream source has this axis at
+    # all — the API stores one current-day value per entity — so every row is
+    # hand-typed, and a from_chapter of 0 (the seed scaffold's sentinel) is
+    # rejected here so a scaffold row can never reach the artifact.
+    def build_windows(windows, owner_slug):
+        out = []
+        last_from = None
+        for w in sorted(windows, key=lambda r: r["order"]):
+            src = (w.get("source_ref") or "")
+            if not src.lower().lstrip().startswith("hand-authored"):
+                raise die(f"presence window for {owner_slug!r} source_ref must declare itself "
+                          "'Hand-authored'. Presence is authored, not scraped.", w)
+            fr = w["from_chapter"]
+            if not isinstance(fr, int) or fr < 1:
+                raise die(f"presence window for {owner_slug!r} has from_chapter {fr!r}. It must be "
+                          ">= 1 — a 0 is the seed scaffold's sentinel and means a human never "
+                          "typed the real chapter.", w)
+            to = w.get("to_chapter")
+            if to is not None and (not isinstance(to, int) or to < fr):
+                raise die(f"presence window for {owner_slug!r} has to_chapter {to!r} < "
+                          f"from_chapter {fr}. A window cannot end before it starts.", w)
+            if last_from is not None and fr < last_from:
+                raise die(f"presence windows for {owner_slug!r} must be non-decreasing in "
+                          f"from_chapter (order {w['order']}: {fr} < previous {last_from}).", w)
+            last_from = fr
+            slug = w.get("island_slug")
+            if w.get("lng") is not None and w.get("lat") is not None:
+                lng, lat = float(w["lng"]), float(w["lat"])
+            elif slug is not None:
+                pos = coords.get(slug)
+                if pos is None or pos.get("lng") is None or pos.get("lat") is None:
+                    raise die(f"presence window for {owner_slug!r} island_slug {slug!r} resolves "
+                              "to no coordinate in canon/islands.coords.json. Fix the slug or "
+                              "give the window an explicit lng/lat.", w)
+                lng, lat = pos["lng"], pos["lat"]
+            else:
+                raise die(f"presence window for {owner_slug!r} has neither an island_slug nor an "
+                          "explicit lng/lat.", w)
+            out.append({
+                "order": w["order"],
+                "island_slug": slug,
+                "label": w["label"],
+                "from_chapter": fr,
+                "to_chapter": to,
+                "lng": lng,
+                "lat": lat,
+                "source_ref": src,
+                "canon_confidence": w["canon_confidence"],
+                "verified": bool(w["verified"]),
+            })
+        if not out:
+            raise die(f"presence entity {owner_slug!r} has no windows — it can never render.")
+        return out
+
+    def build_members(members, owner_slug):
+        out = []
+        for m in members:
+            src = (m.get("source_ref") or "")
+            if not src.lower().lstrip().startswith("hand-authored"):
+                raise die(f"presence member for {owner_slug!r} source_ref must declare itself "
+                          "'Hand-authored'.", m)
+            fr = m["from_chapter"]
+            if not isinstance(fr, int) or fr < 1:
+                raise die(f"presence member {m.get('slug')!r} has from_chapter {fr!r} (< 1).", m)
+            out.append({
+                "slug": m["slug"],
+                "name": m["name"],
+                "from_chapter": fr,
+                "source_ref": src,
+                "canon_confidence": m["canon_confidence"],
+                "verified": bool(m["verified"]),
+            })
+        return out
+
+    presence_crews = []
+    seen_presence_slugs: set[str] = set()
+    for pc in presence_doc["crews"]:
+        slug = pc["slug"]
+        if "roger" in slug:
+            raise die("the Roger Pirates disbanded before chapter 1 — a defunct crew has no "
+                      "presence. Remove them.", pc)
+        if slug in seen_presence_slugs:
+            raise die(f"duplicate presence slug {slug!r}", pc)
+        seen_presence_slugs.add(slug)
+        presence_crews.append({
+            "slug": slug,
+            "name": pc["name"],
+            "crew_id": pc.get("crew_id"),
+            "vessel": pc.get("vessel"),
+            "members": build_members(pc.get("members", []), slug),
+            "windows": build_windows(pc["windows"], slug),
+        })
+
+    presence_characters = []
+    for ch_p in presence_doc["characters"]:
+        slug = ch_p["slug"]
+        if slug in seen_presence_slugs:
+            raise die(f"duplicate presence slug {slug!r}", ch_p)
+        seen_presence_slugs.add(slug)
+        crew_slug = ch_p.get("crew_slug")
+        if crew_slug is not None and crew_slug not in {c["slug"] for c in presence_crews}:
+            raise die(f"presence character {slug!r} references crew_slug {crew_slug!r} that is "
+                      "not a presence crew.", ch_p)
+        presence_characters.append({
+            "slug": slug,
+            "name": ch_p["name"],
+            "affiliation": ch_p["affiliation"],
+            "crew_slug": crew_slug,
+            "windows": build_windows(ch_p["windows"], slug),
+        })
+
+    presence = {"crews": presence_crews, "characters": presence_characters}
+    presence_windows = [w for e in presence_crews + presence_characters for w in e["windows"]]
+    if any(not w["verified"] for w in presence_windows):
+        warnings.append(
+            "crew_presence contains UNVERIFIED windows. Who-is-where chapter stamps are not "
+            "manga-confirmed. The UI must render presence as unverified."
+        )
+
     # ------------------------------------------------------------------ out
     payload = {
         "meta": {
@@ -662,6 +785,10 @@ def main() -> int:
                 "voyage_waypoints_verified": sum(1 for w in voyage_waypoints if w["verified"]),
                 "vessels": len(vessels),
                 "vessels_verified": sum(1 for v in vessels if v["verified"]),
+                "presence_crews": len(presence_crews),
+                "presence_characters": len(presence_characters),
+                "presence_windows": len(presence_windows),
+                "presence_windows_verified": sum(1 for w in presence_windows if w["verified"]),
             },
         },
         "sagas": sagas,
@@ -674,6 +801,7 @@ def main() -> int:
         "crew_joins": crew_joins,
         "voyage": voyage,
         "vessels": vessels,
+        "presence": presence,
     }
 
     hits = scan_mojibake(payload)

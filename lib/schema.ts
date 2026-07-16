@@ -243,6 +243,69 @@ export const Vessel = z.object({
 });
 export type Vessel = z.infer<typeof Vessel>;
 
+/**
+ * A window of presence: WHERE an entity (a crew, a Warlord) is, FROM a chapter,
+ * optionally UNTIL one. Hand-typed in canon/crew_presence.json — no upstream
+ * source has a location-by-chapter axis at all. The active window at chapter N
+ * is the last whose from_chapter <= N, unless its to_chapter has passed (a
+ * death, an arrest, a departure) — then the entity is off the map. The
+ * normalizer resolves each window's position (island slug or explicit lng/lat)
+ * and writes lng/lat here, so the app never re-resolves. canon_confidence rates
+ * the POSITION claim, exactly like an island pin.
+ */
+export const PresenceWindow = z.object({
+  order: z.number().int(),
+  /** The island this window anchors to, when it is one. null for open-sea points. */
+  island_slug: z.string().nullable(),
+  label: z.string(),
+  from_chapter: z.number().int().positive(),
+  to_chapter: z.number().int().positive().nullable(),
+  lng: z.number(),
+  lat: z.number(),
+  source_ref: z.string().min(1),
+  canon_confidence: CanonConfidence,
+  verified: z.boolean(),
+});
+export type PresenceWindow = z.infer<typeof PresenceWindow>;
+
+/** A named member rendered as an orb once from_chapter is reached (while the crew is on the map). */
+export const PresenceMember = z.object({
+  slug: z.string(),
+  name: z.string(),
+  from_chapter: z.number().int().positive(),
+  source_ref: z.string().min(1),
+  canon_confidence: CanonConfidence,
+  verified: z.boolean(),
+});
+export type PresenceMember = z.infer<typeof PresenceMember>;
+
+export const CrewPresence = z.object({
+  slug: z.string(),
+  name: z.string(),
+  /** Link back to crews[] for traceability. null when upstream has no row (Buggy, Donquixote). */
+  crew_id: z.number().int().nullable(),
+  vessel: z.object({ name: z.string(), slug: z.string() }).nullable(),
+  members: z.array(PresenceMember),
+  windows: z.array(PresenceWindow),
+});
+export type CrewPresence = z.infer<typeof CrewPresence>;
+
+/** A standalone chapter-gated character (the Warlords). */
+export const CharacterPresence = z.object({
+  slug: z.string(),
+  name: z.string(),
+  affiliation: z.string(),
+  crew_slug: z.string().nullable(),
+  windows: z.array(PresenceWindow),
+});
+export type CharacterPresence = z.infer<typeof CharacterPresence>;
+
+export const Presence = z.object({
+  crews: z.array(CrewPresence),
+  characters: z.array(CharacterPresence),
+});
+export type Presence = z.infer<typeof Presence>;
+
 export const CanonMeta = z.object({
   generated_at: z.string(),
   generator: z.string(),
@@ -269,6 +332,7 @@ export const Canon = z.object({
   crew_joins: z.array(CrewJoin),
   voyage: Voyage,
   vessels: z.array(Vessel),
+  presence: Presence,
 });
 export type Canon = z.infer<typeof Canon>;
 

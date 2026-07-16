@@ -1,0 +1,886 @@
+{
+  "_warning": "HAND-AUTHORED. A sync script that overwrites this file is a bug. verified:false means Shawn has not confirmed the chapter stamps against the manga yet.",
+  "_why_this_file_exists": "No upstream source records WHERE a crew or character is AS OF a chapter. The API gives rosters and bounties as single current-day values; it has no location and no time axis. Presence is therefore authored: each entity carries an ordered list of windows, and the active window at a chapter is the LAST one whose from_chapter <= the reader's chapter — unless that window has a non-null to_chapter the reader has passed, in which case the entity is off the map (a death, an arrest, a disbandment, a departure). Same shape as vessels.json's last-before-chapter gate, plus an ending.",
+  "_coord_resolution": "Each window resolves its position from canon/islands.coords.json by island_slug, OR carries an explicit lng/lat (used for open-sea anchorages, Thriller Bark — a ship, not an island — and Mary Geoise). scripts/normalize.py FAILS LOUD on a slug that resolves to no coordinate.",
+  "_confidence_semantics": "canon_confidence on a window rates the POSITION claim, exactly like an island pin: canon = the story puts them there in those chapters; derived = a home-base/affiliation inference; guess = a representative open-sea anchorage, honest set dressing.",
+  "_excluded_on_purpose": "Roger Pirates — disbanded before chapter 1. A defunct crew has no presence. check_canon.py asserts they never appear here.",
+  "_before_any_content_ships": "Shawn must confirm every window and member chapter below against the manga and flip verified to true. Until then the UI renders presence as unverified.",
+  "crews": [
+    {
+      "slug": "red-hair-pirates",
+      "name": "Red-Hair Pirates",
+      "crew_id": 2,
+      "vessel": {
+        "name": "Red Force",
+        "slug": "red-force"
+      },
+      "members": [
+        {
+          "slug": "shanks",
+          "name": "Shanks",
+          "from_chapter": 1,
+          "source_ref": "Hand-authored. Shanks is in Foosha Village in Chapter 1 — the straw hat changes hands. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "foosha-village",
+          "lng": null,
+          "lat": null,
+          "label": "Foosha Village — the straw hat is given",
+          "from_chapter": 1,
+          "to_chapter": 1,
+          "source_ref": "Hand-authored. Chapter 1: Shanks' crew is anchored at Foosha Village, East Blue. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": null,
+          "lng": 100.0,
+          "lat": 11.0,
+          "label": "New World — aboard the Red Force",
+          "from_chapter": 234,
+          "to_chapter": 579,
+          "source_ref": "Hand-authored. Shanks resurfaces in the New World around ch. 234 (meeting with Whitebeard follows). Position is a REPRESENTATIVE open-sea anchorage, not a canon coordinate. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "guess",
+          "verified": false
+        },
+        {
+          "order": 3,
+          "island_slug": "marineford",
+          "lng": null,
+          "lat": null,
+          "label": "Marineford — the war is ended",
+          "from_chapter": 580,
+          "to_chapter": 580,
+          "source_ref": "Hand-authored. Shanks arrives at Marineford and ends the Summit War, ~ch. 580. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 4,
+          "island_slug": null,
+          "lng": 140.0,
+          "lat": 12.0,
+          "label": "New World — keeping the balance",
+          "from_chapter": 590,
+          "to_chapter": 1075,
+          "source_ref": "Hand-authored. The crew holds its territories in the New World through the timeskip era. Position is a REPRESENTATIVE open-sea anchorage. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "guess",
+          "verified": false
+        },
+        {
+          "order": 5,
+          "island_slug": "elbaph",
+          "lng": null,
+          "lat": null,
+          "label": "Elbaf waters",
+          "from_chapter": 1076,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Shanks operates in Elbaf waters from ~ch. 1076 (the Kid Pirates learn this the hard way). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "whitebeard-pirates",
+      "name": "Whitebeard Pirates",
+      "crew_id": 16,
+      "vessel": {
+        "name": "Moby Dick",
+        "slug": "moby-dick"
+      },
+      "members": [
+        {
+          "slug": "portgas-d-ace",
+          "name": "Portgas D. Ace",
+          "from_chapter": 154,
+          "source_ref": "Hand-authored. Ace appears in Alabasta ~ch. 154, already wearing the Whitebeard mark. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "slug": "edward-newgate",
+          "name": "Edward Newgate",
+          "from_chapter": 234,
+          "source_ref": "Hand-authored. Whitebeard himself first appears ~ch. 234. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "slug": "marco",
+          "name": "Marco",
+          "from_chapter": 234,
+          "source_ref": "Hand-authored. Marco appears at Whitebeard's side ~ch. 234. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": null,
+          "lng": 128.0,
+          "lat": 9.0,
+          "label": "New World — aboard the Moby Dick",
+          "from_chapter": 234,
+          "to_chapter": 549,
+          "source_ref": "Hand-authored. Whitebeard first appears ~ch. 234, ruling his New World territories from the Moby Dick. Position is a REPRESENTATIVE open-sea anchorage, not a canon coordinate. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "guess",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "marineford",
+          "lng": null,
+          "lat": null,
+          "label": "Marineford — the Summit War",
+          "from_chapter": 550,
+          "to_chapter": 580,
+          "source_ref": "Hand-authored. The Summit War of Marineford, ~ch. 550-580. The crew does not outlive the war as a map presence — Whitebeard falls at ~ch. 576 and the remnants scatter. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "big-mom-pirates",
+      "name": "Big Mom Pirates",
+      "crew_id": 53,
+      "vessel": {
+        "name": "Queen Mama Chanter",
+        "slug": "queen-mama-chanter"
+      },
+      "members": [
+        {
+          "slug": "charlotte-linlin",
+          "name": "Charlotte Linlin",
+          "from_chapter": 651,
+          "source_ref": "Hand-authored. Big Mom makes herself known (voice first) ~ch. 651, Fish-Man Island. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "slug": "charlotte-katakuri",
+          "name": "Charlotte Katakuri",
+          "from_chapter": 860,
+          "source_ref": "Hand-authored. Katakuri appears at the Whole Cake Island tea party, ~ch. 860. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "whole-cake-island",
+          "lng": null,
+          "lat": null,
+          "label": "Totto Land — Whole Cake Island",
+          "from_chapter": 651,
+          "to_chapter": 975,
+          "source_ref": "Hand-authored. Big Mom's presence enters the story ~ch. 651; her seat is Whole Cake Island in Totto Land. Home-base placement from her first mention, so the flag flies before the island itself is charted. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "onigashima",
+          "lng": null,
+          "lat": null,
+          "label": "Wano — the raid on Onigashima",
+          "from_chapter": 976,
+          "to_chapter": 1040,
+          "source_ref": "Hand-authored. Big Mom reaches Wano for the Onigashima raid ~ch. 976 and falls ~ch. 1040. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "beasts-pirates",
+      "name": "Beasts Pirates",
+      "crew_id": 44,
+      "vessel": null,
+      "members": [
+        {
+          "slug": "kaido",
+          "name": "Kaido",
+          "from_chapter": 795,
+          "source_ref": "Hand-authored. Kaido appears ~ch. 795 (falling out of the sky onto Kuri). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "slug": "king",
+          "name": "King",
+          "from_chapter": 925,
+          "source_ref": "Hand-authored. King appears ~ch. 925. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "onigashima",
+          "lng": null,
+          "lat": null,
+          "label": "Onigashima — Kaido's fortress",
+          "from_chapter": 795,
+          "to_chapter": 1049,
+          "source_ref": "Hand-authored. Kaido rules Wano from Onigashima from his first appearance ~ch. 795 until his defeat ~ch. 1049. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "blackbeard-pirates",
+      "name": "Blackbeard Pirates",
+      "crew_id": 22,
+      "vessel": {
+        "name": "Saber of Xebec",
+        "slug": "saber-of-xebec"
+      },
+      "members": [
+        {
+          "slug": "marshall-d-teach",
+          "name": "Marshall D. Teach",
+          "from_chapter": 223,
+          "source_ref": "Hand-authored. Teach is met in Mock Town, Jaya, ~ch. 223 — before anyone knows what he is. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "jaya",
+          "lng": null,
+          "lat": null,
+          "label": "Mock Town, Jaya",
+          "from_chapter": 223,
+          "to_chapter": 236,
+          "source_ref": "Hand-authored. The crew is in Mock Town, Jaya, ~ch. 223-236 (the cherry-pie encounter). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "marineford",
+          "lng": null,
+          "lat": null,
+          "label": "Marineford — the coup de grâce",
+          "from_chapter": 576,
+          "to_chapter": 580,
+          "source_ref": "Hand-authored. The Blackbeard Pirates crash the Summit War ~ch. 576-580 and leave with more than they came with. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 3,
+          "island_slug": "hachinosu",
+          "lng": null,
+          "lat": null,
+          "label": "Hachinosu — the pirate island",
+          "from_chapter": 925,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Post-timeskip the crew rules from Hachinosu, shown on-page from ~ch. 925. Home-base placement. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "kid-pirates",
+      "name": "Kid Pirates",
+      "crew_id": 33,
+      "vessel": {
+        "name": "Victoria Punk",
+        "slug": "victoria-punk"
+      },
+      "members": [
+        {
+          "slug": "eustass-kid",
+          "name": "Eustass Kid",
+          "from_chapter": 498,
+          "source_ref": "Hand-authored. Kid appears among the Eleven Supernovas at Sabaody, ~ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "slug": "killer",
+          "name": "Killer",
+          "from_chapter": 498,
+          "source_ref": "Hand-authored. Killer appears at Kid's side at Sabaody, ~ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "sabaody-archipelago",
+          "lng": null,
+          "lat": null,
+          "label": "Sabaody — the Eleven Supernovas",
+          "from_chapter": 498,
+          "to_chapter": 513,
+          "source_ref": "Hand-authored. The Kid Pirates are on Sabaody during the Supernova gathering, ~ch. 498-513. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "wano-country",
+          "lng": null,
+          "lat": null,
+          "label": "Wano — prisoner, then raider",
+          "from_chapter": 924,
+          "to_chapter": 1056,
+          "source_ref": "Hand-authored. Kid is found imprisoned in Wano ~ch. 924 and fights through the Onigashima raid; the crew departs ~ch. 1056. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 3,
+          "island_slug": "elbaph",
+          "lng": null,
+          "lat": null,
+          "label": "Elbaf waters — the last gamble",
+          "from_chapter": 1076,
+          "to_chapter": 1079,
+          "source_ref": "Hand-authored. The Kid Pirates reach Elbaf waters ~ch. 1076 and meet the Red-Hair Pirates, ~ch. 1079. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "heart-pirates",
+      "name": "Heart Pirates",
+      "crew_id": 32,
+      "vessel": {
+        "name": "Polar Tang",
+        "slug": "polar-tang"
+      },
+      "members": [
+        {
+          "slug": "trafalgar-law",
+          "name": "Trafalgar Law",
+          "from_chapter": 498,
+          "source_ref": "Hand-authored. Law appears among the Eleven Supernovas at Sabaody, ~ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "slug": "bepo",
+          "name": "Bepo",
+          "from_chapter": 498,
+          "source_ref": "Hand-authored. Bepo appears at Law's side at Sabaody, ~ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "sabaody-archipelago",
+          "lng": null,
+          "lat": null,
+          "label": "Sabaody — the Eleven Supernovas",
+          "from_chapter": 498,
+          "to_chapter": 513,
+          "source_ref": "Hand-authored. The Heart Pirates are on Sabaody during the Supernova gathering, ~ch. 498-513. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "marineford",
+          "lng": null,
+          "lat": null,
+          "label": "Marineford — the surgeon intervenes",
+          "from_chapter": 578,
+          "to_chapter": 581,
+          "source_ref": "Hand-authored. The Polar Tang surfaces at Marineford ~ch. 578-581 to pull Luffy out of the war. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 3,
+          "island_slug": "punk-hazard",
+          "lng": null,
+          "lat": null,
+          "label": "Punk Hazard — the alliance is struck",
+          "from_chapter": 655,
+          "to_chapter": 700,
+          "source_ref": "Hand-authored. Law is on Punk Hazard from ~ch. 655; the Straw Hat alliance forms there. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 4,
+          "island_slug": "dressrosa",
+          "lng": null,
+          "lat": null,
+          "label": "Dressrosa — the plan against Doflamingo",
+          "from_chapter": 701,
+          "to_chapter": 801,
+          "source_ref": "Hand-authored. Law's operation moves to Dressrosa, ~ch. 701-801. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 5,
+          "island_slug": "wano-country",
+          "lng": null,
+          "lat": null,
+          "label": "Wano — the raid on Onigashima",
+          "from_chapter": 909,
+          "to_chapter": 1056,
+          "source_ref": "Hand-authored. The Heart Pirates operate in Wano from ~ch. 909 through the raid; they depart ~ch. 1056. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "kuja-pirates",
+      "name": "Kuja Pirates",
+      "crew_id": 41,
+      "vessel": {
+        "name": "Perfume Yuda",
+        "slug": "perfume-yuda"
+      },
+      "members": [],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "amazon-lily",
+          "lng": null,
+          "lat": null,
+          "label": "Amazon Lily — the isle of women",
+          "from_chapter": 516,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. The Kuja and their island enter the story ~ch. 516. Home-base placement; the crew raids from Amazon Lily. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "donquixote-pirates",
+      "name": "Donquixote Pirates",
+      "crew_id": null,
+      "vessel": null,
+      "members": [],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "dressrosa",
+          "lng": null,
+          "lat": null,
+          "label": "Dressrosa — the Heavenly Demon's kingdom",
+          "from_chapter": 233,
+          "to_chapter": 801,
+          "source_ref": "Hand-authored. Doflamingo enters the story ~ch. 233; his family rules Dressrosa until the crew falls ~ch. 801. Home-base placement — the flag flies at Dressrosa before the island is charted on-page. The upstream API has no Donquixote crew row, so crew_id is null. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "buggy-pirates",
+      "name": "Buggy Pirates",
+      "crew_id": null,
+      "vessel": {
+        "name": "Big Top",
+        "slug": "big-top"
+      },
+      "members": [
+        {
+          "slug": "buggy",
+          "name": "Buggy",
+          "from_chapter": 9,
+          "source_ref": "Hand-authored. Buggy the Clown debuts in Orange Town, ~ch. 9. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "orange-town",
+          "lng": null,
+          "lat": null,
+          "label": "Orange Town — the Buggy Pirates",
+          "from_chapter": 9,
+          "to_chapter": 20,
+          "source_ref": "Hand-authored. The Buggy Pirates hold Orange Town, ~ch. 9-20. The upstream API only has 'Buggy's Delivery', not the East Blue pirate crew, so crew_id is null. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "loguetown",
+          "lng": null,
+          "lat": null,
+          "label": "Loguetown — the execution platform",
+          "from_chapter": 96,
+          "to_chapter": 100,
+          "source_ref": "Hand-authored. Buggy corners Luffy on the Loguetown execution platform, ~ch. 96-100. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 3,
+          "island_slug": "karai-bari-island",
+          "lng": null,
+          "lat": null,
+          "label": "Karai Bari — Buggy's Delivery, then Cross Guild",
+          "from_chapter": 706,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Post-timeskip Buggy operates from Karai Bari Island — first Buggy's Delivery (~ch. 706), later the seat of Cross Guild. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "slug": "dracule-mihawk",
+      "name": "Dracule Mihawk",
+      "affiliation": "Warlord",
+      "crew_slug": null,
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": null,
+          "lng": -165.0,
+          "lat": -40.0,
+          "label": "East Blue — hunting Don Krieg's fleet",
+          "from_chapter": 49,
+          "to_chapter": 96,
+          "source_ref": "Hand-authored. Mihawk appears in East Blue waters near the Baratie ~ch. 49-52, having chased Krieg's fleet from the Grand Line. Position matches the voyage's Baratie anchor. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "kuraigana-island",
+          "lng": null,
+          "lat": null,
+          "label": "Kuraigana Island — the castle in the ruins",
+          "from_chapter": 592,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Mihawk's home, Kuraigana Island, is shown on-page ~ch. 592 (Zoro lands there). Home-base placement from that reveal. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "crocodile",
+      "name": "Crocodile",
+      "affiliation": "Warlord",
+      "crew_slug": null,
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "arabasta-kingdom",
+          "lng": null,
+          "lat": null,
+          "label": "Alabasta — Mr. 0",
+          "from_chapter": 126,
+          "to_chapter": 211,
+          "source_ref": "Hand-authored. Crocodile operates Baroque Works from Alabasta, ~ch. 126 until his defeat ~ch. 211. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "impel-down",
+          "lng": null,
+          "lat": null,
+          "label": "Impel Down — Level 6",
+          "from_chapter": 528,
+          "to_chapter": 548,
+          "source_ref": "Hand-authored. Crocodile resurfaces in Impel Down's Level 6, ~ch. 528, and breaks out ~ch. 548. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 3,
+          "island_slug": "marineford",
+          "lng": null,
+          "lat": null,
+          "label": "Marineford — the Summit War",
+          "from_chapter": 549,
+          "to_chapter": 581,
+          "source_ref": "Hand-authored. Crocodile fights through the Summit War, ~ch. 549-581. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 4,
+          "island_slug": "karai-bari-island",
+          "lng": null,
+          "lat": null,
+          "label": "Karai Bari — Cross Guild",
+          "from_chapter": 1056,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Cross Guild surfaces ~ch. 1056, seated at Karai Bari Island. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "donquixote-doflamingo",
+      "name": "Donquixote Doflamingo",
+      "affiliation": "Warlord",
+      "crew_slug": "donquixote-pirates",
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "dressrosa",
+          "lng": null,
+          "lat": null,
+          "label": "Dressrosa — the Heavenly Demon",
+          "from_chapter": 233,
+          "to_chapter": 801,
+          "source_ref": "Hand-authored. Doflamingo enters the story ~ch. 233 and rules Dressrosa until his arrest ~ch. 801. Home-base placement. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "impel-down",
+          "lng": null,
+          "lat": null,
+          "label": "Impel Down",
+          "from_chapter": 802,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Doflamingo is taken to Impel Down after Dressrosa, ~ch. 802. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "boa-hancock",
+      "name": "Boa Hancock",
+      "affiliation": "Warlord",
+      "crew_slug": "kuja-pirates",
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "amazon-lily",
+          "lng": null,
+          "lat": null,
+          "label": "Amazon Lily — the Pirate Empress",
+          "from_chapter": 516,
+          "to_chapter": 549,
+          "source_ref": "Hand-authored. Hancock debuts on Amazon Lily, ~ch. 516. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "marineford",
+          "lng": null,
+          "lat": null,
+          "label": "Marineford — the Summit War",
+          "from_chapter": 550,
+          "to_chapter": 580,
+          "source_ref": "Hand-authored. Hancock fights at Marineford as a Warlord, ~ch. 550-580. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 3,
+          "island_slug": "amazon-lily",
+          "lng": null,
+          "lat": null,
+          "label": "Amazon Lily — home waters",
+          "from_chapter": 581,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Hancock returns to Amazon Lily after the war, ~ch. 581 onward. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "gecko-moria",
+      "name": "Gecko Moria",
+      "affiliation": "Warlord",
+      "crew_slug": null,
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": null,
+          "lng": -55.0,
+          "lat": -9.0,
+          "label": "Thriller Bark — the Florian Triangle",
+          "from_chapter": 443,
+          "to_chapter": 483,
+          "source_ref": "Hand-authored. Moria haunts the Florian Triangle aboard Thriller Bark — a SHIP, not an island, hence the explicit open-sea coordinate — ~ch. 443 until his defeat ~ch. 483. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "marineford",
+          "lng": null,
+          "lat": null,
+          "label": "Marineford — the Summit War",
+          "from_chapter": 550,
+          "to_chapter": 580,
+          "source_ref": "Hand-authored. Moria fights at Marineford as a Warlord, ~ch. 550-580. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 3,
+          "island_slug": "hachinosu",
+          "lng": null,
+          "lat": null,
+          "label": "Hachinosu — hunting Blackbeard",
+          "from_chapter": 1080,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Moria assaults Hachinosu ~ch. 1080. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "bartholomew-kuma",
+      "name": "Bartholomew Kuma",
+      "affiliation": "Warlord",
+      "crew_slug": null,
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": null,
+          "lng": 0.0,
+          "lat": 1.5,
+          "label": "Mary Geoise — the World Government's Warlord",
+          "from_chapter": 233,
+          "to_chapter": 507,
+          "source_ref": "Hand-authored. Kuma appears at the Warlord summit ~ch. 233; he serves the World Government from the Red Line. Explicit coordinate on the Red Line — Mary Geoise has no island row. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "sabaody-archipelago",
+          "lng": null,
+          "lat": null,
+          "label": "Sabaody — the paw that scattered the crew",
+          "from_chapter": 508,
+          "to_chapter": 514,
+          "source_ref": "Hand-authored. Kuma scatters the Straw Hats across the world at Sabaody, ~ch. 508-514. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 3,
+          "island_slug": "marineford",
+          "lng": null,
+          "lat": null,
+          "label": "Marineford — the Summit War",
+          "from_chapter": 550,
+          "to_chapter": 580,
+          "source_ref": "Hand-authored. Kuma is deployed at Marineford, ~ch. 550-580. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 4,
+          "island_slug": "egghead",
+          "lng": null,
+          "lat": null,
+          "label": "Egghead — the last mission",
+          "from_chapter": 1103,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Kuma reaches Egghead ~ch. 1103. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "jinbe-warlord",
+      "name": "Jinbe",
+      "affiliation": "Warlord",
+      "crew_slug": null,
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "impel-down",
+          "lng": null,
+          "lat": null,
+          "label": "Impel Down — the Warlord who refused",
+          "from_chapter": 528,
+          "to_chapter": 549,
+          "source_ref": "Hand-authored. Jinbe is met in Impel Down ~ch. 528, imprisoned for refusing the war summons. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "marineford",
+          "lng": null,
+          "lat": null,
+          "label": "Marineford — the Summit War",
+          "from_chapter": 550,
+          "to_chapter": 580,
+          "source_ref": "Hand-authored. Jinbe fights through the Summit War at Luffy's side, ~ch. 550-580. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 3,
+          "island_slug": "fish-man-island",
+          "lng": null,
+          "lat": null,
+          "label": "Fish-Man Island — home waters",
+          "from_chapter": 608,
+          "to_chapter": 975,
+          "source_ref": "Hand-authored. Jinbe operates around Fish-Man Island and Big Mom's territory ~ch. 608-975. His presence here ENDS when he formally joins the Straw Hats (~ch. 976) — from then on he is on the ship, and the crew roster carries him. The slug is 'jinbe-warlord' so this presence row never collides with the crew_joins row. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "edward-weevil",
+      "name": "Edward Weevil",
+      "affiliation": "Warlord",
+      "crew_slug": null,
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": null,
+          "lng": -22.0,
+          "lat": -13.0,
+          "label": "Paradise — hunting the Whitebeard remnants",
+          "from_chapter": 802,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Weevil enters the story ~ch. 802, roaming Paradise after the Whitebeard remnants. Position is a REPRESENTATIVE open-sea anchorage, not a canon coordinate. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "guess",
+          "verified": false
+        }
+      ]
+    }
+  ]
+}

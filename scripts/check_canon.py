@@ -337,12 +337,105 @@ def vessels_chapter_gated(doc):
     return f"{len(vs)} vessels, first at ch.1, forward-only, {unverified} still verified:false"
 
 
+@check("presence_windows_forward")
+def presence_windows_forward(doc):
+    """Presence windows must exist, only move forward, and carry a real position.
+
+    Who-is-where is authored (no upstream source has a location-by-chapter axis).
+    A window that goes backward in the story, ends before it starts, or lost its
+    resolved coordinate would put a crew flag in the wrong ocean — or nowhere.
+    """
+    pres = doc.get("presence", {})
+    entities = pres.get("crews", []) + pres.get("characters", [])
+    assert entities, "presence is empty — the map has no crews or characters to show"
+    total = unverified = 0
+    for e in entities:
+        wins = e.get("windows", [])
+        assert wins, f"presence entity {e['slug']!r} has no windows — it can never render"
+        last = None
+        for w in wins:
+            total += 1
+            assert isinstance(w["lng"], (int, float)) and isinstance(w["lat"], (int, float)), (
+                f"{e['slug']} window order {w['order']} has no numeric position"
+            )
+            assert w["from_chapter"] >= 1, (
+                f"{e['slug']} window order {w['order']} has from_chapter {w['from_chapter']} < 1 "
+                "— the seed scaffold's sentinel reached the artifact"
+            )
+            if w["to_chapter"] is not None:
+                assert w["to_chapter"] >= w["from_chapter"], (
+                    f"{e['slug']} window order {w['order']} ends (ch {w['to_chapter']}) before "
+                    f"it starts (ch {w['from_chapter']})"
+                )
+            if last is not None:
+                assert w["from_chapter"] >= last, (
+                    f"{e['slug']} presence goes backward: order {w['order']} from_chapter "
+                    f"{w['from_chapter']} < previous {last}"
+                )
+            last = w["from_chapter"]
+            src = w.get("source_ref") or ""
+            assert src.lower().lstrip().startswith("hand-authored"), (
+                f"{e['slug']} window order {w['order']} source_ref is not hand-authored"
+            )
+            assert w.get("canon_confidence") in CONFIDENCE_ENUM, (
+                f"{e['slug']} window order {w['order']} has bad canon_confidence"
+            )
+            if not w["verified"]:
+                unverified += 1
+    return (f"{len(entities)} entities, {total} windows, forward-only, "
+            f"{unverified} still verified:false")
+
+
+@check("presence_spoiler_and_roster")
+def presence_spoiler_and_roster(doc):
+    """The roster rules: no defunct Roger Pirates, and nothing renders ungated.
+
+    Every member must carry a from_chapter >= 1 (the gate the UI renders by), and
+    every window chapter must fall inside the derived chapter range — a window
+    starting at chapter 5000 would simply never appear, silently.
+    """
+    pres = doc.get("presence", {})
+    crews, chars = pres.get("crews", []), pres.get("characters", [])
+    ch_max = max(
+        [i["debut_chapter"] for i in doc["islands"] if i["debut_chapter"]]
+        + [a["chapter_start"] for a in doc["arcs"]]
+    )
+    for e in crews + chars:
+        assert "roger" not in e["slug"], (
+            f"presence contains {e['slug']!r} — the Roger Pirates disbanded before chapter 1; "
+            "a defunct crew has no presence"
+        )
+        for w in e["windows"]:
+            assert w["from_chapter"] <= ch_max, (
+                f"{e['slug']} window order {w['order']} starts at ch {w['from_chapter']}, past "
+                f"the derived chapter max {ch_max} — it would never render"
+            )
+    for c in crews:
+        for m in c.get("members", []):
+            assert m["from_chapter"] >= 1, f"{c['slug']} member {m['slug']!r} has no chapter gate"
+            src = m.get("source_ref") or ""
+            assert src.lower().lstrip().startswith("hand-authored"), (
+                f"{c['slug']} member {m['slug']!r} source_ref is not hand-authored"
+            )
+    crew_join_slugs = {j["slug"] for j in doc["crew_joins"]}
+    char_slugs = {e["slug"] for e in chars}
+    overlap = crew_join_slugs & char_slugs
+    assert not overlap, (
+        f"presence characters collide with crew_joins slugs: {overlap}. A Straw Hat is on the "
+        "ship — the roster carries them; presence must not double-place them."
+    )
+    members_total = sum(len(c.get("members", [])) for c in crews)
+    return (f"{len(crews)} crews ({members_total} members) + {len(chars)} characters, "
+            f"all chapter-gated, no Roger Pirates, no crew_joins collision")
+
+
 CHECKS = [
     jinbe_test, crew_joins_are_human, straw_hats_complete,
     islands_have_positions, islands_fog_key, no_mojibake,
     arc_chain_unbroken, status_enum, no_french_leakage,
     types_are_numbers, source_refs_not_null, canon_boundary, fog_mechanic,
     voyage_route_forward, vessels_chapter_gated,
+    presence_windows_forward, presence_spoiler_and_roster,
 ]
 
 
