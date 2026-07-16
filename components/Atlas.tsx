@@ -189,8 +189,16 @@ export default function Atlas({ world, art, initialChapter, initialAxis, initial
   // "fruit"/"haki" recolor the same chapter-gated entities by their revealed
   // powers; "off" hides the layer. At ch. 1 every lens shows exactly nothing.
   const [lens, setLens] = useState<PresenceLens>(initialLens);
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selected, setSelectedRaw] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  // Follow-cam: on by default — scrubbing or sailing keeps the ship in view.
+  // Selecting an island or dragging the globe is the reader looking elsewhere.
+  const [follow, setFollow] = useState(true);
+
+  const setSelected = useCallback((slug: string | null) => {
+    setSelectedRaw(slug);
+    if (slug !== null) setFollow(false);
+  }, []);
 
   // The episode axis carries its own thumb position — see the note in
   // ChapterDock: episode -> chapter is many-to-one and would otherwise snap.
@@ -250,6 +258,7 @@ export default function Atlas({ world, art, initialChapter, initialAxis, initial
       else if (e.key === " " && !(el instanceof HTMLButtonElement)) (playing ? engine.pause : engine.play)();
       else if (e.key === "Escape") setSelected(null);
       else if (e.key.toLowerCase() === "g") setProjection((p) => (p === "globe" ? "mercator" : "globe"));
+      else if (e.key.toLowerCase() === "f") setFollow((v) => !v);
       else return;
       e.preventDefault();
     };
@@ -281,6 +290,8 @@ export default function Atlas({ world, art, initialChapter, initialAxis, initial
           lens={lens}
           selected={selected}
           onSelect={setSelected}
+          follow={follow}
+          onFollowBreak={() => setFollow(false)}
         />
 
         {/* masthead */}
@@ -346,6 +357,19 @@ export default function Atlas({ world, art, initialChapter, initialAxis, initial
                 className="rounded-sm border border-rope bg-ink/90 px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.16em] text-muted-2 backdrop-blur transition-colors hover:border-gold/60 hover:text-gold"
               >
                 {projection === "globe" ? "globe" : "flat"}
+              </button>
+              <button
+                type="button"
+                onClick={() => setFollow((v) => !v)}
+                title="Camera follows the ship (F)"
+                className={[
+                  "rounded-sm border bg-ink/90 px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-[0.16em] backdrop-blur transition-colors",
+                  follow
+                    ? "border-gold/60 text-gold"
+                    : "border-rope text-muted-2 hover:border-gold/60 hover:text-gold",
+                ].join(" ")}
+              >
+                ⌖ follow
               </button>
             </div>
 

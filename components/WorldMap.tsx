@@ -21,7 +21,7 @@
  * flares briefly as it is charted. That is the shot.
  */
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import maplibregl, {
   type Map as MLMap,
   type Marker as MLMarker,
@@ -72,6 +72,13 @@ type Props = {
   lens: PresenceLens;
   selected: string | null;
   onSelect: (slug: string | null) => void;
+  /**
+   * Follow-cam: the camera chases the ship as the chapter moves (scrub, hotkeys,
+   * playback). A user drag/rotate breaks it via onFollowBreak; zooming does not —
+   * zooming while tracking is the point.
+   */
+  follow?: boolean;
+  onFollowBreak?: () => void;
   /**
    * Admin placement mode (the /admin/place tool). When both are set, a map click
    * reports its lng/lat instead of selecting an island — that's how a human
@@ -615,6 +622,8 @@ export default function WorldMap({
   lens,
   selected,
   onSelect,
+  follow = false,
+  onFollowBreak,
   placingSlug = null,
   onPlaceAt,
 }: Props) {
@@ -654,6 +663,42 @@ export default function WorldMap({
   useEffect(() => {
     chapterRef.current = chapter;
   }, [chapter]);
+
+  // Follow-cam. One damped step per paint frame; when the sweep stops, a
+  // self-terminating rAF finishes the convergence (decay ~0.82^n, so ~half a
+  // second from anywhere). jumpTo, never easeTo: easeTo restarts its own
+  // animation every frame and fights itself.
+  const followRef = useRef(follow);
+  const breakRef = useRef(onFollowBreak);
+  useEffect(() => {
+    breakRef.current = onFollowBreak;
+  }, [onFollowBreak]);
+  const chaseRaf = useRef<number | null>(null);
+
+  const chase = useCallback(function chaseStep() {
+    chaseRaf.current = null;
+    const m = map.current;
+    if (!m || !ready.current || !followRef.current) return;
+    const { ship: pos } = voyageGeometryAt(world.voyage.waypoints, chapterRef.current);
+    if (!pos) return;
+    const c = m.getCenter();
+    const dLng = ((((pos[0] - c.lng) % 360) + 540) % 360) - 180; // shortest way round
+    const dLat = pos[1] - c.lat;
+    if (Math.hypot(dLng, dLat) < 0.02) return; // settled — stop scheduling
+    const k = 0.18;
+    m.jumpTo({ center: [c.lng + dLng * k, c.lat + dLat * k] });
+    chaseRaf.current = requestAnimationFrame(chaseStep);
+  }, [world]);
+
+  useEffect(() => {
+    followRef.current = follow;
+    if (!follow) {
+      if (chaseRaf.current !== null) cancelAnimationFrame(chaseRaf.current);
+      chaseRaf.current = null;
+      return;
+    }
+    chase(); // re-engaging the follow recenters on the ship immediately
+  }, [follow, chase]);
 
   const [hover, setHover] = useState<{
     x: number;
@@ -985,6 +1030,14 @@ export default function WorldMap({
     m.on("zoom", applyMarkScale);
     applyMarkScale();
 
+    // A drag or a user rotate is the reader taking the wheel — follow yields.
+    // Programmatic camera moves (easeTo/jumpTo) fire neither with an
+    // originalEvent, so the chase itself never breaks its own follow.
+    m.on("dragstart", () => breakRef.current?.());
+    m.on("rotatestart", (e) => {
+      if ((e as { originalEvent?: unknown }).originalEvent) breakRef.current?.();
+    });
+
     for (const l of WORLD_LABELS) {
       const el = document.createElement("div");
       el.className = "mapLabel";
@@ -1167,6 +1220,8 @@ export default function WorldMap({
       crewPool.clear();
       warlordPool.clear();
       memberPool.clear();
+      if (chaseRaf.current !== null) cancelAnimationFrame(chaseRaf.current);
+      chaseRaf.current = null;
       m.remove();
       map.current = null;
     };
@@ -1185,7 +1240,8 @@ export default function WorldMap({
       members: memberMarks.current,
       lens: lensRef.current,
     }, art);
-  }, [chapter, world, art]);
+    chase(); // one damped camera step per sweep frame; settles on its own after
+  }, [chapter, world, art, chase]);
 
   /* --------------------------------------------------- islands live-update */
   // The island source is set once at create. When positions change underneath us
