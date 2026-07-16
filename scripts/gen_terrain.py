@@ -220,6 +220,10 @@ def arabasta(ring: HeroRing, slug: str, debut: int) -> list[dict]:
 # center (brighter = higher), wisps of the Milky Road swirling off them.
 # ---------------------------------------------------------------------------
 
+# The 2.5D ascent's sea-level furniture. MUST match components/skypiea.ts.
+SKY_BASE = (-91.1362, 8.2)
+
+
 def skypiea(ring: HeroRing, slug: str, debut: int) -> list[dict]:
     rng = Rng(f"terrain:{slug}")
     out: list[dict] = []
@@ -239,6 +243,32 @@ def skypiea(ring: HeroRing, slug: str, debut: int) -> list[dict]:
             t = 0.25 + (0.88 - 0.25) * s / steps
             pts.append(ring.pt(th, t))
         out.append(feat(slug, debut, "cloud-wisp", 4, line(pts)))
+
+    # THE FLOAT ILLUSION: the island's own outline, shrunk and dropped onto the
+    # sea at the Knock-Up Stream's base, reads as the shadow it casts from
+    # above. Same seed => the shadow visibly matches the island's shape.
+    dx, dy = SKY_BASE[0] - ring.cx, SKY_BASE[1] - ring.cy
+    for scale, kind in ((0.63, "sky-shadow-soft"), (0.55, "sky-shadow-core")):
+        shadow = [[round(x + dx, COORD_DECIMALS), round(y + dy, COORD_DECIMALS)]
+                  for x, y in ring.ring(scale, wobble=0.04, wobble_freq=4,
+                                        wobble_phase=rng.range(0, TAU))]
+        out.append(feat(slug, debut, kind, 0, poly(shadow)))
+
+    # THE KNOCK-UP STREAM: nested trapezoids from the sea base up to the
+    # island's southern coast — the fake vertical gradient (inner = brighter).
+    south_lat = ring.pt(-TAU / 4, 1.0)[1]
+    top_lat = round(south_lat + 0.15, COORD_DECIMALS)
+    widths = [(1.2, 0.5, "sky-column-1"), (0.8, 0.34, "sky-column-2"), (0.45, 0.2, "sky-column-3")]
+    for w_bot, w_top, kind in widths:
+        quad = [[SKY_BASE[0] - w_bot / 2, SKY_BASE[1]], [SKY_BASE[0] + w_bot / 2, SKY_BASE[1]],
+                [SKY_BASE[0] + w_top / 2, top_lat], [SKY_BASE[0] - w_top / 2, top_lat]]
+        quad.append(quad[0])
+        out.append(feat(slug, debut, kind, 0, poly(quad)))
+    # two jet lines inside the stream
+    for off in (-0.11, 0.11):
+        out.append(feat(slug, debut, "sky-jet", 0, line(
+            [[SKY_BASE[0] + off * 2.2, SKY_BASE[1] + 0.15],
+             [SKY_BASE[0] + off, top_lat - 0.3]])))
     return out
 
 

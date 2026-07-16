@@ -46,7 +46,8 @@ HEROES = {
 }
 # every layer that draws island geometry; extend as terrain layers land
 GEO_LAYERS = ["island-shapes", "island-shapes-coast",
-              "terrain-fill", "terrain-line", "terrain-glow"]
+              "terrain-fill", "terrain-line", "terrain-glow",
+              "sky-shadow", "sky-column", "sky-jet"]
 ZOOM = 4.0
 PATCH = 44  # half-side of the sampled square, px
 

@@ -57,3 +57,6 @@ data/generated/_wiki_cache/
 data/generated/_art_cache/
 data/generated/art_contact_sheet.html
 __pycache__/
+
+# Landfall review screenshots — an eyeball surface, not a build artifact.
+data/review/

@@ -38,6 +38,7 @@ import { voyageGeometryAt, vesselAtChapter, presenceWindowAt } from "@/lib/canon
 import { crewColor, WARLORD_COLOR } from "@/lib/crews";
 import { lensColor, matchesFocus, revealedFruit, revealedHaki, HAKI_STYLE } from "@/lib/lenses";
 import type { Focus, Lens, PresenceLens } from "@/lib/lenses";
+import { altitudeT, columnOpacity, expandSkyWaypoints, transitBase } from "./skypiea";
 import type { HakiType } from "@/lib/canon";
 import { jollyRogerSvg } from "./marks/jolly-roger";
 import CompassRose from "./marks/CompassRose";
@@ -337,7 +338,15 @@ function makeShipElement(): {
 }
 
 /** The live handles paint() needs to move and restyle the ship each frame. */
-type ShipHandle = { marker: MLMarker; glyph: HTMLDivElement; label: HTMLDivElement };
+type ShipHandle = {
+  marker: MLMarker;
+  glyph: HTMLDivElement;
+  label: HTMLDivElement;
+  /** The ship's sea shadow during the Skypiea ascent/descent — pinned to the
+      stream base and fading as the ship climbs (the 2.5D altitude cue). */
+  shadow: MLMarker;
+  shadowEl: HTMLDivElement;
+};
 
 /**
  * A tiny generic hull in the crew's ink — the "someone's ship rides here" cue
@@ -630,6 +639,21 @@ function presenceOrbs(
 const revealed = (ch: number): ExpressionSpecification => ["<=", ["get", "debut"], ch];
 
 /**
+ * The voyage with Skypiea's ascent written in (virtual waypoints riding the
+ * Knock-Up Stream). Memoized per waypoint array so the per-frame paint sweep
+ * stays allocation-free; worldAtChapter/Readout keep the pure canon list.
+ */
+const skyExpandedCache = new WeakMap<object, ReturnType<typeof expandSkyWaypoints>>();
+function expandedWaypoints(wps: World["voyage"]["waypoints"]) {
+  let e = skyExpandedCache.get(wps);
+  if (!e) {
+    e = expandSkyWaypoints(wps);
+    skyExpandedCache.set(wps, e);
+  }
+  return e;
+}
+
+/**
  * RULE 4, RENDERED. The map must not let a position a machine guessed look like
  * a position a human confirmed.
  *
@@ -727,7 +751,7 @@ export default function WorldMap({
     chaseRaf.current = null;
     const m = map.current;
     if (!m || !ready.current || !followRef.current) return;
-    const { ship: pos } = voyageGeometryAt(world.voyage.waypoints, chapterRef.current);
+    const { ship: pos } = voyageGeometryAt(expandedWaypoints(world.voyage.waypoints), chapterRef.current);
     if (!pos) return;
     const c = m.getCenter();
     const dLng = ((((pos[0] - c.lng) % 360) + 540) % 360) - 180; // shortest way round
@@ -873,6 +897,13 @@ export default function WorldMap({
         // 10B: landmasses. Invisible at orbit, fading in as you approach so the
         // chart resolves from "pins on water" into "a world with coastlines".
         // Opacity is chapter-gated per frame by paint() — fog has no shoreline.
+        // THE FLOAT ILLUSION: Skypiea's shadow on the sea, under every
+        // landmass. Its own outline, shrunk — the same seed guarantees the
+        // match. Chapter-gated in paint() like the coastline it belongs to.
+        { id: "sky-shadow", type: "fill", source: "terrain",
+          filter: ["in", ["get", "kind"], ["literal", ["sky-shadow-soft", "sky-shadow-core"]]],
+          paint: { "fill-color": "#04070d", "fill-opacity": 0 } },
+
         { id: "island-shapes", type: "fill", source: "silhouettes",
           paint: { "fill-color": byBiome(BIOME_FILL, C.isle), "fill-opacity": 0 } },
 
@@ -880,6 +911,9 @@ export default function WorldMap({
         // fill and its coast stroke so the ink outline always stays on top.
         // All start at opacity 0; paint() runs the zoom-x-chapter crossfade.
         { id: "terrain-fill", type: "fill", source: "terrain",
+          // the sky-* furniture (shadow, column) has its own layers + gating
+          filter: ["!", ["in", ["get", "kind"], ["literal",
+            ["sky-shadow-soft", "sky-shadow-core", "sky-column-1", "sky-column-2", "sky-column-3", "sky-jet"]]]],
           layout: { "fill-sort-key": ["get", "sort"] } as never,
           paint: {
             "fill-color": byKind(TERRAIN_FILL, C.isle),
@@ -917,6 +951,17 @@ export default function WorldMap({
         // The Red Line: the continent. Clay, because it is land.
         { id: "red-glow", type: "line", source: "red", paint: { "line-color": C.redLine, "line-width": 10, "line-blur": 10, "line-opacity": 0.25 } },
         { id: "red", type: "line", source: "red", paint: { "line-color": C.redLine, "line-width": 2.4, "line-opacity": 0.9 } },
+
+        // THE KNOCK-UP STREAM. Nested pearl trapezoids from the sea up to
+        // Skypiea's south coast (inner = brighter: the fake gradient), under
+        // the voyage line so the dashed route visibly rides UP the column.
+        // Opacity is columnOpacity(ch), set per frame in paint().
+        { id: "sky-column", type: "fill", source: "terrain",
+          filter: ["in", ["get", "kind"], ["literal", ["sky-column-1", "sky-column-2", "sky-column-3"]]],
+          paint: { "fill-color": "#b9c2cc", "fill-opacity": 0 } },
+        { id: "sky-jet", type: "line", source: "terrain",
+          filter: ["==", ["get", "kind"], "sky-jet"],
+          paint: { "line-color": "#dfe7f2", "line-width": 1.6, "line-blur": 4, "line-opacity": 0 } },
 
         // THE VOYAGE: the crew's actual traveled route, drawn up to the reader's
         // chapter. Brighter and heavier than the Grand Line (which is the sea's
@@ -1151,7 +1196,24 @@ export default function WorldMap({
     const shipMarker = new maplibregl.Marker({ element: parts.el, opacityWhenCovered: "0.1" })
       .setLngLat(start ? [start.lng, start.lat] : [0, 0])
       .addTo(m);
-    ship.current = { marker: shipMarker, glyph: parts.glyph, label: parts.label };
+    // The ascent shadow: a small dark ellipse on the sea, hidden until the
+    // ship actually rides the Knock-Up Stream. The fade/scale live on an
+    // INNER node — MapLibre owns the marker element's own opacity (the
+    // behind-the-globe fade) and would clobber ours.
+    const shadowWrap = document.createElement("div");
+    shadowWrap.style.cssText = "pointer-events:none;";
+    const shadowEl = document.createElement("div");
+    shadowEl.style.cssText =
+      "width:26px;height:10px;border-radius:9999px;background:#04070d;" +
+      "filter:blur(2px);display:none;";
+    shadowWrap.appendChild(shadowEl);
+    const shipShadow = new maplibregl.Marker({ element: shadowWrap })
+      .setLngLat(start ? [start.lng, start.lat] : [0, 0])
+      .addTo(m);
+    ship.current = {
+      marker: shipMarker, glyph: parts.glyph, label: parts.label,
+      shadow: shipShadow, shadowEl,
+    };
 
     // The presence pools (Phase 5): one flag per crew, one monogram per Warlord,
     // built ONCE, hidden and EMPTY. paint() populates a marker only while its
@@ -1594,7 +1656,8 @@ function paint(
   // THE VOYAGE. Re-derive the traveled route and the ship's position for this
   // (fractional) chapter and push both. The line grows leg by leg; the ship glides
   // along the active leg; the vessel glyph swaps at the acquisition chapters.
-  const { path, ship: pos } = voyageGeometryAt(world.voyage.waypoints, ch);
+  // Skypiea's virtual waypoints are in here — the ascent IS this same lerp.
+  const { path, ship: pos } = voyageGeometryAt(expandedWaypoints(world.voyage.waypoints), ch);
   (m.getSource("voyage") as GeoJSONSource | undefined)?.setData(voyageLine(path));
   if (ship) {
     const vessel = vesselAtChapter(world.vessels, ch);
@@ -1606,10 +1669,46 @@ function paint(
       ship.glyph.innerHTML = shipArt ? artImg(shipArt, 52) : vesselGlyph(vessel.slug);
       ship.label.textContent = vessel.name;
       ship.marker.getElement().style.display = "";
+
+      // The 2.5D ascent (pure f(ch) — a backward scrub re-descends for free):
+      // riding the stream, the ship swells slightly and throws white spray;
+      // its sea shadow stays at the base, shrinking and fading as it climbs.
+      const t = altitudeT(ch);
+      const transit = t > 0 && t < 1;
+      if (transit) {
+        const bump = 1 + 0.25 * Math.sin(Math.PI * t);
+        ship.glyph.style.transform = `scale(${bump.toFixed(3)})`;
+        ship.glyph.style.filter = "drop-shadow(0 5px 5px rgba(223,231,242,0.45))";
+        const base = transitBase(ch);
+        ship.shadow.setLngLat(base);
+        ship.shadowEl.style.display = "";
+        ship.shadowEl.style.opacity = ((1 - t) * 0.5).toFixed(3);
+        ship.shadowEl.style.transform = `scale(${(1 - t * 0.6).toFixed(3)})`;
+      } else {
+        ship.glyph.style.transform = "";
+        ship.glyph.style.filter = "";
+        ship.shadowEl.style.display = "none";
+      }
     } else {
       ship.marker.getElement().style.display = "none";
+      ship.shadowEl.style.display = "none";
     }
   }
+
+  // THE KNOCK-UP STREAM + the island's shadow on the sea. Column opacity is
+  // its own story beat (erupts 235-237, stands while aloft, fades to a
+  // trace); the shadow gates on Skypiea's debut like any coastline.
+  const co = columnOpacity(ch);
+  m.setPaintProperty("sky-column", "fill-opacity", [
+    "match", ["get", "kind"],
+    "sky-column-1", 0.3 * co, "sky-column-2", 0.5 * co, "sky-column-3", 0.75 * co, 0,
+  ]);
+  m.setPaintProperty("sky-jet", "line-opacity", 0.7 * co);
+  m.setPaintProperty("sky-shadow", "fill-opacity", [
+    "interpolate", ["linear"], ["zoom"],
+    2.0, 0,
+    3.2, ["case", revealed(ch), ["match", ["get", "kind"], "sky-shadow-core", 0.3, 0.12], 0],
+  ]);
 
   // Revealed islands, styled by how much we actually trust their position.
   m.setPaintProperty("islands", "circle-opacity", [
