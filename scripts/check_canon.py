@@ -237,12 +237,49 @@ def source_refs_not_null(doc):
     return "every row in all 7 collections carries source_ref + canon_confidence"
 
 
+@check("art_manifest_attributed")
+def art_manifest_attributed(doc):
+    """Phase 6: every image under public/art/ is attributed AND the manifest matches disk 1:1.
+
+    The art is official © Oda/Shueisha/Toei, kept only as attributed fan reference. That
+    posture is a lie the moment a file exists with no receipt, or the manifest names a file
+    that isn't there. This check makes the attribution structural, not a promise in a README:
+    every row carries a source_url + license, every row's file is on disk, and every .webp on
+    disk has a row (no orphan art that slipped in unattributed).
+    """
+    manifest_path = ROOT / "data" / "generated" / "art_manifest.json"
+    art_root = ROOT / "public" / "art"
+    has_art = art_root.exists() and any(art_root.rglob("*.webp"))
+    if not manifest_path.exists() and not has_art:
+        return "no art yet (Phase 6 not run) — skipped"
+    assert manifest_path.exists(), "public/art has images but data/generated/art_manifest.json is missing"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    rows = manifest.get("images", [])
+    manifest_files: set = set()
+    for r in rows:
+        f = r.get("file")
+        assert f, f"a manifest row ({r.get('slug')!r}) has no file path"
+        assert r.get("source_url"), f"{f}: no source_url — official art must carry its receipt"
+        assert r.get("license"), f"{f}: no license string"
+        p = (ROOT / "public" / f).resolve()
+        assert p.exists(), f"manifest lists {f} but it is not on disk"
+        manifest_files.add(p)
+    on_disk = {p.resolve() for p in art_root.rglob("*.webp")} if art_root.exists() else set()
+    orphans = on_disk - manifest_files
+    assert not orphans, (
+        f"{len(orphans)} art file(s) on disk with NO manifest row (unattributed): "
+        f"{[str(o.relative_to(ROOT)) for o in list(orphans)[:5]]}"
+    )
+    counts = manifest.get("counts", {})
+    return f"{len(rows)} images attributed + on disk, no orphans; {counts}"
+
+
 @check("canon_boundary")
 def canon_boundary(doc):
     """canon/ is HUMAN-OWNED. No build script may write into it."""
     canon_files = sorted(p.name for p in CANON_DIR.glob("*.json"))
     assert canon_files, "canon/ is empty — the hand-authored layer is missing"
-    for script in ("normalize.py", "check_canon.py", "sync_api.py", "sync_wiki.py"):
+    for script in ("normalize.py", "check_canon.py", "sync_api.py", "sync_wiki.py", "sync_art.py"):
         p = ROOT / "scripts" / script
         if not p.exists():
             continue
@@ -433,7 +470,7 @@ CHECKS = [
     jinbe_test, crew_joins_are_human, straw_hats_complete,
     islands_have_positions, islands_fog_key, no_mojibake,
     arc_chain_unbroken, status_enum, no_french_leakage,
-    types_are_numbers, source_refs_not_null, canon_boundary, fog_mechanic,
+    types_are_numbers, source_refs_not_null, art_manifest_attributed, canon_boundary, fog_mechanic,
     voyage_route_forward, vessels_chapter_gated,
     presence_windows_forward, presence_spoiler_and_roster,
 ]

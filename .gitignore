@@ -54,3 +54,5 @@ data/generated/_wiki_cache/
 
 # 18MB of raw wikitext responses — a re-run cache, not a build input.
 data/generated/_wiki_cache/
+data/generated/_art_cache/
+data/generated/art_contact_sheet.html
