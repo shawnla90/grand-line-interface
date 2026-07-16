@@ -167,10 +167,13 @@ export default function Atlas({ world, art, initialChapter, initialAxis, initial
     const onKey = (e: KeyboardEvent) => {
       const el = document.activeElement;
       if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) return;
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
       if (e.key === "ArrowLeft") setChapter(chapter - (e.shiftKey ? 25 : 1));
       else if (e.key === "ArrowRight") setChapter(chapter + (e.shiftKey ? 25 : 1));
       else if (e.key === "Escape") setSelected(null);
       else if (e.key.toLowerCase() === "g") setProjection((p) => (p === "globe" ? "mercator" : "globe"));
+      else return;
+      e.preventDefault();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);

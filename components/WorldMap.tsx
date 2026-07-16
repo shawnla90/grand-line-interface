@@ -937,6 +937,10 @@ export default function WorldMap({
         // One world, not an infinite tiling strip. This is a chart of a planet.
         renderWorldCopies: false,
         dragRotate: projection === "globe",
+        // Arrow keys belong to the chapter scrub (Atlas), not the camera —
+        // MapLibre's KeyboardHandler would otherwise pan/rotate whenever the
+        // canvas has focus, fighting the chapter hotkeys.
+        keyboard: false,
       });
     } catch (err) {
       console.warn("[dead-reckoning] map disabled, no WebGL context:", err);
