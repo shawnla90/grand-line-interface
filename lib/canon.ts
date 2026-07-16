@@ -44,7 +44,13 @@ import type {
   PresenceMember,
   CrewPresence,
   CharacterPresence,
+  FruitType,
+  HakiType,
+  FruitReveal,
+  HakiFact,
 } from "./schema";
+
+export type { FruitType, HakiType };
 
 /* -------------------------------------------------------------------------- */
 /* types — the serialization contract between server and client                */
@@ -156,12 +162,34 @@ export type WorldPresenceWindow = {
   sourceRef: string;
 };
 
+/**
+ * A power is a STORY REVEAL with its own gate: fromChapter is when the reader
+ * learns the fact, not when the character debuts. Below it, the fact must not
+ * exist in anything the client renders. source_ref/fruit_id stay server-side.
+ */
+export type WorldFruitReveal = {
+  name: string;
+  type: FruitType;
+  fromChapter: number;
+  verified: boolean;
+  confidence: Confidence;
+};
+
+export type WorldHakiFact = {
+  type: HakiType;
+  fromChapter: number;
+  verified: boolean;
+  confidence: Confidence;
+};
+
 export type WorldPresenceMember = {
   slug: string;
   name: string;
   fromChapter: number;
   verified: boolean;
   confidence: Confidence;
+  fruit: WorldFruitReveal | null;
+  haki: WorldHakiFact[];
 };
 
 export type WorldCrewPresence = {
@@ -179,6 +207,8 @@ export type WorldCharacterPresence = {
   affiliation: string;
   crewSlug: string | null;
   windows: WorldPresenceWindow[];
+  fruit: WorldFruitReveal | null;
+  haki: WorldHakiFact[];
 };
 
 export type World = {
@@ -445,6 +475,26 @@ function toWindow(w: PresenceWindow): WorldPresenceWindow {
   };
 }
 
+function toFruit(f: FruitReveal | null): WorldFruitReveal | null {
+  if (!f) return null;
+  return {
+    name: f.fruit_name,
+    type: f.fruit_type,
+    fromChapter: f.from_chapter,
+    verified: f.verified,
+    confidence: f.canon_confidence,
+  };
+}
+
+function toHaki(facts: HakiFact[]): WorldHakiFact[] {
+  return facts.map((h) => ({
+    type: h.haki,
+    fromChapter: h.from_chapter,
+    verified: h.verified,
+    confidence: h.canon_confidence,
+  }));
+}
+
 function toMember(m: PresenceMember): WorldPresenceMember {
   return {
     slug: m.slug,
@@ -452,6 +502,8 @@ function toMember(m: PresenceMember): WorldPresenceMember {
     fromChapter: m.from_chapter,
     verified: m.verified,
     confidence: m.canon_confidence,
+    fruit: toFruit(m.fruit),
+    haki: toHaki(m.haki),
   };
 }
 
@@ -473,6 +525,8 @@ function toCharacterPresence(c: CharacterPresence): WorldCharacterPresence {
     affiliation: c.affiliation,
     crewSlug: c.crew_slug,
     windows: c.windows.map(toWindow).sort((a, b) => a.order - b.order),
+    fruit: toFruit(c.fruit),
+    haki: toHaki(c.haki),
   };
 }
 

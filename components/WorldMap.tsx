@@ -36,6 +36,9 @@ import type { World, WorldIsland } from "@/lib/canon";
 import type { Art } from "@/lib/art";
 import { voyageGeometryAt, vesselAtChapter, presenceWindowAt } from "@/lib/canon";
 import { crewColor, WARLORD_COLOR } from "@/lib/crews";
+import { lensColor, revealedFruit, revealedHaki, HAKI_STYLE } from "@/lib/lenses";
+import type { Lens, PresenceLens } from "@/lib/lenses";
+import type { HakiType } from "@/lib/canon";
 import { jollyRogerSvg } from "./marks/jolly-roger";
 import CompassRose from "./marks/CompassRose";
 import {
@@ -61,8 +64,12 @@ type Props = {
   chapter: number;
   projection: Projection;
   showOffCanon: boolean;
-  /** Crews & Warlords layer (Phase 5). Chapter-gated like everything else. */
-  showCrews: boolean;
+  /**
+   * The presence lens (Phase 6A). "off" hides the Crews & Warlords layer;
+   * "crew" | "fruit" | "haki" pick what the orb colors MEAN. Chapter-gated
+   * like everything else — a power below its reveal chapter does not exist.
+   */
+  lens: PresenceLens;
   selected: string | null;
   onSelect: (slug: string | null) => void;
   /**
@@ -367,15 +374,15 @@ function makeMemberElement(): { el: HTMLDivElement; ring: HTMLDivElement; label:
 }
 
 /**
- * A pooled presence marker. `windowOrder` is the diff key: paint() only touches
- * the DOM when the active window (or visibility) actually changes, so the
- * per-frame cost of the sweep stays allocation-free.
+ * A pooled presence marker. `paintKey` is the diff key: paint() only touches
+ * the DOM when the active window — or, for Warlord monograms, the lens color —
+ * actually changes, so the per-frame cost of the sweep stays allocation-free.
  */
 type PresenceHandle = {
   marker: MLMarker;
   parts: { el: HTMLDivElement; label: HTMLDivElement } & Record<string, HTMLDivElement>;
   shown: boolean;
-  windowOrder: number | null;
+  paintKey: string | null;
   populated: boolean;
 };
 
@@ -423,8 +430,13 @@ function presenceLayout(world: World, ch: number): Map<string, PlacedPresence> {
   return out;
 }
 
-/** The presence-orb source data for one frame: only REVEALED entities exist here. */
-function presenceOrbs(world: World, ch: number, layout: Map<string, PlacedPresence>) {
+/**
+ * The presence-orb source data for one frame: only REVEALED entities exist here,
+ * and a power fact below its reveal chapter is not a property with a null value —
+ * the property does not exist. The source is rebuilt every frame, so a backward
+ * scrub deletes revealed facts the same way it deletes entities.
+ */
+function presenceOrbs(world: World, ch: number, layout: Map<string, PlacedPresence>, lens: Lens) {
   const features: GeoJSON.Feature[] = [];
   for (const crew of world.presence.crews) {
     const placed = layout.get(crew.slug);
@@ -434,6 +446,8 @@ function presenceOrbs(world: World, ch: number, layout: Map<string, PlacedPresen
     revealedMembers.forEach((m, i) => {
       // A deterministic little ring around the flag, so member orbs never stack.
       const a = (i / Math.max(1, n)) * Math.PI * 2 - Math.PI / 2;
+      const fruit = revealedFruit(m, ch);
+      const haki = revealedHaki(m, ch);
       features.push({
         type: "Feature",
         properties: {
@@ -443,9 +457,11 @@ function presenceOrbs(world: World, ch: number, layout: Map<string, PlacedPresen
           crewName: crew.name,
           vesselName: crew.vessel?.name ?? null,
           kind: "member",
-          color: crewColor(crew.slug),
+          color: lensColor(lens, { crewSlug: crew.slug, fruit: m.fruit, haki: m.haki, kind: "member" }, ch),
           confidence: m.confidence,
           verified: m.verified,
+          ...(fruit ? { fruitName: fruit.name, fruitType: fruit.type } : {}),
+          ...(haki.length ? { hakiTypes: haki.map((h) => h.type).join("|") } : {}),
         },
         geometry: {
           type: "Point",
@@ -473,6 +489,8 @@ function presenceOrbs(world: World, ch: number, layout: Map<string, PlacedPresen
   for (const c of world.presence.characters) {
     const placed = layout.get(c.slug);
     if (!placed) continue;
+    const fruit = revealedFruit(c, ch);
+    const haki = revealedHaki(c, ch);
     features.push({
       type: "Feature",
       properties: {
@@ -482,9 +500,11 @@ function presenceOrbs(world: World, ch: number, layout: Map<string, PlacedPresen
         crewName: c.affiliation,
         vesselName: null,
         kind: "warlord",
-        color: WARLORD_COLOR,
+        color: lensColor(lens, { crewSlug: c.crewSlug, fruit: c.fruit, haki: c.haki, kind: "warlord" }, ch),
         confidence: placed.w.confidence,
         verified: placed.w.verified,
+        ...(fruit ? { fruitName: fruit.name, fruitType: fruit.type } : {}),
+        ...(haki.length ? { hakiTypes: haki.map((h) => h.type).join("|") } : {}),
       },
       geometry: { type: "Point", coordinates: [placed.lng, placed.lat] },
     });
@@ -534,7 +554,7 @@ export default function WorldMap({
   chapter,
   projection,
   showOffCanon,
-  showCrews,
+  lens,
   selected,
   onSelect,
   placingSlug = null,
@@ -552,11 +572,11 @@ export default function WorldMap({
   // One portrait ring per named crew member (Phase 6). Keyed by member slug
   // (unique across crews). Positions track the member-orb ring around the flag.
   const memberMarks = useRef<Map<string, PresenceHandle>>(new Map());
-  // paint() runs on the chapter tween; it reads the live toggle through this ref.
-  const showCrewsRef = useRef(showCrews);
+  // paint() runs on the chapter tween; it reads the live lens through this ref.
+  const lensRef = useRef(lens);
   useEffect(() => {
-    showCrewsRef.current = showCrews;
-  }, [showCrews]);
+    lensRef.current = lens;
+  }, [lens]);
 
   // Placement mode is read by the click handler, which is registered once on
   // mount and so must read current values through a ref (same pattern as chapter).
@@ -589,6 +609,11 @@ export default function WorldMap({
       kind: string;
       confidence: string;
       verified: boolean;
+      /** Power facts — present ONLY when revealed at this chapter (the feature
+          simply has no such property otherwise, so the tooltip cannot leak). */
+      fruitName: string | null;
+      fruitType: string | null;
+      hakiTypes: string | null;
     } | null;
   } | null>(null);
 
@@ -819,7 +844,7 @@ export default function WorldMap({
           type: "circle",
           source: "presence",
           filter: ["!=", ["get", "kind"], "crew"],
-          layout: { visibility: showCrews ? "visible" : "none" },
+          layout: { visibility: lens !== "off" ? "visible" : "none" },
           paint: {
             "circle-radius": [
               "interpolate", ["linear"], ["zoom"],
@@ -838,7 +863,7 @@ export default function WorldMap({
           id: "presence-hit",
           type: "circle",
           source: "presence",
-          layout: { visibility: showCrews ? "visible" : "none" },
+          layout: { visibility: lens !== "off" ? "visible" : "none" },
           paint: { "circle-radius": 11, "circle-color": "rgba(0,0,0,0)" },
         },
       ],
@@ -909,7 +934,7 @@ export default function WorldMap({
         marker,
         parts: { el: p.el, flag: p.flag, hull: p.hull, label: p.label },
         shown: false,
-        windowOrder: null,
+        paintKey: null,
         populated: false,
       });
     }
@@ -922,7 +947,7 @@ export default function WorldMap({
         marker,
         parts: { el: p.el, ring: p.ring, label: p.label },
         shown: false,
-        windowOrder: null,
+        paintKey: null,
         populated: false,
       });
     }
@@ -938,7 +963,7 @@ export default function WorldMap({
           marker,
           parts: { el: p.el, ring: p.ring, label: p.label },
           shown: false,
-          windowOrder: null,
+          paintKey: null,
           populated: false,
         });
       }
@@ -963,6 +988,9 @@ export default function WorldMap({
             kind: pf.properties?.kind as string,
             confidence: pf.properties?.confidence as string,
             verified: pf.properties?.verified === true || pf.properties?.verified === "true",
+            fruitName: (pf.properties?.fruitName as string) ?? null,
+            fruitType: (pf.properties?.fruitType as string) ?? null,
+            hakiTypes: (pf.properties?.hakiTypes as string) ?? null,
           },
         });
         return;
@@ -1026,7 +1054,7 @@ export default function WorldMap({
         crews: crewFlags.current,
         chars: warlordMarks.current,
         members: memberMarks.current,
-        show: showCrewsRef.current,
+        lens: lensRef.current,
       }, art);
     });
 
@@ -1056,7 +1084,7 @@ export default function WorldMap({
       crews: crewFlags.current,
       chars: warlordMarks.current,
       members: memberMarks.current,
-      show: showCrewsRef.current,
+      lens: lensRef.current,
     }, art);
   }, [chapter, world, art]);
 
@@ -1072,7 +1100,7 @@ export default function WorldMap({
       crews: crewFlags.current,
       chars: warlordMarks.current,
       members: memberMarks.current,
-      show: showCrewsRef.current,
+      lens: lensRef.current,
     }, art);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [features]);
@@ -1107,21 +1135,22 @@ export default function WorldMap({
     m.setLayoutProperty("islands-off", "visibility", showOffCanon ? "visible" : "none");
   }, [showOffCanon]);
 
-  /* ------------------------------------------------------------ crews toggle */
+  /* ------------------------------------------------------------------ lens */
   useEffect(() => {
     const m = map.current;
     if (!m || !ready.current) return;
-    m.setLayoutProperty("presence-orbs", "visibility", showCrews ? "visible" : "none");
-    m.setLayoutProperty("presence-hit", "visibility", showCrews ? "visible" : "none");
-    // Re-run the sweep so the marker pools hide (or repopulate) immediately.
+    const on = lens !== "off";
+    m.setLayoutProperty("presence-orbs", "visibility", on ? "visible" : "none");
+    m.setLayoutProperty("presence-hit", "visibility", on ? "visible" : "none");
+    // Re-run the sweep so the pools hide (or recolor) immediately.
     paint(m, chapterRef.current, world, ship.current, {
       crews: crewFlags.current,
       chars: warlordMarks.current,
       members: memberMarks.current,
-      show: showCrews,
+      lens,
     }, art);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showCrews]);
+  }, [lens]);
 
   /* --------------------------------------------------------------- selected */
   useEffect(() => {
@@ -1195,6 +1224,22 @@ export default function WorldMap({
                   ⛵ {hoveredPresence.vesselName}
                 </div>
               )}
+              {/* Power lines. If the property reached the feature it is revealed
+                  by construction — there is no gate to re-check here. */}
+              {hoveredPresence.fruitName && (
+                <div className="mt-0.5 font-mono text-[9px] text-muted">
+                  {hoveredPresence.fruitName} · {hoveredPresence.fruitType}
+                </div>
+              )}
+              {hoveredPresence.hakiTypes && (
+                <div className="mt-0.5 font-mono text-[9px] text-muted">
+                  Haki:{" "}
+                  {hoveredPresence.hakiTypes
+                    .split("|")
+                    .map((t) => HAKI_STYLE[t as HakiType].label)
+                    .join(" · ")}
+                </div>
+              )}
               <div className="mt-1 font-mono text-[9px] uppercase tracking-[0.16em] text-muted-2">
                 {hoveredPresence.confidence === "canon"
                   ? "placement from the story"
@@ -1252,7 +1297,7 @@ type PresencePools = {
   crews: Map<string, PresenceHandle>;
   chars: Map<string, PresenceHandle>;
   members: Map<string, PresenceHandle>;
-  show: boolean;
+  lens: PresenceLens;
 };
 
 /** Hide a pooled presence marker AND scrub its user-visible content out of the DOM. */
@@ -1265,7 +1310,7 @@ function hidePresence(h: PresenceHandle) {
   if (h.parts.ring) h.parts.ring.textContent = "";
   h.shown = false;
   h.populated = false;
-  h.windowOrder = null;
+  h.paintKey = null;
 }
 
 function paint(
@@ -1328,7 +1373,7 @@ function paint(
   // CLEARS its name and flag — a backward scrub re-fogs the DOM, not just the
   // pixels.
   if (pools) {
-    if (!pools.show) {
+    if (pools.lens === "off") {
       for (const h of pools.crews.values()) hidePresence(h);
       for (const h of pools.chars.values()) hidePresence(h);
       for (const h of pools.members.values()) hidePresence(h);
@@ -1349,7 +1394,9 @@ function paint(
         // Position is set every frame: the cluster fan moves a flag when a
         // NEIGHBOUR arrives or leaves, even though its own window is unchanged.
         h.marker.setLngLat([placed.lng, placed.lat]);
-        if (h.shown && h.windowOrder === placed.w.order) continue; // DOM unchanged
+        // The flag stays a crew landmark under every lens, so its key is the
+        // window alone — lens flips never touch this DOM.
+        if (h.shown && h.paintKey === String(placed.w.order)) continue; // DOM unchanged
         if (!h.populated) {
           // Real Jolly Roger where we have one; original SVG mark otherwise.
           const flagArt = art?.flags[crew.slug];
@@ -1367,7 +1414,7 @@ function paint(
         }
         h.parts.el.style.display = "";
         h.shown = true;
-        h.windowOrder = placed.w.order;
+        h.paintKey = String(placed.w.order);
       }
       // Member portrait rings (Phase 6). They sit in the same ring as the member
       // orbs and are RE-POSITIONED EVERY FRAME: a new arrival changes n, which
@@ -1400,7 +1447,7 @@ function paint(
           }
           mh.parts.el.style.display = "";
           mh.shown = true;
-          mh.windowOrder = placed.w.order;
+          mh.paintKey = String(placed.w.order);
         }
       }
       for (const c of world.presence.characters) {
@@ -1412,7 +1459,12 @@ function paint(
           continue;
         }
         h.marker.setLngLat([placed.lng, placed.lat]);
-        if (h.shown && h.windowOrder === placed.w.order) continue;
+        // The ring follows the lens: its key carries the color, so a mid-scrub
+        // reveal recolors the ring the frame it happens. Content (portrait or
+        // monogram) populates once; colors re-apply on every key change.
+        const color = lensColor(pools.lens, { crewSlug: c.crewSlug, fruit: c.fruit, haki: c.haki, kind: "warlord" }, ch);
+        const key = `${placed.w.order}|${pools.lens}|${color}`;
+        if (h.shown && h.paintKey === key) continue;
         if (!h.populated) {
           // A real portrait fills the crew-colour ring; the monogram letter is the
           // fallback. The img is a child node, so hidePresence's textContent="" wipes
@@ -1428,12 +1480,14 @@ function paint(
           h.parts.label.textContent = c.name;
           h.populated = true;
         }
+        h.parts.ring.style.borderColor = color;
+        h.parts.ring.style.color = color;
         h.parts.el.style.display = "";
         h.shown = true;
-        h.windowOrder = placed.w.order;
+        h.paintKey = key;
       }
       (m.getSource("presence") as GeoJSONSource | undefined)?.setData(
-        presenceOrbs(world, ch, layout),
+        presenceOrbs(world, ch, layout, pools.lens),
       );
     }
   }

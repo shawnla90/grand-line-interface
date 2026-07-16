@@ -56,3 +56,4 @@ data/generated/_wiki_cache/
 data/generated/_wiki_cache/
 data/generated/_art_cache/
 data/generated/art_contact_sheet.html
+__pycache__/

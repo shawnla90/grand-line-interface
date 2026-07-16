@@ -20,9 +20,19 @@
  * the fandom to correct it.
  */
 
-import type { World, WorldAt } from "@/lib/canon";
+import type { World, WorldAt, FruitType, HakiType } from "@/lib/canon";
 import { presenceWindowAt } from "@/lib/canon";
 import { crewColor, WARLORD_COLOR } from "@/lib/crews";
+import {
+  FRUIT_TYPE_ORDER,
+  FRUIT_TYPE_STYLE,
+  HAKI_RANK,
+  HAKI_STYLE,
+  UNREVEALED_COLOR,
+  revealedFruit,
+  revealedHaki,
+  type PresenceLens,
+} from "@/lib/lenses";
 
 function Swatch({ kind }: { kind: "canon" | "derived" | "guess" | "fog" }) {
   const base = "block rounded-full";
@@ -73,12 +83,12 @@ export default function Legend({
   world,
   at,
   showOffCanon,
-  showCrews,
+  lens,
 }: {
   world: World;
   at: WorldAt;
   showOffCanon: boolean;
-  showCrews: boolean;
+  lens: PresenceLens;
 }) {
   const pc = world.counts.positionConfidence;
 
@@ -94,6 +104,26 @@ export default function Legend({
     world.counts.presenceCharacters -
     activeCrews.length -
     activeChars.length;
+
+  // The on-board revealed population — the same entities the map's orbs draw
+  // this frame. All power bucketing goes through the lib/lenses gates, so the
+  // legend can never disagree with the map about what is revealed.
+  const onBoard = [
+    ...activeCrews.flatMap((c) => c.members.filter((m) => m.fromChapter <= at.chapter)),
+    ...activeChars,
+  ];
+  const fruitCounts = new Map<FruitType, number>();
+  const hakiCounts: Record<HakiType, number> = { conqueror: 0, armament: 0, observation: 0 };
+  let noFruit = 0;
+  let noHaki = 0;
+  for (const e of onBoard) {
+    const f = revealedFruit(e, at.chapter);
+    if (f) fruitCounts.set(f.type, (fruitCounts.get(f.type) ?? 0) + 1);
+    else noFruit++;
+    const rh = revealedHaki(e, at.chapter);
+    if (rh.length === 0) noHaki++;
+    for (const h of rh) hakiCounts[h.type]++;
+  }
 
   // Count what is ACTUALLY PLOTTED, not what exists. The off-canon layer is where
   // the `guess` tier lives (no chapter, no region — nothing to derive a position
@@ -137,16 +167,16 @@ export default function Legend({
         />
       </ul>
 
-      {showCrews && (
+      {lens !== "off" && (
         <div className="mt-2.5 border-t border-rope/60 pt-2.5">
           <div className="font-mono text-[9px] uppercase tracking-[0.22em] text-muted-2">
-            Who sails here
+            {lens === "crew" ? "Who sails here" : lens === "fruit" ? "By devil fruit" : "By haki"}
           </div>
           {activeCrews.length + activeChars.length === 0 ? (
             <p className="mt-1.5 text-[10px] leading-snug text-muted-2">
               No one you have met yet.
             </p>
-          ) : (
+          ) : lens === "crew" ? (
             <ul className="mt-1.5 flex flex-wrap gap-x-2.5 gap-y-1">
               {activeCrews.map((c) => (
                 <li key={c.slug} className="flex items-center gap-1.5">
@@ -167,6 +197,77 @@ export default function Legend({
                 </li>
               ))}
             </ul>
+          ) : lens === "fruit" ? (
+            <>
+              {/* One chip per type PRESENT among revealed on-board entities —
+                  the legend never names a category the map is not showing. */}
+              <ul className="mt-1.5 flex flex-wrap gap-x-2.5 gap-y-1">
+                {FRUIT_TYPE_ORDER.filter((t) => (fruitCounts.get(t) ?? 0) > 0).map((t) => (
+                  <li key={t} className="flex items-center gap-1.5">
+                    <span
+                      className="block h-2 w-2 rounded-full"
+                      style={{ background: FRUIT_TYPE_STYLE[t].color }}
+                    />
+                    <span className="text-[10px] text-muted">
+                      {FRUIT_TYPE_STYLE[t].label}{" "}
+                      <span className="tnum font-mono text-[9px] text-muted-2">
+                        {fruitCounts.get(t)}
+                      </span>
+                    </span>
+                  </li>
+                ))}
+                {noFruit > 0 && (
+                  <li className="flex items-center gap-1.5">
+                    <span
+                      className="block h-2 w-2 rounded-full"
+                      style={{ background: UNREVEALED_COLOR }}
+                    />
+                    <span className="text-[10px] text-muted-2">
+                      no fruit revealed{" "}
+                      <span className="tnum font-mono text-[9px]">{noFruit}</span>
+                    </span>
+                  </li>
+                )}
+              </ul>
+              <p className="mt-1.5 text-[10px] leading-snug text-muted-2">
+                A fruit is a story reveal — it colors in at ITS chapter, not the sailor&apos;s.
+              </p>
+            </>
+          ) : (
+            <>
+              <ul className="mt-1.5 flex flex-wrap gap-x-2.5 gap-y-1">
+                {HAKI_RANK.filter((t) => hakiCounts[t] > 0).map((t) => (
+                  <li key={t} className="flex items-center gap-1.5">
+                    <span
+                      className="block h-2 w-2 rounded-full"
+                      style={{ background: HAKI_STYLE[t].color }}
+                    />
+                    <span className="text-[10px] text-muted">
+                      {HAKI_STYLE[t].label}{" "}
+                      <span className="tnum font-mono text-[9px] text-muted-2">
+                        {hakiCounts[t]}
+                      </span>
+                    </span>
+                  </li>
+                ))}
+                {noHaki > 0 && (
+                  <li className="flex items-center gap-1.5">
+                    <span
+                      className="block h-2 w-2 rounded-full"
+                      style={{ background: UNREVEALED_COLOR }}
+                    />
+                    <span className="text-[10px] text-muted-2">
+                      none revealed{" "}
+                      <span className="tnum font-mono text-[9px]">{noHaki}</span>
+                    </span>
+                  </li>
+                )}
+              </ul>
+              <p className="mt-1.5 text-[10px] leading-snug text-muted-2">
+                Orb color follows the highest revealed haki: Conqueror over Armament over
+                Observation.
+              </p>
+            </>
           )}
           {beyond > 0 && (
             <p className="mt-1.5 text-[10px] leading-snug text-muted-2">

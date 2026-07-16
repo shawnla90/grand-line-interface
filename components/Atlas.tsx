@@ -31,6 +31,7 @@ import {
   type Axis,
 } from "@/lib/canon";
 import { BRAND } from "@/config/brand";
+import type { PresenceLens } from "@/lib/lenses";
 import type { BuildLog } from "@/lib/buildlog";
 import type { Art } from "@/lib/art";
 import WorldMap, { type Projection } from "./WorldMap";
@@ -99,21 +100,24 @@ type Props = {
   /** null = a cold visit with no ?ch= — show the hero. */
   initialChapter: number | null;
   initialAxis: Axis;
+  /** The presence lens from ?lens= — "crew" on a plain load. */
+  initialLens: PresenceLens;
   /** The shipwright's log — build provenance, rendered from the footer. */
   buildLog?: BuildLog;
 };
 
 const DEFAULT_CHAPTER = 1044;
 
-export default function Atlas({ world, art, initialChapter, initialAxis, buildLog }: Props) {
+export default function Atlas({ world, art, initialChapter, initialAxis, initialLens, buildLog }: Props) {
   const [chapter, setChapterRaw] = useState(initialChapter ?? DEFAULT_CHAPTER);
   const [axis, setAxis] = useState<Axis>(initialAxis);
   const [hero, setHero] = useState(initialChapter === null);
   const [projection, setProjection] = useState<Projection>("globe");
   const [offCanon, setOffCanon] = useState(false);
-  // Crews & Warlords on the map (Phase 5). Default ON — the chapter gate keeps
-  // early chapters clean, so at ch. 1 the layer shows exactly nothing.
-  const [showCrews, setShowCrews] = useState(true);
+  // The presence lens (Phase 6A). "crew" is Phase 5's who-sails-here coloring;
+  // "fruit"/"haki" recolor the same chapter-gated entities by their revealed
+  // powers; "off" hides the layer. At ch. 1 every lens shows exactly nothing.
+  const [lens, setLens] = useState<PresenceLens>(initialLens);
   const [selected, setSelected] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
@@ -151,10 +155,11 @@ export default function Atlas({ world, art, initialChapter, initialAxis, buildLo
       const q = new URLSearchParams();
       q.set("ch", String(chapter));
       if (axis === "episode") q.set("axis", "episode");
+      if (lens !== "crew") q.set("lens", lens);
       window.history.replaceState(null, "", `?${q.toString()}`);
     }, 180);
     return () => clearTimeout(t);
-  }, [chapter, axis, hero]);
+  }, [chapter, axis, lens, hero]);
 
   /* -------------------------------------------------------------- keyboard */
   useEffect(() => {
@@ -192,7 +197,7 @@ export default function Atlas({ world, art, initialChapter, initialAxis, buildLo
           chapter={swept}
           projection={projection}
           showOffCanon={offCanon}
-          showCrews={showCrews}
+          lens={lens}
           selected={selected}
           onSelect={setSelected}
         />
@@ -275,21 +280,45 @@ export default function Atlas({ world, art, initialChapter, initialAxis, buildLo
               locations. No chapter — they cannot be fogged.
             </button>
 
-            <button
-              type="button"
-              onClick={() => setShowCrews((v) => !v)}
-              className={[
-                "max-w-[254px] rounded-sm border bg-ink/90 px-2.5 py-1.5 text-left font-mono text-[9px] leading-snug tracking-[0.1em] backdrop-blur transition-colors",
-                showCrews
-                  ? "border-gold/60 text-gold"
-                  : "border-rope text-muted-2 hover:border-rope-2 hover:text-muted",
-              ].join(" ")}
-            >
-              {showCrews ? "◉" : "◯"} who sails here: {world.counts.presenceCrews} crews ·{" "}
-              {world.counts.presenceCharacters} Warlords. Chapter-gated, like everything else.
-            </button>
+            {/* The presence lens. One segmented control: "off" absorbs the old
+                who-sails-here toggle; crews/fruit/haki pick what the orb colors
+                MEAN. Every lens renders revealed facts only. */}
+            <div className="max-w-[254px] rounded-sm border border-rope bg-ink/90 px-2.5 py-1.5 font-mono text-[9px] leading-snug tracking-[0.1em] text-muted-2 backdrop-blur">
+              <div className="flex items-center gap-1">
+                {(["off", "crew", "fruit", "haki"] as const).map((l) => (
+                  <button
+                    key={l}
+                    type="button"
+                    onClick={() => setLens(l)}
+                    className={[
+                      "rounded-sm border px-1.5 py-0.5 uppercase tracking-[0.14em] transition-colors",
+                      lens === l
+                        ? "border-gold/60 text-gold"
+                        : "border-transparent text-muted-2 hover:text-muted",
+                    ].join(" ")}
+                  >
+                    {l === "crew" ? "crews" : l}
+                  </button>
+                ))}
+              </div>
+              <div className="mt-1">
+                {lens === "off" &&
+                  "presence hidden — islands and the voyage only."}
+                {lens === "crew" && (
+                  <>
+                    who sails here: {world.counts.presenceCrews} crews ·{" "}
+                    {world.counts.presenceCharacters} Warlords. Chapter-gated, like everything
+                    else.
+                  </>
+                )}
+                {lens === "fruit" &&
+                  "by devil fruit — orb colors follow the fruit's nature. Revealed fruits only; a fruit is a story reveal with its own chapter."}
+                {lens === "haki" &&
+                  "by haki — orb colors follow the highest revealed haki. Conqueror > Armament > Observation."}
+              </div>
+            </div>
 
-            <Legend world={world} at={at} showOffCanon={offCanon} showCrews={showCrews} />
+            <Legend world={world} at={at} showOffCanon={offCanon} lens={lens} />
           </div>
         )}
 
