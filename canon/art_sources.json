@@ -1,10 +1,18 @@
 {
   "_warning": "HAND-AUTHORED override map for scripts/sync_art.py. A sync script that overwrites this file is a bug. This file exists ONLY to correct entries whose wiki page title (derived from our display name) is wrong, or whose page's FIRST image is not the one we want.",
-  "_how_it_works": "For each kind, map our slug -> { page?: exact wiki page title, image?: exact File: name to pull instead of the page's lead pageimage, no_matte?: true to skip the 6E background-removal cutout when the AI matte mangles a particular image }. Anything not listed resolves by name automatically. The contact sheet (before/after columns) + the FAIL-LOUD miss list tell you what to add here.",
+  "_how_it_works": "For each kind, map our slug -> { page?: exact wiki page title, image?: exact File: name to pull instead of the page's lead pageimage, no_matte?: true to skip the 6E background-removal cutout when the AI matte mangles a particular image, focus?: {x,y} normalized head position in the SOURCE image — beats face detection for the square portrait crop }. Anything not listed resolves by name automatically. The contact sheet (before/after + circular preview columns) + the FAIL-LOUD miss list tell you what to add here.",
   "_license": "Downloaded artwork is © Eiichiro Oda / Shueisha / Toei Animation, used as attributed fan reference. It is NOT covered by the repo's MIT license. Every downloaded file carries a manifest row with its source URL.",
   "characters": {
-    "kaido": { "page": "Kaidou" },
-    "bartholomew-kuma": { "image": "Bartholomew Kuma At Age 22.png", "_reason": "BOTH the anime AND manga Infobox files are the BACK of his coat (the paw emblem); this is the cleanest front-facing anime face" }
+    "kaido": { "page": "Kaidou", "focus": { "x": 0.55, "y": 0.17 } },
+    "bartholomew-kuma": { "image": "Bartholomew Kuma At Age 22.png", "_reason": "BOTH the anime AND manga Infobox files are the BACK of his coat (the paw emblem); this is the cleanest front-facing anime face" },
+    "sanji": { "focus": { "x": 0.53, "y": 0.09 }, "_reason": "very tall full-body shot; detectors miss the head entirely (Haar fired on his SHOES)" },
+    "usopp": { "focus": { "x": 0.36, "y": 0.1 } },
+    "charlotte-katakuri": { "focus": { "x": 0.47, "y": 0.07 } },
+    "marshall-d-teach": { "focus": { "x": 0.54, "y": 0.15 } },
+    "jinbe": { "focus": { "x": 0.49, "y": 0.11 }, "_reason": "Haar fired on the kimono skull pattern" },
+    "jinbe-warlord": { "focus": { "x": 0.49, "y": 0.11 } },
+    "edward-newgate": { "focus": { "x": 0.5, "y": 0.07 } },
+    "killer": { "focus": { "x": 0.5, "y": 0.11 } }
   },
   "flags": {
     "red-hair-pirates": { "page": "Red Hair Pirates" }

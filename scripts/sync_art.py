@@ -315,8 +315,105 @@ def _trim_to_subject(im: Image.Image, pad_frac: float = 0.04) -> Image.Image:
     return im.crop((left, top, right, bottom))
 
 
-def process_image(raw: bytes, mode: str, size: int, *, matte_model: str | None = None) -> tuple[bytes, int, int, bool]:
-    """Return (webp_bytes, w, h, matted). Raises on non-image input (fail-loud on HTML)."""
+# nagadomi's LBP cascade trained ON anime faces — the generic Haar frontal
+# cascade fires on kimono skulls and shoes (verified on this exact art set).
+# Cached in the gitignored _art_cache like the wiki bytes; never committed.
+ANIME_CASCADE_URL = (
+    "https://raw.githubusercontent.com/nagadomi/lbpcascade_animeface/master/"
+    "lbpcascade_animeface.xml"
+)
+
+
+def _anime_cascade_path() -> "Path | None":
+    dest = CACHE_DIR / "lbpcascade_animeface.xml"
+    if dest.exists():
+        return dest
+    try:
+        req = urllib.request.Request(ANIME_CASCADE_URL, headers={"User-Agent": USER_AGENT})
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            data = resp.read()
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes(data)
+        return dest
+    except Exception:  # noqa: BLE001 — offline runs fall through to other detectors
+        return None
+
+
+def _detect_face_focus(im: Image.Image) -> tuple[float, float, str] | None:
+    """Best-effort face center for the square portrait crop.
+
+    Returns (fx, fy, detector) with fx/fy normalized to [0,1], or None.
+    Order: mediapipe (rarely fires on painted faces, but trustworthy when it
+    does) → anime-face LBP cascade (the workhorse for this art) → generic Haar
+    (guarded hard: a "face" in the lower half of portrait art is a false
+    positive on clothing, verified on Sanji's shoes and Jinbe's kimono).
+    All deterministic per input, so re-runs stay no-op diffs. The caller MUST
+    keep a geometric fallback + the canon/art_sources.json "focus" override.
+    """
+    import numpy as np
+    rgb = np.asarray(im.convert("RGB"))
+    h_img, w_img = rgb.shape[0], rgb.shape[1]
+
+    try:
+        import mediapipe as mp
+        with mp.solutions.face_detection.FaceDetection(
+            model_selection=1, min_detection_confidence=0.5
+        ) as det:
+            res = det.process(rgb)
+        if res.detections:
+            best = max(
+                res.detections,
+                key=lambda d: d.location_data.relative_bounding_box.width
+                * d.location_data.relative_bounding_box.height,
+            )
+            bb = best.location_data.relative_bounding_box
+            # a face under ~6% of the frame is noise (background extras)
+            if bb.width >= 0.06:
+                fx = min(1.0, max(0.0, bb.xmin + bb.width / 2))
+                fy = min(1.0, max(0.0, bb.ymin + bb.height / 2))
+                return (fx, fy, "mediapipe")
+    except Exception:  # noqa: BLE001 — detection is best-effort by contract
+        pass
+
+    try:
+        import cv2
+        gray = cv2.cvtColor(rgb, cv2.COLOR_RGB2GRAY)
+        min_side = max(24, w_img // 12)
+
+        anime_xml = _anime_cascade_path()
+        if anime_xml:
+            cascade = cv2.CascadeClassifier(str(anime_xml))
+            faces = cascade.detectMultiScale(gray, 1.1, 5, minSize=(min_side, min_side))
+            if len(faces):
+                x, y, fw, fh = max(faces, key=lambda f: f[2] * f[3])
+                fy = (y + fh / 2) / h_img
+                if fy <= 0.6:
+                    return ((x + fw / 2) / w_img, fy, "animeface")
+
+        cascade = cv2.CascadeClassifier(
+            cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
+        )
+        faces = cascade.detectMultiScale(gray, 1.1, 5, minSize=(min_side, min_side))
+        if len(faces):
+            x, y, fw, fh = max(faces, key=lambda f: f[2] * f[3])
+            fy = (y + fh / 2) / h_img
+            if fy <= 0.42:
+                return ((x + fw / 2) / w_img, fy, "haar")
+    except Exception:  # noqa: BLE001
+        pass
+    return None
+
+
+def process_image(
+    raw: bytes, mode: str, size: int, *,
+    matte_model: str | None = None,
+    focus: dict | None = None,
+) -> tuple[bytes, int, int, bool, dict | None]:
+    """Return (webp_bytes, w, h, matted, focus_used). Raises on non-image input.
+
+    focus: optional {"x": 0..1, "y": 0..1} from canon/art_sources.json — a
+    human-picked head position that beats face detection (square mode only).
+    """
     im = Image.open(io.BytesIO(raw))
     im.load()
     has_alpha = im.mode in ("RGBA", "LA", "P") and (
@@ -336,12 +433,28 @@ def process_image(raw: bytes, mode: str, size: int, *, matte_model: str | None =
     elif matte_model and real_alpha:
         im = _trim_to_subject(im)
 
+    focus_used: dict | None = None
     if mode == "square":
         w, h = im.size
         s = min(w, h)
-        left = (w - s) // 2
-        # top-biased: for tall art (full body) crop from the upper region to keep the head
-        top = 0 if h <= w else min((h - s) // 4, h - s)
+        pt: tuple[float, float] | None = None
+        if isinstance(focus, dict) and "x" in focus and "y" in focus:
+            pt = (float(focus["x"]), float(focus["y"]))
+            focus_used = {"x": pt[0], "y": pt[1], "source": "override"}
+        else:
+            hit = _detect_face_focus(im)
+            if hit:
+                pt = (hit[0], hit[1])
+                focus_used = {"x": round(hit[0], 4), "y": round(hit[1], 4), "source": hit[2]}
+        if pt:
+            # head-and-shoulders framing: the face sits at ~38% of the crop's
+            # height, never dead-center (chins at center = floating torso look)
+            left = min(max(0, round(pt[0] * w - s / 2)), w - s)
+            top = min(max(0, round(pt[1] * h - 0.38 * s)), h - s)
+        else:
+            left = (w - s) // 2
+            # top-biased: for tall art (full body) crop from the upper region to keep the head
+            top = 0 if h <= w else min((h - s) // 4, h - s)
         im = im.crop((left, top, left + s, top + s)).resize((size, size), Image.LANCZOS)
     elif mode == "long":
         im.thumbnail((size, size), Image.LANCZOS)
@@ -354,7 +467,7 @@ def process_image(raw: bytes, mode: str, size: int, *, matte_model: str | None =
 
     buf = io.BytesIO()
     im.save(buf, "WEBP", quality=85, method=6)
-    return buf.getvalue(), im.size[0], im.size[1], matted
+    return buf.getvalue(), im.size[0], im.size[1], matted, focus_used
 
 
 # ---------------------------------------------------------------------------
@@ -521,21 +634,28 @@ def main() -> int:
             ov = overrides.get(kind, {}).get(slug, {})
             no_matte = isinstance(ov, dict) and ov.get("no_matte")
             want_matte = MATTE_KINDS.get(kind) if not no_matte else None
-            webp, w, h, matted = process_image(raw, mode, size, matte_model=want_matte)
+            ov_focus = ov.get("focus") if isinstance(ov, dict) else None
+            webp, w, h, matted, focus_used = process_image(
+                raw, mode, size, matte_model=want_matte, focus=ov_focus)
         except Exception as exc:  # noqa: BLE001 — non-image (HTML error page) lands here
             misses.append({"kind": kind, "slug": slug, "page": it["page"],
                            "why": f"not a decodable image ({exc}) — likely an HTML error page"})
             continue
 
         write_bytes(out_path, webp)
-        manifest_rows.append({
+        row = {
             "kind": kind, "slug": slug, "ref_id": it.get("ref_id"), "page": it["page"],
             "source_url": url, "retrieved": datetime.now(timezone.utc).isoformat(),
             "sha256": hashlib.sha256(webp).hexdigest(),
             "w": w, "h": h, "matted": matted,
             "file": f"art/{kind}/{slug}.webp", "license": LICENSE,
-        })
+        }
+        if focus_used:
+            row["focus"] = focus_used
+        manifest_rows.append(row)
         flag = " [matted]" if matted else (" [no-matte]" if want_matte else "")
+        if focus_used:
+            flag += f" [face:{focus_used['source']}]"
         print(f"    {kind}/{slug}.webp  ({w}x{h}){flag}")
 
     # 3) Manifest
@@ -603,9 +723,19 @@ def render_contact_sheet(manifest: dict) -> str:
         if cache.exists():
             before = f'<img class="before" src="_art_cache/raw/{cache.name}" alt="" loading="lazy">'
         matte_badge = ' <span class="matted">✂ matted</span>' if r.get("matted") else ""
+        focus = r.get("focus")
+        if focus:
+            label = "focus override" if focus["source"] == "override" else f'face:{focus["source"]}'
+            matte_badge += f' <span class="focus">⊙ {label}</span>'
+        # characters: preview the EXACT circular crop the map renders, so a
+        # torso-framed chip is caught here, not on the globe.
+        circ = (
+            f'<img class="circ" src="../../public/{r["file"]}" alt="" loading="lazy">'
+            if r["kind"] == "characters" else ""
+        )
         cells.append(
             f'<figure><div class="pair">{before}'
-            f'<img src="../../public/{r["file"]}" alt="{r["slug"]}" loading="lazy"></div>'
+            f'<img src="../../public/{r["file"]}" alt="{r["slug"]}" loading="lazy">{circ}</div>'
             f'<figcaption><b>{r["kind"]}/{r["slug"]}</b>{matte_badge}<br>'
             f'<span class="page">{r["page"]}</span><br>'
             f'<a href="{r["source_url"]}" target="_blank">source</a> · {r["w"]}×{r["h"]}</figcaption></figure>'
@@ -629,7 +759,10 @@ def render_contact_sheet(manifest: dict) -> str:
   img{{width:100%;height:130px;object-fit:contain;background:
       repeating-conic-gradient(#1e293b 0% 25%,#0f172a 0% 50%) 50%/16px 16px;border-radius:6px}}
   img.before{{opacity:0.75}}
+  img.circ{{flex:0 0 64px;width:64px;height:64px;object-fit:cover;border-radius:50%;
+      align-self:center;border:2px solid #b08d3e;background:#0f172a}}
   .matted{{color:#86efac;font-size:10px}}
+  .focus{{color:#fcd34d;font-size:10px}}
   figcaption{{font-size:11px;margin-top:6px;color:#cbd5e1;word-break:break-word}}
   .page{{color:#7dd3fc}} a{{color:#fca5a5}}
   .misses{{margin-top:28px;background:#2a0f14;border:1px solid #7f1d1d;border-radius:10px;padding:12px 18px}}
