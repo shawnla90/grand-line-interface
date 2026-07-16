@@ -109,6 +109,29 @@ const C = {
   isleCoast: "#7d7050",
 } as const;
 
+// Biome inks — muted chart tones near C.isle's value range so the map stays
+// one cohesive document. The biome property ships for every island (same
+// class as slug/debut); it only reaches PIXELS through the revealed(ch)-gated
+// opacity channels in paint(), so a fogged island's tint is painted at 0.
+const BIOME_FILL: Record<string, string> = {
+  winter: "#2b3440",
+  summer: "#33321f",
+  desert: "#3a3120",
+  jungle: "#243024",
+  volcanic: "#382320",
+  sky: "#343841",
+};
+const BIOME_COAST: Record<string, string> = {
+  winter: "#93a4b5",
+  summer: "#9a9058",
+  desert: "#a08a58",
+  jungle: "#6f8a62",
+  volcanic: "#8a5a48",
+  sky: "#b9c2cc",
+};
+const byBiome = (table: Record<string, string>, fallback: string): ExpressionSpecification =>
+  ["match", ["get", "biome"], ...Object.entries(table).flat(), fallback] as unknown as ExpressionSpecification;
+
 /** How long an island keeps glowing after you first read about it, in chapters. */
 const CHART_FLARE = 40;
 /** Fogged islands are visible as a trace, never as an identity. */
@@ -754,10 +777,10 @@ export default function WorldMap({
         // chart resolves from "pins on water" into "a world with coastlines".
         // Opacity is chapter-gated per frame by paint() — fog has no shoreline.
         { id: "island-shapes", type: "fill", source: "silhouettes",
-          paint: { "fill-color": C.isle, "fill-opacity": 0 } },
+          paint: { "fill-color": byBiome(BIOME_FILL, C.isle), "fill-opacity": 0 } },
         { id: "island-shapes-coast", type: "line", source: "silhouettes",
           paint: {
-            "line-color": C.isleCoast,
+            "line-color": byBiome(BIOME_COAST, C.isleCoast),
             "line-width": ["interpolate", ["linear"], ["zoom"], 2, 0.5, 5, 1.5],
             "line-opacity": 0,
           } },

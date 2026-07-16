@@ -1,0 +1,21 @@
+{
+  "_warning": "HAND-AUTHORED biome overrides for scripts/biomes.py. A sync script that overwrites this file is a bug. Values must be one of: temperate, winter, summer, desert, jungle, volcanic, sky (scripts/check_canon.py enforces this and that every slug exists).",
+  "_why_this_file_exists": "The wiki fills island_type for only 15/413 islands, and where it does it can still be the wrong PAINT key — Arabasta is typed 'Summer Island' but reads as desert; Punk Hazard has no type at all yet is the fire/ice island. A biome here beats every heuristic in biomes.py. Hero islands (deep terrain in gen_terrain.py) are pinned explicitly even where a heuristic would agree, so their look never silently changes when heuristics evolve.",
+  "biomes": {
+    "punk-hazard": "volcanic",
+    "arabasta-kingdom": "desert",
+    "skypiea": "sky",
+    "water-7": "temperate",
+    "wano-country": "temperate",
+    "whole-cake-island": "summer",
+    "dressrosa": "summer",
+    "zou": "jungle",
+    "jaya": "jungle",
+    "mock-town": "jungle",
+    "sabaody-archipelago": "jungle",
+    "amazon-lily": "jungle",
+    "weatheria": "sky",
+    "cactus-island": "desert",
+    "whisky-peak": "desert"
+  }
+}

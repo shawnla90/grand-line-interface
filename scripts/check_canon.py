@@ -570,6 +570,38 @@ def haki_users_gated(doc):
     return f"{facts} haki facts across {len(users)} users, all gated, {unverified} still verified:false"
 
 
+@check("biomes_valid")
+def biomes_valid(doc):
+    """canon/islands.biomes.json: every value is a known biome, every slug is a
+    real island, and the silhouettes artifact carries a valid biome per feature.
+    A typo'd biome would silently fall through match() to the default ink."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from biomes import BIOMES  # noqa: PLC0415 — shared with the generators
+
+    biomes_path = CANON_DIR / "islands.biomes.json"
+    assert biomes_path.exists(), "canon/islands.biomes.json is missing"
+    overrides = json.loads(biomes_path.read_text())["biomes"]
+    slugs = {i["slug"] for i in doc["islands"]}
+    for slug, biome in overrides.items():
+        assert biome in BIOMES, f"override {slug!r}: {biome!r} is not one of {sorted(BIOMES)}"
+        assert slug in slugs, f"override slug {slug!r} is not an island in canon.json"
+    for hero in ("punk-hazard", "arabasta-kingdom", "skypiea"):
+        assert hero in overrides, f"hero island {hero!r} missing from biome overrides"
+
+    sil_path = ROOT / "public" / "geo" / "islands.silhouettes.json"
+    assert sil_path.exists(), "public/geo/islands.silhouettes.json is missing"
+    sil = json.loads(sil_path.read_text())
+    allowed_props = {"slug", "debut", "hand_drawn", "biome"}
+    for f in sil["features"]:
+        p = f["properties"]
+        assert set(p) <= allowed_props, (
+            f"silhouette {p.get('slug')!r} carries unexpected properties "
+            f"{set(p) - allowed_props} — names must never ship in geometry"
+        )
+        assert p.get("biome") in BIOMES, f"silhouette {p.get('slug')!r} has bad biome {p.get('biome')!r}"
+    return f"{len(overrides)} overrides valid, {len(sil['features'])} silhouettes biome-tagged"
+
+
 CHECKS = [
     jinbe_test, crew_joins_are_human, straw_hats_complete,
     islands_have_positions, islands_fog_key, no_mojibake,
@@ -577,7 +609,7 @@ CHECKS = [
     types_are_numbers, source_refs_not_null, art_manifest_attributed, canon_boundary, fog_mechanic,
     voyage_route_forward, vessels_chapter_gated,
     presence_windows_forward, presence_spoiler_and_roster,
-    fruit_reveals_gated, haki_users_gated,
+    fruit_reveals_gated, haki_users_gated, biomes_valid,
 ]
 
 

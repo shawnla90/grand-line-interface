@@ -32,6 +32,8 @@ import math
 import sys
 from pathlib import Path
 
+from biomes import BIOMES, biome_for
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 GENERATED = REPO_ROOT / "data" / "generated"
 CANON_DIR = REPO_ROOT / "canon"
@@ -65,20 +67,31 @@ class Rng:
 # Shape profiles — the little canon we have, made visible
 # ---------------------------------------------------------------------------
 
-def profile_for(island: dict) -> dict:
-    """Noise profile from island type/name. Amplitudes are fractions of R."""
-    t = (island.get("island_type") or "").lower()
+def profile_for(island: dict, biome: str) -> dict:
+    """Noise profile from the RESOLVED biome (biomes.py: override -> wiki type
+    -> sea/name heuristics). Amplitudes are fractions of R. Keying off the
+    biome instead of the raw wiki type finally gives Skypiea its cloud-puff
+    coast — its sea lives only in the coords file, which biome_for consults."""
     name = island["name"].lower()
     if "archipelago" in name or "islands" in name.split()[-1:]:
         return {"kind": "archipelago"}
-    if "sky" in t or island.get("sea") == "Sky":
+    if biome == "sky":
         # cloud islands: soft, puffy, low-frequency
         return {"kind": "blob", "freqs": [(2, 0.16), (3, 0.10)], "spike": 0.0}
-    if "winter" in t:
+    if biome == "winter":
         # fjords: jagged coast
         return {"kind": "blob", "freqs": [(3, 0.14), (7, 0.12), (11, 0.08)], "spike": 0.06}
-    if "summer" in t:
+    if biome == "summer":
         return {"kind": "blob", "freqs": [(2, 0.14), (5, 0.10)], "spike": 0.0}
+    if biome == "desert":
+        # wind-smoothed shore, one long cape (the caravan headland)
+        return {"kind": "blob", "freqs": [(2, 0.12), (3, 0.07)], "spike": 0.10}
+    if biome == "volcanic":
+        # rugged lava coast
+        return {"kind": "blob", "freqs": [(3, 0.13), (6, 0.09)], "spike": 0.05}
+    if biome == "jungle":
+        # river-cut, irregular
+        return {"kind": "blob", "freqs": [(2, 0.13), (5, 0.11), (9, 0.06)], "spike": 0.04}
     # default temperate coastline
     return {"kind": "blob", "freqs": [(2, 0.13), (4, 0.10), (7, 0.07)], "spike": 0.03}
 
@@ -108,8 +121,8 @@ def blob(rng: Rng, cx: float, cy: float, r_lng: float, r_lat: float, profile: di
     return ring
 
 
-def geometry_for(island: dict, lng: float, lat: float, radius: float, rng: Rng) -> dict:
-    prof = profile_for(island)
+def geometry_for(island: dict, biome: str, lng: float, lat: float, radius: float, rng: Rng) -> dict:
+    prof = profile_for(island, biome)
     # the Grand Line reads west->east; stretch its islands along the voyage axis
     elong = 1.25 if island.get("sea") == "Grand Line" else rng.range(0.9, 1.15)
     r_lng, r_lat = radius * elong, radius / elong
@@ -135,6 +148,10 @@ def main() -> int:
     overrides: dict = {}
     if shapes_path.exists():
         overrides = json.loads(shapes_path.read_text()).get("shapes", {})
+    biomes_path = CANON_DIR / "islands.biomes.json"
+    biome_overrides: dict = {}
+    if biomes_path.exists():
+        biome_overrides = json.loads(biomes_path.read_text()).get("biomes", {})
 
     by_slug = {c["slug"]: c for c in coords}
     voyage_slugs = {w["slug"] for w in voyage["waypoints"] if w.get("slug")}
@@ -162,12 +179,15 @@ def main() -> int:
             radius = rng.range(1.00, 1.45)
         else:
             radius = rng.range(0.50, 0.95)
-        geom = overrides.get(slug) or geometry_for(isl, pos["lng"], pos["lat"], radius, rng)
+        biome = biome_for(isl, pos.get("sea"), biome_overrides)
+        geom = overrides.get(slug) or geometry_for(isl, biome, pos["lng"], pos["lat"], radius, rng)
         features.append({
             "type": "Feature",
-            # slug + debut only: hovering fog must stay nameless (spoiler contract)
+            # slug + debut + biome only: hovering fog must stay nameless
+            # (spoiler contract) — biome is a paint key, gated to pixels by the
+            # same revealed(ch) opacity as the coastline itself
             "properties": {"slug": slug, "debut": isl["debut_chapter"],
-                           "hand_drawn": slug in overrides},
+                           "hand_drawn": slug in overrides, "biome": biome},
             "geometry": geom,
         })
 
@@ -180,6 +200,9 @@ def main() -> int:
             "islands": len(features),
             "hand_drawn": sum(1 for f in features if f["properties"]["hand_drawn"]),
             "skipped_no_coords": skipped,
+            # classification drift shows up here as a reviewable diff
+            "biomes": {b: sum(1 for f in features if f["properties"]["biome"] == b)
+                       for b in sorted(BIOMES)},
         },
         "features": features,
     }
