@@ -292,6 +292,13 @@ def main() -> int:
     raw_fruits = load(RAW / "fruits.json")
     raw_sagas = load(RAW / "sagas.json")
     raw_eps = load(RAW / "episodes.json")
+    # Phase 7A: the endpoints we mirrored for months and never merged.
+    raw_boats = load(RAW / "boats.json")
+    raw_locates = load(RAW / "locates.json")
+    raw_swords = load(RAW / "swords.json")
+    raw_dials = load(RAW / "dials.json")
+    raw_gears = load(RAW / "luffy_gears.json")
+    raw_techs = load(RAW / "luffy_techniques.json")
     manifest_bytes = (RAW / "_manifest.json").read_bytes()
 
     gen_arcs = load(GEN / "arcs.json")
@@ -423,6 +430,8 @@ def main() -> int:
             "name": f["name"],
             "romanized": f.get("roman_name"),
             "type": enum(f.get("type"), fruit_type_map, "fruit type", f),
+            # 7A: the one-line power description finally ships (212/213 filled).
+            "description": (f.get("description") or None),
             # `filename` is deliberately dropped: only ~23/213 resolve, and those are
             # traced official Oda art on a hobbyist box. We do not hotlink it.
             "source_ref": "api-onepiece.com/v2/fruits/en + canon/overrides.json:fruit_types",
@@ -490,6 +499,88 @@ def main() -> int:
             f"plus the Uta/Film Red tie-ins 1029/1030). This is correct: the gaps between "
             f"episode_segments ARE filler."
         )
+
+    # ------------------------------------------- the arsenal (Phase 7A)
+    # Six tables mirrored since Phase 1 and never merged. Minimal normalization:
+    # ids validated against their referenced tables, names slugged for joins,
+    # free-text `type` fields kept verbatim (no enum guessing on French labels).
+    char_by_id = {c["id"]: c for c in characters}
+
+    boats = []
+    for b in raw_boats:
+        crew = b.get("crew") or {}
+        captain = b.get("character_captain") or {}
+        crew_row = crew_by_id.get(crew.get("id"))
+        cap_row = char_by_id.get(captain.get("id"))
+        boats.append({
+            "id": b["id"],
+            "name": b["name"],
+            "slug": slugify(b["name"]),
+            "romanized": b.get("roman_name"),
+            "type": (b.get("type") or None),
+            "crew_id": crew_row["id"] if crew_row else None,
+            "crew_name": crew_row["name"] if crew_row else None,
+            "captain_id": cap_row["id"] if cap_row else None,
+            "captain_name": cap_row["name"] if cap_row else None,
+            "source_ref": "api-onepiece.com/v2/boats/en",
+            "canon_confidence": "derived",
+        })
+
+    locations = []
+    for l in raw_locates:
+        locations.append({
+            "id": l["id"],
+            "name": l["name"],
+            "slug": slugify(l["name"]),
+            "romanized": l.get("roman_name"),
+            "sea": (l.get("sea_name") or None),
+            "region": (l.get("region_name") or None),
+            "affiliation": (l.get("affiliation_name") or None),
+            "source_ref": "api-onepiece.com/v2/locates/en",
+            "canon_confidence": "derived",
+        })
+
+    swords = []
+    for s in raw_swords:
+        swords.append({
+            "name": s["name"],
+            "slug": slugify(s["name"]),
+            "romanized": s.get("roman_name"),
+            "type": (s.get("type") or None),
+            "category": (s.get("category") or None),
+            "description": (s.get("description") or None),
+            "destroyed": bool(s.get("isDestroy")),
+            "source_ref": "api-onepiece.com/v2/swords/en",
+            "canon_confidence": "derived",
+        })
+
+    dials = [{
+        "name": d["name"],
+        "slug": slugify(d["name"]),
+        "type": (d.get("type") or None),
+        "source_ref": "api-onepiece.com/v2/dials/en",
+        "canon_confidence": "derived",
+    } for d in raw_dials]
+
+    luffy_gears = [{
+        "id": g["id"],
+        "name": g["name"],
+        "description": (g.get("description") or None),
+        "technique_count": g.get("count_technique"),
+        "source_ref": "api-onepiece.com/v2/luffy-gears/en",
+        "canon_confidence": "derived",
+    } for g in raw_gears]
+
+    luffy_techniques = [{
+        "id": t["id"],
+        "name": t["name"],
+        "translation": (t.get("translation") or None),
+        "type": (t.get("type") or None),
+        "description": (t.get("description") or None),
+        "post_timeskip": bool(t.get("after_ellipsis")),
+        "source_ref": "api-onepiece.com/v2/luffy-techniques/en",
+        "canon_confidence": "derived",
+    } for t in raw_techs]
 
     # ----------------------------------------------------------- crew joins
     crew_joins = []
@@ -893,6 +984,12 @@ def main() -> int:
                 "haki_facts": len(haki_facts),
                 "haki_facts_verified": sum(1 for f in haki_facts if f["verified"]),
                 "haki_users": len({k[0] for k in seen_haki}),
+                "boats": len(boats),
+                "locations": len(locations),
+                "swords": len(swords),
+                "dials": len(dials),
+                "luffy_gears": len(luffy_gears),
+                "luffy_techniques": len(luffy_techniques),
             },
         },
         "sagas": sagas,
@@ -906,6 +1003,15 @@ def main() -> int:
         "voyage": voyage,
         "vessels": vessels,
         "presence": presence,
+        # Phase 7A — the arsenal. Small tables (~120KB total) that make entity
+        # views possible: every crew's ship, canonical locations with sea/region
+        # joins, the named blades, dials, and Luffy's whole move-list.
+        "boats": boats,
+        "locations": locations,
+        "swords": swords,
+        "dials": dials,
+        "luffy_gears": luffy_gears,
+        "luffy_techniques": luffy_techniques,
     }
 
     hits = scan_mojibake(payload)

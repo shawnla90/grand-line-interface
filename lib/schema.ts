@@ -154,10 +154,90 @@ export const Fruit = z.object({
   name: z.string(),
   romanized: z.string().nullable(),
   type: z.string(),
+  /** 7A: the one-line power description (212/213 filled upstream). */
+  description: z.string().nullable(),
   source_ref: z.string().min(1),
   canon_confidence: CanonConfidence,
 });
 export type Fruit = z.infer<typeof Fruit>;
+
+/* ------------------------------------------------------------------------ */
+/* Phase 7A — the arsenal: six api-onepiece tables mirrored since Phase 1     */
+/* and finally merged. Free-text `type` fields stay strings on purpose —      */
+/* enum-guessing French labels is how you get a fail-loud at 2am.             */
+/* ------------------------------------------------------------------------ */
+
+export const Boat = z.object({
+  id: z.number().int(),
+  name: z.string(),
+  slug: z.string(),
+  romanized: z.string().nullable(),
+  type: z.string().nullable(),
+  crew_id: z.number().int().nullable(),
+  crew_name: z.string().nullable(),
+  captain_id: z.number().int().nullable(),
+  captain_name: z.string().nullable(),
+  source_ref: z.string().min(1),
+  canon_confidence: CanonConfidence,
+});
+export type Boat = z.infer<typeof Boat>;
+
+export const CanonLocation = z.object({
+  id: z.number().int(),
+  name: z.string(),
+  slug: z.string(),
+  romanized: z.string().nullable(),
+  sea: z.string().nullable(),
+  region: z.string().nullable(),
+  affiliation: z.string().nullable(),
+  source_ref: z.string().min(1),
+  canon_confidence: CanonConfidence,
+});
+export type CanonLocation = z.infer<typeof CanonLocation>;
+
+export const Sword = z.object({
+  name: z.string(),
+  slug: z.string(),
+  romanized: z.string().nullable(),
+  type: z.string().nullable(),
+  category: z.string().nullable(),
+  description: z.string().nullable(),
+  destroyed: z.boolean(),
+  source_ref: z.string().min(1),
+  canon_confidence: CanonConfidence,
+});
+export type Sword = z.infer<typeof Sword>;
+
+export const Dial = z.object({
+  name: z.string(),
+  slug: z.string(),
+  type: z.string().nullable(),
+  source_ref: z.string().min(1),
+  canon_confidence: CanonConfidence,
+});
+export type Dial = z.infer<typeof Dial>;
+
+export const LuffyGear = z.object({
+  id: z.number().int(),
+  name: z.string(),
+  description: z.string().nullable(),
+  technique_count: z.number().int().nullable(),
+  source_ref: z.string().min(1),
+  canon_confidence: CanonConfidence,
+});
+export type LuffyGear = z.infer<typeof LuffyGear>;
+
+export const LuffyTechnique = z.object({
+  id: z.number().int(),
+  name: z.string(),
+  translation: z.string().nullable(),
+  type: z.string().nullable(),
+  description: z.string().nullable(),
+  post_timeskip: z.boolean(),
+  source_ref: z.string().min(1),
+  canon_confidence: CanonConfidence,
+});
+export type LuffyTechnique = z.infer<typeof LuffyTechnique>;
 
 export const Episode = z.object({
   id: z.number().int(),
@@ -372,6 +452,12 @@ export const Canon = z.object({
   voyage: Voyage,
   vessels: z.array(Vessel),
   presence: Presence,
+  boats: z.array(Boat),
+  locations: z.array(CanonLocation),
+  swords: z.array(Sword),
+  dials: z.array(Dial),
+  luffy_gears: z.array(LuffyGear),
+  luffy_techniques: z.array(LuffyTechnique),
 });
 export type Canon = z.infer<typeof Canon>;
 
