@@ -268,6 +268,41 @@ export const PresenceWindow = z.object({
 });
 export type PresenceWindow = z.infer<typeof PresenceWindow>;
 
+/** The normalized devil-fruit type enum (canon/overrides.json:fruit_types values). */
+export const FruitTypeEnum = z.enum([
+  "Paramecia", "Zoan", "Logia", "Mythical Zoan", "Ancient Zoan", "SMILE", "Artificial",
+]);
+export type FruitType = z.infer<typeof FruitTypeEnum>;
+
+export const HakiTypeEnum = z.enum(["observation", "armament", "conqueror"]);
+export type HakiType = z.infer<typeof HakiTypeEnum>;
+
+/**
+ * A fruit's identity is a STORY REVEAL with its own chapter gate — from_chapter
+ * is when the reader learns the fruit, not when the character debuts.
+ * Hand-authored in canon/fruit_reveals.json, embedded here by normalize.
+ */
+export const FruitReveal = z.object({
+  fruit_id: z.number().int().nullable(),
+  fruit_name: z.string(),
+  fruit_type: FruitTypeEnum,
+  from_chapter: z.number().int().positive(),
+  source_ref: z.string().min(1),
+  canon_confidence: CanonConfidence,
+  verified: z.boolean(),
+});
+export type FruitReveal = z.infer<typeof FruitReveal>;
+
+/** One (user, haki-type) reveal — hand-authored in canon/haki_users.json. */
+export const HakiFact = z.object({
+  haki: HakiTypeEnum,
+  from_chapter: z.number().int().positive(),
+  source_ref: z.string().min(1),
+  canon_confidence: CanonConfidence,
+  verified: z.boolean(),
+});
+export type HakiFact = z.infer<typeof HakiFact>;
+
 /** A named member rendered as an orb once from_chapter is reached (while the crew is on the map). */
 export const PresenceMember = z.object({
   slug: z.string(),
@@ -276,6 +311,8 @@ export const PresenceMember = z.object({
   source_ref: z.string().min(1),
   canon_confidence: CanonConfidence,
   verified: z.boolean(),
+  fruit: FruitReveal.nullable(),
+  haki: z.array(HakiFact),
 });
 export type PresenceMember = z.infer<typeof PresenceMember>;
 
@@ -297,6 +334,8 @@ export const CharacterPresence = z.object({
   affiliation: z.string(),
   crew_slug: z.string().nullable(),
   windows: z.array(PresenceWindow),
+  fruit: FruitReveal.nullable(),
+  haki: z.array(HakiFact),
 });
 export type CharacterPresence = z.infer<typeof CharacterPresence>;
 
