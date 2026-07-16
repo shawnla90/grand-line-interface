@@ -1,0 +1,170 @@
+{
+  "_warning": "HAND-AUTHORED. A sync script that overwrites this file is a bug. verified:false means Shawn has not confirmed the reveal chapters against the manga yet.",
+  "_why_this_file_exists": "data/raw/haki.json defines only the three haki types — NO upstream source links haki to characters, and a character's haki is a story reveal with its own chapter. One row per (user, haki-type) fact, because reveals of different types land chapters apart (Kid's Conqueror lands on the Wano rooftop ~ch. 1010, five hundred chapters after his debut). Scope: only entities that can appear on the map (crew_presence.json members and characters). The haki values are our storage enum — the raw API names are translated and are deliberately not the storage form.",
+  "_semantics": "canon_confidence rates the REVEAL-CHAPTER claim: canon = the story shows or states this person's haki there by name; derived = the feat is on-page there and the naming lands nearby or via another character's statement; guess = a defensible stamp on the first clear on-page feat. A person with no rows here reads as 'no haki revealed' under the haki lens.",
+  "_before_any_content_ships": "Shawn must confirm every reveal chapter below against the manga and flip verified to true. Until then the UI renders these facts as unverified.",
+  "users": [
+    {
+      "slug": "shanks",
+      "name": "Shanks",
+      "haki": "conqueror",
+      "from_chapter": 434,
+      "source_ref": "Hand-authored. Shanks boards the Moby Dick and his pressure drops Whitebeard's crew (~ch. 434) — the reader's first named brush with haki. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "shanks",
+      "name": "Shanks",
+      "haki": "armament",
+      "from_chapter": 579,
+      "source_ref": "Hand-authored. Marineford: Shanks blocks Akainu's magma with his sword (~ch. 579), an armament feat named in the war's aftermath. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "guess",
+      "verified": false
+    },
+    {
+      "slug": "edward-newgate",
+      "name": "Edward Newgate",
+      "haki": "conqueror",
+      "from_chapter": 434,
+      "source_ref": "Hand-authored. The Shanks meeting: two supreme wills clash and split the heavens (~ch. 434). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "guess",
+      "verified": false
+    },
+    {
+      "slug": "edward-newgate",
+      "name": "Edward Newgate",
+      "haki": "armament",
+      "from_chapter": 567,
+      "source_ref": "Hand-authored. Marineford: Whitebeard's clashes with the admirals carry imbued strikes (~ch. 567). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "guess",
+      "verified": false
+    },
+    {
+      "slug": "portgas-d-ace",
+      "name": "Portgas D. Ace",
+      "haki": "conqueror",
+      "from_chapter": 587,
+      "source_ref": "Hand-authored. The Sabo flashback: a young Ace knocks out the Bluejam thugs with an unconscious burst (~ch. 587). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "boa-hancock",
+      "name": "Boa Hancock",
+      "haki": "conqueror",
+      "from_chapter": 521,
+      "source_ref": "Hand-authored. Amazon Lily: the Kuja state that Hancock and her sisters carry the Conqueror's haki (~ch. 519-521). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "boa-hancock",
+      "name": "Boa Hancock",
+      "haki": "armament",
+      "from_chapter": 560,
+      "source_ref": "Hand-authored. Marineford: Hancock's haki-clad kicks land on Smoker's Logia body (~ch. 560). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "donquixote-doflamingo",
+      "name": "Donquixote Doflamingo",
+      "haki": "conqueror",
+      "from_chapter": 767,
+      "source_ref": "Hand-authored. The Dressrosa flashback: a young Doflamingo's burst knocks out a crowd (~ch. 767). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "donquixote-doflamingo",
+      "name": "Donquixote Doflamingo",
+      "haki": "armament",
+      "from_chapter": 770,
+      "source_ref": "Hand-authored. Dressrosa: Doflamingo hardens against Luffy in the palace fight (~ch. 770). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "guess",
+      "verified": false
+    },
+    {
+      "slug": "charlotte-linlin",
+      "name": "Charlotte Linlin",
+      "haki": "conqueror",
+      "from_chapter": 868,
+      "source_ref": "Hand-authored. Whole Cake Island: Big Mom's scream and pressure incapacitate around her (~ch. 868). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "guess",
+      "verified": false
+    },
+    {
+      "slug": "charlotte-linlin",
+      "name": "Charlotte Linlin",
+      "haki": "armament",
+      "from_chapter": 1009,
+      "source_ref": "Hand-authored. Wano rooftop: Big Mom trades imbued blows in the Yonko fight (~ch. 1009). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "charlotte-katakuri",
+      "name": "Charlotte Katakuri",
+      "haki": "observation",
+      "from_chapter": 884,
+      "source_ref": "Hand-authored. Whole Cake Island: Katakuri's future sight is shown and explained by name (~ch. 884). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "charlotte-katakuri",
+      "name": "Charlotte Katakuri",
+      "haki": "armament",
+      "from_chapter": 885,
+      "source_ref": "Hand-authored. Whole Cake Island: Katakuri's hardened strikes in the mirror world (~ch. 885). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "guess",
+      "verified": false
+    },
+    {
+      "slug": "charlotte-katakuri",
+      "name": "Charlotte Katakuri",
+      "haki": "conqueror",
+      "from_chapter": 1010,
+      "source_ref": "Hand-authored. Wano rooftop: Luffy states Katakuri also carried the Conqueror's haki (~ch. 1010). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "kaido",
+      "name": "Kaido",
+      "haki": "conqueror",
+      "from_chapter": 1010,
+      "source_ref": "Hand-authored. Wano rooftop: Kaido's Conqueror clash with Luffy, and his line that only Conquerors coat their strikes (~ch. 1010). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "kaido",
+      "name": "Kaido",
+      "haki": "armament",
+      "from_chapter": 1010,
+      "source_ref": "Hand-authored. Wano rooftop: Kaido's imbued kanabo strikes in the Yonko fight (~ch. 1010). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "eustass-kid",
+      "name": "Eustass Kid",
+      "haki": "conqueror",
+      "from_chapter": 1010,
+      "source_ref": "Hand-authored. Wano rooftop: Kaido names Kid among the Conqueror's haki users (~ch. 1010). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "trafalgar-law",
+      "name": "Trafalgar Law",
+      "haki": "armament",
+      "from_chapter": 1010,
+      "source_ref": "Hand-authored. Wano rooftop: Law coats his sword in the Yonko fight (~ch. 1010). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "guess",
+      "verified": false
+    }
+  ]
+}

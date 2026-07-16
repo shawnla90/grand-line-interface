@@ -1,0 +1,195 @@
+{
+  "_warning": "HAND-AUTHORED. A sync script that overwrites this file is a bug. verified:false means Shawn has not confirmed the reveal chapters against the manga yet.",
+  "_why_this_file_exists": "A devil fruit's existence and nature are STORY REVEALS, not chapter-1 facts. No upstream source records WHEN the reader learns a fruit: data/raw/characters.json's fruit join is missing for half the presence roster and its names are translated. from_chapter here is the chapter at which the atlas may print this fruit's name and type. Scope: only entities that can appear on the map (crew_presence.json members and characters).",
+  "_semantics": "canon_confidence rates the REVEAL-CHAPTER claim: canon = the fruit is shown and named in those chapters; derived = the power is on-page there but the name lands nearby; guess = the name only surfaces in supplementary material, stamped at the first on-page use. An entity with no row here reads as 'no fruit revealed' under the fruit lens — the atlas does not distinguish 'not a fruit user' from 'not revealed yet'; both are honestly unknown to a reader at that chapter.",
+  "_before_any_content_ships": "Shawn must confirm every reveal chapter below against the manga and flip verified to true. Until then the UI renders these facts as unverified.",
+  "reveals": [
+    {
+      "slug": "buggy",
+      "name": "Buggy",
+      "fruit_id": 2,
+      "fruit_name": "Bara Bara no Mi",
+      "fruit_type": "Paramecia",
+      "from_chapter": 11,
+      "source_ref": "Hand-authored. Orange Town: Buggy splits apart and names the Bara Bara no Mi (~ch. 11). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "crocodile",
+      "name": "Crocodile",
+      "fruit_id": 81,
+      "fruit_name": "Suna Suna no Mi",
+      "fruit_type": "Logia",
+      "from_chapter": 155,
+      "source_ref": "Hand-authored. Alabasta: Crocodile's sand body is shown and the Suna Suna no Mi is named (~ch. 155). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "portgas-d-ace",
+      "name": "Portgas D. Ace",
+      "fruit_id": 82,
+      "fruit_name": "Mera Mera no Mi",
+      "fruit_type": "Logia",
+      "from_chapter": 159,
+      "source_ref": "Hand-authored. Alabasta: Ace's flame body is shown fighting Smoker and the Mera Mera no Mi is named (~ch. 157-159). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "marshall-d-teach",
+      "name": "Marshall D. Teach",
+      "fruit_id": 85,
+      "fruit_name": "Yami Yami no Mi",
+      "fruit_type": "Logia",
+      "from_chapter": 440,
+      "source_ref": "Hand-authored. Banaro Island: Teach reveals and names the Yami Yami no Mi against Ace (~ch. 440-441). check_canon.py tripwires on this row — it must never read earlier than 440. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "gecko-moria",
+      "name": "Gecko Moria",
+      "fruit_id": 22,
+      "fruit_name": "Kage Kage no Mi",
+      "fruit_type": "Paramecia",
+      "from_chapter": 455,
+      "source_ref": "Hand-authored. Thriller Bark: Moria's shadow theft is shown and the Kage Kage no Mi is named (~ch. 455). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "bartholomew-kuma",
+      "name": "Bartholomew Kuma",
+      "fruit_id": 25,
+      "fruit_name": "Nikyu Nikyu no Mi",
+      "fruit_type": "Paramecia",
+      "from_chapter": 485,
+      "source_ref": "Hand-authored. Thriller Bark: Kuma's paw deflection is shown from ~ch. 473; the Nikyu Nikyu no Mi is named ~ch. 485. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "eustass-kid",
+      "name": "Eustass Kid",
+      "fruit_id": 26,
+      "fruit_name": "Jiki Jiki no Mi",
+      "fruit_type": "Paramecia",
+      "from_chapter": 504,
+      "source_ref": "Hand-authored. Sabaody: Kid's magnetism is on-page from ~ch. 504; the Jiki Jiki no Mi name only surfaces in late supplementary material. Stamped at first on-page use. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "guess",
+      "verified": false
+    },
+    {
+      "slug": "boa-hancock",
+      "name": "Boa Hancock",
+      "fruit_id": 31,
+      "fruit_name": "Mero Mero no Mi",
+      "fruit_type": "Paramecia",
+      "from_chapter": 518,
+      "source_ref": "Hand-authored. Amazon Lily: Hancock's petrification is shown and the Mero Mero no Mi is named (~ch. 516-518). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "edward-newgate",
+      "name": "Edward Newgate",
+      "fruit_id": 35,
+      "fruit_name": "Gura Gura no Mi",
+      "fruit_type": "Paramecia",
+      "from_chapter": 552,
+      "source_ref": "Hand-authored. Marineford: Whitebeard's quake is shown and Sengoku names the Gura Gura no Mi (~ch. 552). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "marco",
+      "name": "Marco",
+      "fruit_id": 206,
+      "fruit_name": "Tori Tori no Mi, Model: Phoenix",
+      "fruit_type": "Mythical Zoan",
+      "from_chapter": 553,
+      "source_ref": "Hand-authored. Marineford: Marco's phoenix flames are shown and called a Mythical Zoan (~ch. 553-554). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "trafalgar-law",
+      "name": "Trafalgar Law",
+      "fruit_id": 27,
+      "fruit_name": "Ope Ope no Mi",
+      "fruit_type": "Paramecia",
+      "from_chapter": 662,
+      "source_ref": "Hand-authored. Punk Hazard: Law's ROOM is on-page from Sabaody (~ch. 504); Smoker names the Ope Ope no Mi ~ch. 662. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "donquixote-doflamingo",
+      "name": "Donquixote Doflamingo",
+      "fruit_id": 14,
+      "fruit_name": "Ito Ito no Mi",
+      "fruit_type": "Paramecia",
+      "from_chapter": 723,
+      "source_ref": "Hand-authored. Dressrosa: Doflamingo's strings are on-page from Jaya/Marineford; the Ito Ito no Mi is named ~ch. 723. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "charlotte-linlin",
+      "name": "Charlotte Linlin",
+      "fruit_id": 60,
+      "fruit_name": "Soru Soru no Mi",
+      "fruit_type": "Paramecia",
+      "from_chapter": 835,
+      "source_ref": "Hand-authored. Whole Cake Island: Big Mom's soul power is shown and the Soru Soru no Mi is named (~ch. 835). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "charlotte-katakuri",
+      "name": "Charlotte Katakuri",
+      "fruit_id": 69,
+      "fruit_name": "Mochi Mochi no Mi",
+      "fruit_type": "Paramecia",
+      "from_chapter": 863,
+      "source_ref": "Hand-authored. Whole Cake Island: Katakuri's mochi is shown and the Mochi Mochi no Mi is named (~ch. 863). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "killer",
+      "name": "Killer",
+      "fruit_id": null,
+      "fruit_name": "SMILE (failed)",
+      "fruit_type": "SMILE",
+      "from_chapter": 943,
+      "source_ref": "Hand-authored. Wano: Killer is revealed to have eaten a failed SMILE (~ch. 943). No upstream fruit row exists for a failed SMILE — fruit_id is null. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "king",
+      "name": "King",
+      "fruit_id": 114,
+      "fruit_name": "Ryu Ryu no Mi, Model: Pteranodon",
+      "fruit_type": "Ancient Zoan",
+      "from_chapter": 1025,
+      "source_ref": "Hand-authored. Wano: King's pteranodon form is on-page from ~ch. 930; the Ryu Ryu no Mi, Model: Pteranodon is pinned down in the Zoro fight (~ch. 1025). NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "kaido",
+      "name": "Kaido",
+      "fruit_id": 122,
+      "fruit_name": "Uo Uo no Mi, Model: Seiryu",
+      "fruit_type": "Mythical Zoan",
+      "from_chapter": 1047,
+      "source_ref": "Hand-authored. Wano: Kaido's dragon form is on-page from ~ch. 921, but the Uo Uo no Mi, Model: Seiryu is only named near the end of the raid (~ch. 1047) — the atlas prints name and type together, so the row gates on the name. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    }
+  ]
+}
