@@ -138,7 +138,7 @@ The atlas refuses to let a machine-derived pin look human-confirmed. The same ho
 | 3A/3B | East Blue fix, journey to Elbaf, SVG Jolly Rogers | Claude Opus 4.8 | Claude Code · ultracode | `2af171b` |
 | 4 | Cartographic fidelity + `/admin/place` | Claude Opus 4.8 | Claude Code · ultracode | `1d72d20` `b7cc5d6` `e936944` |
 | 5 (plan) | Crews, characters & ships — the phase plan | Codex | Codex session | — |
-| 5 (build) | Crews, characters & ships on the map + this log | Claude Fable 5 | Claude Code | `0854c75` `a43ca34` `9e7b61f` |
+| 5 (build) | Crews, characters & ships on the map + this log | Claude Fable 5 | Claude Code | `0854c75` `a43ca34` `9e7b61f` `e036749` `4b6335f` |
 
 ---
 

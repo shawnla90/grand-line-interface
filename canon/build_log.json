@@ -8,7 +8,11 @@
       "builder": "Claude Opus 4.8",
       "harness": "Claude Code · ultracode",
       "role": "design + build",
-      "commits": ["bb0bf73", "34dedda", "c237f0d"],
+      "commits": [
+        "bb0bf73",
+        "34dedda",
+        "c237f0d"
+      ],
       "verified": true
     },
     {
@@ -17,7 +21,9 @@
       "builder": "Claude Opus 4.8",
       "harness": "Claude Code · ultracode",
       "role": "design + build",
-      "commits": ["7d84db2"],
+      "commits": [
+        "7d84db2"
+      ],
       "verified": true
     },
     {
@@ -26,7 +32,9 @@
       "builder": "Claude Opus 4.8",
       "harness": "Claude Code · ultracode",
       "role": "design + build",
-      "commits": ["2af171b"],
+      "commits": [
+        "2af171b"
+      ],
       "verified": true
     },
     {
@@ -35,7 +43,11 @@
       "builder": "Claude Opus 4.8",
       "harness": "Claude Code · ultracode",
       "role": "design + build",
-      "commits": ["1d72d20", "b7cc5d6", "e936944"],
+      "commits": [
+        "1d72d20",
+        "b7cc5d6",
+        "e936944"
+      ],
       "verified": true
     },
     {
@@ -53,7 +65,13 @@
       "builder": "Claude Fable 5",
       "harness": "Claude Code",
       "role": "plan + build",
-      "commits": ["0854c75", "a43ca34", "9e7b61f"],
+      "commits": [
+        "0854c75",
+        "a43ca34",
+        "9e7b61f",
+        "e036749",
+        "4b6335f"
+      ],
       "verified": true
     }
   ]
