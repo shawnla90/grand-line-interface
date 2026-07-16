@@ -755,6 +755,10 @@ def build_islands(refresh: bool) -> tuple[list[dict], dict]:
             "debut_source": debut["source"],
             "affiliation": clean_text(params.get("affiliation", "")) or None,
             "log_pose": clean_text(params.get("log", "")) or None,
+            # "Winter island", "Sky island", "Archipelago"... — the biome key
+            # the silhouette generator (10B) and the island forge (Phase 10)
+            # shape terrain from.
+            "island_type": clean_text(params.get("type", "")) or None,
             "wiki_url": WIKI_BASE + urllib.parse.quote(title.replace(" ", "_")),
             "source_ref": f"onepiece.fandom.com/wiki/{title.replace(' ', '_')}#Island_Box",
             # Direct infobox reads are "canon"; a status we inferred from the

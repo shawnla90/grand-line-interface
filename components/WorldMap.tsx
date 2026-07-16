@@ -103,6 +103,10 @@ const C = {
   land: "#3a2620", // Red Line continent — clay/earth, not ocean
   landLit: "#513528",
   deep: "#04090f", // open-ocean depth toward the poles
+  // 10B: island landmasses — warm dark earth under a parchment coastline.
+  // The coast stroke carries the shape (same rule as the hollow rings).
+  isle: "#2c2a22",
+  isleCoast: "#7d7050",
 } as const;
 
 /** How long an island keeps glowing after you first read about it, in chapters. */
@@ -689,6 +693,9 @@ export default function WorldMap({
         red: { type: "geojson", data: RED_LINE },
         voyage: { type: "geojson", data: voyageLine([]) },
         islands: { type: "geojson", data: features },
+        // 10B: original generated coastline polygons (public/geo/, MIT — ours).
+        // Fetched as a static asset so 311KB of geometry stays out of the bundle.
+        silhouettes: { type: "geojson", data: "/geo/islands.silhouettes.json" },
         // Presence orbs: rebuilt per frame from the swept chapter. Only REVEALED
         // entities are ever in this source — spoiler safety is structural here,
         // not an opacity trick.
@@ -742,6 +749,18 @@ export default function WorldMap({
         { id: "red-land-edge", type: "line", source: "redland", paint: { "line-color": C.landLit, "line-width": 0.8, "line-opacity": 0.7 } },
 
         { id: "graticule", type: "line", source: "grat", paint: { "line-color": C.grat, "line-width": 0.6, "line-opacity": 0.55 } },
+
+        // 10B: landmasses. Invisible at orbit, fading in as you approach so the
+        // chart resolves from "pins on water" into "a world with coastlines".
+        // Opacity is chapter-gated per frame by paint() — fog has no shoreline.
+        { id: "island-shapes", type: "fill", source: "silhouettes",
+          paint: { "fill-color": C.isle, "fill-opacity": 0 } },
+        { id: "island-shapes-coast", type: "line", source: "silhouettes",
+          paint: {
+            "line-color": C.isleCoast,
+            "line-width": ["interpolate", ["linear"], ["zoom"], 2, 0.5, 5, 1.5],
+            "line-opacity": 0,
+          } },
 
         // The Grand Line: the sea route. Gold, because it is the voyage.
         { id: "grand-glow", type: "line", source: "grand", paint: { "line-color": C.gold, "line-width": 9, "line-blur": 9, "line-opacity": 0.22 } },
@@ -959,7 +978,7 @@ export default function WorldMap({
       ? artImg(ownFlag, 26)
       : jollyRogerSvg(world.voyage.crewSlug, { size: 22 });
     const start = world.voyage.waypoints[0];
-    const shipMarker = new maplibregl.Marker({ element: parts.el, opacityWhenCovered: "0.2" })
+    const shipMarker = new maplibregl.Marker({ element: parts.el, opacityWhenCovered: "0.1" })
       .setLngLat(start ? [start.lng, start.lat] : [0, 0])
       .addTo(m);
     ship.current = { marker: shipMarker, glyph: parts.glyph, label: parts.label };
@@ -973,7 +992,7 @@ export default function WorldMap({
     const memberPool = memberMarks.current;
     for (const crew of world.presence.crews) {
       const p = makeCrewFlagElement();
-      const marker = new maplibregl.Marker({ element: p.el, opacityWhenCovered: "0.2" })
+      const marker = new maplibregl.Marker({ element: p.el, opacityWhenCovered: "0.1" })
         .setLngLat([0, 0])
         .addTo(m);
       crewPool.set(crew.slug, {
@@ -986,7 +1005,7 @@ export default function WorldMap({
     }
     for (const c of world.presence.characters) {
       const p = makeWarlordElement();
-      const marker = new maplibregl.Marker({ element: p.el, opacityWhenCovered: "0.2" })
+      const marker = new maplibregl.Marker({ element: p.el, opacityWhenCovered: "0.1" })
         .setLngLat([0, 0])
         .addTo(m);
       warlordPool.set(c.slug, {
@@ -1002,7 +1021,7 @@ export default function WorldMap({
     for (const crew of world.presence.crews) {
       for (const mem of crew.members) {
         const p = makeMemberElement();
-        const marker = new maplibregl.Marker({ element: p.el, opacityWhenCovered: "0.2" })
+        const marker = new maplibregl.Marker({ element: p.el, opacityWhenCovered: "0.1" })
           .setLngLat([0, 0])
           .addTo(m);
         memberPool.set(mem.slug, {
@@ -1403,6 +1422,22 @@ function paint(
     [">", ["get", "debut"], ch],
     FOG_OPACITY,
     0,
+  ]);
+
+  // 10B: landmasses chart in with their pins. Zoom decides how much land you
+  // see (a whisper at orbit, solid on approach); the chapter decides WHETHER —
+  // an unread island has no coastline at any zoom.
+  m.setPaintProperty("island-shapes", "fill-opacity", [
+    "interpolate", ["linear"], ["zoom"],
+    1.4, 0,
+    2.6, ["case", revealed(ch), 0.45, 0],
+    5.5, ["case", revealed(ch), 0.68, 0],
+  ]);
+  m.setPaintProperty("island-shapes-coast", "line-opacity", [
+    "interpolate", ["linear"], ["zoom"],
+    1.6, 0,
+    2.8, ["case", revealed(ch), 0.55, 0],
+    5.5, ["case", revealed(ch), 0.85, 0],
   ]);
 
   // The flare on a freshly charted island, decaying over the next ~40 chapters.

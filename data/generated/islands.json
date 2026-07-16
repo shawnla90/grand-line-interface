@@ -14,6 +14,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/100%25_Island",
     "source_ref": "onepiece.fandom.com/wiki/100%_Island#Island_Box",
     "canon_confidence": "derived"
@@ -33,6 +34,7 @@
     "debut_source": null,
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/153rd_Branch",
     "source_ref": "onepiece.fandom.com/wiki/153rd_Branch#Island_Box",
     "canon_confidence": "canon"
@@ -52,6 +54,7 @@
     "debut_source": null,
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/16th_Branch",
     "source_ref": "onepiece.fandom.com/wiki/16th_Branch#Island_Box",
     "canon_confidence": "canon"
@@ -71,6 +74,7 @@
     "debut_source": "One Piece Omake",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/2000_Year_Island",
     "source_ref": "onepiece.fandom.com/wiki/2000_Year_Island#Island_Box",
     "canon_confidence": "derived"
@@ -90,6 +94,7 @@
     "debut_source": null,
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/77th_Branch",
     "source_ref": "onepiece.fandom.com/wiki/77th_Branch#Island_Box",
     "canon_confidence": "canon"
@@ -109,6 +114,7 @@
     "debut_source": null,
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/80th_Branch",
     "source_ref": "onepiece.fandom.com/wiki/80th_Branch#Island_Box",
     "canon_confidence": "canon"
@@ -128,6 +134,7 @@
     "debut_source": null,
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/8th_Branch",
     "source_ref": "onepiece.fandom.com/wiki/8th_Branch#Island_Box",
     "canon_confidence": "canon"
@@ -147,6 +154,7 @@
     "debut_source": "One Piece: Unlimited Adventure",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Abyss_Zone",
     "source_ref": "onepiece.fandom.com/wiki/Abyss_Zone#Island_Box",
     "canon_confidence": "derived"
@@ -166,6 +174,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Acacia",
     "source_ref": "onepiece.fandom.com/wiki/Acacia#Island_Box",
     "canon_confidence": "canon"
@@ -185,6 +194,7 @@
     "debut_source": "Heart of Gold",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Alchemi",
     "source_ref": "onepiece.fandom.com/wiki/Alchemi#Island_Box",
     "canon_confidence": "derived"
@@ -204,6 +214,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/All_Blue",
     "source_ref": "onepiece.fandom.com/wiki/All_Blue#Island_Box",
     "canon_confidence": "canon"
@@ -223,6 +234,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Alubarna",
     "source_ref": "onepiece.fandom.com/wiki/Alubarna#Island_Box",
     "canon_confidence": "canon"
@@ -242,6 +254,7 @@
     "debut_source": null,
     "affiliation": "Kuja Kuja Pirates Monkey D. Luffy",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Amazon_Lily",
     "source_ref": "onepiece.fandom.com/wiki/Amazon_Lily#Island_Box",
     "canon_confidence": "canon"
@@ -261,6 +274,7 @@
     "debut_source": "SBS Volume 110",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Aoi_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Aoi_Kingdom#Island_Box",
     "canon_confidence": "derived"
@@ -280,6 +294,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Applenine_Island",
     "source_ref": "onepiece.fandom.com/wiki/Applenine_Island#Island_Box",
     "canon_confidence": "canon"
@@ -299,6 +314,7 @@
     "debut_source": null,
     "affiliation": "World Government",
     "log_pose": null,
+    "island_type": "Summer Island",
     "wiki_url": "https://onepiece.fandom.com/wiki/Arabasta_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Arabasta_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -318,6 +334,7 @@
     "debut_source": null,
     "affiliation": "Arlong Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Arlong_Park",
     "source_ref": "onepiece.fandom.com/wiki/Arlong_Park#Island_Box",
     "canon_confidence": "canon"
@@ -337,6 +354,7 @@
     "debut_source": "The Cursed Holy Sword",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Asuka_Island",
     "source_ref": "onepiece.fandom.com/wiki/Asuka_Island#Island_Box",
     "canon_confidence": "derived"
@@ -356,6 +374,7 @@
     "debut_source": "One Piece Premier Show",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Atarashi_Island",
     "source_ref": "onepiece.fandom.com/wiki/Atarashi_Island#Island_Box",
     "canon_confidence": "derived"
@@ -375,6 +394,7 @@
     "debut_source": "One Piece Premier Show",
     "affiliation": "The Deacon",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Atoll",
     "source_ref": "onepiece.fandom.com/wiki/Atoll#Island_Box",
     "canon_confidence": "derived"
@@ -394,6 +414,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Aurust_Castle",
     "source_ref": "onepiece.fandom.com/wiki/Aurust_Castle#Island_Box",
     "canon_confidence": "canon"
@@ -413,6 +434,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Badland",
     "source_ref": "onepiece.fandom.com/wiki/Badland#Island_Box",
     "canon_confidence": "canon"
@@ -432,6 +454,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Ballon_Terminal",
     "source_ref": "onepiece.fandom.com/wiki/Ballon_Terminal#Island_Box",
     "canon_confidence": "canon"
@@ -451,6 +474,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Ballywood_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Ballywood_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -470,6 +494,7 @@
     "debut_source": null,
     "affiliation": "Revolutionary Army",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Baltigo",
     "source_ref": "onepiece.fandom.com/wiki/Baltigo#Island_Box",
     "canon_confidence": "canon"
@@ -489,6 +514,7 @@
     "debut_source": "Set Sail Pirate Crew!",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Banana_Peninsula",
     "source_ref": "onepiece.fandom.com/wiki/Banana_Peninsula#Island_Box",
     "canon_confidence": "derived"
@@ -508,6 +534,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Banaro_Island",
     "source_ref": "onepiece.fandom.com/wiki/Banaro_Island#Island_Box",
     "canon_confidence": "canon"
@@ -527,6 +554,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Baterilla",
     "source_ref": "onepiece.fandom.com/wiki/Baterilla#Island_Box",
     "canon_confidence": "canon"
@@ -546,6 +574,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Bighorn",
     "source_ref": "onepiece.fandom.com/wiki/Bighorn#Island_Box",
     "canon_confidence": "canon"
@@ -565,6 +594,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Birka",
     "source_ref": "onepiece.fandom.com/wiki/Birka#Island_Box",
     "canon_confidence": "canon"
@@ -584,6 +614,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Biscuits_Island",
     "source_ref": "onepiece.fandom.com/wiki/Biscuits_Island#Island_Box",
     "canon_confidence": "canon"
@@ -603,6 +634,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Black_Island",
     "source_ref": "onepiece.fandom.com/wiki/Black_Island#Island_Box",
     "canon_confidence": "canon"
@@ -622,6 +654,7 @@
     "debut_source": "One Piece novel ZORO",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Blacksmith_Village",
     "source_ref": "onepiece.fandom.com/wiki/Blacksmith_Village#Island_Box",
     "canon_confidence": "derived"
@@ -641,6 +674,7 @@
     "debut_source": null,
     "affiliation": "World Government",
     "log_pose": null,
+    "island_type": "Planet",
     "wiki_url": "https://onepiece.fandom.com/wiki/Blue_Planet",
     "source_ref": "onepiece.fandom.com/wiki/Blue_Planet#Island_Box",
     "canon_confidence": "canon"
@@ -660,6 +694,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Blue_Sea",
     "source_ref": "onepiece.fandom.com/wiki/Blue_Sea#Island_Box",
     "canon_confidence": "canon"
@@ -679,6 +714,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Boin_Archipelago",
     "source_ref": "onepiece.fandom.com/wiki/Boin_Archipelago#Island_Box",
     "canon_confidence": "canon"
@@ -698,6 +734,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Bourgeois_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Bourgeois_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -717,6 +754,7 @@
     "debut_source": "Future Present from God",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Branchi",
     "source_ref": "onepiece.fandom.com/wiki/Branchi#Island_Box",
     "canon_confidence": "derived"
@@ -736,6 +774,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Briss_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Briss_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -755,6 +794,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Broc_Coli_Island",
     "source_ref": "onepiece.fandom.com/wiki/Broc_Coli_Island#Island_Box",
     "canon_confidence": "canon"
@@ -774,6 +814,7 @@
     "debut_source": "One Piece: Treasure Wars 2 Welcome to Buggyland",
     "affiliation": "Buggy and Alvida Alliance",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Buggyland",
     "source_ref": "onepiece.fandom.com/wiki/Buggyland#Island_Box",
     "canon_confidence": "derived"
@@ -793,6 +834,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Bunt_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Bunt_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -812,6 +854,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Cacao_Island",
     "source_ref": "onepiece.fandom.com/wiki/Cacao_Island#Island_Box",
     "canon_confidence": "canon"
@@ -831,6 +874,7 @@
     "debut_source": null,
     "affiliation": "Baroque Works",
     "log_pose": "Less than one day",
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Cactus_Island",
     "source_ref": "onepiece.fandom.com/wiki/Cactus_Island#Island_Box",
     "canon_confidence": "canon"
@@ -850,6 +894,7 @@
     "debut_source": null,
     "affiliation": "New Spiders Cafe",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Cactus_Saloon",
     "source_ref": "onepiece.fandom.com/wiki/Cactus_Saloon#Island_Box",
     "canon_confidence": "canon"
@@ -869,6 +914,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Calm_Belt",
     "source_ref": "onepiece.fandom.com/wiki/Calm_Belt#Island_Box",
     "canon_confidence": "canon"
@@ -888,6 +934,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Candy_Factory",
     "source_ref": "onepiece.fandom.com/wiki/Candy_Factory#Island_Box",
     "canon_confidence": "canon"
@@ -907,6 +954,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Candy_Island",
     "source_ref": "onepiece.fandom.com/wiki/Candy_Island#Island_Box",
     "canon_confidence": "canon"
@@ -926,6 +974,7 @@
     "debut_source": "Fischer's x One Piece - Search for the 7 Treasures",
     "affiliation": null,
     "log_pose": "One year",
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Carbador_Island",
     "source_ref": "onepiece.fandom.com/wiki/Carbador_Island#Island_Box",
     "canon_confidence": "derived"
@@ -945,6 +994,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Carta",
     "source_ref": "onepiece.fandom.com/wiki/Carta#Island_Box",
     "canon_confidence": "canon"
@@ -964,6 +1014,7 @@
     "debut_source": "One Piece: Unlimited Cruise",
     "affiliation": "Great Tree",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Cave_Island",
     "source_ref": "onepiece.fandom.com/wiki/Cave_Island#Island_Box",
     "canon_confidence": "derived"
@@ -983,6 +1034,7 @@
     "debut_source": "One Piece: Unlimited Adventure",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Cave_Zone",
     "source_ref": "onepiece.fandom.com/wiki/Cave_Zone#Island_Box",
     "canon_confidence": "derived"
@@ -1002,6 +1054,7 @@
     "debut_source": null,
     "affiliation": "Revolutionary Army",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Centaurea",
     "source_ref": "onepiece.fandom.com/wiki/Centaurea#Island_Box",
     "canon_confidence": "canon"
@@ -1021,6 +1074,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Cheese_Island",
     "source_ref": "onepiece.fandom.com/wiki/Cheese_Island#Island_Box",
     "canon_confidence": "canon"
@@ -1040,6 +1094,7 @@
     "debut_source": "Clockwork Island Adventure",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Clockwork_Island",
     "source_ref": "onepiece.fandom.com/wiki/Clockwork_Island#Island_Box",
     "canon_confidence": "derived"
@@ -1059,6 +1114,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Cloud_End",
     "source_ref": "onepiece.fandom.com/wiki/Cloud_End#Island_Box",
     "canon_confidence": "canon"
@@ -1078,6 +1134,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Cocoa_Weed",
     "source_ref": "onepiece.fandom.com/wiki/Cocoa_Weed#Island_Box",
     "canon_confidence": "canon"
@@ -1097,6 +1154,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Cocoyasi_Village",
     "source_ref": "onepiece.fandom.com/wiki/Cocoyasi_Village#Island_Box",
     "canon_confidence": "canon"
@@ -1116,6 +1174,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Conomi_Islands",
     "source_ref": "onepiece.fandom.com/wiki/Conomi_Islands#Island_Box",
     "canon_confidence": "canon"
@@ -1135,6 +1194,7 @@
     "debut_source": null,
     "affiliation": "Donquixote Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Corrida_Colosseum",
     "source_ref": "onepiece.fandom.com/wiki/Corrida_Colosseum#Island_Box",
     "canon_confidence": "canon"
@@ -1154,6 +1214,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Cozia",
     "source_ref": "onepiece.fandom.com/wiki/Cozia#Island_Box",
     "canon_confidence": "canon"
@@ -1173,6 +1234,7 @@
     "debut_source": "One Piece: Treasure Wars",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Cream_Mist",
     "source_ref": "onepiece.fandom.com/wiki/Cream_Mist#Island_Box",
     "canon_confidence": "derived"
@@ -1192,6 +1254,7 @@
     "debut_source": "Set Sail Pirate Crew!",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Crescent_Island",
     "source_ref": "onepiece.fandom.com/wiki/Crescent_Island#Island_Box",
     "canon_confidence": "derived"
@@ -1211,6 +1274,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Cutlery_Island",
     "source_ref": "onepiece.fandom.com/wiki/Cutlery_Island#Island_Box",
     "canon_confidence": "canon"
@@ -1230,6 +1294,7 @@
     "debut_source": null,
     "affiliation": "Goa Kingdom",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Dawn_Island",
     "source_ref": "onepiece.fandom.com/wiki/Dawn_Island#Island_Box",
     "canon_confidence": "canon"
@@ -1249,6 +1314,7 @@
     "debut_source": null,
     "affiliation": "Pirates Festival",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Delta_Island",
     "source_ref": "onepiece.fandom.com/wiki/Delta_Island#Island_Box",
     "canon_confidence": "canon"
@@ -1268,6 +1334,7 @@
     "debut_source": "One Piece - Defeat Him! The Pirate Ganzack",
     "affiliation": "Ganzack Pirates (former)",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Devil%27s_Tower",
     "source_ref": "onepiece.fandom.com/wiki/Devil's_Tower#Island_Box",
     "canon_confidence": "derived"
@@ -1287,6 +1354,7 @@
     "debut_source": "Digital Art Island Adventure",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Digital_Art_Island",
     "source_ref": "onepiece.fandom.com/wiki/Digital_Art_Island#Island_Box",
     "canon_confidence": "derived"
@@ -1306,6 +1374,7 @@
     "debut_source": "One Piece: Unlimited Adventure",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Dimension_Zone",
     "source_ref": "onepiece.fandom.com/wiki/Dimension_Zone#Island_Box",
     "canon_confidence": "derived"
@@ -1325,6 +1394,7 @@
     "debut_source": null,
     "affiliation": "Galley-La Company",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Dock_1",
     "source_ref": "onepiece.fandom.com/wiki/Dock_1#Island_Box",
     "canon_confidence": "canon"
@@ -1344,6 +1414,7 @@
     "debut_source": "One Piece Film Z",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Dock_Island",
     "source_ref": "onepiece.fandom.com/wiki/Dock_Island#Island_Box",
     "canon_confidence": "derived"
@@ -1363,6 +1434,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Doerena_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Doerena_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -1382,6 +1454,7 @@
     "debut_source": "Chin Piece",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Door_Hoverka_Colosseum",
     "source_ref": "onepiece.fandom.com/wiki/Door_Hoverka_Colosseum#Island_Box",
     "canon_confidence": "derived"
@@ -1401,6 +1474,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Downs",
     "source_ref": "onepiece.fandom.com/wiki/Downs#Island_Box",
     "canon_confidence": "canon"
@@ -1420,6 +1494,7 @@
     "debut_source": null,
     "affiliation": "World Government (Riku Family) Donquixote Pirates (Donquixote Family)",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Dressrosa",
     "source_ref": "onepiece.fandom.com/wiki/Dressrosa#Island_Box",
     "canon_confidence": "canon"
@@ -1439,6 +1514,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Drum_Castle",
     "source_ref": "onepiece.fandom.com/wiki/Drum_Castle#Island_Box",
     "canon_confidence": "canon"
@@ -1458,6 +1534,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": "Winter Island",
     "wiki_url": "https://onepiece.fandom.com/wiki/Drum_Island",
     "source_ref": "onepiece.fandom.com/wiki/Drum_Island#Island_Box",
     "canon_confidence": "canon"
@@ -1477,6 +1554,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Drum_Rockies",
     "source_ref": "onepiece.fandom.com/wiki/Drum_Rockies#Island_Box",
     "canon_confidence": "canon"
@@ -1496,6 +1574,7 @@
     "debut_source": null,
     "affiliation": "Vegapunk; World Government (SSG)",
     "log_pose": null,
+    "island_type": "Winter Island",
     "wiki_url": "https://onepiece.fandom.com/wiki/Egghead",
     "source_ref": "onepiece.fandom.com/wiki/Egghead#Island_Box",
     "canon_confidence": "canon"
@@ -1515,6 +1594,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Eight_Nine_Island",
     "source_ref": "onepiece.fandom.com/wiki/Eight_Nine_Island#Island_Box",
     "canon_confidence": "canon"
@@ -1534,6 +1614,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Eigis_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Eigis_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -1553,6 +1634,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Elbaph",
     "source_ref": "onepiece.fandom.com/wiki/Elbaph#Island_Box",
     "canon_confidence": "canon"
@@ -1572,6 +1654,7 @@
     "debut_source": null,
     "affiliation": "Uta",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Elegia",
     "source_ref": "onepiece.fandom.com/wiki/Elegia#Island_Box",
     "canon_confidence": "canon"
@@ -1591,6 +1674,7 @@
     "debut_source": "Dead End Adventure",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Elena",
     "source_ref": "onepiece.fandom.com/wiki/Elena#Island_Box",
     "canon_confidence": "derived"
@@ -1610,6 +1694,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Emerald_City",
     "source_ref": "onepiece.fandom.com/wiki/Emerald_City#Island_Box",
     "canon_confidence": "canon"
@@ -1629,6 +1714,7 @@
     "debut_source": "One Piece Film: Z",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Endpoints",
     "source_ref": "onepiece.fandom.com/wiki/Endpoints#Island_Box",
     "canon_confidence": "derived"
@@ -1648,6 +1734,7 @@
     "debut_source": null,
     "affiliation": "World Government; Marines",
     "log_pose": null,
+    "island_type": "Afternoon/Never-night Island",
     "wiki_url": "https://onepiece.fandom.com/wiki/Enies_Lobby",
     "source_ref": "onepiece.fandom.com/wiki/Enies_Lobby#Island_Box",
     "canon_confidence": "canon"
@@ -1667,6 +1754,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Enishi",
     "source_ref": "onepiece.fandom.com/wiki/Enishi#Island_Box",
     "canon_confidence": "canon"
@@ -1686,6 +1774,7 @@
     "debut_source": "One Piece Mobile Jack",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Enkai_Island",
     "source_ref": "onepiece.fandom.com/wiki/Enkai_Island#Island_Box",
     "canon_confidence": "derived"
@@ -1705,6 +1794,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Erumalu",
     "source_ref": "onepiece.fandom.com/wiki/Erumalu#Island_Box",
     "canon_confidence": "canon"
@@ -1724,6 +1814,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Esperia_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Esperia_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -1743,6 +1834,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Euro_Peninsula",
     "source_ref": "onepiece.fandom.com/wiki/Euro_Peninsula#Island_Box",
     "canon_confidence": "canon"
@@ -1762,6 +1854,7 @@
     "debut_source": null,
     "affiliation": "World Government",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Evil_Black_Drum_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Evil_Black_Drum_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -1781,6 +1874,7 @@
     "debut_source": "Set Sail Pirate Crew!",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Farce_Island",
     "source_ref": "onepiece.fandom.com/wiki/Farce_Island#Island_Box",
     "canon_confidence": "derived"
@@ -1800,6 +1894,7 @@
     "debut_source": "Legend of the Rainbow Island",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Festa_Circle",
     "source_ref": "onepiece.fandom.com/wiki/Festa_Circle#Island_Box",
     "canon_confidence": "derived"
@@ -1819,6 +1914,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Fireworks",
     "source_ref": "onepiece.fandom.com/wiki/Fireworks#Island_Box",
     "canon_confidence": "canon"
@@ -1838,6 +1934,7 @@
     "debut_source": "One Piece Film: Z",
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Firs_Island",
     "source_ref": "onepiece.fandom.com/wiki/Firs_Island#Island_Box",
     "canon_confidence": "derived"
@@ -1857,6 +1954,7 @@
     "debut_source": null,
     "affiliation": "Ryugu Kingdom New Fish-Man Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Fish-Man_District",
     "source_ref": "onepiece.fandom.com/wiki/Fish-Man_District#Island_Box",
     "canon_confidence": "canon"
@@ -1876,6 +1974,7 @@
     "debut_source": null,
     "affiliation": "Ryugu Kingdom; Straw Hat Pirates; Big Mom Pirates (former); Whitebeard Pirates (former)",
     "log_pose": "Half a day",
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Fish-Man_Island",
     "source_ref": "onepiece.fandom.com/wiki/Fish-Man_Island#Island_Box",
     "canon_confidence": "canon"
@@ -1895,6 +1994,7 @@
     "debut_source": "Episode Special 3",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Fisherman_Island",
     "source_ref": "onepiece.fandom.com/wiki/Fisherman_Island#Island_Box",
     "canon_confidence": "derived"
@@ -1914,6 +2014,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Flavor_Island",
     "source_ref": "onepiece.fandom.com/wiki/Flavor_Island#Island_Box",
     "canon_confidence": "canon"
@@ -1933,6 +2034,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Flevance",
     "source_ref": "onepiece.fandom.com/wiki/Flevance#Island_Box",
     "canon_confidence": "canon"
@@ -1952,6 +2054,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": "Sea",
     "wiki_url": "https://onepiece.fandom.com/wiki/Florian_Triangle",
     "source_ref": "onepiece.fandom.com/wiki/Florian_Triangle#Island_Box",
     "canon_confidence": "canon"
@@ -1971,6 +2074,7 @@
     "debut_source": null,
     "affiliation": "Kouzuki Family; Kurozumi Orochi (former); Beasts Pirates (former)",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Flower_Capital",
     "source_ref": "onepiece.fandom.com/wiki/Flower_Capital#Island_Box",
     "canon_confidence": "canon"
@@ -1990,6 +2094,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Flower_Hill",
     "source_ref": "onepiece.fandom.com/wiki/Flower_Hill#Island_Box",
     "canon_confidence": "canon"
@@ -2009,6 +2114,7 @@
     "debut_source": null,
     "affiliation": "Unknown; Formerly Ruled by Brownbeard; Formerly owned by Whitebeard",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Foodvalten",
     "source_ref": "onepiece.fandom.com/wiki/Foodvalten#Island_Box",
     "canon_confidence": "canon"
@@ -2028,6 +2134,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Foolshout_Island",
     "source_ref": "onepiece.fandom.com/wiki/Foolshout_Island#Island_Box",
     "canon_confidence": "canon"
@@ -2047,6 +2154,7 @@
     "debut_source": null,
     "affiliation": "Goa Kingdom",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Foosha_Village",
     "source_ref": "onepiece.fandom.com/wiki/Foosha_Village#Island_Box",
     "canon_confidence": "canon"
@@ -2066,6 +2174,7 @@
     "debut_source": "One Piece: Unlimited Cruise",
     "affiliation": "Great Tree",
     "log_pose": null,
+    "island_type": "Summer Island",
     "wiki_url": "https://onepiece.fandom.com/wiki/Forest_Island",
     "source_ref": "onepiece.fandom.com/wiki/Forest_Island#Island_Box",
     "canon_confidence": "derived"
@@ -2085,6 +2194,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Franky_House",
     "source_ref": "onepiece.fandom.com/wiki/Franky_House#Island_Box",
     "canon_confidence": "canon"
@@ -2104,6 +2214,7 @@
     "debut_source": null,
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Fron_Island",
     "source_ref": "onepiece.fandom.com/wiki/Fron_Island#Island_Box",
     "canon_confidence": "canon"
@@ -2123,6 +2234,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Fruits_Island",
     "source_ref": "onepiece.fandom.com/wiki/Fruits_Island#Island_Box",
     "canon_confidence": "canon"
@@ -2142,6 +2254,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Funwari_Island",
     "source_ref": "onepiece.fandom.com/wiki/Funwari_Island#Island_Box",
     "canon_confidence": "canon"
@@ -2161,6 +2274,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Futoru_Island",
     "source_ref": "onepiece.fandom.com/wiki/Futoru_Island#Island_Box",
     "canon_confidence": "canon"
@@ -2180,6 +2294,7 @@
     "debut_source": null,
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/G-1",
     "source_ref": "onepiece.fandom.com/wiki/G-1#Island_Box",
     "canon_confidence": "canon"
@@ -2199,6 +2314,7 @@
     "debut_source": null,
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/G-14",
     "source_ref": "onepiece.fandom.com/wiki/G-14#Island_Box",
     "canon_confidence": "canon"
@@ -2218,6 +2334,7 @@
     "debut_source": null,
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/G-2",
     "source_ref": "onepiece.fandom.com/wiki/G-2#Island_Box",
     "canon_confidence": "canon"
@@ -2237,6 +2354,7 @@
     "debut_source": null,
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/G-3",
     "source_ref": "onepiece.fandom.com/wiki/G-3#Island_Box",
     "canon_confidence": "canon"
@@ -2256,6 +2374,7 @@
     "debut_source": null,
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/G-5",
     "source_ref": "onepiece.fandom.com/wiki/G-5#Island_Box",
     "canon_confidence": "canon"
@@ -2275,6 +2394,7 @@
     "debut_source": null,
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/G-8",
     "source_ref": "onepiece.fandom.com/wiki/G-8#Island_Box",
     "canon_confidence": "canon"
@@ -2294,6 +2414,7 @@
     "debut_source": "Chin Piece",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Gacha_Gacha_Island",
     "source_ref": "onepiece.fandom.com/wiki/Gacha_Gacha_Island#Island_Box",
     "canon_confidence": "derived"
@@ -2313,6 +2434,7 @@
     "debut_source": "One Piece: Stampede",
     "affiliation": "Galzforce",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Galzburg",
     "source_ref": "onepiece.fandom.com/wiki/Galzburg#Island_Box",
     "canon_confidence": "derived"
@@ -2332,6 +2454,7 @@
     "debut_source": null,
     "affiliation": "Red Hair Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Gartel_Island",
     "source_ref": "onepiece.fandom.com/wiki/Gartel_Island#Island_Box",
     "canon_confidence": "canon"
@@ -2351,6 +2474,7 @@
     "debut_source": null,
     "affiliation": "Marines; World Government",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Gates_of_Justice",
     "source_ref": "onepiece.fandom.com/wiki/Gates_of_Justice#Island_Box",
     "canon_confidence": "canon"
@@ -2370,6 +2494,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Gecko_Islands",
     "source_ref": "onepiece.fandom.com/wiki/Gecko_Islands#Island_Box",
     "canon_confidence": "canon"
@@ -2389,6 +2514,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Germa_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Germa_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -2408,6 +2534,7 @@
     "debut_source": null,
     "affiliation": "World Government",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Goa_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Goa_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -2427,6 +2554,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Goat_Island",
     "source_ref": "onepiece.fandom.com/wiki/Goat_Island#Island_Box",
     "canon_confidence": "canon"
@@ -2446,6 +2574,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Goat_Island_%28Non-Canon%29",
     "source_ref": "onepiece.fandom.com/wiki/Goat_Island_(Non-Canon)#Island_Box",
     "canon_confidence": "canon"
@@ -2465,6 +2594,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/God_Valley",
     "source_ref": "onepiece.fandom.com/wiki/God_Valley#Island_Box",
     "canon_confidence": "canon"
@@ -2484,6 +2614,7 @@
     "debut_source": "One Piece: The Movie",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Gold_Island",
     "source_ref": "onepiece.fandom.com/wiki/Gold_Island#Island_Box",
     "canon_confidence": "derived"
@@ -2503,6 +2634,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Goldfish_Empire",
     "source_ref": "onepiece.fandom.com/wiki/Goldfish_Empire#Island_Box",
     "canon_confidence": "canon"
@@ -2522,6 +2654,7 @@
     "debut_source": "Set Sail Pirate Crew!",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Gonarock_Island",
     "source_ref": "onepiece.fandom.com/wiki/Gonarock_Island#Island_Box",
     "canon_confidence": "derived"
@@ -2541,6 +2674,7 @@
     "debut_source": "One Piece: Unlimited Cruise",
     "affiliation": "Great Tree",
     "log_pose": null,
+    "island_type": "Summer Island",
     "wiki_url": "https://onepiece.fandom.com/wiki/Gorge_Island",
     "source_ref": "onepiece.fandom.com/wiki/Gorge_Island#Island_Box",
     "canon_confidence": "derived"
@@ -2560,6 +2694,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Gosa_Village",
     "source_ref": "onepiece.fandom.com/wiki/Gosa_Village#Island_Box",
     "canon_confidence": "canon"
@@ -2579,6 +2714,7 @@
     "debut_source": "The True Food! Devil Fruit!!",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Gourmet_Island",
     "source_ref": "onepiece.fandom.com/wiki/Gourmet_Island#Island_Box",
     "canon_confidence": "derived"
@@ -2598,6 +2734,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Gray_Terminal",
     "source_ref": "onepiece.fandom.com/wiki/Gray_Terminal#Island_Box",
     "canon_confidence": "canon"
@@ -2617,6 +2754,7 @@
     "debut_source": "Legend of the Rainbow Island",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Great_Ground",
     "source_ref": "onepiece.fandom.com/wiki/Great_Ground#Island_Box",
     "canon_confidence": "derived"
@@ -2636,6 +2774,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Great_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Great_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -2655,6 +2794,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Green_Bit",
     "source_ref": "onepiece.fandom.com/wiki/Green_Bit#Island_Box",
     "canon_confidence": "canon"
@@ -2674,6 +2814,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Guanhao",
     "source_ref": "onepiece.fandom.com/wiki/Guanhao#Island_Box",
     "canon_confidence": "canon"
@@ -2693,6 +2834,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Gyasta",
     "source_ref": "onepiece.fandom.com/wiki/Gyasta#Island_Box",
     "canon_confidence": "canon"
@@ -2712,6 +2854,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Gyoncorde_Plaza",
     "source_ref": "onepiece.fandom.com/wiki/Gyoncorde_Plaza#Island_Box",
     "canon_confidence": "canon"
@@ -2731,6 +2874,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Gyoverly_Hills",
     "source_ref": "onepiece.fandom.com/wiki/Gyoverly_Hills#Island_Box",
     "canon_confidence": "canon"
@@ -2750,6 +2894,7 @@
     "debut_source": "Monsters",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/G%C3%A9rard",
     "source_ref": "onepiece.fandom.com/wiki/Gérard#Island_Box",
     "canon_confidence": "derived"
@@ -2769,6 +2914,7 @@
     "debut_source": null,
     "affiliation": "Rocks Pirates (formerly) Ochoku (formerly) Blackbeard Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Hachinosu",
     "source_ref": "onepiece.fandom.com/wiki/Hachinosu#Island_Box",
     "canon_confidence": "canon"
@@ -2788,6 +2934,7 @@
     "debut_source": null,
     "affiliation": "Shimotsuki Family (formerly)",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Hakumai",
     "source_ref": "onepiece.fandom.com/wiki/Hakumai#Island_Box",
     "canon_confidence": "canon"
@@ -2807,6 +2954,7 @@
     "debut_source": "Episode of Luffy",
     "affiliation": "Bilić (former); Whitebeard Pirates (former)",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Hand_Island",
     "source_ref": "onepiece.fandom.com/wiki/Hand_Island#Island_Box",
     "canon_confidence": "derived"
@@ -2826,6 +2974,7 @@
     "debut_source": "Dead End Adventure",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Hannabal",
     "source_ref": "onepiece.fandom.com/wiki/Hannabal#Island_Box",
     "canon_confidence": "derived"
@@ -2845,6 +2994,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Headband_Catfish_Village",
     "source_ref": "onepiece.fandom.com/wiki/Headband_Catfish_Village#Island_Box",
     "canon_confidence": "canon"
@@ -2864,6 +3014,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Human_Auctioning_House",
     "source_ref": "onepiece.fandom.com/wiki/Human_Auctioning_House#Island_Box",
     "canon_confidence": "canon"
@@ -2883,6 +3034,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Hungry-La_Island",
     "source_ref": "onepiece.fandom.com/wiki/Hungry-La_Island#Island_Box",
     "canon_confidence": "canon"
@@ -2902,6 +3054,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Hyokaido",
     "source_ref": "onepiece.fandom.com/wiki/Hyokaido#Island_Box",
     "canon_confidence": "canon"
@@ -2921,6 +3074,7 @@
     "debut_source": "Set Sail Pirate Crew!",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Hyoutan_Island",
     "source_ref": "onepiece.fandom.com/wiki/Hyoutan_Island#Island_Box",
     "canon_confidence": "derived"
@@ -2940,6 +3094,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Ice_Island",
     "source_ref": "onepiece.fandom.com/wiki/Ice_Island#Island_Box",
     "canon_confidence": "canon"
@@ -2959,6 +3114,7 @@
     "debut_source": "One Piece: Unlimited Cruise",
     "affiliation": "Great Tree",
     "log_pose": null,
+    "island_type": "Winter Island",
     "wiki_url": "https://onepiece.fandom.com/wiki/Iceberg_Island",
     "source_ref": "onepiece.fandom.com/wiki/Iceberg_Island#Island_Box",
     "canon_confidence": "derived"
@@ -2978,6 +3134,7 @@
     "debut_source": null,
     "affiliation": "Arabasta Kingdom",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Ido",
     "source_ref": "onepiece.fandom.com/wiki/Ido#Island_Box",
     "canon_confidence": "canon"
@@ -2997,6 +3154,7 @@
     "debut_source": null,
     "affiliation": "World Government",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Ilisia_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Ilisia_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -3016,6 +3174,7 @@
     "debut_source": null,
     "affiliation": "World Government Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Impel_Down",
     "source_ref": "onepiece.fandom.com/wiki/Impel_Down#Island_Box",
     "canon_confidence": "canon"
@@ -3035,6 +3194,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Island_of_Rare_Animals",
     "source_ref": "onepiece.fandom.com/wiki/Island_of_Rare_Animals#Island_Box",
     "canon_confidence": "canon"
@@ -3054,6 +3214,7 @@
     "debut_source": "Set Sail Pirate Crew!",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Iyasare_Island",
     "source_ref": "onepiece.fandom.com/wiki/Iyasare_Island#Island_Box",
     "canon_confidence": "derived"
@@ -3073,6 +3234,7 @@
     "debut_source": "One Piece: World Seeker",
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Jail_Island",
     "source_ref": "onepiece.fandom.com/wiki/Jail_Island#Island_Box",
     "canon_confidence": "derived"
@@ -3092,6 +3254,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Jam_Island",
     "source_ref": "onepiece.fandom.com/wiki/Jam_Island#Island_Box",
     "canon_confidence": "canon"
@@ -3111,6 +3274,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": "4 days",
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Jaya",
     "source_ref": "onepiece.fandom.com/wiki/Jaya#Island_Box",
     "canon_confidence": "canon"
@@ -3130,6 +3294,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Jelly_Island",
     "source_ref": "onepiece.fandom.com/wiki/Jelly_Island#Island_Box",
     "canon_confidence": "canon"
@@ -3149,6 +3314,7 @@
     "debut_source": null,
     "affiliation": "Happo Navy‎ (Chinjao Family)",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Jewel_Ice_Sheet",
     "source_ref": "onepiece.fandom.com/wiki/Jewel_Ice_Sheet#Island_Box",
     "canon_confidence": "canon"
@@ -3168,6 +3334,7 @@
     "debut_source": "Chapter 15 (One Piece Party)",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Judo_Island",
     "source_ref": "onepiece.fandom.com/wiki/Judo_Island#Island_Box",
     "canon_confidence": "derived"
@@ -3187,6 +3354,7 @@
     "debut_source": "Jump Super Stars (One-Shot)",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Jump_Worlds",
     "source_ref": "onepiece.fandom.com/wiki/Jump_Worlds#Island_Box",
     "canon_confidence": "derived"
@@ -3206,6 +3374,7 @@
     "debut_source": "One Piece: Unlimited Adventure",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Jungle_Zone",
     "source_ref": "onepiece.fandom.com/wiki/Jungle_Zone#Island_Box",
     "canon_confidence": "derived"
@@ -3225,6 +3394,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Kamigata",
     "source_ref": "onepiece.fandom.com/wiki/Kamigata#Island_Box",
     "canon_confidence": "canon"
@@ -3244,6 +3414,7 @@
     "debut_source": null,
     "affiliation": "World Government",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Kano_Country",
     "source_ref": "onepiece.fandom.com/wiki/Kano_Country#Island_Box",
     "canon_confidence": "canon"
@@ -3263,6 +3434,7 @@
     "debut_source": null,
     "affiliation": "Buggy's Delivery Cross Guild",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Karai_Bari_Island",
     "source_ref": "onepiece.fandom.com/wiki/Karai_Bari_Island#Island_Box",
     "canon_confidence": "canon"
@@ -3282,6 +3454,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": "Winter Island",
     "wiki_url": "https://onepiece.fandom.com/wiki/Karakuri_Island",
     "source_ref": "onepiece.fandom.com/wiki/Karakuri_Island#Island_Box",
     "canon_confidence": "canon"
@@ -3301,6 +3474,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Karate_Island",
     "source_ref": "onepiece.fandom.com/wiki/Karate_Island#Island_Box",
     "canon_confidence": "canon"
@@ -3320,6 +3494,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Katorea",
     "source_ref": "onepiece.fandom.com/wiki/Katorea#Island_Box",
     "canon_confidence": "canon"
@@ -3339,6 +3514,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Kenzan_Island",
     "source_ref": "onepiece.fandom.com/wiki/Kenzan_Island#Island_Box",
     "canon_confidence": "canon"
@@ -3358,6 +3534,7 @@
     "debut_source": "One Piece Magazine Vol.4",
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Kibo_Island",
     "source_ref": "onepiece.fandom.com/wiki/Kibo_Island#Island_Box",
     "canon_confidence": "derived"
@@ -3377,6 +3554,7 @@
     "debut_source": "Episode of Chopper Plus: Bloom in Winter, Miracle Sakura",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Kilauea",
     "source_ref": "onepiece.fandom.com/wiki/Kilauea#Island_Box",
     "canon_confidence": "derived"
@@ -3396,6 +3574,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Kimi_Island",
     "source_ref": "onepiece.fandom.com/wiki/Kimi_Island#Island_Box",
     "canon_confidence": "canon"
@@ -3415,6 +3594,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Kinko_Island",
     "source_ref": "onepiece.fandom.com/wiki/Kinko_Island#Island_Box",
     "canon_confidence": "canon"
@@ -3434,6 +3614,7 @@
     "debut_source": "Adventure of Nebulandia",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Kinoko_Island",
     "source_ref": "onepiece.fandom.com/wiki/Kinoko_Island#Island_Box",
     "canon_confidence": "derived"
@@ -3453,6 +3634,7 @@
     "debut_source": "Set Sail Pirate Crew!",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Kinoko_Islands",
     "source_ref": "onepiece.fandom.com/wiki/Kinoko_Islands#Island_Box",
     "canon_confidence": "derived"
@@ -3472,6 +3654,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Komugi_Island",
     "source_ref": "onepiece.fandom.com/wiki/Komugi_Island#Island_Box",
     "canon_confidence": "canon"
@@ -3491,6 +3674,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Kuen_Village",
     "source_ref": "onepiece.fandom.com/wiki/Kuen_Village#Island_Box",
     "canon_confidence": "canon"
@@ -3510,6 +3694,7 @@
     "debut_source": "Chapter 19 (One Piece Party)",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Kuma_%28Island%29",
     "source_ref": "onepiece.fandom.com/wiki/Kuma_(Island)#Island_Box",
     "canon_confidence": "derived"
@@ -3529,6 +3714,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Kumate_Island",
     "source_ref": "onepiece.fandom.com/wiki/Kumate_Island#Island_Box",
     "canon_confidence": "canon"
@@ -3548,6 +3734,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Kuraigana_Island",
     "source_ref": "onepiece.fandom.com/wiki/Kuraigana_Island#Island_Box",
     "canon_confidence": "canon"
@@ -3567,6 +3754,7 @@
     "debut_source": null,
     "affiliation": "Kouzuki Family ; Beasts Pirates (former)",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Kuri",
     "source_ref": "onepiece.fandom.com/wiki/Kuri#Island_Box",
     "canon_confidence": "canon"
@@ -3586,6 +3774,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Kutsukku_Island",
     "source_ref": "onepiece.fandom.com/wiki/Kutsukku_Island#Island_Box",
     "canon_confidence": "canon"
@@ -3605,6 +3794,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Kyuka_Island",
     "source_ref": "onepiece.fandom.com/wiki/Kyuka_Island#Island_Box",
     "canon_confidence": "canon"
@@ -3624,6 +3814,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Land_of_Gods",
     "source_ref": "onepiece.fandom.com/wiki/Land_of_Gods#Island_Box",
     "canon_confidence": "canon"
@@ -3643,6 +3834,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Land_of_Ice",
     "source_ref": "onepiece.fandom.com/wiki/Land_of_Ice#Island_Box",
     "canon_confidence": "canon"
@@ -3662,6 +3854,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Las_Camp",
     "source_ref": "onepiece.fandom.com/wiki/Las_Camp#Island_Box",
     "canon_confidence": "canon"
@@ -3681,6 +3874,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Laugh_Tale",
     "source_ref": "onepiece.fandom.com/wiki/Laugh_Tale#Island_Box",
     "canon_confidence": "canon"
@@ -3700,6 +3894,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Liqueur_Island",
     "source_ref": "onepiece.fandom.com/wiki/Liqueur_Island#Island_Box",
     "canon_confidence": "canon"
@@ -3719,6 +3914,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": "Half a day",
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Little_East_Blue",
     "source_ref": "onepiece.fandom.com/wiki/Little_East_Blue#Island_Box",
     "canon_confidence": "canon"
@@ -3738,6 +3934,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": "One year",
+    "island_type": "Prehistoric island",
     "wiki_url": "https://onepiece.fandom.com/wiki/Little_Garden",
     "source_ref": "onepiece.fandom.com/wiki/Little_Garden#Island_Box",
     "canon_confidence": "canon"
@@ -3757,6 +3954,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Lodestar_Island",
     "source_ref": "onepiece.fandom.com/wiki/Lodestar_Island#Island_Box",
     "canon_confidence": "canon"
@@ -3776,6 +3974,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Loguetown",
     "source_ref": "onepiece.fandom.com/wiki/Loguetown#Island_Box",
     "canon_confidence": "canon"
@@ -3795,6 +3994,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": "Less than a day",
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Long_Ring_Long_Land",
     "source_ref": "onepiece.fandom.com/wiki/Long_Ring_Long_Land#Island_Box",
     "canon_confidence": "canon"
@@ -3814,6 +4014,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Lost_Island",
     "source_ref": "onepiece.fandom.com/wiki/Lost_Island#Island_Box",
     "canon_confidence": "canon"
@@ -3833,6 +4034,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Lovely_Land",
     "source_ref": "onepiece.fandom.com/wiki/Lovely_Land#Island_Box",
     "canon_confidence": "canon"
@@ -3852,6 +4054,7 @@
     "debut_source": "One Piece Magazine Vol.4",
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Loving_Island",
     "source_ref": "onepiece.fandom.com/wiki/Loving_Island#Island_Box",
     "canon_confidence": "derived"
@@ -3871,6 +4074,7 @@
     "debut_source": null,
     "affiliation": "Revolutionary Army; World Government (formerly)",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Lulusia_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Lulusia_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -3890,6 +4094,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Lvneel_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Lvneel_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -3909,6 +4114,7 @@
     "debut_source": "One Piece Premier Show",
     "affiliation": "DX Marines (former)",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Madatascar_Island",
     "source_ref": "onepiece.fandom.com/wiki/Madatascar_Island#Island_Box",
     "canon_confidence": "derived"
@@ -3928,6 +4134,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Majiatsuka_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Majiatsuka_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -3947,6 +4154,7 @@
     "debut_source": "Episode Special 2",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Mamana_Island",
     "source_ref": "onepiece.fandom.com/wiki/Mamana_Island#Island_Box",
     "canon_confidence": "derived"
@@ -3966,6 +4174,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Margarine_Island",
     "source_ref": "onepiece.fandom.com/wiki/Margarine_Island#Island_Box",
     "canon_confidence": "canon"
@@ -3985,6 +4194,7 @@
     "debut_source": null,
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Marine_GS_General_Hospital",
     "source_ref": "onepiece.fandom.com/wiki/Marine_GS_General_Hospital#Island_Box",
     "canon_confidence": "canon"
@@ -4004,6 +4214,7 @@
     "debut_source": null,
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Marineford",
     "source_ref": "onepiece.fandom.com/wiki/Marineford#Island_Box",
     "canon_confidence": "canon"
@@ -4023,6 +4234,7 @@
     "debut_source": "One Piece Premier Show",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Marriage_Greenland",
     "source_ref": "onepiece.fandom.com/wiki/Marriage_Greenland#Island_Box",
     "canon_confidence": "derived"
@@ -4042,6 +4254,7 @@
     "debut_source": null,
     "affiliation": "World Government",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Mary_Geoise",
     "source_ref": "onepiece.fandom.com/wiki/Mary_Geoise#Island_Box",
     "canon_confidence": "canon"
@@ -4061,6 +4274,7 @@
     "debut_source": "One Piece Premier Show",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Maze_Island",
     "source_ref": "onepiece.fandom.com/wiki/Maze_Island#Island_Box",
     "canon_confidence": "derived"
@@ -4080,6 +4294,7 @@
     "debut_source": "The Giant Mechanical Soldier of Karakuri Castle",
     "affiliation": null,
     "log_pose": "Not Possible",
+    "island_type": "Summer Island",
     "wiki_url": "https://onepiece.fandom.com/wiki/Mecha_Island",
     "source_ref": "onepiece.fandom.com/wiki/Mecha_Island#Island_Box",
     "canon_confidence": "derived"
@@ -4099,6 +4314,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Melias",
     "source_ref": "onepiece.fandom.com/wiki/Melias#Island_Box",
     "canon_confidence": "canon"
@@ -4118,6 +4334,7 @@
     "debut_source": "One Piece Odyssey",
     "affiliation": "Sky Priestesses (Rita Suerte, Lim)",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Memoria",
     "source_ref": "onepiece.fandom.com/wiki/Memoria#Island_Box",
     "canon_confidence": "derived"
@@ -4137,6 +4354,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Mermaid_Cove",
     "source_ref": "onepiece.fandom.com/wiki/Mermaid_Cove#Island_Box",
     "canon_confidence": "canon"
@@ -4156,6 +4374,7 @@
     "debut_source": null,
     "affiliation": "Golden Lion Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Merveille",
     "source_ref": "onepiece.fandom.com/wiki/Merveille#Island_Box",
     "canon_confidence": "canon"
@@ -4175,6 +4394,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Meshi",
     "source_ref": "onepiece.fandom.com/wiki/Meshi#Island_Box",
     "canon_confidence": "canon"
@@ -4194,6 +4414,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Micqueot",
     "source_ref": "onepiece.fandom.com/wiki/Micqueot#Island_Box",
     "canon_confidence": "canon"
@@ -4213,6 +4434,7 @@
     "debut_source": "One Piece: Grand Pirate Show",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Midori_Island",
     "source_ref": "onepiece.fandom.com/wiki/Midori_Island#Island_Box",
     "canon_confidence": "derived"
@@ -4232,6 +4454,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Midway_Forest",
     "source_ref": "onepiece.fandom.com/wiki/Midway_Forest#Island_Box",
     "canon_confidence": "canon"
@@ -4251,6 +4474,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Milenge_Island",
     "source_ref": "onepiece.fandom.com/wiki/Milenge_Island#Island_Box",
     "canon_confidence": "canon"
@@ -4270,6 +4494,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Minion_Island",
     "source_ref": "onepiece.fandom.com/wiki/Minion_Island#Island_Box",
     "canon_confidence": "canon"
@@ -4289,6 +4514,7 @@
     "debut_source": "MiraBato Strongest Strategy: MiraBato GO!",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Miraba_Elementary_School",
     "source_ref": "onepiece.fandom.com/wiki/Miraba_Elementary_School#Island_Box",
     "canon_confidence": "derived"
@@ -4308,6 +4534,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Mirro-World",
     "source_ref": "onepiece.fandom.com/wiki/Mirro-World#Island_Box",
     "canon_confidence": "canon"
@@ -4327,6 +4554,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Mirror_Ball_Island",
     "source_ref": "onepiece.fandom.com/wiki/Mirror_Ball_Island#Island_Box",
     "canon_confidence": "canon"
@@ -4346,6 +4574,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Mock_Town",
     "source_ref": "onepiece.fandom.com/wiki/Mock_Town#Island_Box",
     "canon_confidence": "canon"
@@ -4365,6 +4594,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Mogaro_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Mogaro_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -4384,6 +4614,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Mokomo_Dukedom",
     "source_ref": "onepiece.fandom.com/wiki/Mokomo_Dukedom#Island_Box",
     "canon_confidence": "canon"
@@ -4403,6 +4634,7 @@
     "debut_source": "Set Sail Pirate Crew!",
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Moku_Moku_Branch",
     "source_ref": "onepiece.fandom.com/wiki/Moku_Moku_Branch#Island_Box",
     "canon_confidence": "derived"
@@ -4422,6 +4654,7 @@
     "debut_source": null,
     "affiliation": "Revolutionary Army",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Momoiro_Island",
     "source_ref": "onepiece.fandom.com/wiki/Momoiro_Island#Island_Box",
     "canon_confidence": "canon"
@@ -4441,6 +4674,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Moon",
     "source_ref": "onepiece.fandom.com/wiki/Moon#Island_Box",
     "canon_confidence": "canon"
@@ -4460,6 +4694,7 @@
     "debut_source": "One Piece: Unlimited Adventure",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Mountain_Zone",
     "source_ref": "onepiece.fandom.com/wiki/Mountain_Zone#Island_Box",
     "canon_confidence": "derived"
@@ -4479,6 +4714,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Mt._Colubo",
     "source_ref": "onepiece.fandom.com/wiki/Mt._Colubo#Island_Box",
     "canon_confidence": "canon"
@@ -4498,6 +4734,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Mt._Kintoki",
     "source_ref": "onepiece.fandom.com/wiki/Mt._Kintoki#Island_Box",
     "canon_confidence": "canon"
@@ -4517,6 +4754,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Mt._Mauri",
     "source_ref": "onepiece.fandom.com/wiki/Mt._Mauri#Island_Box",
     "canon_confidence": "canon"
@@ -4536,6 +4774,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Mystoria_Island",
     "source_ref": "onepiece.fandom.com/wiki/Mystoria_Island#Island_Box",
     "canon_confidence": "canon"
@@ -4555,6 +4794,7 @@
     "debut_source": "Vivre Card - One Piece Visual Dictionary",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Nagagutsu_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Nagagutsu_Kingdom#Island_Box",
     "canon_confidence": "derived"
@@ -4574,6 +4814,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Nakrowa",
     "source_ref": "onepiece.fandom.com/wiki/Nakrowa#Island_Box",
     "canon_confidence": "canon"
@@ -4593,6 +4834,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Namakura_Island",
     "source_ref": "onepiece.fandom.com/wiki/Namakura_Island#Island_Box",
     "canon_confidence": "canon"
@@ -4612,6 +4854,7 @@
     "debut_source": "Set Sail Pirate Crew!",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Namonaki_Village",
     "source_ref": "onepiece.fandom.com/wiki/Namonaki_Village#Island_Box",
     "canon_confidence": "derived"
@@ -4631,6 +4874,7 @@
     "debut_source": "One Piece: Great Hidden Treasure of the Nanatsu Islands",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Nanatsu_Islands",
     "source_ref": "onepiece.fandom.com/wiki/Nanatsu_Islands#Island_Box",
     "canon_confidence": "derived"
@@ -4650,6 +4894,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Nanimonai_Island",
     "source_ref": "onepiece.fandom.com/wiki/Nanimonai_Island#Island_Box",
     "canon_confidence": "canon"
@@ -4669,6 +4914,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Nanohana",
     "source_ref": "onepiece.fandom.com/wiki/Nanohana#Island_Box",
     "canon_confidence": "canon"
@@ -4688,6 +4934,7 @@
     "debut_source": "Chapter 14 (One Piece Party)",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Natsuyasumi_Island",
     "source_ref": "onepiece.fandom.com/wiki/Natsuyasumi_Island#Island_Box",
     "canon_confidence": "derived"
@@ -4707,6 +4954,7 @@
     "debut_source": null,
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Navarone_Island",
     "source_ref": "onepiece.fandom.com/wiki/Navarone_Island#Island_Box",
     "canon_confidence": "canon"
@@ -4726,6 +4974,7 @@
     "debut_source": "One Piece novel ZORO",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Nazawaka_City",
     "source_ref": "onepiece.fandom.com/wiki/Nazawaka_City#Island_Box",
     "canon_confidence": "derived"
@@ -4745,6 +4994,7 @@
     "debut_source": "Adventure of Nebulandia",
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Nebulandia",
     "source_ref": "onepiece.fandom.com/wiki/Nebulandia#Island_Box",
     "canon_confidence": "derived"
@@ -4764,6 +5014,7 @@
     "debut_source": null,
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/New_Marineford",
     "source_ref": "onepiece.fandom.com/wiki/New_Marineford#Island_Box",
     "canon_confidence": "canon"
@@ -4783,6 +5034,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/New_World",
     "source_ref": "onepiece.fandom.com/wiki/New_World#Island_Box",
     "canon_confidence": "canon"
@@ -4802,6 +5054,7 @@
     "debut_source": "One Piece Magazine Vol.5",
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Noko_Island",
     "source_ref": "onepiece.fandom.com/wiki/Noko_Island#Island_Box",
     "canon_confidence": "derived"
@@ -4821,6 +5074,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Notice",
     "source_ref": "onepiece.fandom.com/wiki/Notice#Island_Box",
     "canon_confidence": "canon"
@@ -4840,6 +5094,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Nuts_Island",
     "source_ref": "onepiece.fandom.com/wiki/Nuts_Island#Island_Box",
     "canon_confidence": "canon"
@@ -4859,6 +5114,7 @@
     "debut_source": "Chopper's Kingdom on the Island of Strange Animals",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/O-Kan_Island",
     "source_ref": "onepiece.fandom.com/wiki/O-Kan_Island#Island_Box",
     "canon_confidence": "derived"
@@ -4878,6 +5134,7 @@
     "debut_source": "Episode Special 1",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Ocean%27s_Navel",
     "source_ref": "onepiece.fandom.com/wiki/Ocean's_Navel#Island_Box",
     "canon_confidence": "derived"
@@ -4897,6 +5154,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Ohara",
     "source_ref": "onepiece.fandom.com/wiki/Ohara#Island_Box",
     "canon_confidence": "canon"
@@ -4916,6 +5174,7 @@
     "debut_source": "Baron Omatsuri and the Secret Island",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Omatsuri_Island",
     "source_ref": "onepiece.fandom.com/wiki/Omatsuri_Island#Island_Box",
     "canon_confidence": "derived"
@@ -4935,6 +5194,7 @@
     "debut_source": null,
     "affiliation": "Beasts Pirates (Formerly)",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Onigashima",
     "source_ref": "onepiece.fandom.com/wiki/Onigashima#Island_Box",
     "canon_confidence": "canon"
@@ -4954,6 +5214,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Orange_Town",
     "source_ref": "onepiece.fandom.com/wiki/Orange_Town#Island_Box",
     "canon_confidence": "canon"
@@ -4973,6 +5234,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Organ_Islands",
     "source_ref": "onepiece.fandom.com/wiki/Organ_Islands#Island_Box",
     "canon_confidence": "canon"
@@ -4992,6 +5254,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Owl_Library",
     "source_ref": "onepiece.fandom.com/wiki/Owl_Library#Island_Box",
     "canon_confidence": "canon"
@@ -5011,6 +5274,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Oykot_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Oykot_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -5030,6 +5294,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Package_Island",
     "source_ref": "onepiece.fandom.com/wiki/Package_Island#Island_Box",
     "canon_confidence": "canon"
@@ -5049,6 +5314,7 @@
     "debut_source": null,
     "affiliation": "World Government",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Pangaea_Castle",
     "source_ref": "onepiece.fandom.com/wiki/Pangaea_Castle#Island_Box",
     "canon_confidence": "canon"
@@ -5068,6 +5334,7 @@
     "debut_source": "SBS Volume 112",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Pants_Hazard",
     "source_ref": "onepiece.fandom.com/wiki/Pants_Hazard#Island_Box",
     "canon_confidence": "derived"
@@ -5087,6 +5354,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Papanapple_Island",
     "source_ref": "onepiece.fandom.com/wiki/Papanapple_Island#Island_Box",
     "canon_confidence": "canon"
@@ -5106,6 +5374,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Paradise_Farm",
     "source_ref": "onepiece.fandom.com/wiki/Paradise_Farm#Island_Box",
     "canon_confidence": "canon"
@@ -5125,6 +5394,7 @@
     "debut_source": "One Piece Premier Show",
     "affiliation": "Lambor Bukini (former)",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Paradise_Island",
     "source_ref": "onepiece.fandom.com/wiki/Paradise_Island#Island_Box",
     "canon_confidence": "derived"
@@ -5144,6 +5414,7 @@
     "debut_source": "Dead End Adventure",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Partia",
     "source_ref": "onepiece.fandom.com/wiki/Partia#Island_Box",
     "canon_confidence": "derived"
@@ -5163,6 +5434,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Pasta_Lake",
     "source_ref": "onepiece.fandom.com/wiki/Pasta_Lake#Island_Box",
     "canon_confidence": "canon"
@@ -5182,6 +5454,7 @@
     "debut_source": "Chapter 3 (episode A)",
     "affiliation": "Whitebeard Pirates (former)",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Peak_Ode_Island",
     "source_ref": "onepiece.fandom.com/wiki/Peak_Ode_Island#Island_Box",
     "canon_confidence": "derived"
@@ -5201,6 +5474,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Pepe_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Pepe_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -5220,6 +5494,7 @@
     "debut_source": "Set Sail Pirate Crew!",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Pescatore_Island",
     "source_ref": "onepiece.fandom.com/wiki/Pescatore_Island#Island_Box",
     "canon_confidence": "derived"
@@ -5239,6 +5514,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Piepie_Island",
     "source_ref": "onepiece.fandom.com/wiki/Piepie_Island#Island_Box",
     "canon_confidence": "canon"
@@ -5258,6 +5534,7 @@
     "debut_source": "One Piece Party Volume 4",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Pineapple_Island",
     "source_ref": "onepiece.fandom.com/wiki/Pineapple_Island#Island_Box",
     "canon_confidence": "derived"
@@ -5277,6 +5554,7 @@
     "debut_source": "Set Sail Pirate Crew!",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Pinwhale_Village",
     "source_ref": "onepiece.fandom.com/wiki/Pinwhale_Village#Island_Box",
     "canon_confidence": "derived"
@@ -5296,6 +5574,7 @@
     "debut_source": "One Piece Film: Z",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Piriodo",
     "source_ref": "onepiece.fandom.com/wiki/Piriodo#Island_Box",
     "canon_confidence": "derived"
@@ -5315,6 +5594,7 @@
     "debut_source": "One Piece: Unlimited Adventure",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Plain_Zone",
     "source_ref": "onepiece.fandom.com/wiki/Plain_Zone#Island_Box",
     "canon_confidence": "derived"
@@ -5334,6 +5614,7 @@
     "debut_source": "Vivre Card - One Piece Visual Dictionary",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Porco_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Porco_Kingdom#Island_Box",
     "canon_confidence": "derived"
@@ -5353,6 +5634,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Poripori_Island",
     "source_ref": "onepiece.fandom.com/wiki/Poripori_Island#Island_Box",
     "canon_confidence": "canon"
@@ -5372,6 +5654,7 @@
     "debut_source": "One Piece novel A",
     "affiliation": "Whitebeard Pirates (former)",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Port_Chibaralta_Island",
     "source_ref": "onepiece.fandom.com/wiki/Port_Chibaralta_Island#Island_Box",
     "canon_confidence": "derived"
@@ -5391,6 +5674,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Potato_Island",
     "source_ref": "onepiece.fandom.com/wiki/Potato_Island#Island_Box",
     "canon_confidence": "canon"
@@ -5410,6 +5694,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Primula",
     "source_ref": "onepiece.fandom.com/wiki/Primula#Island_Box",
     "canon_confidence": "canon"
@@ -5429,6 +5714,7 @@
     "debut_source": null,
     "affiliation": "Beasts Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Prisoner_Mine",
     "source_ref": "onepiece.fandom.com/wiki/Prisoner_Mine#Island_Box",
     "canon_confidence": "canon"
@@ -5448,6 +5734,7 @@
     "debut_source": null,
     "affiliation": "World Government",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Prodence_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Prodence_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -5467,6 +5754,7 @@
     "debut_source": "One Piece Premier Show",
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Promise_Land",
     "source_ref": "onepiece.fandom.com/wiki/Promise_Land#Island_Box",
     "canon_confidence": "derived"
@@ -5486,6 +5774,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Pucci",
     "source_ref": "onepiece.fandom.com/wiki/Pucci#Island_Box",
     "canon_confidence": "canon"
@@ -5505,6 +5794,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Punk_Hazard",
     "source_ref": "onepiece.fandom.com/wiki/Punk_Hazard#Island_Box",
     "canon_confidence": "canon"
@@ -5524,6 +5814,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Raijin_Island",
     "source_ref": "onepiece.fandom.com/wiki/Raijin_Island#Island_Box",
     "canon_confidence": "canon"
@@ -5543,6 +5834,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Rainbase",
     "source_ref": "onepiece.fandom.com/wiki/Rainbase#Island_Box",
     "canon_confidence": "canon"
@@ -5562,6 +5854,7 @@
     "debut_source": "Legend of the Rainbow Island",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Rainbow_Island",
     "source_ref": "onepiece.fandom.com/wiki/Rainbow_Island#Island_Box",
     "canon_confidence": "derived"
@@ -5581,6 +5874,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Rainbow_Mist",
     "source_ref": "onepiece.fandom.com/wiki/Rainbow_Mist#Island_Box",
     "canon_confidence": "canon"
@@ -5600,6 +5894,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Rainbow_Tower",
     "source_ref": "onepiece.fandom.com/wiki/Rainbow_Tower#Island_Box",
     "canon_confidence": "canon"
@@ -5619,6 +5914,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Rakesh",
     "source_ref": "onepiece.fandom.com/wiki/Rakesh#Island_Box",
     "canon_confidence": "canon"
@@ -5638,6 +5934,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Red_Line",
     "source_ref": "onepiece.fandom.com/wiki/Red_Line#Island_Box",
     "canon_confidence": "canon"
@@ -5657,6 +5954,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Renaisse",
     "source_ref": "onepiece.fandom.com/wiki/Renaisse#Island_Box",
     "canon_confidence": "canon"
@@ -5676,6 +5974,7 @@
     "debut_source": "J-WORLD Tokyo",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Resorto",
     "source_ref": "onepiece.fandom.com/wiki/Resorto#Island_Box",
     "canon_confidence": "derived"
@@ -5695,6 +5994,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": "Winter Island",
     "wiki_url": "https://onepiece.fandom.com/wiki/Reverse_Mountain",
     "source_ref": "onepiece.fandom.com/wiki/Reverse_Mountain#Island_Box",
     "canon_confidence": "canon"
@@ -5714,6 +6014,7 @@
     "debut_source": null,
     "affiliation": "Shimotsuki Family (former)",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Ringo",
     "source_ref": "onepiece.fandom.com/wiki/Ringo#Island_Box",
     "canon_confidence": "canon"
@@ -5733,6 +6034,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Risky_Red_Island",
     "source_ref": "onepiece.fandom.com/wiki/Risky_Red_Island#Island_Box",
     "canon_confidence": "canon"
@@ -5752,6 +6054,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Robelle",
     "source_ref": "onepiece.fandom.com/wiki/Robelle#Island_Box",
     "canon_confidence": "canon"
@@ -5771,6 +6074,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Rokumitsu_Island",
     "source_ref": "onepiece.fandom.com/wiki/Rokumitsu_Island#Island_Box",
     "canon_confidence": "canon"
@@ -5790,6 +6094,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Rommel_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Rommel_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -5809,6 +6114,7 @@
     "debut_source": null,
     "affiliation": "World Government",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Roshwan_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Roshwan_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -5828,6 +6134,7 @@
     "debut_source": "Legend of the Rainbow Island",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Royal_Sun_Island",
     "source_ref": "onepiece.fandom.com/wiki/Royal_Sun_Island#Island_Box",
     "canon_confidence": "derived"
@@ -5847,6 +6154,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Rubeck_Island",
     "source_ref": "onepiece.fandom.com/wiki/Rubeck_Island#Island_Box",
     "canon_confidence": "canon"
@@ -5866,6 +6174,7 @@
     "debut_source": "One Piece: Unlimited Adventure",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Ruins_Zone",
     "source_ref": "onepiece.fandom.com/wiki/Ruins_Zone#Island_Box",
     "canon_confidence": "derived"
@@ -5885,6 +6194,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Ruluka",
     "source_ref": "onepiece.fandom.com/wiki/Ruluka#Island_Box",
     "canon_confidence": "canon"
@@ -5904,6 +6214,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": "48 season island",
     "wiki_url": "https://onepiece.fandom.com/wiki/Rusukaina",
     "source_ref": "onepiece.fandom.com/wiki/Rusukaina#Island_Box",
     "canon_confidence": "canon"
@@ -5923,6 +6234,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Ryugu_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Ryugu_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -5942,6 +6254,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Ryugu_Palace",
     "source_ref": "onepiece.fandom.com/wiki/Ryugu_Palace#Island_Box",
     "canon_confidence": "canon"
@@ -5961,6 +6274,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/S.Mart",
     "source_ref": "onepiece.fandom.com/wiki/S.Mart#Island_Box",
     "canon_confidence": "canon"
@@ -5980,6 +6294,7 @@
     "debut_source": null,
     "affiliation": "Donquixote Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/SMILE_Factory",
     "source_ref": "onepiece.fandom.com/wiki/SMILE_Factory#Island_Box",
     "canon_confidence": "canon"
@@ -5999,6 +6314,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Sabaody_Archipelago",
     "source_ref": "onepiece.fandom.com/wiki/Sabaody_Archipelago#Island_Box",
     "canon_confidence": "canon"
@@ -6018,6 +6334,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Sabaody_Park",
     "source_ref": "onepiece.fandom.com/wiki/Sabaody_Park#Island_Box",
     "canon_confidence": "canon"
@@ -6037,6 +6354,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Sakura_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Sakura_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -6056,6 +6374,7 @@
     "debut_source": "One Piece Premier Show",
     "affiliation": "Whitebeard Pirates (former); Chameleone (former)",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Samba_Island",
     "source_ref": "onepiece.fandom.com/wiki/Samba_Island#Island_Box",
     "canon_confidence": "derived"
@@ -6075,6 +6394,7 @@
     "debut_source": "Episode Special 2",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Samua_Island",
     "source_ref": "onepiece.fandom.com/wiki/Samua_Island#Island_Box",
     "canon_confidence": "derived"
@@ -6094,6 +6414,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Samuwanai_Island",
     "source_ref": "onepiece.fandom.com/wiki/Samuwanai_Island#Island_Box",
     "canon_confidence": "canon"
@@ -6113,6 +6434,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/San_Faldo",
     "source_ref": "onepiece.fandom.com/wiki/San_Faldo#Island_Box",
     "canon_confidence": "canon"
@@ -6132,6 +6454,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Sandora_Desert",
     "source_ref": "onepiece.fandom.com/wiki/Sandora_Desert#Island_Box",
     "canon_confidence": "canon"
@@ -6151,6 +6474,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Sandora_River",
     "source_ref": "onepiece.fandom.com/wiki/Sandora_River#Island_Box",
     "canon_confidence": "canon"
@@ -6170,6 +6494,7 @@
     "debut_source": "One Piece Magazine Vol.5",
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Sanshoku_Island",
     "source_ref": "onepiece.fandom.com/wiki/Sanshoku_Island#Island_Box",
     "canon_confidence": "derived"
@@ -6189,6 +6514,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Sapoten_Graveyard",
     "source_ref": "onepiece.fandom.com/wiki/Sapoten_Graveyard#Island_Box",
     "canon_confidence": "canon"
@@ -6208,6 +6534,7 @@
     "debut_source": "Vivre Card - One Piece Visual Dictionary",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Satsuruzo_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Satsuruzo_Kingdom#Island_Box",
     "canon_confidence": "derived"
@@ -6227,6 +6554,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Scrap_Island",
     "source_ref": "onepiece.fandom.com/wiki/Scrap_Island#Island_Box",
     "canon_confidence": "canon"
@@ -6246,6 +6574,7 @@
     "debut_source": null,
     "affiliation": "Fish-Man Island",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Sea_Forest",
     "source_ref": "onepiece.fandom.com/wiki/Sea_Forest#Island_Box",
     "canon_confidence": "canon"
@@ -6265,6 +6594,7 @@
     "debut_source": "One Piece: Unlimited Adventure",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Seaside_Zone",
     "source_ref": "onepiece.fandom.com/wiki/Seaside_Zone#Island_Box",
     "canon_confidence": "derived"
@@ -6284,6 +6614,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Sebio",
     "source_ref": "onepiece.fandom.com/wiki/Sebio#Island_Box",
     "canon_confidence": "canon"
@@ -6303,6 +6634,7 @@
     "debut_source": "One Piece Film: Z",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Secon_Island",
     "source_ref": "onepiece.fandom.com/wiki/Secon_Island#Island_Box",
     "canon_confidence": "derived"
@@ -6322,6 +6654,7 @@
     "debut_source": "Vivre Card - One Piece Visual Dictionary",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Shade_Port",
     "source_ref": "onepiece.fandom.com/wiki/Shade_Port#Island_Box",
     "canon_confidence": "derived"
@@ -6341,6 +6674,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Shakky%27s_Rip-off_Bar",
     "source_ref": "onepiece.fandom.com/wiki/Shakky's_Rip-off_Bar#Island_Box",
     "canon_confidence": "canon"
@@ -6360,6 +6694,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Shandora",
     "source_ref": "onepiece.fandom.com/wiki/Shandora#Island_Box",
     "canon_confidence": "canon"
@@ -6379,6 +6714,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Sheep%27s_House",
     "source_ref": "onepiece.fandom.com/wiki/Sheep's_House#Island_Box",
     "canon_confidence": "canon"
@@ -6398,6 +6734,7 @@
     "debut_source": "Episode Special 2",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Shellfish_Island",
     "source_ref": "onepiece.fandom.com/wiki/Shellfish_Island#Island_Box",
     "canon_confidence": "derived"
@@ -6417,6 +6754,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Shells_Town",
     "source_ref": "onepiece.fandom.com/wiki/Shells_Town#Island_Box",
     "canon_confidence": "canon"
@@ -6436,6 +6774,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Shift_Station",
     "source_ref": "onepiece.fandom.com/wiki/Shift_Station#Island_Box",
     "canon_confidence": "canon"
@@ -6455,6 +6794,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Shimotsuki_Village",
     "source_ref": "onepiece.fandom.com/wiki/Shimotsuki_Village#Island_Box",
     "canon_confidence": "canon"
@@ -6474,6 +6814,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Shishano_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Shishano_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -6493,6 +6834,7 @@
     "debut_source": "Legend of the Rainbow Island",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Silver_Arrow_Island",
     "source_ref": "onepiece.fandom.com/wiki/Silver_Arrow_Island#Island_Box",
     "canon_confidence": "derived"
@@ -6512,6 +6854,7 @@
     "debut_source": null,
     "affiliation": "Silver Pirate Alliance",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Silver_Mine",
     "source_ref": "onepiece.fandom.com/wiki/Silver_Mine#Island_Box",
     "canon_confidence": "canon"
@@ -6531,6 +6874,7 @@
     "debut_source": "One Piece novel A",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Sixis",
     "source_ref": "onepiece.fandom.com/wiki/Sixis#Island_Box",
     "canon_confidence": "derived"
@@ -6550,6 +6894,7 @@
     "debut_source": null,
     "affiliation": "Beasts Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Skull_Dome",
     "source_ref": "onepiece.fandom.com/wiki/Skull_Dome#Island_Box",
     "canon_confidence": "canon"
@@ -6569,6 +6914,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Skypiea",
     "source_ref": "onepiece.fandom.com/wiki/Skypiea#Island_Box",
     "canon_confidence": "canon"
@@ -6588,6 +6934,7 @@
     "debut_source": "One Piece Premier Show",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Soil_Island",
     "source_ref": "onepiece.fandom.com/wiki/Soil_Island#Island_Box",
     "canon_confidence": "derived"
@@ -6607,6 +6954,7 @@
     "debut_source": "SBS Volume 110",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Soja_Island",
     "source_ref": "onepiece.fandom.com/wiki/Soja_Island#Island_Box",
     "canon_confidence": "derived"
@@ -6626,6 +6974,7 @@
     "debut_source": null,
     "affiliation": "World Government",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Sorbet_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Sorbet_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -6645,6 +6994,7 @@
     "debut_source": null,
     "affiliation": "Whitebeard Pirates (former)",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Sphinx_%28Location%29",
     "source_ref": "onepiece.fandom.com/wiki/Sphinx_(Location)#Island_Box",
     "canon_confidence": "canon"
@@ -6664,6 +7014,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Spice_Bean",
     "source_ref": "onepiece.fandom.com/wiki/Spice_Bean#Island_Box",
     "canon_confidence": "canon"
@@ -6683,6 +7034,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Spider_Miles",
     "source_ref": "onepiece.fandom.com/wiki/Spider_Miles#Island_Box",
     "canon_confidence": "canon"
@@ -6702,6 +7054,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Spiders_Cafe",
     "source_ref": "onepiece.fandom.com/wiki/Spiders_Cafe#Island_Box",
     "canon_confidence": "canon"
@@ -6721,6 +7074,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/St._Poplar",
     "source_ref": "onepiece.fandom.com/wiki/St._Poplar#Island_Box",
     "canon_confidence": "canon"
@@ -6740,6 +7094,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Standing_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Standing_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -6759,6 +7114,7 @@
     "debut_source": "Tokyo One Piece Tower",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Strumia",
     "source_ref": "onepiece.fandom.com/wiki/Strumia#Island_Box",
     "canon_confidence": "derived"
@@ -6778,6 +7134,7 @@
     "debut_source": "One Piece Blue: Grand Data File",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Suiren",
     "source_ref": "onepiece.fandom.com/wiki/Suiren#Island_Box",
     "canon_confidence": "derived"
@@ -6797,6 +7154,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Sun_World",
     "source_ref": "onepiece.fandom.com/wiki/Sun_World#Island_Box",
     "canon_confidence": "canon"
@@ -6816,6 +7174,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Swallow_Island",
     "source_ref": "onepiece.fandom.com/wiki/Swallow_Island#Island_Box",
     "canon_confidence": "canon"
@@ -6835,6 +7194,7 @@
     "debut_source": "Set Sail Pirate Crew!",
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Sword_Obsessed_Branch",
     "source_ref": "onepiece.fandom.com/wiki/Sword_Obsessed_Branch#Island_Box",
     "canon_confidence": "derived"
@@ -6854,6 +7214,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Syrup_Village",
     "source_ref": "onepiece.fandom.com/wiki/Syrup_Village#Island_Box",
     "canon_confidence": "canon"
@@ -6873,6 +7234,7 @@
     "debut_source": "Chapter 9 (Chopperman)",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Tabetsukusare_Island",
     "source_ref": "onepiece.fandom.com/wiki/Tabetsukusare_Island#Island_Box",
     "canon_confidence": "derived"
@@ -6892,6 +7254,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Tajine_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Tajine_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -6911,6 +7274,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Tamarisk",
     "source_ref": "onepiece.fandom.com/wiki/Tamarisk#Island_Box",
     "canon_confidence": "canon"
@@ -6930,6 +7294,7 @@
     "debut_source": "One Piece Magazine Vol.5",
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Tanega_Island",
     "source_ref": "onepiece.fandom.com/wiki/Tanega_Island#Island_Box",
     "canon_confidence": "derived"
@@ -6949,6 +7314,7 @@
     "debut_source": null,
     "affiliation": "World Government",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Tarai_Current",
     "source_ref": "onepiece.fandom.com/wiki/Tarai_Current#Island_Box",
     "canon_confidence": "canon"
@@ -6968,6 +7334,7 @@
     "debut_source": "SBS Volume 110",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Taya_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Taya_Kingdom#Island_Box",
     "canon_confidence": "derived"
@@ -6987,6 +7354,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Tequila_Wolf",
     "source_ref": "onepiece.fandom.com/wiki/Tequila_Wolf#Island_Box",
     "canon_confidence": "canon"
@@ -7006,6 +7374,7 @@
     "debut_source": null,
     "affiliation": "Caesar Clown; Vegapunk (former)",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Third_Research_Institute",
     "source_ref": "onepiece.fandom.com/wiki/Third_Research_Institute#Island_Box",
     "canon_confidence": "canon"
@@ -7025,6 +7394,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Tomb_of_the_Kings",
     "source_ref": "onepiece.fandom.com/wiki/Tomb_of_the_Kings#Island_Box",
     "canon_confidence": "canon"
@@ -7044,6 +7414,7 @@
     "debut_source": "One Piece Premier Show 2017",
     "affiliation": "Whitebeard Pirates (former)",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Tomoshibi_Island",
     "source_ref": "onepiece.fandom.com/wiki/Tomoshibi_Island#Island_Box",
     "canon_confidence": "derived"
@@ -7063,6 +7434,7 @@
     "debut_source": "One Piece Live Attraction",
     "affiliation": "Straw Hat Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Tongari_Island",
     "source_ref": "onepiece.fandom.com/wiki/Tongari_Island#Island_Box",
     "canon_confidence": "derived"
@@ -7082,6 +7454,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Tontatta_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Tontatta_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -7101,6 +7474,7 @@
     "debut_source": "Chapter 1 (Chopperman)",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Tony-Tony_Island",
     "source_ref": "onepiece.fandom.com/wiki/Tony-Tony_Island#Island_Box",
     "canon_confidence": "derived"
@@ -7120,6 +7494,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Topping_Island",
     "source_ref": "onepiece.fandom.com/wiki/Topping_Island#Island_Box",
     "canon_confidence": "canon"
@@ -7139,6 +7514,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Torino_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Torino_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -7158,6 +7534,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Toroa",
     "source_ref": "onepiece.fandom.com/wiki/Toroa#Island_Box",
     "canon_confidence": "canon"
@@ -7177,6 +7554,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Totto_Land",
     "source_ref": "onepiece.fandom.com/wiki/Totto_Land#Island_Box",
     "canon_confidence": "canon"
@@ -7196,6 +7574,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Tou-Chuka_Island",
     "source_ref": "onepiece.fandom.com/wiki/Tou-Chuka_Island#Island_Box",
     "canon_confidence": "canon"
@@ -7215,6 +7594,7 @@
     "debut_source": "One Piece: Unlimited World Red",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Trans_Town",
     "source_ref": "onepiece.fandom.com/wiki/Trans_Town#Island_Box",
     "canon_confidence": "derived"
@@ -7234,6 +7614,7 @@
     "debut_source": "ONE PIECE 3D! Trap Coaster",
     "affiliation": "Marines",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Trap_Tower",
     "source_ref": "onepiece.fandom.com/wiki/Trap_Tower#Island_Box",
     "canon_confidence": "derived"
@@ -7253,6 +7634,7 @@
     "debut_source": "Clockwork Island Adventure",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Trump_Castle",
     "source_ref": "onepiece.fandom.com/wiki/Trump_Castle#Island_Box",
     "canon_confidence": "derived"
@@ -7272,6 +7654,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Tsui_Village",
     "source_ref": "onepiece.fandom.com/wiki/Tsui_Village#Island_Box",
     "canon_confidence": "canon"
@@ -7291,6 +7674,7 @@
     "debut_source": null,
     "affiliation": "Revolutionary Army",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Tumi",
     "source_ref": "onepiece.fandom.com/wiki/Tumi#Island_Box",
     "canon_confidence": "canon"
@@ -7310,6 +7694,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Twin_Cape",
     "source_ref": "onepiece.fandom.com/wiki/Twin_Cape#Island_Box",
     "canon_confidence": "canon"
@@ -7329,6 +7714,7 @@
     "debut_source": null,
     "affiliation": "Beasts Pirates (former) Kouzuki Family",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Udon",
     "source_ref": "onepiece.fandom.com/wiki/Udon#Island_Box",
     "canon_confidence": "canon"
@@ -7348,6 +7734,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Ukkari_Hot-Spring_Island",
     "source_ref": "onepiece.fandom.com/wiki/Ukkari_Hot-Spring_Island#Island_Box",
     "canon_confidence": "canon"
@@ -7367,6 +7754,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Unique_Island",
     "source_ref": "onepiece.fandom.com/wiki/Unique_Island#Island_Box",
     "canon_confidence": "canon"
@@ -7386,6 +7774,7 @@
     "debut_source": "One Piece Film: Red",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Uta_World",
     "source_ref": "onepiece.fandom.com/wiki/Uta_World#Island_Box",
     "canon_confidence": "derived"
@@ -7405,6 +7794,7 @@
     "debut_source": "One Piece in Love Volume 1",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Uwazumi_High_School",
     "source_ref": "onepiece.fandom.com/wiki/Uwazumi_High_School#Island_Box",
     "canon_confidence": "derived"
@@ -7424,6 +7814,7 @@
     "debut_source": "Vivre Card - One Piece Visual Dictionary",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Vespa_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Vespa_Kingdom#Island_Box",
     "canon_confidence": "derived"
@@ -7443,6 +7834,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Vira",
     "source_ref": "onepiece.fandom.com/wiki/Vira#Island_Box",
     "canon_confidence": "canon"
@@ -7462,6 +7854,7 @@
     "debut_source": null,
     "affiliation": "World Government",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Vodka_Kingdom",
     "source_ref": "onepiece.fandom.com/wiki/Vodka_Kingdom#Island_Box",
     "canon_confidence": "canon"
@@ -7481,6 +7874,7 @@
     "debut_source": "One Piece Odyssey",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Waford",
     "source_ref": "onepiece.fandom.com/wiki/Waford#Island_Box",
     "canon_confidence": "derived"
@@ -7500,6 +7894,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Wagomuland",
     "source_ref": "onepiece.fandom.com/wiki/Wagomuland#Island_Box",
     "canon_confidence": "canon"
@@ -7519,6 +7914,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Walrus_School",
     "source_ref": "onepiece.fandom.com/wiki/Walrus_School#Island_Box",
     "canon_confidence": "canon"
@@ -7538,6 +7934,7 @@
     "debut_source": null,
     "affiliation": "Straw Hat Pirates, Beasts Pirates (formerly)",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Wano_Country",
     "source_ref": "onepiece.fandom.com/wiki/Wano_Country#Island_Box",
     "canon_confidence": "canon"
@@ -7557,6 +7954,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Warship_Island",
     "source_ref": "onepiece.fandom.com/wiki/Warship_Island#Island_Box",
     "canon_confidence": "canon"
@@ -7576,6 +7974,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": "1 Week",
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Water_7",
     "source_ref": "onepiece.fandom.com/wiki/Water_7#Island_Box",
     "canon_confidence": "canon"
@@ -7595,6 +7994,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Weatheria",
     "source_ref": "onepiece.fandom.com/wiki/Weatheria#Island_Box",
     "canon_confidence": "canon"
@@ -7614,6 +8014,7 @@
     "debut_source": "One Piece novel Law: The Hour of Kikoku",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Welbems_Island",
     "source_ref": "onepiece.fandom.com/wiki/Welbems_Island#Island_Box",
     "canon_confidence": "derived"
@@ -7633,6 +8034,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Whisky_Peak",
     "source_ref": "onepiece.fandom.com/wiki/Whisky_Peak#Island_Box",
     "canon_confidence": "canon"
@@ -7652,6 +8054,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Whole_Cake_Chateau",
     "source_ref": "onepiece.fandom.com/wiki/Whole_Cake_Chateau#Island_Box",
     "canon_confidence": "canon"
@@ -7671,6 +8074,7 @@
     "debut_source": null,
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Whole_Cake_Island",
     "source_ref": "onepiece.fandom.com/wiki/Whole_Cake_Island#Island_Box",
     "canon_confidence": "canon"
@@ -7690,6 +8094,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Winner_Island",
     "source_ref": "onepiece.fandom.com/wiki/Winner_Island#Island_Box",
     "canon_confidence": "canon"
@@ -7709,6 +8114,7 @@
     "debut_source": "SBS Volume 87",
     "affiliation": "Big Mom Pirates",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Yakigashi_Island",
     "source_ref": "onepiece.fandom.com/wiki/Yakigashi_Island#Island_Box",
     "canon_confidence": "derived"
@@ -7728,6 +8134,7 @@
     "debut_source": "SBS Volume 114",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Yano_Country",
     "source_ref": "onepiece.fandom.com/wiki/Yano_Country#Island_Box",
     "canon_confidence": "derived"
@@ -7747,6 +8154,7 @@
     "debut_source": "One Piece x Kyoto",
     "affiliation": "Hitaki Family",
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Yo",
     "source_ref": "onepiece.fandom.com/wiki/Yo#Island_Box",
     "canon_confidence": "derived"
@@ -7766,6 +8174,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Yuba",
     "source_ref": "onepiece.fandom.com/wiki/Yuba#Island_Box",
     "canon_confidence": "canon"
@@ -7785,6 +8194,7 @@
     "debut_source": "Fischer's x One Piece - Search for the 7 Treasures",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Yuba_Oasis",
     "source_ref": "onepiece.fandom.com/wiki/Yuba_Oasis#Island_Box",
     "canon_confidence": "derived"
@@ -7804,6 +8214,7 @@
     "debut_source": "One Piece novel HEROINES",
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Yukari",
     "source_ref": "onepiece.fandom.com/wiki/Yukari#Island_Box",
     "canon_confidence": "derived"
@@ -7823,6 +8234,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": "Winter Island",
     "wiki_url": "https://onepiece.fandom.com/wiki/Yukiryu_Island",
     "source_ref": "onepiece.fandom.com/wiki/Yukiryu_Island#Island_Box",
     "canon_confidence": "canon"
@@ -7842,6 +8254,7 @@
     "debut_source": null,
     "affiliation": null,
     "log_pose": null,
+    "island_type": null,
     "wiki_url": "https://onepiece.fandom.com/wiki/Zou",
     "source_ref": "onepiece.fandom.com/wiki/Zou#Island_Box",
     "canon_confidence": "canon"
