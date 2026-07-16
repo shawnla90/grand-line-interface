@@ -44,29 +44,50 @@ import Legend from "./Legend";
 import Attribution from "./Attribution";
 
 /* -------------------------------------------------------------------------- */
-/* the sweep                                                                   */
+/* the chapter engine — sweep tween + story playback, one rAF at a time        */
 /* -------------------------------------------------------------------------- */
 
-/**
- * Ease `target` into a rendered value. Returns a float — the map wants the
- * fraction so the reveal is continuous rather than stepped.
- */
-function useSweep(target: number) {
-  const [value, setValue] = useState(target);
-  const ref = useRef(target);
-  const raf = useRef<number | null>(null);
+export const SPEEDS = [0.5, 1, 2, 4] as const;
+export type Speed = (typeof SPEEDS)[number];
+/** Chapters per second at 1x. 2 ch/s sails the whole story in ~10 minutes. */
+const BASE_CPS = 2;
 
+/**
+ * One float position (`swept`) eased or sailed toward/through chapters.
+ *
+ * TWEEN (manual sets): small deltas snap 1:1 (slider drags must not lag),
+ * big jumps ease out over ~a second — unchanged from the original sweep.
+ *
+ * PLAY ("sail the story"): the position advances at speed x BASE_CPS,
+ * bypassing the tween entirely, so the reveal is perfectly continuous at any
+ * speed. The integer `chapter` stays derived from the float (URL, readout,
+ * roster all follow), and playback auto-pauses at the last chapter.
+ */
+function useChapterEngine(world: World, initial: number) {
+  const [chapter, setChapterState] = useState(initial);
+  const [swept, setSwept] = useState(initial);
+  const [playing, setPlaying] = useState(false);
+  const [speed, setSpeed] = useState<Speed>(1);
+  const pos = useRef(initial); // the float truth both loops write
+  const raf = useRef<number | null>(null);
+  const playingRef = useRef(false);
+
+  // tween toward a manually-set target (skipped while playback owns the float)
   useEffect(() => {
+    if (playingRef.current) {
+      pos.current = chapter; // playback wrote chapter itself; nothing to ease
+      return;
+    }
     if (raf.current !== null) cancelAnimationFrame(raf.current);
 
-    const from = ref.current;
-    const delta = target - from;
+    const from = pos.current;
+    const delta = chapter - from;
     const dist = Math.abs(delta);
 
     // Dragging the slider: stay 1:1 or it feels like lag, not polish.
     if (dist <= 4) {
-      ref.current = target;
-      setValue(target);
+      pos.current = chapter;
+      setSwept(chapter);
       return;
     }
 
@@ -74,11 +95,12 @@ function useSweep(target: number) {
     const t0 = performance.now();
 
     const step = (now: number) => {
+      if (playingRef.current) return; // play stole the float mid-tween
       const p = Math.min(1, (now - t0) / duration);
       const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
       const v = from + delta * eased;
-      ref.current = v;
-      setValue(v);
+      pos.current = v;
+      setSwept(v);
       raf.current = p < 1 ? requestAnimationFrame(step) : null;
     };
 
@@ -86,9 +108,57 @@ function useSweep(target: number) {
     return () => {
       if (raf.current !== null) cancelAnimationFrame(raf.current);
     };
-  }, [target]);
+  }, [chapter]);
 
-  return value;
+  // playback loop
+  useEffect(() => {
+    playingRef.current = playing;
+    if (!playing) return;
+    if (raf.current !== null) cancelAnimationFrame(raf.current);
+
+    let last = performance.now();
+    const step = (now: number) => {
+      const dt = Math.min(0.1, (now - last) / 1000); // clamp tab-switch gaps
+      last = now;
+      const next = Math.min(world.chapterMax, pos.current + speed * BASE_CPS * dt);
+      pos.current = next;
+      setSwept(next);
+      const fl = Math.max(world.chapterMin, Math.floor(next));
+      setChapterState((c) => (c === fl ? c : fl));
+      if (next >= world.chapterMax) {
+        setPlaying(false);
+        return;
+      }
+      raf.current = requestAnimationFrame(step);
+    };
+    raf.current = requestAnimationFrame(step);
+    return () => {
+      if (raf.current !== null) cancelAnimationFrame(raf.current);
+    };
+  }, [playing, speed, world.chapterMax, world.chapterMin]);
+
+  const setChapter = useCallback(
+    (ch: number) => {
+      // any manual set is the reader taking the helm: playback yields first
+      playingRef.current = false;
+      setPlaying(false);
+      setChapterState(clampChapter(world, ch));
+    },
+    [world],
+  );
+
+  const play = useCallback(() => {
+    // sailing off the end restarts the voyage from chapter 1
+    if (pos.current >= world.chapterMax) {
+      pos.current = world.chapterMin;
+      setSwept(world.chapterMin);
+      setChapterState(world.chapterMin);
+    }
+    setPlaying(true);
+  }, [world]);
+  const pause = useCallback(() => setPlaying(false), []);
+
+  return { chapter, swept, setChapter, playing, speed, setSpeed, play, pause };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -109,7 +179,8 @@ type Props = {
 const DEFAULT_CHAPTER = 1044;
 
 export default function Atlas({ world, art, initialChapter, initialAxis, initialLens, buildLog }: Props) {
-  const [chapter, setChapterRaw] = useState(initialChapter ?? DEFAULT_CHAPTER);
+  const engine = useChapterEngine(world, initialChapter ?? DEFAULT_CHAPTER);
+  const { chapter, swept, playing, speed } = engine;
   const [axis, setAxis] = useState<Axis>(initialAxis);
   const [hero, setHero] = useState(initialChapter === null);
   const [projection, setProjection] = useState<Projection>("globe");
@@ -127,26 +198,31 @@ export default function Atlas({ world, art, initialChapter, initialAxis, initial
     () => episodeForChapter(world, initialChapter ?? DEFAULT_CHAPTER) ?? world.episodeMax,
   );
 
-  const swept = useSweep(chapter);
   const shown = clampChapter(world, Math.round(swept));
   const at = useMemo(() => worldAtChapter(world, shown), [world, shown]);
 
   const setChapter = useCallback(
     (ch: number) => {
       const c = clampChapter(world, ch);
-      setChapterRaw(c);
+      engine.setChapter(c);
       setEpisodeRaw(episodeForChapter(world, c) ?? world.episodeMax);
     },
-    [world],
+    [world, engine],
   );
 
   const setEpisode = useCallback(
     (ep: number) => {
       setEpisodeRaw(ep);
-      setChapterRaw(chapterForEpisode(world, ep));
+      engine.setChapter(chapterForEpisode(world, ep));
     },
-    [world],
+    [world, engine],
   );
+
+  // while sailing, the episode thumb follows the story (chapter is the truth)
+  useEffect(() => {
+    if (!playing) return;
+    setEpisodeRaw(episodeForChapter(world, chapter) ?? world.episodeMax);
+  }, [playing, chapter, world]);
 
   /* ------------------------------------------------------------------ url */
   useEffect(() => {
@@ -170,6 +246,8 @@ export default function Atlas({ world, art, initialChapter, initialAxis, initial
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       if (e.key === "ArrowLeft") setChapter(chapter - (e.shiftKey ? 25 : 1));
       else if (e.key === "ArrowRight") setChapter(chapter + (e.shiftKey ? 25 : 1));
+      // a focused button owns Space (native activation) — don't double-fire
+      else if (e.key === " " && !(el instanceof HTMLButtonElement)) (playing ? engine.pause : engine.play)();
       else if (e.key === "Escape") setSelected(null);
       else if (e.key.toLowerCase() === "g") setProjection((p) => (p === "globe" ? "mercator" : "globe"));
       else return;
@@ -177,7 +255,7 @@ export default function Atlas({ world, art, initialChapter, initialAxis, initial
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [chapter, hero, setChapter]);
+  }, [chapter, hero, setChapter, playing, engine]);
 
   const island = selected ? (world.islands.find((i) => i.slug === selected) ?? null) : null;
 
@@ -350,6 +428,10 @@ export default function Atlas({ world, art, initialChapter, initialAxis, initial
           onChapter={setChapter}
           episode={episode}
           onEpisode={setEpisode}
+          playing={playing}
+          speed={speed}
+          onPlayPause={() => (playing ? engine.pause() : engine.play())}
+          onSpeed={engine.setSpeed}
         />
       )}
 

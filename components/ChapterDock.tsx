@@ -18,6 +18,7 @@
  */
 
 import type { World, WorldAt, Axis } from "@/lib/canon";
+import { SPEEDS, type Speed } from "./Atlas";
 import NumberField from "./NumberField";
 import AxisToggle from "./AxisToggle";
 import ArcTimeline from "./ArcTimeline";
@@ -30,9 +31,16 @@ type Props = {
   onChapter: (ch: number) => void;
   episode: number;
   onEpisode: (ep: number) => void;
+  playing: boolean;
+  speed: Speed;
+  onPlayPause: () => void;
+  onSpeed: (s: Speed) => void;
 };
 
-export default function ChapterDock({ world, at, axis, onAxis, onChapter, episode, onEpisode }: Props) {
+export default function ChapterDock({
+  world, at, axis, onAxis, onChapter, episode, onEpisode,
+  playing, speed, onPlayPause, onSpeed,
+}: Props) {
   const byChapter = axis === "chapter";
 
   const value = byChapter ? at.chapter : episode;
@@ -45,6 +53,47 @@ export default function ChapterDock({ world, at, axis, onAxis, onChapter, episod
   return (
     <div className="pointer-events-auto border-t border-rope/60 bg-ink/85 px-6 py-4 backdrop-blur-md">
       <div className="mx-auto flex max-w-[1180px] flex-col gap-4 lg:flex-row lg:items-center lg:gap-8">
+        {/* the helm: sail the story */}
+        <div className="flex shrink-0 items-center gap-2">
+          <button
+            type="button"
+            onClick={onPlayPause}
+            title={playing ? "Pause (Space)" : "Sail the story (Space)"}
+            aria-label={playing ? "Pause" : "Play"}
+            className={[
+              "grid h-9 w-9 place-items-center rounded-sm border font-mono text-[13px] transition-colors",
+              playing
+                ? "border-gold/60 bg-ink/90 text-gold"
+                : "border-rope bg-ink/90 text-muted-2 hover:border-gold/60 hover:text-gold",
+            ].join(" ")}
+          >
+            {playing ? "❚❚" : "▶"}
+          </button>
+          <div className="flex flex-col gap-0.5">
+            {/* speed chips: chapters flow at speed x 2/s */}
+            <div className="flex items-center gap-0.5">
+              {SPEEDS.map((s) => (
+                <button
+                  key={s}
+                  type="button"
+                  onClick={() => onSpeed(s)}
+                  className={[
+                    "rounded-sm border px-1 py-0.5 font-mono text-[9px] tabular-nums transition-colors",
+                    speed === s
+                      ? "border-gold/60 text-gold"
+                      : "border-transparent text-muted-2 hover:text-muted",
+                  ].join(" ")}
+                >
+                  {s}×
+                </button>
+              ))}
+            </div>
+            <div className="font-mono text-[8px] uppercase tracking-[0.18em] text-muted-2">
+              {playing ? "sailing" : "sail"}
+            </div>
+          </div>
+        </div>
+
         {/* the number */}
         <div className="flex shrink-0 items-center gap-4">
           <div className="w-[122px]">
