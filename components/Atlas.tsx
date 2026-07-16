@@ -31,6 +31,7 @@ import {
   type Axis,
 } from "@/lib/canon";
 import { BRAND } from "@/config/brand";
+import type { BuildLog } from "@/lib/buildlog";
 import WorldMap, { type Projection } from "./WorldMap";
 import ChapterDock from "./ChapterDock";
 import HeroPrompt from "./HeroPrompt";
@@ -95,11 +96,13 @@ type Props = {
   /** null = a cold visit with no ?ch= — show the hero. */
   initialChapter: number | null;
   initialAxis: Axis;
+  /** The shipwright's log — build provenance, rendered from the footer. */
+  buildLog?: BuildLog;
 };
 
 const DEFAULT_CHAPTER = 1044;
 
-export default function Atlas({ world, initialChapter, initialAxis }: Props) {
+export default function Atlas({ world, initialChapter, initialAxis, buildLog }: Props) {
   const [chapter, setChapterRaw] = useState(initialChapter ?? DEFAULT_CHAPTER);
   const [axis, setAxis] = useState<Axis>(initialAxis);
   const [hero, setHero] = useState(initialChapter === null);
@@ -310,7 +313,7 @@ export default function Atlas({ world, initialChapter, initialAxis }: Props) {
         />
       )}
 
-      <Attribution world={world} />
+      <Attribution world={world} buildLog={buildLog} />
     </div>
   );
 }

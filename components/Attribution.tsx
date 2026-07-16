@@ -13,14 +13,20 @@
  * much of a reference work.
  */
 
+import { useState } from "react";
 import type { World } from "@/lib/canon";
+import type { BuildLog } from "@/lib/buildlog";
 import { BRAND } from "@/config/brand";
+import ShipwrightsLog from "./ShipwrightsLog";
 
-export default function Attribution({ world }: { world: World }) {
+export default function Attribution({ world, buildLog }: { world: World; buildLog?: BuildLog }) {
+  const [logOpen, setLogOpen] = useState(false);
   const built = new Date(world.meta.generatedAt);
   const stamp = Number.isNaN(built.getTime())
     ? world.meta.generatedAt
     : built.toISOString().slice(0, 10);
+
+  const builders = buildLog ? new Set(buildLog.entries.map((e) => e.builder)).size : 0;
 
   return (
     <footer className="pointer-events-auto border-t border-rope/40 bg-abyss px-6 py-2.5">
@@ -44,9 +50,25 @@ export default function Attribution({ world }: { world: World }) {
         </p>
 
         <p className="tnum shrink-0 font-mono text-muted-2/80">
+          {buildLog && (
+            <>
+              <button
+                type="button"
+                onClick={() => setLogOpen(true)}
+                className="underline underline-offset-2 transition-colors hover:text-gold"
+              >
+                built by {builders} minds · shipwright&apos;s log
+              </button>
+              {" · "}
+            </>
+          )}
           canon {stamp} · {world.meta.sourceManifestSha.slice(0, 7)}
         </p>
       </div>
+
+      {logOpen && buildLog && (
+        <ShipwrightsLog entries={buildLog.entries} onClose={() => setLogOpen(false)} />
+      )}
     </footer>
   );
 }

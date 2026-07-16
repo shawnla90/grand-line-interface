@@ -12,6 +12,7 @@
  */
 
 import { loadCanon } from "@/lib/schema";
+import { loadBuildLog } from "@/lib/buildlog";
 import { buildWorld, chapterForEpisode, clampChapter, clampEpisode, type Axis } from "@/lib/canon";
 import Atlas from "@/components/Atlas";
 
@@ -48,5 +49,12 @@ export default async function Page({
     initialChapter = clampChapter(world, ch);
   }
 
-  return <Atlas world={world} initialChapter={initialChapter} initialAxis={initialAxis} />;
+  return (
+    <Atlas
+      world={world}
+      initialChapter={initialChapter}
+      initialAxis={initialAxis}
+      buildLog={loadBuildLog()}
+    />
+  );
 }

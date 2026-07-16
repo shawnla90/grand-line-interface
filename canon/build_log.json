@@ -1,0 +1,60 @@
+{
+  "_warning": "HAND-AUTHORED build provenance. This file records WHICH MINDS built each phase. A sync script that touches this file is a bug.",
+  "_why_this_file_exists": "The atlas refuses to let a machine-derived pin look human-confirmed. The same honesty applies to the code: which AI model built each phase, under which harness, is a fact worth keeping — and worth showing. Recorded here for the same reason every pin carries a confidence.",
+  "entries": [
+    {
+      "phase": "1",
+      "title": "Data spine + chapter-axis atlas",
+      "builder": "Claude Opus 4.8",
+      "harness": "Claude Code · ultracode",
+      "role": "design + build",
+      "commits": ["bb0bf73", "34dedda", "c237f0d"],
+      "verified": true
+    },
+    {
+      "phase": "2A",
+      "title": "Straw Hat journey line + ship progression",
+      "builder": "Claude Opus 4.8",
+      "harness": "Claude Code · ultracode",
+      "role": "design + build",
+      "commits": ["7d84db2"],
+      "verified": true
+    },
+    {
+      "phase": "3A/3B",
+      "title": "East Blue fix, journey to Elbaf, SVG Jolly Rogers",
+      "builder": "Claude Opus 4.8",
+      "harness": "Claude Code · ultracode",
+      "role": "design + build",
+      "commits": ["2af171b"],
+      "verified": true
+    },
+    {
+      "phase": "4",
+      "title": "Cartographic fidelity + /admin/place",
+      "builder": "Claude Opus 4.8",
+      "harness": "Claude Code · ultracode",
+      "role": "design + build",
+      "commits": ["1d72d20", "b7cc5d6", "e936944"],
+      "verified": true
+    },
+    {
+      "phase": "5 (plan)",
+      "title": "Crews, characters & ships — the phase plan",
+      "builder": "Codex",
+      "harness": "Codex session",
+      "role": "plan draft",
+      "commits": [],
+      "verified": true
+    },
+    {
+      "phase": "5 (build)",
+      "title": "Crews, characters & ships on the map + this log",
+      "builder": "Claude Fable 5",
+      "harness": "Claude Code",
+      "role": "plan + build",
+      "commits": ["0854c75", "a43ca34", "9e7b61f"],
+      "verified": true
+    }
+  ]
+}

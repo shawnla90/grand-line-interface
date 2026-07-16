@@ -117,12 +117,28 @@ Both syncs are polite (sequential, ~1 req/sec, explicit User-Agent, retries) and
 - **Original SVG Jolly Rogers** — drawn from primitives, no traced art; flying on the ship and in the crew roster.
 - **A cartographic chart** — the Grand Line as a sea-lane between menacing Calm Belts, the Red Line as a continent, ocean depth + vellum grain, a compass rose, on both globe and flat.
 - **`/admin/place`** — the dev-only coordinate tool (see Contributing).
+- **Crews & characters on the map, chapter-gated** — 10 crews (the Yonko, Kid, Law/Heart, Kuja, Donquixote, Buggy) fly their Jolly Rogers at authored *presence windows*, so they **move**: Whitebeard sails the New World, appears at Marineford for the war, and is gone after it. 8 Warlords as monogram rings, member orbs in each crew's ink, a "who sails here" toggle, and live crew chips in the legend. All windows hand-authored in `canon/crew_presence.json`, `verified:false` until manga-checked — same honesty as every pin.
 
-**Next — make it lively**
-- **Crews & characters on the map, chapter-gated** — the big one. The named crews (Kid, Law/Heart, Red-Hair, the Yonko/Emperors, the Warlords, …) marked with their Jolly Rogers and character orbs, each appearing at its location *as of the chapter you're on* — so you can see who is where at any moment in the story.
+**Next**
 - **The By Crew / By Devil Fruit / By Haki lens** — recolor the world by what a character is.
-- **Verify the canon** — flip `verified: false → true` on crew joins, ships, and island positions.
+- **Expand the roster** — the rest of the Worst Generation (Hawkins, Drake, Bonney, Capone, Urouge, Apoo), Sun Pirates, Baroque Works. The schema is done; it's authoring + one Jolly Roger each. `scripts/seed_presence.py` prints a scaffold.
+- **Verify the canon** — flip `verified: false → true` on crew joins, ships, presence windows, and island positions.
 - **Iceberg lore & theory layers** — see "Fork it" above.
+
+---
+
+## Who built this — the shipwright's log
+
+The atlas refuses to let a machine-derived pin look human-confirmed. The same honesty applies to the code: each phase records **which AI model built it, under which harness**, with the commit stamps to check against `git log`. In the app it's the *shipwright's log* in the footer; the source of truth is [`canon/build_log.json`](canon/build_log.json).
+
+| Phase | What | Builder | Harness | Commits |
+|---|---|---|---|---|
+| 1 | Data spine + chapter-axis atlas | Claude Opus 4.8 | Claude Code · ultracode | `bb0bf73` `34dedda` `c237f0d` |
+| 2A | Straw Hat journey line + ship progression | Claude Opus 4.8 | Claude Code · ultracode | `7d84db2` |
+| 3A/3B | East Blue fix, journey to Elbaf, SVG Jolly Rogers | Claude Opus 4.8 | Claude Code · ultracode | `2af171b` |
+| 4 | Cartographic fidelity + `/admin/place` | Claude Opus 4.8 | Claude Code · ultracode | `1d72d20` `b7cc5d6` `e936944` |
+| 5 (plan) | Crews, characters & ships — the phase plan | Codex | Codex session | — |
+| 5 (build) | Crews, characters & ships on the map + this log | Claude Fable 5 | Claude Code | `0854c75` `a43ca34` `9e7b61f` |
 
 ---
 
