@@ -54,3 +54,4 @@ data/generated/_wiki_cache/
 
 # 18MB of raw wikitext responses — a re-run cache, not a build input.
 data/generated/_wiki_cache/
+__pycache__/
