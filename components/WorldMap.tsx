@@ -59,6 +59,13 @@ type Props = {
   showOffCanon: boolean;
   selected: string | null;
   onSelect: (slug: string | null) => void;
+  /**
+   * Admin placement mode (the /admin/place tool). When both are set, a map click
+   * reports its lng/lat instead of selecting an island — that's how a human
+   * upgrades a derived pin to a confirmed one.
+   */
+  placingSlug?: string | null;
+  onPlaceAt?: (lngLat: [number, number]) => void;
 };
 
 /* -------------------------------------------------------------------------- */
@@ -254,11 +261,30 @@ const byConfidence = <T extends string | number>(canon: T, derived: T, guess: T)
 /* component                                                                   */
 /* -------------------------------------------------------------------------- */
 
-export default function WorldMap({ world, chapter, projection, showOffCanon, selected, onSelect }: Props) {
+export default function WorldMap({
+  world,
+  chapter,
+  projection,
+  showOffCanon,
+  selected,
+  onSelect,
+  placingSlug = null,
+  onPlaceAt,
+}: Props) {
   const holder = useRef<HTMLDivElement | null>(null);
   const map = useRef<MLMap | null>(null);
   const ready = useRef(false);
   const ship = useRef<ShipHandle | null>(null);
+
+  // Placement mode is read by the click handler, which is registered once on
+  // mount and so must read current values through a ref (same pattern as chapter).
+  const placeRef = useRef<{ slug: string | null; onPlaceAt?: (p: [number, number]) => void }>({
+    slug: placingSlug,
+    onPlaceAt,
+  });
+  useEffect(() => {
+    placeRef.current = { slug: placingSlug, onPlaceAt };
+  }, [placingSlug, onPlaceAt]);
 
   // The map's event handlers are registered once, on mount, so they close over the
   // first `chapter` forever. This ref is how they read the current one. It is
@@ -563,6 +589,11 @@ export default function WorldMap({ world, chapter, projection, showOffCanon, sel
     };
 
     const onClick = (e: MapMouseEvent) => {
+      // Placement mode: a click anywhere reports its lng/lat for the targeted island.
+      if (placeRef.current.onPlaceAt && placeRef.current.slug) {
+        placeRef.current.onPlaceAt([e.lngLat.lng, e.lngLat.lat]);
+        return;
+      }
       const f = m.queryRenderedFeatures(e.point, { layers: ["islands-hit"] })[0];
       if (!f) return onSelect(null);
       const slug = f.properties?.slug as string;
@@ -612,6 +643,18 @@ export default function WorldMap({ world, chapter, projection, showOffCanon, sel
     if (!m || !ready.current) return;
     paint(m, chapter, world, ship.current);
   }, [chapter, world]);
+
+  /* --------------------------------------------------- islands live-update */
+  // The island source is set once at create. When positions change underneath us
+  // (the /admin/place editor moves a pin), push the new features and re-fog so the
+  // pin jumps immediately. A no-op in the main app, where world.islands is stable.
+  useEffect(() => {
+    const m = map.current;
+    if (!m || !ready.current) return;
+    (m.getSource("islands") as GeoJSONSource | undefined)?.setData(features);
+    paint(m, chapter, world, ship.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [features]);
 
   /* ------------------------------------------------------------ projection */
   useEffect(() => {

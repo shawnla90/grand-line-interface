@@ -540,8 +540,8 @@
     {
       "slug": "conomi-islands",
       "name": "Conomi Islands",
-      "lng": -168.0,
-      "lat": -33.0,
+      "lng": -168,
+      "lat": -33,
       "sea": "East Blue",
       "canon_confidence": "derived",
       "source_ref": "Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
@@ -981,8 +981,8 @@
     {
       "slug": "foosha-village",
       "name": "Foosha Village",
-      "lng": -130.0,
-      "lat": -60.0,
+      "lng": -130,
+      "lat": -60,
       "sea": "East Blue",
       "canon_confidence": "canon",
       "source_ref": "Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
@@ -1800,8 +1800,8 @@
     {
       "slug": "loguetown",
       "name": "Loguetown",
-      "lng": -174.0,
-      "lat": -20.0,
+      "lng": -174,
+      "lat": -20,
       "sea": "East Blue",
       "canon_confidence": "derived",
       "source_ref": "Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
@@ -2358,8 +2358,8 @@
     {
       "slug": "orange-town",
       "name": "Orange Town",
-      "lng": -152.0,
-      "lat": -45.0,
+      "lng": -152,
+      "lat": -45,
       "sea": "East Blue",
       "canon_confidence": "derived",
       "source_ref": "Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
@@ -2709,8 +2709,8 @@
     {
       "slug": "reverse-mountain",
       "name": "Reverse Mountain",
-      "lng": -179.0,
-      "lat": -2.0,
+      "lng": -179,
+      "lat": -2,
       "sea": "Grand Line",
       "canon_confidence": "derived",
       "source_ref": "Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
@@ -3042,8 +3042,8 @@
     {
       "slug": "shells-town",
       "name": "Shells Town",
-      "lng": -142.0,
-      "lat": -52.0,
+      "lng": -142,
+      "lat": -52,
       "sea": "East Blue",
       "canon_confidence": "derived",
       "source_ref": "Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
@@ -3258,8 +3258,8 @@
     {
       "slug": "syrup-village",
       "name": "Syrup Village",
-      "lng": -160.0,
-      "lat": -52.0,
+      "lng": -160,
+      "lat": -52,
       "sea": "East Blue",
       "canon_confidence": "derived",
       "source_ref": "Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard."
