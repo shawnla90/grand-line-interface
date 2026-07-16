@@ -87,6 +87,39 @@ function line(coords: [number, number][], props: Record<string, unknown>): Featu
   return { type: "Feature", properties: props, geometry: { type: "LineString", coordinates: coords } };
 }
 
+/**
+ * Fill a lng/lat box with 45° diagonal strokes — cross-hatch, generated as real
+ * geometry. A MapLibre fill-pattern would need a raster sprite served from a URL,
+ * which is the one thing this map may not have; hatch-as-geometry stays offline.
+ * Each stroke is clipped to the box (so it never bleeds past the Calm Belt) and
+ * lightly densified so it curves correctly on the globe.
+ */
+function hatchLines(
+  lngA: number,
+  lngB: number,
+  latA: number,
+  latB: number,
+  spacing: number,
+  id: string,
+): Feature<LineString>[] {
+  const out: Feature<LineString>[] = [];
+  // Strokes lie on lng = lat + k. Sweep k so every stroke crosses the box.
+  let n = 0;
+  for (let k = lngA - latB; k <= lngB - latA; k += spacing) {
+    const lo = Math.max(latA, lngA - k);
+    const hi = Math.min(latB, lngB - k);
+    if (hi - lo <= 0.01) continue;
+    const seg: [number, number][] = [];
+    const steps = 6;
+    for (let i = 0; i <= steps; i++) {
+      const lat = lo + ((hi - lo) * i) / steps;
+      seg.push([lat + k, lat]);
+    }
+    out.push(line(seg, { id: `${id}-${n++}` }));
+  }
+  return out;
+}
+
 /* -------------------------------------------------------------------------- */
 /* the world                                                                   */
 /* -------------------------------------------------------------------------- */
@@ -119,6 +152,42 @@ export const CALM_BELTS: FeatureCollection<Polygon> = {
   ],
 };
 
+/** Cross-hatch inside the Calm Belts — the dead, windless water reads as danger. */
+export const CALM_BELT_HATCH: FeatureCollection<LineString> = {
+  type: "FeatureCollection",
+  features: [
+    ...hatchLines(-180, 180, BELT_INNER, BELT_OUTER, 6, "cbh-n"),
+    ...hatchLines(-180, 180, -BELT_OUTER, -BELT_INNER, 6, "cbh-s"),
+  ],
+};
+
+/**
+ * The Grand Line sea-lane: the navigable channel |lat| <= BELT_INNER down the
+ * equator, split at lng 0 so Paradise and the New World can read as different
+ * seas. The gold centreline (GRAND_LINE) still runs on top of this band.
+ */
+export const GRAND_LINE_LANE: FeatureCollection<Polygon> = {
+  type: "FeatureCollection",
+  features: [
+    quad(-180, 0, -BELT_INNER, BELT_INNER, { id: "lane-paradise", half: "paradise" }),
+    quad(0, 180, -BELT_INNER, BELT_INNER, { id: "lane-new-world", half: "new-world" }),
+  ],
+};
+
+/**
+ * Open-ocean depth: two polar bands (|lat| >= 55) darkened, so the sea deepens
+ * toward the edges of the chart instead of sitting at one flat navy everywhere.
+ */
+export const POLAR_DEEP: FeatureCollection<Polygon> = {
+  type: "FeatureCollection",
+  features: [
+    quad(-180, 0, 55, POLE, { id: "deep-nw" }),
+    quad(0, 180, 55, POLE, { id: "deep-ne" }),
+    quad(-180, 0, -POLE, -55, { id: "deep-sw" }),
+    quad(0, 180, -POLE, -55, { id: "deep-se" }),
+  ],
+};
+
 /**
  * The Grand Line (the equator) and the Red Line (the 0/180 meridian).
  *
@@ -145,6 +214,22 @@ export const RED_LINE: FeatureCollection<LineString> = {
     // would look asymmetric. On the globe the two coincide into one meridian.
     line(lerpCol(180, -POLE, POLE, 128), { id: "red-line-180" }),
     line(lerpCol(-180, -POLE, POLE, 128), { id: "red-line-180w" }),
+  ],
+};
+
+/**
+ * The Red Line as a CONTINENT, not a stroke: a banded landmass along the 0/180
+ * meridian. Width gives it presence (it is the wall that halves the world) and
+ * on the globe it fills the antimeridian seam. Drawn under the red centre-lines,
+ * which then read as its coastlines.
+ */
+const RED_HALF_WIDTH = 3.2;
+export const RED_LINE_LAND: FeatureCollection<Polygon> = {
+  type: "FeatureCollection",
+  features: [
+    quad(-RED_HALF_WIDTH, RED_HALF_WIDTH, -POLE, POLE, { id: "red-land-0" }),
+    quad(180 - RED_HALF_WIDTH, 180, -POLE, POLE, { id: "red-land-180e" }),
+    quad(-180, -180 + RED_HALF_WIDTH, -POLE, POLE, { id: "red-land-180w" }),
   ],
 };
 

@@ -156,6 +156,25 @@ body {
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.9);
 }
 
+/* Route A — cartographic overlays. Both are decorative, offline, and never take
+   pointer events. The vignette deepens the edges of the chart; the grain is a
+   procedural SVG turbulence (inline data-URI, no external asset) that ages the
+   flat water into vellum. */
+.mapVignette {
+  background: radial-gradient(
+    ellipse 78% 82% at 52% 46%,
+    transparent 52%,
+    rgba(3, 7, 14, 0.5) 100%
+  );
+}
+
+.mapGrain {
+  opacity: 0.05;
+  mix-blend-mode: soft-light;
+  background-size: 160px 160px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
 /* --------------------------------------------------------------------------
    Motion. The fog fades; it never snaps.
    -------------------------------------------------------------------------- */

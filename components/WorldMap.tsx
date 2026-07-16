@@ -35,7 +35,19 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import type { World, WorldIsland } from "@/lib/canon";
 import { voyageGeometryAt, vesselAtChapter } from "@/lib/canon";
 import { jollyRogerSvg } from "./marks/jolly-roger";
-import { BLUES, CALM_BELTS, GRAND_LINE, RED_LINE, GRATICULE, WORLD_LABELS } from "./world-geometry";
+import CompassRose from "./marks/CompassRose";
+import {
+  BLUES,
+  CALM_BELTS,
+  CALM_BELT_HATCH,
+  GRAND_LINE,
+  GRAND_LINE_LANE,
+  RED_LINE,
+  RED_LINE_LAND,
+  POLAR_DEEP,
+  GRATICULE,
+  WORLD_LABELS,
+} from "./world-geometry";
 
 export type Projection = "globe" | "mercator";
 
@@ -63,6 +75,14 @@ const C = {
   redLine: "#9c4436",
   parchment: "#efe6d4",
   fog: "#5b6880",
+  // Route A — cartographic tones.
+  laneParadise: "#123049", // the navigable Grand Line channel, warm side
+  laneNewWorld: "#0b2035", // the New World half — colder, rougher
+  beltDeep: "#060f1e", // dead, windless Calm Belt water
+  beltHatch: "#243a5a", // the cross-hatch strokes inside the belts
+  land: "#3a2620", // Red Line continent — clay/earth, not ocean
+  landLit: "#513528",
+  deep: "#04090f", // open-ocean depth toward the poles
 } as const;
 
 /** How long an island keeps glowing after you first read about it, in chapters. */
@@ -282,7 +302,11 @@ export default function WorldMap({ world, chapter, projection, showOffCanon, sel
       },
       sources: {
         blues: { type: "geojson", data: BLUES },
+        deep: { type: "geojson", data: POLAR_DEEP },
+        lane: { type: "geojson", data: GRAND_LINE_LANE },
         belts: { type: "geojson", data: CALM_BELTS },
+        belthatch: { type: "geojson", data: CALM_BELT_HATCH },
+        redland: { type: "geojson", data: RED_LINE_LAND },
         grat: { type: "geojson", data: GRATICULE },
         grand: { type: "geojson", data: GRAND_LINE },
         red: { type: "geojson", data: RED_LINE },
@@ -311,13 +335,30 @@ export default function WorldMap({ world, chapter, projection, showOffCanon, sel
           },
         },
 
-        // The Calm Belts — windless water either side of the Grand Line.
+        // Open-ocean depth: the sea darkens toward the poles.
+        { id: "deep", type: "fill", source: "deep", paint: { "fill-color": C.deep, "fill-opacity": 0.55 } },
+
+        // The Grand Line sea-lane — the navigable channel down the equator, warmer
+        // on the Paradise side, colder and rougher in the New World.
         {
-          id: "belts",
+          id: "lane",
           type: "fill",
-          source: "belts",
-          paint: { "fill-color": C.belt, "fill-opacity": 0.28 },
+          source: "lane",
+          paint: {
+            "fill-color": ["match", ["get", "half"], "paradise", C.laneParadise, "new-world", C.laneNewWorld, C.laneParadise],
+            "fill-opacity": 0.9,
+          },
         },
+
+        // The Calm Belts — windless, Sea-King water. Dark dead water + cross-hatch
+        // so they read as the danger they are, not a faint tint.
+        { id: "belts", type: "fill", source: "belts", paint: { "fill-color": C.beltDeep, "fill-opacity": 0.72 } },
+        { id: "belt-hatch", type: "line", source: "belthatch", paint: { "line-color": C.beltHatch, "line-width": 0.5, "line-opacity": 0.5 } },
+
+        // The Red Line, as a continent. Drawn here (over the water, under the grid
+        // and coastlines) so the red strokes below become its coast.
+        { id: "red-land", type: "fill", source: "redland", paint: { "fill-color": C.land, "fill-opacity": 0.96 } },
+        { id: "red-land-edge", type: "line", source: "redland", paint: { "line-color": C.landLit, "line-width": 0.8, "line-opacity": 0.7 } },
 
         { id: "graticule", type: "line", source: "grat", paint: { "line-color": C.grat, "line-width": 0.6, "line-opacity": 0.55 } },
 
@@ -626,6 +667,19 @@ export default function WorldMap({ world, chapter, projection, showOffCanon, sel
           perfectly correct map into a box with no height. Sizing with h-full/w-full
           does not care about `position`, so the cascade race cannot bite. */}
       <div ref={holder} className="h-full w-full" />
+
+      {/* Cartographic overlays — decorative, never intercept pointer events. A soft
+          vignette and a faint procedural paper grain turn the canvas into an aged
+          chart. Both are offline (the grain is an inline SVG turbulence data-URI). */}
+      {!glFailed && (
+        <>
+          <div className="mapVignette pointer-events-none absolute inset-0 z-[5]" />
+          <div className="mapGrain pointer-events-none absolute inset-0 z-[5]" />
+          <div className="pointer-events-none absolute bottom-6 left-[316px] z-[6]">
+            <CompassRose size={72} />
+          </div>
+        </>
+      )}
 
       {glFailed && (
         <div className="absolute inset-0 z-30 grid place-items-center bg-ink/80 px-6 text-center backdrop-blur">
