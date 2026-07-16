@@ -429,6 +429,110 @@ def presence_spoiler_and_roster(doc):
             f"all chapter-gated, no Roger Pirates, no crew_joins collision")
 
 
+@check("fruit_reveals_gated")
+def fruit_reveals_gated(doc):
+    """A fruit's identity is a STORY REVEAL, not a character-sheet fact.
+
+    The tripwire is Blackbeard: the Yami Yami no Mi is a Banaro Island reveal
+    (~ch. 440). Every upstream source stores the fruit as a current-day fact on
+    the character — if anyone ever wires that join into the reveal field, this
+    row reads ~ch. 1 and the fruit lens spoils Blackbeard from chapter one.
+    """
+    fruit_types = {"Paramecia", "Zoan", "Logia", "Mythical Zoan", "Ancient Zoan",
+                   "SMILE", "Artificial"}
+    pres = doc.get("presence", {})
+    crews, chars = pres.get("crews", []), pres.get("characters", [])
+    ch_max = max(
+        [i["debut_chapter"] for i in doc["islands"] if i["debut_chapter"]]
+        + [a["chapter_start"] for a in doc["arcs"]]
+    )
+    entities = [m for c in crews for m in c.get("members", [])] + chars
+    reveals, unverified = 0, 0
+    teach = None
+    for e in entities:
+        assert "fruit" in e, f"presence entity {e['slug']!r} is missing the fruit field"
+        f = e["fruit"]
+        if f is None:
+            continue
+        reveals += 1
+        assert 1 <= f["from_chapter"] <= ch_max, (
+            f"{e['slug']} fruit reveal at ch {f['from_chapter']} is outside [1, {ch_max}] — "
+            "it would never render, or renders ungated"
+        )
+        assert f["fruit_type"] in fruit_types, (
+            f"{e['slug']} fruit_type {f['fruit_type']!r} is not a normalized type"
+        )
+        src = (f.get("source_ref") or "")
+        assert src.lower().lstrip().startswith("hand-authored"), (
+            f"{e['slug']} fruit reveal source_ref is not hand-authored"
+        )
+        assert f.get("canon_confidence") in CONFIDENCE_ENUM, (
+            f"{e['slug']} fruit reveal has bad canon_confidence"
+        )
+        if not f["verified"]:
+            unverified += 1
+        if e["slug"] == "marshall-d-teach":
+            teach = f
+    assert reveals >= 10, (
+        f"only {reveals} fruit reveals reached the artifact — the fruit lens would be empty. "
+        "Did normalize drop canon/fruit_reveals.json?"
+    )
+    assert teach is not None, "marshall-d-teach has no fruit reveal — the tripwire row is gone"
+    assert teach["from_chapter"] >= 440, (
+        f"marshall-d-teach's fruit reveal reads ch {teach['from_chapter']} (< 440). The Yami "
+        "Yami no Mi is a Banaro Island reveal — someone wired a character-sheet fact into a "
+        "reveal field and the fruit lens now spoils Blackbeard from chapter one."
+    )
+    return f"{reveals} fruit reveals, all gated, Blackbeard tripwire intact, {unverified} still verified:false"
+
+
+@check("haki_users_gated")
+def haki_users_gated(doc):
+    """Haki facts are per-(user, type) reveals — no upstream source links haki to
+    characters at all, so every fact must be hand-authored, enum-clean, unique,
+    and chapter-gated inside the derivable range.
+    """
+    haki_types = {"observation", "armament", "conqueror"}
+    pres = doc.get("presence", {})
+    crews, chars = pres.get("crews", []), pres.get("characters", [])
+    ch_max = max(
+        [i["debut_chapter"] for i in doc["islands"] if i["debut_chapter"]]
+        + [a["chapter_start"] for a in doc["arcs"]]
+    )
+    entities = [m for c in crews for m in c.get("members", [])] + chars
+    facts, users, unverified = 0, set(), 0
+    for e in entities:
+        assert "haki" in e, f"presence entity {e['slug']!r} is missing the haki field"
+        seen_types = set()
+        for f in e["haki"]:
+            facts += 1
+            users.add(e["slug"])
+            assert f["haki"] in haki_types, (
+                f"{e['slug']} haki {f['haki']!r} is not one of {sorted(haki_types)}"
+            )
+            assert f["haki"] not in seen_types, (
+                f"{e['slug']} has duplicate haki facts for {f['haki']!r}"
+            )
+            seen_types.add(f["haki"])
+            assert 1 <= f["from_chapter"] <= ch_max, (
+                f"{e['slug']} haki fact at ch {f['from_chapter']} is outside [1, {ch_max}]"
+            )
+            src = (f.get("source_ref") or "")
+            assert src.lower().lstrip().startswith("hand-authored"), (
+                f"{e['slug']} haki fact source_ref is not hand-authored"
+            )
+            assert f.get("canon_confidence") in CONFIDENCE_ENUM, (
+                f"{e['slug']} haki fact has bad canon_confidence"
+            )
+            if not f["verified"]:
+                unverified += 1
+    assert facts >= 10, (
+        f"only {facts} haki facts reached the artifact — the haki lens would be empty. "
+        "Did normalize drop canon/haki_users.json?"
+    )
+    return f"{facts} haki facts across {len(users)} users, all gated, {unverified} still verified:false"
+
+
 CHECKS = [
     jinbe_test, crew_joins_are_human, straw_hats_complete,
     islands_have_positions, islands_fog_key, no_mojibake,
@@ -436,6 +540,7 @@ CHECKS = [
     types_are_numbers, source_refs_not_null, canon_boundary, fog_mechanic,
     voyage_route_forward, vessels_chapter_gated,
     presence_windows_forward, presence_spoiler_and_roster,
+    fruit_reveals_gated, haki_users_gated,
 ]
 
 

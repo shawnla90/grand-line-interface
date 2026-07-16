@@ -275,6 +275,8 @@ def main() -> int:
     voyage_doc = load(CANON_DIR / "voyage_legs.json")
     vessels_doc = load(CANON_DIR / "vessels.json")
     presence_doc = load(CANON_DIR / "crew_presence.json")
+    fruit_reveals_doc = load(CANON_DIR / "fruit_reveals.json")
+    haki_users_doc = load(CANON_DIR / "haki_users.json")
 
     status_map = ov["character_status"]
     crew_status_map = ov["crew_status"]
@@ -755,6 +757,103 @@ def main() -> int:
             "manga-confirmed. The UI must render presence as unverified."
         )
 
+    # --------------------------------------------------------------- powers
+    # Fruit reveals and haki facts are STORY REVEALS with their own chapter
+    # gates — no upstream source records when the reader learns a power, so
+    # every row is hand-typed (canon/fruit_reveals.json, canon/haki_users.json).
+    # The facts are embedded onto the presence entities they belong to: the
+    # client join is free and there is exactly one gate shape.
+    HAKI_TYPES = {"observation", "armament", "conqueror"}
+    fruit_display_types = set(fruit_type_map.values())
+
+    presence_entities: dict[str, dict] = {}
+    for pc in presence_crews:
+        for m in pc["members"]:
+            if m["slug"] in presence_entities:
+                raise die(f"presence member slug {m['slug']!r} appears in more than one crew — "
+                          "power facts key on the slug and cannot be ambiguous.", m)
+            presence_entities[m["slug"]] = m
+    for ch_p in presence_characters:
+        presence_entities[ch_p["slug"]] = ch_p
+    for e in presence_entities.values():
+        e["fruit"] = None
+        e["haki"] = []
+
+    def check_power_row(row, kind):
+        src = (row.get("source_ref") or "")
+        if not src.lower().lstrip().startswith("hand-authored"):
+            raise die(f"{kind} for {row.get('slug')!r} source_ref must declare itself "
+                      "'Hand-authored'. Powers are authored, not scraped.", row)
+        fr = row["from_chapter"]
+        if not isinstance(fr, int) or fr < 1:
+            raise die(f"{kind} for {row.get('slug')!r} has from_chapter {fr!r}. It must be "
+                      ">= 1 — a 0 is the seed scaffold's sentinel and means a human never "
+                      "typed the real chapter.", row)
+        if row["canon_confidence"] not in {"canon", "derived", "guess"}:
+            raise die(f"{kind} for {row.get('slug')!r} has canon_confidence "
+                      f"{row['canon_confidence']!r}.", row)
+        if row["slug"] not in presence_entities:
+            raise die(f"{kind} for {row['slug']!r} matches no presence member or character — "
+                      "a reveal for someone who can never render is dead data.", row)
+
+    fruit_reveals = []
+    for r in fruit_reveals_doc["reveals"]:
+        check_power_row(r, "fruit reveal")
+        if r["fruit_type"] not in fruit_display_types:
+            raise die(f"fruit reveal for {r['slug']!r} has fruit_type {r['fruit_type']!r} — not "
+                      f"one of the normalized types {sorted(fruit_display_types)}.", r)
+        if r.get("fruit_id") is not None and r["fruit_id"] not in fruit_by_id:
+            raise die(f"fruit reveal for {r['slug']!r} references fruit id {r['fruit_id']!r} "
+                      "that is not in fruits.json.", r)
+        ent = presence_entities[r["slug"]]
+        if ent["fruit"] is not None:
+            raise die(f"duplicate fruit reveal for {r['slug']!r} — one fruit per entity.", r)
+        ent["fruit"] = {
+            "fruit_id": r.get("fruit_id"),
+            "fruit_name": r["fruit_name"],
+            "fruit_type": r["fruit_type"],
+            "from_chapter": r["from_chapter"],
+            "source_ref": r["source_ref"],
+            "canon_confidence": r["canon_confidence"],
+            "verified": bool(r["verified"]),
+        }
+        fruit_reveals.append(ent["fruit"])
+
+    haki_facts = []
+    seen_haki: set[tuple[str, str]] = set()
+    for r in haki_users_doc["users"]:
+        check_power_row(r, "haki fact")
+        if r["haki"] not in HAKI_TYPES:
+            raise die(f"haki fact for {r['slug']!r} has haki {r['haki']!r} — not one of "
+                      f"{sorted(HAKI_TYPES)}.", r)
+        key = (r["slug"], r["haki"])
+        if key in seen_haki:
+            raise die(f"duplicate haki fact {key!r} — one row per (user, haki-type).", r)
+        seen_haki.add(key)
+        fact = {
+            "haki": r["haki"],
+            "from_chapter": r["from_chapter"],
+            "source_ref": r["source_ref"],
+            "canon_confidence": r["canon_confidence"],
+            "verified": bool(r["verified"]),
+        }
+        presence_entities[r["slug"]]["haki"].append(fact)
+        haki_facts.append(fact)
+
+    for e in presence_entities.values():
+        e["haki"].sort(key=lambda f: f["from_chapter"])
+
+    if any(not r["verified"] for r in fruit_reveals):
+        warnings.append(
+            "fruit_reveals contains UNVERIFIED rows. Fruit reveal chapters are not "
+            "manga-confirmed. The UI must render fruit facts as unverified."
+        )
+    if any(not f["verified"] for f in haki_facts):
+        warnings.append(
+            "haki_users contains UNVERIFIED rows. Haki reveal chapters are not "
+            "manga-confirmed. The UI must render haki facts as unverified."
+        )
+
     # ------------------------------------------------------------------ out
     payload = {
         "meta": {
@@ -789,6 +888,11 @@ def main() -> int:
                 "presence_characters": len(presence_characters),
                 "presence_windows": len(presence_windows),
                 "presence_windows_verified": sum(1 for w in presence_windows if w["verified"]),
+                "fruit_reveals": len(fruit_reveals),
+                "fruit_reveals_verified": sum(1 for r in fruit_reveals if r["verified"]),
+                "haki_facts": len(haki_facts),
+                "haki_facts_verified": sum(1 for f in haki_facts if f["verified"]),
+                "haki_users": len({k[0] for k in seen_haki}),
             },
         },
         "sagas": sagas,

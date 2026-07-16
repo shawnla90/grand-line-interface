@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-16T03:11:26.128685+00:00",
+    "generated_at": "2026-07-16T04:57:56.775372+00:00",
     "generator": "scripts/normalize.py",
     "source_manifest_sha": "be7af436b558b373ae1e6f28cc5007ef89153529fb274cb7efd1a47b4f1ef25a",
     "sources": {
@@ -19,7 +19,9 @@
       "crew_joins contains UNVERIFIED rows. Shawn has not confirmed them against the manga. The UI must render them as unverified and no content ships on them.",
       "voyage_legs contains UNVERIFIED waypoints. Route chapter stamps are not manga-confirmed. The UI must render the route as unverified.",
       "vessels contains UNVERIFIED rows. Ship-acquisition chapters are not manga-confirmed. The UI must render them as unverified.",
-      "crew_presence contains UNVERIFIED windows. Who-is-where chapter stamps are not manga-confirmed. The UI must render presence as unverified."
+      "crew_presence contains UNVERIFIED windows. Who-is-where chapter stamps are not manga-confirmed. The UI must render presence as unverified.",
+      "fruit_reveals contains UNVERIFIED rows. Fruit reveal chapters are not manga-confirmed. The UI must render fruit facts as unverified.",
+      "haki_users contains UNVERIFIED rows. Haki reveal chapters are not manga-confirmed. The UI must render haki facts as unverified."
     ],
     "counts": {
       "sagas": 10,
@@ -40,7 +42,12 @@
       "presence_crews": 10,
       "presence_characters": 8,
       "presence_windows": 48,
-      "presence_windows_verified": 0
+      "presence_windows_verified": 0,
+      "fruit_reveals": 17,
+      "fruit_reveals_verified": 0,
+      "haki_facts": 18,
+      "haki_facts_verified": 0,
+      "haki_users": 10
     }
   },
   "sagas": [
@@ -42773,7 +42780,24 @@
             "from_chapter": 1,
             "source_ref": "Hand-authored. Shanks is in Foosha Village in Chapter 1 — the straw hat changes hands. NEEDS HUMAN VERIFICATION against the manga.",
             "canon_confidence": "canon",
-            "verified": false
+            "verified": false,
+            "fruit": null,
+            "haki": [
+              {
+                "haki": "conqueror",
+                "from_chapter": 434,
+                "source_ref": "Hand-authored. Shanks boards the Moby Dick and his pressure drops Whitebeard's crew (~ch. 434) — the reader's first named brush with haki. NEEDS HUMAN VERIFICATION against the manga.",
+                "canon_confidence": "derived",
+                "verified": false
+              },
+              {
+                "haki": "armament",
+                "from_chapter": 579,
+                "source_ref": "Hand-authored. Marineford: Shanks blocks Akainu's magma with his sword (~ch. 579), an armament feat named in the war's aftermath. NEEDS HUMAN VERIFICATION against the manga.",
+                "canon_confidence": "guess",
+                "verified": false
+              }
+            ]
           }
         ],
         "windows": [
@@ -42854,7 +42878,25 @@
             "from_chapter": 154,
             "source_ref": "Hand-authored. Ace appears in Alabasta ~ch. 154, already wearing the Whitebeard mark. NEEDS HUMAN VERIFICATION against the manga.",
             "canon_confidence": "canon",
-            "verified": false
+            "verified": false,
+            "fruit": {
+              "fruit_id": 82,
+              "fruit_name": "Mera Mera no Mi",
+              "fruit_type": "Logia",
+              "from_chapter": 159,
+              "source_ref": "Hand-authored. Alabasta: Ace's flame body is shown fighting Smoker and the Mera Mera no Mi is named (~ch. 157-159). NEEDS HUMAN VERIFICATION against the manga.",
+              "canon_confidence": "canon",
+              "verified": false
+            },
+            "haki": [
+              {
+                "haki": "conqueror",
+                "from_chapter": 587,
+                "source_ref": "Hand-authored. The Sabo flashback: a young Ace knocks out the Bluejam thugs with an unconscious burst (~ch. 587). NEEDS HUMAN VERIFICATION against the manga.",
+                "canon_confidence": "derived",
+                "verified": false
+              }
+            ]
           },
           {
             "slug": "edward-newgate",
@@ -42862,7 +42904,32 @@
             "from_chapter": 234,
             "source_ref": "Hand-authored. Whitebeard himself first appears ~ch. 234. NEEDS HUMAN VERIFICATION against the manga.",
             "canon_confidence": "canon",
-            "verified": false
+            "verified": false,
+            "fruit": {
+              "fruit_id": 35,
+              "fruit_name": "Gura Gura no Mi",
+              "fruit_type": "Paramecia",
+              "from_chapter": 552,
+              "source_ref": "Hand-authored. Marineford: Whitebeard's quake is shown and Sengoku names the Gura Gura no Mi (~ch. 552). NEEDS HUMAN VERIFICATION against the manga.",
+              "canon_confidence": "canon",
+              "verified": false
+            },
+            "haki": [
+              {
+                "haki": "conqueror",
+                "from_chapter": 434,
+                "source_ref": "Hand-authored. The Shanks meeting: two supreme wills clash and split the heavens (~ch. 434). NEEDS HUMAN VERIFICATION against the manga.",
+                "canon_confidence": "guess",
+                "verified": false
+              },
+              {
+                "haki": "armament",
+                "from_chapter": 567,
+                "source_ref": "Hand-authored. Marineford: Whitebeard's clashes with the admirals carry imbued strikes (~ch. 567). NEEDS HUMAN VERIFICATION against the manga.",
+                "canon_confidence": "guess",
+                "verified": false
+              }
+            ]
           },
           {
             "slug": "marco",
@@ -42870,7 +42937,17 @@
             "from_chapter": 234,
             "source_ref": "Hand-authored. Marco appears at Whitebeard's side ~ch. 234. NEEDS HUMAN VERIFICATION against the manga.",
             "canon_confidence": "canon",
-            "verified": false
+            "verified": false,
+            "fruit": {
+              "fruit_id": 206,
+              "fruit_name": "Tori Tori no Mi, Model: Phoenix",
+              "fruit_type": "Mythical Zoan",
+              "from_chapter": 553,
+              "source_ref": "Hand-authored. Marineford: Marco's phoenix flames are shown and called a Mythical Zoan (~ch. 553-554). NEEDS HUMAN VERIFICATION against the manga.",
+              "canon_confidence": "derived",
+              "verified": false
+            },
+            "haki": []
           }
         ],
         "windows": [
@@ -42915,7 +42992,32 @@
             "from_chapter": 651,
             "source_ref": "Hand-authored. Big Mom makes herself known (voice first) ~ch. 651, Fish-Man Island. NEEDS HUMAN VERIFICATION against the manga.",
             "canon_confidence": "canon",
-            "verified": false
+            "verified": false,
+            "fruit": {
+              "fruit_id": 60,
+              "fruit_name": "Soru Soru no Mi",
+              "fruit_type": "Paramecia",
+              "from_chapter": 835,
+              "source_ref": "Hand-authored. Whole Cake Island: Big Mom's soul power is shown and the Soru Soru no Mi is named (~ch. 835). NEEDS HUMAN VERIFICATION against the manga.",
+              "canon_confidence": "canon",
+              "verified": false
+            },
+            "haki": [
+              {
+                "haki": "conqueror",
+                "from_chapter": 868,
+                "source_ref": "Hand-authored. Whole Cake Island: Big Mom's scream and pressure incapacitate around her (~ch. 868). NEEDS HUMAN VERIFICATION against the manga.",
+                "canon_confidence": "guess",
+                "verified": false
+              },
+              {
+                "haki": "armament",
+                "from_chapter": 1009,
+                "source_ref": "Hand-authored. Wano rooftop: Big Mom trades imbued blows in the Yonko fight (~ch. 1009). NEEDS HUMAN VERIFICATION against the manga.",
+                "canon_confidence": "derived",
+                "verified": false
+              }
+            ]
           },
           {
             "slug": "charlotte-katakuri",
@@ -42923,7 +43025,39 @@
             "from_chapter": 860,
             "source_ref": "Hand-authored. Katakuri appears at the Whole Cake Island tea party, ~ch. 860. NEEDS HUMAN VERIFICATION against the manga.",
             "canon_confidence": "canon",
-            "verified": false
+            "verified": false,
+            "fruit": {
+              "fruit_id": 69,
+              "fruit_name": "Mochi Mochi no Mi",
+              "fruit_type": "Paramecia",
+              "from_chapter": 863,
+              "source_ref": "Hand-authored. Whole Cake Island: Katakuri's mochi is shown and the Mochi Mochi no Mi is named (~ch. 863). NEEDS HUMAN VERIFICATION against the manga.",
+              "canon_confidence": "canon",
+              "verified": false
+            },
+            "haki": [
+              {
+                "haki": "observation",
+                "from_chapter": 884,
+                "source_ref": "Hand-authored. Whole Cake Island: Katakuri's future sight is shown and explained by name (~ch. 884). NEEDS HUMAN VERIFICATION against the manga.",
+                "canon_confidence": "canon",
+                "verified": false
+              },
+              {
+                "haki": "armament",
+                "from_chapter": 885,
+                "source_ref": "Hand-authored. Whole Cake Island: Katakuri's hardened strikes in the mirror world (~ch. 885). NEEDS HUMAN VERIFICATION against the manga.",
+                "canon_confidence": "guess",
+                "verified": false
+              },
+              {
+                "haki": "conqueror",
+                "from_chapter": 1010,
+                "source_ref": "Hand-authored. Wano rooftop: Luffy states Katakuri also carried the Conqueror's haki (~ch. 1010). NEEDS HUMAN VERIFICATION against the manga.",
+                "canon_confidence": "derived",
+                "verified": false
+              }
+            ]
           }
         ],
         "windows": [
@@ -42965,7 +43099,32 @@
             "from_chapter": 795,
             "source_ref": "Hand-authored. Kaido appears ~ch. 795 (falling out of the sky onto Kuri). NEEDS HUMAN VERIFICATION against the manga.",
             "canon_confidence": "canon",
-            "verified": false
+            "verified": false,
+            "fruit": {
+              "fruit_id": 122,
+              "fruit_name": "Uo Uo no Mi, Model: Seiryu",
+              "fruit_type": "Mythical Zoan",
+              "from_chapter": 1047,
+              "source_ref": "Hand-authored. Wano: Kaido's dragon form is on-page from ~ch. 921, but the Uo Uo no Mi, Model: Seiryu is only named near the end of the raid (~ch. 1047) — the atlas prints name and type together, so the row gates on the name. NEEDS HUMAN VERIFICATION against the manga.",
+              "canon_confidence": "derived",
+              "verified": false
+            },
+            "haki": [
+              {
+                "haki": "conqueror",
+                "from_chapter": 1010,
+                "source_ref": "Hand-authored. Wano rooftop: Kaido's Conqueror clash with Luffy, and his line that only Conquerors coat their strikes (~ch. 1010). NEEDS HUMAN VERIFICATION against the manga.",
+                "canon_confidence": "canon",
+                "verified": false
+              },
+              {
+                "haki": "armament",
+                "from_chapter": 1010,
+                "source_ref": "Hand-authored. Wano rooftop: Kaido's imbued kanabo strikes in the Yonko fight (~ch. 1010). NEEDS HUMAN VERIFICATION against the manga.",
+                "canon_confidence": "derived",
+                "verified": false
+              }
+            ]
           },
           {
             "slug": "king",
@@ -42973,7 +43132,17 @@
             "from_chapter": 925,
             "source_ref": "Hand-authored. King appears ~ch. 925. NEEDS HUMAN VERIFICATION against the manga.",
             "canon_confidence": "canon",
-            "verified": false
+            "verified": false,
+            "fruit": {
+              "fruit_id": 114,
+              "fruit_name": "Ryu Ryu no Mi, Model: Pteranodon",
+              "fruit_type": "Ancient Zoan",
+              "from_chapter": 1025,
+              "source_ref": "Hand-authored. Wano: King's pteranodon form is on-page from ~ch. 930; the Ryu Ryu no Mi, Model: Pteranodon is pinned down in the Zoro fight (~ch. 1025). NEEDS HUMAN VERIFICATION against the manga.",
+              "canon_confidence": "derived",
+              "verified": false
+            },
+            "haki": []
           }
         ],
         "windows": [
@@ -43006,7 +43175,17 @@
             "from_chapter": 223,
             "source_ref": "Hand-authored. Teach is met in Mock Town, Jaya, ~ch. 223 — before anyone knows what he is. NEEDS HUMAN VERIFICATION against the manga.",
             "canon_confidence": "canon",
-            "verified": false
+            "verified": false,
+            "fruit": {
+              "fruit_id": 85,
+              "fruit_name": "Yami Yami no Mi",
+              "fruit_type": "Logia",
+              "from_chapter": 440,
+              "source_ref": "Hand-authored. Banaro Island: Teach reveals and names the Yami Yami no Mi against Ace (~ch. 440-441). check_canon.py tripwires on this row — it must never read earlier than 440. NEEDS HUMAN VERIFICATION against the manga.",
+              "canon_confidence": "canon",
+              "verified": false
+            },
+            "haki": []
           }
         ],
         "windows": [
@@ -43063,7 +43242,25 @@
             "from_chapter": 498,
             "source_ref": "Hand-authored. Kid appears among the Eleven Supernovas at Sabaody, ~ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
             "canon_confidence": "canon",
-            "verified": false
+            "verified": false,
+            "fruit": {
+              "fruit_id": 26,
+              "fruit_name": "Jiki Jiki no Mi",
+              "fruit_type": "Paramecia",
+              "from_chapter": 504,
+              "source_ref": "Hand-authored. Sabaody: Kid's magnetism is on-page from ~ch. 504; the Jiki Jiki no Mi name only surfaces in late supplementary material. Stamped at first on-page use. NEEDS HUMAN VERIFICATION against the manga.",
+              "canon_confidence": "guess",
+              "verified": false
+            },
+            "haki": [
+              {
+                "haki": "conqueror",
+                "from_chapter": 1010,
+                "source_ref": "Hand-authored. Wano rooftop: Kaido names Kid among the Conqueror's haki users (~ch. 1010). NEEDS HUMAN VERIFICATION against the manga.",
+                "canon_confidence": "canon",
+                "verified": false
+              }
+            ]
           },
           {
             "slug": "killer",
@@ -43071,7 +43268,17 @@
             "from_chapter": 498,
             "source_ref": "Hand-authored. Killer appears at Kid's side at Sabaody, ~ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
             "canon_confidence": "canon",
-            "verified": false
+            "verified": false,
+            "fruit": {
+              "fruit_id": null,
+              "fruit_name": "SMILE (failed)",
+              "fruit_type": "SMILE",
+              "from_chapter": 943,
+              "source_ref": "Hand-authored. Wano: Killer is revealed to have eaten a failed SMILE (~ch. 943). No upstream fruit row exists for a failed SMILE — fruit_id is null. NEEDS HUMAN VERIFICATION against the manga.",
+              "canon_confidence": "canon",
+              "verified": false
+            },
+            "haki": []
           }
         ],
         "windows": [
@@ -43128,7 +43335,25 @@
             "from_chapter": 498,
             "source_ref": "Hand-authored. Law appears among the Eleven Supernovas at Sabaody, ~ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
             "canon_confidence": "canon",
-            "verified": false
+            "verified": false,
+            "fruit": {
+              "fruit_id": 27,
+              "fruit_name": "Ope Ope no Mi",
+              "fruit_type": "Paramecia",
+              "from_chapter": 662,
+              "source_ref": "Hand-authored. Punk Hazard: Law's ROOM is on-page from Sabaody (~ch. 504); Smoker names the Ope Ope no Mi ~ch. 662. NEEDS HUMAN VERIFICATION against the manga.",
+              "canon_confidence": "derived",
+              "verified": false
+            },
+            "haki": [
+              {
+                "haki": "armament",
+                "from_chapter": 1010,
+                "source_ref": "Hand-authored. Wano rooftop: Law coats his sword in the Yonko fight (~ch. 1010). NEEDS HUMAN VERIFICATION against the manga.",
+                "canon_confidence": "guess",
+                "verified": false
+              }
+            ]
           },
           {
             "slug": "bepo",
@@ -43136,7 +43361,9 @@
             "from_chapter": 498,
             "source_ref": "Hand-authored. Bepo appears at Law's side at Sabaody, ~ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
             "canon_confidence": "canon",
-            "verified": false
+            "verified": false,
+            "fruit": null,
+            "haki": []
           }
         ],
         "windows": [
@@ -43262,7 +43489,17 @@
             "from_chapter": 9,
             "source_ref": "Hand-authored. Buggy the Clown debuts in Orange Town, ~ch. 9. NEEDS HUMAN VERIFICATION against the manga.",
             "canon_confidence": "canon",
-            "verified": false
+            "verified": false,
+            "fruit": {
+              "fruit_id": 2,
+              "fruit_name": "Bara Bara no Mi",
+              "fruit_type": "Paramecia",
+              "from_chapter": 11,
+              "source_ref": "Hand-authored. Orange Town: Buggy splits apart and names the Bara Bara no Mi (~ch. 11). NEEDS HUMAN VERIFICATION against the manga.",
+              "canon_confidence": "canon",
+              "verified": false
+            },
+            "haki": []
           }
         ],
         "windows": [
@@ -43336,7 +43573,9 @@
             "canon_confidence": "canon",
             "verified": false
           }
-        ]
+        ],
+        "fruit": null,
+        "haki": []
       },
       {
         "slug": "crocodile",
@@ -43392,7 +43631,17 @@
             "canon_confidence": "derived",
             "verified": false
           }
-        ]
+        ],
+        "fruit": {
+          "fruit_id": 81,
+          "fruit_name": "Suna Suna no Mi",
+          "fruit_type": "Logia",
+          "from_chapter": 155,
+          "source_ref": "Hand-authored. Alabasta: Crocodile's sand body is shown and the Suna Suna no Mi is named (~ch. 155). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        },
+        "haki": []
       },
       {
         "slug": "donquixote-doflamingo",
@@ -43422,6 +43671,31 @@
             "lat": 13.4248,
             "source_ref": "Hand-authored. Doflamingo is taken to Impel Down after Dressrosa, ~ch. 802. NEEDS HUMAN VERIFICATION against the manga.",
             "canon_confidence": "canon",
+            "verified": false
+          }
+        ],
+        "fruit": {
+          "fruit_id": 14,
+          "fruit_name": "Ito Ito no Mi",
+          "fruit_type": "Paramecia",
+          "from_chapter": 723,
+          "source_ref": "Hand-authored. Dressrosa: Doflamingo's strings are on-page from Jaya/Marineford; the Ito Ito no Mi is named ~ch. 723. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        },
+        "haki": [
+          {
+            "haki": "conqueror",
+            "from_chapter": 767,
+            "source_ref": "Hand-authored. The Dressrosa flashback: a young Doflamingo's burst knocks out a crowd (~ch. 767). NEEDS HUMAN VERIFICATION against the manga.",
+            "canon_confidence": "derived",
+            "verified": false
+          },
+          {
+            "haki": "armament",
+            "from_chapter": 770,
+            "source_ref": "Hand-authored. Dressrosa: Doflamingo hardens against Luffy in the palace fight (~ch. 770). NEEDS HUMAN VERIFICATION against the manga.",
+            "canon_confidence": "guess",
             "verified": false
           }
         ]
@@ -43465,6 +43739,31 @@
             "lng": 165.1452,
             "lat": 12.0706,
             "source_ref": "Hand-authored. Hancock returns to Amazon Lily after the war, ~ch. 581 onward. NEEDS HUMAN VERIFICATION against the manga.",
+            "canon_confidence": "derived",
+            "verified": false
+          }
+        ],
+        "fruit": {
+          "fruit_id": 31,
+          "fruit_name": "Mero Mero no Mi",
+          "fruit_type": "Paramecia",
+          "from_chapter": 518,
+          "source_ref": "Hand-authored. Amazon Lily: Hancock's petrification is shown and the Mero Mero no Mi is named (~ch. 516-518). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        "haki": [
+          {
+            "haki": "conqueror",
+            "from_chapter": 521,
+            "source_ref": "Hand-authored. Amazon Lily: the Kuja state that Hancock and her sisters carry the Conqueror's haki (~ch. 519-521). NEEDS HUMAN VERIFICATION against the manga.",
+            "canon_confidence": "canon",
+            "verified": false
+          },
+          {
+            "haki": "armament",
+            "from_chapter": 560,
+            "source_ref": "Hand-authored. Marineford: Hancock's haki-clad kicks land on Smoker's Logia body (~ch. 560). NEEDS HUMAN VERIFICATION against the manga.",
             "canon_confidence": "derived",
             "verified": false
           }
@@ -43512,7 +43811,17 @@
             "canon_confidence": "canon",
             "verified": false
           }
-        ]
+        ],
+        "fruit": {
+          "fruit_id": 22,
+          "fruit_name": "Kage Kage no Mi",
+          "fruit_type": "Paramecia",
+          "from_chapter": 455,
+          "source_ref": "Hand-authored. Thriller Bark: Moria's shadow theft is shown and the Kage Kage no Mi is named (~ch. 455). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        "haki": []
       },
       {
         "slug": "bartholomew-kuma",
@@ -43568,7 +43877,17 @@
             "canon_confidence": "canon",
             "verified": false
           }
-        ]
+        ],
+        "fruit": {
+          "fruit_id": 25,
+          "fruit_name": "Nikyu Nikyu no Mi",
+          "fruit_type": "Paramecia",
+          "from_chapter": 485,
+          "source_ref": "Hand-authored. Thriller Bark: Kuma's paw deflection is shown from ~ch. 473; the Nikyu Nikyu no Mi is named ~ch. 485. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        },
+        "haki": []
       },
       {
         "slug": "jinbe-warlord",
@@ -43612,7 +43931,9 @@
             "canon_confidence": "derived",
             "verified": false
           }
-        ]
+        ],
+        "fruit": null,
+        "haki": []
       },
       {
         "slug": "edward-weevil",
@@ -43632,7 +43953,9 @@
             "canon_confidence": "guess",
             "verified": false
           }
-        ]
+        ],
+        "fruit": null,
+        "haki": []
       }
     ]
   }
