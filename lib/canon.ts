@@ -33,7 +33,18 @@
  * accidental spoilers. It is not a security boundary, and the UI says so.
  */
 
-import type { Canon, Island, Arc, CrewJoin, VoyageWaypoint, Vessel } from "./schema";
+import type {
+  Canon,
+  Island,
+  Arc,
+  CrewJoin,
+  VoyageWaypoint,
+  Vessel,
+  PresenceWindow,
+  PresenceMember,
+  CrewPresence,
+  CharacterPresence,
+} from "./schema";
 
 /* -------------------------------------------------------------------------- */
 /* types — the serialization contract between server and client                */
@@ -126,6 +137,50 @@ export type WorldVessel = {
   confidence: Confidence;
 };
 
+/**
+ * A window of presence: where an entity is, from a chapter, optionally until
+ * one. Position already resolved by the build. The active window at chapter N
+ * is the last whose fromChapter <= N — unless its toChapter has passed, in
+ * which case the entity is off the map (see presenceWindowAt).
+ */
+export type WorldPresenceWindow = {
+  order: number;
+  islandSlug: string | null;
+  label: string;
+  fromChapter: number;
+  toChapter: number | null;
+  lng: number;
+  lat: number;
+  verified: boolean;
+  confidence: Confidence;
+  sourceRef: string;
+};
+
+export type WorldPresenceMember = {
+  slug: string;
+  name: string;
+  fromChapter: number;
+  verified: boolean;
+  confidence: Confidence;
+};
+
+export type WorldCrewPresence = {
+  slug: string;
+  name: string;
+  crewId: number | null;
+  vessel: { name: string; slug: string } | null;
+  members: WorldPresenceMember[];
+  windows: WorldPresenceWindow[];
+};
+
+export type WorldCharacterPresence = {
+  slug: string;
+  name: string;
+  affiliation: string;
+  crewSlug: string | null;
+  windows: WorldPresenceWindow[];
+};
+
 export type World = {
   meta: {
     generatedAt: string;
@@ -151,6 +206,8 @@ export type World = {
   voyage: { crewSlug: string; waypoints: WorldVoyageWaypoint[] };
   /** The crew's ship progression, chapter-gated, ascending by fromChapter. */
   vessels: WorldVessel[];
+  /** Who else sails these seas: crews and Warlords with authored, chapter-gated windows. */
+  presence: { crews: WorldCrewPresence[]; characters: WorldCharacterPresence[] };
   /** episodeToChapter[ep] -> manga chapter reached by the end of that episode. */
   episodeToChapter: number[];
   /** chapterToEpisode[ch] -> first episode that reaches that chapter, or null. */
@@ -163,6 +220,8 @@ export type World = {
     sagas: number;
     crew: number;
     crewVerified: number;
+    presenceCrews: number;
+    presenceCharacters: number;
     episodes: number;
     /** Position confidence across the MAPPABLE (manga-canon) set. */
     positionConfidence: Record<Confidence, number>;
@@ -371,6 +430,52 @@ function toVessel(v: Vessel): WorldVessel {
   };
 }
 
+function toWindow(w: PresenceWindow): WorldPresenceWindow {
+  return {
+    order: w.order,
+    islandSlug: w.island_slug,
+    label: w.label,
+    fromChapter: w.from_chapter,
+    toChapter: w.to_chapter,
+    lng: w.lng,
+    lat: w.lat,
+    verified: w.verified,
+    confidence: w.canon_confidence,
+    sourceRef: w.source_ref,
+  };
+}
+
+function toMember(m: PresenceMember): WorldPresenceMember {
+  return {
+    slug: m.slug,
+    name: m.name,
+    fromChapter: m.from_chapter,
+    verified: m.verified,
+    confidence: m.canon_confidence,
+  };
+}
+
+function toCrewPresence(c: CrewPresence): WorldCrewPresence {
+  return {
+    slug: c.slug,
+    name: c.name,
+    crewId: c.crew_id,
+    vessel: c.vessel,
+    members: c.members.map(toMember),
+    windows: c.windows.map(toWindow).sort((a, b) => a.order - b.order),
+  };
+}
+
+function toCharacterPresence(c: CharacterPresence): WorldCharacterPresence {
+  return {
+    slug: c.slug,
+    name: c.name,
+    affiliation: c.affiliation,
+    crewSlug: c.crew_slug,
+    windows: c.windows.map(toWindow).sort((a, b) => a.order - b.order),
+  };
+}
+
 /**
  * Derive the saga axis FROM THE ARCS, not from canon.sagas.
  *
@@ -434,6 +539,10 @@ export function buildWorld(canon: Canon): World {
       .sort((a, b) => a.order - b.order),
   };
   const vessels = canon.vessels.map(toVessel).sort((a, b) => a.order - b.order);
+  const presence = {
+    crews: canon.presence.crews.map(toCrewPresence),
+    characters: canon.presence.characters.map(toCharacterPresence),
+  };
 
   const mappable = islands.filter((i) => i.status === "manga" && i.debutChapter !== null);
   const positionConfidence: Record<Confidence, number> = { canon: 0, derived: 0, guess: 0 };
@@ -458,6 +567,7 @@ export function buildWorld(canon: Canon): World {
     crew,
     voyage,
     vessels,
+    presence,
     episodeToChapter,
     chapterToEpisode,
     counts: {
@@ -468,6 +578,8 @@ export function buildWorld(canon: Canon): World {
       sagas: sagas.length,
       crew: crew.length,
       crewVerified: crew.filter((c) => c.verified).length,
+      presenceCrews: presence.crews.length,
+      presenceCharacters: presence.characters.length,
       episodes: canon.episodes.length,
       positionConfidence,
     },
@@ -560,6 +672,26 @@ export function vesselAtChapter(vessels: WorldVessel[], chapter: number): WorldV
     if (v.fromChapter <= chapter) cur = v;
     else break;
   }
+  return cur;
+}
+
+/**
+ * The active presence window at `chapter`: the last window whose fromChapter <=
+ * chapter — unless that window has ended (toChapter !== null and the reader is
+ * past it), in which case the entity is OFF the map (a death, an arrest, a
+ * departure). Same last-before-chapter gate as vesselAtChapter, plus an ending.
+ * Windows are assumed pre-sorted ascending — the build enforces it.
+ */
+export function presenceWindowAt(
+  windows: WorldPresenceWindow[],
+  chapter: number,
+): WorldPresenceWindow | null {
+  let cur: WorldPresenceWindow | null = null;
+  for (const w of windows) {
+    if (w.fromChapter <= chapter) cur = w;
+    else break;
+  }
+  if (cur && cur.toChapter !== null && chapter > cur.toChapter) return null;
   return cur;
 }
 

@@ -149,6 +149,7 @@ export default function PlaceEditor({ world: initial }: { world: World }) {
           chapter={world.chapterMax}
           projection="mercator"
           showOffCanon
+          showCrews={false}
           selected={target}
           onSelect={setTarget}
           placingSlug={target}

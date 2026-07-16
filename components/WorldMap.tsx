@@ -33,7 +33,8 @@ import maplibregl, {
 import "maplibre-gl/dist/maplibre-gl.css";
 
 import type { World, WorldIsland } from "@/lib/canon";
-import { voyageGeometryAt, vesselAtChapter } from "@/lib/canon";
+import { voyageGeometryAt, vesselAtChapter, presenceWindowAt } from "@/lib/canon";
+import { crewColor, WARLORD_COLOR } from "@/lib/crews";
 import { jollyRogerSvg } from "./marks/jolly-roger";
 import CompassRose from "./marks/CompassRose";
 import {
@@ -57,6 +58,8 @@ type Props = {
   chapter: number;
   projection: Projection;
   showOffCanon: boolean;
+  /** Crews & Warlords layer (Phase 5). Chapter-gated like everything else. */
+  showCrews: boolean;
   selected: string | null;
   onSelect: (slug: string | null) => void;
   /**
@@ -225,6 +228,179 @@ function makeShipElement(): {
 /** The live handles paint() needs to move and restyle the ship each frame. */
 type ShipHandle = { marker: MLMarker; glyph: HTMLDivElement; label: HTMLDivElement };
 
+/**
+ * A tiny generic hull in the crew's ink — the "someone's ship rides here" cue
+ * under a presence flag. Deliberately simpler than the Straw Hats' vesselGlyph:
+ * theirs is THE ship, these are marks on a chart.
+ */
+function crewHullGlyph(color: string): string {
+  return `<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+    <line x1="12" y1="5" x2="12" y2="14" stroke="${color}" stroke-width="1.2"/>
+    <path d="M12 6 L7.5 13 H12 Z" fill="${color}" opacity="0.85"/>
+    <path d="M4.5 14 H19.5 L17 18.5 H7 Z" fill="${color}"/></svg>`;
+}
+
+/**
+ * Build (once, per presence crew) the flag marker element. EVERYTHING user-visible
+ * starts EMPTY — no name, no flag SVG — and is populated by paint() only while the
+ * crew's window is active. Hiding clears it again, so a backward scrub re-fogs the
+ * DOM: at chapter 1 an Elements-panel search finds no future crew's name anywhere.
+ */
+function makeCrewFlagElement(): {
+  el: HTMLDivElement;
+  flag: HTMLDivElement;
+  hull: HTMLDivElement;
+  label: HTMLDivElement;
+} {
+  const el = document.createElement("div");
+  el.className = "crewFlagMarker";
+  el.style.display = "none";
+  el.style.pointerEvents = "none";
+  el.style.textAlign = "center";
+
+  const flag = document.createElement("div");
+  flag.style.lineHeight = "0";
+  flag.style.marginBottom = "-2px";
+  flag.style.filter = "drop-shadow(0 0 4px rgba(0,0,0,0.65))";
+
+  const hull = document.createElement("div");
+  hull.style.lineHeight = "0";
+
+  const label = document.createElement("div");
+  label.style.marginTop = "1px";
+  label.style.fontSize = "8px";
+  label.style.letterSpacing = "0.14em";
+  label.style.textTransform = "uppercase";
+  label.style.whiteSpace = "nowrap";
+  label.style.fontFamily = "var(--font-geist-mono), monospace";
+
+  el.appendChild(flag);
+  el.appendChild(hull);
+  el.appendChild(label);
+  return { el, flag, hull, label };
+}
+
+/** Build (once, per Warlord) the monogram ring. Letter and name start EMPTY. */
+function makeWarlordElement(): {
+  el: HTMLDivElement;
+  ring: HTMLDivElement;
+  label: HTMLDivElement;
+} {
+  const el = document.createElement("div");
+  el.className = "warlordMarker";
+  el.style.display = "none";
+  el.style.pointerEvents = "none";
+  el.style.textAlign = "center";
+
+  const ring = document.createElement("div");
+  ring.style.width = "16px";
+  ring.style.height = "16px";
+  ring.style.margin = "0 auto";
+  ring.style.borderRadius = "9999px";
+  ring.style.border = `1.4px solid ${WARLORD_COLOR}`;
+  ring.style.background = "rgba(7,19,36,0.72)";
+  ring.style.color = WARLORD_COLOR;
+  ring.style.fontSize = "9px";
+  ring.style.lineHeight = "13.5px";
+  ring.style.fontFamily = "var(--font-geist-mono), monospace";
+  ring.style.filter = "drop-shadow(0 0 3px rgba(0,0,0,0.6))";
+
+  const label = document.createElement("div");
+  label.style.marginTop = "1px";
+  label.style.fontSize = "7.5px";
+  label.style.letterSpacing = "0.12em";
+  label.style.textTransform = "uppercase";
+  label.style.whiteSpace = "nowrap";
+  label.style.color = "rgba(140,154,181,0.85)";
+  label.style.fontFamily = "var(--font-geist-mono), monospace";
+
+  el.appendChild(ring);
+  el.appendChild(label);
+  return { el, ring, label };
+}
+
+/**
+ * A pooled presence marker. `windowOrder` is the diff key: paint() only touches
+ * the DOM when the active window (or visibility) actually changes, so the
+ * per-frame cost of the sweep stays allocation-free.
+ */
+type PresenceHandle = {
+  marker: MLMarker;
+  parts: { el: HTMLDivElement; label: HTMLDivElement } & Record<string, HTMLDivElement>;
+  shown: boolean;
+  windowOrder: number | null;
+  populated: boolean;
+};
+
+/** The presence-orb source data for one frame: only REVEALED entities exist here. */
+function presenceOrbs(world: World, ch: number) {
+  const features: GeoJSON.Feature[] = [];
+  for (const crew of world.presence.crews) {
+    const w = presenceWindowAt(crew.windows, ch);
+    if (!w) continue;
+    const revealedMembers = crew.members.filter((m) => m.fromChapter <= ch);
+    const n = revealedMembers.length;
+    revealedMembers.forEach((m, i) => {
+      // A deterministic little ring around the flag, so member orbs never stack.
+      const a = (i / Math.max(1, n)) * Math.PI * 2 - Math.PI / 2;
+      features.push({
+        type: "Feature",
+        properties: {
+          slug: m.slug,
+          name: m.name,
+          crewSlug: crew.slug,
+          crewName: crew.name,
+          vesselName: crew.vessel?.name ?? null,
+          kind: "member",
+          color: crewColor(crew.slug),
+          confidence: m.confidence,
+          verified: m.verified,
+        },
+        geometry: {
+          type: "Point",
+          coordinates: [w.lng + Math.cos(a) * 2.1, w.lat + Math.sin(a) * 1.5],
+        },
+      });
+    });
+    // The flag itself gets an invisible hit feature so hover works on it too.
+    features.push({
+      type: "Feature",
+      properties: {
+        slug: crew.slug,
+        name: crew.name,
+        crewSlug: crew.slug,
+        crewName: w.label,
+        vesselName: crew.vessel?.name ?? null,
+        kind: "crew",
+        color: crewColor(crew.slug),
+        confidence: w.confidence,
+        verified: w.verified,
+      },
+      geometry: { type: "Point", coordinates: [w.lng, w.lat] },
+    });
+  }
+  for (const c of world.presence.characters) {
+    const w = presenceWindowAt(c.windows, ch);
+    if (!w) continue;
+    features.push({
+      type: "Feature",
+      properties: {
+        slug: c.slug,
+        name: c.name,
+        crewSlug: c.crewSlug,
+        crewName: c.affiliation,
+        vesselName: null,
+        kind: "warlord",
+        color: WARLORD_COLOR,
+        confidence: w.confidence,
+        verified: w.verified,
+      },
+      geometry: { type: "Point", coordinates: [w.lng, w.lat] },
+    });
+  }
+  return { type: "FeatureCollection" as const, features };
+}
+
 /* -------------------------------------------------------------------------- */
 /* paint expressions                                                           */
 /* -------------------------------------------------------------------------- */
@@ -266,6 +442,7 @@ export default function WorldMap({
   chapter,
   projection,
   showOffCanon,
+  showCrews,
   selected,
   onSelect,
   placingSlug = null,
@@ -275,6 +452,16 @@ export default function WorldMap({
   const map = useRef<MLMap | null>(null);
   const ready = useRef(false);
   const ship = useRef<ShipHandle | null>(null);
+
+  // The presence pools: one HTML marker per crew flag / Warlord monogram, built
+  // once on load and diffed per frame by paint(). NEVER created per frame.
+  const crewFlags = useRef<Map<string, PresenceHandle>>(new Map());
+  const warlordMarks = useRef<Map<string, PresenceHandle>>(new Map());
+  // paint() runs on the chapter tween; it reads the live toggle through this ref.
+  const showCrewsRef = useRef(showCrews);
+  useEffect(() => {
+    showCrewsRef.current = showCrews;
+  }, [showCrews]);
 
   // Placement mode is read by the click handler, which is registered once on
   // mount and so must read current values through a ref (same pattern as chapter).
@@ -295,7 +482,20 @@ export default function WorldMap({
     chapterRef.current = chapter;
   }, [chapter]);
 
-  const [hover, setHover] = useState<{ x: number; y: number; island: WorldIsland | null } | null>(null);
+  const [hover, setHover] = useState<{
+    x: number;
+    y: number;
+    island: WorldIsland | null;
+    /** A presence mark (crew flag / member orb / Warlord). Only ever REVEALED entities. */
+    presence?: {
+      name: string;
+      crewName: string | null;
+      vesselName: string | null;
+      kind: string;
+      confidence: string;
+      verified: boolean;
+    } | null;
+  } | null>(null);
 
   // MapLibre needs a WebGL context and there are real browsers that will not give
   // it one: hardware acceleration off, a GPU blocklist, a privacy extension, a
@@ -338,6 +538,10 @@ export default function WorldMap({
         red: { type: "geojson", data: RED_LINE },
         voyage: { type: "geojson", data: voyageLine([]) },
         islands: { type: "geojson", data: features },
+        // Presence orbs: rebuilt per frame from the swept chapter. Only REVEALED
+        // entities are ever in this source — spoiler safety is structural here,
+        // not an opacity trick.
+        presence: { type: "geojson", data: { type: "FeatureCollection", features: [] } },
       },
       layers: [
         { id: "ocean", type: "background", paint: { "background-color": C.ocean } },
@@ -511,6 +715,37 @@ export default function WorldMap({
           source: "islands",
           paint: { "circle-radius": 11, "circle-color": "rgba(0,0,0,0)" },
         },
+
+        // WHO SAILS HERE (Phase 5). Member orbs in the crew's ink; Warlord anchor
+        // dots under their monograms. The source only ever holds revealed
+        // entities, so there is no fog case to paint.
+        {
+          id: "presence-orbs",
+          type: "circle",
+          source: "presence",
+          filter: ["!=", ["get", "kind"], "crew"],
+          layout: { visibility: showCrews ? "visible" : "none" },
+          paint: {
+            "circle-radius": [
+              "interpolate", ["linear"], ["zoom"],
+              0, ["match", ["get", "kind"], "warlord", 2.6, 2],
+              3, ["match", ["get", "kind"], "warlord", 4.2, 3.4],
+              6, ["match", ["get", "kind"], "warlord", 6.4, 5.2],
+            ],
+            "circle-color": ["get", "color"],
+            "circle-opacity": 0.9,
+            "circle-stroke-color": C.parchment,
+            "circle-stroke-width": ["match", ["get", "kind"], "warlord", 1.2, 0.6],
+            "circle-stroke-opacity": byConfidence(0.85, 0.55, 0.3),
+          },
+        },
+        {
+          id: "presence-hit",
+          type: "circle",
+          source: "presence",
+          layout: { visibility: showCrews ? "visible" : "none" },
+          paint: { "circle-radius": 11, "circle-color": "rgba(0,0,0,0)" },
+        },
       ],
     };
 
@@ -563,7 +798,62 @@ export default function WorldMap({
       .addTo(m);
     ship.current = { marker: shipMarker, glyph: parts.glyph, label: parts.label };
 
+    // The presence pools (Phase 5): one flag per crew, one monogram per Warlord,
+    // built ONCE, hidden and EMPTY. paint() populates a marker only while its
+    // window is active, and clears it again when it hides — the DOM at chapter 1
+    // contains no future crew's name, even after a scrub to 1125 and back.
+    const crewPool = crewFlags.current;
+    const warlordPool = warlordMarks.current;
+    for (const crew of world.presence.crews) {
+      const p = makeCrewFlagElement();
+      const marker = new maplibregl.Marker({ element: p.el, opacityWhenCovered: "0.2" })
+        .setLngLat([0, 0])
+        .addTo(m);
+      crewPool.set(crew.slug, {
+        marker,
+        parts: { el: p.el, flag: p.flag, hull: p.hull, label: p.label },
+        shown: false,
+        windowOrder: null,
+        populated: false,
+      });
+    }
+    for (const c of world.presence.characters) {
+      const p = makeWarlordElement();
+      const marker = new maplibregl.Marker({ element: p.el, opacityWhenCovered: "0.2" })
+        .setLngLat([0, 0])
+        .addTo(m);
+      warlordPool.set(c.slug, {
+        marker,
+        parts: { el: p.el, ring: p.ring, label: p.label },
+        shown: false,
+        windowOrder: null,
+        populated: false,
+      });
+    }
+
     const onMove = (e: MapMouseEvent) => {
+      // Presence first: a crew flag or Warlord sits ON an island pin at most
+      // home bases, and the more specific mark should win the tooltip. The
+      // presence source only ever contains revealed entities, so everything on
+      // a feature here is safe to render.
+      const pf = m.queryRenderedFeatures(e.point, { layers: ["presence-hit"] })[0];
+      if (pf) {
+        m.getCanvas().style.cursor = "pointer";
+        setHover({
+          x: e.point.x,
+          y: e.point.y,
+          island: null,
+          presence: {
+            name: pf.properties?.name as string,
+            crewName: (pf.properties?.crewName as string) ?? null,
+            vesselName: (pf.properties?.vesselName as string) ?? null,
+            kind: pf.properties?.kind as string,
+            confidence: pf.properties?.confidence as string,
+            verified: pf.properties?.verified === true || pf.properties?.verified === "true",
+          },
+        });
+        return;
+      }
       const f = m.queryRenderedFeatures(e.point, { layers: ["islands-hit"] })[0];
       if (!f) {
         setHover(null);
@@ -619,7 +909,11 @@ export default function WorldMap({
       // behind the left panel.
       m.setPadding(MAP_PADDING);
       m.jumpTo({ center: [-20, 6], zoom: 1.9 });
-      paint(m, chapterRef.current, world, ship.current);
+      paint(m, chapterRef.current, world, ship.current, {
+        crews: crewFlags.current,
+        chars: warlordMarks.current,
+        show: showCrewsRef.current,
+      });
     });
 
     if (process.env.NODE_ENV !== "production") {
@@ -629,6 +923,8 @@ export default function WorldMap({
     return () => {
       ready.current = false;
       ship.current = null;
+      crewPool.clear();
+      warlordPool.clear();
       m.remove();
       map.current = null;
     };
@@ -641,7 +937,11 @@ export default function WorldMap({
   useEffect(() => {
     const m = map.current;
     if (!m || !ready.current) return;
-    paint(m, chapter, world, ship.current);
+    paint(m, chapter, world, ship.current, {
+      crews: crewFlags.current,
+      chars: warlordMarks.current,
+      show: showCrewsRef.current,
+    });
   }, [chapter, world]);
 
   /* --------------------------------------------------- islands live-update */
@@ -652,7 +952,11 @@ export default function WorldMap({
     const m = map.current;
     if (!m || !ready.current) return;
     (m.getSource("islands") as GeoJSONSource | undefined)?.setData(features);
-    paint(m, chapter, world, ship.current);
+    paint(m, chapter, world, ship.current, {
+      crews: crewFlags.current,
+      chars: warlordMarks.current,
+      show: showCrewsRef.current,
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [features]);
 
@@ -686,6 +990,21 @@ export default function WorldMap({
     m.setLayoutProperty("islands-off", "visibility", showOffCanon ? "visible" : "none");
   }, [showOffCanon]);
 
+  /* ------------------------------------------------------------ crews toggle */
+  useEffect(() => {
+    const m = map.current;
+    if (!m || !ready.current) return;
+    m.setLayoutProperty("presence-orbs", "visibility", showCrews ? "visible" : "none");
+    m.setLayoutProperty("presence-hit", "visibility", showCrews ? "visible" : "none");
+    // Re-run the sweep so the marker pools hide (or repopulate) immediately.
+    paint(m, chapterRef.current, world, ship.current, {
+      crews: crewFlags.current,
+      chars: warlordMarks.current,
+      show: showCrews,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showCrews]);
+
   /* --------------------------------------------------------------- selected */
   useEffect(() => {
     const m = map.current;
@@ -698,7 +1017,8 @@ export default function WorldMap({
   }, [selected, bySlug]);
 
   const hoveredIsland = hover?.island ?? null;
-  const hoveringFog = hover !== null && hover.island === null;
+  const hoveredPresence = hover?.presence ?? null;
+  const hoveringFog = hover !== null && hover.island === null && !hoveredPresence;
 
   return (
     <div className="absolute inset-0">
@@ -744,7 +1064,29 @@ export default function WorldMap({
           className="pointer-events-none absolute z-20 -translate-x-1/2 -translate-y-[calc(100%+14px)]"
           style={{ left: hover.x, top: hover.y }}
         >
-          {hoveringFog ? (
+          {hoveredPresence ? (
+            <div className="min-w-[150px] rounded-md border border-rope bg-ink/95 px-2.5 py-1.5 shadow-2xl backdrop-blur">
+              <div className="text-[12px] font-medium text-parchment">{hoveredPresence.name}</div>
+              {hoveredPresence.crewName && (
+                <div className="mt-0.5 font-mono text-[10px] tracking-[0.06em] text-gold">
+                  {hoveredPresence.crewName}
+                </div>
+              )}
+              {hoveredPresence.vesselName && hoveredPresence.kind !== "warlord" && (
+                <div className="mt-0.5 font-mono text-[9px] text-muted">
+                  ⛵ {hoveredPresence.vesselName}
+                </div>
+              )}
+              <div className="mt-1 font-mono text-[9px] uppercase tracking-[0.16em] text-muted-2">
+                {hoveredPresence.confidence === "canon"
+                  ? "placement from the story"
+                  : hoveredPresence.confidence === "derived"
+                    ? "home-base placement"
+                    : "representative anchorage"}
+                {!hoveredPresence.verified && " · unverified"}
+              </div>
+            </div>
+          ) : hoveringFog ? (
             <div className="rounded-md border border-rope bg-ink/95 px-2.5 py-1.5 shadow-2xl backdrop-blur">
               <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-2">
                 Uncharted
@@ -788,7 +1130,32 @@ export default function WorldMap({
  * ~413 features across 4 layers is nothing for MapLibre to re-evaluate; the cost
  * is bounded by the frame rate, and the tween settles in about a second.
  */
-function paint(m: MLMap, ch: number, world: World, ship: ShipHandle | null) {
+type PresencePools = {
+  crews: Map<string, PresenceHandle>;
+  chars: Map<string, PresenceHandle>;
+  show: boolean;
+};
+
+/** Hide a pooled presence marker AND scrub its user-visible content out of the DOM. */
+function hidePresence(h: PresenceHandle) {
+  if (!h.shown && !h.populated) return;
+  h.parts.el.style.display = "none";
+  h.parts.label.textContent = "";
+  if (h.parts.flag) h.parts.flag.innerHTML = "";
+  if (h.parts.hull) h.parts.hull.innerHTML = "";
+  if (h.parts.ring) h.parts.ring.textContent = "";
+  h.shown = false;
+  h.populated = false;
+  h.windowOrder = null;
+}
+
+function paint(
+  m: MLMap,
+  ch: number,
+  world: World,
+  ship: ShipHandle | null,
+  pools?: PresencePools,
+) {
   // THE VOYAGE. Re-derive the traveled route and the ship's position for this
   // (fractional) chapter and push both. The line grows leg by leg; the ship glides
   // along the active leg; the vessel glyph swaps at the acquisition chapters.
@@ -831,4 +1198,62 @@ function paint(m: MLMap, ch: number, world: World, ship: ShipHandle | null) {
     0,
     ["interpolate", ["linear"], ["-", ch, ["get", "debut"]], 0, 0.45, CHART_FLARE, 0],
   ]);
+
+  // WHO SAILS HERE (Phase 5). Flags and monograms are pooled HTML markers,
+  // diffed against the active window so a frame where nothing changes touches
+  // no DOM. Orbs are one setData, same as the voyage line. Hiding a marker
+  // CLEARS its name and flag — a backward scrub re-fogs the DOM, not just the
+  // pixels.
+  if (pools) {
+    if (!pools.show) {
+      for (const h of pools.crews.values()) hidePresence(h);
+      for (const h of pools.chars.values()) hidePresence(h);
+      (m.getSource("presence") as GeoJSONSource | undefined)?.setData({
+        type: "FeatureCollection",
+        features: [],
+      });
+    } else {
+      for (const crew of world.presence.crews) {
+        const h = pools.crews.get(crew.slug);
+        if (!h) continue;
+        const w = presenceWindowAt(crew.windows, ch);
+        if (!w) {
+          hidePresence(h);
+          continue;
+        }
+        if (h.shown && h.windowOrder === w.order) continue; // nothing changed
+        h.marker.setLngLat([w.lng, w.lat]);
+        if (!h.populated) {
+          h.parts.flag.innerHTML = jollyRogerSvg(crew.slug, { size: 20 });
+          h.parts.hull.innerHTML = crew.vessel ? crewHullGlyph(crewColor(crew.slug)) : "";
+          h.parts.label.textContent = crew.name;
+          h.parts.label.style.color = crewColor(crew.slug);
+          h.populated = true;
+        }
+        h.parts.el.style.display = "";
+        h.shown = true;
+        h.windowOrder = w.order;
+      }
+      for (const c of world.presence.characters) {
+        const h = pools.chars.get(c.slug);
+        if (!h) continue;
+        const w = presenceWindowAt(c.windows, ch);
+        if (!w) {
+          hidePresence(h);
+          continue;
+        }
+        if (h.shown && h.windowOrder === w.order) continue;
+        h.marker.setLngLat([w.lng, w.lat]);
+        if (!h.populated) {
+          h.parts.ring.textContent = c.name[0];
+          h.parts.label.textContent = c.name;
+          h.populated = true;
+        }
+        h.parts.el.style.display = "";
+        h.shown = true;
+        h.windowOrder = w.order;
+      }
+      (m.getSource("presence") as GeoJSONSource | undefined)?.setData(presenceOrbs(world, ch));
+    }
+  }
 }

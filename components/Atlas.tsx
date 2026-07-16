@@ -105,6 +105,9 @@ export default function Atlas({ world, initialChapter, initialAxis }: Props) {
   const [hero, setHero] = useState(initialChapter === null);
   const [projection, setProjection] = useState<Projection>("globe");
   const [offCanon, setOffCanon] = useState(false);
+  // Crews & Warlords on the map (Phase 5). Default ON — the chapter gate keeps
+  // early chapters clean, so at ch. 1 the layer shows exactly nothing.
+  const [showCrews, setShowCrews] = useState(true);
   const [selected, setSelected] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
@@ -182,6 +185,7 @@ export default function Atlas({ world, initialChapter, initialAxis }: Props) {
           chapter={swept}
           projection={projection}
           showOffCanon={offCanon}
+          showCrews={showCrews}
           selected={selected}
           onSelect={setSelected}
         />
@@ -262,7 +266,21 @@ export default function Atlas({ world, initialChapter, initialAxis }: Props) {
               locations. No chapter — they cannot be fogged.
             </button>
 
-            <Legend world={world} at={at} showOffCanon={offCanon} />
+            <button
+              type="button"
+              onClick={() => setShowCrews((v) => !v)}
+              className={[
+                "max-w-[254px] rounded-sm border bg-ink/90 px-2.5 py-1.5 text-left font-mono text-[9px] leading-snug tracking-[0.1em] backdrop-blur transition-colors",
+                showCrews
+                  ? "border-gold/60 text-gold"
+                  : "border-rope text-muted-2 hover:border-rope-2 hover:text-muted",
+              ].join(" ")}
+            >
+              {showCrews ? "◉" : "◯"} who sails here: {world.counts.presenceCrews} crews ·{" "}
+              {world.counts.presenceCharacters} Warlords. Chapter-gated, like everything else.
+            </button>
+
+            <Legend world={world} at={at} showOffCanon={offCanon} showCrews={showCrews} />
           </div>
         )}
 

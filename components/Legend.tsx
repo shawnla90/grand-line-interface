@@ -21,6 +21,8 @@
  */
 
 import type { World, WorldAt } from "@/lib/canon";
+import { presenceWindowAt } from "@/lib/canon";
+import { crewColor, WARLORD_COLOR } from "@/lib/crews";
 
 function Swatch({ kind }: { kind: "canon" | "derived" | "guess" | "fog" }) {
   const base = "block rounded-full";
@@ -67,8 +69,31 @@ function Row({
   );
 }
 
-export default function Legend({ world, at, showOffCanon }: { world: World; at: WorldAt; showOffCanon: boolean }) {
+export default function Legend({
+  world,
+  at,
+  showOffCanon,
+  showCrews,
+}: {
+  world: World;
+  at: WorldAt;
+  showOffCanon: boolean;
+  showCrews: boolean;
+}) {
   const pc = world.counts.positionConfidence;
+
+  // Who is on the water at the SHOWN chapter. Names render only for entities the
+  // reader has met; the rest collapse into one anonymous count — the same
+  // silhouette contract the crew roster keeps.
+  const activeCrews = world.presence.crews.filter((c) => presenceWindowAt(c.windows, at.chapter));
+  const activeChars = world.presence.characters.filter((c) =>
+    presenceWindowAt(c.windows, at.chapter),
+  );
+  const beyond =
+    world.counts.presenceCrews +
+    world.counts.presenceCharacters -
+    activeCrews.length -
+    activeChars.length;
 
   // Count what is ACTUALLY PLOTTED, not what exists. The off-canon layer is where
   // the `guess` tier lives (no chapter, no region — nothing to derive a position
@@ -111,6 +136,45 @@ export default function Legend({ world, at, showOffCanon }: { world: World; at: 
           count={at.foggedIslands.length}
         />
       </ul>
+
+      {showCrews && (
+        <div className="mt-2.5 border-t border-rope/60 pt-2.5">
+          <div className="font-mono text-[9px] uppercase tracking-[0.22em] text-muted-2">
+            Who sails here
+          </div>
+          {activeCrews.length + activeChars.length === 0 ? (
+            <p className="mt-1.5 text-[10px] leading-snug text-muted-2">
+              No one you have met yet.
+            </p>
+          ) : (
+            <ul className="mt-1.5 flex flex-wrap gap-x-2.5 gap-y-1">
+              {activeCrews.map((c) => (
+                <li key={c.slug} className="flex items-center gap-1.5">
+                  <span
+                    className="block h-2 w-2 rounded-full"
+                    style={{ background: crewColor(c.slug) }}
+                  />
+                  <span className="text-[10px] text-muted">{c.name}</span>
+                </li>
+              ))}
+              {activeChars.map((c) => (
+                <li key={c.slug} className="flex items-center gap-1.5">
+                  <span
+                    className="block h-2 w-2 rounded-full border"
+                    style={{ borderColor: WARLORD_COLOR, background: "transparent" }}
+                  />
+                  <span className="text-[10px] text-muted">{c.name}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+          {beyond > 0 && (
+            <p className="mt-1.5 text-[10px] leading-snug text-muted-2">
+              {beyond} more beyond your chapter, or off the board.
+            </p>
+          )}
+        </div>
+      )}
 
       {showOffCanon && (
         <p className="mt-2.5 border-t border-rope/60 pt-2.5 text-[10px] leading-snug text-muted-2">
