@@ -209,6 +209,18 @@ function artImg(url: string, w: number, opts?: { round?: boolean; ring?: string 
   return `<img src="${url}" alt="" draggable="false" style="display:block;margin:0 auto;${shape}${ring}">`;
 }
 
+/**
+ * 6E: every mark scales with zoom through one CSS var set by the map's zoom
+ * handler. The scale lives on an inner wrapper — MapLibre owns the marker
+ * root's transform for positioning, so scaling the root would fight it.
+ */
+function makeScaleWrap(origin = "50% 100%"): HTMLDivElement {
+  const wrap = document.createElement("div");
+  wrap.style.transform = "scale(var(--gli-mark-scale, 1))";
+  wrap.style.transformOrigin = origin;
+  return wrap;
+}
+
 /** Build (once) the DOM element MapLibre re-positions each frame for the ship. */
 function makeShipElement(): {
   el: HTMLDivElement;
@@ -222,30 +234,37 @@ function makeShipElement(): {
   el.style.transform = "translateY(-2px)";
   el.style.pointerEvents = "none";
   el.style.textAlign = "center";
+  const wrap = makeScaleWrap();
 
   // The crew's Jolly Roger, flying above the ship. Set once (the crew never
   // changes); the vessel below it swaps as the reader sails.
   const flag = document.createElement("div");
   flag.style.lineHeight = "0";
   flag.style.marginBottom = "-3px";
-  flag.style.filter = "drop-shadow(0 0 4px rgba(0,0,0,0.6))";
+  flag.style.filter =
+    "drop-shadow(0 1px 2px rgba(0,0,0,0.7)) drop-shadow(0 0 3px rgba(239,230,212,0.3))";
 
+  // THE ship. A soft dark shadow sits it ON the water; the gold aura keeps it
+  // findable against the abyss at planet zoom.
   const glyph = document.createElement("div");
-  glyph.style.filter = "drop-shadow(0 0 5px rgba(227,176,75,0.55))";
+  glyph.style.filter =
+    "drop-shadow(0 2px 3px rgba(0,0,0,0.6)) drop-shadow(0 0 7px rgba(227,176,75,0.45))";
   glyph.style.lineHeight = "0";
 
   const label = document.createElement("div");
-  label.style.marginTop = "1px";
-  label.style.fontSize = "8px";
+  label.style.marginTop = "2px";
+  label.style.fontSize = "9px";
   label.style.letterSpacing = "0.16em";
   label.style.textTransform = "uppercase";
   label.style.color = "rgba(239,230,212,0.82)";
   label.style.whiteSpace = "nowrap";
   label.style.fontFamily = "var(--font-geist-mono), monospace";
+  label.style.textShadow = "0 1px 3px rgba(0,0,0,0.9)";
 
-  el.appendChild(flag);
-  el.appendChild(glyph);
-  el.appendChild(label);
+  wrap.appendChild(flag);
+  wrap.appendChild(glyph);
+  wrap.appendChild(label);
+  el.appendChild(wrap);
   return { el, flag, glyph, label };
 }
 
@@ -281,26 +300,33 @@ function makeCrewFlagElement(): {
   el.style.display = "none";
   el.style.pointerEvents = "none";
   el.style.textAlign = "center";
+  const wrap = makeScaleWrap();
 
+  // A light halo behind the dark emblem cutout keeps a Jolly Roger readable
+  // against the abyss — the flags are the map's landmarks now (6E).
   const flag = document.createElement("div");
   flag.style.lineHeight = "0";
   flag.style.marginBottom = "-2px";
-  flag.style.filter = "drop-shadow(0 0 4px rgba(0,0,0,0.65))";
+  flag.style.filter =
+    "drop-shadow(0 1px 2px rgba(0,0,0,0.7)) drop-shadow(0 0 3px rgba(239,230,212,0.35))";
 
   const hull = document.createElement("div");
   hull.style.lineHeight = "0";
+  hull.style.filter = "drop-shadow(0 2px 3px rgba(0,0,0,0.55))";
 
   const label = document.createElement("div");
-  label.style.marginTop = "1px";
-  label.style.fontSize = "8px";
+  label.style.marginTop = "2px";
+  label.style.fontSize = "9px";
   label.style.letterSpacing = "0.14em";
   label.style.textTransform = "uppercase";
   label.style.whiteSpace = "nowrap";
   label.style.fontFamily = "var(--font-geist-mono), monospace";
+  label.style.textShadow = "0 1px 3px rgba(0,0,0,0.9)";
 
-  el.appendChild(flag);
-  el.appendChild(hull);
-  el.appendChild(label);
+  wrap.appendChild(flag);
+  wrap.appendChild(hull);
+  wrap.appendChild(label);
+  el.appendChild(wrap);
   return { el, flag, hull, label };
 }
 
@@ -315,32 +341,35 @@ function makeWarlordElement(): {
   el.style.display = "none";
   el.style.pointerEvents = "none";
   el.style.textAlign = "center";
+  const wrap = makeScaleWrap("50% 50%");
 
   const ring = document.createElement("div");
-  ring.style.width = "18px";
-  ring.style.height = "18px";
+  ring.style.width = "26px";
+  ring.style.height = "26px";
   ring.style.margin = "0 auto";
   ring.style.borderRadius = "9999px";
-  ring.style.border = `1.4px solid ${WARLORD_COLOR}`;
-  ring.style.background = "rgba(7,19,36,0.72)";
+  ring.style.border = `1.6px solid ${WARLORD_COLOR}`;
+  ring.style.background = "rgba(7,19,36,0.78)";
   ring.style.color = WARLORD_COLOR;
-  ring.style.fontSize = "9px";
-  ring.style.lineHeight = "15px";
+  ring.style.fontSize = "11px";
+  ring.style.lineHeight = "23px";
   ring.style.overflow = "hidden";
   ring.style.fontFamily = "var(--font-geist-mono), monospace";
-  ring.style.filter = "drop-shadow(0 0 3px rgba(0,0,0,0.6))";
+  ring.style.filter = "drop-shadow(0 1px 3px rgba(0,0,0,0.7))";
 
   const label = document.createElement("div");
-  label.style.marginTop = "1px";
-  label.style.fontSize = "7.5px";
+  label.style.marginTop = "2px";
+  label.style.fontSize = "8px";
   label.style.letterSpacing = "0.12em";
   label.style.textTransform = "uppercase";
   label.style.whiteSpace = "nowrap";
-  label.style.color = "rgba(140,154,181,0.85)";
+  label.style.color = "rgba(140,154,181,0.9)";
   label.style.fontFamily = "var(--font-geist-mono), monospace";
+  label.style.textShadow = "0 1px 3px rgba(0,0,0,0.9)";
 
-  el.appendChild(ring);
-  el.appendChild(label);
+  wrap.appendChild(ring);
+  wrap.appendChild(label);
+  el.appendChild(wrap);
   return { el, ring, label };
 }
 
@@ -356,20 +385,22 @@ function makeMemberElement(): { el: HTMLDivElement; ring: HTMLDivElement; label:
   el.style.display = "none";
   el.style.pointerEvents = "none";
   el.style.textAlign = "center";
+  const wrap = makeScaleWrap("50% 50%");
 
   const ring = document.createElement("div");
-  ring.style.width = "15px";
-  ring.style.height = "15px";
+  ring.style.width = "22px";
+  ring.style.height = "22px";
   ring.style.margin = "0 auto";
   ring.style.borderRadius = "9999px";
   ring.style.overflow = "hidden";
   ring.style.background = "rgba(7,19,36,0.72)";
-  ring.style.filter = "drop-shadow(0 0 2px rgba(0,0,0,0.6))";
+  ring.style.filter = "drop-shadow(0 1px 3px rgba(0,0,0,0.7))";
 
   const label = document.createElement("div"); // unused; keeps hidePresence uniform
 
-  el.appendChild(ring);
-  el.appendChild(label);
+  wrap.appendChild(ring);
+  wrap.appendChild(label);
+  el.appendChild(wrap);
   return { el, ring, label };
 }
 
@@ -897,6 +928,17 @@ export default function WorldMap({
 
     m.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
 
+    // 6E: one CSS var drives every HTML mark's size. Floor of 1 at the resting
+    // zoom (1.9) so the Merry and the Jolly Rogers read WITHOUT zooming; grows
+    // toward ~2.2x as you dive so the marks feel anchored to the world, capped
+    // before labels turn into billboards.
+    const applyMarkScale = () => {
+      const s = Math.min(2.2, Math.max(1, Math.pow(2, (m!.getZoom() - 1.9) * 0.5)));
+      holder.current?.style.setProperty("--gli-mark-scale", s.toFixed(3));
+    };
+    m.on("zoom", applyMarkScale);
+    applyMarkScale();
+
     for (const l of WORLD_LABELS) {
       const el = document.createElement("div");
       el.className = "mapLabel";
@@ -911,7 +953,11 @@ export default function WorldMap({
     // The ship. One marker, moved and restyled every frame by paint(). It starts at
     // the first waypoint and hidden; paint() reveals it once the reader reaches ch. 1.
     const parts = makeShipElement();
-    parts.flag.innerHTML = jollyRogerSvg(world.voyage.crewSlug, { size: 22 });
+    // The reader's own colors: the real Straw Hat flag where we have it.
+    const ownFlag = art?.flags[world.voyage.crewSlug];
+    parts.flag.innerHTML = ownFlag
+      ? artImg(ownFlag, 26)
+      : jollyRogerSvg(world.voyage.crewSlug, { size: 22 });
     const start = world.voyage.waypoints[0];
     const shipMarker = new maplibregl.Marker({ element: parts.el, opacityWhenCovered: "0.2" })
       .setLngLat(start ? [start.lng, start.lat] : [0, 0])
@@ -1333,7 +1379,7 @@ function paint(
       // The Going Merry and Thousand Sunny have real renders; the barrel and the
       // nameless first boat do not, and keep their original SVG.
       const shipArt = art?.ships[vessel.slug];
-      ship.glyph.innerHTML = shipArt ? artImg(shipArt, 34) : vesselGlyph(vessel.slug);
+      ship.glyph.innerHTML = shipArt ? artImg(shipArt, 52) : vesselGlyph(vessel.slug);
       ship.label.textContent = vessel.name;
       ship.marker.getElement().style.display = "";
     } else {
@@ -1400,11 +1446,11 @@ function paint(
         if (!h.populated) {
           // Real Jolly Roger where we have one; original SVG mark otherwise.
           const flagArt = art?.flags[crew.slug];
-          h.parts.flag.innerHTML = flagArt ? artImg(flagArt, 30) : jollyRogerSvg(crew.slug, { size: 20 });
+          h.parts.flag.innerHTML = flagArt ? artImg(flagArt, 44) : jollyRogerSvg(crew.slug, { size: 26 });
           // The crew's real ship rides under the flag; fall back to the ink hull cue.
           const shipArt = crew.vessel ? art?.ships[crew.vessel.slug] : undefined;
           h.parts.hull.innerHTML = shipArt
-            ? artImg(shipArt, 26)
+            ? artImg(shipArt, 38)
             : crew.vessel
               ? crewHullGlyph(crewColor(crew.slug))
               : "";
