@@ -114,12 +114,14 @@ Both syncs are polite (sequential, ~1 req/sec, explicit User-Agent, retries) and
 
 **Shipped**
 - **The Straw Hat journey** — a route line that draws itself as the chapter climbs (ch 1 → the current arc), and the ship morphing barrel → small boat → Going Merry → Thousand Sunny at the right chapters.
-- **Original SVG Jolly Rogers** — drawn from primitives, no traced art; flying on the ship and in the crew roster.
+- **Real art, chapter-gated** *(Phase 6)* — real Jolly Rogers, character portraits, ship renders, Devil Fruits and island images, downscaled and served from `public/art/`. Official artwork © the rights holders, used as attributed fan reference and **excluded from the MIT license** (see [`public/art/README.md`](public/art/README.md)); every file carries a source-URL receipt in `data/generated/art_manifest.json`. The original SVG marks below stay in the code as fallbacks — delete `public/art/` and the atlas still works.
+- **Original SVG marks** — hand-drawn Jolly Rogers and ship glyphs from primitives, no traced art; the fallback layer whenever no real art exists (the barrel, the nameless first boat) or a takedown ever lands.
 - **A cartographic chart** — the Grand Line as a sea-lane between menacing Calm Belts, the Red Line as a continent, ocean depth + vellum grain, a compass rose, on both globe and flat.
 - **`/admin/place`** — the dev-only coordinate tool (see Contributing).
-- **Crews & characters on the map, chapter-gated** — 10 crews (the Yonko, Kid, Law/Heart, Kuja, Donquixote, Buggy) fly their Jolly Rogers at authored *presence windows*, so they **move**: Whitebeard sails the New World, appears at Marineford for the war, and is gone after it. 8 Warlords as monogram rings, member orbs in each crew's ink, a "who sails here" toggle, and live crew chips in the legend. All windows hand-authored in `canon/crew_presence.json`, `verified:false` until manga-checked — same honesty as every pin.
+- **Crews & characters on the map, chapter-gated** — 10 crews (the Yonko, Kid, Law/Heart, Kuja, Donquixote, Buggy) fly their Jolly Rogers at authored *presence windows*, so they **move**: Whitebeard sails the New World, appears at Marineford for the war, and is gone after it. 8 Warlords as portrait rings, member orbs in each crew's ink, a "who sails here" toggle, and live crew chips in the legend. All windows hand-authored in `canon/crew_presence.json`, `verified:false` until manga-checked — same honesty as every pin.
 
 **Next**
+- **Member orbs → portraits** — the ~14 named crew members still render as ink dots; give them the same portrait chips the Warlords now carry.
 - **The By Crew / By Devil Fruit / By Haki lens** — recolor the world by what a character is.
 - **Expand the roster** — the rest of the Worst Generation (Hawkins, Drake, Bonney, Capone, Urouge, Apoo), Sun Pirates, Baroque Works. The schema is done; it's authoring + one Jolly Roger each. `scripts/seed_presence.py` prints a scaffold.
 - **Verify the canon** — flip `verified: false → true` on crew joins, ships, presence windows, and island positions.
@@ -139,7 +141,8 @@ The atlas refuses to let a machine-derived pin look human-confirmed. The same ho
 | 4 | Cartographic fidelity + `/admin/place` | Claude Opus 4.8 | Claude Code · ultracode | `1d72d20` `b7cc5d6` `e936944` |
 | 5 (plan) | Crews, characters & ships — the phase plan | Codex | Codex session | — |
 | 5 (build) | Crews, characters & ships on the map + this log | Claude Fable 5 | Claude Code | `0854c75` `a43ca34` `9e7b61f` `e036749` `4b6335f` |
+| 6 | Real art — Jolly Rogers, portraits, ships, Devil Fruits, islands | Claude Opus 4.8 | Claude Code · 1M context | `5bbdf47` |
 
 ---
 
-*"One Piece" is © Eiichiro Oda / Shueisha / Toei Animation. This is an unofficial, non-commercial fan reference work, not affiliated with or endorsed by the rights holders. Facts from the [One Piece Fandom](https://onepiece.fandom.com) (CC-BY-SA 3.0) and [api-onepiece.com](https://api-onepiece.com). Every visual mark is original. No article prose or official art is reproduced.*
+*"One Piece" is © Eiichiro Oda / Shueisha / Toei Animation. This is an unofficial, non-commercial fan reference work, not affiliated with or endorsed by the rights holders. Facts from the [One Piece Fandom](https://onepiece.fandom.com) (CC-BY-SA 3.0) and [api-onepiece.com](https://api-onepiece.com); no article prose is reproduced. Official artwork (portraits, Jolly Rogers, ships, Devil Fruits, location images) is © the rights holders, used as attributed fan reference and excluded from this project's MIT license — see [`public/art/README.md`](public/art/README.md). The app's cartographic marks and geometry are original.*

@@ -33,6 +33,7 @@ import maplibregl, {
 import "maplibre-gl/dist/maplibre-gl.css";
 
 import type { World, WorldIsland } from "@/lib/canon";
+import type { Art } from "@/lib/art";
 import { voyageGeometryAt, vesselAtChapter, presenceWindowAt } from "@/lib/canon";
 import { crewColor, WARLORD_COLOR } from "@/lib/crews";
 import { jollyRogerSvg } from "./marks/jolly-roger";
@@ -54,6 +55,8 @@ export type Projection = "globe" | "mercator";
 
 type Props = {
   world: World;
+  /** Phase 6 official art (slug -> /art/… url). Optional — absent => the SVG marks are used. */
+  art?: Art;
   /** The tweened chapter. A float on purpose — it drives the reveal sweep. */
   chapter: number;
   projection: Projection;
@@ -185,6 +188,20 @@ function vesselGlyph(slug: string | null | undefined): string {
     ${hull}</svg>`;
 }
 
+/**
+ * An <img> string for a map mark (Phase 6 real art). Injected as innerHTML so the
+ * spoiler-clearing in hidePresence (innerHTML="" / textContent="") wipes it too —
+ * a backward scrub must leave no /art/<slug>.webp URL naming a future entity in
+ * the DOM. `round` gives a circular portrait; `ring` outlines it in the crew ink.
+ */
+function artImg(url: string, w: number, opts?: { round?: boolean; ring?: string }): string {
+  const shape = opts?.round
+    ? `width:${w}px;height:${w}px;object-fit:cover;border-radius:9999px;`
+    : `width:${w}px;height:auto;border-radius:2px;`;
+  const ring = opts?.ring ? `outline:1.4px solid ${opts.ring};outline-offset:-1px;` : "";
+  return `<img src="${url}" alt="" draggable="false" style="display:block;margin:0 auto;${shape}${ring}">`;
+}
+
 /** Build (once) the DOM element MapLibre re-positions each frame for the ship. */
 function makeShipElement(): {
   el: HTMLDivElement;
@@ -293,15 +310,16 @@ function makeWarlordElement(): {
   el.style.textAlign = "center";
 
   const ring = document.createElement("div");
-  ring.style.width = "16px";
-  ring.style.height = "16px";
+  ring.style.width = "18px";
+  ring.style.height = "18px";
   ring.style.margin = "0 auto";
   ring.style.borderRadius = "9999px";
   ring.style.border = `1.4px solid ${WARLORD_COLOR}`;
   ring.style.background = "rgba(7,19,36,0.72)";
   ring.style.color = WARLORD_COLOR;
   ring.style.fontSize = "9px";
-  ring.style.lineHeight = "13.5px";
+  ring.style.lineHeight = "15px";
+  ring.style.overflow = "hidden";
   ring.style.fontFamily = "var(--font-geist-mono), monospace";
   ring.style.filter = "drop-shadow(0 0 3px rgba(0,0,0,0.6))";
 
@@ -483,6 +501,7 @@ const byConfidence = <T extends string | number>(canon: T, derived: T, guess: T)
 
 export default function WorldMap({
   world,
+  art,
   chapter,
   projection,
   showOffCanon,
@@ -957,7 +976,7 @@ export default function WorldMap({
         crews: crewFlags.current,
         chars: warlordMarks.current,
         show: showCrewsRef.current,
-      });
+      }, art);
     });
 
     if (process.env.NODE_ENV !== "production") {
@@ -985,8 +1004,8 @@ export default function WorldMap({
       crews: crewFlags.current,
       chars: warlordMarks.current,
       show: showCrewsRef.current,
-    });
-  }, [chapter, world]);
+    }, art);
+  }, [chapter, world, art]);
 
   /* --------------------------------------------------- islands live-update */
   // The island source is set once at create. When positions change underneath us
@@ -1000,7 +1019,7 @@ export default function WorldMap({
       crews: crewFlags.current,
       chars: warlordMarks.current,
       show: showCrewsRef.current,
-    });
+    }, art);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [features]);
 
@@ -1045,7 +1064,7 @@ export default function WorldMap({
       crews: crewFlags.current,
       chars: warlordMarks.current,
       show: showCrews,
-    });
+    }, art);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showCrews]);
 
@@ -1199,6 +1218,7 @@ function paint(
   world: World,
   ship: ShipHandle | null,
   pools?: PresencePools,
+  art?: Art,
 ) {
   // THE VOYAGE. Re-derive the traveled route and the ship's position for this
   // (fractional) chapter and push both. The line grows leg by leg; the ship glides
@@ -1209,7 +1229,10 @@ function paint(
     const vessel = vesselAtChapter(world.vessels, ch);
     if (pos && vessel) {
       ship.marker.setLngLat(pos);
-      ship.glyph.innerHTML = vesselGlyph(vessel.slug);
+      // The Going Merry and Thousand Sunny have real renders; the barrel and the
+      // nameless first boat do not, and keep their original SVG.
+      const shipArt = art?.ships[vessel.slug];
+      ship.glyph.innerHTML = shipArt ? artImg(shipArt, 34) : vesselGlyph(vessel.slug);
       ship.label.textContent = vessel.name;
       ship.marker.getElement().style.display = "";
     } else {
@@ -1271,8 +1294,16 @@ function paint(
         h.marker.setLngLat([placed.lng, placed.lat]);
         if (h.shown && h.windowOrder === placed.w.order) continue; // DOM unchanged
         if (!h.populated) {
-          h.parts.flag.innerHTML = jollyRogerSvg(crew.slug, { size: 20 });
-          h.parts.hull.innerHTML = crew.vessel ? crewHullGlyph(crewColor(crew.slug)) : "";
+          // Real Jolly Roger where we have one; original SVG mark otherwise.
+          const flagArt = art?.flags[crew.slug];
+          h.parts.flag.innerHTML = flagArt ? artImg(flagArt, 30) : jollyRogerSvg(crew.slug, { size: 20 });
+          // The crew's real ship rides under the flag; fall back to the ink hull cue.
+          const shipArt = crew.vessel ? art?.ships[crew.vessel.slug] : undefined;
+          h.parts.hull.innerHTML = shipArt
+            ? artImg(shipArt, 26)
+            : crew.vessel
+              ? crewHullGlyph(crewColor(crew.slug))
+              : "";
           h.parts.label.textContent = crew.name;
           h.parts.label.style.color = crewColor(crew.slug);
           h.populated = true;
@@ -1292,7 +1323,17 @@ function paint(
         h.marker.setLngLat([placed.lng, placed.lat]);
         if (h.shown && h.windowOrder === placed.w.order) continue;
         if (!h.populated) {
-          h.parts.ring.textContent = c.name[0];
+          // A real portrait fills the crew-colour ring; the monogram letter is the
+          // fallback. The img is a child node, so hidePresence's textContent="" wipes
+          // it on a backward scrub — no future Warlord's face URL lingers in the DOM.
+          const portrait = art?.characters[c.slug];
+          if (portrait) {
+            h.parts.ring.innerHTML =
+              `<img src="${portrait}" alt="" draggable="false" ` +
+              `style="display:block;width:100%;height:100%;object-fit:cover;border-radius:9999px;">`;
+          } else {
+            h.parts.ring.textContent = c.name[0];
+          }
           h.parts.label.textContent = c.name;
           h.populated = true;
         }

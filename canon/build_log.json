@@ -73,6 +73,17 @@
         "4b6335f"
       ],
       "verified": true
+    },
+    {
+      "phase": "6",
+      "title": "Real art — Jolly Rogers, portraits, ships, Devil Fruits, islands",
+      "builder": "Claude Opus 4.8",
+      "harness": "Claude Code · 1M context",
+      "role": "plan + build",
+      "commits": [
+        "5bbdf47"
+      ],
+      "verified": true
     }
   ]
 }

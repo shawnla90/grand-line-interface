@@ -17,6 +17,7 @@
  */
 
 import type { World, WorldIsland } from "@/lib/canon";
+import type { Art } from "@/lib/art";
 
 const CONFIDENCE_COPY: Record<WorldIsland["confidence"], { label: string; tone: string }> = {
   canon: { label: "Confirmed by a human", tone: "text-gold" },
@@ -27,14 +28,18 @@ const CONFIDENCE_COPY: Record<WorldIsland["confidence"], { label: string; tone: 
 export default function IslandDetail({
   island,
   world,
+  art,
   onClose,
 }: {
   island: WorldIsland;
   world: World;
+  art: Art;
   onClose: () => void;
 }) {
   const conf = CONFIDENCE_COPY[island.confidence];
   const arc = world.arcs.find((a) => a.slug === island.debutArc);
+  // Only the ~24 voyage-waypoint islands carry a real image; everything else has none.
+  const image = art.islands[island.slug];
 
   return (
     <div className="dr-enter border-b border-rope/60 px-5 py-4">
@@ -60,6 +65,17 @@ export default function IslandDetail({
           ✕
         </button>
       </div>
+
+      {image && (
+        <div className="mt-3 overflow-hidden rounded-sm border border-rope/60">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={image}
+            alt={island.name}
+            className="block max-h-[120px] w-full object-cover"
+          />
+        </div>
+      )}
 
       <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2.5">
         <div>

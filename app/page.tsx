@@ -13,6 +13,7 @@
 
 import { loadCanon } from "@/lib/schema";
 import { loadBuildLog } from "@/lib/buildlog";
+import { loadArt } from "@/lib/art";
 import { buildWorld, chapterForEpisode, clampChapter, clampEpisode, type Axis } from "@/lib/canon";
 import Atlas from "@/components/Atlas";
 
@@ -52,6 +53,7 @@ export default async function Page({
   return (
     <Atlas
       world={world}
+      art={loadArt()}
       initialChapter={initialChapter}
       initialAxis={initialAxis}
       buildLog={loadBuildLog()}

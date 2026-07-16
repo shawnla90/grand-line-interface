@@ -32,6 +32,7 @@ import {
 } from "@/lib/canon";
 import { BRAND } from "@/config/brand";
 import type { BuildLog } from "@/lib/buildlog";
+import type { Art } from "@/lib/art";
 import WorldMap, { type Projection } from "./WorldMap";
 import ChapterDock from "./ChapterDock";
 import HeroPrompt from "./HeroPrompt";
@@ -93,6 +94,8 @@ function useSweep(target: number) {
 
 type Props = {
   world: World;
+  /** Phase 6 official art (slug -> /art/… url). Empty maps => SVG fallbacks. */
+  art: Art;
   /** null = a cold visit with no ?ch= — show the hero. */
   initialChapter: number | null;
   initialAxis: Axis;
@@ -102,7 +105,7 @@ type Props = {
 
 const DEFAULT_CHAPTER = 1044;
 
-export default function Atlas({ world, initialChapter, initialAxis, buildLog }: Props) {
+export default function Atlas({ world, art, initialChapter, initialAxis, buildLog }: Props) {
   const [chapter, setChapterRaw] = useState(initialChapter ?? DEFAULT_CHAPTER);
   const [axis, setAxis] = useState<Axis>(initialAxis);
   const [hero, setHero] = useState(initialChapter === null);
@@ -185,6 +188,7 @@ export default function Atlas({ world, initialChapter, initialAxis, buildLog }: 
       <div className="relative min-h-0 flex-1">
         <WorldMap
           world={world}
+          art={art}
           chapter={swept}
           projection={projection}
           showOffCanon={offCanon}
@@ -207,8 +211,10 @@ export default function Atlas({ world, initialChapter, initialAxis, buildLog }: 
         {!hero && (
           <aside className="gutter dr-fade absolute top-[74px] bottom-4 left-4 z-10 w-[290px] overflow-y-auto rounded-md border border-rope/70 bg-ink/88 shadow-2xl backdrop-blur">
             <Readout at={at} world={world} />
-            {island && <IslandDetail island={island} world={world} onClose={() => setSelected(null)} />}
-            <CrewRoster at={at} world={world} />
+            {island && (
+              <IslandDetail island={island} world={world} art={art} onClose={() => setSelected(null)} />
+            )}
+            <CrewRoster at={at} world={world} art={art} />
 
             <div className="px-5 py-4">
               <div className="font-mono text-[9px] uppercase tracking-[0.22em] text-muted-2">

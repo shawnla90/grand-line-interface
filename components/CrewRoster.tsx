@@ -31,9 +31,10 @@
  */
 
 import type { WorldAt, World } from "@/lib/canon";
+import type { Art } from "@/lib/art";
 import JollyRoger from "./marks/JollyRoger";
 
-export default function CrewRoster({ at, world }: { at: WorldAt; world: World }) {
+export default function CrewRoster({ at, world, art }: { at: WorldAt; world: World; art: Art }) {
   const aboard = at.crew;
   const total = world.counts.crew;
   const unverified = world.counts.crew - world.counts.crewVerified;
@@ -58,22 +59,29 @@ export default function CrewRoster({ at, world }: { at: WorldAt; world: World })
         {Array.from({ length: total }, (_, idx) => {
           const member = aboard[idx];
           const filled = member !== undefined;
+          // Only aboard members carry a portrait. An empty slot has no name and no
+          // image src in the DOM — a silhouette, not a redacted spoiler.
+          const portrait = filled ? art.characters[member.slug] : undefined;
           return (
             <div
               key={idx}
               title={filled ? `${member.name} — joined ch. ${member.joinChapter}` : "Not yet aboard"}
               className={[
-                "h-9 rounded-sm border transition-all duration-500",
+                "h-9 overflow-hidden rounded-sm border transition-all duration-500",
                 filled
                   ? "border-gold/70 bg-gold/15 shadow-[0_0_12px_-2px_rgba(227,176,75,.5)]"
                   : "border-rope/70 bg-hull/40",
               ].join(" ")}
             >
-              {filled && (
-                <div className="flex h-full items-center justify-center font-mono text-[10px] font-medium text-gold-2">
-                  {member.name.slice(0, 1)}
-                </div>
-              )}
+              {filled &&
+                (portrait ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={portrait} alt={member.name} className="h-full w-full object-cover" />
+                ) : (
+                  <div className="flex h-full items-center justify-center font-mono text-[10px] font-medium text-gold-2">
+                    {member.name.slice(0, 1)}
+                  </div>
+                ))}
             </div>
           );
         })}
@@ -81,8 +89,18 @@ export default function CrewRoster({ at, world }: { at: WorldAt; world: World })
 
       <ul className="mt-3 space-y-1">
         {aboard.map((m) => (
-          <li key={m.slug} className="dr-enter flex items-baseline justify-between gap-2">
-            <span className="truncate text-[12px] text-parchment">{m.name}</span>
+          <li key={m.slug} className="dr-enter flex items-center justify-between gap-2">
+            <span className="flex min-w-0 items-center gap-1.5">
+              {art.characters[m.slug] && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={art.characters[m.slug]}
+                  alt=""
+                  className="h-4 w-4 shrink-0 rounded-full object-cover ring-1 ring-gold/40"
+                />
+              )}
+              <span className="truncate text-[12px] text-parchment">{m.name}</span>
+            </span>
             <span className="tnum shrink-0 font-mono text-[10px] text-muted-2">ch. {m.joinChapter}</span>
           </li>
         ))}

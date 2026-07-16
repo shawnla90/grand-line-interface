@@ -46,7 +46,8 @@ export default function Attribution({ world, buildLog }: { world: World; buildLo
               {i < BRAND.legal.sources.length - 1 ? " and " : ""}
             </span>
           ))}
-          . Wiki facts used under CC&#8209;BY&#8209;SA&nbsp;3.0; no article prose is reproduced.
+          . Wiki facts used under CC&#8209;BY&#8209;SA&nbsp;3.0; no article prose is reproduced.{" "}
+          {BRAND.legal.artwork}
         </p>
 
         <p className="tnum shrink-0 font-mono text-muted-2/80">

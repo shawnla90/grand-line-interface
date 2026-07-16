@@ -25,11 +25,18 @@ export const BRAND = {
     unofficial:
       "An unofficial, non-commercial fan reference work. Not affiliated with, endorsed by, or licensed by the rights holders.",
     copyright: "“One Piece” is © Eiichiro Oda / Shueisha / Toei Animation.",
+    /**
+     * Phase 6 added official artwork (portraits, Jolly Rogers, ships, Devil Fruits,
+     * island images). It is NOT original and NOT MIT — this line says so out loud,
+     * the same way a derived pin refuses to look human-confirmed.
+     */
+    artwork:
+      "Character portraits, Jolly Rogers, ships, Devil Fruits and location images are official artwork © the rights holders, used as attributed fan reference and excluded from this project’s open-source code license.",
     sources: [
       {
         label: "One Piece Fandom",
         href: "https://onepiece.fandom.com",
-        note: "structured facts only (chapter/episode ranges, island debuts) — CC-BY-SA 3.0. No article prose is reproduced.",
+        note: "structured facts (chapter/episode ranges, island debuts) under CC-BY-SA 3.0, and official artwork as attributed fan reference. No article prose is reproduced.",
       },
       {
         label: "api-onepiece.com",
