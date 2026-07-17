@@ -84,7 +84,32 @@ export type GlbLayerOptions = {
    * that is 2.5MB away.
    */
   onReady?: () => void;
+  /**
+   * PER-NODE GATING — the spoiler contract reaching inside the model.
+   *
+   * A model is not one thing. `totto-land` is 35 islands in one file, 14 of them
+   * withheld because nobody has verified when they are revealed;
+   * `mary-geoise-red-line` carries the Red Line's lower ports, which a
+   * chapter-142 reader must not see. So the whole-model chapter gate is not
+   * enough, and the asset track says so: "A GLB node is never rendered before its
+   * component gate", enforced by reading `component_id`, `reveal_chapter`,
+   * `gate_confidence` and `default_hidden` out of glTF node extras.
+   *
+   * The predicate is the CALLER'S, not ours — this file still knows nothing about
+   * chapters, and that boundary is what lets it draw the next island without
+   * being edited. We only walk the tree and flip `.visible`.
+   *
+   * Re-evaluated on every chapter change, not just at load: scrubbing backwards
+   * has to re-fog, and geometry already on the GPU is exactly where a naive
+   * implementation forgets that.
+   *
+   * Returning `true` for a node you cannot identify is how this leaks. Default to
+   * hiding.
+   */
+  nodeVisible?: (extras: Record<string, unknown>, nodeName: string) => boolean;
 };
+
+type Gated = { obj: THREE.Object3D; extras: Record<string, unknown>; name: string };
 
 type Loaded = {
   three: typeof THREE;
@@ -93,17 +118,31 @@ type Loaded = {
   camera: THREE.Camera;
   group: THREE.Group;
   materials: THREE.Material[];
+  /** Every node carrying extras, collected once so re-gating is a short loop. */
+  gated: Gated[];
 };
 
 export type GlbLayer = CustomLayerInterface & {
   /** True once the bytes are on the GPU. Lets the caller cross-fade honestly. */
   ready: () => boolean;
+  /**
+   * Re-run `nodeVisible` over every tagged node. The caller calls this when the
+   * chapter moves — including BACKWARDS, which is the direction that leaks if you
+   * only gate at load.
+   */
+  regate: () => void;
 };
 
 export function createGlbLayer(opts: GlbLayerOptions): GlbLayer {
   let map: MlMap | null = null;
   let g: Loaded | null = null;
   let disposed = false;
+
+  /** Walk the tagged nodes and let the caller's predicate decide each one. */
+  function applyGates(): void {
+    if (!g || !opts.nodeVisible) return;
+    for (const n of g.gated) n.obj.visible = opts.nodeVisible(n.extras, n.name);
+  }
 
   return {
     id: opts.id,
@@ -113,6 +152,7 @@ export function createGlbLayer(opts: GlbLayerOptions): GlbLayer {
     renderingMode: "3d",
 
     ready: () => !!g,
+    regate: applyGates,
 
     onAdd(m: MlMap, gl: WebGLRenderingContext | WebGL2RenderingContext) {
       map = m;
@@ -167,9 +207,14 @@ export function createGlbLayer(opts: GlbLayerOptions): GlbLayer {
         group.add(model);
 
         // Collect materials once so the per-frame opacity write is a short loop
-        // over 8 rather than a traverse of 64 nodes every frame.
+        // over 8 rather than a traverse of 64 nodes every frame. Same pass
+        // collects the gated nodes, so re-gating never traverses either.
         const materials: THREE.Material[] = [];
+        const gated: Gated[] = [];
         model.traverse((o) => {
+          const extras = (o.userData ?? {}) as Record<string, unknown>;
+          // three.js parks glTF `extras` on userData verbatim.
+          if (Object.keys(extras).length) gated.push({ obj: o, extras, name: o.name });
           const mesh = o as THREE.Mesh;
           if (!mesh.isMesh) return;
           for (const mat of Array.isArray(mesh.material) ? mesh.material : [mesh.material]) {
@@ -183,7 +228,11 @@ export function createGlbLayer(opts: GlbLayerOptions): GlbLayer {
           }
         });
 
-        g = { three, renderer, scene, camera, group, materials };
+        g = { three, renderer, scene, camera, group, materials, gated };
+        // Gate BEFORE the first frame. `loadAsync` resolving means the geometry
+        // is ready to draw, so anything withheld must be hidden now and not on
+        // the next tick — one frame of a spoiler is a spoiler.
+        applyGates();
         opts.onReady?.();
         m.triggerRepaint();
       })();
