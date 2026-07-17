@@ -229,13 +229,13 @@
     },
     {
       "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
-      "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+      "sha256": "f4c2b67c9e98606bf4eb297266c81e11f0b3f1c7ef70ba7f6032906a68dd36eb",
       "ownership": "atlas_read_only"
     },
     {
-      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/visual-topology-overrides.json",
+      "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/research/visual-topology-overrides.json",
       "sha256": "80a84eab06ed3db3b53470e279ff1dcc7667b072c8f78d92610e9a11d58e9102",
-      "ownership": "asset_workspace"
+      "ownership": "atlas_read_only"
     }
   ]
 }

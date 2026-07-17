@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "id": "water-7-sea-train-network",
+  "source_blend": "/Users/shawnos.ai/dead-reckoning/blender-assets/source/water-7-sea-train-network.blend",
+  "runtime_glb": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/water-7-sea-train-network.glb",
+  "model_units": "stylized Blender units; runtime scale is defined by the integration manifest",
+  "coordinate_system": "glTF 2.0 Y-up; Blender exporter converts from Z-up",
+  "export": {
+    "exporter": "Blender built-in glTF 2.0 exporter",
+    "compression": "none; optional gltfpack binary is not installed",
+    "animations": false,
+    "preview_proxy_excluded": true,
+    "curves_converted_to_mesh": [
+      "Schematic rail Water7 to Enies -0.13",
+      "Schematic rail Water7 to Enies +0.13",
+      "Schematic rail Water7 to Pucci -0.13",
+      "Schematic rail Water7 to Pucci +0.13",
+      "Schematic rail Water7 to StPoplar -0.13",
+      "Schematic rail Water7 to StPoplar +0.13",
+      "Schematic rail Water7 to SanFaldo -0.13",
+      "Schematic rail Water7 to SanFaldo +0.13"
+    ],
+    "excluded_objects": [
+      "Review Camera",
+      "Key",
+      "Fill",
+      "Rim",
+      "Water 7 label",
+      "Enies label",
+      "Pucci label",
+      "St. Poplar label",
+      "San Faldo label",
+      "Shift Station label",
+      "Aqua Laguna wave wall"
+    ]
+  },
+  "stats": {
+    "objects": 87,
+    "vertices_input": 5248,
+    "triangles_input": 10024,
+    "materials": 10,
+    "bounds_blender": {
+      "min": [
+        -18.0,
+        -12.0,
+        -1.05
+      ],
+      "max": [
+        18.0,
+        12.0,
+        4.95
+      ]
+    },
+    "bytes": 482576
+  },
+  "build": {
+    "blender": "4.5.3 LTS",
+    "glb_sha256": "2379c74b093c8ca3d668baf4b5459bf4effb779f5d2fde08b057c8e2311e2eee",
+    "glb_header": {
+      "magic": "glTF",
+      "version": 2,
+      "declared_length": 482576
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "id": "mary-geoise-red-line",
+  "source_blend": "/Users/shawnos.ai/dead-reckoning/blender-assets/source/mary-geoise-red-line.blend",
+  "runtime_glb": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/mary-geoise-red-line.glb",
+  "model_units": "stylized Blender units; runtime scale is defined by the integration manifest",
+  "coordinate_system": "glTF 2.0 Y-up; Blender exporter converts from Z-up",
+  "export": {
+    "exporter": "Blender built-in glTF 2.0 exporter",
+    "compression": "none; optional gltfpack binary is not installed",
+    "animations": false,
+    "preview_proxy_excluded": true,
+    "curves_converted_to_mesh": [
+      "Bondola cable red-port-paradise -1.4",
+      "Bondola cable red-port-paradise +1.4",
+      "Bondola cable red-port-new-world -1.4",
+      "Bondola cable red-port-new-world +1.4"
+    ],
+    "excluded_objects": [
+      "Runtime Camera",
+      "Key",
+      "Fill",
+      "Rim"
+    ]
+  },
+  "stats": {
+    "objects": 63,
+    "vertices_input": 1428,
+    "triangles_input": 2556,
+    "materials": 5,
+    "bounds_blender": {
+      "min": [
+        -5.6,
+        -5.99,
+        -0.05
+      ],
+      "max": [
+        5.6,
+        5.99,
+        14.45
+      ]
+    },
+    "bytes": 151100
+  },
+  "build": {
+    "blender": "4.5.3 LTS",
+    "glb_sha256": "7520b16f70f95ddb3c8e8d4c95c3feb2612556287e7acdc4884102deb9800b23",
+    "glb_header": {
+      "magic": "glTF",
+      "version": 2,
+      "declared_length": 151100
+    }
+  }
+}

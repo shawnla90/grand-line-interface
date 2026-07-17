@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "fish-man-island",
+  "source_blend": "/Users/shawnos.ai/dead-reckoning/blender-assets/source/fish-man-island.blend",
+  "runtime_glb": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/fish-man-island.glb",
+  "model_units": "stylized Blender units; runtime scale is defined by the integration manifest",
+  "coordinate_system": "glTF 2.0 Y-up; Blender exporter converts from Z-up",
+  "export": {
+    "exporter": "Blender built-in glTF 2.0 exporter",
+    "compression": "none; optional gltfpack binary is not installed",
+    "animations": false,
+    "preview_proxy_excluded": true,
+    "curves_converted_to_mesh": [
+      "Inner coastline glow",
+      "Bubble dome rim",
+      "Bubble dome rim highlight",
+      "Caustic 01",
+      "Caustic 02",
+      "Caustic 03",
+      "Caustic 04",
+      "Caustic 05",
+      "Caustic 06",
+      "Caustic 07",
+      "Caustic 08",
+      "Caustic 09",
+      "Caustic 10",
+      "Caustic 11",
+      "Caustic 12",
+      "Caustic 13",
+      "Caustic 14",
+      "Caustic 15",
+      "Caustic 16",
+      "Caustic 17",
+      "Caustic 18"
+    ],
+    "excluded_objects": [
+      "Top-down plate camera",
+      "Surface light",
+      "Kingdom fill"
+    ]
+  },
+  "stats": {
+    "objects": 175,
+    "vertices_input": 16045,
+    "triangles_input": 30834,
+    "materials": 14,
+    "bounds_blender": {
+      "min": [
+        -2.52688,
+        -1.710053,
+        -0.46
+      ],
+      "max": [
+        2.500534,
+        1.815302,
+        1.14
+      ]
+    },
+    "bytes": 1461208
+  },
+  "build": {
+    "blender": "4.5.3 LTS",
+    "glb_sha256": "a0c039459ac84b21ef09e74dbde6b17d25e51869cdc379724b51ac3c4351d0fc",
+    "glb_header": {
+      "magic": "glTF",
+      "version": 2,
+      "declared_length": 1461208
+    }
+  }
+}

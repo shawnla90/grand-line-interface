@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "totto-land",
+  "source_blend": "/Users/shawnos.ai/dead-reckoning/blender-assets/source/totto-land.blend",
+  "runtime_glb": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/totto-land.glb",
+  "model_units": "stylized Blender units; runtime scale is defined by the integration manifest",
+  "coordinate_system": "glTF 2.0 Y-up; Blender exporter converts from Z-up",
+  "export": {
+    "exporter": "Blender built-in glTF 2.0 exporter",
+    "compression": "none; optional gltfpack binary is not installed",
+    "animations": false,
+    "preview_proxy_excluded": true,
+    "curves_converted_to_mesh": [],
+    "excluded_objects": [
+      "Runtime Camera",
+      "Key",
+      "Fill",
+      "Rim"
+    ]
+  },
+  "stats": {
+    "objects": 99,
+    "vertices_input": 3420,
+    "triangles_input": 6444,
+    "materials": 9,
+    "bounds_blender": {
+      "min": [
+        -15.0,
+        -12.0,
+        -0.775
+      ],
+      "max": [
+        15.0,
+        12.0,
+        4.12
+      ]
+    },
+    "bytes": 500216
+  },
+  "build": {
+    "blender": "4.5.3 LTS",
+    "glb_sha256": "dcfe66c1fedfcf08c74cc3cd84d547247d18e447b7e123f49a258f2347935e3d",
+    "glb_header": {
+      "magic": "glTF",
+      "version": 2,
+      "declared_length": 500216
+    }
+  }
+}

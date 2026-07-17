@@ -10,10 +10,10 @@ chat history.
 1. `WORKFLOW.md` — production states and ownership boundary.
 2. `queue/asset-requests.json` — current maturity and the next step per asset.
 3. `contracts/narrative-scene-index.json` — eleven chapter-aware place systems.
-4. `manifests/runtime-3d.json` — the only current runtime-ready 3D pilots.
-5. `manifests/narrative-blockouts.json` — editable studies that must not ship yet.
-6. `handoffs/CLAUDE_CODE_RUNTIME_3D.md` — Skypiea runtime pilot instructions.
-7. `handoffs/CLAUDE_CODE_NARRATIVE_SYSTEMS.md` — future event/place/route registry.
+4. `manifests/runtime-3d.json` — all 16 validated runtime models and fallbacks.
+5. `manifests/narrative-blockouts.json` — eleven loader-ready narrative scenes.
+6. `handoffs/CLAUDE_CODE_RUNTIME_3D.md` — the next app integration batch.
+7. `handoffs/CLAUDE_CODE_NARRATIVE_SYSTEMS.md` — chapter/node/route safety rules.
 8. `provenance/sol-session-usage.json` — measured Codex Sol workload snapshot.
 
 ## Path translation
@@ -44,7 +44,8 @@ Blender merely to review the work.
 ## Integration rule
 
 Only queue entries marked `integration_ready` may be copied into the app's
-runtime public assets. A `scene_3d` or `3d_blockout_not_final_art` entry is
-reviewable source—not permission to integrate it. MapLibre continues to own
-chapter gates, geographic anchors, route state, and object lifetime.
-
+runtime public assets. Sixteen entries now meet that gate: the two transition
+pilots plus fourteen scene systems. The old Whole Cake, Impel Down, and
+three-grove Sabaody files remain `study_only` and must never be loaded as final
+geography. MapLibre continues to own chapter gates, geographic anchors, route
+state, node visibility, and object lifetime.

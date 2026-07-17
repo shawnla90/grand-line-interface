@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "conomi-arlong-park",
+  "source_blend": "/Users/shawnos.ai/dead-reckoning/blender-assets/source/conomi-arlong-park.blend",
+  "runtime_glb": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/conomi-arlong-park.glb",
+  "model_units": "stylized Blender units; runtime scale is defined by the integration manifest",
+  "coordinate_system": "glTF 2.0 Y-up; Blender exporter converts from Z-up",
+  "export": {
+    "exporter": "Blender built-in glTF 2.0 exporter",
+    "compression": "none; optional gltfpack binary is not installed",
+    "animations": false,
+    "preview_proxy_excluded": true,
+    "curves_converted_to_mesh": [
+      "Conomi boat route"
+    ],
+    "excluded_objects": [
+      "Runtime Camera",
+      "Key",
+      "Fill",
+      "Rim"
+    ]
+  },
+  "stats": {
+    "objects": 37,
+    "vertices_input": 1327,
+    "triangles_input": 2498,
+    "materials": 7,
+    "bounds_blender": {
+      "min": [
+        -13.799999,
+        -9.6,
+        -0.675
+      ],
+      "max": [
+        13.799999,
+        9.6,
+        4.41
+      ]
+    },
+    "bytes": 165604
+  },
+  "build": {
+    "blender": "4.5.3 LTS",
+    "glb_sha256": "dcabbaa737dc417f6b553dd0a45ea1bf5b9a2ead1dd31af2f2c7b21f5d0b58fe",
+    "glb_header": {
+      "magic": "glTF",
+      "version": 2,
+      "declared_length": 165604
+    }
+  }
+}

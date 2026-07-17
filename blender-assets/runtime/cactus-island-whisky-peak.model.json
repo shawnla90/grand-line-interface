@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "cactus-island-whisky-peak",
+  "source_blend": "/Users/shawnos.ai/dead-reckoning/blender-assets/source/cactus-island-whisky-peak.blend",
+  "runtime_glb": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/cactus-island-whisky-peak.glb",
+  "model_units": "stylized Blender units; runtime scale is defined by the integration manifest",
+  "coordinate_system": "glTF 2.0 Y-up; Blender exporter converts from Z-up",
+  "export": {
+    "exporter": "Blender built-in glTF 2.0 exporter",
+    "compression": "none; optional gltfpack binary is not installed",
+    "animations": false,
+    "preview_proxy_excluded": true,
+    "curves_converted_to_mesh": [
+      "Arrival river"
+    ],
+    "excluded_objects": [
+      "Runtime Camera",
+      "Key",
+      "Fill",
+      "Rim"
+    ]
+  },
+  "stats": {
+    "objects": 107,
+    "vertices_input": 1560,
+    "triangles_input": 2680,
+    "materials": 6,
+    "bounds_blender": {
+      "min": [
+        -8.5,
+        -6.63,
+        -0.4
+      ],
+      "max": [
+        8.5,
+        6.63,
+        3.61
+      ]
+    },
+    "bytes": 235740
+  },
+  "build": {
+    "blender": "4.5.3 LTS",
+    "glb_sha256": "7ce0a09dfdf9bae165774f08538ef27301ce93121ae5325eb27d3b529cf56cb2",
+    "glb_header": {
+      "magic": "glTF",
+      "version": 2,
+      "declared_length": 235740
+    }
+  }
+}

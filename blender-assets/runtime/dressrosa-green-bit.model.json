@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "dressrosa-green-bit",
+  "source_blend": "/Users/shawnos.ai/dead-reckoning/blender-assets/source/dressrosa-green-bit.blend",
+  "runtime_glb": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/dressrosa-green-bit.glb",
+  "model_units": "stylized Blender units; runtime scale is defined by the integration manifest",
+  "coordinate_system": "glTF 2.0 Y-up; Blender exporter converts from Z-up",
+  "export": {
+    "exporter": "Blender built-in glTF 2.0 exporter",
+    "compression": "none; optional gltfpack binary is not installed",
+    "animations": false,
+    "preview_proxy_excluded": true,
+    "curves_converted_to_mesh": [],
+    "excluded_objects": [
+      "Runtime Camera",
+      "Key",
+      "Fill",
+      "Rim"
+    ]
+  },
+  "stats": {
+    "objects": 88,
+    "vertices_input": 2666,
+    "triangles_input": 4984,
+    "materials": 7,
+    "bounds_blender": {
+      "min": [
+        -7.665,
+        -6.986,
+        -0.63
+      ],
+      "max": [
+        7.665,
+        9.5,
+        3.7
+      ]
+    },
+    "bytes": 422344
+  },
+  "build": {
+    "blender": "4.5.3 LTS",
+    "glb_sha256": "cdfbb668d1696005107d72fd8d8cdd0094e7eff0733e69045d2c010221f6937f",
+    "glb_header": {
+      "magic": "glTF",
+      "version": 2,
+      "declared_length": 422344
+    }
+  }
+}

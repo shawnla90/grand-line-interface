@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "arabasta-kingdom",
+  "source_blend": "/Users/shawnos.ai/dead-reckoning/blender-assets/source/arabasta-kingdom.blend",
+  "runtime_glb": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/arabasta-kingdom.glb",
+  "model_units": "stylized Blender units; runtime scale is defined by the integration manifest",
+  "coordinate_system": "glTF 2.0 Y-up; Blender exporter converts from Z-up",
+  "export": {
+    "exporter": "Blender built-in glTF 2.0 exporter",
+    "compression": "none; optional gltfpack binary is not installed",
+    "animations": false,
+    "preview_proxy_excluded": true,
+    "curves_converted_to_mesh": [
+      "Sandora River"
+    ],
+    "excluded_objects": [
+      "Runtime Camera",
+      "Key",
+      "Fill",
+      "Rim"
+    ]
+  },
+  "stats": {
+    "objects": 93,
+    "vertices_input": 2272,
+    "triangles_input": 4160,
+    "materials": 7,
+    "bounds_blender": {
+      "min": [
+        -11.88,
+        -8.856,
+        -0.425
+      ],
+      "max": [
+        11.88,
+        8.856,
+        4.45
+      ]
+    },
+    "bytes": 284188
+  },
+  "build": {
+    "blender": "4.5.3 LTS",
+    "glb_sha256": "c48a3846bac61028ce0fb55fc2479b1cf950d4028ac7177754a4fd94c70dac2d",
+    "glb_header": {
+      "magic": "glTF",
+      "version": 2,
+      "declared_length": 284188
+    }
+  }
+}

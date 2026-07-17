@@ -17,12 +17,25 @@ topology overlay without writing to the app repository.
 editable SVG system sketches plus PNG previews. These are topology briefs for
 Blender, not runtime map art.
 
-The v2 narrative batch adds eleven chapter-aware systems, including Loguetown,
-Dressrosa/Green Bit, Zou/Zunesha, Sabaody's 79-grove network, the full Skypiea
-sky system, and the Water 7 Sea Train network. Six priority system boards live
-in `sketches/intake/`. Loguetown and Water 7 also have editable Blender
-blockouts in `source/` and review renders in `renders/blockouts/`; they are not
-runtime exports yet.
+The v2 narrative batch contains eleven chapter-aware, loader-ready runtime
+blockouts, including Loguetown, Dressrosa/Green Bit, Zou/Zunesha, Sabaody's
+79-grove network, the full Skypiea sky system, and the Water 7 Sea Train
+network. Every scene has an editable `.blend`, transparent fallback, GLB,
+sidecar, contract, and queue entry. They are deliberately described as runtime
+blockouts rather than final cinematic art.
+
+`manifests/runtime-3d.json` is the complete integration boundary: 16 models,
+covering Claude's two transition pilots and the fourteen remaining scene
+systems. Rebuild/verify the new batch with:
+
+```bash
+/Users/shawnos.ai/Applications/Blender-4.5.3.app/Contents/MacOS/Blender \
+  --background --python blender-assets/scripts/build_runtime_scene_batch.py
+python3 blender-assets/scripts/build_runtime_registry.py
+python3 blender-assets/scripts/finalize_runtime_scene_batch.py
+python3 blender-assets/scripts/verify_runtime_3d.py
+python3 blender-assets/scripts/verify_priority_narrative_blockouts.py
+```
 
 ## Pilot
 

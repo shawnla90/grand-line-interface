@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "id": "skypiea-sky-system",
+  "source_blend": "/Users/shawnos.ai/dead-reckoning/blender-assets/source/skypiea-sky-system.blend",
+  "runtime_glb": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/skypiea-sky-system.glb",
+  "model_units": "stylized Blender units; runtime scale is defined by the integration manifest",
+  "coordinate_system": "glTF 2.0 Y-up; Blender exporter converts from Z-up",
+  "export": {
+    "exporter": "Blender built-in glTF 2.0 exporter",
+    "compression": "none; optional gltfpack binary is not installed",
+    "animations": false,
+    "preview_proxy_excluded": true,
+    "curves_converted_to_mesh": [],
+    "excluded_objects": [
+      "Runtime Camera",
+      "Key",
+      "Fill",
+      "Rim",
+      "Giant Jack",
+      "Belfry cloud 1",
+      "Belfry cloud 2",
+      "Belfry cloud 3",
+      "Belfry cloud 4",
+      "Belfry cloud 5",
+      "Belfry cloud 6",
+      "Belfry cloud 7",
+      "Golden Belfry"
+    ]
+  },
+  "stats": {
+    "objects": 84,
+    "vertices_input": 4094,
+    "triangles_input": 7852,
+    "materials": 6,
+    "bounds_blender": {
+      "min": [
+        -12.65,
+        -8.58,
+        -0.46
+      ],
+      "max": [
+        12.65,
+        8.58,
+        2.6
+      ]
+    },
+    "bytes": 611656
+  },
+  "build": {
+    "blender": "4.5.3 LTS",
+    "glb_sha256": "786cc12b042bbbbadbd06f7dc0c1daae05a5d074f0fc988041cc664af76fc404",
+    "glb_header": {
+      "magic": "glTF",
+      "version": 2,
+      "declared_length": 611656
+    }
+  }
+}

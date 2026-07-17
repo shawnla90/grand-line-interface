@@ -6,7 +6,7 @@
     {
       "id": "totto-land",
       "contract": "contracts/totto-land.visual.json",
-      "contract_sha256": "072ffcd674cde13d85e3ed761c4ec6912bbe34d0300ef0bf8f326054a71584d3",
+      "contract_sha256": "314206a9f19a88de2eda1273c5f1840d608f84e6ebdeb38b340c5db28f72f668",
       "sketch": "sketches/totto-land-system.svg",
       "sketch_sha256": "38e09e0b09aca4ede08e09aecf6a431a6e48208c026098013589306d1f3b4c65",
       "preview": "sketches/previews/totto-land-system.png",
@@ -16,7 +16,7 @@
     {
       "id": "world-government-tarai-system",
       "contract": "contracts/world-government-tarai-system.visual.json",
-      "contract_sha256": "5e696367d98f5616b6a4afa74f07f2a7df8b489b61a105d063363cf3f172de6e",
+      "contract_sha256": "cf0e7a3696c8a01b2176f1e13f022221e5f1370d8ec8eb303a99e5d4467095ef",
       "sketch": "sketches/world-government-tarai-system.svg",
       "sketch_sha256": "16a9ec4d35951619eff24eff59324e51a2487bc4b74c29730676d47aa76d4cb9",
       "preview": "sketches/previews/world-government-tarai-system.png",

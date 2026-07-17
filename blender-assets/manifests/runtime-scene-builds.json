@@ -1,0 +1,356 @@
+{
+  "schema_version": 1,
+  "generator": "scripts/build_runtime_scene_batch.py",
+  "definition": "loader-ready procedural runtime blockouts; not final cinematic art",
+  "assets": [
+    {
+      "id": "totto-land",
+      "blend": "source/totto-land.blend",
+      "render": "renders/runtime/totto-land.png",
+      "contract": "contracts/totto-land.visual.json",
+      "maturity": "runtime_blockout_v1",
+      "runtime_export": true,
+      "safe_full_scene_chapter": 899,
+      "layout_status": "authored_direction_when_known_unknowns_schematic",
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "component_ids": [
+        "100-island",
+        "biscuits-island",
+        "black-island",
+        "cacao-island",
+        "candy-island",
+        "cheese-island",
+        "cutlery-island",
+        "flavor-island",
+        "fruits-island",
+        "funwari-island",
+        "futoru-island",
+        "ice-island",
+        "jam-island",
+        "jelly-island",
+        "kibo-island",
+        "kimi-island",
+        "kinko-island",
+        "komugi-island",
+        "liqueur-island",
+        "loving-island",
+        "margarine-island",
+        "milenge-island",
+        "noko-island",
+        "nuts-island",
+        "package-island",
+        "piepie-island",
+        "poripori-island",
+        "potato-island",
+        "rokumitsu-island",
+        "sanshoku-island",
+        "tanega-island",
+        "topping-island",
+        "totto-land",
+        "unique-island",
+        "whole-cake-chateau",
+        "whole-cake-island",
+        "yakigashi-island"
+      ],
+      "objects": 103,
+      "blend_sha256": "7943573a6e13d04afe31e078fb146647644d1f369d7ed8592ded3710ff344a35",
+      "render_sha256": "8145a8d0183764d1cefe3212a70a3fdc6954809e30da8147792d64d4624df75f",
+      "contract_sha256": "314206a9f19a88de2eda1273c5f1840d608f84e6ebdeb38b340c5db28f72f668"
+    },
+    {
+      "id": "world-government-tarai-system",
+      "blend": "source/world-government-tarai-system.blend",
+      "render": "renders/runtime/world-government-tarai-system.png",
+      "contract": "contracts/world-government-tarai-system.visual.json",
+      "maturity": "runtime_blockout_v1",
+      "runtime_export": true,
+      "safe_full_scene_chapter": 525,
+      "layout_status": "relational_triangle_exact_bearings_unknown",
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "component_ids": [
+        "enies-lobby",
+        "gates-of-justice",
+        "impel-down",
+        "marineford",
+        "tarai-current"
+      ],
+      "objects": 35,
+      "blend_sha256": "442d5d0c21f3a1d060da30ecf863c6dbb470d6581a11f0ef6028c2be7537ec6e",
+      "render_sha256": "0fab0f7d024bb93588633c6f26903d10a4a06c5cdd020560fba6303f7e5edad6",
+      "contract_sha256": "cf0e7a3696c8a01b2176f1e13f022221e5f1370d8ec8eb303a99e5d4467095ef"
+    },
+    {
+      "id": "conomi-arlong-park",
+      "blend": "source/conomi-arlong-park.blend",
+      "render": "renders/runtime/conomi-arlong-park.png",
+      "contract": "contracts/conomi-arlong-park.visual.json",
+      "maturity": "runtime_blockout_v1",
+      "runtime_export": true,
+      "safe_full_scene_chapter": 70,
+      "layout_status": "contract_relationship_graph",
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "component_ids": [
+        "arlong-map-room",
+        "arlong-park",
+        "cocoyasi-village",
+        "conomi-islands"
+      ],
+      "objects": 41,
+      "blend_sha256": "279ce8ade6c3e012659494654d84efc51a5eee7b487e32984e608636ef7e6c6e",
+      "render_sha256": "6197d3a61b85052e4ddf400e9342a74d0449a31adcfb76840b15f77fbf6cebf7",
+      "contract_sha256": "b45ea94b28902ec1f945641373d66bfbf970c63802fbb80c84db4dd655f60643"
+    },
+    {
+      "id": "arabasta-kingdom",
+      "blend": "source/arabasta-kingdom.blend",
+      "render": "renders/runtime/arabasta-kingdom.png",
+      "contract": "contracts/arabasta-kingdom.visual.json",
+      "maturity": "runtime_blockout_v1",
+      "runtime_export": true,
+      "safe_full_scene_chapter": 202,
+      "layout_status": "contract_relationship_graph",
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "component_ids": [
+        "alubarna",
+        "alubarna-clock-tower",
+        "alubarna-palace",
+        "arabasta-kingdom",
+        "erumalu",
+        "katorea",
+        "nanohana",
+        "rainbase",
+        "sandora-desert",
+        "sandora-river",
+        "tomb-of-the-kings",
+        "yuba"
+      ],
+      "objects": 97,
+      "blend_sha256": "d9723ef3f7eff2e9a1634679ce9f77ec6dda2f0e67bba2dd35911b47a05457da",
+      "render_sha256": "ebdc7ee906c62f6c05103462d6027b21af091e8f2aba03b48c73926a9ed08202",
+      "contract_sha256": "21293fc764e346892f8156371e768517474ef8b1274ea8ccf34fcea71e0f03df"
+    },
+    {
+      "id": "cactus-island-whisky-peak",
+      "blend": "source/cactus-island-whisky-peak.blend",
+      "render": "renders/runtime/cactus-island-whisky-peak.png",
+      "contract": "contracts/cactus-island-whisky-peak.visual.json",
+      "maturity": "runtime_blockout_v1",
+      "runtime_export": true,
+      "safe_full_scene_chapter": 107,
+      "layout_status": "contract_relationship_graph",
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "component_ids": [
+        "cactus-island",
+        "sapoten-graveyard",
+        "whisky-peak",
+        "whisky-peak-river-dock"
+      ],
+      "objects": 111,
+      "blend_sha256": "0caacc65a2ee5ab92d5fc9d272df006ddebb58111102905283935f928287b7ab",
+      "render_sha256": "eef94e0da61474bc681278fda3f08953ecdb2c06de5920c5f84908359fc6c70f",
+      "contract_sha256": "644a962d504c33ad7fa6505f03c09f29ef946a58ec2315de443860857a41a6af"
+    },
+    {
+      "id": "dressrosa-green-bit",
+      "blend": "source/dressrosa-green-bit.blend",
+      "render": "renders/runtime/dressrosa-green-bit.png",
+      "contract": "contracts/dressrosa-green-bit.visual.json",
+      "maturity": "runtime_blockout_v1",
+      "runtime_export": true,
+      "safe_full_scene_chapter": 738,
+      "layout_status": "contract_relationship_graph",
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "component_ids": [
+        "corrida-colosseum",
+        "dressrosa",
+        "dressrosa-royal-palace",
+        "flower-hill",
+        "green-bit",
+        "green-bit-iron-bridge",
+        "kings-plateau",
+        "smile-factory"
+      ],
+      "objects": 92,
+      "blend_sha256": "50972ec0aa42615c085326fac6d9626cebea0920c9d00214c9d3a9a079105db8",
+      "render_sha256": "b6f80e823ac7c3f01268bc163b786292683a979893ce8c2b9fa55edd8490f7a0",
+      "contract_sha256": "a66ed38220e0f957085c0ced73ae23364861a30f3a9929c224411acbd27f3cdd"
+    },
+    {
+      "id": "zou-zunesha",
+      "blend": "source/zou-zunesha.blend",
+      "render": "renders/runtime/zou-zunesha.png",
+      "contract": "contracts/zou-zunesha.visual.json",
+      "maturity": "runtime_blockout_v1",
+      "runtime_export": true,
+      "safe_full_scene_chapter": 804,
+      "layout_status": "moving_entity_local_scene",
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "component_ids": [
+        "mokomo-dukedom",
+        "zou",
+        "zunesha",
+        "zunesha-legs",
+        "zunesha-trunk"
+      ],
+      "objects": 83,
+      "blend_sha256": "3e9844e12fee9db39c365095e5cafd065c1bf1bb11acd0d0d95fe160cf095e50",
+      "render_sha256": "06383614c07404c3c7890c85e3932bdd3b25c871b0d19bfb89a2a429f201bc26",
+      "contract_sha256": "5c0c691b9686d3e9b30d421ca3dae5204799ce912108e602c8c8cf543f65ab0c"
+    },
+    {
+      "id": "amazon-lily",
+      "blend": "source/amazon-lily.blend",
+      "render": "renders/runtime/amazon-lily.png",
+      "contract": "contracts/amazon-lily.visual.json",
+      "maturity": "runtime_blockout_v1",
+      "runtime_export": true,
+      "safe_full_scene_chapter": 514,
+      "layout_status": "contract_relationship_graph",
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "component_ids": [
+        "amazon-lily",
+        "amazon-lily-mountain-bowl",
+        "kuja-palace",
+        "kuja-village"
+      ],
+      "objects": 134,
+      "blend_sha256": "80aeebdbb4766764826d4da4eb89de2c73aa5d4b958555d0013964ec14c3e839",
+      "render_sha256": "572ddf01ccd1f2262dc6cbe23255f3db02394774685697118607bb54346228b5",
+      "contract_sha256": "2dca6b3d94cd22f55ab13f8b6093ee5228facd1df0c9aa600f11b7df06f43a79"
+    },
+    {
+      "id": "mary-geoise-red-line",
+      "blend": "source/mary-geoise-red-line.blend",
+      "render": "renders/runtime/mary-geoise-red-line.png",
+      "contract": "contracts/mary-geoise-red-line.visual.json",
+      "maturity": "runtime_blockout_v1",
+      "runtime_export": true,
+      "safe_full_scene_chapter": 142,
+      "layout_status": "vertical_cross_section",
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "component_ids": [
+        "bondola-route",
+        "mary-geoise",
+        "pangaea-castle",
+        "red-line-summit",
+        "red-port-new-world",
+        "red-port-paradise"
+      ],
+      "objects": 67,
+      "blend_sha256": "83067d24f11f740131337ccf219121fefaf5887bc292466d507a39a4a0b5f085",
+      "render_sha256": "6c01dc445f84f89ffa8e86978dfdd226b7a251476a09a3b0ceaf4e3169472150",
+      "contract_sha256": "23fb3492fa139be072ab90a4fd08306730f7719a8403f3edd856b4342b4cb6ed"
+    },
+    {
+      "id": "sabaody-grove-network",
+      "blend": "source/sabaody-grove-network.blend",
+      "render": "renders/runtime/sabaody-grove-network.png",
+      "contract": "contracts/sabaody-grove-network.visual.json",
+      "maturity": "runtime_blockout_v1",
+      "runtime_export": true,
+      "safe_full_scene_chapter": 501,
+      "layout_status": "relationship_schematic_not_canon_bearings",
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "component_ids": [
+        "human-auctioning-house",
+        "sabaody-bubble-layer",
+        "sabaody-park",
+        "sabaody-root-bridges",
+        "yarukiman-mangroves"
+      ],
+      "objects": 348,
+      "blend_sha256": "bf13c6a25635fe5f708b985bf41576a471b6510f1c7fa8cf8513b6a5aa910296",
+      "render_sha256": "0aeff66f2134136b7ca9ed5868f5f1874dd2fd1d929785cccb6e6b0accd5ed40",
+      "contract_sha256": "0f2bf30fe9d36a9aa7d20421d3c9d222e63521368ca69b7d2fdee3b42e999708"
+    },
+    {
+      "id": "skypiea-sky-system",
+      "blend": "source/skypiea-sky-system.blend",
+      "render": "renders/runtime/skypiea-sky-system.png",
+      "contract": "contracts/skypiea-sky-system.visual.json",
+      "maturity": "runtime_blockout_v1",
+      "runtime_export": true,
+      "safe_full_scene_chapter": 268,
+      "layout_status": "layered_sky_local_scene",
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "component_ids": [
+        "angel-island",
+        "giant-jack",
+        "golden-belfry-cloud",
+        "shandora",
+        "upper-yard",
+        "white-white-sea"
+      ],
+      "objects": 97,
+      "blend_sha256": "f56416e307fada28e6212b4f0b8ad24de88f5662b741372d7cf02c6dc0316740",
+      "render_sha256": "b27e69b1aa5dbaa4c7863b5f10a05be4bd08a1af54d5e83aa0462533669f1d23",
+      "contract_sha256": "eb59c400e1a51e8e630dd94039d7f02b0c53db3f67719c7cd1656a2b00ac82a2"
+    }
+  ]
+}

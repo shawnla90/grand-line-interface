@@ -6,8 +6,12 @@
     {
       "id": "fish-man-island",
       "kind": "island_plate",
-      "state": "scene_3d",
-      "next": "runtime_glb_if_selected"
+      "state": "integration_ready",
+      "next": "claude_code_runtime_loader",
+      "maturity": "runtime_3d_blockout_from_approved_plate",
+      "runtime_glb": "runtime/fish-man-island.glb",
+      "fallback": "renders/fish-man-island.png",
+      "runtime_manifest": "manifests/runtime-3d.json"
     },
     {
       "id": "whole-cake-island",
@@ -48,118 +52,168 @@
     {
       "id": "totto-land",
       "kind": "archipelago_system",
-      "state": "system_sketch",
+      "state": "integration_ready",
       "contract": "contracts/totto-land.visual.json",
       "sketch": "sketches/totto-land-system.svg",
-      "next": "component_silhouette_and_material_proofs"
+      "next": "claude_code_runtime_loader",
+      "maturity": "runtime_blockout_v1",
+      "runtime_glb": "runtime/totto-land.glb",
+      "fallback": "renders/runtime/totto-land.png",
+      "runtime_manifest": "manifests/runtime-3d.json"
     },
     {
       "id": "world-government-tarai-system",
       "kind": "connected_world_structure",
-      "state": "system_sketch",
+      "state": "integration_ready",
       "contract": "contracts/world-government-tarai-system.visual.json",
       "sketch": "sketches/world-government-tarai-system.svg",
-      "next": "component_cross_sections_then_2_5d_system_proof"
+      "next": "claude_code_runtime_loader",
+      "maturity": "runtime_blockout_v1",
+      "runtime_glb": "runtime/world-government-tarai-system.glb",
+      "fallback": "renders/runtime/world-government-tarai-system.png",
+      "runtime_manifest": "manifests/runtime-3d.json"
     },
     {
       "id": "conomi-arlong-park",
       "kind": "nested_landmark_compound",
       "priority": 2,
-      "state": "visual_contract",
+      "state": "integration_ready",
       "contract": "contracts/conomi-arlong-park.visual.json",
-      "next": "pagoda_headquarters_and_map_room_blockout"
+      "next": "claude_code_runtime_loader",
+      "maturity": "runtime_blockout_v1",
+      "runtime_glb": "runtime/conomi-arlong-park.glb",
+      "fallback": "renders/runtime/conomi-arlong-park.png",
+      "runtime_manifest": "manifests/runtime-3d.json"
     },
     {
       "id": "arabasta-kingdom",
       "kind": "kingdom_region_system",
       "priority": 2,
-      "state": "visual_contract",
+      "state": "integration_ready",
       "contract": "contracts/arabasta-kingdom.visual.json",
-      "next": "kingdom_route_board_then_alubarna_event_blockout"
+      "next": "claude_code_runtime_loader",
+      "maturity": "runtime_blockout_v1",
+      "runtime_glb": "runtime/arabasta-kingdom.glb",
+      "fallback": "renders/runtime/arabasta-kingdom.png",
+      "runtime_manifest": "manifests/runtime-3d.json"
     },
     {
       "id": "cactus-island-whisky-peak",
       "kind": "island_town_system",
       "priority": 3,
-      "state": "visual_contract",
+      "state": "integration_ready",
       "contract": "contracts/cactus-island-whisky-peak.visual.json",
-      "next": "grave_mountain_silhouette_study"
+      "next": "claude_code_runtime_loader",
+      "maturity": "runtime_blockout_v1",
+      "runtime_glb": "runtime/cactus-island-whisky-peak.glb",
+      "fallback": "renders/runtime/cactus-island-whisky-peak.png",
+      "runtime_manifest": "manifests/runtime-3d.json"
     },
     {
       "id": "dressrosa-green-bit",
       "kind": "island_bridge_system",
       "priority": 1,
-      "state": "system_sketch",
+      "state": "integration_ready",
       "contract": "contracts/dressrosa-green-bit.visual.json",
       "sketch": "sketches/intake/dressrosa-green-bit.svg",
-      "next": "pre_pica_and_post_pica_blender_blockouts"
+      "next": "claude_code_runtime_loader",
+      "maturity": "runtime_blockout_v1",
+      "runtime_glb": "runtime/dressrosa-green-bit.glb",
+      "fallback": "renders/runtime/dressrosa-green-bit.png",
+      "runtime_manifest": "manifests/runtime-3d.json"
     },
     {
       "id": "zou-zunesha",
       "kind": "moving_world_entity",
       "priority": 1,
-      "state": "system_sketch",
+      "state": "integration_ready",
       "contract": "contracts/zou-zunesha.visual.json",
       "sketch": "sketches/intake/zou-zunesha.svg",
-      "next": "rigged_scale_blockout_and_moving_anchor_test"
+      "next": "claude_code_runtime_loader",
+      "maturity": "runtime_blockout_v1",
+      "runtime_glb": "runtime/zou-zunesha.glb",
+      "fallback": "renders/runtime/zou-zunesha.png",
+      "runtime_manifest": "manifests/runtime-3d.json"
     },
     {
       "id": "amazon-lily",
       "kind": "mountain_city_system",
       "priority": 2,
-      "state": "visual_contract",
+      "state": "integration_ready",
       "contract": "contracts/amazon-lily.visual.json",
-      "next": "mountain_exterior_to_city_bowl_reveal_sketch"
+      "next": "claude_code_runtime_loader",
+      "maturity": "runtime_blockout_v1",
+      "runtime_glb": "runtime/amazon-lily.glb",
+      "fallback": "renders/runtime/amazon-lily.png",
+      "runtime_manifest": "manifests/runtime-3d.json"
     },
     {
       "id": "mary-geoise-red-line",
       "kind": "vertical_political_world_structure",
       "priority": 2,
-      "state": "visual_contract",
+      "state": "integration_ready",
       "contract": "contracts/mary-geoise-red-line.visual.json",
-      "next": "spoiler_safe_red_line_cross_section"
+      "next": "claude_code_runtime_loader",
+      "maturity": "runtime_blockout_v1",
+      "runtime_glb": "runtime/mary-geoise-red-line.glb",
+      "fallback": "renders/runtime/mary-geoise-red-line.png",
+      "runtime_manifest": "manifests/runtime-3d.json"
     },
     {
       "id": "sabaody-grove-network",
       "kind": "mangrove_grove_network",
       "priority": 1,
-      "state": "system_sketch",
+      "state": "integration_ready",
       "contract": "contracts/sabaody-grove-network.visual.json",
       "sketch": "sketches/intake/sabaody-grove-network.svg",
-      "next": "numbered_grove_graph_and_root_kit_blockout"
+      "next": "claude_code_runtime_loader",
+      "maturity": "runtime_blockout_v1",
+      "runtime_glb": "runtime/sabaody-grove-network.glb",
+      "fallback": "renders/runtime/sabaody-grove-network.png",
+      "runtime_manifest": "manifests/runtime-3d.json"
     },
     {
       "id": "skypiea-sky-system",
       "kind": "sky_archipelago_system",
       "priority": 1,
-      "state": "system_sketch",
+      "state": "integration_ready",
       "contract": "contracts/skypiea-sky-system.visual.json",
       "sketch": "sketches/intake/skypiea-sky-system.svg",
-      "next": "cloud_sea_upper_yard_and_giant_jack_blockout"
+      "next": "claude_code_runtime_loader",
+      "maturity": "runtime_blockout_v1",
+      "runtime_glb": "runtime/skypiea-sky-system.glb",
+      "fallback": "renders/runtime/skypiea-sky-system.png",
+      "runtime_manifest": "manifests/runtime-3d.json"
     },
     {
       "id": "loguetown-roger-execution",
       "kind": "city_landmark_event_system",
       "priority": 1,
-      "state": "scene_3d",
-      "maturity": "3d_blockout_not_final_art",
+      "state": "integration_ready",
+      "maturity": "runtime_blockout_v1",
       "contract": "contracts/loguetown-roger-execution.visual.json",
       "sketch": "sketches/intake/loguetown-roger-execution.svg",
       "blend": "source/loguetown-roger-execution.blend",
       "review_render": "renders/blockouts/loguetown-roger-execution.png",
-      "next": "panel_accuracy_review_then_architecture_material_and_event_camera_pass"
+      "next": "claude_code_runtime_loader",
+      "runtime_glb": "runtime/loguetown-roger-execution.glb",
+      "fallback": "renders/runtime/loguetown-roger-execution.png",
+      "runtime_manifest": "manifests/runtime-3d.json"
     },
     {
       "id": "water-7-sea-train-network",
       "kind": "sea_train_route_network",
       "priority": 1,
-      "state": "scene_3d",
-      "maturity": "3d_blockout_not_final_art",
+      "state": "integration_ready",
+      "maturity": "runtime_blockout_v1",
       "contract": "contracts/water-7-sea-train-network.visual.json",
       "sketch": "sketches/intake/water-7-sea-train-network.svg",
       "blend": "source/water-7-sea-train-network.blend",
       "review_render": "renders/blockouts/water-7-sea-train-network.png",
-      "next": "route_panel_verification_then_maplibre_line_proof_and_train_detail_pass"
+      "next": "claude_code_runtime_loader",
+      "runtime_glb": "runtime/water-7-sea-train-network.glb",
+      "fallback": "renders/runtime/water-7-sea-train-network.png",
+      "runtime_manifest": "manifests/runtime-3d.json"
     }
   ]
 }

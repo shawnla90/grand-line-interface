@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "world-government-tarai-system",
+  "source_blend": "/Users/shawnos.ai/dead-reckoning/blender-assets/source/world-government-tarai-system.blend",
+  "runtime_glb": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/world-government-tarai-system.glb",
+  "model_units": "stylized Blender units; runtime scale is defined by the integration manifest",
+  "coordinate_system": "glTF 2.0 Y-up; Blender exporter converts from Z-up",
+  "export": {
+    "exporter": "Blender built-in glTF 2.0 exporter",
+    "compression": "none; optional gltfpack binary is not installed",
+    "animations": false,
+    "preview_proxy_excluded": true,
+    "curves_converted_to_mesh": [
+      "Tarai current ring 3.0",
+      "Tarai current ring 4.2",
+      "Tarai current ring 5.4"
+    ],
+    "excluded_objects": [
+      "Runtime Camera",
+      "Key",
+      "Fill",
+      "Rim"
+    ]
+  },
+  "stats": {
+    "objects": 31,
+    "vertices_input": 5122,
+    "triangles_input": 10140,
+    "materials": 6,
+    "bounds_blender": {
+      "min": [
+        -13.0,
+        -10.400001,
+        -5.92
+      ],
+      "max": [
+        13.0,
+        10.400001,
+        3.0
+      ]
+    },
+    "bytes": 357848
+  },
+  "build": {
+    "blender": "4.5.3 LTS",
+    "glb_sha256": "6390e85b70663102c3356877e817591fd7fbcc9130576e369e606add7fac76a9",
+    "glb_header": {
+      "magic": "glTF",
+      "version": 2,
+      "declared_length": 357848
+    }
+  }
+}

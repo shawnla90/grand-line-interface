@@ -83,3 +83,19 @@ python3 /Users/shawnos.ai/dead-reckoning-blender-assets/scripts/verify_priority_
 - The atlas owns chapter gating, camera state, model lifetime, and ship motion.
 - Blender's ship proxy is preview-only and is excluded from GLB exports.
 - Models unload when hidden; they are never fetched before their chapter gate.
+
+## Current completed batch
+
+The runtime registry now contains 16 validated models: two vertical transitions
+and fourteen scene systems. The non-transition batch uses
+`NEXT_PUBLIC_RUNTIME_3D_ASSETS`; the existing pilots retain
+`NEXT_PUBLIC_RUNTIME_3D_TRANSITIONS`.
+
+Runtime scenes carry `component_id`, `reveal_chapter`, `gate_confidence`, and
+`default_hidden` in glTF node extras. The app loader must apply those gates
+before first render. A complete PNG fallback is gated by
+`safe_full_scene_chapter`; it cannot reveal or hide individual nodes.
+
+The runtime files are optimized procedural blockouts intended for map-scale
+closeups. A future material/detail pass may improve them without changing the
+manifest or loader contract.
