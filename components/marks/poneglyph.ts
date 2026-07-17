@@ -20,6 +20,8 @@
 
 import type { PoneglyphKind } from "@/lib/canon";
 
+export type { PoneglyphKind };
+
 /** The cube-blue every non-Road stone wears. Kept under its old name — it is
  *  also the category ink (the legend chip counts stones of every kind). */
 export const PONEGLYPH_INK = "#5f7d9c";

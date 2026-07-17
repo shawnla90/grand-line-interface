@@ -43,7 +43,7 @@ import {
   type ResolvedFocus,
 } from "@/lib/lenses";
 import type { Focus, Lens, PresenceLens } from "@/lib/lenses";
-import { poneglyphSvg, PONEGLYPH_INK } from "./marks/poneglyph";
+import { poneglyphSvg, poneglyphInk, PONEGLYPH_INK, ROAD_PONEGLYPH_INK, type PoneglyphKind } from "./marks/poneglyph";
 import { globeProven } from "@/config/projection-overrides";
 import { createGlbLayer, type GlbLayer } from "./glb-layer";
 import { OrbitControls } from "./OrbitControls";
@@ -587,7 +587,7 @@ function makeBaratieElement(): { el: HTMLDivElement; wrap: HTMLDivElement } {
   return { el, wrap };
 }
 
-function makePoneglyphElement(): {
+function makePoneglyphElement(kind: PoneglyphKind = "historical"): {
   el: HTMLDivElement;
   stone: HTMLDivElement;
   label: HTMLDivElement;
@@ -604,7 +604,7 @@ function makePoneglyphElement(): {
   stone.style.width = "18px";
   stone.style.height = "21px";
   stone.style.filter = "drop-shadow(0 1px 3px rgba(0,0,0,0.8))";
-  stone.innerHTML = poneglyphSvg(18);
+  stone.innerHTML = poneglyphSvg(18, kind);
 
   const label = document.createElement("div");
   label.style.marginTop = "1px";
@@ -1801,7 +1801,9 @@ export default function WorldMap({
           source: "poneglyphs",
           paint: {
             "circle-radius": ["interpolate", ["linear"], ["zoom"], 0, 1.5, 3, 2.2],
-            "circle-color": PONEGLYPH_INK,
+            // The Road stones glint in their own aged crimson — the reader is
+            // counting a set of four, and the map should read like the story.
+            "circle-color": ["match", ["get", "kind"], "road", ROAD_PONEGLYPH_INK, PONEGLYPH_INK] as never,
             "circle-opacity": ["interpolate", ["linear"], ["zoom"], 2.2, 0.9, 3.4, 0],
             "circle-stroke-color": C.parchment,
             "circle-stroke-width": 0.5,
@@ -2084,7 +2086,7 @@ export default function WorldMap({
 
     const poneglyphPool = poneglyphMarks.current;
     for (const pg of world.poneglyphs) {
-      const p = makePoneglyphElement();
+      const p = makePoneglyphElement(pg.kind);
       const marker = new maplibregl.Marker({ element: p.el, opacityWhenCovered: "0.1" })
         .setLngLat([0, 0])
         .addTo(m);
@@ -2412,7 +2414,7 @@ export default function WorldMap({
         >
           {hoveredStone ? (
             <div className="min-w-[168px] max-w-[210px] rounded-md border border-rope bg-ink/95 px-2.5 py-1.5 shadow-2xl backdrop-blur">
-              <div className="font-mono text-[8px] uppercase tracking-[0.2em]" style={{ color: PONEGLYPH_INK }}>
+              <div className="font-mono text-[8px] uppercase tracking-[0.2em]" style={{ color: poneglyphInk(hoveredStone.kind as PoneglyphKind) }}>
                 {hoveredStone.kind === "road"
                   ? "Road Poneglyph"
                   : hoveredStone.kind === "instructional"
