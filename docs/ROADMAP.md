@@ -33,8 +33,9 @@ page. `scripts/check_canon.py`, `check_scenes.py`, `check_buildlog.py` and
 
 ## In flight
 
-- **Camera & scale:** archipelago un-crush → island directory → orbit controls (plan `linked-frolicking-toucan`).
-- **Assets:** Zoro/Mihawk 2.5D pilot (pose sheets keyed; atlas packaging + composited review render pending). Not promoted to `integration_ready` until the visual proof passes.
+- **Camera & scale:** the ~90s journey cinematic shipped (`aa02516`) but Shawn reports it doesn't track the voyage line and glitches at Skypiea — that session is FIXING it now and owns `lib/journey.ts`/`Atlas.tsx`/`WorldMap.tsx`/`ChapterDock.tsx` until the fix lands. NOTE for that fix: 2.5D story cards are vertical billboards — the journey camera must PITCH (~50–60°) during close dwells or they render edge-on (invisible).
+- **Assets:** Codex superseded the rigid pilot with the full **East Blue 2.5D pack** (14 illustrated atlases, 12 runtime-ready scenes) — now INTEGRATED app-side (`d94eaf3`): signed sync pipeline, deterministic evaluator, sim-layer/sim-models hosts, 9-check + 12-audit battery, ch-51 proof PASSED on the real host. Codex may set `integration_ready: true` (see `data/review/east-blue-2d-integration-report.md`). Flag `NEXT_PUBLIC_EAST_BLUE_2D_SIMULATIONS` default OFF; dev proof stage at `/dev/sim-proof`.
+- **Deferred on the journey fix** (specs in `data/review/east-blue-2d-integration-report.md`): the ~3-line WorldMap `syncSimulations` wiring; journey MOMENT stops (120s run, 5 East Blue beats with facts from `world.events`); `journeyFocus` camera damping; the `?record=1` MediaRecorder button (user-approved; map-only capture caveat — DOM markers incl. the ship don't reach canvas).
 - **Asset-track requests outstanding** (from `data/review/asset-track-report.md`): add `projection_support` to unlock 14 models; fix 3 refused models (`arabasta-kingdom`, `water-7`, `skypiea-sky-system`); resolve the Mary Geoise gate contradictions; verify Wano's reveal beats.
 - **Canon & lore (this plan):**
   - **Phase 1 — master ledger.** This file + `scripts/verification_queue.py` → `data/review/verification-queue.md` (275 pending claims at first run) + README roadmap refresh.
