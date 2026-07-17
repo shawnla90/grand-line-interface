@@ -843,6 +843,67 @@ def geo_artifacts_fresh(doc):
     return f"silhouettes + terrain both built from inputs {want[:12]}"
 
 
+@check("entry_slugs_routable")
+def entry_slugs_routable(doc):
+    """The slugs the entry routes key on. A page is a URL, and a URL that moves
+    or collides is worse than one that does not exist.
+
+    fruit_slug is authored (canon/fruit_reveals.json) rather than slugified at
+    runtime, because `slug` on those rows is the CHARACTER's — "buggy" — and a
+    runtime slugify would silently put him at /fruit/buggy. Two rows MAY share a
+    fruit_slug: the Mera Mera no Mi belongs to Ace and then to Sabo, because a
+    devil fruit returns to the world when its user dies. That is one fruit with
+    two users, which is what a fruit page is FOR — so the assertion is not
+    uniqueness, it is that rows sharing a slug agree about the fruit.
+    """
+    reveals = []
+    for e in doc["presence"]["crews"]:
+        for m in e.get("members", []):
+            if m.get("fruit"):
+                reveals.append((m["slug"], m["fruit"]))
+    for e in doc["presence"]["characters"]:
+        if e.get("fruit"):
+            reveals.append((e["slug"], e["fruit"]))
+
+    by_slug: dict[str, list] = {}
+    for who, f in reveals:
+        assert f.get("fruit_slug"), f"{who}: fruit reveal carries no fruit_slug"
+        assert re.fullmatch(r"[a-z0-9-]+", f["fruit_slug"]), (
+            f"{who}: fruit_slug {f['fruit_slug']!r} is not URL-safe"
+        )
+        by_slug.setdefault(f["fruit_slug"], []).append((who, f))
+    for fs, rows in by_slug.items():
+        names = {f["fruit_name"] for _, f in rows}
+        types = {f["fruit_type"] for _, f in rows}
+        assert len(names) == 1 and len(types) == 1, (
+            f"fruit_slug {fs!r} is shared by rows that disagree about the fruit: "
+            f"{names} / {types}. Two users of ONE fruit is fine; two fruits under one "
+            f"slug is a collision."
+        )
+
+    # crew slugs: the /crew/[slug] key
+    crew_slugs = [c["slug"] for c in doc["presence"]["crews"]]
+    assert len(crew_slugs) == len(set(crew_slugs)), "duplicate presence crew slug"
+    for cs in crew_slugs:
+        assert re.fullmatch(r"[a-z0-9-]+", cs), f"crew slug {cs!r} is not URL-safe"
+
+    # duplicate character slugs resolve to the lowest id — harmless ONLY while the
+    # pair agrees on the gate, because the gate is what the route gets wrong.
+    by_char: dict[str, list] = {}
+    for c in doc["characters"]:
+        by_char.setdefault(c["slug"], []).append(c)
+    dupes = {k: v for k, v in by_char.items() if len(v) > 1}
+    for slug, rows in dupes.items():
+        gates = {c["debut_chapter"] for c in rows}
+        assert len(gates) == 1, (
+            f"character slug {slug!r} is shared by {len(rows)} rows that disagree on "
+            f"debut_chapter ({gates}). /character/{slug} resolves to the lowest id, so "
+            f"the gate would depend on which row won. Disambiguate the slug."
+        )
+    return (f"{len(by_slug)} fruit slugs across {len(reveals)} reveals, {len(crew_slugs)} crew "
+            f"slugs, {len(dupes)} duplicate character slugs (all agreeing on their gate)")
+
+
 CHECKS = [
     jinbe_test, crew_joins_are_human, straw_hats_complete,
     islands_have_positions, islands_fog_key, no_mojibake,
@@ -852,7 +913,7 @@ CHECKS = [
     presence_windows_forward, presence_spoiler_and_roster,
     fruit_reveals_gated, haki_users_gated, biomes_valid,
     bounty_history_gated, wiki_debut_is_not_join, statuses_gated, poneglyphs_gated,
-    geo_artifacts_fresh,
+    geo_artifacts_fresh, entry_slugs_routable,
 ]
 
 

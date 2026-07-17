@@ -1033,6 +1033,9 @@ def main() -> int:
             raise die(f"duplicate fruit reveal for {r['slug']!r} — one fruit per entity.", r)
         ent["fruit"] = {
             "fruit_id": r.get("fruit_id"),
+            # the FRUIT's slug — the /fruit/[slug] key. r["slug"] is the
+            # CHARACTER's; conflating them puts Buggy at /fruit/buggy.
+            "fruit_slug": r["fruit_slug"],
             "fruit_name": r["fruit_name"],
             "fruit_type": r["fruit_type"],
             "from_chapter": r["from_chapter"],

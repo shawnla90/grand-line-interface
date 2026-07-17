@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-17T03:00:55.214514+00:00",
+    "generated_at": "2026-07-17T05:00:16.008989+00:00",
     "generator": "scripts/normalize.py",
     "source_manifest_sha": "be7af436b558b373ae1e6f28cc5007ef89153529fb274cb7efd1a47b4f1ef25a",
     "sources": {
@@ -51231,6 +51231,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": 82,
+              "fruit_slug": "mera-mera-no-mi",
               "fruit_name": "Mera Mera no Mi",
               "fruit_type": "Logia",
               "from_chapter": 159,
@@ -51257,6 +51258,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": 35,
+              "fruit_slug": "gura-gura-no-mi",
               "fruit_name": "Gura Gura no Mi",
               "fruit_type": "Paramecia",
               "from_chapter": 552,
@@ -51290,6 +51292,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": 206,
+              "fruit_slug": "tori-tori-no-mi-model-phoenix",
               "fruit_name": "Tori Tori no Mi, Model: Phoenix",
               "fruit_type": "Mythical Zoan",
               "from_chapter": 553,
@@ -51345,6 +51348,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": 60,
+              "fruit_slug": "soru-soru-no-mi",
               "fruit_name": "Soru Soru no Mi",
               "fruit_type": "Paramecia",
               "from_chapter": 835,
@@ -51378,6 +51382,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": 69,
+              "fruit_slug": "mochi-mochi-no-mi",
               "fruit_name": "Mochi Mochi no Mi",
               "fruit_type": "Paramecia",
               "from_chapter": 863,
@@ -51452,6 +51457,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": 122,
+              "fruit_slug": "uo-uo-no-mi-model-seiryu",
               "fruit_name": "Uo Uo no Mi, Model: Seiryu",
               "fruit_type": "Mythical Zoan",
               "from_chapter": 1047,
@@ -51485,6 +51491,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": 114,
+              "fruit_slug": "ryu-ryu-no-mi-model-pteranodon",
               "fruit_name": "Ryu Ryu no Mi, Model: Pteranodon",
               "fruit_type": "Ancient Zoan",
               "from_chapter": 1025,
@@ -51528,6 +51535,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": 85,
+              "fruit_slug": "yami-yami-no-mi",
               "fruit_name": "Yami Yami no Mi",
               "fruit_type": "Logia",
               "from_chapter": 440,
@@ -51595,6 +51603,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": 26,
+              "fruit_slug": "jiki-jiki-no-mi",
               "fruit_name": "Jiki Jiki no Mi",
               "fruit_type": "Paramecia",
               "from_chapter": 504,
@@ -51621,6 +51630,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": null,
+              "fruit_slug": "smile-failed",
               "fruit_name": "SMILE (failed)",
               "fruit_type": "SMILE",
               "from_chapter": 943,
@@ -51688,6 +51698,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": 27,
+              "fruit_slug": "ope-ope-no-mi",
               "fruit_name": "Ope Ope no Mi",
               "fruit_type": "Paramecia",
               "from_chapter": 662,
@@ -51842,6 +51853,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": 2,
+              "fruit_slug": "bara-bara-no-mi",
               "fruit_name": "Bara Bara no Mi",
               "fruit_type": "Paramecia",
               "from_chapter": 11,
@@ -52044,6 +52056,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": null,
+              "fruit_slug": "hana-hana-no-mi",
               "fruit_name": "Hana Hana no Mi",
               "fruit_type": "Paramecia",
               "from_chapter": 117,
@@ -52096,6 +52109,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": null,
+              "fruit_slug": "noro-noro-no-mi",
               "fruit_name": "Noro Noro no Mi",
               "fruit_type": "Paramecia",
               "from_chapter": 307,
@@ -52136,6 +52150,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": null,
+              "fruit_slug": "neko-neko-no-mi-model-leopard",
               "fruit_name": "Neko Neko no Mi, Model: Leopard",
               "fruit_type": "Zoan",
               "from_chapter": 383,
@@ -52162,6 +52177,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": null,
+              "fruit_slug": "ushi-ushi-no-mi-model-giraffe",
               "fruit_name": "Ushi Ushi no Mi, Model: Giraffe",
               "fruit_type": "Zoan",
               "from_chapter": 383,
@@ -52180,6 +52196,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": null,
+              "fruit_slug": "awa-awa-no-mi",
               "fruit_name": "Awa Awa no Mi",
               "fruit_type": "Paramecia",
               "from_chapter": 396,
@@ -52232,6 +52249,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": null,
+              "fruit_slug": "horo-horo-no-mi",
               "fruit_name": "Horo Horo no Mi",
               "fruit_type": "Paramecia",
               "from_chapter": 444,
@@ -52250,6 +52268,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": null,
+              "fruit_slug": "suke-suke-no-mi",
               "fruit_name": "Suke Suke no Mi",
               "fruit_type": "Paramecia",
               "from_chapter": 445,
@@ -52354,6 +52373,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": null,
+              "fruit_slug": "numa-numa-no-mi",
               "fruit_name": "Numa Numa no Mi",
               "fruit_type": "Paramecia",
               "from_chapter": 600,
@@ -52438,6 +52458,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": null,
+              "fruit_slug": "wara-wara-no-mi",
               "fruit_name": "Wara Wara no Mi",
               "fruit_type": "Paramecia",
               "from_chapter": 509,
@@ -52574,6 +52595,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": null,
+              "fruit_slug": "shiro-shiro-no-mi",
               "fruit_name": "Shiro Shiro no Mi",
               "fruit_type": "Paramecia",
               "from_chapter": 509,
@@ -52634,6 +52656,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": null,
+              "fruit_slug": "ryu-ryu-no-mi-model-allosaurus",
               "fruit_name": "Ryu Ryu no Mi, Model: Allosaurus",
               "fruit_type": "Ancient Zoan",
               "from_chapter": 676,
@@ -52694,6 +52717,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": null,
+              "fruit_slug": "bari-bari-no-mi",
               "fruit_name": "Bari Bari no Mi",
               "fruit_type": "Paramecia",
               "from_chapter": 706,
@@ -52798,6 +52822,7 @@
             "verified": false,
             "fruit": {
               "fruit_id": null,
+              "fruit_slug": "horu-horu-no-mi",
               "fruit_name": "Horu Horu no Mi",
               "fruit_type": "Paramecia",
               "from_chapter": 537,
@@ -52916,6 +52941,7 @@
         ],
         "fruit": {
           "fruit_id": 81,
+          "fruit_slug": "suna-suna-no-mi",
           "fruit_name": "Suna Suna no Mi",
           "fruit_type": "Logia",
           "from_chapter": 155,
@@ -52958,6 +52984,7 @@
         ],
         "fruit": {
           "fruit_id": 14,
+          "fruit_slug": "ito-ito-no-mi",
           "fruit_name": "Ito Ito no Mi",
           "fruit_type": "Paramecia",
           "from_chapter": 723,
@@ -53027,6 +53054,7 @@
         ],
         "fruit": {
           "fruit_id": 31,
+          "fruit_slug": "mero-mero-no-mi",
           "fruit_name": "Mero Mero no Mi",
           "fruit_type": "Paramecia",
           "from_chapter": 518,
@@ -53096,6 +53124,7 @@
         ],
         "fruit": {
           "fruit_id": 22,
+          "fruit_slug": "kage-kage-no-mi",
           "fruit_name": "Kage Kage no Mi",
           "fruit_type": "Paramecia",
           "from_chapter": 455,
@@ -53162,6 +53191,7 @@
         ],
         "fruit": {
           "fruit_id": 25,
+          "fruit_slug": "nikyu-nikyu-no-mi",
           "fruit_name": "Nikyu Nikyu no Mi",
           "fruit_type": "Paramecia",
           "from_chapter": 485,
@@ -53296,6 +53326,7 @@
         ],
         "fruit": {
           "fruit_id": null,
+          "fruit_slug": "hie-hie-no-mi",
           "fruit_name": "Hie Hie no Mi",
           "fruit_type": "Logia",
           "from_chapter": 320,
@@ -53358,6 +53389,7 @@
         ],
         "fruit": {
           "fruit_id": null,
+          "fruit_slug": "pika-pika-no-mi",
           "fruit_name": "Pika Pika no Mi",
           "fruit_type": "Logia",
           "from_chapter": 506,
@@ -53408,6 +53440,7 @@
         ],
         "fruit": {
           "fruit_id": null,
+          "fruit_slug": "magu-magu-no-mi",
           "fruit_name": "Magu Magu no Mi",
           "fruit_type": "Logia",
           "from_chapter": 554,
@@ -53554,6 +53587,7 @@
         ],
         "fruit": {
           "fruit_id": null,
+          "fruit_slug": "moku-moku-no-mi",
           "fruit_name": "Moku Moku no Mi",
           "fruit_type": "Logia",
           "from_chapter": 98,
@@ -53638,6 +53672,7 @@
         ],
         "fruit": {
           "fruit_id": null,
+          "fruit_slug": "mera-mera-no-mi",
           "fruit_name": "Mera Mera no Mi",
           "fruit_type": "Logia",
           "from_chapter": 744,

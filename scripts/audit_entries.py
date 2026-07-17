@@ -169,6 +169,34 @@ def main() -> int:
         absent("ch1/katakuri: not met yet", "/character/charlotte-katakuri?ch=1",
                ["Katakuri", "Charlotte"])
 
+        print("\n  crews and fruits: no gate, no page")
+        # The AUTHORED window is the gate, and it is exact. The Blackbeard
+        # Pirates' first window opens at ch. 223 — Mock Town, Jaya, which is
+        # where the reader actually meets them. One chapter earlier they are not
+        # on the chart, and no member's debut or crew-table row can vote.
+        absent("ch222/blackbeard-pirates: one chapter before the authored window",
+               "/crew/blackbeard-pirates?ch=222", ["Blackbeard Pirates"])
+        present("ch223/blackbeard-pirates: Mock Town, and there they are",
+                "/crew/blackbeard-pirates?ch=223", "Blackbeard Pirates")
+        # An ungated crew has no page at all, at any chapter.
+        absent("ch1185/an ungated crew is never chartable",
+               "/crew/marines?ch=1185", ["Marines"])
+
+        # THE FRUIT_ID TRAP. characters[].fruit_id would list Luffy under the
+        # Nika fruit from chapter 1. The reveal table is the only gate.
+        absent("ch1100/nika: never chartable — no reveal is authored for it",
+               "/fruit/hito-hito-no-mi-nika-model?ch=1100", ["Nika", "Luffy"])
+        # Buggy's reveal is chapter 11, and it is exact.
+        absent("ch10/bara-bara-no-mi: one chapter early, and it is not there",
+               "/fruit/bara-bara-no-mi?ch=10", ["Bara Bara", "Buggy"])
+        present("ch11/bara-bara-no-mi: the reveal lands", "/fruit/bara-bara-no-mi?ch=11",
+                "Buggy")
+        # One fruit, two users across time — the reincarnation case.
+        absent("ch200/mera-mera-no-mi: Ace has it; Sabo will not for 544 chapters",
+               "/fruit/mera-mera-no-mi?ch=200", ["Sabo"])
+        present("ch800/mera-mera-no-mi: and now Sabo does",
+                "/fruit/mera-mera-no-mi?ch=800", "Sabo")
+
     finally:
         if server:
             server.terminate()

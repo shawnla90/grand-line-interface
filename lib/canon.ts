@@ -185,6 +185,8 @@ export type WorldPresenceWindow = {
  * exist in anything the client renders. source_ref/fruit_id stay server-side.
  */
 export type WorldFruitReveal = {
+  /** The fruit's own slug — /fruit/[slug]. Not the character's. */
+  slug: string;
   name: string;
   type: FruitType;
   fromChapter: number;
@@ -537,6 +539,7 @@ function toWindow(w: PresenceWindow): WorldPresenceWindow {
 function toFruit(f: FruitReveal | null): WorldFruitReveal | null {
   if (!f) return null;
   return {
+    slug: f.fruit_slug,
     name: f.fruit_name,
     type: f.fruit_type,
     fromChapter: f.from_chapter,

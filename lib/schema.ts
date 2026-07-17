@@ -404,6 +404,8 @@ export type HakiType = z.infer<typeof HakiTypeEnum>;
  */
 export const FruitReveal = z.object({
   fruit_id: z.number().int().nullable(),
+  /** The FRUIT's slug (the /fruit/[slug] key), never the character's. */
+  fruit_slug: z.string(),
   fruit_name: z.string(),
   fruit_type: FruitTypeEnum,
   from_chapter: z.number().int().positive(),

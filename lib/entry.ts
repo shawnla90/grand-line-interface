@@ -40,7 +40,11 @@
 
 import type { Canon, Character } from "./schema";
 import type { World, WorldBountyRow, WorldCrewMember, WorldIsland } from "./canon";
-import { clampChapter, clampEpisode, chapterForEpisode, episodeForChapter, isIslandFogged } from "./canon";
+import type { WorldFruitReveal } from "./canon";
+import {
+  clampChapter, clampEpisode, chapterForEpisode, episodeForChapter, isIslandFogged,
+  presenceWindowAt, statusHoldersAt,
+} from "./canon";
 
 /* -------------------------------------------------------------------------- */
 /* searchParams                                                               */
@@ -281,5 +285,133 @@ export function characterEntry(
     debutChapter: c.debut_chapter,
     sourceRef: c.source_ref,
     wikiSourceRef: c.wiki_source_ref,
+  });
+}
+
+export type CrewEntryData = {
+  slug: string;
+  name: string;
+  /** Where they are AT this chapter, or null if they are off the board. */
+  here: { islandSlug: string | null; label: string; sourceRef: string } | null;
+  vessel: { name: string; slug: string } | null;
+  members: { poster: PosterVM; fruit: WorldFruitReveal | null; haki: string[] }[];
+  statuses: string[];
+  isVoyageCrew: boolean;
+};
+
+/**
+ * A crew is chartable only if somebody AUTHORED a chapter for it.
+ *
+ * canon/crews.json has 149 rows and not one of them has a chapter or a slug —
+ * which is exactly why buildWorld drops them: an entity with no chapter cannot
+ * be fogged. The only crews with a gate are the ~32 in canon/crew_presence.json.
+ *
+ * A DERIVED gate would be worse than none. min(member debut) for the Blackbeard
+ * Pirates is ~223, because Teach debuts as a Whitebeard crewman — the crew does
+ * not exist until ~440. That gate would tell a chapter-230 reader that the
+ * Blackbeard Pirates are out there. No gate, no page.
+ */
+export function crewEntry(world: World, slug: string, ctx: ChapterCtx): Entry<CrewEntryData> {
+  const c = world.presence.crews.find((x) => x.slug === slug);
+  if (!c) return UNCHARTED;
+  // The authored gate: the first window anyone typed for this crew.
+  const first = Math.min(...c.windows.map((w) => w.fromChapter));
+  if (!Number.isFinite(first) || first > ctx.chapter) return UNCHARTED;
+
+  const w = presenceWindowAt(c.windows, ctx.chapter);
+  const members = c.members
+    .filter((m) => m.fromChapter <= ctx.chapter)
+    .map((m) => ({
+      poster: {
+        slug: m.slug,
+        name: m.name,
+        epithet: null,
+        bountyHistory: [],
+        verified: m.verified,
+        footnote: { label: "first seen", chapter: m.fromChapter },
+      } satisfies PosterVM,
+      fruit: m.fruit && m.fruit.fromChapter <= ctx.chapter ? m.fruit : null,
+      haki: m.haki.filter((h) => h.fromChapter <= ctx.chapter).map((h) => h.type),
+    }));
+
+  const statuses: string[] = [];
+  for (const kind of ["yonko", "warlord", "supernova"] as const) {
+    if (statusHoldersAt(world, kind, ctx.chapter).has(slug)) statuses.push(kind);
+  }
+
+  return charted({
+    slug: c.slug,
+    name: c.name,
+    here: w ? { islandSlug: w.islandSlug, label: w.label, sourceRef: w.sourceRef } : null,
+    vessel: c.vessel,
+    members,
+    statuses,
+    isVoyageCrew: slug === world.voyage.crewSlug,
+  });
+}
+
+export type FruitEntryData = {
+  slug: string;
+  name: string;
+  type: string;
+  description: string | null;
+  fruitId: number | null;
+  users: { slug: string; name: string; fromChapter: number; sourceRef: string }[];
+};
+
+/**
+ * THE USER LIST COMES FROM THE AUTHORED REVEALS. NEVER FROM characters[].fruit_id.
+ *
+ * That join is right there, it is one line, and it is a chapter-1044 spoiler on
+ * a chapter-1 page: Luffy's canon row says fruit_name "Hito Hito no Mi, Nika
+ * model", so `characters.filter(c => c.fruit_id === id)` would list him under
+ * the Nika fruit for a reader who has just met him in a barrel. A fruit is a
+ * STORY REVEAL with its own chapter, and only canon/fruit_reveals.json knows it.
+ *
+ * That is also why only 35 of 213 fruits are chartable. The other 178 have no
+ * reveal authored, so they have no gate, so they get no page. Coverage grows by
+ * authoring reveals, not by writing code.
+ */
+export function fruitEntry(canon: Canon, world: World, slug: string, ctx: ChapterCtx): Entry<FruitEntryData> {
+  const users: FruitEntryData["users"] = [];
+  let name: string | null = null;
+  let type: string | null = null;
+  let fruitId: number | null = null;
+
+  const carriers: { slug: string; name: string; fruit: WorldFruitReveal | null }[] = [
+    ...world.presence.crews.flatMap((c) =>
+      c.members.map((m) => ({ slug: m.slug, name: m.name, fruit: m.fruit })),
+    ),
+    ...world.presence.characters.map((c) => ({ slug: c.slug, name: c.name, fruit: c.fruit })),
+  ];
+  for (const e of carriers) {
+    if (!e.fruit || e.fruit.slug !== slug) continue;
+    // The fruit EXISTS as a chartable thing once anyone's reveal is authored…
+    name ??= e.fruit.name;
+    type ??= e.fruit.type;
+    // …but a USER only appears once THEIR reveal has been reached.
+    if (e.fruit.fromChapter <= ctx.chapter) {
+      users.push({
+        slug: e.slug,
+        name: e.name,
+        fromChapter: e.fruit.fromChapter,
+        sourceRef: "",
+      });
+    }
+  }
+  if (name === null) return UNCHARTED; // no authored reveal: not chartable at all
+  if (users.length === 0) return UNCHARTED; // authored, but not yet reached
+
+  const row = canon.fruits.find((f) => f.name === name);
+  fruitId = row?.id ?? null;
+
+  return charted({
+    slug,
+    name,
+    type: type!,
+    // The prose describes the fruit, not who has it — safe once revealed.
+    description: row?.description ?? null,
+    fruitId,
+    users: users.sort((a, b) => a.fromChapter - b.fromChapter),
   });
 }
