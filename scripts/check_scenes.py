@@ -96,47 +96,75 @@ def registry_shape(doc):
     return f"11 scenes, every entity_type known, no invented field names"
 
 
-@check("integration_gate_holds")
-def integration_gate_holds(doc):
-    """The asset gate is not ours to open. Zero v2 scenes are integration_ready,
-    and both blockouts are runtime_export:false — hard-asserted by the asset
-    track's OWN verifier. If this check ever fails, an asset became renderable
-    and somebody should decide that on purpose."""
-    ready = [s["id"] for s in doc["scenes"] if s["queue"]["state"] == "integration_ready"]
-    assert not ready, (
-        f"{len(ready)} v2 narrative scenes now claim integration_ready ({ready}). Nothing is "
-        f"wrong with that — but the app has never rendered one, so this is a decision, not a "
-        f"detail. Wire it deliberately and then relax this check."
+@check("both_locks_agree")
+def both_locks_agree(doc):
+    """The gate this used to guard is open, so guard the thing that can still go wrong.
+
+    This check used to assert that ZERO v2 scenes were integration_ready and no
+    blockout claimed runtime_export — two independent locks, neither of them ours,
+    and it told whoever tripped it to "wire it deliberately and then relax this
+    check". Codex's a7de84d opened both at once and the wiring happened, so its
+    subject no longer exists.
+
+    Inverting it to "all 11 must be ready" would be a rubber stamp: it would pass
+    for the same reason the sun comes up. What has teeth now is that the two locks
+    must agree WITH EACH OTHER, per scene. A half-open gate — queue ready while
+    the manifest still says runtime_export:false, or the reverse — is the new way
+    for this data to be wrong, it is a state the asset track can reach with one
+    hand-edit, and nothing else in the repo would notice.
+    """
+    half_open = [
+        (s["id"], s["queue"]["state"], s["blockout"]["runtime_export"])
+        for s in doc["scenes"]
+        if (s["queue"]["state"] == "integration_ready") != bool(s["blockout"]["runtime_export"])
+    ]
+    assert not half_open, (
+        f"{len(half_open)} scene(s) have one lock open and the other shut: {half_open}. "
+        f"queue.state == integration_ready and blockout.runtime_export must say the same thing; "
+        f"a scene the queue calls ready but the manifest refuses to export is a scene nobody "
+        f"decided about."
     )
-    exportable = [s["id"] for s in doc["scenes"] if s["blockout"]["runtime_export"]]
-    assert not exportable, f"blockouts now claim runtime_export: {exportable}"
-    for s in doc["scenes"]:
-        v = visibility(s, 1185)
-        assert "asset_not_ready" in v["reasons"], (
-            f"{s['id']} resolves without asset_not_ready at the last chapter"
-        )
-        assert not v["visible"], f"{s['id']} is VISIBLE — no asset backs it"
-    return "all 11 resolve asset_not_ready at every chapter; two independent locks intact"
+    ready = sum(1 for s in doc["scenes"] if s["queue"]["state"] == "integration_ready")
+    return f"both locks agree on all {len(doc['scenes'])} scenes ({ready} ready)"
 
 
-@check("replacement_join_is_not_loose")
-def replacement_join_is_not_loose(doc):
-    """skypiea-knock-up-stream IS integration_ready and is NOT skypiea-sky-system.
-    A join on a fuzzy id — or on `replaced_as_integration_unit_by` in the wrong
-    direction — would hand the sky system a readiness it does not have."""
+@check("queue_join_is_exact")
+def queue_join_is_exact(doc):
+    """The join is on an exact id, tested directly rather than through a proxy.
+
+    This used to assert `skypiea-sky-system` was NOT integration_ready, using that
+    as evidence the join had not fuzzy-matched on a `skypiea-` prefix. The sky
+    system is now genuinely ready in its own right, so the proxy went degenerate:
+    a correct exact-id join and a loose prefix join produce the identical answer,
+    and the check can no longer tell them apart. It was asserting a fact that
+    stopped being true rather than detecting a bug.
+
+    So compare the joined blob to the source, field for field. A prefix-match bug
+    would hand skypiea-sky-system the Knock-Up Stream's `kind:
+    "vertical_transition"` and `next: "claude_code_pilot"` — which this catches
+    and the old proxy never could.
+    """
     queue = {a["id"]: a for a in json.loads((ASSETS / "queue" / "asset-requests.json").read_text())["assets"]}
-    assert queue["skypiea-knock-up-stream"]["state"] == "integration_ready"
-    sky = next(s for s in doc["scenes"] if s["id"] == "skypiea-sky-system")
-    assert sky["queue"]["state"] != "integration_ready", (
-        "skypiea-sky-system inherited the Knock-Up Stream's readiness — the join is loose"
+    for s in doc["scenes"]:
+        src = queue.get(s["id"])
+        assert src, f"{s['id']} is a scene with no queue entry — the join invented it"
+        for f in ("state", "kind", "next", "replaced_as_integration_unit_by"):
+            assert s["queue"].get(f) == src.get(f), (
+                f"{s['id']}: joined queue.{f}={s['queue'].get(f)!r} but the queue says "
+                f"{src.get(f)!r} — the join is not on an exact id"
+            )
+    # The Knock-Up Stream is a runtime pilot, not a narrative scene. That it is not
+    # in this index at all is the real reason the sky system cannot inherit from it.
+    assert "skypiea-knock-up-stream" not in {s["id"] for s in doc["scenes"]}, (
+        "skypiea-knock-up-stream is a runtime pilot asset and must not appear as a v2 scene"
     )
     # the redirects the queue asks us to honour
     redirects = {a["id"]: a["replaced_as_integration_unit_by"]
                  for a in queue.values() if a.get("replaced_as_integration_unit_by")}
     ids = {s["id"] for s in doc["scenes"]}
-    for old, new in redirects.items():
+    for old, _new in redirects.items():
         assert old not in ids, f"{old!r} is a superseded study and must not be a scene"
-    return f"{len(redirects)} superseded studies excluded; the Skypiea join stays honest"
+    return f"{len(doc['scenes'])} scenes join their queue entry exactly; {len(redirects)} studies excluded"
 
 
 @check("water_7_inversion")
@@ -269,7 +297,7 @@ def artifact_is_reproducible(doc):
     return "reproduces byte-for-byte from the in-repo contracts"
 
 
-CHECKS = [registry_shape, integration_gate_holds, replacement_join_is_not_loose,
+CHECKS = [registry_shape, both_locks_agree, queue_join_is_exact,
           water_7_inversion, tiebreak_is_deterministic, unverified_gates_stay_dark,
           event_landmarks_resolve, runtime_pilot_gate, artifact_is_reproducible]
 

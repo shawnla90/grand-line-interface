@@ -2,10 +2,22 @@
  * lib/scenes.ts — the narrative scene registry. DATA ONLY.
  *
  * It loads no asset, fetches nothing, and renders nothing. It answers one
- * question — "should this scene be visible, and if not, why not" — and that is
- * deliberately the whole of it: the Blender track's handoff says to build the
- * data model and stop before wiring a blockout, because none of the 11 has
+ * question — "should this scene be visible, and if not, why not" — and that was
+ * deliberately the whole of it: the Blender track's handoff said to build the
+ * data model and stop before wiring a blockout, because none of the 11 had
  * reached `integration_ready`.
+ *
+ * ALL 11 HAVE NOW. Codex's a7de84d flipped every queue state to
+ * `integration_ready` and every blockout to `runtime_export: true`, so this file
+ * answers "visible: true, no reasons" for all of them at ch1185 — and still
+ * nothing renders a narrative scene, because the reader-facing surface was never
+ * built (see config/flags.ts). The registry is ready and unwired. That is a fine
+ * place to be, and a dangerous one to be quiet about: the first component that
+ * imports sceneVisibilityAt and believes it puts eleven scenes on the map.
+ *
+ * The Blender MODELS that do render are a different system — the runtime-3D track,
+ * components/runtime-models.ts + components/glb-layer.ts. Do not confuse the two:
+ * these 11 v2 contracts describe scenes; those 16 GLBs are assets.
  *
  * ============================================================================
  * MIRROR THE CONTRACT. INVENT NOTHING.
@@ -247,10 +259,17 @@ export function sceneVisibilityAt(scene: NarrativeScene, ctx: SceneContext): Sce
     }
   }
 
-  // THE ASSET GATE, and it is not ours to open. Two independent locks: the
-  // queue's own workflow state, and the blockout manifest's runtime_export —
-  // which the asset track's verifier HARD-ASSERTS to false. Today this fires for
-  // all 11, always, which is the correct answer and not a bug.
+  // THE ASSET GATE. Two independent locks: the queue's own workflow state and
+  // the blockout manifest's runtime_export.
+  //
+  // This comment used to end "which the asset track's verifier HARD-ASSERTS to
+  // false. Today this fires for all 11, always, which is the correct answer and
+  // not a bug." Codex's a7de84d opened both locks at once, so `asset_not_ready`
+  // is now UNREACHABLE — every scene is integration_ready and exports, and all 11
+  // resolve visible:true at ch1185 with no reasons at all. The branch stays
+  // because the locks can shut again (a withdrawn asset, a half-open gate that
+  // check_scenes::both_locks_agree now watches for), but nothing produces it
+  // today. If you are debugging why a scene is visible, it is not this.
   if (scene.queue.state !== "integration_ready" || !scene.blockout.runtime_export) {
     reasons.push("asset_not_ready");
   }
