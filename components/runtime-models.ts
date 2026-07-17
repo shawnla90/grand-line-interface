@@ -49,7 +49,7 @@ export type RuntimeAsset = {
   glb: string;
   anchor: [number, number] | null;
   chapter_beats: Record<string, unknown>;
-  component_gates: { id: string; reveal_chapter: number | null; verification?: string; default_hidden?: boolean }[];
+  component_gates: { id: string; role?: string; reveal_chapter: number | null; verification?: string; default_hidden?: boolean }[];
   withheld_variants: string[];
   projection_support: string[] | null;
   scale_policy: { mode: string; use_model_bounds?: boolean } | null;
@@ -69,6 +69,13 @@ export type RuntimeModel = {
   /** Metres per model unit, fed to glb-layer. */
   metersPerUnit: number;
   scaleMode: ScaleMode;
+  /**
+   * The archipelago spread multiplier applied to the visual_fit footprint. 1 for
+   * a single place, >1 for a many-island system (Totto Land). Recorded so the
+   * contact sheet and inspector can say "visual_fit x3.5" rather than pretend the
+   * scale was untouched.
+   */
+  spread: number;
   /** The whole-model chapter gate. See gateChapter(). */
   reveal: number;
   /** True when some component needs hiding that the model gate cannot express. */
@@ -82,9 +89,25 @@ export type RuntimeModel = {
    * everything. A leak that compiles.
    */
   nodeVisible?: (extras: Record<string, unknown>, name: string) => boolean;
+  /**
+   * Decorative backdrop nodes to hide at load. Only set for spread archipelagos,
+   * whose flat "ocean stage" plate otherwise buries the islands on a map that is
+   * already sea. Not a spoiler gate — permanent, load-time. See glb-layer.
+   */
+  hideNode?: (nodeName: string) => boolean;
   /** Why this model is not wired, or null if it is. */
   skipped: string | null;
 };
+
+/**
+ * The decorative sea/stage plate an archipelago blockout sits on. Matched on the
+ * GLTF-exported node name (spaces -> underscores). Deliberately narrow: "* ocean
+ * stage", "* sea stage", "cloud shadow" — the pure backdrops. NOT "* backdrop" or
+ * "* stage" broadly, because an event scene (Loguetown's "Execution backdrop")
+ * carries a backdrop that is the scene, not a throwaway, and this is only ever
+ * applied to spread archipelagos anyway.
+ */
+const BACKDROP_PLATE = /(?:ocean|sea)_stage|cloud_shadow/i;
 
 /** 1 degree of latitude, in metres. The map's own convention. */
 export const M_PER_DEG = 111_195;
@@ -172,8 +195,47 @@ export function makeNodeVisible(a: RuntimeAsset, getChapter: () => number) {
 }
 
 /**
- * Metres-per-unit for a fitted model: cover the island's own silhouette.
- * `footprintDeg` is the silhouette's larger horizontal span, in degrees.
+ * How many of a model's components are their own ISLANDS, not parts of one.
+ *
+ * This is the difference between Totto Land and Arlong Park, and the `role` field
+ * states it outright. Totto Land's 36 components are 1 `central_main_island` + 1
+ * `nested_landmark` + 34 `subsidiary_island` — thirty-five real islands. Arlong
+ * Park's 4 are `island_group` + `village` + `fortified_headquarters` +
+ * `narrative_landmark` — one island's parts. So counting island-role components
+ * separates the archipelago (fit to a region) from the single place (fit to one
+ * silhouette), from the data, without a hand-maintained list of which is which.
+ */
+export function islandComponentCount(a: RuntimeAsset): number {
+  return a.component_gates.filter(
+    (g) => /island|kingdom|archipelago/i.test(g.role ?? "") || g.id.endsWith("-island"),
+  ).length;
+}
+
+/** Below this, a model is one place and fits one silhouette. At/above, it spreads. */
+export const ARCHIPELAGO_MIN_ISLANDS = 5;
+/**
+ * The cap on how far an archipelago spreads. sqrt(N) is area-preserving — N
+ * islands want N times a single island's area, so sqrt(N) times its width — but
+ * for Totto Land's 35 that is ~5.9x, which swallows a hemisphere. 3.5 spreads the
+ * ~22 rendering islands into a clear cluster (~12deg for Totto) that reads as an
+ * archipelago at dive zoom without dominating the map. It is a LOOK, capped on
+ * purpose; the whole scale is `visual_fit`, not canon. Eyeball it on the contact
+ * sheet and move this number, not the geometry.
+ */
+export const ARCHIPELAGO_MAX_SPREAD = 3.5;
+
+/** The spread multiplier for a model's fit footprint. 1 for a single place. */
+export function archipelagoSpread(a: RuntimeAsset): number {
+  const n = islandComponentCount(a);
+  if (n < ARCHIPELAGO_MIN_ISLANDS) return 1;
+  return Math.min(Math.sqrt(n), ARCHIPELAGO_MAX_SPREAD);
+}
+
+/**
+ * Metres-per-unit for a fitted model: cover the island's own silhouette, times a
+ * spread factor for archipelagos (see archipelagoSpread — Totto Land's 35 islands
+ * must not share one island's footprint). `footprintDeg` is the silhouette's
+ * larger horizontal span, in degrees.
  */
 export function visualFit(a: RuntimeAsset, footprintDeg: number): number | null {
   const b = a.bounds_blender;
@@ -182,7 +244,7 @@ export function visualFit(a: RuntimeAsset, footprintDeg: number): number | null 
   const spanY = b.max[1] - b.min[1]; // Blender Y == glTF Z; both are ground-plane
   const span = Math.max(spanX, spanY);
   if (!(span > 0)) return null;
-  return (footprintDeg * M_PER_DEG) / span;
+  return (footprintDeg * archipelagoSpread(a) * M_PER_DEG) / span;
 }
 
 /**
@@ -200,7 +262,7 @@ export function buildModels(
     const skip = (why: string): void => {
       out.push({
         id: a.id, glb: a.glb, lngLat: a.anchor ?? [0, 0], metersPerUnit: NaN,
-        scaleMode: "visual_fit", reveal: Infinity, perNode: false,
+        scaleMode: "visual_fit", spread: 1, reveal: Infinity, perNode: false,
         projections: [], skipped: why,
       });
     };
@@ -240,9 +302,13 @@ export function buildModels(
     if (mercator) projections.push("mercator");
     if (!projections.length) { skip(`no supported projection (declared: ${declared.join(",") || "none"})`); continue; }
 
+    const spread = scaleMode === "visual_fit" ? archipelagoSpread(a) : 1;
     out.push({
-      id: a.id, glb: a.glb, lngLat: a.anchor, metersPerUnit, scaleMode, reveal, perNode, projections,
+      id: a.id, glb: a.glb, lngLat: a.anchor, metersPerUnit, scaleMode,
+      spread, reveal, perNode, projections,
       nodeVisible: perNode ? makeNodeVisible(a, getChapter) : undefined,
+      // Only a spread archipelago drops its ocean-stage plate onto the map's sea.
+      hideNode: spread > 1 ? (name: string) => BACKDROP_PLATE.test(name) : undefined,
       skipped: null,
     });
   }

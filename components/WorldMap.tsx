@@ -1047,6 +1047,7 @@ function syncModels(m: MLMap, ch: number) {
         metersPerUnit: model.metersPerUnit,
         opacity: () => Math.min(1, Math.max(0, (m.getZoom() - GLB_MIN_ZOOM) / (GLB_FULL_ZOOM - GLB_MIN_ZOOM))),
         nodeVisible: model.nodeVisible,
+        hideNode: model.hideNode,
         onReady: () => {
           if (process.env.NODE_ENV !== "production") {
             (window as unknown as { __glbReady?: boolean }).__glbReady = true;

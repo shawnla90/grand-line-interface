@@ -85,6 +85,18 @@ export type GlbLayerOptions = {
    */
   onReady?: () => void;
   /**
+   * Permanently hide nodes at load, by name. NOT a spoiler gate — this is for
+   * decorative backdrop geometry that fights the map, and it never re-evaluates.
+   * The archipelago blockouts ship a big flat "ocean stage" plate under the
+   * islands; on a globe that already IS the sea, that plate reads as a diorama
+   * base and buries the islands. Hiding it drops the archipelago onto the map's
+   * own ocean. Scoped to spread archipelagos only (see runtime-models) so an
+   * event scene's meaningful backdrop is never mistaken for a throwaway plate.
+   *
+   * Runs on the GLTF-exported names (spaces become underscores).
+   */
+  hideNode?: (nodeName: string) => boolean;
+  /**
    * PER-NODE GATING — the spoiler contract reaching inside the model.
    *
    * A model is not one thing. `totto-land` is 35 islands in one file, 14 of them
@@ -212,6 +224,9 @@ export function createGlbLayer(opts: GlbLayerOptions): GlbLayer {
         const materials: THREE.Material[] = [];
         const gated: Gated[] = [];
         model.traverse((o) => {
+          // Backdrop first, and permanently: a hidden plate needs no material
+          // work and never re-gates.
+          if (opts.hideNode?.(o.name)) { o.visible = false; return; }
           const extras = (o.userData ?? {}) as Record<string, unknown>;
           // three.js parks glTF `extras` on userData verbatim.
           if (Object.keys(extras).length) gated.push({ obj: o, extras, name: o.name });
@@ -229,6 +244,13 @@ export function createGlbLayer(opts: GlbLayerOptions): GlbLayer {
         });
 
         g = { three, renderer, scene, camera, group, materials, gated };
+        // Dev-only, beside window.__map: lets an audit reach into the loaded scene
+        // to inspect or toggle nodes by name (e.g. testing whether hiding a
+        // backdrop plate reads better) without shipping any of it.
+        if (process.env.NODE_ENV !== "production") {
+          const w = window as unknown as { __glbScenes?: Record<string, THREE.Object3D> };
+          (w.__glbScenes ??= {})[opts.id] = model;
+        }
         // Gate BEFORE the first frame. `loadAsync` resolving means the geometry
         // is ready to draw, so anything withheld must be hidden now and not on
         // the next tick — one frame of a spoiler is a spoiler.
