@@ -44,7 +44,8 @@ import {
 } from "@/lib/lenses";
 import type { Focus, Lens, PresenceLens } from "@/lib/lenses";
 import { poneglyphSvg, PONEGLYPH_INK } from "./marks/poneglyph";
-import { altitudeT, columnOpacity, expandSkyWaypoints, transitBase } from "./skypiea";
+import { createGlbLayer, type GlbLayer } from "./glb-layer";
+import { altitudeT, columnOpacity, expandSkyWaypoints, SKY_BASE, SKY_BODY, transitBase } from "./skypiea";
 import {
   depthT, expandDiveWaypoints, shimmerOpacity, transitBase as diveBase,
 } from "./fishman";
@@ -815,13 +816,18 @@ function presenceOrbs(
  * "opacity follows columnOpacity(ch)". They built the asset against our code, so
  * the integration is one source and one gate we already had.
  *
- * The RASTER, not the GLB. runtime_policy.default is "fallback_raster", and the
- * model upgrade needs a renderer MapLibre does not have (CustomLayerInterface +
- * three.js, ~600KB). The ascent was built deliberately without three.js and that
- * stays a decision somebody makes on purpose.
+ * BOTH the raster and the GLB, which is what `enable_glb_when` asks for: "feature
+ * flag on, close zoom, supported projection, chapter gate open". The raster is
+ * the far-zoom read and `runtime_policy.default` really is "fallback_raster" —
+ * you have to dive to reach the model. This block used to end "the RASTER, not
+ * the GLB… the ascent was built deliberately without three.js and that stays a
+ * decision somebody makes on purpose." The decision got made on purpose;
+ * components/glb-layer.ts is the renderer, and that file carries the reasoning.
  */
 const RUNTIME_3D_ON = process.env.NEXT_PUBLIC_RUNTIME_3D_TRANSITIONS === "1";
 const KNOCK_UP_RASTER = "/art/runtime/skypiea-knock-up-stream.png";
+const KNOCK_UP_GLB = "/art/runtime/skypiea-knock-up-stream.glb";
+const KNOCK_UP_GLB_ID = "knockup-glb";
 /** manifests/runtime-3d.json -> models[skypiea-knock-up-stream].integration.coordinates */
 const KNOCK_UP_CORNERS: [[number, number], [number, number], [number, number], [number, number]] = [
   [-93.804825, 17.9745],
@@ -829,6 +835,127 @@ const KNOCK_UP_CORNERS: [[number, number], [number, number], [number, number], [
   [-88.467575, 7.3],
   [-93.804825, 7.3],
 ];
+
+/**
+ * THE ASCENT STANDS UP, and this is the number that lets it.
+ *
+ * glb-layer draws in METRES (both of MapLibre's getMatrixForModel implementations
+ * scale by a metric constant), and a .glb carries no real-world scale. So a
+ * metres-per-unit has to come from somewhere, and the manifest declares none —
+ * `mode: "maplibre_image_source"` plus four corners describes the FLAT fallback,
+ * not a standing model. That absence is the trap: any number typed here would be
+ * an invention wearing a constant's clothes.
+ *
+ * It is derivable, though, from the only two SEMANTIC spatial facts the manifest
+ * states — `source_anchor` [-91.1362, 8.2] and `destination_anchor`
+ * [-91.1362, 17.0745] — which are byte-identical to our own SKY_BASE and
+ * SKY_BODY. Codex anchored the model to the constants in components/skypiea.ts.
+ * The model's Y=0 plane is "Sea eruption footprint"; its Y-max is "Skypiea land
+ * heart" and "Skypiea cloud shelf". So the model's vertical span IS the trip from
+ * one anchor to the other, and one division gives the scale.
+ *
+ * What that buys is the thing worth having. The map's ascent is a 2.5D fake:
+ * altitude is drawn as LATITUDE, which is why Skypiea's pin sits ~987km north of
+ * the eruption rather than above it. Scale the model this way and the fake and
+ * the truth agree in magnitude — the column stands exactly as tall as the map
+ * believes the sky is far. Zoom out and Skypiea is north; dive in and the stream
+ * is 987km of real vertical water. Neither read contradicts the other's numbers,
+ * and they never share a screen, because `enable_glb_when` says close zoom.
+ *
+ * REJECTED: deriving the scale from KNOCK_UP_CORNERS (it would give 127,636 m/unit
+ * and an 800km column). Those corners frame a RENDER — margins, glow, whatever the
+ * orthographic camera needed. The anchors are semantics. Framing is not.
+ */
+const KNOCK_UP_MODEL_SPAN_UNITS = 6.225642 - -0.041364; // stats.bounds_blender, Z-up (== glTF Y)
+const KNOCK_UP_M_PER_UNIT =
+  (Math.abs(SKY_BODY[1] - SKY_BASE[1]) * 111_195) / KNOCK_UP_MODEL_SPAN_UNITS; // ≈ 157,460
+
+/**
+ * "Close zoom", made a number. The raster reaches full opacity at 4.6; from there
+ * to 5.4 it hands over to the model, so the stream is one object at every zoom
+ * rather than two competing ones — the same rule the vector column already
+ * follows underneath. Below 4.6 the GLB is not merely hidden but ABSENT: no
+ * layer, no three.js chunk, no 2.5MB.
+ */
+const GLB_MIN_ZOOM = 4.6;
+const GLB_FULL_ZOOM = 5.4;
+
+/**
+ * The live model, or null when its gate is shut. Module scope because paint() is
+ * module scope and there is exactly one map; `unload_when_hidden: true` means
+ * this is null far more often than not.
+ */
+let knockUpLayer: GlbLayer | null = null;
+/** The chapter the model's per-frame opacity closure reads. paint() owns it. */
+let knockUpChapter = 1;
+
+/** 0..1 for the model: the zoom hand-off, times the beat the manifest names. */
+function glbOpacity(m: MLMap, ch: number): number {
+  const t = Math.min(1, Math.max(0, (m.getZoom() - GLB_MIN_ZOOM) / (GLB_FULL_ZOOM - GLB_MIN_ZOOM)));
+  return columnOpacity(ch) * t;
+}
+
+/**
+ * The raster's opacity, which is one expression with a conditional tail. The
+ * fade-out past GLB_MIN_ZOOM only exists once `ready()` — hand over to a model
+ * that has not loaded and a reader on a cold cache watches the stream dissolve
+ * into nothing for however long 2.5MB takes. The fallback stays until there is
+ * something to fall forward to.
+ */
+function rasterOpacity(ch: number): ExpressionSpecification {
+  const co = columnOpacity(ch);
+  return knockUpLayer?.ready()
+    ? ["interpolate", ["linear"], ["zoom"], 3.2, 0, GLB_MIN_ZOOM, co, GLB_FULL_ZOOM, 0]
+    : ["interpolate", ["linear"], ["zoom"], 3.2, 0, GLB_MIN_ZOOM, co];
+}
+
+/**
+ * `enable_glb_when: "feature flag on, close zoom, supported projection, chapter
+ * gate open"` — the manifest's four conditions, as code.
+ *
+ * Three are here: the flag at the call sites, the zoom, and columnOpacity(ch) > 0
+ * for the chapter. The fourth is absent BY VERIFICATION, not by oversight: both
+ * projections are supported. glb-layer draws through getMatrixForModel, which
+ * MapLibre implements for the globe as well as for mercator, so there is no
+ * projection to refuse. Writing `if (projection === "mercator")` here would be
+ * theatre — a check that never fires, implying a limit we do not have. The reason
+ * `projection_unsupported` still exists in lib/scenes.ts is that it is real for
+ * anything drawing through MapLibre's own shaders; it is simply not real for this.
+ *
+ * Add-on-demand IS the gate, same as the raster: a layer's onAdd is what fetches
+ * three.js and the 2.5MB model, so a chapter-1 reader at zoom 6 requests neither.
+ */
+function syncKnockUpGlb(m: MLMap, ch: number) {
+  knockUpChapter = ch;
+  const open = columnOpacity(ch) > 0 && m.getZoom() >= GLB_MIN_ZOOM;
+  const present = !!m.getLayer(KNOCK_UP_GLB_ID);
+  if (open && !present) {
+    knockUpLayer = createGlbLayer({
+      id: KNOCK_UP_GLB_ID,
+      url: KNOCK_UP_GLB,
+      // The model's own Y=0 plane is "Sea eruption footprint" — it lands on the
+      // sea at the manifest's source_anchor, which is our SKY_BASE.
+      lngLat: SKY_BASE,
+      metersPerUnit: KNOCK_UP_M_PER_UNIT,
+      opacity: () => glbOpacity(m, knockUpChapter),
+      onReady: () => {
+        // Now the hand-off is safe to write.
+        if (m.getLayer("knockup3d")) m.setPaintProperty("knockup3d", "raster-opacity", rasterOpacity(knockUpChapter));
+        // Dev-only, beside window.__map and for the same reason: "the model is
+        // on the GPU" is otherwise unobservable from a test, and audit_glb would
+        // have to sleep and hope instead of assert.
+        if (process.env.NODE_ENV !== "production") {
+          (window as unknown as { __glbReady?: boolean }).__glbReady = true;
+        }
+      },
+    });
+    m.addLayer(knockUpLayer, "voyage-glow"); // under the route: the ship rides UP it
+  } else if (!open && present) {
+    m.removeLayer(KNOCK_UP_GLB_ID);
+    knockUpLayer = null;
+    if (m.getLayer("knockup3d")) m.setPaintProperty("knockup3d", "raster-opacity", rasterOpacity(ch));
+  }
+}
 
 /**
  * The Baratie's stop on the route. It has no island record — the wiki has no
@@ -1464,6 +1591,15 @@ export default function WorldMap({
     };
     m.on("zoom", applyMarkScale);
     applyMarkScale();
+
+    // The model's gate is half chapter and half ZOOM, and paint() only runs on
+    // the chapter tween — so without this, diving toward an erupting stream would
+    // never add the layer. Cheap: a getLayer check and an early return.
+    if (RUNTIME_3D_ON) {
+      const syncGlb = () => syncKnockUpGlb(m!, chapterRef.current);
+      m.on("zoom", syncGlb);
+      m.on("moveend", syncGlb);
+    }
 
     // A drag or a user rotate is the reader taking the wheel — follow yields.
     // Programmatic camera moves (easeTo/jumpTo) fire neither with an
@@ -2150,10 +2286,11 @@ function paint(
       // Their runtime_rule: "opacity follows columnOpacity(ch)". The vector
       // column stays underneath and fades out as the render fades in, so the
       // stream is one object at every zoom rather than two competing ones.
-      m.setPaintProperty("knockup3d", "raster-opacity", [
-        "interpolate", ["linear"], ["zoom"], 3.2, 0, 4.6, columnOpacity(ch),
-      ]);
+      // Past GLB_MIN_ZOOM the raster hands over to the model by the same logic,
+      // one rung further in — but ONLY once the model can actually draw.
+      m.setPaintProperty("knockup3d", "raster-opacity", rasterOpacity(ch));
     }
+    syncKnockUpGlb(m, ch);
   }
 
   // THE DIVE SCAR, the same idea upside down. shimmerOpacity is its story beat

@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "generated_at": "2026-07-17T05:23:48.113135+00:00",
+    "generated_at": "2026-07-17T06:07:59.601506+00:00",
     "generator": "scripts/sync_runtime_assets.py",
     "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_TRANSITIONS",
-    "note": "Only queue entries marked integration_ready are copied. The GLB is NOT: runtime_policy.default is fallback_raster, and the model upgrade needs a 3D renderer MapLibre does not have.",
+    "note": "Only queue entries marked integration_ready are copied, and only when the bytes match the manifest's build.glb_sha256. Both the raster and the GLB ship: runtime_policy.default is fallback_raster, which is a real default and not a formality — enable_glb_when requires close zoom and a supported projection, so the raster is what a far-zoom reader actually sees.",
     "counts": {
       "copied": 2,
       "refused": 0
@@ -14,6 +14,29 @@
       "id": "skypiea-knock-up-stream",
       "raster": "/art/runtime/skypiea-knock-up-stream.png",
       "bytes": 542686,
+      "glb": "/art/runtime/skypiea-knock-up-stream.glb",
+      "glb_bytes": 2522360,
+      "glb_sha256": "7e54bd58a0de54a417cc8e1d36ded149267a97fd7e063c8ae216819c7215684f",
+      "source_anchor": [
+        -91.1362,
+        8.2
+      ],
+      "destination_anchor": [
+        -91.1362,
+        17.0745
+      ],
+      "bounds_blender": {
+        "min": [
+          -2.330912,
+          -2.033916,
+          -0.041364
+        ],
+        "max": [
+          2.276462,
+          1.66935,
+          6.225642
+        ]
+      },
       "mode": "maplibre_image_source",
       "coordinates": [
         [
@@ -47,12 +70,33 @@
         "unload_when_hidden": true,
         "ship_motion_owner": "atlas runtime; preview proxy is excluded from GLB"
       },
-      "source_ref": "blender-assets/renders/skypiea-knock-up-stream.png"
+      "source_ref": "blender-assets/renders/skypiea-knock-up-stream.png",
+      "glb_source_ref": "blender-assets/runtime/skypiea-knock-up-stream.glb"
     },
     {
       "id": "wano-waterfall-ascent",
       "raster": "/art/runtime/wano-waterfall-ascent.png",
       "bytes": 915812,
+      "glb": "/art/runtime/wano-waterfall-ascent.glb",
+      "glb_bytes": 1607508,
+      "glb_sha256": "f8df00598b12b8e213e86f93e151ce85a482f229d92715e6b5f87370c9b9aa47",
+      "source_anchor": null,
+      "destination_anchor": [
+        118.2306,
+        7.5751
+      ],
+      "bounds_blender": {
+        "min": [
+          -2.25,
+          -3.754884,
+          0.0
+        ],
+        "max": [
+          2.379191,
+          2.62,
+          5.759767
+        ]
+      },
       "mode": "screen_space_html_marker",
       "coordinates": null,
       "runtime_module": null,
@@ -69,7 +113,8 @@
         "unload_when_hidden": true,
         "ship_motion_owner": "atlas runtime; preview proxy is excluded from GLB"
       },
-      "source_ref": "blender-assets/renders/wano-waterfall-ascent.png"
+      "source_ref": "blender-assets/renders/wano-waterfall-ascent.png",
+      "glb_source_ref": "blender-assets/runtime/wano-waterfall-ascent.glb"
     }
   ],
   "refused": []

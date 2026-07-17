@@ -16,17 +16,26 @@ WHAT IT REFUSES:
     verifier. A `scene_3d` entry is reviewable source, not permission.
   - anything whose bytes do not match the sha256 the manifest recorded.
 
-WHAT IT COPIES: the fallback rasters of the two entries that ARE
+WHAT IT COPIES: the fallback raster AND the .glb of the two entries that ARE
 integration_ready and addressed to us (`next: claude_code_pilot`) — the Skypiea
-Knock-Up Stream and the Wano waterfall ascent. NOT the .glb. runtime_policy.default
-is "fallback_raster", and the GLB upgrade needs a 3D renderer MapLibre does not
-have (a CustomLayerInterface plus three.js, ~600KB). The Skypiea ascent was built
-deliberately without three.js; adding it should be a decision someone makes on
-purpose, not a side effect of a sync script.
+Knock-Up Stream and the Wano waterfall ascent.
+
+The GLB is new here, and the reason it was refused has expired rather than been
+overruled. This script used to say: "NOT the .glb — the GLB upgrade needs a 3D
+renderer MapLibre does not have (a CustomLayerInterface plus three.js, ~600KB).
+The Skypiea ascent was built deliberately without three.js; adding it should be a
+decision someone makes on purpose, not a side effect of a sync script." That was
+true and it held the line for exactly as long as it should have. The decision has
+now been made on purpose: components/glb-layer.ts is that renderer. So the
+condition is met and the refusal lifts. `runtime_policy.default` is still
+"fallback_raster" and both files still ship — the raster is what a far-zoom or
+globe-projection reader sees, per `enable_glb_when`, so it is the default in
+fact and not only in the manifest.
 
 Inputs   blender-assets/manifests/runtime-3d.json
          blender-assets/queue/asset-requests.json
-Output   public/art/runtime/<id>.png   (+ data/generated/runtime_assets.json)
+Output   public/art/runtime/<id>.png + public/art/runtime/<id>.glb
+         (+ data/generated/runtime_assets.json)
 
 Run: python3 scripts/sync_runtime_assets.py
 """
@@ -73,12 +82,21 @@ def main() -> int:
             refused.append({"id": mid, "why": f"queue state is {state!r}, not integration_ready"})
             continue
 
-        # The GLB's integrity, checked even though we do not copy it: if the
-        # bytes moved under the manifest, the whole entry is suspect and the
-        # raster beside it is no more trustworthy than the model.
+        # The GLB's integrity. This was always checked, back when the bytes were
+        # only inspected and not shipped — the reasoning being that if they moved
+        # under the manifest the whole entry was suspect and the raster beside it
+        # was no more trustworthy than the model. Now that we serve these bytes to
+        # a browser it stops being a smell test and becomes the actual gate: the
+        # sha256 in `build` is the asset track's signature on this exact file.
         glb = ASSETS / m["glb"]
         want = (m.get("build") or {}).get("glb_sha256")
-        if want and glb.exists() and sha256(glb) != want:
+        if not glb.exists():
+            refused.append({"id": mid, "why": f"glb missing: {m['glb']}"})
+            continue
+        if not want:
+            refused.append({"id": mid, "why": "manifest declares no build.glb_sha256 — refusing to ship unsigned bytes"})
+            continue
+        if sha256(glb) != want:
             refused.append({"id": mid, "why": "glb bytes do not match the manifest's sha256"})
             continue
 
@@ -89,6 +107,8 @@ def main() -> int:
 
         dst = OUT_DIR / f"{mid}.png"
         shutil.copyfile(src, dst)
+        glb_dst = OUT_DIR / f"{mid}.glb"
+        shutil.copyfile(glb, glb_dst)
         beats = (m.get("integration") or {}).get("chapter_beats") or {}
         # A beat set the asset track itself flags as unverified is NOT a gate.
         # Wano says: "proposed; exact waterfall climb beats need human
@@ -97,17 +117,31 @@ def main() -> int:
         unverified = bool(beats.get("status")) or any(
             v is None for k, v in beats.items() if k != "status"
         )
+        integ = m.get("integration") or {}
         copied.append({
             "id": mid,
             "raster": f"/art/runtime/{mid}.png",
             "bytes": dst.stat().st_size,
-            "mode": (m.get("integration") or {}).get("mode"),
-            "coordinates": (m.get("integration") or {}).get("coordinates"),
-            "runtime_module": (m.get("integration") or {}).get("runtime_module"),
+            "glb": f"/art/runtime/{mid}.glb",
+            "glb_bytes": glb_dst.stat().st_size,
+            "glb_sha256": want,
+            # The two anchors and the model's own bounds are what let the app
+            # derive a metres-per-unit instead of inventing one: the model's
+            # vertical span IS the distance between the anchors. Carried through
+            # so that derivation reads declared data at runtime rather than a
+            # number somebody once typed into a .ts file. bounds_blender is Z-up
+            # (Blender); the exported glTF is Y-up. Same span either way.
+            "source_anchor": integ.get("source_anchor"),
+            "destination_anchor": integ.get("destination_anchor"),
+            "bounds_blender": (m.get("stats") or {}).get("bounds_blender"),
+            "mode": integ.get("mode"),
+            "coordinates": integ.get("coordinates"),
+            "runtime_module": integ.get("runtime_module"),
             "chapter_beats": beats,
             "gate_unverified": unverified,
             "runtime_policy": m.get("runtime_policy"),
             "source_ref": f"blender-assets/{m['fallback_raster']}",
+            "glb_source_ref": f"blender-assets/{m['glb']}",
         })
 
     payload = {
@@ -116,9 +150,11 @@ def main() -> int:
             "generator": "scripts/sync_runtime_assets.py",
             "feature_flag": flag,
             "note": (
-                "Only queue entries marked integration_ready are copied. The GLB is NOT: "
-                "runtime_policy.default is fallback_raster, and the model upgrade needs a 3D "
-                "renderer MapLibre does not have."
+                "Only queue entries marked integration_ready are copied, and only when the "
+                "bytes match the manifest's build.glb_sha256. Both the raster and the GLB "
+                "ship: runtime_policy.default is fallback_raster, which is a real default "
+                "and not a formality — enable_glb_when requires close zoom and a supported "
+                "projection, so the raster is what a far-zoom reader actually sees."
             ),
             "counts": {"copied": len(copied), "refused": len(refused)},
         },
@@ -131,7 +167,7 @@ def main() -> int:
     print(f"feature flag: {flag}")
     for c in copied:
         gate = " (gate_unverified — the app will withhold it)" if c["gate_unverified"] else ""
-        print(f"  copied  {c['id']:28} {c['bytes']:>8,} bytes  mode={c['mode']}{gate}")
+        print(f"  copied  {c['id']:28} raster {c['bytes']:>9,}  glb {c['glb_bytes']:>9,}  mode={c['mode']}{gate}")
     for r in refused:
         print(f"  refused {r['id']:28} {r['why']}")
     print(f"\nwrote {OUT_JSON.relative_to(ROOT)}")
