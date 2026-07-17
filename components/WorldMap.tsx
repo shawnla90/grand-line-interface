@@ -113,6 +113,9 @@ type Props = {
    * camera sees them exactly edge-on — i.e. not at all.
    */
   journeyFocus?: [number, number] | null;
+  /** ?record=1 only: init WebGL with preserveDrawingBuffer so the in-browser
+   * recorder can composite the canvas. Never on by default (perf). */
+  preserveBuffer?: boolean;
   /**
    * Admin placement mode (the /admin/place tool). When both are set, a map click
    * reports its lng/lat instead of selecting an island — that's how a human
@@ -1203,6 +1206,7 @@ export default function WorldMap({
   journey = false,
   journeyZoom = null,
   journeyFocus = null,
+  preserveBuffer = false,
   placingSlug = null,
   onPlaceAt,
 }: Props) {
@@ -1821,6 +1825,10 @@ export default function WorldMap({
       m = new maplibregl.Map({
         container: holder.current,
         style,
+        // Recording only: lets the compositor read the WebGL canvas back per
+        // frame. Costs a buffer swap, which is why it rides ?record=1 and not
+        // the default path. (v5 moved the GL attrs under canvasContextAttributes.)
+        ...(preserveBuffer ? { canvasContextAttributes: { preserveDrawingBuffer: true } } : {}),
         center: [-20, 6],
         zoom: 1.9,
         minZoom: 0.4,

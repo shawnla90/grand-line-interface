@@ -38,11 +38,16 @@ type Props = {
   journey: boolean;
   journeyLabel: string;
   onJourney: () => void;
+  /** ?record=1 only: the one-click record-the-journey button. */
+  recordArmed?: boolean;
+  recording?: boolean;
+  onRecord?: () => void;
 };
 
 export default function ChapterDock({
   world, at, axis, onAxis, onChapter, episode, onEpisode,
   playing, speed, onPlayPause, onSpeed, journey, journeyLabel, onJourney,
+  recordArmed = false, recording = false, onRecord,
 }: Props) {
   const byChapter = axis === "chapter";
 
@@ -87,6 +92,27 @@ export default function ChapterDock({
           >
             {journey ? "◼ journey" : "⛵ journey"}
           </button>
+          {/* record-the-journey: plays the cinematic AND saves a map-only
+              .webm when it ends. Armed by ?record=1 (preserveDrawingBuffer
+              is a map-construction decision); the ship/markers are DOM and
+              stay out of the export — full fidelity is the OS recorder. */}
+          {recordArmed && (
+            <button
+              type="button"
+              onClick={onRecord}
+              disabled={recording}
+              title={recording ? "Recording — the take saves when the journey ends" : "Record the journey to a .webm (map-only export)"}
+              aria-label={recording ? "Recording" : "Record the journey"}
+              className={[
+                "grid h-9 shrink-0 place-items-center rounded-sm border px-2.5 font-mono text-[10px] uppercase tracking-[0.14em] transition-colors",
+                recording
+                  ? "animate-pulse border-red-500/70 bg-ink/90 text-red-400"
+                  : "border-rope bg-ink/90 text-muted-2 hover:border-red-400/60 hover:text-red-300",
+              ].join(" ")}
+            >
+              {recording ? "● rec" : "⏺ record"}
+            </button>
+          )}
           <div className="flex flex-col gap-0.5">
             {/* speed chips: chapters flow at speed x 2/s */}
             <div className="flex items-center gap-0.5">

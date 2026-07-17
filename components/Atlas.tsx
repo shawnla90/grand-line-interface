@@ -277,6 +277,39 @@ export default function Atlas({
 }: Props) {
   const engine = useChapterEngine(world, initialChapter ?? DEFAULT_CHAPTER);
   const { chapter, swept, playing, speed } = engine;
+
+  // ─── THE RECORD BUTTON (?record=1 only) ────────────────────────────────────
+  // Armed by URL because preserveDrawingBuffer must be decided at map
+  // construction and costs a buffer swap every frame — never the default.
+  // The export is MAP-ONLY (DOM markers, ship included, are not canvas —
+  // recorder.ts states the limit); full fidelity stays the OS screen recorder.
+  const [recordArmed] = useState(
+    () => typeof window !== "undefined" && new URLSearchParams(window.location.search).has("record"),
+  );
+  const [recording, setRecording] = useState(false);
+  const recorderRef = useRef<import("@/components/recorder").JourneyRecorder | null>(null);
+  const captionRef = useRef({ label: "", fact: "" });
+  useEffect(() => {
+    captionRef.current = { label: engine.journeyLabel, fact: engine.journeyFact };
+  }, [engine.journeyLabel, engine.journeyFact]);
+
+  const startRecordedJourney = useCallback(async () => {
+    const canvas = document.querySelector<HTMLCanvasElement>(".maplibregl-canvas");
+    if (!canvas) return;
+    const { startJourneyRecorder } = await import("@/components/recorder");
+    recorderRef.current = startJourneyRecorder({ canvas, getCaption: () => captionRef.current });
+    if (!recorderRef.current) return; // MediaRecorder unavailable — journey still plays
+    setRecording(true);
+    engine.startJourney();
+  }, [engine]);
+
+  // The journey ending (naturally or by any cancel path) closes the take.
+  useEffect(() => {
+    if (engine.journey || !recorderRef.current) return;
+    const rec = recorderRef.current;
+    recorderRef.current = null;
+    void rec.stop().then(() => setRecording(false));
+  }, [engine.journey]);
   const [axis, setAxis] = useState<Axis>(initialAxis);
   const [hero, setHero] = useState(initialChapter === null);
   const [projection, setProjection] = useState<Projection>("globe");
@@ -471,6 +504,7 @@ export default function Atlas({
           journey={engine.journey}
           journeyZoom={engine.journeyZoom}
           journeyFocus={engine.journeyFocus}
+          preserveBuffer={recordArmed}
         />
 
         <SearchPalette
@@ -689,6 +723,9 @@ export default function Atlas({
           journey={engine.journey}
           journeyLabel={engine.journeyLabel}
           onJourney={() => (engine.journey ? engine.stopJourney() : engine.startJourney())}
+          recordArmed={recordArmed}
+          recording={recording}
+          onRecord={() => void startRecordedJourney()}
         />
       )}
 
