@@ -44,7 +44,9 @@ import {
 } from "@/lib/lenses";
 import type { Focus, Lens, PresenceLens } from "@/lib/lenses";
 import { poneglyphSvg, PONEGLYPH_INK } from "./marks/poneglyph";
+import { globeProven } from "@/config/projection-overrides";
 import { createGlbLayer, type GlbLayer } from "./glb-layer";
+import { buildModels, type RuntimeAsset, type RuntimeModel } from "./runtime-models";
 import { altitudeT, columnOpacity, expandSkyWaypoints, SKY_BASE, SKY_BODY, transitBase } from "./skypiea";
 import {
   depthT, expandDiveWaypoints, shimmerOpacity, transitBase as diveBase,
@@ -881,61 +883,30 @@ const GLB_MIN_ZOOM = 4.6;
 const GLB_FULL_ZOOM = 5.4;
 
 /**
- * FISH-MAN ISLAND — the first Blender ISLAND on the globe, and a different
- * animal from the Knock-Up Stream in every way that matters.
+ * THE ASSET TRACK'S FLAG, which is not the pilots' flag. runtime-3d.json v2 moved
+ * the flag per-model: the 14 scene systems declare NEXT_PUBLIC_RUNTIME_3D_ASSETS,
+ * the two original vertical-transition pilots keep
+ * NEXT_PUBLIC_RUNTIME_3D_TRANSITIONS. Merging them would be a tidy-up that
+ * deletes a distinction the asset track is actively maintaining: they gate
+ * different tracks, and it names both.
  *
- * Its flag is its own: runtime-3d.json v2 moved the flag per-model, and this
- * one declares NEXT_PUBLIC_RUNTIME_3D_ASSETS. The two pilots keep
- * NEXT_PUBLIC_RUNTIME_3D_TRANSITIONS. Not a tidy-up to merge them — they gate
- * different tracks, and the asset track names both.
- *
- * THE SCALE IS MEASURED HERE, not derived, because this model is GEO-REFERENCED
- * and the Skypiea sprite is not. island-plates.json hands us a coastline_contract
- * whose seed is "silhouette:fish-man-island" — our OWN deterministic generator's
- * parameters — plus the resulting geometry/fish-man-island-coastline.geojson. Put
- * the GLB's horizontal bounds next to that coastline's bbox and they are the same
- * number to four decimals: X span 5.0274 == lng span 5.0274, Z span 3.5254 ==
- * lat span 3.5254. THE MODEL IS AUTHORED IN DEGREES. Both axes independently give
- * ~111,190 m/unit and agree to 0.01%, which is just metres-per-degree.
- *
- * So: one unit is one degree of latitude. Not a guess, and not the same trap as
- * Skypiea — there the sprite declares "no geographic coastline clipping" and no
- * scale at all, so its metres-per-unit had to be derived from its two anchors.
- * Here the asset track shipped the footprint and we measured it.
- *
- * (The image-source corners would have said 127,411 m/unit — a 14% margin around
- * the render. Framing, not semantics, exactly as on the Knock-Up Stream.)
- *
- * MERCATOR ONLY, which is THEIR call and not ours. The model declares
- * `projection_support: ["mercator_closeup"]` and `globe_policy: "transparent
- * fallback; do not apply a naive mercator model matrix on globe"`. Our layer is
- * not naive — it routes through getMatrixForModel and we have pixels proving the
- * Knock-Up Stream draws correctly on the globe — so the premise behind that
- * restriction does not hold for us. But `projection_support` is DATA, and the
- * manifest is the boundary; overriding it here because we happen to know better
- * is how a track stops being able to trust the other one. It is one field for
- * them to widen. Reported, not patched.
+ * Everything else that used to live here — Fish-Man Island's constants, its
+ * measured 1-unit-is-1-degree scale, the rejected corner derivation, the
+ * mercator-only reasoning — moved to components/runtime-models.ts, which is one
+ * table for every model rather than one block per island. That is the asset
+ * track's integration rule #1 ("do not create one loader per island"), and the
+ * proof it was right is that this block was about to be copied eleven times.
  */
 const RUNTIME_ASSETS_ON = process.env.NEXT_PUBLIC_RUNTIME_3D_ASSETS === "1";
-const FISH_MAN_GLB = "/art/runtime/fish-man-island.glb";
-const FISH_MAN_GLB_ID = "fishman-glb";
-/** islands.coords.json == the manifest's integration.anchor, byte-identical. */
-const FISH_MAN_ANCHOR: [number, number] = [-5.9349, -2.8548];
-/** integration.chapter_beats.base_reveal (and safe_full_scene). */
-const FISH_MAN_REVEAL = 68;
-/** Measured against the shipped coastline: 1 unit == 1 degree. */
-const DEG_PER_UNIT_M = 111_195;
 
 /**
  * The live models, or null when their gates are shut. Module scope because
  * paint() is module scope and there is exactly one map; `unload_when_hidden:
  * true` means these are null far more often than not.
  */
-let fishManLayer: GlbLayer | null = null;
 let knockUpLayer: GlbLayer | null = null;
 /** The chapter the model's per-frame opacity closure reads. paint() owns it. */
 let knockUpChapter = 1;
-let fishManChapter = 1;
 
 /** 0..1 for the model: the zoom hand-off, times the beat the manifest names. */
 function glbOpacity(m: MLMap, ch: number): number {
@@ -974,34 +945,101 @@ function rasterOpacity(ch: number): ExpressionSpecification {
  * three.js and the 2.5MB model, so a chapter-1 reader at zoom 6 requests neither.
  */
 /**
- * Fish-Man Island's gate. Same four conditions, one of them for real this time:
- * `projection_support: ["mercator_closeup"]`, so the globe gets the flat plate
- * and only mercator gets the model. That is the manifest's call — see the block
- * above. Reuses createGlbLayer rather than growing a second loader, which is the
- * asset track's integration rule #1: "do not create one loader per island."
+ * THE MODEL TABLE. Null until the artifact lands — see loadRuntimeModels().
  */
-function syncFishManGlb(m: MLMap, ch: number) {
-  fishManChapter = ch;
-  const open =
-    ch >= FISH_MAN_REVEAL &&
-    m.getZoom() >= GLB_MIN_ZOOM &&
-    m.getProjection()?.type === "mercator";
-  const present = !!m.getLayer(FISH_MAN_GLB_ID);
-  if (open && !present) {
-    fishManLayer = createGlbLayer({
-      id: FISH_MAN_GLB_ID,
-      url: FISH_MAN_GLB,
-      lngLat: FISH_MAN_ANCHOR,
-      metersPerUnit: DEG_PER_UNIT_M,
-      opacity: () => {
-        const z = m.getZoom();
-        return Math.min(1, Math.max(0, (z - GLB_MIN_ZOOM) / (GLB_FULL_ZOOM - GLB_MIN_ZOOM)));
-      },
-    });
-    m.addLayer(fishManLayer, "voyage-glow");
-  } else if (!open && present) {
-    m.removeLayer(FISH_MAN_GLB_ID);
-    fishManLayer = null;
+let MODELS: RuntimeModel[] | null = null;
+const modelLayers = new Map<string, GlbLayer>();
+let modelChapter = 1;
+
+/**
+ * The artifact is 60KB and a STATIC import would put every byte of it in the main
+ * bundle — fetched by a chapter-1 reader with the flag off, because an unset
+ * NEXT_PUBLIC_* is not inlined and nothing here dead-code-eliminates. Same
+ * reasoning as three.js in glb-layer, same shape: import it when a flag that is
+ * on asks for it.
+ *
+ * Stated precisely, because the loose version is a trap this session fell into
+ * three separate times: the chunk still EXISTS in .next/static — grep finds
+ * "yakigashi-island" there with the flag off — and that is what a lazy chunk
+ * looks like. Presence is not fetching. Measured in a browser: flag off, ch900,
+ * 51 requests, the artifact's chunk among none of them.
+ *
+ * `footprintFor` is the visual_fit target, and it is the app's own geometry: the
+ * silhouette this map already draws for the island at that anchor. 11 of 13
+ * anchors land on a canon island exactly, so a model is scaled to cover the shape
+ * the reader is already looking at. The 3D replaces the 2D at the 2D's size.
+ */
+async function loadRuntimeModels(m: MLMap): Promise<void> {
+  if (MODELS) return;
+  const mod = await import("@/data/generated/runtime_assets.json");
+  const assets = (mod.default as { assets: unknown[] }).assets as unknown as RuntimeAsset[];
+  MODELS = buildModels(
+    assets,
+    (lngLat) => {
+      // The silhouette source is already on the map; query it rather than
+      // re-deriving geometry that is generated deterministically elsewhere.
+      const feats = m.querySourceFeatures("silhouettes") || [];
+      let best: number | null = null;
+      let bestD = Infinity;
+      for (const f of feats) {
+        const g = f.geometry as GeoJSON.Geometry;
+        if (g.type !== "Polygon" && g.type !== "MultiPolygon") continue;
+        const rings = g.type === "Polygon" ? g.coordinates : g.coordinates.flat();
+        let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+        for (const ring of rings) for (const [x, y] of ring as [number, number][]) {
+          minX = Math.min(minX, x); maxX = Math.max(maxX, x);
+          minY = Math.min(minY, y); maxY = Math.max(maxY, y);
+        }
+        const cx = (minX + maxX) / 2, cy = (minY + maxY) / 2;
+        const d = Math.hypot(cx - lngLat[0], cy - lngLat[1]);
+        if (d < bestD && d < 1.5) { bestD = d; best = Math.max(maxX - minX, maxY - minY); }
+      }
+      return best;
+    },
+    globeProven,
+    () => modelChapter,
+  );
+  m.triggerRepaint();
+}
+
+/**
+ * Every model's gate, in one loop. `enable_glb_when: "feature flag on, close
+ * zoom, supported projection, chapter gate open"` — four conditions, once, rather
+ * than once per island. Adding the twelfth is a data change.
+ */
+function syncModels(m: MLMap, ch: number) {
+  modelChapter = ch;
+  if (!MODELS) { void loadRuntimeModels(m); return; }
+  const proj = (m.getProjection()?.type ?? "globe") as "globe" | "mercator";
+  const zoomOk = m.getZoom() >= GLB_MIN_ZOOM;
+  for (const model of MODELS) {
+    if (model.skipped) continue;
+    if (model.id === "skypiea-knock-up-stream") continue; // its own module owns it
+    const open = ch >= model.reveal && zoomOk && model.projections.includes(proj);
+    const live = modelLayers.get(model.id);
+    if (open && !live) {
+      const layer = createGlbLayer({
+        id: `glb-${model.id}`,
+        url: model.glb,
+        lngLat: model.lngLat,
+        metersPerUnit: model.metersPerUnit,
+        opacity: () => Math.min(1, Math.max(0, (m.getZoom() - GLB_MIN_ZOOM) / (GLB_FULL_ZOOM - GLB_MIN_ZOOM))),
+        nodeVisible: model.nodeVisible,
+        onReady: () => {
+          if (process.env.NODE_ENV !== "production") {
+            (window as unknown as { __glbReady?: boolean }).__glbReady = true;
+          }
+        },
+      });
+      m.addLayer(layer, "voyage-glow");
+      modelLayers.set(model.id, layer);
+    } else if (!open && live) {
+      if (m.getLayer(`glb-${model.id}`)) m.removeLayer(`glb-${model.id}`);
+      modelLayers.delete(model.id);
+    } else if (live) {
+      // Scrubbing BACKWARDS has to re-fog geometry already on the GPU.
+      live.regate();
+    }
   }
 }
 
@@ -1680,7 +1718,7 @@ export default function WorldMap({
         if (RUNTIME_3D_ON) syncKnockUpGlb(m!, chapterRef.current);
         // Fish-Man Island also gates on PROJECTION, and setProjection fires
         // neither zoom nor moveend — hence the explicit third listener.
-        if (RUNTIME_ASSETS_ON) syncFishManGlb(m!, chapterRef.current);
+        if (RUNTIME_ASSETS_ON) syncModels(m!, chapterRef.current);
       };
       m.on("zoom", syncGlb);
       m.on("moveend", syncGlb);
@@ -2378,7 +2416,7 @@ function paint(
     }
     syncKnockUpGlb(m, ch);
   }
-  if (RUNTIME_ASSETS_ON) syncFishManGlb(m, ch);
+  if (RUNTIME_ASSETS_ON) syncModels(m, ch);
 
   // THE DIVE SCAR, the same idea upside down. shimmerOpacity is its story beat
   // (the sea closes at 602-605, stands as a scar while the crew is under, fades
