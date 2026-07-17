@@ -190,6 +190,204 @@
       "source_ref": "Hand-authored. Wano: Kaido's dragon form is on-page from ~ch. 921, but the Uo Uo no Mi, Model: Seiryu is only named near the end of the raid (~ch. 1047) — the atlas prints name and type together, so the row gates on the name. NEEDS HUMAN VERIFICATION against the manga.",
       "canon_confidence": "derived",
       "verified": false
+    },
+    {
+      "slug": "foxy",
+      "name": "Foxy",
+      "fruit_id": null,
+      "fruit_name": "Noro Noro no Mi",
+      "fruit_type": "Paramecia",
+      "from_chapter": 307,
+      "source_ref": "Hand-authored. Foxy slows the Davy Back Fight with the Noro Noro beam, ~ch. 307. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "rob-lucci",
+      "name": "Rob Lucci",
+      "fruit_id": null,
+      "fruit_name": "Neko Neko no Mi, Model: Leopard",
+      "fruit_type": "Zoan",
+      "from_chapter": 383,
+      "source_ref": "Hand-authored. Lucci transforms at Enies Lobby, ~ch. 383. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "kaku",
+      "name": "Kaku",
+      "fruit_id": null,
+      "fruit_name": "Ushi Ushi no Mi, Model: Giraffe",
+      "fruit_type": "Zoan",
+      "from_chapter": 383,
+      "source_ref": "Hand-authored. Kaku eats the giraffe fruit at Enies Lobby, ~ch. 383. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "kalifa",
+      "name": "Kalifa",
+      "fruit_id": null,
+      "fruit_name": "Awa Awa no Mi",
+      "fruit_type": "Paramecia",
+      "from_chapter": 396,
+      "source_ref": "Hand-authored. Kalifa's bubbles are used against Nami at Enies Lobby, ~ch. 396. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "perona",
+      "name": "Perona",
+      "fruit_id": null,
+      "fruit_name": "Horo Horo no Mi",
+      "fruit_type": "Paramecia",
+      "from_chapter": 444,
+      "source_ref": "Hand-authored. Perona's negative ghosts appear on Thriller Bark, ~ch. 444. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "absalom",
+      "name": "Absalom",
+      "fruit_id": null,
+      "fruit_name": "Suke Suke no Mi",
+      "fruit_type": "Paramecia",
+      "from_chapter": 445,
+      "source_ref": "Hand-authored. Absalom's invisibility is shown on Thriller Bark, ~ch. 445. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "caribou",
+      "name": "Caribou",
+      "fruit_id": null,
+      "fruit_name": "Numa Numa no Mi",
+      "fruit_type": "Paramecia",
+      "from_chapter": 600,
+      "source_ref": "Hand-authored. Caribou's swamp body is shown shortly after he appears, ~ch. 600. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "basil-hawkins",
+      "name": "Basil Hawkins",
+      "fruit_id": null,
+      "fruit_name": "Wara Wara no Mi",
+      "fruit_type": "Paramecia",
+      "from_chapter": 509,
+      "source_ref": "Hand-authored. Hawkins' straw bodies appear at Sabaody, ~ch. 509. The fruit is not named on the page there. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "capone-bege",
+      "name": "Capone Bege",
+      "fruit_id": null,
+      "fruit_name": "Shiro Shiro no Mi",
+      "fruit_type": "Paramecia",
+      "from_chapter": 509,
+      "source_ref": "Hand-authored. Bege's castle body appears at Sabaody, ~ch. 509. The fruit is not named on the page there. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "x-drake",
+      "name": "X Drake",
+      "fruit_id": null,
+      "fruit_name": "Ryu Ryu no Mi, Model: Allosaurus",
+      "fruit_type": "Ancient Zoan",
+      "from_chapter": 676,
+      "source_ref": "Hand-authored. Drake's dinosaur form is shown at Punk Hazard, ~ch. 676. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "bartolomeo",
+      "name": "Bartolomeo",
+      "fruit_id": null,
+      "fruit_name": "Bari Bari no Mi",
+      "fruit_type": "Paramecia",
+      "from_chapter": 706,
+      "source_ref": "Hand-authored. Bartolomeo's barrier is used in the Corrida Colosseum, ~ch. 706. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "kuzan-aokiji",
+      "name": "Kuzan",
+      "fruit_id": null,
+      "fruit_name": "Hie Hie no Mi",
+      "fruit_type": "Logia",
+      "from_chapter": 320,
+      "source_ref": "Hand-authored. Aokiji freezes the sea at Long Ring Long Land, ~ch. 320. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "borsalino-kizaru",
+      "name": "Borsalino",
+      "fruit_id": null,
+      "fruit_name": "Pika Pika no Mi",
+      "fruit_type": "Logia",
+      "from_chapter": 506,
+      "source_ref": "Hand-authored. Kizaru arrives at Sabaody as light, ~ch. 506. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "sakazuki-akainu",
+      "name": "Sakazuki",
+      "fruit_id": null,
+      "fruit_name": "Magu Magu no Mi",
+      "fruit_type": "Logia",
+      "from_chapter": 554,
+      "source_ref": "Hand-authored. Akainu's magma is used at Marineford, ~ch. 554. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "smoker",
+      "name": "Smoker",
+      "fruit_id": null,
+      "fruit_name": "Moku Moku no Mi",
+      "fruit_type": "Logia",
+      "from_chapter": 98,
+      "source_ref": "Hand-authored. Smoker's smoke body is shown at Loguetown, ~ch. 98. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "sabo",
+      "name": "Sabo",
+      "fruit_id": null,
+      "fruit_name": "Mera Mera no Mi",
+      "fruit_type": "Logia",
+      "from_chapter": 744,
+      "source_ref": "Hand-authored. Sabo wins the Mera Mera no Mi at Dressrosa, ~ch. 744. The same fruit Ace carried: it reincarnated after his death, which is why two entities legitimately claim it. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "emporio-ivankov",
+      "name": "Emporio Ivankov",
+      "fruit_id": null,
+      "fruit_name": "Horu Horu no Mi",
+      "fruit_type": "Paramecia",
+      "from_chapter": 537,
+      "source_ref": "Hand-authored. Ivankov's hormones are used in Impel Down, ~ch. 537. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "nico-robin",
+      "name": "Nico Robin",
+      "fruit_id": null,
+      "fruit_name": "Hana Hana no Mi",
+      "fruit_type": "Paramecia",
+      "from_chapter": 117,
+      "source_ref": "Hand-authored. Miss All Sunday's arms bloom at Little Garden, ~ch. 117. Presence here is Baroque Works; she does not join the Straw Hats until ch. 218. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
     }
   ]
 }

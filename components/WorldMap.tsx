@@ -619,7 +619,7 @@ function presenceOrbs(
         vesselName: null,
         kind: "warlord",
         dim: dimOf({ slug: c.slug, crewSlug: c.crewSlug, fruit: c.fruit, haki: c.haki }),
-        color: lensColor(lens, { crewSlug: c.crewSlug, fruit: c.fruit, haki: c.haki, kind: "warlord" }, ch),
+        color: lensColor(lens, { crewSlug: c.crewSlug, affiliation: c.affiliation, fruit: c.fruit, haki: c.haki, kind: "warlord" }, ch),
         confidence: placed.w.confidence,
         verified: placed.w.verified,
         ...(fruit ? { fruitName: fruit.name, fruitType: fruit.type } : {}),
@@ -1883,7 +1883,7 @@ function paint(
         // The ring follows the lens: its key carries the color, so a mid-scrub
         // reveal recolors the ring the frame it happens. Content (portrait or
         // monogram) populates once; colors re-apply on every key change.
-        const color = lensColor(pools.lens, { crewSlug: c.crewSlug, fruit: c.fruit, haki: c.haki, kind: "warlord" }, ch);
+        const color = lensColor(pools.lens, { crewSlug: c.crewSlug, affiliation: c.affiliation, fruit: c.fruit, haki: c.haki, kind: "warlord" }, ch);
         const key = `${placed.w.order}|${pools.lens}|${color}`;
         if (h.shown && h.paintKey === key) continue;
         if (!h.populated) {

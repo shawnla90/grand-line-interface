@@ -165,6 +165,105 @@
       "source_ref": "Hand-authored. Wano rooftop: Law coats his sword in the Yonko fight (~ch. 1010). NEEDS HUMAN VERIFICATION against the manga.",
       "canon_confidence": "guess",
       "verified": false
+    },
+    {
+      "slug": "rob-lucci",
+      "name": "Rob Lucci",
+      "haki": "armament",
+      "from_chapter": 384,
+      "source_ref": "Hand-authored. Lucci's Tekkai/Rokushiki are not haki, but his finishing blows at Enies Lobby are later understood as armament. Marked derived on purpose. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "kuzan-aokiji",
+      "name": "Kuzan",
+      "haki": "armament",
+      "from_chapter": 674,
+      "source_ref": "Hand-authored. Kuzan is shown using armament after leaving the Navy. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "borsalino-kizaru",
+      "name": "Borsalino",
+      "haki": "armament",
+      "from_chapter": 1090,
+      "source_ref": "Hand-authored. Kizaru uses armament at Egghead. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "sakazuki-akainu",
+      "name": "Sakazuki",
+      "haki": "armament",
+      "from_chapter": 578,
+      "source_ref": "Hand-authored. Akainu uses armament at Marineford. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "monkey-d-garp",
+      "name": "Monkey D. Garp",
+      "haki": "armament",
+      "from_chapter": 579,
+      "source_ref": "Hand-authored. Garp's fist at Marineford, ~ch. 579. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "sengoku",
+      "name": "Sengoku",
+      "haki": "conqueror",
+      "from_chapter": 577,
+      "source_ref": "Hand-authored. Sengoku is a haki user; the specific reveal chapter is a reading, not a caption. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "monkey-d-dragon",
+      "name": "Monkey D. Dragon",
+      "haki": "conqueror",
+      "from_chapter": 593,
+      "source_ref": "Hand-authored. Dragon is never shown using haki on the page. This row is a guess and is flagged as one. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "guess",
+      "verified": false
+    },
+    {
+      "slug": "sabo",
+      "name": "Sabo",
+      "haki": "armament",
+      "from_chapter": 744,
+      "source_ref": "Hand-authored. Sabo uses armament at Dressrosa, ~ch. 744. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "x-drake",
+      "name": "X Drake",
+      "haki": "armament",
+      "from_chapter": 1030,
+      "source_ref": "Hand-authored. Drake uses armament in Wano. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "basil-hawkins",
+      "name": "Basil Hawkins",
+      "haki": "armament",
+      "from_chapter": 1030,
+      "source_ref": "Hand-authored. Hawkins uses armament in Wano. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "capone-bege",
+      "name": "Capone Bege",
+      "haki": "observation",
+      "from_chapter": 868,
+      "source_ref": "Hand-authored. Bege's plan at the wedding depends on observation. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
     }
   ]
 }

@@ -16,7 +16,7 @@
  */
 
 import type { FruitType, HakiType, WorldFruitReveal, WorldHakiFact } from "./canon";
-import { crewColor, WARLORD_COLOR } from "./crews";
+import { affiliationColor, crewColor } from "./crews";
 
 export type Lens = "crew" | "fruit" | "haki";
 /** The map-facing state: "off" hides the presence layer entirely. */
@@ -59,6 +59,8 @@ export const UNREVEALED_COLOR = "#4c5a72";
 
 type PowerCarrier = {
   crewSlug?: string | null;
+  /** Only unrostered presence characters carry one: "Marine", "Warlord", … */
+  affiliation?: string | null;
   fruit: WorldFruitReveal | null;
   haki: WorldHakiFact[];
 };
@@ -104,8 +106,10 @@ export function matchesFocus(
 
 /**
  * One color per entity per lens per chapter — the single dispatch the map and
- * legend share. kind matters only to the crew lens (standalone Warlords render
- * in the neutral warlord ink there).
+ * legend share. kind matters only to the crew lens: an unrostered presence
+ * character has no crew flag to borrow an ink from, so it falls back to its
+ * affiliation — which is what keeps an admiral and a Warlord from reading as
+ * the same grey dot in the crowd at Marineford.
  */
 export function lensColor(
   lens: Lens,
@@ -120,5 +124,6 @@ export function lensColor(
     const t = topHaki(e, ch);
     return t ? HAKI_STYLE[t].color : UNREVEALED_COLOR;
   }
-  return e.kind === "warlord" ? WARLORD_COLOR : crewColor(e.crewSlug);
+  if (e.kind === "warlord" && !e.crewSlug) return affiliationColor(e.affiliation);
+  return crewColor(e.crewSlug);
 }

@@ -916,6 +916,21 @@ def main() -> int:
             "windows": build_windows(pc["windows"], slug),
         })
 
+    # A slug may be a crew MEMBER or a standalone CHARACTER, never both: each is
+    # a separate pin with its own windows, so a slug in both places puts one
+    # person in two seas at once. Crocodile is the trap — he is Mr. 0 of Baroque
+    # Works and a Warlord who stands alone on the chart, and the honest answer is
+    # that the standalone windows already say where he is.
+    member_slugs = {m["slug"]: c["slug"] for c in presence_crews for m in c["members"]}
+    for ch_p in presence_doc["characters"]:
+        if ch_p["slug"] in member_slugs:
+            raise die(
+                f"presence character {ch_p['slug']!r} is ALSO a member of crew "
+                f"{member_slugs[ch_p['slug']]!r}. One slug, one pin: pick the crew roster or the "
+                f"standalone windows, not both, or they render in two places at the same chapter.",
+                ch_p,
+            )
+
     presence_characters = []
     for ch_p in presence_doc["characters"]:
         slug = ch_p["slug"]

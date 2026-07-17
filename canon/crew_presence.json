@@ -551,6 +551,752 @@
           "verified": false
         }
       ]
+    },
+    {
+      "slug": "alvida-pirates",
+      "name": "Alvida Pirates",
+      "crew_id": 3,
+      "members": [
+        {
+          "slug": "alvida",
+          "name": "Alvida",
+          "from_chapter": 1,
+          "source_ref": "Hand-authored. Alvida is the first pirate captain in the story, ch. 1. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": null,
+          "lng": -127.0,
+          "lat": -57.0,
+          "label": "Off Foosha Village — Coby's captain",
+          "from_chapter": 1,
+          "to_chapter": 2,
+          "source_ref": "Hand-authored. The Alvida Pirates raid the waters off Foosha in ch. 1; Luffy defeats her in ch. 2. Position is a representative anchorage beside the Foosha pin. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "vessel": null
+    },
+    {
+      "slug": "black-cat-pirates",
+      "name": "Black Cat Pirates",
+      "crew_id": 7,
+      "members": [
+        {
+          "slug": "kuro",
+          "name": "Kuro",
+          "from_chapter": 23,
+          "source_ref": "Hand-authored. Kuro is revealed as Klahadore in the Syrup Village arc. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "syrup-village",
+          "lng": null,
+          "lat": null,
+          "label": "Syrup Village — the slope at dawn",
+          "from_chapter": 23,
+          "to_chapter": 41,
+          "source_ref": "Hand-authored. The Black Cat Pirates besiege Syrup Village, ch. 23-41. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "vessel": null
+    },
+    {
+      "slug": "krieg-pirates",
+      "name": "Krieg Pirates",
+      "crew_id": 8,
+      "members": [
+        {
+          "slug": "gyn",
+          "name": "Gin",
+          "from_chapter": 43,
+          "source_ref": "Hand-authored. Gin reaches the Baratie ahead of Krieg's armada, ch. 43. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": null,
+          "lng": -165.0,
+          "lat": -40.0,
+          "label": "The Baratie — Krieg's armada",
+          "from_chapter": 43,
+          "to_chapter": 68,
+          "source_ref": "Hand-authored. Don Krieg's fleet, broken by Mihawk on the Grand Line, falls on the Baratie ch. 43-68. Position matches the voyage's Baratie anchor. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "vessel": null
+    },
+    {
+      "slug": "arlong-pirates",
+      "name": "Arlong Pirates",
+      "crew_id": 10,
+      "members": [
+        {
+          "slug": "arlong",
+          "name": "Arlong",
+          "from_chapter": 69,
+          "source_ref": "Hand-authored. Arlong holds Cocoyasi Village from ch. 69. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "slug": "octy",
+          "name": "Hatchan",
+          "from_chapter": 69,
+          "source_ref": "Hand-authored. Hatchan is one of Arlong's officers. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "conomi-islands",
+          "lng": null,
+          "lat": null,
+          "label": "Arlong Park — the Conomi Islands",
+          "from_chapter": 69,
+          "to_chapter": 95,
+          "source_ref": "Hand-authored. The Arlong Pirates rule the Conomi Islands until ch. 95. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "vessel": null
+    },
+    {
+      "slug": "baroque-works",
+      "name": "Baroque Works",
+      "crew_id": 78,
+      "members": [
+        {
+          "slug": "nico-robin",
+          "name": "Nico Robin",
+          "from_chapter": 114,
+          "source_ref": "Hand-authored. Miss All Sunday travels with Baroque Works from ch. 114 until the organisation is destroyed; she joins the Straw Hats at ch. 218. Presence here is where she stands in the story, not a crew_joins claim. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "whisky-peak",
+          "lng": null,
+          "lat": null,
+          "label": "Whisky Peak — the town of bounty hunters",
+          "from_chapter": 105,
+          "to_chapter": 114,
+          "source_ref": "Hand-authored. Baroque Works' frontier agents greet the crew at Whisky Peak, ch. 105-114. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "arabasta-kingdom",
+          "lng": null,
+          "lat": null,
+          "label": "Alabasta — the war for the kingdom",
+          "from_chapter": 126,
+          "to_chapter": 211,
+          "source_ref": "Hand-authored. Baroque Works operates openly in Alabasta from ch. 126 until Crocodile is beaten and the organisation is dissolved by the World Government, ch. 211. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "vessel": null
+    },
+    {
+      "slug": "foxy-pirates",
+      "name": "Foxy Pirates",
+      "crew_id": 24,
+      "members": [
+        {
+          "slug": "foxy",
+          "name": "Foxy",
+          "from_chapter": 305,
+          "source_ref": "Hand-authored. Foxy challenges the crew to the Davy Back Fight, ch. 305. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "long-ring-long-land",
+          "lng": null,
+          "lat": null,
+          "label": "Long Ring Long Land — the Davy Back Fight",
+          "from_chapter": 305,
+          "to_chapter": 321,
+          "source_ref": "Hand-authored. The Foxy Pirates hold Long Ring Long Land for the Davy Back Fight, ch. 305-321. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "vessel": null
+    },
+    {
+      "slug": "cipher-pol-9",
+      "name": "CP9",
+      "crew_id": 90,
+      "members": [
+        {
+          "slug": "rob-lucci",
+          "name": "Rob Lucci",
+          "from_chapter": 349,
+          "source_ref": "Hand-authored. Lucci is revealed as a CP9 agent in the Water 7 arc. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        },
+        {
+          "slug": "kaku",
+          "name": "Kaku",
+          "from_chapter": 349,
+          "source_ref": "Hand-authored. Kaku is revealed as a CP9 agent alongside Lucci. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        },
+        {
+          "slug": "kalifa",
+          "name": "Kalifa",
+          "from_chapter": 349,
+          "source_ref": "Hand-authored. Kalifa is revealed as a CP9 agent alongside Lucci. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "water-7",
+          "lng": null,
+          "lat": null,
+          "label": "Water 7 — the agents under the shipwrights",
+          "from_chapter": 349,
+          "to_chapter": 374,
+          "source_ref": "Hand-authored. CP9's cover breaks in Water 7 around ch. 349. The exact reveal chapter is a reading of the arc, not a caption. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "enies-lobby",
+          "lng": null,
+          "lat": null,
+          "label": "Enies Lobby — the judicial island",
+          "from_chapter": 375,
+          "to_chapter": 430,
+          "source_ref": "Hand-authored. CP9 withdraws to Enies Lobby and is broken there by ch. 430. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "vessel": null
+    },
+    {
+      "slug": "thriller-bark-pirates",
+      "name": "Thriller Bark Pirates",
+      "crew_id": 28,
+      "members": [
+        {
+          "slug": "perona",
+          "name": "Perona",
+          "from_chapter": 443,
+          "source_ref": "Hand-authored. Perona is one of Moria's three officers. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "slug": "absalom",
+          "name": "Absalom",
+          "from_chapter": 444,
+          "source_ref": "Hand-authored. Absalom is one of Moria's three officers. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": null,
+          "lng": -57.5,
+          "lat": 1.8,
+          "label": "Thriller Bark — adrift in the Florian Triangle",
+          "from_chapter": 442,
+          "to_chapter": 489,
+          "source_ref": "Hand-authored. Thriller Bark is a ship, not an island: it drifts in the Florian Triangle, ch. 442-489. Position is set beside the Florian Triangle pin. The island record itself does not exist upstream — the wiki files Thriller Bark as a vessel — so this window carries an explicit coordinate. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "vessel": null
+    },
+    {
+      "slug": "sun-pirates",
+      "name": "Sun Pirates",
+      "crew_id": 26,
+      "members": [
+        {
+          "slug": "jinbe",
+          "name": "Jinbe",
+          "from_chapter": 609,
+          "source_ref": "Hand-authored. Jinbe's former crew. He debuts ch. 528 and does not join the Straw Hats until ch. 976 — this window is presence, never a join. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "fish-man-island",
+          "lng": null,
+          "lat": null,
+          "label": "Fish-Man Island — the Sun Pirates",
+          "from_chapter": 609,
+          "to_chapter": 653,
+          "source_ref": "Hand-authored. The Sun Pirates are present on Fish-Man Island through the arc, ch. 609-653. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "vessel": null
+    },
+    {
+      "slug": "new-fish-man-pirates",
+      "name": "New Fish-Man Pirates",
+      "crew_id": 50,
+      "members": [
+        {
+          "slug": "hody-jones",
+          "name": "Hody Jones",
+          "from_chapter": 611,
+          "source_ref": "Hand-authored. Hody Jones leads the coup, ch. 611. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "fish-man-island",
+          "lng": null,
+          "lat": null,
+          "label": "Fish-Man Island — the coup at Gyoncorde Plaza",
+          "from_chapter": 611,
+          "to_chapter": 653,
+          "source_ref": "Hand-authored. The New Fish-Man Pirates seize Fish-Man Island, ch. 611-653. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "vessel": null
+    },
+    {
+      "slug": "caribou-pirates",
+      "name": "Caribou Pirates",
+      "crew_id": 49,
+      "members": [
+        {
+          "slug": "caribou",
+          "name": "Caribou",
+          "from_chapter": 598,
+          "source_ref": "Hand-authored. Caribou appears just before the descent, ch. 598. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "fish-man-island",
+          "lng": null,
+          "lat": null,
+          "label": "The descent to Fish-Man Island",
+          "from_chapter": 598,
+          "to_chapter": 653,
+          "source_ref": "Hand-authored. The Caribou Pirates trail the Straw Hats from the Sabaody departure through Fish-Man Island. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "vessel": null
+    },
+    {
+      "slug": "on-air-pirates",
+      "name": "On Air Pirates",
+      "crew_id": 36,
+      "members": [
+        {
+          "slug": "scratchmen-apoo",
+          "name": "Scratchmen Apoo",
+          "from_chapter": 498,
+          "source_ref": "Hand-authored. One of the eleven Supernovas at Sabaody, ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "sabaody-archipelago",
+          "lng": null,
+          "lat": null,
+          "label": "Sabaody Archipelago — the Eleven Supernovas",
+          "from_chapter": 498,
+          "to_chapter": 513,
+          "source_ref": "Hand-authored. Apoo's crew is at Sabaody with the other Supernovas, ch. 498-513. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "onigashima",
+          "lng": null,
+          "lat": null,
+          "label": "Onigashima — under the Beasts",
+          "from_chapter": 954,
+          "to_chapter": 1030,
+          "source_ref": "Hand-authored. Apoo is at Onigashima during the raid, in Kaido's service. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "vessel": null
+    },
+    {
+      "slug": "hawkins-pirates",
+      "name": "Hawkins Pirates",
+      "crew_id": 34,
+      "members": [
+        {
+          "slug": "basil-hawkins",
+          "name": "Basil Hawkins",
+          "from_chapter": 498,
+          "source_ref": "Hand-authored. One of the eleven Supernovas at Sabaody, ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "sabaody-archipelago",
+          "lng": null,
+          "lat": null,
+          "label": "Sabaody Archipelago — the Eleven Supernovas",
+          "from_chapter": 498,
+          "to_chapter": 513,
+          "source_ref": "Hand-authored. Hawkins is at Sabaody with the other Supernovas, ch. 498-513. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "wano-country",
+          "lng": null,
+          "lat": null,
+          "label": "Wano Country — a Headliner under Kaido",
+          "from_chapter": 793,
+          "to_chapter": 1030,
+          "source_ref": "Hand-authored. Hawkins serves Kaido in Wano from the arc's opening. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "vessel": null
+    },
+    {
+      "slug": "fallen-monk-pirates",
+      "name": "Fallen Monk Pirates",
+      "crew_id": 39,
+      "members": [
+        {
+          "slug": "urouge",
+          "name": "Urouge",
+          "from_chapter": 498,
+          "source_ref": "Hand-authored. One of the eleven Supernovas at Sabaody, ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "sabaody-archipelago",
+          "lng": null,
+          "lat": null,
+          "label": "Sabaody Archipelago — the Eleven Supernovas",
+          "from_chapter": 498,
+          "to_chapter": 513,
+          "source_ref": "Hand-authored. Urouge is at Sabaody with the other Supernovas, ch. 498-513. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "vessel": null
+    },
+    {
+      "slug": "bonney-pirates",
+      "name": "Bonney Pirates",
+      "crew_id": 37,
+      "members": [
+        {
+          "slug": "jewelry-bonney",
+          "name": "Jewelry Bonney",
+          "from_chapter": 498,
+          "source_ref": "Hand-authored. One of the eleven Supernovas at Sabaody, ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "sabaody-archipelago",
+          "lng": null,
+          "lat": null,
+          "label": "Sabaody Archipelago — the Eleven Supernovas",
+          "from_chapter": 498,
+          "to_chapter": 513,
+          "source_ref": "Hand-authored. Bonney is at Sabaody with the other Supernovas, ch. 498-513. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "egghead",
+          "lng": null,
+          "lat": null,
+          "label": "Egghead — the future island",
+          "from_chapter": 1061,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Bonney reaches Egghead with the Straw Hats, ch. 1061. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "vessel": null
+    },
+    {
+      "slug": "fire-tank-pirates",
+      "name": "Fire Tank Pirates",
+      "crew_id": 38,
+      "members": [
+        {
+          "slug": "capone-bege",
+          "name": "Capone Bege",
+          "from_chapter": 498,
+          "source_ref": "Hand-authored. One of the eleven Supernovas at Sabaody, ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "sabaody-archipelago",
+          "lng": null,
+          "lat": null,
+          "label": "Sabaody Archipelago — the Eleven Supernovas",
+          "from_chapter": 498,
+          "to_chapter": 513,
+          "source_ref": "Hand-authored. Bege is at Sabaody with the other Supernovas, ch. 498-513. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "whole-cake-island",
+          "lng": null,
+          "lat": null,
+          "label": "Whole Cake Island — married into the Charlotte family",
+          "from_chapter": 812,
+          "to_chapter": 902,
+          "source_ref": "Hand-authored. Bege is inside Big Mom's territory through the Whole Cake Island arc. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "vessel": null
+    },
+    {
+      "slug": "drake-pirates",
+      "name": "Drake Pirates",
+      "crew_id": 35,
+      "members": [
+        {
+          "slug": "x-drake",
+          "name": "X Drake",
+          "from_chapter": 498,
+          "source_ref": "Hand-authored. One of the eleven Supernovas at Sabaody, ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "sabaody-archipelago",
+          "lng": null,
+          "lat": null,
+          "label": "Sabaody Archipelago — the Eleven Supernovas",
+          "from_chapter": 498,
+          "to_chapter": 513,
+          "source_ref": "Hand-authored. Drake is at Sabaody with the other Supernovas, ch. 498-513. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "wano-country",
+          "lng": null,
+          "lat": null,
+          "label": "Wano Country — a Headliner under Kaido",
+          "from_chapter": 793,
+          "to_chapter": 1030,
+          "source_ref": "Hand-authored. Drake is in Wano among Kaido's Headliners from the arc's opening. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "vessel": null
+    },
+    {
+      "slug": "barto-club",
+      "name": "Barto Club",
+      "crew_id": 56,
+      "members": [
+        {
+          "slug": "bartolomeo",
+          "name": "Bartolomeo",
+          "from_chapter": 706,
+          "source_ref": "Hand-authored. Bartolomeo fights in the Corrida Colosseum. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "dressrosa",
+          "lng": null,
+          "lat": null,
+          "label": "Dressrosa — the Corrida Colosseum",
+          "from_chapter": 706,
+          "to_chapter": 800,
+          "source_ref": "Hand-authored. The Barto Club is at Dressrosa through the arc, ch. 706-800. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "vessel": null
+    },
+    {
+      "slug": "beautiful-pirates",
+      "name": "Beautiful Pirates",
+      "crew_id": 55,
+      "members": [
+        {
+          "slug": "cavendish",
+          "name": "Cavendish",
+          "from_chapter": 704,
+          "source_ref": "Hand-authored. Cavendish fights in the Corrida Colosseum. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "dressrosa",
+          "lng": null,
+          "lat": null,
+          "label": "Dressrosa — the Corrida Colosseum",
+          "from_chapter": 704,
+          "to_chapter": 800,
+          "source_ref": "Hand-authored. The Beautiful Pirates are at Dressrosa through the arc, ch. 704-800. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "vessel": null
+    },
+    {
+      "slug": "germa-66",
+      "name": "Germa 66",
+      "crew_id": 124,
+      "members": [
+        {
+          "slug": "judge-vinsmoke",
+          "name": "Vinsmoke Judge",
+          "from_chapter": 825,
+          "source_ref": "Hand-authored. Judge commands Germa 66 at the wedding, ch. 825. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "whole-cake-island",
+          "lng": null,
+          "lat": null,
+          "label": "Whole Cake Island — the Vinsmoke alliance",
+          "from_chapter": 825,
+          "to_chapter": 902,
+          "source_ref": "Hand-authored. Germa 66 sails to Whole Cake Island for the wedding, ch. 825-902. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "vessel": null
+    },
+    {
+      "slug": "revolutionary-army",
+      "name": "Revolutionary Army",
+      "crew_id": 130,
+      "members": [
+        {
+          "slug": "emporio-ivankov",
+          "name": "Emporio Ivankov",
+          "from_chapter": 593,
+          "source_ref": "Hand-authored. Ivankov rejoins the Revolutionaries after the war. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "baltigo",
+          "lng": null,
+          "lat": null,
+          "label": "Baltigo — the Land of White Earth",
+          "from_chapter": 593,
+          "to_chapter": 903,
+          "source_ref": "Hand-authored. The Revolutionary Army's headquarters, shown from ch. 593 until Blackbeard destroys it around ch. 903-904. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "vessel": null
     }
   ],
   "characters": [
@@ -878,6 +1624,310 @@
           "to_chapter": null,
           "source_ref": "Hand-authored. Weevil enters the story ~ch. 802, roaming Paradise after the Whitebeard remnants. Position is a REPRESENTATIVE open-sea anchorage, not a canon coordinate. NEEDS HUMAN VERIFICATION against the manga.",
           "canon_confidence": "guess",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "kuzan-aokiji",
+      "name": "Kuzan",
+      "affiliation": "Marine",
+      "crew_slug": null,
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "long-ring-long-land",
+          "lng": null,
+          "lat": null,
+          "label": "Long Ring Long Land — the admiral on a bicycle",
+          "from_chapter": 303,
+          "to_chapter": 321,
+          "source_ref": "Hand-authored. Aokiji intercepts the crew at Long Ring Long Land, ch. 303-321. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "marineford",
+          "lng": null,
+          "lat": null,
+          "label": "Marineford — the war",
+          "from_chapter": 550,
+          "to_chapter": 580,
+          "source_ref": "Hand-authored. Aokiji fights at Marineford, ch. 550-580. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 3,
+          "island_slug": "punk-hazard",
+          "lng": null,
+          "lat": null,
+          "label": "Punk Hazard — arriving after Smoker",
+          "from_chapter": 674,
+          "to_chapter": 690,
+          "source_ref": "Hand-authored. Kuzan, by then out of the Navy, appears at Punk Hazard. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        },
+        {
+          "order": 4,
+          "island_slug": "hachinosu",
+          "lng": null,
+          "lat": null,
+          "label": "Hachinosu — seen with the Blackbeard Pirates",
+          "from_chapter": 925,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Kuzan is shown among Blackbeard's forces from ch. 925. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "borsalino-kizaru",
+      "name": "Borsalino",
+      "affiliation": "Marine",
+      "crew_slug": null,
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "sabaody-archipelago",
+          "lng": null,
+          "lat": null,
+          "label": "Sabaody Archipelago — the admiral arrives",
+          "from_chapter": 504,
+          "to_chapter": 513,
+          "source_ref": "Hand-authored. Kizaru lands at Sabaody, ch. 504-513. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "marineford",
+          "lng": null,
+          "lat": null,
+          "label": "Marineford — the war",
+          "from_chapter": 550,
+          "to_chapter": 580,
+          "source_ref": "Hand-authored. Kizaru fights at Marineford, ch. 550-580. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 3,
+          "island_slug": "egghead",
+          "lng": null,
+          "lat": null,
+          "label": "Egghead — the raid on Vegapunk",
+          "from_chapter": 1090,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Kizaru leads the assault on Egghead. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "sakazuki-akainu",
+      "name": "Sakazuki",
+      "affiliation": "Marine",
+      "crew_slug": null,
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "marineford",
+          "lng": null,
+          "lat": null,
+          "label": "Marineford — the war",
+          "from_chapter": 552,
+          "to_chapter": 580,
+          "source_ref": "Hand-authored. Akainu fights at Marineford from ch. 552 to the end of the war. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": null,
+          "lng": 60.0,
+          "lat": 14.0,
+          "label": "New World — Marine Headquarters after the move",
+          "from_chapter": 581,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Sakazuki becomes Fleet Admiral and Headquarters relocates to the New World. Position is a representative New World anchorage, not a canon coordinate. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "guess",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "monkey-d-garp",
+      "name": "Monkey D. Garp",
+      "affiliation": "Marine",
+      "crew_slug": null,
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "loguetown",
+          "lng": null,
+          "lat": null,
+          "label": "Loguetown — the vice admiral in the rain",
+          "from_chapter": 96,
+          "to_chapter": 100,
+          "source_ref": "Hand-authored. Garp appears at Loguetown as the crew escapes, ch. 96-100. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "water-7",
+          "lng": null,
+          "lat": null,
+          "label": "Water 7 — the grandfather",
+          "from_chapter": 322,
+          "to_chapter": 324,
+          "source_ref": "Hand-authored. Garp calls on the crew at Water 7, ch. 322-324. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        },
+        {
+          "order": 3,
+          "island_slug": "marineford",
+          "lng": null,
+          "lat": null,
+          "label": "Marineford — the war",
+          "from_chapter": 550,
+          "to_chapter": 580,
+          "source_ref": "Hand-authored. Garp is at Marineford for Ace's execution, ch. 550-580. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "sengoku",
+      "name": "Sengoku",
+      "affiliation": "Marine",
+      "crew_slug": null,
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "marineford",
+          "lng": null,
+          "lat": null,
+          "label": "Marineford — the Fleet Admiral's platform",
+          "from_chapter": 550,
+          "to_chapter": 580,
+          "source_ref": "Hand-authored. Sengoku commands the war at Marineford, ch. 550-580. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "smoker",
+      "name": "Smoker",
+      "affiliation": "Marine",
+      "crew_slug": null,
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "loguetown",
+          "lng": null,
+          "lat": null,
+          "label": "Loguetown — the captain who lets them go",
+          "from_chapter": 96,
+          "to_chapter": 100,
+          "source_ref": "Hand-authored. Smoker hunts the crew through Loguetown, ch. 96-100. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "arabasta-kingdom",
+          "lng": null,
+          "lat": null,
+          "label": "Alabasta — the pursuit",
+          "from_chapter": 126,
+          "to_chapter": 212,
+          "source_ref": "Hand-authored. Smoker follows the crew into Alabasta, ch. 126-212. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 3,
+          "island_slug": "punk-hazard",
+          "lng": null,
+          "lat": null,
+          "label": "Punk Hazard — G-5 marines",
+          "from_chapter": 654,
+          "to_chapter": 700,
+          "source_ref": "Hand-authored. Smoker commands G-5 and reaches Punk Hazard, ch. 654-700. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "monkey-d-dragon",
+      "name": "Monkey D. Dragon",
+      "affiliation": "Revolutionary",
+      "crew_slug": "revolutionary-army",
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "loguetown",
+          "lng": null,
+          "lat": null,
+          "label": "Loguetown — one panel in the storm",
+          "from_chapter": 99,
+          "to_chapter": 100,
+          "source_ref": "Hand-authored. Dragon appears for a single moment as the crew leaves Loguetown, ch. 100. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "baltigo",
+          "lng": null,
+          "lat": null,
+          "label": "Baltigo — the Revolutionary Army's base",
+          "from_chapter": 593,
+          "to_chapter": 903,
+          "source_ref": "Hand-authored. Dragon is at Baltigo until Blackbeard destroys it around ch. 903-904. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "sabo",
+      "name": "Sabo",
+      "affiliation": "Revolutionary",
+      "crew_slug": "revolutionary-army",
+      "windows": [
+        {
+          "order": 1,
+          "island_slug": "dressrosa",
+          "lng": null,
+          "lat": null,
+          "label": "Dressrosa — the chief of staff",
+          "from_chapter": 731,
+          "to_chapter": 800,
+          "source_ref": "Hand-authored. Sabo enters the Corrida Colosseum in Luffy's place, ch. 731-800. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "order": 2,
+          "island_slug": "baltigo",
+          "lng": null,
+          "lat": null,
+          "label": "Baltigo — back with the Revolutionaries",
+          "from_chapter": 820,
+          "to_chapter": 903,
+          "source_ref": "Hand-authored. Sabo returns to Baltigo after Dressrosa. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
           "verified": false
         }
       ]

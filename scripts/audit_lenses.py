@@ -11,9 +11,14 @@ contract the lenses must keep:
      fruit keys at all (absent, not null); zero-holder types have no legend chip.
   3. backward scrub 550 -> 1 (live, in-page) — the DOM re-fogs: no revealed
      names or power props survive.
-  4. ch 570, fruit lens — hovering a revealed-fruit orb shows its fruit line.
+  4. ch 700, fruit lens — hovering a revealed-fruit orb shows its fruit line.
   5. ch 550, lens=off  — the presence source is empty (the absorbed toggle).
   6. ch 550, haki lens — legend chips only for haki types with revealed users.
+  7. crews come and GO — Baroque Works is charted at 200 and gone by 430 (it
+     dissolves at 211); CP9 does not exist to the reader at 200, is charted at
+     430, and un-renders on a backward scrub to 100.
+  8. the Navy is on the chart, in its own ink — the admirals are at Marineford
+     at 560 and none of them exists before Loguetown.
 
 Requires the dev server (window.__map is dev-only): the script starts its own
 on AUDIT_PORT (default 3210) unless AUDIT_URL is set.
@@ -149,37 +154,47 @@ def main() -> int:
             check("scrub->1: DOM re-fogged (no revealed names remain)", not leaked,
                   ", ".join(leaked))
 
-            # ---- 4. tooltip shows the fruit line once revealed. Marineford at 570
-            # is crowded — the tooltip takes the FIRST rendered hit at the pixel, so
-            # the assertion follows whatever entity actually tops the hit stack.
-            page.goto(f"{BASE}/?ch=570&lens=fruit")
+            # ---- 4. tooltip shows the fruit line once revealed.
+            # Pick a target whose pixel has exactly ONE rendered hit: orbs overlap,
+            # so hovering a chosen entity's coordinate can land on whoever is stacked
+            # on top, and then the test is asking about a different character than the
+            # tooltip is answering about. Requiring an unambiguous pixel keeps this a
+            # test of the tooltip, not of z-order.
+            # ch. 700 rather than the war at 570: Marineford draws in every admiral,
+            # Warlord and Emperor at once (72 entities, 0 of them on a clean pixel),
+            # so the check could only ever reach its negative branch there.
+            page.goto(f"{BASE}/?ch=700&lens=fruit")
             wait_map(page)
             target = page.evaluate(
                 """() => {
                      const m = window.__map;
-                     const f = (m.querySourceFeatures('presence') || [])
-                       .find(f => f.properties.slug === 'edward-newgate');
-                     if (!f) return null;
-                     const p = m.project(f.geometry.coordinates);
-                     const top = m.queryRenderedFeatures([p.x, p.y],
-                       { layers: ['presence-hit'] })[0];
-                     return top ? { x: p.x, y: p.y, props: top.properties } : null;
+                     const feats = m.querySourceFeatures('presence') || [];
+                     let fallback = null;
+                     for (const f of feats) {
+                       const p = m.project(f.geometry.coordinates);
+                       const hits = m.queryRenderedFeatures([p.x, p.y], { layers: ['presence-hit'] });
+                       if (hits.length !== 1) continue;
+                       const t = { x: p.x, y: p.y, props: hits[0].properties };
+                       if (t.props.fruitName) return t;   // prefer a revealed fruit
+                       fallback = fallback || t;
+                     }
+                     return fallback;
                    }"""
             )
             if target is None:
-                check("ch570/fruit: a hoverable orb on the board", False, "no hit at point")
+                check("ch700/fruit: a hoverable orb on the board", False, "no hit at point")
             else:
                 page.mouse.move(target["x"], target["y"])
                 page.wait_for_timeout(400)
                 text = body_text(page)
                 expected = target["props"].get("fruitName")
                 if expected:
-                    check("ch570/fruit: tooltip carries the revealed fruit line",
+                    check("ch700/fruit: tooltip carries the revealed fruit line",
                           expected in text, f"hit={target['props']['slug']}")
                 else:
                     # The top hit has no revealed fruit — then the tooltip must NOT
                     # invent one (no fruit line at all).
-                    check("ch570/fruit: tooltip shows no fruit line for unrevealed",
+                    check("ch700/fruit: tooltip shows no fruit line for unrevealed",
                           " no Mi" not in text, f"hit={target['props']['slug']}")
 
             # ---- 5. lens=off empties the presence source
@@ -201,6 +216,56 @@ def main() -> int:
             conq_chip = page.locator("li", has_text="Conqueror").count() > 0
             check("ch550/haki: Conqueror chip iff a revealed user is on the board",
                   conq_chip == has_conq, f"chip={conq_chip} users={has_conq}")
+
+            # ---- 7. the populated sea: crews come and GO
+            # An organisation with a closed window is not "history" on this chart,
+            # it is gone: Baroque Works dissolves at ch. 211 and CP9 does not exist
+            # to the reader until Water 7. Both directions are checked, because a
+            # forward-only gate would pass while a backward scrub leaked.
+            page.goto(f"{BASE}/?ch=200&lens=crew")
+            wait_map(page)
+            slugs = {pr.get("slug") for pr in presence_props(page)}
+            text = body_text(page)
+            check("ch200/crew: Baroque Works is charted", "baroque-works" in slugs,
+                  f"{len(slugs)} entities on the board")
+            check("ch200/crew: CP9 has not been revealed to the reader",
+                  "cipher-pol-9" not in slugs and "CP9" not in text)
+
+            page.goto(f"{BASE}/?ch=430&lens=crew")
+            wait_map(page)
+            slugs = {pr.get("slug") for pr in presence_props(page)}
+            check("ch430/crew: CP9 is charted at Enies Lobby", "cipher-pol-9" in slugs)
+            check("ch430/crew: Baroque Works is gone (dissolved ch. 211)",
+                  "baroque-works" not in slugs)
+
+            # scrub BACK: the window that has not opened yet must un-render
+            page.goto(f"{BASE}/?ch=100&lens=crew")
+            wait_map(page)
+            slugs = {pr.get("slug") for pr in presence_props(page)}
+            check("refog ch100/crew: CP9 is not on the board",
+                  "cipher-pol-9" not in slugs and "CP9" not in body_text(page))
+
+            # ---- 8. Marines are on the chart, and they are not Warlord grey
+            page.goto(f"{BASE}/?ch=560&lens=crew")
+            wait_map(page)
+            props = presence_props(page)
+            by = {pr.get("slug"): pr for pr in props}
+            check("ch560/crew: Marineford is crowded", len(props) >= 8, f"{len(props)} entities")
+            marines = [s for s in ("sakazuki-akainu", "borsalino-kizaru", "monkey-d-garp",
+                                   "sengoku") if s in by]
+            check("ch560/crew: the admirals are at Marineford", len(marines) >= 3,
+                  f"present: {marines}")
+            if marines:
+                inks = {by[s]["color"] for s in marines}
+                check("ch560/crew: Marines carry the Marine ink, not the Warlord grey",
+                      inks == {"#4f7fa8"}, f"inks={inks}")
+            # and before Loguetown there is no Navy on this chart at all
+            page.goto(f"{BASE}/?ch=50&lens=crew")
+            wait_map(page)
+            slugs = {pr.get("slug") for pr in presence_props(page)}
+            navy = slugs & {"smoker", "monkey-d-garp", "sengoku", "sakazuki-akainu",
+                            "borsalino-kizaru", "kuzan-aokiji"}
+            check("ch50/crew: no Marine is charted before Loguetown", not navy, f"leaked: {navy}")
 
             browser.close()
     finally:

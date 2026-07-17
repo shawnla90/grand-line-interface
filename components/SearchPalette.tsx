@@ -22,7 +22,13 @@ import { presenceWindowAt } from "@/lib/canon";
 
 export type SearchHit =
   | { kind: "island"; slug: string; label: string; sub: string }
-  | { kind: "crew" | "warlord"; slug: string; label: string; sub: string; charted: boolean }
+  /**
+   * "warlord" is the SHAPE — an unrostered presence character, standing alone on
+   * the chart — not a claim about who they are. Admirals and revolutionaries have
+   * the same shape, so the row prints `affiliation`, not the kind.
+   */
+  | { kind: "crew" | "warlord"; slug: string; label: string; sub: string; charted: boolean;
+      affiliation?: string }
   | { kind: "member"; slug: string; label: string; sub: string; crewSlug: string; charted: boolean };
 
 type Props = {
@@ -80,6 +86,7 @@ export default function SearchPalette({ world, shown, offCanon, open, onClose, o
       out.push({
         kind: "warlord", slug: c.slug, label: c.name, charted: !!active,
         sub: active ? active.label : "not currently charted",
+        affiliation: c.affiliation,
       });
     }
     return out;
@@ -166,7 +173,7 @@ export default function SearchPalette({ world, shown, offCanon, open, onClose, o
                     <span className="block truncate text-[10px] text-muted-2">{h.sub}</span>
                   </span>
                   <span className="shrink-0 font-mono text-[9px] uppercase tracking-[0.14em] text-muted-2">
-                    {KIND_LABEL[h.kind]}
+                    {h.kind === "warlord" && h.affiliation ? h.affiliation : KIND_LABEL[h.kind]}
                   </span>
                 </button>
               </li>
