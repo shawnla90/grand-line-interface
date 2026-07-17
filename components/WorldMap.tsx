@@ -107,6 +107,13 @@ type Props = {
   /** Target zoom for the journey camera to damp toward (out over sea, deep at a 3D stop). */
   journeyZoom?: number | null;
   /**
+   * A story-moment stage to frame instead of the ship (the Baratie sits off
+   * the raw voyage line). Non-null ALSO pitches the camera (~55°) for the
+   * dwell: the 2.5D story cards are vertical billboards, and a top-down
+   * camera sees them exactly edge-on — i.e. not at all.
+   */
+  journeyFocus?: [number, number] | null;
+  /**
    * Admin placement mode (the /admin/place tool). When both are set, a map click
    * reports its lng/lat instead of selecting an island — that's how a human
    * upgrades a derived pin to a confirmed one.
@@ -1195,6 +1202,7 @@ export default function WorldMap({
   flyTarget = null,
   journey = false,
   journeyZoom = null,
+  journeyFocus = null,
   placingSlug = null,
   onPlaceAt,
 }: Props) {
@@ -1280,9 +1288,13 @@ export default function WorldMap({
   // line and the old journey did not.
   const journeyRef = useRef(journey);
   const journeyZoomRef = useRef(journeyZoom);
+  const journeyFocusRef = useRef(journeyFocus);
   useEffect(() => {
     journeyZoomRef.current = journeyZoom;
   }, [journeyZoom]);
+  useEffect(() => {
+    journeyFocusRef.current = journeyFocus;
+  }, [journeyFocus]);
 
   const chase = useCallback(function chaseStep() {
     chaseRaf.current = null;
@@ -1292,14 +1304,18 @@ export default function WorldMap({
     if (!followRef.current && !journeying) return;
     const { ship: pos } = voyageGeometryAt(expandedWaypoints(world.voyage.waypoints), chapterRef.current);
     if (!pos) return;
+    // A story-moment dwell frames the STAGE, not the ship — the Baratie's
+    // scene anchor sits off the raw voyage line. Null = the ship, as ever.
+    const focus = journeying ? journeyFocusRef.current : null;
+    const target = focus ?? pos;
     const c = m.getCenter();
-    const dLng = ((((pos[0] - c.lng) % 360) + 540) % 360) - 180; // shortest way round
-    const dLat = pos[1] - c.lat;
+    const dLng = ((((target[0] - c.lng) % 360) + 540) % 360) - 180; // shortest way round
+    const dLat = target[1] - c.lat;
     // The journey glues the ship near screen centre so it never drifts off the
     // line — a much tighter pull than the follow chase, which leads the ship a
     // little while you scrub. Zoom eases separately toward the schedule's target.
     const k = journeying ? 0.5 : 0.18;
-    const upd: { center: [number, number]; zoom?: number } = {
+    const upd: { center: [number, number]; zoom?: number; pitch?: number } = {
       center: [c.lng + dLng * k, c.lat + dLat * k],
     };
     let settledZoom = true;
@@ -1308,6 +1324,17 @@ export default function WorldMap({
       const dz = journeyZoomRef.current - z;
       if (Math.abs(dz) > 0.008) {
         upd.zoom = z + dz * 0.12;
+        settledZoom = false;
+      }
+    }
+    // Pitch rides the dwell: up to ~55° while a stage is framed (vertical
+    // story cards are invisible top-down), back flat for the sea legs.
+    if (journeying) {
+      const wantPitch = focus ? 55 : 0;
+      const p = m.getPitch();
+      const dp = wantPitch - p;
+      if (Math.abs(dp) > 0.2) {
+        upd.pitch = p + dp * 0.09;
         settledZoom = false;
       }
     }
@@ -1356,6 +1383,8 @@ export default function WorldMap({
     } else {
       m.dragPan.enable();
       if (m.getProjection()?.type === "globe") m.dragRotate.enable();
+      // A run stopped mid-dwell leaves the camera pitched; lay it back down.
+      if (m.getPitch() > 0.5) m.easeTo({ pitch: 0, duration: 600 });
       // Restore the resting voyage style.
       m.setPaintProperty("voyage-glow", "line-width", 6);
       m.setPaintProperty("voyage-glow", "line-blur", 7);

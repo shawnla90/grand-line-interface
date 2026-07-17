@@ -36,6 +36,7 @@ import { focusKey, type Focus, type PresenceLens } from "@/lib/lenses";
 import type { BuildLog } from "@/lib/buildlog";
 import type { Art } from "@/lib/art";
 import { buildJourney } from "@/lib/journey";
+import { EAST_BLUE_2D_ON, buildEastBlueMoments } from "@/config/east-blue-simulations";
 import WorldMap, { type Projection } from "./WorldMap";
 import { RuntimeIslandDirectory } from "./RuntimeIslandDirectory";
 import SearchPalette, { type SearchHit } from "./SearchPalette";
@@ -55,8 +56,10 @@ export const SPEEDS = [0.5, 1, 2, 4] as const;
 export type Speed = (typeof SPEEDS)[number];
 /** Chapters per second at 1x. 2 ch/s sails the whole story in ~10 minutes. */
 const BASE_CPS = 2;
-/** The cinematic journey's total run — ~90s, Shawn's ideal for a TikTok capture. */
-const JOURNEY_MS = 90_000;
+/** The cinematic journey's total run — ~90s, Shawn's ideal for a TikTok
+ * capture. With the East Blue story moments on (five ~8s simulation dwells),
+ * the run stretches to 120s so the sea legs keep today's pacing. */
+const JOURNEY_MS = EAST_BLUE_2D_ON ? 120_000 : 90_000;
 
 /**
  * One float position (`swept`) eased or sailed toward/through chapters.
@@ -172,6 +175,11 @@ function useChapterEngine(world: World, initial: number) {
   const [journey, setJourney] = useState(false);
   const [journeyZoom, setJourneyZoom] = useState<number | null>(null);
   const [journeyLabel, setJourneyLabel] = useState("");
+  // During a story-moment dwell: the stage to frame and the canon fact to
+  // caption. Both null over open sea. Facts come from world.events, whose
+  // occurred_chapter <= the dwell chapter by construction — no caption leaks.
+  const [journeyFocus, setJourneyFocus] = useState<[number, number] | null>(null);
+  const [journeyFact, setJourneyFact] = useState("");
   const journeyRaf = useRef<number | null>(null);
 
   const stopJourney = useCallback(() => {
@@ -181,6 +189,8 @@ function useChapterEngine(world: World, initial: number) {
     setJourney(false);
     setJourneyZoom(null);
     setJourneyLabel("");
+    setJourneyFocus(null);
+    setJourneyFact("");
   }, []);
 
   const startJourney = useCallback(() => {
@@ -193,6 +203,11 @@ function useChapterEngine(world: World, initial: number) {
     const plan = buildJourney(
       world.voyage.waypoints.map((w) => ({ chapter: w.chapter, slug: w.slug, label: w.label })),
       world.chapterMax,
+      undefined,
+      {},
+      // The East Blue story moments ride the same flag as the layer that plays
+      // them; flag off = today's 90s run, byte for byte.
+      EAST_BLUE_2D_ON ? buildEastBlueMoments(world) : [],
     );
 
     pos.current = world.chapterMin;
@@ -210,6 +225,9 @@ function useChapterEngine(world: World, initial: number) {
       setChapterState((c) => (c === fl ? c : fl));
       setJourneyZoom(plan.zoomAt(t));
       setJourneyLabel(plan.labelAt(t));
+      const moment = plan.momentAt(t);
+      setJourneyFocus(moment?.focus ?? null);
+      setJourneyFact(moment?.fact ?? "");
       if (t >= 1) {
         stopJourney();
         return;
@@ -230,7 +248,7 @@ function useChapterEngine(world: World, initial: number) {
 
   return {
     chapter, swept, setChapter: setChapterJ, playing, speed, setSpeed, play, pause,
-    journey, journeyZoom, journeyLabel, startJourney, stopJourney,
+    journey, journeyZoom, journeyLabel, journeyFocus, journeyFact, startJourney, stopJourney,
   };
 }
 
@@ -452,6 +470,7 @@ export default function Atlas({
           flyTarget={flyTarget}
           journey={engine.journey}
           journeyZoom={engine.journeyZoom}
+          journeyFocus={engine.journeyFocus}
         />
 
         <SearchPalette
@@ -463,11 +482,16 @@ export default function Atlas({
           onPick={onSearchPick}
         />
 
-        {/* The journey caption — the current leg's name, for the recording. */}
+        {/* The journey caption — the current leg's name, for the recording.
+            During a story-moment dwell a second line carries the canon fact
+            (the event's outcome), so the capture narrates itself. */}
         {engine.journey && engine.journeyLabel && (
           <div className="pointer-events-none absolute top-6 left-1/2 z-20 -translate-x-1/2">
-            <div className="rounded-full border border-rope/60 bg-ink/85 px-4 py-1.5 font-document text-[13px] italic tracking-wide text-parchment/90 shadow-2xl backdrop-blur">
-              {engine.journeyLabel}
+            <div className="max-w-[min(80vw,540px)] rounded-2xl border border-rope/60 bg-ink/85 px-4 py-1.5 text-center font-document text-[13px] italic tracking-wide text-parchment/90 shadow-2xl backdrop-blur">
+              <div>{engine.journeyLabel}</div>
+              {engine.journeyFact && (
+                <div className="mt-0.5 text-[11px] not-italic text-parchment/65">{engine.journeyFact}</div>
+              )}
             </div>
           </div>
         )}
