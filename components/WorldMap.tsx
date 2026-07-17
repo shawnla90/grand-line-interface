@@ -46,6 +46,7 @@ import type { Focus, Lens, PresenceLens } from "@/lib/lenses";
 import { poneglyphSvg, PONEGLYPH_INK } from "./marks/poneglyph";
 import { globeProven } from "@/config/projection-overrides";
 import { createGlbLayer, type GlbLayer } from "./glb-layer";
+import { OrbitControls } from "./OrbitControls";
 import { buildModels, type RuntimeAsset, type RuntimeModel } from "./runtime-models";
 import { altitudeT, columnOpacity, expandSkyWaypoints, SKY_BASE, SKY_BODY, transitBase } from "./skypiea";
 import {
@@ -1021,6 +1022,12 @@ async function loadRuntimeModels(m: MLMap): Promise<void> {
     globeProven,
     () => modelChapter,
   );
+  // The data loads async, and the syncModels call that KICKED OFF this load
+  // returned early (MODELS was null) without adding a thing. Nothing re-invokes
+  // syncModels on its own — triggerRepaint only redraws — so a reader who has
+  // finished diving before the data lands would sit on an island with no model
+  // until they nudge the camera. Run it now, at the chapter that call recorded.
+  syncModels(m, modelChapter);
   m.triggerRepaint();
 }
 
@@ -1311,6 +1318,9 @@ export default function WorldMap({
   // axis, the roster and the scrubber all die with the canvas. They shouldn't: the
   // panels are plain data and render fine on their own. So the map degrades alone.
   const [glFailed, setGlFailed] = useState(false);
+  // True while a left-drag orbits a dived-into model (grab-and-spin). Drives the
+  // "level view" control; the machinery lives in the map-init effect.
+  const [orbiting, setOrbiting] = useState(false);
 
   const bySlug = useMemo(() => new Map(world.islands.map((i) => [i.slug, i])), [world.islands]);
   const features = useMemo(() => islandFeatures(world.islands), [world.islands]);
@@ -1702,6 +1712,10 @@ export default function WorldMap({
         // 8.5, not deeper: the hero islands' 128-pt rings stay smooth to here;
         // regular 56-pt coastlines go visibly polygonal much past it.
         maxZoom: 8.5,
+        // 75, up from the default 60: orbiting a 3D island wants to look at it
+        // nearly side-on (towers, tiers, a waterfall column), and 60 is too
+        // shallow for that. Only reachable once you have dived into a model.
+        maxPitch: 75,
         // NB: `padding` is a CAMERA option, not a MapOptions one — it is applied via
         // setPadding() on load, below.
         attributionControl: false,
@@ -1746,6 +1760,76 @@ export default function WorldMap({
       m.on("zoom", syncGlb);
       m.on("moveend", syncGlb);
       m.on("projectiontransition", syncGlb);
+
+      // ─── GRAB-AND-SPIN ─────────────────────────────────────────────────
+      // When you have dived into a 3D island, a left-drag ORBITS it instead of
+      // panning the world: dx -> bearing, dy -> pitch. Everywhere else, left-drag
+      // still pans. The whole point is that it engages ONLY on a model at close
+      // zoom, so the world map never stops being draggable.
+      //
+      // Custom pointer handling, not MapLibre's dragRotate: that handler is bound
+      // to the right button / ctrl and cannot be remapped to plain left-drag, and
+      // setBearing/setPitch work on BOTH projections (dragRotate is globe-only) —
+      // which is the whole reason the flat mercator close-up could not spin before.
+      // A CUSTOM layer (createGlbLayer) does NOT appear in getStyle().layers —
+      // only getLayer() sees it. So presence is read from the maps syncModels
+      // already keeps, not from a style scan (which would only ever find the
+      // raster knockup3d and conclude, wrongly, that no model is present).
+      const modelPresent = () => modelLayers.size > 0 || !!knockUpLayer;
+      const orbit = { active: false, dragging: false, x: 0, y: 0, bearing: 0, pitch: 0 };
+      const canvas = m.getCanvas();
+
+      const onDown = (e: PointerEvent) => {
+        if (e.button !== 0 || !orbit.active) return;
+        orbit.dragging = true;
+        orbit.x = e.clientX;
+        orbit.y = e.clientY;
+        orbit.bearing = m.getBearing();
+        orbit.pitch = m.getPitch();
+        breakRef.current?.(); // taking the wheel yields the follow-chase, same as a pan
+        canvas.setPointerCapture(e.pointerId);
+      };
+      const onMove = (e: PointerEvent) => {
+        if (!orbit.dragging) return;
+        // 0.4°/px horizontal reads as a natural spin; 0.35°/px vertical, clamped
+        // to the raised maxPitch so you can lie the camera down beside the model
+        // without flipping under the sea.
+        m.setBearing(orbit.bearing - (e.clientX - orbit.x) * 0.4);
+        m.setPitch(Math.max(0, Math.min(75, orbit.pitch + (e.clientY - orbit.y) * 0.35)));
+      };
+      const onUp = (e: PointerEvent) => {
+        orbit.dragging = false;
+        if (canvas.hasPointerCapture(e.pointerId)) canvas.releasePointerCapture(e.pointerId);
+      };
+
+      const updateOrbit = () => {
+        const should = m.getZoom() >= GLB_MIN_ZOOM && modelPresent();
+        if (should && !orbit.active) {
+          orbit.active = true;
+          m.dragPan.disable(); // left-drag now orbits; the world stops panning
+          canvas.addEventListener("pointerdown", onDown);
+          canvas.addEventListener("pointermove", onMove);
+          canvas.addEventListener("pointerup", onUp);
+          canvas.style.cursor = "grab";
+          setOrbiting(true);
+        } else if (!should && orbit.active) {
+          orbit.active = false;
+          orbit.dragging = false;
+          m.dragPan.enable(); // back out over open sea — pan returns
+          canvas.removeEventListener("pointerdown", onDown);
+          canvas.removeEventListener("pointermove", onMove);
+          canvas.removeEventListener("pointerup", onUp);
+          canvas.style.cursor = "";
+          setOrbiting(false);
+        }
+      };
+      m.on("zoom", updateOrbit);
+      m.on("moveend", updateOrbit);
+      // Models load async: a reader can finish diving BEFORE the layer exists, so
+      // the moveend that ended the dive saw no model and left orbit off. `idle`
+      // fires once the map settles after the layer is finally added, catching
+      // exactly that gap. Cheap — a layer scan and a compare.
+      m.on("idle", updateOrbit);
     }
 
     // A drag or a user rotate is the reader taking the wheel — follow yields.
@@ -2168,6 +2252,10 @@ export default function WorldMap({
           <div className="pointer-events-none absolute bottom-6 left-[316px] z-[6]">
             <CompassRose size={72} />
           </div>
+          <OrbitControls
+            orbiting={orbiting}
+            onLevel={() => map.current?.easeTo({ pitch: 0, bearing: 0, duration: 500 })}
+          />
         </>
       )}
 
