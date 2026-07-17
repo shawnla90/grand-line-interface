@@ -5,6 +5,7 @@
   "model_provider": "OpenAI",
   "harness": "Codex Desktop",
   "session_id": "019f6d98-6aae-7ce1-8cdf-88cbf1b6aff0",
+  "git_commit": "5166d52",
   "measured_at": "2026-07-17T03:04:50.321Z",
   "usage": {
     "input_tokens": 22440567,

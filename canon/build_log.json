@@ -56,7 +56,9 @@
       "builder": "Codex",
       "harness": "Codex session",
       "role": "plan draft",
-      "commits": [],
+      "commits": [
+        "5166d52"
+      ],
       "verified": true
     },
     {

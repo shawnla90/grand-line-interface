@@ -141,7 +141,7 @@ The atlas refuses to let a machine-derived pin look human-confirmed. The same ho
 | 5 (plan) | Crews, characters & ships — the phase plan | Codex | Codex session | — |
 | 5 (build) | Crews, characters & ships on the map + this log | Claude Fable 5 | Claude Code | `0854c75` `a43ca34` `9e7b61f` `e036749` `4b6335f` |
 | 6 | Real art — Jolly Rogers, portraits, ships, Devil Fruits, islands | Claude Opus 4.8 | Claude Code · 1M context | `5bbdf47` |
-| 7A (asset factory) | Canon-aware Blender assets: contracts, system boards, 2.5D plates, 3D blockouts | Codex Sol | Codex Desktop · Blender 4.5.3 LTS | pending commit stamp |
+| 7A (asset factory) | Canon-aware Blender assets: contracts, system boards, 2.5D plates, 3D blockouts | Codex Sol | Codex Desktop · Blender 4.5.3 LTS | `5166d52` |
 
 The complete Blender production track lives in [`blender-assets/`](blender-assets/),
 including editable `.blend` sources, generated renders, GLB pilots, chapter-aware
