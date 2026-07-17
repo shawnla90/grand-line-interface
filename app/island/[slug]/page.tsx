@@ -16,7 +16,7 @@
 import type { Metadata } from "next";
 import { loadCanon } from "@/lib/schema";
 import { loadArt } from "@/lib/art";
-import { buildWorld, presenceWindowAt } from "@/lib/canon";
+import { buildWorld, eventsAtChapter, presenceWindowAt } from "@/lib/canon";
 import { islandEntry, readChapter } from "@/lib/entry";
 import { BRAND } from "@/config/brand";
 import IslandEntry, { type IslandExtras } from "@/components/entry/IslandEntry";
@@ -82,6 +82,10 @@ export default async function Page({ params, searchParams }: Props) {
 
   const wp = world.voyage.waypoints.find((w) => w.slug === slug && w.chapter <= ctx.chapter);
 
+  const events: IslandExtras["events"] = eventsAtChapter(world, ctx.chapter)
+    .filter((e) => e.islandSlug === slug)
+    .map((e) => ({ slug: e.slug, name: e.name, kind: e.kind, chapter: e.occurredChapter }));
+
   return (
     <IslandEntry
       data={entry.data}
@@ -89,6 +93,7 @@ export default async function Page({ params, searchParams }: Props) {
         poneglyphs,
         presentCrews,
         voyageCall: wp ? { chapter: wp.chapter, label: wp.label } : null,
+        events,
       }}
       art={loadArt()}
       chapter={ctx.chapter}

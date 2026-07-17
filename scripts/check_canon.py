@@ -904,6 +904,70 @@ def entry_slugs_routable(doc):
             f"slugs, {len(dupes)} duplicate character slugs (all agreeing on their gate)")
 
 
+@check("events_gated")
+def events_gated(doc):
+    """Every event stands on solid ground: a real place, real participants, and
+    a chapter the reader has actually turned. An event on a fogged island is
+    the poneglyph leak with a plot attached — it names the island AND spoils
+    what happens there."""
+    kinds = {"duel", "battle", "war", "declaration", "death",
+             "execution", "oath", "escape", "departure"}
+    events = doc["events"]
+    assert events, "no events reached the artifact"
+    debut = {i["slug"]: i["debut_chapter"] for i in doc["islands"]}
+    chars = {c["slug"] for c in doc["characters"]}
+
+    for e in events:
+        s = e["slug"]
+        assert e["kind"] in kinds, f"{s}: bad kind {e['kind']!r}"
+        assert e["occurred_chapter"] >= 1, f"{s}: occurred_chapter < 1"
+        thr = e["through_chapter"]
+        assert thr is None or thr >= e["occurred_chapter"], (
+            f"{s}: through_chapter {thr} < occurred_chapter {e['occurred_chapter']}"
+        )
+        assert e["significance"] in (1, 2, 3), f"{s}: significance {e['significance']!r}"
+        assert e["lng"] is not None and e["lat"] is not None, f"{s}: no resolved position"
+        assert e["participants"], f"{s}: no participants"
+        for p in e["participants"]:
+            assert p["slug"] in chars, f"{s}: participant {p['slug']!r} is not a character"
+        isl = e["island_slug"]
+        if isl is not None:
+            assert isl in debut, f"{s}: names unknown island {isl!r}"
+            assert debut[isl] is not None and e["occurred_chapter"] >= debut[isl], (
+                f"{s} occurs on {isl!r} at ch. {e['occurred_chapter']}, but that island is "
+                f"not charted until ch. {debut[isl]}"
+            )
+    return f"{len(events)} events, all placed, gated, and peopled"
+
+
+@check("mihawk_duel_test")
+def mihawk_duel_test(doc):
+    """THE events tripwire, in the jinbe_test mold. The Zoro–Mihawk duel is the
+    first event anyone will look for, and it has exactly one dangerous failure
+    mode: surfacing before chapter 50 spoils the Baratie for a reader who just
+    met Sanji. If someone ever wires a scraper into events.json, an arc-start
+    chapter (42, the Baratie's debut) is what lands here — this asserts the
+    duel is gated on the DUEL, not the arc."""
+    events = {e["slug"]: e for e in doc["events"]}
+    assert "zoro-vs-mihawk-baratie" in events, "the Zoro–Mihawk duel is missing from events"
+    duel = events["zoro-vs-mihawk-baratie"]
+    ch = duel["occurred_chapter"]
+    assert 42 < ch <= 52, (
+        f"zoro-vs-mihawk-baratie.occurred_chapter is {ch}. The duel is ~ch. 50–51; a value at "
+        f"or below 42 means someone gated it on the Baratie ARC, not the duel itself."
+    )
+    slugs = {p["slug"] for p in duel["participants"]}
+    assert {"roronoa-zoro", "dracule-mihawk"} <= slugs, (
+        f"the duel's participants are {sorted(slugs)} — a duel needs both duelists"
+    )
+    # History never un-happens: no gate in the app may hide an event the reader
+    # has passed. eventsAtChapter filters occurredChapter <= ch only.
+    assert duel["through_chapter"] is None or duel["through_chapter"] >= ch, (
+        "through_chapter must not close before the beat opens"
+    )
+    return f"the duel: ch. {ch}, both duelists present, gate on the duel not the arc"
+
+
 CHECKS = [
     jinbe_test, crew_joins_are_human, straw_hats_complete,
     islands_have_positions, islands_fog_key, no_mojibake,
@@ -913,6 +977,7 @@ CHECKS = [
     presence_windows_forward, presence_spoiler_and_roster,
     fruit_reveals_gated, haki_users_gated, biomes_valid,
     bounty_history_gated, wiki_debut_is_not_join, statuses_gated, poneglyphs_gated,
+    events_gated, mihawk_duel_test,
     geo_artifacts_fresh, entry_slugs_routable,
 ]
 

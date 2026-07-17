@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-17T05:00:16.008989+00:00",
+    "generated_at": "2026-07-17T21:14:48.044253+00:00",
     "generator": "scripts/normalize.py",
     "source_manifest_sha": "be7af436b558b373ae1e6f28cc5007ef89153529fb274cb7efd1a47b4f1ef25a",
     "sources": {
@@ -23,6 +23,7 @@
       "crew_presence contains UNVERIFIED windows. Who-is-where chapter stamps are not manga-confirmed. The UI must render presence as unverified.",
       "statuses contains UNVERIFIED windows. Warlord/Emperor/Supernova reveal chapters are not manga-confirmed. The UI must render them as unverified.",
       "poneglyphs contains UNVERIFIED custody windows (7 stones, 3 of them Road Poneglyphs). Reveal chapters are not manga-confirmed. The UI must render them as unverified.",
+      "events contains UNVERIFIED rows (10 events). Occurrence chapters are not manga-confirmed. The UI must render events as unverified.",
       "fruit_reveals contains UNVERIFIED rows. Fruit reveal chapters are not manga-confirmed. The UI must render fruit facts as unverified.",
       "haki_users contains UNVERIFIED rows. Haki reveal chapters are not manga-confirmed. The UI must render haki facts as unverified.",
       "124 bounty rows were dropped for carrying no reveal chapter (databook, Vivre Card and magazine figures the wiki never ties to a chapter). An ungated bounty cannot be fogged, so it is dropped rather than shown from chapter 1. To restore one, give it a chapter in canon/bounties.json."
@@ -55,6 +56,8 @@
       "statuses": 29,
       "poneglyphs": 7,
       "poneglyphs_road": 3,
+      "events": 10,
+      "events_verified": 0,
       "status_windows": 29,
       "status_windows_verified": 0,
       "fruit_reveals": 35,
@@ -54247,6 +54250,318 @@
           "verified": false
         }
       ]
+    }
+  ],
+  "events": [
+    {
+      "slug": "rogers-execution",
+      "name": "The Execution of Gol D. Roger",
+      "kind": "execution",
+      "occurred_chapter": 1,
+      "through_chapter": null,
+      "island_slug": "loguetown",
+      "lng": -174,
+      "lat": -20,
+      "participants": [
+        {
+          "slug": "gol-d-roger",
+          "name": "Gol D. Roger",
+          "role": "executed"
+        }
+      ],
+      "outcome": "The Pirate King dies at Loguetown — and his last words about the One Piece ignite the Great Pirate Era. In-world this is decades before the story; the reader watches it in the chapter 1 prologue, so it is charted from chapter 1.",
+      "significance": 3,
+      "source_ref": "Hand-authored. Chapter 1 prologue: Roger's execution at Loguetown and the words that launch the era. occurred_chapter follows the reader-time rule. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "the-straw-hat-promise",
+      "name": "The Straw Hat Promise",
+      "kind": "oath",
+      "occurred_chapter": 1,
+      "through_chapter": null,
+      "island_slug": "foosha-village",
+      "lng": -130,
+      "lat": -60,
+      "participants": [
+        {
+          "slug": "shanks",
+          "name": "Shanks",
+          "role": "gives the hat"
+        },
+        {
+          "slug": "monkey-d-luffy",
+          "name": "Monkey D. Luffy",
+          "role": "makes the promise"
+        }
+      ],
+      "outcome": "Shanks leaves his straw hat with Luffy — to be returned when Luffy becomes a great pirate. The whole voyage is this promise being kept.",
+      "significance": 3,
+      "source_ref": "Hand-authored. Chapter 1 (Romance Dawn): Shanks gives Luffy the straw hat as he departs Foosha Village. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "morgan-falls",
+      "name": "The Fall of Axe-Hand Morgan",
+      "kind": "battle",
+      "occurred_chapter": 6,
+      "through_chapter": null,
+      "island_slug": "shells-town",
+      "lng": -142,
+      "lat": -52,
+      "participants": [
+        {
+          "slug": "monkey-d-luffy",
+          "name": "Monkey D. Luffy",
+          "role": "victor"
+        },
+        {
+          "slug": "roronoa-zoro",
+          "name": "Roronoa Zoro",
+          "role": "victor"
+        },
+        {
+          "slug": "morgan",
+          "name": "Captain Morgan",
+          "role": "defeated"
+        }
+      ],
+      "outcome": "Luffy and Zoro topple the tyrant of the 153rd Marine Branch — the crew's first fight as a crew.",
+      "significance": 1,
+      "source_ref": "Hand-authored. Shells Town: Morgan is beaten and Zoro sails with Luffy (~ch. 6). The exact defeat chapter is a reading of the arc. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "buggy-blasted-away",
+      "name": "Buggy Blasted Away at Orange Town",
+      "kind": "battle",
+      "occurred_chapter": 20,
+      "through_chapter": null,
+      "island_slug": "orange-town",
+      "lng": -152,
+      "lat": -45,
+      "participants": [
+        {
+          "slug": "monkey-d-luffy",
+          "name": "Monkey D. Luffy",
+          "role": "victor"
+        },
+        {
+          "slug": "buggy-the-clown",
+          "name": "Buggy the Clown",
+          "role": "defeated"
+        },
+        {
+          "slug": "nami",
+          "name": "Nami",
+          "role": "gathers the pieces"
+        }
+      ],
+      "outcome": "Nami ties Buggy's scattered parts together and Luffy sends the rest flying — Orange Town is free, and the map's longest-running grudge begins.",
+      "significance": 1,
+      "source_ref": "Hand-authored. Orange Town: Luffy defeats Buggy with Nami's help (~ch. 20). The exact chapter is a reading of the arc. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "kuro-of-a-hundred-plans-falls",
+      "name": "Kuro of a Hundred Plans Falls",
+      "kind": "battle",
+      "occurred_chapter": 39,
+      "through_chapter": null,
+      "island_slug": "syrup-village",
+      "lng": -160,
+      "lat": -52,
+      "participants": [
+        {
+          "slug": "monkey-d-luffy",
+          "name": "Monkey D. Luffy",
+          "role": "victor"
+        },
+        {
+          "slug": "kuro",
+          "name": "Kuro",
+          "role": "defeated"
+        },
+        {
+          "slug": "usopp",
+          "name": "Usopp",
+          "role": "defends his village"
+        }
+      ],
+      "outcome": "The butler's three-year plan dies on the beach; Syrup Village never learns it was ever in danger, because Usopp the liar tells them nothing happened.",
+      "significance": 1,
+      "source_ref": "Hand-authored. Syrup Village: Luffy defeats Captain Kuro (~ch. 39). The exact chapter is a reading of the arc. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "zoro-vs-mihawk-baratie",
+      "name": "Zoro vs. Mihawk — the Duel at the Baratie",
+      "kind": "duel",
+      "occurred_chapter": 50,
+      "through_chapter": 51,
+      "island_slug": null,
+      "lng": -165.0,
+      "lat": -40.0,
+      "participants": [
+        {
+          "slug": "dracule-mihawk",
+          "name": "Dracule Mihawk",
+          "role": "victor"
+        },
+        {
+          "slug": "roronoa-zoro",
+          "name": "Roronoa Zoro",
+          "role": "defeated — and sworn"
+        }
+      ],
+      "outcome": "The world's greatest swordsman opens Zoro's chest and spares his life for his ambition. Zoro's vow to Luffy — never to lose again until he takes the title — is the oath the whole swordsman's arc hangs on.",
+      "significance": 2,
+      "source_ref": "Hand-authored. The Baratie, open sea (~ch. 50–51): Mihawk defeats Zoro; the never-again vow follows. Explicit lng/lat: the Baratie is a floating restaurant with no island row; position matches the voyage's Baratie anchor. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "don-krieg-defeated",
+      "name": "Don Krieg Defeated at the Baratie",
+      "kind": "battle",
+      "occurred_chapter": 66,
+      "through_chapter": null,
+      "island_slug": null,
+      "lng": -165.0,
+      "lat": -40.0,
+      "participants": [
+        {
+          "slug": "monkey-d-luffy",
+          "name": "Monkey D. Luffy",
+          "role": "victor"
+        },
+        {
+          "slug": "krieg-don-krieg",
+          "name": "Don Krieg",
+          "role": "defeated"
+        },
+        {
+          "slug": "zeff",
+          "name": "Zeff",
+          "role": "the restaurant defended"
+        }
+      ],
+      "outcome": "The self-styled strongest armada of East Blue breaks against one rubber pirate defending a floating restaurant; Sanji sails soon after.",
+      "significance": 1,
+      "source_ref": "Hand-authored. The Baratie: Luffy defeats Don Krieg (~ch. 66). Explicit lng/lat: the Baratie has no island row; position matches the voyage's Baratie anchor. The exact chapter is a reading of the arc. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "arlong-park-falls",
+      "name": "The Fall of Arlong Park",
+      "kind": "battle",
+      "occurred_chapter": 93,
+      "through_chapter": null,
+      "island_slug": "arlong-park",
+      "lng": -121.1536,
+      "lat": -39.3092,
+      "participants": [
+        {
+          "slug": "monkey-d-luffy",
+          "name": "Monkey D. Luffy",
+          "role": "victor"
+        },
+        {
+          "slug": "arlong",
+          "name": "Arlong",
+          "role": "defeated"
+        },
+        {
+          "slug": "nami",
+          "name": "Nami",
+          "role": "freed"
+        }
+      ],
+      "outcome": "Luffy brings Arlong Park down on its owner's head. Eight years of Cocoyasi's tribute end, and Nami joins the crew for real — the hat on her head while she cried is the hinge of East Blue.",
+      "significance": 2,
+      "source_ref": "Hand-authored. Conomi Islands: Luffy defeats Arlong and the Park collapses (~ch. 93). The exact chapter is a reading of the arc. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "the-loguetown-escape",
+      "name": "The Escape from the Execution Platform",
+      "kind": "escape",
+      "occurred_chapter": 99,
+      "through_chapter": null,
+      "island_slug": "loguetown",
+      "lng": -174,
+      "lat": -20,
+      "participants": [
+        {
+          "slug": "monkey-d-luffy",
+          "name": "Monkey D. Luffy",
+          "role": "smiles on the scaffold"
+        },
+        {
+          "slug": "buggy-the-clown",
+          "name": "Buggy the Clown",
+          "role": "executioner, interrupted"
+        },
+        {
+          "slug": "smoker",
+          "name": "Smoker",
+          "role": "gives chase"
+        }
+      ],
+      "outcome": "On the platform where Roger died, Buggy's blade falls — and lightning falls first. Luffy grins where the Pirate King grinned, and Smoker decides this one is his to chase.",
+      "significance": 2,
+      "source_ref": "Hand-authored. Loguetown: the execution attempt and the lightning strike (~ch. 99). The exact chapter is a reading of the arc. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "into-the-grand-line",
+      "name": "Into the Grand Line",
+      "kind": "departure",
+      "occurred_chapter": 101,
+      "through_chapter": null,
+      "island_slug": "reverse-mountain",
+      "lng": -179,
+      "lat": -2,
+      "participants": [
+        {
+          "slug": "monkey-d-luffy",
+          "name": "Monkey D. Luffy",
+          "role": "captain"
+        },
+        {
+          "slug": "roronoa-zoro",
+          "name": "Roronoa Zoro",
+          "role": "crew"
+        },
+        {
+          "slug": "nami",
+          "name": "Nami",
+          "role": "navigator"
+        },
+        {
+          "slug": "usopp",
+          "name": "Usopp",
+          "role": "crew"
+        },
+        {
+          "slug": "sanji",
+          "name": "Sanji",
+          "role": "crew"
+        }
+      ],
+      "outcome": "The barrel oath in the storm, and the Going Merry rides Reverse Mountain up and over — East Blue ends, the Grand Line begins.",
+      "significance": 2,
+      "source_ref": "Hand-authored. Reverse Mountain (~ch. 100–101): the crew's declarations over the barrel and the ascent into the Grand Line. Charted at ch. 101 with the island's debut. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
     }
   ],
   "boats": [

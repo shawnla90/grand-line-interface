@@ -243,6 +243,37 @@ export type WorldPoneglyph = {
   custody: WorldPresenceWindow[];
 };
 
+export type EventKind =
+  | "duel" | "battle" | "war" | "declaration" | "death"
+  | "execution" | "oath" | "escape" | "departure";
+
+export type WorldEventParticipant = {
+  slug: string;
+  name: string;
+  role: string;
+};
+
+export type WorldEvent = {
+  slug: string;
+  name: string;
+  kind: EventKind;
+  /** When the READER sees it on the page — the fruit_reveals rule, not in-world time. */
+  occurredChapter: number;
+  /** null = single beat. A number closes a multi-chapter beat. */
+  throughChapter: number | null;
+  /** null for open-sea events (the Baratie); lng/lat is always resolved. */
+  islandSlug: string | null;
+  lng: number;
+  lat: number;
+  participants: WorldEventParticipant[];
+  outcome: string;
+  /** 1 = arc beat, 2 = saga-defining, 3 = era-defining. */
+  significance: 1 | 2 | 3;
+  sourceRef: string;
+  confidence: Confidence;
+  verified: boolean;
+};
+
 export type StatusKind = "warlord" | "yonko" | "supernova";
 
 export type WorldStatusWindow = {
@@ -290,6 +321,8 @@ export type World = {
   statuses: WorldStatus[];
   /** The stones. Only ever drawn where presenceWindowAt(custody, ch) resolves. */
   poneglyphs: WorldPoneglyph[];
+  /** What happened, where. Read through eventsAtChapter, never raw. */
+  events: WorldEvent[];
   /** episodeToChapter[ep] -> manga chapter reached by the end of that episode. */
   episodeToChapter: number[];
   /** chapterToEpisode[ch] -> first episode that reaches that chapter, or null. */
@@ -687,6 +720,22 @@ export function buildWorld(canon: Canon): World {
     revealedChapter: p.revealed_chapter,
     custody: p.custody.map(toWindow).sort((a, b) => a.order - b.order),
   }));
+  const events: WorldEvent[] = canon.events.map((e) => ({
+    slug: e.slug,
+    name: e.name,
+    kind: e.kind,
+    occurredChapter: e.occurred_chapter,
+    throughChapter: e.through_chapter,
+    islandSlug: e.island_slug,
+    lng: e.lng,
+    lat: e.lat,
+    participants: e.participants.map((p) => ({ slug: p.slug, name: p.name, role: p.role })),
+    outcome: e.outcome,
+    significance: e.significance,
+    sourceRef: e.source_ref,
+    confidence: e.canon_confidence,
+    verified: e.verified,
+  }));
   const statuses: WorldStatus[] = canon.statuses.map((s) => ({
     slug: s.slug,
     entity: s.entity,
@@ -727,6 +776,7 @@ export function buildWorld(canon: Canon): World {
     presence,
     statuses,
     poneglyphs,
+    events,
     episodeToChapter,
     chapterToEpisode,
     counts: {
@@ -924,6 +974,19 @@ export function statusHoldersAt(
     }
   }
   return held;
+}
+
+/**
+ * The events the reader has SEEN as of `chapter` — the ONE place this gate is
+ * written, same as every gate above. An event is visible once its
+ * occurredChapter has been reached; it never un-happens (history is not a
+ * presence window — the fall of Arlong Park is still true at chapter 1000).
+ * Returned newest-first, so "what just happened" reads off the top.
+ */
+export function eventsAtChapter(world: World, chapter: number): WorldEvent[] {
+  return world.events
+    .filter((e) => e.occurredChapter <= chapter)
+    .sort((a, b) => b.occurredChapter - a.occurredChapter || a.slug.localeCompare(b.slug));
 }
 
 export function worldAtChapter(world: World, chapter: number): WorldAt {

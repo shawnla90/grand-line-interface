@@ -280,6 +280,7 @@ def main() -> int:
     bounties_doc = load(CANON_DIR / "bounties.json")
     statuses_doc = load(CANON_DIR / "statuses.json")
     poneglyphs_doc = load(CANON_DIR / "poneglyphs.json")
+    events_doc = load(CANON_DIR / "events.json")
     islands_extra_doc = load(CANON_DIR / "islands.extra.json")
 
     status_map = ov["character_status"]
@@ -1195,6 +1196,94 @@ def main() -> int:
             f"must render them as unverified."
         )
 
+    # -------------------------------------------------------------- events
+    # What HAPPENED, where, as of a chapter. Same authorship rules as the
+    # stones: no upstream source has events as entities, so this is hand-typed
+    # end to end. occurred_chapter is reader-time (the fruit_reveals rule) —
+    # Roger's execution is chapter 1 because the reader watches it there, not
+    # decades earlier. An event must never occur on a fogged island; position
+    # is island_slug via coords OR an explicit lng/lat (the Baratie rule).
+    EVENT_KINDS = {"duel", "battle", "war", "declaration", "death",
+                   "execution", "oath", "escape", "departure"}
+    char_slugs = {c["slug"] for c in characters}
+    events = []
+    seen_ev: set[str] = set()
+    for ev in events_doc["events"]:
+        slug = ev["slug"]
+        if slug in seen_ev:
+            raise die(f"duplicate event slug {slug!r}", ev)
+        seen_ev.add(slug)
+        if ev["kind"] not in EVENT_KINDS:
+            raise die(f"event {slug!r} has kind {ev['kind']!r}, not one of "
+                      f"{sorted(EVENT_KINDS)}", ev)
+        src = (ev.get("source_ref") or "")
+        if not src.lower().lstrip().startswith("hand-authored"):
+            raise die(f"event {slug!r} source_ref must declare itself 'Hand-authored'. "
+                      "Events are authored, not scraped.", ev)
+        occ = ev["occurred_chapter"]
+        if not isinstance(occ, int) or occ < 1:
+            raise die(f"event {slug!r} has occurred_chapter {occ!r} (< 1)", ev)
+        thr = ev.get("through_chapter")
+        if thr is not None and (not isinstance(thr, int) or thr < occ):
+            raise die(f"event {slug!r} has through_chapter {thr!r} < occurred_chapter {occ}. "
+                      "A beat cannot end before it starts.", ev)
+        sig = ev["significance"]
+        if sig not in (1, 2, 3):
+            raise die(f"event {slug!r} has significance {sig!r}, not 1/2/3", ev)
+        isl = ev.get("island_slug")
+        if ev.get("lng") is not None and ev.get("lat") is not None:
+            lng, lat = float(ev["lng"]), float(ev["lat"])
+        elif isl is not None:
+            pos = coords.get(isl)
+            if pos is None or pos.get("lng") is None or pos.get("lat") is None:
+                raise die(f"event {slug!r} island_slug {isl!r} resolves to no coordinate in "
+                          "canon/islands.coords.json. Fix the slug or give the event an "
+                          "explicit lng/lat.", ev)
+            lng, lat = pos["lng"], pos["lat"]
+        else:
+            raise die(f"event {slug!r} has neither an island_slug nor an explicit lng/lat.", ev)
+        if isl is not None:
+            debut = island_debut.get(isl)
+            if debut is None:
+                raise die(f"event {slug!r} names island {isl!r}, which is not in canon.json", ev)
+            if occ < debut:
+                raise die(
+                    f"event {slug!r} occurs on {isl!r} at ch. {occ}, but that island is not "
+                    f"charted until ch. {debut}. An event must never render on a fogged island "
+                    f"— it would name the island by implication.", ev)
+        participants = []
+        for p in ev["participants"]:
+            if p["slug"] not in char_slugs:
+                raise die(f"event {slug!r} participant {p['slug']!r} is not a character slug in "
+                          "canon.json. A participant is a person the reader watched.", p)
+            participants.append({"slug": p["slug"], "name": p["name"], "role": p["role"]})
+        if not participants:
+            raise die(f"event {slug!r} has no participants — an event nobody was in is a "
+                      "location, not an event.", ev)
+        events.append({
+            "slug": slug,
+            "name": ev["name"],
+            "kind": ev["kind"],
+            "occurred_chapter": occ,
+            "through_chapter": thr,
+            "island_slug": isl,
+            "lng": lng,
+            "lat": lat,
+            "participants": participants,
+            "outcome": ev["outcome"],
+            "significance": sig,
+            "source_ref": src,
+            "canon_confidence": ev["canon_confidence"],
+            "verified": bool(ev["verified"]),
+        })
+    events.sort(key=lambda e: (e["occurred_chapter"], e["slug"]))
+
+    if any(not e["verified"] for e in events):
+        warnings.append(
+            f"events contains UNVERIFIED rows ({len(events)} events). Occurrence chapters are "
+            f"not manga-confirmed. The UI must render events as unverified."
+        )
+
     if any(not r["verified"] for r in fruit_reveals):
         warnings.append(
             "fruit_reveals contains UNVERIFIED rows. Fruit reveal chapters are not "
@@ -1259,6 +1348,8 @@ def main() -> int:
                 "statuses": len(statuses),
                 "poneglyphs": len(poneglyphs),
                 "poneglyphs_road": sum(1 for p in poneglyphs if p["kind"] == "road"),
+                "events": len(events),
+                "events_verified": sum(1 for e in events if e["verified"]),
                 "status_windows": sum(len(s["windows"]) for s in statuses),
                 "status_windows_verified": sum(1 for s in statuses for w in s["windows"]
                                                if w["verified"]),
@@ -1291,6 +1382,9 @@ def main() -> int:
         "statuses": statuses,
         # The stones. Custody windows, same shape as presence.
         "poneglyphs": poneglyphs,
+        # What happened, where, as of a chapter — the duels, wars and oaths.
+        # Reader-time gated on occurred_chapter, hand-authored in canon/events.json.
+        "events": events,
         # Phase 7A — the arsenal. Small tables (~120KB total) that make entity
         # views possible: every crew's ship, canonical locations with sea/region
         # joins, the named blades, dials, and Luffy's whole move-list.

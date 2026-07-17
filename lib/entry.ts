@@ -39,10 +39,10 @@
  */
 
 import type { Canon, Character } from "./schema";
-import type { World, WorldBountyRow, WorldCrewMember, WorldIsland } from "./canon";
+import type { World, WorldBountyRow, WorldCrewMember, WorldEvent, WorldIsland } from "./canon";
 import type { WorldFruitReveal } from "./canon";
 import {
-  clampChapter, clampEpisode, chapterForEpisode, episodeForChapter, isIslandFogged,
+  arcForChapter, clampChapter, clampEpisode, chapterForEpisode, episodeForChapter, isIslandFogged,
   presenceWindowAt, statusHoldersAt,
 } from "./canon";
 
@@ -390,6 +390,35 @@ export type FruitEntryData = {
  * reveal authored, so they have no gate, so they get no page. Coverage grows by
  * authoring reveals, not by writing code.
  */
+export type EventEntryData = {
+  event: WorldEvent;
+  /** The island's display name IF the event stands on one — null for open sea. */
+  islandName: string | null;
+  arcName: string | null;
+};
+
+/**
+ * An event the reader has SEEN. Same oracle rules as every entry: an event
+ * whose occurredChapter is past the reader's bookmark returns the UNCHARTED
+ * singleton, byte-identical to a slug that never existed — a 200 for
+ * /event/zoro-vs-mihawk-baratie?ch=49 must not confirm the duel is coming.
+ * The island name is safe to print: normalize.py refuses an event on an
+ * island that debuts after it, so a visible event's island is always charted.
+ */
+export function eventEntry(world: World, slug: string, ctx: ChapterCtx): Entry<EventEntryData> {
+  const event = world.events.find((e) => e.slug === slug);
+  if (!event) return UNCHARTED;
+  if (event.occurredChapter > ctx.chapter) return UNCHARTED;
+  const island = event.islandSlug
+    ? world.islands.find((i) => i.slug === event.islandSlug) ?? null
+    : null;
+  return charted({
+    event,
+    islandName: island?.name ?? null,
+    arcName: arcForChapter(world, event.occurredChapter)?.name ?? null,
+  });
+}
+
 export function fruitEntry(canon: Canon, world: World, slug: string, ctx: ChapterCtx): Entry<FruitEntryData> {
   const users: FruitEntryData["users"] = [];
   let name: string | null = null;

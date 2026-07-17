@@ -21,6 +21,8 @@ export type IslandExtras = {
   poneglyphs: { slug: string; name: string; kind: string; label: string }[];
   presentCrews: { slug: string; name: string; label: string }[];
   voyageCall: { chapter: number; label: string } | null;
+  /** Events the reader has seen that happened here — already gated upstream. */
+  events: { slug: string; name: string; kind: string; chapter: number }[];
 };
 
 export default function IslandEntry({
@@ -102,6 +104,27 @@ export default function IslandEntry({
                   {c.name}
                 </Link>
                 <span className="truncate text-right text-[11px] text-muted-2">{c.label}</span>
+              </li>
+            ))}
+          </ul>
+        </Panel>
+      )}
+
+      {extras.events.length > 0 && (
+        <Panel className="mt-4 px-6 py-5">
+          <Kicker>It happened here</Kicker>
+          <ul className="mt-3 space-y-2">
+            {extras.events.map((e) => (
+              <li key={e.slug} className="flex items-baseline justify-between gap-3">
+                <Link
+                  href={`/event/${e.slug}?ch=${chapter}`}
+                  className="text-[13px] text-parchment transition-colors hover:text-gold"
+                >
+                  {e.name}
+                </Link>
+                <span className="tnum shrink-0 font-mono text-[11px] text-muted-2">
+                  ch. {e.chapter}
+                </span>
               </li>
             ))}
           </ul>

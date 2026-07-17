@@ -491,6 +491,51 @@ export const Poneglyph = z.object({
 });
 export type Poneglyph = z.infer<typeof Poneglyph>;
 
+export const EventKind = z.enum([
+  "duel", "battle", "war", "declaration", "death", "execution", "oath", "escape", "departure",
+]);
+export type EventKind = z.infer<typeof EventKind>;
+
+export const EventParticipant = z.object({
+  /** A character slug from characters[] — normalize.py validates the join. */
+  slug: z.string(),
+  name: z.string(),
+  /** A short free label: "victor", "defeated", "executed", "gives the hat". */
+  role: z.string(),
+});
+export type EventParticipant = z.infer<typeof EventParticipant>;
+
+/**
+ * What HAPPENED, where, as of a chapter — the duels, wars, deaths and oaths.
+ *
+ * occurred_chapter is READER-time (the fruit_reveals rule): Roger's execution
+ * is chapter 1 because the reader watches it in the prologue, not decades
+ * earlier. Position follows the presence-window convention: island_slug when
+ * the event stands on an island, an explicit lng/lat when it happens at sea
+ * (the Baratie). normalize.py refuses an event on an island the reader has
+ * not charted yet.
+ */
+export const CanonEvent = z.object({
+  slug: z.string(),
+  name: z.string(),
+  kind: EventKind,
+  occurred_chapter: z.number().int().positive(),
+  /** null = a single-beat event. A number closes a multi-chapter beat. */
+  through_chapter: z.number().int().positive().nullable(),
+  island_slug: z.string().nullable(),
+  lng: z.number(),
+  lat: z.number(),
+  participants: z.array(EventParticipant).min(1),
+  /** One line: what changed because this happened. */
+  outcome: z.string().min(1),
+  /** 1 = arc beat, 2 = saga-defining, 3 = era-defining. */
+  significance: z.union([z.literal(1), z.literal(2), z.literal(3)]),
+  source_ref: z.string().min(1),
+  canon_confidence: CanonConfidence,
+  verified: z.boolean(),
+});
+export type CanonEvent = z.infer<typeof CanonEvent>;
+
 export const StatusKind = z.enum(["warlord", "yonko", "supernova"]);
 export type StatusKind = z.infer<typeof StatusKind>;
 
@@ -554,6 +599,7 @@ export const Canon = z.object({
   presence: Presence,
   statuses: z.array(Status),
   poneglyphs: z.array(Poneglyph),
+  events: z.array(CanonEvent),
   boats: z.array(Boat),
   locations: z.array(CanonLocation),
   swords: z.array(Sword),
