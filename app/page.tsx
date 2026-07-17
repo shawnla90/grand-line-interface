@@ -16,17 +16,10 @@ import { loadBuildLog } from "@/lib/buildlog";
 import { loadArt } from "@/lib/art";
 import { buildWorld, chapterForEpisode, clampChapter, clampEpisode, type Axis } from "@/lib/canon";
 import { isPresenceLens, parseFocus, type Focus, type PresenceLens } from "@/lib/lenses";
+// one()/int() live in lib/entry.ts now: the entry routes parse the same URL, and
+// two copies of "what does ?ch mean" is how they drift.
+import { int, one } from "@/lib/entry";
 import Atlas from "@/components/Atlas";
-
-function one(v: string | string[] | undefined): string | undefined {
-  return Array.isArray(v) ? v[0] : v;
-}
-
-function int(v: string | undefined): number | null {
-  if (!v) return null;
-  const n = Number.parseInt(v, 10);
-  return Number.isFinite(n) ? n : null;
-}
 
 export default async function Page({
   searchParams,

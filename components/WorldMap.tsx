@@ -34,7 +34,9 @@ import "maplibre-gl/dist/maplibre-gl.css";
 
 import type { World, WorldIsland, WorldFruitReveal, WorldHakiFact } from "@/lib/canon";
 import type { Art } from "@/lib/art";
-import { voyageGeometryAt, vesselAtChapter, presenceWindowAt, statusHoldersAt } from "@/lib/canon";
+import {
+  voyageGeometryAt, vesselAtChapter, presenceWindowAt, statusHoldersAt, isIslandFogged,
+} from "@/lib/canon";
 import { crewColor, WARLORD_COLOR } from "@/lib/crews";
 import {
   lensColor, matchesFocus, resolveFocus, focusKey, revealedFruit, revealedHaki, HAKI_STYLE,
@@ -1614,11 +1616,7 @@ export default function WorldMap({
       }
       const slug = f.properties?.slug as string;
       const island = bySlug.get(slug) ?? null;
-      const isFogged =
-        island != null &&
-        island.status === "manga" &&
-        island.debutChapter !== null &&
-        island.debutChapter > chapterRef.current;
+      const isFogged = island != null && isIslandFogged(island, chapterRef.current);
 
       m.getCanvas().style.cursor = isFogged ? "not-allowed" : "pointer";
       // A fogged island passes `null` — its NAME NEVER ENTERS THE DOM.
@@ -1641,9 +1639,7 @@ export default function WorldMap({
       const slug = f.properties?.slug as string;
       const island = bySlug.get(slug);
       if (!island) return onSelect(null);
-      const isFogged =
-        island.status === "manga" && island.debutChapter !== null && island.debutChapter > chapterRef.current;
-      onSelect(isFogged ? null : slug);
+      onSelect(isIslandFogged(island, chapterRef.current) ? null : slug);
     };
 
     m.on("mousemove", onMove);

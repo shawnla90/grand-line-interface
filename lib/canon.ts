@@ -823,6 +823,24 @@ export function voyageGeometryAt(
 
 /** The last vessel whose fromChapter <= chapter. null before the first ship sets sail. */
 /**
+ * Is this island still beyond the reader? The ONE place this gate is written.
+ *
+ * It was open-coded twice inside WorldMap (hover and click) and is about to be
+ * needed by four route families, an OG card route and a deep-link parser. Every
+ * other gate in this file — bountyAt, statusHoldersAt, presenceWindowAt,
+ * revealedFruit — is written exactly once on purpose; this one had simply not
+ * been collected yet.
+ *
+ * Only manga islands fog. The 123 non-canon and 33 anime-only islands have no
+ * debut chapter because they are not in the manga at all — they carry no
+ * spoiler and are charted from chapter 1 (the off-canon layer's own toggle
+ * decides whether to draw them, which is a different question).
+ */
+export function isIslandFogged(i: WorldIsland, chapter: number): boolean {
+  return i.status === "manga" && i.debutChapter !== null && i.debutChapter > chapter;
+}
+
+/**
  * The bounty a character is carrying AS OF a chapter — the ONE place this gate
  * is written. null means "no bounty posted yet", which is a FACT about the
  * story, not missing data: Luffy has no bounty until Arlong Park.
