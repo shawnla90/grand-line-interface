@@ -1,0 +1,76 @@
+{
+  "_meta": {
+    "generated_at": "2026-07-17T05:23:48.113135+00:00",
+    "generator": "scripts/sync_runtime_assets.py",
+    "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_TRANSITIONS",
+    "note": "Only queue entries marked integration_ready are copied. The GLB is NOT: runtime_policy.default is fallback_raster, and the model upgrade needs a 3D renderer MapLibre does not have.",
+    "counts": {
+      "copied": 2,
+      "refused": 0
+    }
+  },
+  "assets": [
+    {
+      "id": "skypiea-knock-up-stream",
+      "raster": "/art/runtime/skypiea-knock-up-stream.png",
+      "bytes": 542686,
+      "mode": "maplibre_image_source",
+      "coordinates": [
+        [
+          -93.804825,
+          17.9745
+        ],
+        [
+          -88.467575,
+          17.9745
+        ],
+        [
+          -88.467575,
+          7.3
+        ],
+        [
+          -93.804825,
+          7.3
+        ]
+      ],
+      "runtime_module": "components/skypiea.ts",
+      "chapter_beats": {
+        "start": 235,
+        "top": 237,
+        "dwellEnd": 300,
+        "splash": 304
+      },
+      "gate_unverified": false,
+      "runtime_policy": {
+        "default": "fallback_raster",
+        "enable_glb_when": "feature flag on, close zoom, supported projection, chapter gate open",
+        "unload_when_hidden": true,
+        "ship_motion_owner": "atlas runtime; preview proxy is excluded from GLB"
+      },
+      "source_ref": "blender-assets/renders/skypiea-knock-up-stream.png"
+    },
+    {
+      "id": "wano-waterfall-ascent",
+      "raster": "/art/runtime/wano-waterfall-ascent.png",
+      "bytes": 915812,
+      "mode": "screen_space_html_marker",
+      "coordinates": null,
+      "runtime_module": null,
+      "chapter_beats": {
+        "arrival": 909,
+        "start": null,
+        "crest": null,
+        "status": "proposed; exact waterfall climb beats need human verification"
+      },
+      "gate_unverified": true,
+      "runtime_policy": {
+        "default": "fallback_raster",
+        "enable_glb_when": "feature flag on, close zoom, supported projection, chapter gate open",
+        "unload_when_hidden": true,
+        "ship_motion_owner": "atlas runtime; preview proxy is excluded from GLB"
+      },
+      "source_ref": "blender-assets/renders/wano-waterfall-ascent.png"
+    }
+  ],
+  "refused": []
+}

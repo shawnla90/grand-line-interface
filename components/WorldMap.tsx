@@ -790,6 +790,47 @@ function presenceOrbs(
 /* -------------------------------------------------------------------------- */
 
 /**
+ * THE RUNTIME-3D PILOT — the first Blender asset the app has ever rendered.
+ *
+ * The flag NAME is the asset track's own, from manifests/runtime-3d.json — not
+ * invented here. It is an env var rather than the build-time literal in
+ * config/flags.ts, because an env flag is the right interface for a pilot THEY
+ * want toggled without a code change.
+ *
+ * The honest cost, measured rather than assumed: this block does NOT
+ * dead-code-eliminate. An unset NEXT_PUBLIC_* is not inlined (the bundler cannot
+ * prove a value it was never given), so ~1KB of dead branch ships — you can find
+ * `knockup3d` in .next/static/ with the flag off. That is precisely the argument
+ * config/flags.ts makes for the registry's literal `false`, which DOES eliminate
+ * (0 files, grep-proven).
+ *
+ * What matters here is a different rule, and it holds: WORKFLOW says a model is
+ * "never fetched before its chapter gate", and with the flag off the source is
+ * never added, so the raster is never requested — verified at 0 network calls.
+ *
+ * The geometry is theirs too: four corner coordinates, declared in the manifest
+ * beside `mode: "maplibre_image_source"`. The chapter beats they wrote —
+ * {start:235, top:237, dwellEnd:300, splash:304} — are byte-identical to ASCENT
+ * in components/skypiea.ts, and their `runtime_rule` names our own function:
+ * "opacity follows columnOpacity(ch)". They built the asset against our code, so
+ * the integration is one source and one gate we already had.
+ *
+ * The RASTER, not the GLB. runtime_policy.default is "fallback_raster", and the
+ * model upgrade needs a renderer MapLibre does not have (CustomLayerInterface +
+ * three.js, ~600KB). The ascent was built deliberately without three.js and that
+ * stays a decision somebody makes on purpose.
+ */
+const RUNTIME_3D_ON = process.env.NEXT_PUBLIC_RUNTIME_3D_TRANSITIONS === "1";
+const KNOCK_UP_RASTER = "/art/runtime/skypiea-knock-up-stream.png";
+/** manifests/runtime-3d.json -> models[skypiea-knock-up-stream].integration.coordinates */
+const KNOCK_UP_CORNERS: [[number, number], [number, number], [number, number], [number, number]] = [
+  [-93.804825, 17.9745],
+  [-88.467575, 17.9745],
+  [-88.467575, 7.3],
+  [-93.804825, 7.3],
+];
+
+/**
  * The Baratie's stop on the route. It has no island record — the wiki has no
  * Island Box for a floating restaurant — so it rides the voyage as a slug-less
  * waypoint and gets a marker instead of a coastline.
@@ -2085,6 +2126,35 @@ function paint(
     2.0, 0,
     3.2, ["case", revealed(ch), ["match", ["get", "kind"], "sky-shadow-core", 0.3, 0.12], 0],
   ]);
+
+  // The Blender Knock-Up Stream. Added only when its gate is open and removed
+  // the moment it closes — WORKFLOW's rules, verbatim: "Models unload when
+  // hidden; they are never fetched before their chapter gate." An image source
+  // fetches its URL the instant it is added, so "add on demand" IS the gate;
+  // an always-present source with opacity 0 would have fetched at chapter 1.
+  if (RUNTIME_3D_ON) {
+    const on = columnOpacity(ch) > 0;
+    const present = !!m.getSource("knockup3d");
+    if (on && !present) {
+      m.addSource("knockup3d", { type: "image", url: KNOCK_UP_RASTER, coordinates: KNOCK_UP_CORNERS });
+      m.addLayer(
+        { id: "knockup3d", type: "raster", source: "knockup3d",
+          paint: { "raster-opacity": 0, "raster-fade-duration": 0 } },
+        "voyage-glow", // under the route: the ship rides UP it, not behind it
+      );
+    } else if (!on && present) {
+      if (m.getLayer("knockup3d")) m.removeLayer("knockup3d");
+      m.removeSource("knockup3d");
+    }
+    if (m.getLayer("knockup3d")) {
+      // Their runtime_rule: "opacity follows columnOpacity(ch)". The vector
+      // column stays underneath and fades out as the render fades in, so the
+      // stream is one object at every zoom rather than two competing ones.
+      m.setPaintProperty("knockup3d", "raster-opacity", [
+        "interpolate", ["linear"], ["zoom"], 3.2, 0, 4.6, columnOpacity(ch),
+      ]);
+    }
+  }
 
   // THE DIVE SCAR, the same idea upside down. shimmerOpacity is its story beat
   // (the sea closes at 602-605, stands as a scar while the crew is under, fades
