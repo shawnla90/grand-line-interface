@@ -37,9 +37,10 @@
  * ── WHAT EARNS A MODEL A PLACE HERE ────────────────────────────────────────
  *
  * Pixels. Not reasoning, not "the loader is projection-aware", not this comment.
- * A model goes in when scripts/audit_glb.py has photographed it rendering on the
- * globe and the frame differs from the same frame without it. That is why the
- * list is short and why it grows by running the audit rather than by typing.
+ * A model goes in when scripts/shoot_models.py has photographed it rendering on a
+ * globe frame AND that frame differs from the same frame with the model removed —
+ * because a layer that is present but draws nothing would otherwise pass. The list
+ * grows by running the shoot and pasting what it prints.
  *
  * The reverse also matters: if a future model genuinely cannot do globe — a
  * screen-space sprite, say, like wano-waterfall-ascent — it must NOT be listed,
@@ -47,21 +48,49 @@
  * specific false premise, not the field.
  */
 
-/**
- * Models proven to render correctly on the globe, with the evidence.
- *
- * evidence: data/review/glb/globe-ch236-z6.png (skypiea-knock-up-stream)
- *           audit_glb 13/13, "ch236 z6 GLOBE: the model puts PIXELS on the canvas"
- */
+/** Models photographed rendering on the globe. Evidence in data/review/glb/. */
 export const GLOBE_PROVEN: ReadonlySet<string> = new Set<string>([
-  // The pilot. Photographed standing on the globe at ch236, zoom 6, pitch 60 —
-  // a 987km column of water with the Going Merry riding it. Its manifest predates
-  // `projection_support` and declares none, so this entry changes nothing today;
-  // it is here because it is the model the proof was made on.
+  // Every id here was PHOTOGRAPHED rendering on a globe frame by
+  // scripts/shoot_models.py: layer present, and the frame differs from the
+  // same frame with the model removed. Evidence: data/review/glb/<id>--globe.png
+  // and the contact sheet at data/review/glb/index.html.
+  //
+  // Regenerate rather than edit: run the shoot and paste what it prints. A
+  // model typed in here by hand has not been proven, and this file is only
+  // worth having if that stays true.
+  "amazon-lily",
+  "cactus-island-whisky-peak",
+  "conomi-arlong-park",
+  "dressrosa-green-bit",
+  "fish-man-island",
+  "loguetown-roger-execution",
+  "mary-geoise-red-line",
+  "sabaody-grove-network",
   "skypiea-knock-up-stream",
+  "totto-land",
+  "world-government-tarai-system",
+  "zou-zunesha",
 ]);
+
+/**
+ * THE BOOTSTRAP, and it needs saying out loud because it is a circle.
+ *
+ * A model earns GLOBE_PROVEN by being photographed rendering on the globe. But a
+ * model that is not in GLOBE_PROVEN never renders on the globe, so it can never
+ * be photographed. Left alone, the list could only ever be populated by someone
+ * typing into it — which is the exact failure this file was written to avoid.
+ *
+ * So scripts/shoot_models.py sets this, shoots every model on a globe frame, and
+ * prints the ids that actually put pixels down. Those go in the list above. The
+ * evidence comes first and the entry second, which is the whole point.
+ *
+ * NEXT_PUBLIC_, so it is inlined at build time and a production build without it
+ * cannot be talked into forcing anything at runtime. It is a darkroom door, not a
+ * setting.
+ */
+const FORCE_GLOBE = process.env.NEXT_PUBLIC_FORCE_GLOBE === "1";
 
 /** Is this model allowed on the globe despite declaring mercator-only? */
 export function globeProven(id: string): boolean {
-  return GLOBE_PROVEN.has(id);
+  return FORCE_GLOBE || GLOBE_PROVEN.has(id);
 }

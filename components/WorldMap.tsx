@@ -969,33 +969,55 @@ let modelChapter = 1;
  * anchors land on a canon island exactly, so a model is scaled to cover the shape
  * the reader is already looking at. The 3D replaces the 2D at the 2D's size.
  */
+/**
+ * The island's silhouette span, in degrees, nearest this anchor.
+ *
+ * READ FROM THE FILE, NOT FROM THE MAP, and the first version got this wrong in a
+ * way worth recording. It called `m.querySourceFeatures("silhouettes")`, which
+ * only ever returns features from tiles that are LOADED RIGHT NOW. The table is
+ * built once; if the island's tile happened not to be loaded at that instant —
+ * which, on first paint at a far zoom, is every island — the footprint came back
+ * null and every fitted model was skipped PERMANENTLY, with a reason that read
+ * like a data problem. Ten of eleven islands silently vanished and the sheet said
+ * "visual_fit needs a silhouette".
+ *
+ * The silhouettes are a static file the map already fetches (`/geo/islands.
+ * silhouettes.json`, wired at the geojson source below), so reading it directly is
+ * deterministic, viewport-independent, and free — the browser has it cached from
+ * the source that drew the coastlines.
+ */
+function footprintFrom(sil: GeoJSON.FeatureCollection | null, lngLat: [number, number]): number | null {
+  if (!sil) return null;
+  let best: number | null = null;
+  let bestD = Infinity;
+  for (const f of sil.features) {
+    const g = f.geometry;
+    if (g.type !== "Polygon" && g.type !== "MultiPolygon") continue;
+    const rings = (g.type === "Polygon" ? g.coordinates : g.coordinates.flat()) as [number, number][][];
+    let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+    for (const ring of rings) for (const [x, y] of ring) {
+      minX = Math.min(minX, x); maxX = Math.max(maxX, x);
+      minY = Math.min(minY, y); maxY = Math.max(maxY, y);
+    }
+    const d = Math.hypot((minX + maxX) / 2 - lngLat[0], (minY + maxY) / 2 - lngLat[1]);
+    // 1.5 degrees: an anchor is either the island's own derived pin (11 of 13
+    // match to 1e-4) or it is not that island at all. The window only forgives
+    // an anchor placed at a landmark inside the island rather than its centroid.
+    if (d < bestD && d < 1.5) { bestD = d; best = Math.max(maxX - minX, maxY - minY); }
+  }
+  return best;
+}
+
 async function loadRuntimeModels(m: MLMap): Promise<void> {
   if (MODELS) return;
-  const mod = await import("@/data/generated/runtime_assets.json");
+  const [mod, sil] = await Promise.all([
+    import("@/data/generated/runtime_assets.json"),
+    fetch("/geo/islands.silhouettes.json").then((r) => r.json() as Promise<GeoJSON.FeatureCollection>).catch(() => null),
+  ]);
   const assets = (mod.default as { assets: unknown[] }).assets as unknown as RuntimeAsset[];
   MODELS = buildModels(
     assets,
-    (lngLat) => {
-      // The silhouette source is already on the map; query it rather than
-      // re-deriving geometry that is generated deterministically elsewhere.
-      const feats = m.querySourceFeatures("silhouettes") || [];
-      let best: number | null = null;
-      let bestD = Infinity;
-      for (const f of feats) {
-        const g = f.geometry as GeoJSON.Geometry;
-        if (g.type !== "Polygon" && g.type !== "MultiPolygon") continue;
-        const rings = g.type === "Polygon" ? g.coordinates : g.coordinates.flat();
-        let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
-        for (const ring of rings) for (const [x, y] of ring as [number, number][]) {
-          minX = Math.min(minX, x); maxX = Math.max(maxX, x);
-          minY = Math.min(minY, y); maxY = Math.max(maxY, y);
-        }
-        const cx = (minX + maxX) / 2, cy = (minY + maxY) / 2;
-        const d = Math.hypot(cx - lngLat[0], cy - lngLat[1]);
-        if (d < bestD && d < 1.5) { bestD = d; best = Math.max(maxX - minX, maxY - minY); }
-      }
-      return best;
-    },
+    (lngLat) => footprintFrom(sil, lngLat),
     globeProven,
     () => modelChapter,
   );
