@@ -100,13 +100,94 @@ def tagged_component_ids(j: dict) -> dict[str, int]:
     return out
 
 
+def gate_withholds(g: dict) -> bool:
+    """Does this MANIFEST component gate withhold its geometry?"""
+    return bool(g.get("default_hidden")) or g.get("verification") == "chapter_to_verify" or g.get("reveal_chapter") is None
+
+
+def extras_withhold(e: dict) -> bool:
+    """Do these NODE extras withhold their own geometry?
+
+    THE PREDICATE IS AN OR, AND MARY GEOISE IS WHY. Its manifest marks
+    red-port-paradise, red-port-new-world and bondola-route
+    `default_hidden: true, reveal_chapter: null`. Its GLB's own extras, on all 20
+    of the matching nodes, say `default_hidden: false` with `reveal_chapter`
+    ABSENT. The two sources contradict each other, and a gate that trusts either
+    one alone draws the Red Line's lower ports for a chapter-142 reader.
+
+    totto-land is self-consistent (32 of 99 nodes agree with their manifest), so
+    nothing catches this unless the predicate is tested against Mary Geoise
+    specifically. Hence: withheld if the manifest says so OR the extras say so.
+    Neither source can clear geometry the other one withholds.
+    """
+    return (
+        bool(e.get("default_hidden"))
+        or e.get("gate_confidence") == "chapter_to_verify"
+        or e.get("reveal_chapter") is None
+    )
+
+
+def contradictions(m: dict, j: dict) -> list[dict]:
+    """Where the manifest's gates and the GLB's extras disagree, FIELD BY FIELD.
+
+    It has to be field-level, and finding that out cost a wrong check first. The
+    obvious version compares OUTCOMES — does the manifest withhold vs do the
+    extras withhold — and on this batch it reports nothing at all. Mary Geoise
+    still comes out withheld either way, because `gate_confidence:
+    "chapter_to_verify"` is present on the nodes and our OR predicate catches it.
+
+    That is a true statement about today and a useless one about tomorrow. The
+    defect is real and sits one level down: the manifest says
+    `default_hidden: true` and all 20 nodes say `default_hidden: false`. It is
+    masked ONLY by a second field agreeing. Drop `gate_confidence` from those
+    extras — a plausible cleanup on their side — and the Red Line's lower ports
+    render for a chapter-142 reader with nothing anywhere complaining.
+
+    So: compare the fields that are meant to mean the same thing, and report the
+    disagreement even when it currently changes no behaviour. A check that only
+    fires once the mask slips is a check that fires too late.
+    """
+    by_id: dict[str, list[dict]] = {}
+    for n in j.get("nodes", []):
+        cid = (n.get("extras") or {}).get("component_id")
+        if cid:
+            by_id.setdefault(cid, []).append(n["extras"])
+    out = []
+    for g in (m.get("integration") or {}).get("component_gates") or []:
+        nodes = by_id.get(g["id"])
+        if not nodes:
+            continue
+        m_hidden = bool(g.get("default_hidden"))
+        e_hidden = any(bool(e.get("default_hidden")) for e in nodes)
+        m_conf = "chapter_to_verify" if g.get("verification") == "chapter_to_verify" else "verified"
+        e_conf = "chapter_to_verify" if any(e.get("gate_confidence") == "chapter_to_verify" for e in nodes) else "verified"
+        bad = []
+        if m_hidden != e_hidden:
+            bad.append(f"default_hidden: manifest={m_hidden} extras={e_hidden}")
+        if m_conf != e_conf:
+            bad.append(f"confidence: manifest={m_conf} extras={e_conf}")
+        if not bad:
+            continue
+        out.append({
+            "component_id": g["id"],
+            "fields": bad,
+            "nodes": len(nodes),
+            # Does our OR predicate still withhold it despite the disagreement?
+            # Today this is True for every case, which is exactly why it needs
+            # saying out loud rather than being taken as an all-clear.
+            "still_withheld_by_or_predicate": gate_withholds(g) or any(extras_withhold(e) for e in nodes),
+            "manifest_gate": g,
+            "example_extras": nodes[0],
+        })
+    return out
+
+
 def ungateable(m: dict, j: dict) -> list[str]:
     """Withheld component gates with no node in the GLB to hide. See the header."""
     tagged = tagged_component_ids(j)
     bad = []
     for g in (m.get("integration") or {}).get("component_gates") or []:
-        withheld = g.get("default_hidden") or g.get("verification") == "chapter_to_verify"
-        if not withheld:
+        if not gate_withholds(g):
             continue
         if g["id"] in tagged:
             continue
@@ -114,7 +195,7 @@ def ungateable(m: dict, j: dict) -> list[str]:
         # like skypiea's giant-jack); a leak if it is present but untagged. We
         # cannot prove absence from a name, so the check is conservative in the
         # only direction that is safe: refuse, and say which gate.
-        why = "default_hidden" if g.get("default_hidden") else str(g.get("verification"))
+        why = "default_hidden" if g.get("default_hidden") else str(g.get("verification") or "no reveal_chapter")
         bad.append(f"{g['id']} ({why})")
     return bad
 
@@ -218,6 +299,33 @@ def main() -> int:
             "tagged_component_ids": tagged_component_ids(j),
             "layout_status": integ.get("layout_status"),
             "projection_support": integ.get("projection_support"),
+            # THE FIVE FIELDS THIS SCRIPT USED TO DROP, each load-bearing:
+            #
+            # scale_policy — on 13 of 16 (all but the three with bespoke
+            #   derivations). `visual_fit_not_canon_scale` + `use_model_bounds` is
+            #   the manifest telling us there is NO canon metres-per-unit to find
+            #   and to fit the bounds instead. Dropping it invited us to go
+            #   inventing one, which is the exact mistake the Knock-Up Stream's
+            #   comment block spends 20 lines warning about.
+            # anchor_usage / anchor_warning — "atlas_anchor_only", "never use it
+            #   as evidence of relative canon topology". The anchor places; it
+            #   does not measure. Skypiea's two-anchor trick exists on no other
+            #   model.
+            # withheld_variants — the declared list of components to hide, by id.
+            #   Cleaner than reading it out of node extras, and it is the asset
+            #   track's own statement of intent rather than our inference.
+            # route_policy — "local relationship schematic; never project local
+            #   bearings as canon globe geometry" (2 models). This IS the
+            #   derived_schematic labelling the original brief demanded; it must
+            #   reach the UI, not die here.
+            "scale_policy": integ.get("scale_policy"),
+            "anchor_usage": integ.get("anchor_usage"),
+            "anchor_warning": integ.get("anchor_warning"),
+            "withheld_variants": integ.get("withheld_variants") or [],
+            "route_policy": integ.get("route_policy"),
+            # Where the manifest and the model's own extras disagree. Never
+            # absorbed silently: it is the asset track's bug and only we can see it.
+            "gate_contradictions": contradictions(m, j),
             "gate_unverified": unverified,
             "feature_flag": pol.get("feature_flag") or manifest.get("feature_flag"),
             "runtime_policy": pol,
@@ -237,7 +345,11 @@ def main() -> int:
                 "A model that declares default_hidden geometry it cannot address is refused: "
                 "the app would otherwise draw what the manifest says to hide."
             ),
-            "counts": {"copied": len(copied), "refused": len(refused)},
+            "counts": {
+                "copied": len(copied),
+                "refused": len(refused),
+                "gate_contradictions": sum(len(c["gate_contradictions"]) for c in copied),
+            },
         },
         "assets": copied,
         "refused": refused,
@@ -245,11 +357,21 @@ def main() -> int:
     OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
     OUT_JSON.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
 
+    contra = [(c["id"], x) for c in copied for x in c["gate_contradictions"]]
     for c in copied:
         gate = "  gate_unverified" if c["gate_unverified"] else ""
-        print(f"  copied  {c['id']:32} glb {c['glb_bytes']:>9,}  png {c['bytes']:>9,}{gate}")
+        n = len(c["gate_contradictions"])
+        warn = f"  !! {n} gate contradiction(s)" if n else ""
+        print(f"  copied  {c['id']:32} glb {c['glb_bytes']:>9,}  png {c['bytes']:>9,}{gate}{warn}")
     for r in refused:
         print(f"  REFUSED {r['id']:32} {r['why']}")
+    if contra:
+        print("\n  GATE CONTRADICTIONS — the manifest and the model's own extras disagree.")
+        print("  Neither source can clear geometry the other withholds, so the app ORs them")
+        print("  and hides. Reported upstream; it is the asset track's data to fix.")
+        for mid, x in contra:
+            masked = " (still withheld by the OR predicate — masked, not safe)" if x["still_withheld_by_or_predicate"] else " !! NOT WITHHELD"
+            print(f"    {mid} :: {x['component_id']:22} {'; '.join(x['fields'])}  ({x['nodes']} nodes){masked}")
     print(f"\n{len(copied)} copied, {len(refused)} refused -> {OUT_JSON.relative_to(ROOT)}")
     return 0
 
