@@ -164,6 +164,36 @@
         "note": "Measured from the Claude Code session transcript over this phase's window (310 assistant turns). Includes cached input, like the Codex counter beside it. Reasoning is not itemised by this harness — null rather than 0, because 0 would be a claim. Same model-label discrepancy as the entry above: the transcript says claude-opus-4-8, the runtime said Fable 5."
       },
       "verified": false
+    },
+    {
+      "phase": "9 (The Third Dimension)",
+      "title": "three.js on a MapLibre globe; the Knock-Up Stream stands up; 11 Blender islands wired from one table; a spoiler leak refused and a portability bug that only one Mac could not see",
+      "builder": "Claude Fable 5",
+      "harness": "Claude Code",
+      "role": "plan + build",
+      "commits": [
+        "a7de84d",
+        "0cd9fb5",
+        "68b55a1",
+        "937b0a5",
+        "9bbe31a",
+        "542ca90",
+        "32a7af8",
+        "9afbc26",
+        "51a3405",
+        "eb9412f"
+      ],
+      "usage": {
+        "measuredAt": "2026-07-17T07:30:00Z",
+        "inputTokens": null,
+        "cachedInputTokens": null,
+        "uncachedInputTokens": null,
+        "outputTokens": null,
+        "reasoningOutputTokens": null,
+        "totalTokens": null,
+        "note": "NOT MEASURED, and null rather than a guess. The previous two entries were measured from the session transcript after the fact; this session is still open, so the same measurement cannot be taken from inside it without reporting a number that stops being true the moment it is written. The entries above it are the precedent for how to fill this in: read the transcript's usage records over the phase's window and sum them. A zero here would be a claim, and the wrong one."
+      },
+      "verified": false
     }
   ]
 }
