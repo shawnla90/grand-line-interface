@@ -35,6 +35,7 @@ import { BRAND } from "@/config/brand";
 import { focusKey, type Focus, type PresenceLens } from "@/lib/lenses";
 import type { BuildLog } from "@/lib/buildlog";
 import type { Art } from "@/lib/art";
+import { buildJourney } from "@/lib/journey";
 import WorldMap, { type Projection } from "./WorldMap";
 import { RuntimeIslandDirectory } from "./RuntimeIslandDirectory";
 import SearchPalette, { type SearchHit } from "./SearchPalette";
@@ -54,6 +55,8 @@ export const SPEEDS = [0.5, 1, 2, 4] as const;
 export type Speed = (typeof SPEEDS)[number];
 /** Chapters per second at 1x. 2 ch/s sails the whole story in ~10 minutes. */
 const BASE_CPS = 2;
+/** The cinematic journey's total run — ~90s, Shawn's ideal for a TikTok capture. */
+const JOURNEY_MS = 90_000;
 
 /**
  * One float position (`swept`) eased or sailed toward/through chapters.
@@ -161,7 +164,74 @@ function useChapterEngine(world: World, initial: number) {
   }, [world]);
   const pause = useCallback(() => setPlaying(false), []);
 
-  return { chapter, swept, setChapter, playing, speed, setSpeed, play, pause };
+  // ─── THE CINEMATIC JOURNEY ────────────────────────────────────────────────
+  // A curated ~90s flight, chapter 1 → the end, on its own time→chapter schedule
+  // (the 4x speed cap tops out at ~148s, so the sweep speeds cannot reach it).
+  // It drives `swept` directly, sets a target `journeyZoom` the map damps toward,
+  // and names the current leg for the recording caption.
+  const [journey, setJourney] = useState(false);
+  const [journeyZoom, setJourneyZoom] = useState<number | null>(null);
+  const [journeyLabel, setJourneyLabel] = useState("");
+  const journeyRaf = useRef<number | null>(null);
+
+  const stopJourney = useCallback(() => {
+    if (journeyRaf.current !== null) cancelAnimationFrame(journeyRaf.current);
+    journeyRaf.current = null;
+    playingRef.current = false;
+    setJourney(false);
+    setJourneyZoom(null);
+    setJourneyLabel("");
+  }, []);
+
+  const startJourney = useCallback(() => {
+    if (raf.current !== null) cancelAnimationFrame(raf.current);
+    setPlaying(false);
+    // playingRef true makes the tween effect yield the float to us, exactly as
+    // the sail loop does — we own `pos.current`/`swept` for the duration.
+    playingRef.current = true;
+
+    const plan = buildJourney(
+      world.voyage.waypoints.map((w) => ({ chapter: w.chapter, slug: w.slug, label: w.label })),
+      world.chapterMax,
+    );
+
+    pos.current = world.chapterMin;
+    setSwept(world.chapterMin);
+    setChapterState(world.chapterMin);
+    setJourney(true);
+
+    const t0 = performance.now();
+    const step = (now: number) => {
+      const t = Math.min(1, (now - t0) / JOURNEY_MS);
+      const ch = plan.chapterAt(t);
+      pos.current = ch;
+      setSwept(ch);
+      const fl = Math.max(world.chapterMin, Math.floor(ch));
+      setChapterState((c) => (c === fl ? c : fl));
+      setJourneyZoom(plan.zoomAt(t));
+      setJourneyLabel(plan.labelAt(t));
+      if (t >= 1) {
+        stopJourney();
+        return;
+      }
+      journeyRaf.current = requestAnimationFrame(step);
+    };
+    journeyRaf.current = requestAnimationFrame(step);
+  }, [world, stopJourney]);
+
+  // A manual set (or the sail play) cancels the journey — the reader took the helm.
+  const setChapterJ = useCallback(
+    (ch: number) => {
+      stopJourney();
+      setChapter(ch);
+    },
+    [setChapter, stopJourney],
+  );
+
+  return {
+    chapter, swept, setChapter: setChapterJ, playing, speed, setSpeed, play, pause,
+    journey, journeyZoom, journeyLabel, startJourney, stopJourney,
+  };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -380,6 +450,8 @@ export default function Atlas({
           onFollowBreak={() => setFollow(false)}
           focus={focus}
           flyTarget={flyTarget}
+          journey={engine.journey}
+          journeyZoom={engine.journeyZoom}
         />
 
         <SearchPalette
@@ -390,6 +462,15 @@ export default function Atlas({
           onClose={() => setSearchOpen(false)}
           onPick={onSearchPick}
         />
+
+        {/* The journey caption — the current leg's name, for the recording. */}
+        {engine.journey && engine.journeyLabel && (
+          <div className="pointer-events-none absolute top-6 left-1/2 z-20 -translate-x-1/2">
+            <div className="rounded-full border border-rope/60 bg-ink/85 px-4 py-1.5 font-document text-[13px] italic tracking-wide text-parchment/90 shadow-2xl backdrop-blur">
+              {engine.journeyLabel}
+            </div>
+          </div>
+        )}
 
         {/* masthead */}
         <div className="pointer-events-none absolute top-0 left-0 z-10 p-5">
@@ -576,8 +657,14 @@ export default function Atlas({
           onEpisode={setEpisode}
           playing={playing}
           speed={speed}
-          onPlayPause={() => (playing ? engine.pause() : engine.play())}
+          onPlayPause={() => {
+            engine.stopJourney(); // sailing takes the helm from the cinematic run
+            playing ? engine.pause() : engine.play();
+          }}
           onSpeed={engine.setSpeed}
+          journey={engine.journey}
+          journeyLabel={engine.journeyLabel}
+          onJourney={() => (engine.journey ? engine.stopJourney() : engine.startJourney())}
         />
       )}
 

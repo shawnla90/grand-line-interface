@@ -35,11 +35,14 @@ type Props = {
   speed: Speed;
   onPlayPause: () => void;
   onSpeed: (s: Speed) => void;
+  journey: boolean;
+  journeyLabel: string;
+  onJourney: () => void;
 };
 
 export default function ChapterDock({
   world, at, axis, onAxis, onChapter, episode, onEpisode,
-  playing, speed, onPlayPause, onSpeed,
+  playing, speed, onPlayPause, onSpeed, journey, journeyLabel, onJourney,
 }: Props) {
   const byChapter = axis === "chapter";
 
@@ -68,6 +71,21 @@ export default function ChapterDock({
             ].join(" ")}
           >
             {playing ? "❚❚" : "▶"}
+          </button>
+          {/* the cinematic journey: press once, the whole Grand Line in ~90s. */}
+          <button
+            type="button"
+            onClick={onJourney}
+            title={journey ? "Stop the journey" : "Sail the whole Grand Line (~90s, for recording)"}
+            aria-label={journey ? "Stop journey" : "Play cinematic journey"}
+            className={[
+              "grid h-9 shrink-0 place-items-center rounded-sm border px-2.5 font-mono text-[10px] uppercase tracking-[0.14em] transition-colors",
+              journey
+                ? "border-gold/60 bg-ink/90 text-gold"
+                : "border-rope bg-ink/90 text-muted-2 hover:border-gold/60 hover:text-gold",
+            ].join(" ")}
+          >
+            {journey ? "◼ journey" : "⛵ journey"}
           </button>
           <div className="flex flex-col gap-0.5">
             {/* speed chips: chapters flow at speed x 2/s */}

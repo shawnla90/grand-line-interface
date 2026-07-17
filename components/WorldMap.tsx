@@ -102,6 +102,10 @@ type Props = {
   /** Camera target for non-island destinations (a search hit on a crew). The
       key forces re-fly when the same anchor is picked twice. */
   flyTarget?: { lng: number; lat: number; key: number; zoom?: number; pitch?: number } | null;
+  /** The cinematic journey is running — the map flies the voyage itself. */
+  journey?: boolean;
+  /** Target zoom for the journey camera to damp toward (out over sea, deep at a 3D stop). */
+  journeyZoom?: number | null;
   /**
    * Admin placement mode (the /admin/place tool). When both are set, a map click
    * reports its lng/lat instead of selecting an island — that's how a human
@@ -1181,6 +1185,8 @@ export default function WorldMap({
   onFollowBreak,
   focus = null,
   flyTarget = null,
+  journey = false,
+  journeyZoom = null,
   placingSlug = null,
   onPlaceAt,
 }: Props) {
@@ -1281,6 +1287,67 @@ export default function WorldMap({
     }
     chase(); // re-engaging the follow recenters on the ship immediately
   }, [follow, chase]);
+
+  // ─── THE CINEMATIC JOURNEY CAMERA ──────────────────────────────────────────
+  // While the journey runs, the map flies itself: center damps toward the ship
+  // every frame (like the follow chase) and zoom damps toward the schedule's
+  // target (out over open sea, deep at a 3D island). Manual input is locked out
+  // for the duration — no pan, no globe-rotate, no grab-and-spin — so a stray
+  // touch mid-recording cannot derail the shot. Everything restores on stop.
+  const journeyRef = useRef(journey);
+  const journeyZoomRef = useRef(journeyZoom);
+  useEffect(() => {
+    journeyZoomRef.current = journeyZoom;
+  }, [journeyZoom]);
+  const journeyCamRaf = useRef<number | null>(null);
+
+  useEffect(() => {
+    journeyRef.current = journey;
+    const m = map.current;
+    if (!m || !ready.current) return;
+
+    if (journey) {
+      // Lock the helm. The journey owns the camera; the orbit machine checks
+      // journeyRef and stands down (see updateOrbit), so it will not re-enable pan.
+      m.dragPan.disable();
+      m.dragRotate.disable();
+      const step = () => {
+        const map0 = map.current;
+        if (!map0 || !journeyRef.current) {
+          journeyCamRaf.current = null;
+          return;
+        }
+        const { ship } = voyageGeometryAt(expandedWaypoints(world.voyage.waypoints), chapterRef.current);
+        if (ship) {
+          const c = map0.getCenter();
+          const dLng = ((((ship[0] - c.lng) % 360) + 540) % 360) - 180;
+          const dLat = ship[1] - c.lat;
+          const k = 0.16;
+          const upd: { center: [number, number]; zoom?: number } = {
+            center: [c.lng + dLng * k, c.lat + dLat * k],
+          };
+          const zt = journeyZoomRef.current;
+          if (zt != null) {
+            const z = map0.getZoom();
+            upd.zoom = z + (zt - z) * 0.09; // gentle so arrivals ease, not snap
+          }
+          map0.jumpTo(upd);
+        }
+        journeyCamRaf.current = requestAnimationFrame(step);
+      };
+      journeyCamRaf.current = requestAnimationFrame(step);
+      return () => {
+        if (journeyCamRaf.current !== null) cancelAnimationFrame(journeyCamRaf.current);
+        journeyCamRaf.current = null;
+      };
+    }
+
+    // Journey ended — hand the helm back exactly as the projection expects.
+    if (journeyCamRaf.current !== null) cancelAnimationFrame(journeyCamRaf.current);
+    journeyCamRaf.current = null;
+    m.dragPan.enable();
+    if (m.getProjection()?.type === "globe") m.dragRotate.enable();
+  }, [journey, world]);
 
   const [hover, setHover] = useState<{
     x: number;
@@ -1803,7 +1870,10 @@ export default function WorldMap({
       };
 
       const updateOrbit = () => {
-        const should = m.getZoom() >= GLB_MIN_ZOOM && modelPresent();
+        // Stand down entirely while the cinematic journey flies the camera — it
+        // dives past GLB_MIN_ZOOM at every 3D stop, which would otherwise latch
+        // orbit on and fight the journey for dragPan. The journey owns the helm.
+        const should = !journeyRef.current && m.getZoom() >= GLB_MIN_ZOOM && modelPresent();
         if (should && !orbit.active) {
           orbit.active = true;
           m.dragPan.disable(); // left-drag now orbits; the world stops panning
