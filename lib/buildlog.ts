@@ -36,6 +36,14 @@ export const BuildLogEntry = z.object({
       note: z.string(),
     })
     .optional(),
+  /**
+   * Why an entry has no `usage`. The presence of `usage` MEANS "measured": every
+   * number in it is real, and the renderer trusts that. An entry that has not
+   * been measured — an open session cannot honestly meter itself from inside —
+   * omits `usage` entirely and says so here, rather than fabricating an object of
+   * nulls. Absence with a reason, not a hollow shell.
+   */
+  usageNote: z.string().optional(),
   verified: z.boolean(),
 });
 export type BuildLogEntry = z.infer<typeof BuildLogEntry>;

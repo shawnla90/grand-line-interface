@@ -100,6 +100,12 @@ export default function ShipwrightsLog({
                   <div className="mt-0.5 text-muted-2/70">{e.usage.note}</div>
                 </div>
               )}
+              {!e.usage && e.usageNote && (
+                <div className="mt-1.5 rounded-sm border border-rope/25 bg-abyss/25 px-2.5 py-2 font-mono text-[9px] leading-relaxed text-muted-2/70">
+                  <span className="text-muted-2/50">usage not measured — </span>
+                  {e.usageNote}
+                </div>
+              )}
             </li>
           ))}
         </ul>

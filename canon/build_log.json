@@ -183,17 +183,8 @@
         "51a3405",
         "eb9412f"
       ],
-      "usage": {
-        "measuredAt": "2026-07-17T07:30:00Z",
-        "inputTokens": null,
-        "cachedInputTokens": null,
-        "uncachedInputTokens": null,
-        "outputTokens": null,
-        "reasoningOutputTokens": null,
-        "totalTokens": null,
-        "note": "NOT MEASURED, and null rather than a guess. The previous two entries were measured from the session transcript after the fact; this session is still open, so the same measurement cannot be taken from inside it without reporting a number that stops being true the moment it is written. The entries above it are the precedent for how to fill this in: read the transcript's usage records over the phase's window and sum them. A zero here would be a claim, and the wrong one."
-      },
-      "verified": false
+      "verified": false,
+      "usageNote": "Not measured. This session is still open, so it cannot honestly meter itself from inside — any total written here stops being true the moment it is written. The two entries above were measured from the session transcript after the fact; fill this in the same way: sum the transcript's usage records over Phase 9's window (~02:00–07:30 UTC, commits 0cd9fb5..ec93de2). A zero would be a claim, and the wrong one."
     }
   ]
 }
