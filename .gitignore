@@ -60,3 +60,6 @@ __pycache__/
 
 # Landfall review screenshots — an eyeball surface, not a build artifact.
 data/review/
+
+# Agent worktrees and session scratch — not part of the app.
+.claude/

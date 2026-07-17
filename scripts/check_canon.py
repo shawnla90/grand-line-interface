@@ -602,6 +602,85 @@ def biomes_valid(doc):
     return f"{len(overrides)} overrides valid, {len(sil['features'])} silhouettes biome-tagged"
 
 
+@check("bounty_history_gated")
+def bounty_history_gated(doc):
+    """The Char Box overlay. Every bounty row must be chapter-gated and ordered,
+    because a bounty is the single most spoiler-dense number in One Piece:
+    'Luffy 3,000,000,000' on a chapter-96 map gives away twenty years of story.
+
+    order is STORY time, as_of_chapter is READER time. They are different axes —
+    a flashback reveals an old bounty late — so the invariant is per-axis:
+    amounts descend with order (a bounty never falls in-world), and every row
+    carries a real reveal chapter.
+    """
+    rows = 0
+    for c in doc["characters"]:
+        h = c["bounty_history"]
+        if not h:
+            continue
+        rows += len(h)
+        assert [r["order"] for r in h] == list(range(len(h))), (
+            f"{c['slug']}: bounty_history order is not a dense 0..N chain"
+        )
+        for r in h:
+            assert isinstance(r["as_of_chapter"], int) and r["as_of_chapter"] >= 1, (
+                f"{c['slug']}: bounty row {r['amount']} has no reveal chapter — it could never "
+                f"be fogged. normalize.py should have dropped it."
+            )
+            assert r["canon_confidence"] in CONFIDENCE_ENUM, f"{c['slug']}: bad canon_confidence"
+        amounts = [r["amount"] for r in h]
+        assert all(amounts[i] >= amounts[i + 1] for i in range(len(amounts) - 1)), (
+            f"{c['slug']}: bounty amounts do not descend with order ({amounts}). Bounties only "
+            f"ever rise in-world, so this is a parse error, not a fact."
+        )
+
+    # The tripwire. If the gate ever silently inverts, these two lines fail.
+    luffy = next(c for c in doc["characters"] if c["slug"] == "monkey-d-luffy")
+    hist = luffy["bounty_history"]
+    assert any(r["amount"] == 30_000_000 and r["as_of_chapter"] <= 100 for r in hist), (
+        "Luffy's first bounty (30,000,000 at ch. 96) is missing — the overlay is not merging"
+    )
+    assert not any(r["amount"] == 3_000_000_000 and r["as_of_chapter"] < 1053 for r in hist), (
+        "Luffy's 3,000,000,000 is claimed before ch. 1053 — that is the spoiler this check exists for"
+    )
+
+    with_hist = sum(1 for c in doc["characters"] if c["bounty_history"])
+    return f"{rows} bounty rows across {with_hist} characters, every row chapter-gated"
+
+
+@check("wiki_debut_is_not_join")
+def wiki_debut_is_not_join(doc):
+    """The Jinbe rule, now that the Char Box overlay ships a debut_chapter next
+    to the crew_joins table. Both facts must coexist and stay distinct: Jinbe is
+    on the page from ch. 528 and in the crew from ch. 976. A merge that let debut
+    overwrite join would sail him with the Straw Hats for 448 chapters he spent
+    as a Warlord, an enemy, and a prisoner."""
+    jinbe = next(c for c in doc["characters"] if c["slug"] == "jinbe")
+    join = next(j for j in doc["crew_joins"] if j["slug"] == "jinbe")
+    assert jinbe["debut_chapter"] is not None, "Jinbe has no debut_chapter — the overlay missed him"
+    assert jinbe["debut_chapter"] < 600, (
+        f"Jinbe's debut_chapter is {jinbe['debut_chapter']}; he debuts at ch. 528. "
+        f"This looks like his JOIN chapter leaked into the debut field."
+    )
+    assert join["join_chapter"] > 900, (
+        f"Jinbe's join_chapter is {join['join_chapter']}; he joins at ch. 976. "
+        f"This looks like his DEBUT chapter leaked into the join field."
+    )
+    assert join["join_chapter"] - jinbe["debut_chapter"] > 400, (
+        "Jinbe's debut and join have collapsed toward each other — the two axes are being conflated"
+    )
+    # and the rule generalises: nobody joins before they debut
+    joins = {j["slug"]: j["join_chapter"] for j in doc["crew_joins"]}
+    for c in doc["characters"]:
+        if c["slug"] in joins and c["debut_chapter"] is not None:
+            assert c["debut_chapter"] <= joins[c["slug"]], (
+                f"{c['slug']} joins (ch. {joins[c['slug']]}) before they debut "
+                f"(ch. {c['debut_chapter']}) — impossible"
+            )
+    return (f"Jinbe: debut ch. {jinbe['debut_chapter']}, joins ch. {join['join_chapter']} "
+            f"— {join['join_chapter'] - jinbe['debut_chapter']} chapters apart, both intact")
+
+
 CHECKS = [
     jinbe_test, crew_joins_are_human, straw_hats_complete,
     islands_have_positions, islands_fog_key, no_mojibake,
@@ -610,6 +689,7 @@ CHECKS = [
     voyage_route_forward, vessels_chapter_gated,
     presence_windows_forward, presence_spoiler_and_roster,
     fruit_reveals_gated, haki_users_gated, biomes_valid,
+    bounty_history_gated, wiki_debut_is_not_join,
 ]
 
 

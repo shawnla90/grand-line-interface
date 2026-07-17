@@ -277,6 +277,7 @@ def main() -> int:
     presence_doc = load(CANON_DIR / "crew_presence.json")
     fruit_reveals_doc = load(CANON_DIR / "fruit_reveals.json")
     haki_users_doc = load(CANON_DIR / "haki_users.json")
+    bounties_doc = load(CANON_DIR / "bounties.json")
 
     status_map = ov["character_status"]
     crew_status_map = ov["crew_status"]
@@ -303,6 +304,7 @@ def main() -> int:
 
     gen_arcs = load(GEN / "arcs.json")
     gen_islands = load(GEN / "islands.json")
+    gen_chars_wiki = load(GEN / "characters.wiki.json")
 
     warnings: list[str] = []
 
@@ -440,6 +442,83 @@ def main() -> int:
         fruits.append(row)
         fruit_by_id[f["id"]] = row
 
+    # ------------------------------------------------- the Char Box overlay
+    # Phase 7B. data/generated/characters.wiki.json carries what the French
+    # mirror never had: epithets, origins, real debut chapters, and bounty
+    # PROGRESSIONS. Two rules, both load-bearing:
+    #
+    #   1. DEBUT IS NOT JOIN (the Jinbe rule). Everything merged here is named
+    #      debut_*, and crew_joins stays the only source of join_chapter. Jinbe
+    #      debuts ch. 528 and joins the crew ch. 976; a merge that conflated the
+    #      two would put him on the ship for four hundred chapters of the story.
+    #   2. AN UNGATED BOUNTY IS A SPOILER. A row with no as_of_chapter cannot be
+    #      chapter-gated, so it is dropped rather than shown from chapter 1.
+    wiki_by_slug = {r["slug"]: r for r in gen_chars_wiki["characters"]}
+
+    # "Chapter 0" is a real One Piece publication — the Strong World one-shot —
+    # and the wiki reports it verbatim, so Shiki and Indigo arrive here debuting
+    # at chapter 0. This app's axis is chapters 1..N of the serialised story; 0
+    # is not a point on it, and passing it through would mean "revealed before
+    # chapter 1", i.e. visible to a reader on page one. It maps to null: debut
+    # unknown on our axis, which is the truth.
+    chapter_zero = sorted(s for s, r in wiki_by_slug.items()
+                          if r["debut_chapter"] == 0 or r["debut_episode"] == 0)
+    for slug in chapter_zero:
+        r = wiki_by_slug[slug]
+        if r["debut_chapter"] == 0:
+            r["debut_chapter"] = None
+        if r["debut_episode"] == 0:
+            r["debut_episode"] = None
+    if chapter_zero:
+        warnings.append(
+            f"{len(chapter_zero)} characters debut at 'Chapter 0'/'Episode 0' upstream "
+            f"({', '.join(chapter_zero)}) — the Strong World one-shot and cover-story walk-ons. "
+            f"Chapter 0 is not a point on the 1..N axis this app fogs against, so their debut is "
+            f"recorded as unknown rather than as 'before chapter 1'."
+        )
+    bounty_ov_rows = {}
+    for row in bounties_doc["characters"]:
+        for r in row["rows"]:
+            if "Hand-authored" not in (r.get("source_ref") or ""):
+                raise die("canon/bounties.json rows must declare a hand-authored source_ref", r)
+        bounty_ov_rows[row["slug"]] = sorted(row["rows"], key=lambda r: -r["amount"])
+
+    dropped_bounty_rows = 0
+
+    def bounty_history_for(slug):
+        """Chapter-gated rows only, newest bounty first (order 0 = newest)."""
+        nonlocal dropped_bounty_rows
+        if slug in bounty_ov_rows:
+            rows = [dict(r) for r in bounty_ov_rows[slug]]
+            src = "canon/bounties.json"
+        else:
+            w = wiki_by_slug.get(slug)
+            rows = [dict(r) for r in (w["bounty_history"] if w else [])]
+            src = "onepiece.fandom.com Char Box (bounty)"
+        kept = [r for r in rows if r.get("as_of_chapter") is not None]
+        dropped_bounty_rows += len(rows) - len(kept)
+        kept.sort(key=lambda r: -r["amount"])
+        out = []
+        for i, r in enumerate(kept):
+            out.append({
+                "order": i,
+                "amount": r["amount"],
+                "as_of_chapter": r["as_of_chapter"],
+                "source_ref": r.get("source_ref", src),
+                "canon_confidence": r.get("canon_confidence", "canon"),
+                "verified": bool(r.get("verified", False)),
+            })
+        return out
+
+    unmatched = sorted(set(wiki_by_slug) - {slugify(char_name_map.get(c["name"], c["name"]))
+                                            for c in raw_chars})
+    if unmatched:
+        raise die(
+            f"{len(unmatched)} rows in data/generated/characters.wiki.json have no character in "
+            f"canon.json to merge onto (first: {unmatched[:5]}). The harvest is keyed by the canon "
+            f"slug, so this means the two drifted — re-run scripts/sync_wiki_characters.py."
+        )
+
     # ----------------------------------------------------------- characters
     characters = []
     for ch in raw_chars:
@@ -452,10 +531,13 @@ def main() -> int:
             raise die(f"character {name!r} references crew id {crew.get('id')} that is not in crews.json", ch)
         if fruit.get("id") and not fruit_row:
             raise die(f"character {name!r} references fruit id {fruit.get('id')} that is not in fruits.json", ch)
+        slug = slugify(name)
+        w = wiki_by_slug.get(slug)
+        history = bounty_history_for(slug)
         characters.append({
             "id": ch["id"],
             "name": name,
-            "slug": slugify(name),
+            "slug": slug,
             "status": enum(ch.get("status"), status_map, "character status", ch),
             "bounty": parse_bounty(ch.get("bounty"), ch, bounty_ov),
             "age": parse_age(ch.get("age"), ch, age_ov),
@@ -465,7 +547,19 @@ def main() -> int:
             "crew_name": crew_row["name"] if crew_row else None,
             "fruit_id": fruit_row["id"] if fruit_row else None,
             "fruit_name": fruit_row["name"] if fruit_row else None,
-            "source_ref": "api-onepiece.com/v2/characters/en + canon/overrides.json",
+            # --- Char Box overlay (null for the 97 characters with no wiki box)
+            "epithet": (w or {}).get("epithet"),
+            "origin": (w or {}).get("origin"),
+            "birthday": (w or {}).get("birthday"),
+            "blood_type": (w or {}).get("blood_type"),
+            "height_cm": (w or {}).get("height_cm"),
+            "debut_chapter": (w or {}).get("debut_chapter"),
+            "debut_episode": (w or {}).get("debut_episode"),
+            "bounty_history": history,
+            "wiki_source_ref": (w or {}).get("source_ref"),
+            "source_ref": "api-onepiece.com/v2/characters/en + canon/overrides.json"
+                          + (" + onepiece.fandom.com Char Box (epithet/origin/debut/bounty history)"
+                             if w else ""),
             "canon_confidence": "derived",
         })
 
@@ -944,6 +1038,17 @@ def main() -> int:
             "haki_users contains UNVERIFIED rows. Haki reveal chapters are not "
             "manga-confirmed. The UI must render haki facts as unverified."
         )
+    if dropped_bounty_rows:
+        warnings.append(
+            f"{dropped_bounty_rows} bounty rows were dropped for carrying no reveal chapter "
+            f"(databook, Vivre Card and magazine figures the wiki never ties to a chapter). An "
+            f"ungated bounty cannot be fogged, so it is dropped rather than shown from chapter 1. "
+            f"To restore one, give it a chapter in canon/bounties.json."
+        )
+    chars_with_history = sum(1 for c in characters if c["bounty_history"])
+    if not chars_with_history:
+        raise die("no character has a chapter-gated bounty history — the Char Box overlay "
+                  "silently did nothing. Re-run scripts/sync_wiki_characters.py.")
 
     # ------------------------------------------------------------------ out
     payload = {
@@ -966,6 +1071,11 @@ def main() -> int:
                 "islands_manga_canon": sum(1 for i in islands if i["canon_status"] == "manga"),
                 "islands_with_position": sum(1 for i in islands if i["lng"] is not None),
                 "characters": len(characters),
+                "characters_with_char_box": sum(1 for c in characters if c["wiki_source_ref"]),
+                "characters_with_epithet": sum(1 for c in characters if c["epithet"]),
+                "characters_with_bounty_history": chars_with_history,
+                "bounty_rows": sum(len(c["bounty_history"]) for c in characters),
+                "bounty_rows_dropped_ungated": dropped_bounty_rows,
                 "crews": len(crews),
                 "fruits": len(fruits),
                 "episodes": len(episodes),

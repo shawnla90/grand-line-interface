@@ -1,18 +1,19 @@
 {
   "_meta": {
-    "generated_at": "2026-07-16T10:42:57.008589+00:00",
+    "generated_at": "2026-07-17T01:03:17.649818+00:00",
     "generator": "scripts/sync_wiki_characters.py",
     "source": "https://onepiece.fandom.com/api.php",
     "license": "Facts extracted from One Piece Fandom under CC-BY-SA 3.0 — no prose reproduced.",
     "note": "debut is DEBUT, never join (the Jinbe rule). Not merged into canon.json yet.",
     "counts": {
       "characters_in_canon": 786,
-      "char_boxes_parsed": 601,
-      "misses": 185,
-      "with_debut_chapter": 550,
-      "with_bounty_history": 158,
-      "with_bounty_chapter_refs": 40,
-      "bounty_rows_total": 209
+      "char_boxes_parsed": 689,
+      "title_overrides_applied": 88,
+      "misses": 97,
+      "with_debut_chapter": 636,
+      "with_bounty_history": 185,
+      "with_bounty_chapter_refs": 68,
+      "bounty_rows_total": 242
     },
     "wanted_params": [
       "first",
@@ -27,957 +28,614 @@
       "status"
     ],
     "param_freq_top": {
-      "colorscheme": 601,
-      "jname": 601,
-      "first": 601,
-      "affiliation": 578,
-      "occupation": 567,
-      "jva": 561,
-      "rname": 545,
-      "funi eva": 504,
-      "ename": 448,
-      "birth": 428,
-      "age": 375,
-      "origin": 349,
-      "height": 325,
-      "blood type": 314,
-      "residence": 283,
-      "epithet": 187,
-      "bounty": 183,
-      "dfbackcolor": 145,
-      "dftextcolor": 145,
-      "dftype": 145,
-      "dfename": 143,
-      "dfname": 128,
-      "dfmeaning": 128,
-      "switch": 95,
-      "status": 91
+      "colorscheme": 689,
+      "jname": 689,
+      "first": 689,
+      "affiliation": 663,
+      "jva": 649,
+      "occupation": 648,
+      "rname": 623,
+      "funi eva": 589,
+      "ename": 509,
+      "birth": 508,
+      "age": 431,
+      "origin": 414,
+      "height": 392,
+      "blood type": 376,
+      "residence": 336,
+      "epithet": 223,
+      "bounty": 213,
+      "dfbackcolor": 182,
+      "dftextcolor": 182,
+      "dftype": 182,
+      "dfename": 180,
+      "dfname": 162,
+      "dfmeaning": 162,
+      "status": 119,
+      "switch": 101
     }
   },
   "misses": [
     {
-      "name": "Tony-Tony Chopper",
-      "slug": "tony-tony-chopper",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Léo",
-      "slug": "léo",
-      "why": "no wiki page under this title"
-    },
-    {
       "name": "Bee Anne",
       "slug": "bee-anne",
+      "asked_for": "Bee Anne",
       "why": "no wiki page under this title"
     },
     {
       "name": "Morge",
       "slug": "morge",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Krieg / Don Krieg",
-      "slug": "krieg-don-krieg",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Gyn",
-      "slug": "gyn",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Porché",
-      "slug": "porché",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Pingouin",
-      "slug": "pingouin",
+      "asked_for": "Morge",
       "why": "no wiki page under this title"
     },
     {
       "name": "Charlotte Pets",
       "slug": "charlotte-pets",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Ficher Tiger",
-      "slug": "ficher-tiger",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Charlotte Praliné",
-      "slug": "charlotte-praliné",
+      "asked_for": "Charlotte Pets",
       "why": "no wiki page under this title"
     },
     {
       "name": "Howling Dab",
       "slug": "howling-dab",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Charlotte Linlin / Big Mom",
-      "slug": "charlotte-linlin-big-mom",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Charlotte Dent-de-chien",
-      "slug": "charlotte-dent-de-chien",
+      "asked_for": "Howling Dab",
       "why": "no wiki page under this title"
     },
     {
       "name": "Charlotte Slurp",
       "slug": "charlotte-slurp",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Charlotte Opéra",
-      "slug": "charlotte-opéra",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Charlotte Mont d’Or",
-      "slug": "charlotte-mont-dor",
+      "asked_for": "Charlotte Slurp",
       "why": "no wiki page under this title"
     },
     {
       "name": "Charlotte Flampée",
       "slug": "charlotte-flampée",
+      "asked_for": "Charlotte Flampée",
       "why": "no wiki page under this title"
     },
     {
       "name": "Charlotte Mondé",
       "slug": "charlotte-mondé",
+      "asked_for": "Charlotte Mondé",
       "why": "no wiki page under this title"
     },
     {
       "name": "Charlotte Crème",
       "slug": "charlotte-crème",
+      "asked_for": "Charlotte Crème",
       "why": "no wiki page under this title"
     },
     {
       "name": "Charlotte Zuccoto",
       "slug": "charlotte-zuccoto",
+      "asked_for": "Charlotte Zuccoto",
       "why": "no wiki page under this title"
     },
     {
       "name": "Charlotte Broyée",
       "slug": "charlotte-broyée",
+      "asked_for": "Charlotte Broyée",
       "why": "no wiki page under this title"
     },
     {
       "name": "Charlotte Dosmarché",
       "slug": "charlotte-dosmarché",
+      "asked_for": "Charlotte Dosmarché",
       "why": "no wiki page under this title"
     },
     {
       "name": "Charlotte Corn Starch",
       "slug": "charlotte-corn-starch",
+      "asked_for": "Charlotte Corn Starch",
       "why": "no wiki page under this title"
     },
     {
       "name": "Charlotte Cannelle",
       "slug": "charlotte-cannelle",
+      "asked_for": "Charlotte Cannelle",
       "why": "no wiki page under this title"
     },
     {
       "name": "Charlotte Mélisée",
       "slug": "charlotte-mélisée",
+      "asked_for": "Charlotte Mélisée",
       "why": "no wiki page under this title"
     },
     {
       "name": "Charlotte Mucre",
       "slug": "charlotte-mucre",
+      "asked_for": "Charlotte Mucre",
       "why": "no wiki page under this title"
     },
     {
       "name": "Charlotte Mapple",
       "slug": "charlotte-mapple",
+      "asked_for": "Charlotte Mapple",
       "why": "no wiki page under this title"
     },
     {
       "name": "Charlotte Yu Yuan",
       "slug": "charlotte-yu-yuan",
+      "asked_for": "Charlotte Yu Yuan",
       "why": "no wiki page under this title"
     },
     {
       "name": "Charlotte Muscade",
       "slug": "charlotte-muscade",
+      "asked_for": "Charlotte Muscade",
       "why": "no wiki page under this title"
     },
     {
       "name": "Charlotte Muscadia",
       "slug": "charlotte-muscadia",
+      "asked_for": "Charlotte Muscadia",
       "why": "no wiki page under this title"
     },
     {
       "name": "Charlotte Muscadelle",
       "slug": "charlotte-muscadelle",
+      "asked_for": "Charlotte Muscadelle",
       "why": "no wiki page under this title"
     },
     {
       "name": "Charlotte Muscadine",
       "slug": "charlotte-muscadine",
+      "asked_for": "Charlotte Muscadine",
       "why": "no wiki page under this title"
     },
     {
       "name": "Charlotte Muscadette",
       "slug": "charlotte-muscadette",
+      "asked_for": "Charlotte Muscadette",
       "why": "no wiki page under this title"
     },
     {
       "name": "Delœuf",
       "slug": "delœuf",
+      "asked_for": "Delœuf",
       "why": "no wiki page under this title"
     },
     {
       "name": "Boddin",
       "slug": "boddin",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Prométhée",
-      "slug": "prométhée",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Napoléon",
-      "slug": "napoléon",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Héra",
-      "slug": "héra",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Who’s Who",
-      "slug": "whos-who",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Sheep’s Head",
-      "slug": "sheeps-head",
+      "asked_for": "Boddin",
       "why": "no wiki page under this title"
     },
     {
       "name": "Trouduc",
       "slug": "trouduc",
+      "asked_for": "Trouduc",
       "why": "no wiki page under this title"
     },
     {
       "name": "Pouilleux",
       "slug": "pouilleux",
+      "asked_for": "Pouilleux",
       "why": "no wiki page under this title"
     },
     {
       "name": "Plouf",
       "slug": "plouf",
+      "asked_for": "Plouf",
       "why": "no wiki page under this title"
     },
     {
       "name": "Snakeman",
       "slug": "snakeman",
+      "asked_for": "Snakeman",
       "why": "page has no {{Char Box}}"
     },
     {
       "name": "Rabitman",
       "slug": "rabitman",
+      "asked_for": "Rabitman",
       "why": "no wiki page under this title"
     },
     {
       "name": "Sarehebi",
       "slug": "sarehebi",
+      "asked_for": "Sarehebi",
       "why": "no wiki page under this title"
     },
     {
       "name": "Alpagaman",
       "slug": "alpagaman",
+      "asked_for": "Alpagaman",
       "why": "no wiki page under this title"
     },
     {
       "name": "Tatouman",
       "slug": "tatouman",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Nuré-Onna",
-      "slug": "nuré-onna",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Wa-Nyudo",
-      "slug": "wa-nyudo",
+      "asked_for": "Tatouman",
       "why": "no wiki page under this title"
     },
     {
       "name": "Hacha",
       "slug": "hacha",
+      "asked_for": "Hacha",
       "why": "no wiki page under this title"
     },
     {
       "name": "Tohomé",
       "slug": "tohomé",
+      "asked_for": "Tohomé",
       "why": "no wiki page under this title"
     },
     {
       "name": "Yazaémon",
       "slug": "yazaémon",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Marshall D. Teach (Blackbeard)",
-      "slug": "marshall-d-teach-blackbeard",
+      "asked_for": "Yazaémon",
       "why": "no wiki page under this title"
     },
     {
       "name": "Barbe Rose",
       "slug": "barbe-rose",
+      "asked_for": "Barbe Rose",
       "why": "no wiki page under this title"
     },
     {
       "name": "Dringo",
       "slug": "dringo",
+      "asked_for": "Dringo",
       "why": "no wiki page under this title"
     },
     {
       "name": "CB Galant",
       "slug": "cb-galant",
+      "asked_for": "CB Galant",
       "why": "no wiki page under this title"
     },
     {
       "name": "Mr Momora",
       "slug": "mr-momora",
+      "asked_for": "Mr Momora",
       "why": "no wiki page under this title"
     },
     {
       "name": "Colonel Mugren",
       "slug": "colonel-mugren",
+      "asked_for": "Colonel Mugren",
       "why": "no wiki page under this title"
     },
     {
       "name": "Max Marks",
       "slug": "max-marks",
+      "asked_for": "Max Marks",
       "why": "no wiki page under this title"
     },
     {
       "name": "Bankro",
       "slug": "bankro",
+      "asked_for": "Bankro",
       "why": "no wiki page under this title"
     },
     {
       "name": "Jacsonbaner",
       "slug": "jacsonbaner",
+      "asked_for": "Jacsonbaner",
       "why": "no wiki page under this title"
     },
     {
       "name": "Smack",
       "slug": "smack",
+      "asked_for": "Smack",
       "why": "no wiki page under this title"
     },
     {
       "name": "Madaisky Mizuta",
       "slug": "madaisky-mizuta",
+      "asked_for": "Madaisky Mizuta",
       "why": "no wiki page under this title"
     },
     {
       "name": "Mawaritovsky Mizuta",
       "slug": "mawaritovsky-mizuta",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Edward Newgate (Whitebeard)",
-      "slug": "edward-newgate-whitebeard",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Diamond Joz",
-      "slug": "diamond-joz",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Speed Jill",
-      "slug": "speed-jill",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Frères DeCalvan",
-      "slug": "frères-decalvan",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Little Oz Junior",
-      "slug": "little-oz-junior",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Mc Guy",
-      "slug": "mc-guy",
+      "asked_for": "Mawaritovsky Mizuta",
       "why": "no wiki page under this title"
     },
     {
       "name": "Arhur",
       "slug": "arhur",
+      "asked_for": "Arhur",
       "why": "no wiki page under this title"
     },
     {
       "name": "Wakkem",
       "slug": "wakkem",
+      "asked_for": "Wakkem",
       "why": "no wiki page under this title"
     },
     {
       "name": "Great Micheal",
       "slug": "great-micheal",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Barbos Bruneriguez (Brownbeard)",
-      "slug": "barbos-bruneriguez-brownbeard",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Don Quijote Doflamingo",
-      "slug": "don-quijote-doflamingo",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Buffallo",
-      "slug": "buffallo",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Im Sama",
-      "slug": "im-sama",
+      "asked_for": "Great Micheal",
       "why": "no wiki page under this title"
     },
     {
       "name": "1er Doyen",
       "slug": "1er-doyen",
+      "asked_for": "1er Doyen",
       "why": "no wiki page under this title"
     },
     {
       "name": "2e Doyen",
       "slug": "2e-doyen",
+      "asked_for": "2e Doyen",
       "why": "no wiki page under this title"
     },
     {
       "name": "3e Doyen",
       "slug": "3e-doyen",
+      "asked_for": "3e Doyen",
       "why": "no wiki page under this title"
     },
     {
       "name": "4e Doyen",
       "slug": "4e-doyen",
+      "asked_for": "4e Doyen",
       "why": "no wiki page under this title"
     },
     {
       "name": "5e Doyen",
       "slug": "5e-doyen",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Sharlia",
-      "slug": "sharlia",
+      "asked_for": "5e Doyen",
       "why": "no wiki page under this title"
     },
     {
       "name": "Don Quijote Myosgard",
       "slug": "don-quijote-myosgard",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Hittori",
-      "slug": "hittori",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Funckfreed",
-      "slug": "funckfreed",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Wanzé",
-      "slug": "wanzé",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Minotaure",
-      "slug": "minotaure",
+      "asked_for": "Don Quijote Myosgard",
       "why": "no wiki page under this title"
     },
     {
       "name": "Minorhinocéros",
       "slug": "minorhinocéros",
+      "asked_for": "Minorhinocéros",
       "why": "no wiki page under this title"
     },
     {
       "name": "Minozèbre",
       "slug": "minozèbre",
+      "asked_for": "Minozèbre",
       "why": "no wiki page under this title"
     },
     {
       "name": "Minochihuabua",
       "slug": "minochihuabua",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Sakazuki / Akainu",
-      "slug": "sakazuki-akainu",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Borsalino / Kizaru",
-      "slug": "borsalino-kizaru",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Issho / Fujitora",
-      "slug": "issho-fujitora",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Aramaki / Ryokugyu",
-      "slug": "aramaki-ryokugyu",
+      "asked_for": "Minochihuabua",
       "why": "no wiki page under this title"
     },
     {
       "name": "Comir",
       "slug": "comir",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Dalmatien",
-      "slug": "dalmatien",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "T. Bone",
-      "slug": "t-bone",
+      "asked_for": "Comir",
       "why": "no wiki page under this title"
     },
     {
       "name": "Jenfétro",
       "slug": "jenfétro",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Verygood",
-      "slug": "verygood",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Kobby",
-      "slug": "kobby",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Don Quijote Rosinante",
-      "slug": "don-quijote-rosinante",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Hermep",
-      "slug": "hermep",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "X-Drake",
-      "slug": "x-drake",
+      "asked_for": "Jenfétro",
       "why": "no wiki page under this title"
     },
     {
       "name": "Ronz",
       "slug": "ronz",
+      "asked_for": "Ronz",
       "why": "no wiki page under this title"
     },
     {
       "name": "Dohn Deynon",
       "slug": "dohn-deynon",
+      "asked_for": "Dohn Deynon",
       "why": "no wiki page under this title"
     },
     {
       "name": "Sally Entoilette",
       "slug": "sally-entoilette",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Kozaburo Shimotsuki",
-      "slug": "kozaburo-shimotsuki",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Gaimone",
-      "slug": "gaimone",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Oignon",
-      "slug": "oignon",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Piment",
-      "slug": "piment",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Carotte",
-      "slug": "carotte",
+      "asked_for": "Sally Entoilette",
       "why": "no wiki page under this title"
     },
     {
       "name": "Canne",
       "slug": "canne",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Belmer",
-      "slug": "belmer",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Johny",
-      "slug": "johny",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Don Quijote Homing",
-      "slug": "don-quijote-homing",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Haguar D. Sauro",
-      "slug": "haguar-d-sauro",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Mr 9",
-      "slug": "mr-9",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Kaloo",
-      "slug": "kaloo",
+      "asked_for": "Canne",
       "why": "no wiki page under this title"
     },
     {
       "name": "Longs-Cils",
       "slug": "longs-cils",
+      "asked_for": "Longs-Cils",
       "why": "no wiki page under this title"
     },
     {
       "name": "Bourdon Jr.",
       "slug": "bourdon-jr",
+      "asked_for": "Bourdon Jr.",
       "why": "no wiki page under this title"
     },
     {
       "name": "Kentarôs",
       "slug": "kentarôs",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Gonbei",
-      "slug": "gonbei",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Yokozuma",
-      "slug": "yokozuma",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Héraclès",
-      "slug": "héraclès",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Sukiyaki Kozuki",
-      "slug": "sukiyaki-kozuki",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Oden Kozuki",
-      "slug": "oden-kozuki",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Toki Kozuki",
-      "slug": "toki-kozuki",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Mononosuké Kozuki",
-      "slug": "mononosuké-kozuki",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Hiyori Kozuki",
-      "slug": "hiyori-kozuki",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Kinémon",
-      "slug": "kinémon",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Orochi Kurozumi",
-      "slug": "orochi-kurozumi",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Kanjuro Kurozumi",
-      "slug": "kanjuro-kurozumi",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Semimaru Kurozumi",
-      "slug": "semimaru-kurozumi",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Higurashi Kurozumi",
-      "slug": "higurashi-kurozumi",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Yasui Shimotsuki",
-      "slug": "yasui-shimotsuki",
+      "asked_for": "Kentarôs",
       "why": "no wiki page under this title"
     },
     {
       "name": "Yatappé",
       "slug": "yatappé",
+      "asked_for": "Yatappé",
       "why": "no wiki page under this title"
     },
     {
       "name": "Baboumaru",
       "slug": "baboumaru",
+      "asked_for": "Baboumaru",
       "why": "no wiki page under this title"
     },
     {
       "name": "Guncho",
       "slug": "guncho",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Zunesh",
-      "slug": "zunesh",
+      "asked_for": "Guncho",
       "why": "no wiki page under this title"
     },
     {
       "name": "Bêgis Khan",
       "slug": "bêgis-khan",
+      "asked_for": "Bêgis Khan",
       "why": "no wiki page under this title"
     },
     {
       "name": "Caborage",
       "slug": "caborage",
+      "asked_for": "Caborage",
       "why": "no wiki page under this title"
     },
     {
       "name": "Chavipère",
       "slug": "chavipère",
+      "asked_for": "Chavipère",
       "why": "no wiki page under this title"
     },
     {
       "name": "Sicilion",
       "slug": "sicilion",
+      "asked_for": "Sicilion",
       "why": "no wiki page under this title"
     },
     {
       "name": "Cancelot",
       "slug": "cancelot",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Judge Vinsmoke",
-      "slug": "judge-vinsmoke",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Sora Vinsmoke",
-      "slug": "sora-vinsmoke",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Ichiji Vinsmoke",
-      "slug": "ichiji-vinsmoke",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Niji Vinsmoke",
-      "slug": "niji-vinsmoke",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Gan Forr",
-      "slug": "gan-forr",
+      "asked_for": "Cancelot",
       "why": "no wiki page under this title"
     },
     {
       "name": "Chef Shandia",
       "slug": "chef-shandia",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Om",
-      "slug": "om",
+      "asked_for": "Chef Shandia",
       "why": "no wiki page under this title"
     },
     {
       "name": "Hoé",
       "slug": "hoé",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Mégalo",
-      "slug": "mégalo",
+      "asked_for": "Hoé",
       "why": "no wiki page under this title"
     },
     {
       "name": "Ministre Sénestre",
       "slug": "ministre-sénestre",
+      "asked_for": "Ministre Sénestre",
       "why": "no wiki page under this title"
     },
     {
       "name": "Ministre Dextre",
       "slug": "ministre-dextre",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Octy",
-      "slug": "octy",
+      "asked_for": "Ministre Dextre",
       "why": "no wiki page under this title"
     },
     {
       "name": "Corbeau",
       "slug": "corbeau",
+      "asked_for": "Corbeau",
       "why": "no wiki page under this title"
     },
     {
       "name": "Canard",
       "slug": "canard",
+      "asked_for": "Canard",
       "why": "no wiki page under this title"
     },
     {
       "name": "Gemme",
       "slug": "gemme",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Kuzan / Aokiji",
-      "slug": "kuzan-aokiji",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "César Clown",
-      "slug": "césar-clown",
+      "asked_for": "Gemme",
       "why": "no wiki page under this title"
     },
     {
       "name": "El Gorago",
       "slug": "el-gorago",
+      "asked_for": "El Gorago",
       "why": "no wiki page under this title"
     },
     {
       "name": "Bulter",
       "slug": "bulter",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Général Gasparde",
-      "slug": "général-gasparde",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Musshul",
-      "slug": "musshul",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Zéphyr",
-      "slug": "zéphyr",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Orlombus",
-      "slug": "orlombus",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Végapunk",
-      "slug": "végapunk",
+      "asked_for": "Bulter",
       "why": "no wiki page under this title"
     },
     {
       "name": "Punk 01 - Shaka",
       "slug": "punk-01-shaka",
+      "asked_for": "Punk 01 - Shaka",
       "why": "no wiki page under this title"
     },
     {
       "name": "Punk 02 - Lilith",
       "slug": "punk-02-lilith",
+      "asked_for": "Punk 02 - Lilith",
       "why": "no wiki page under this title"
     },
     {
       "name": "Punk 03 - Edison",
       "slug": "punk-03-edison",
+      "asked_for": "Punk 03 - Edison",
       "why": "no wiki page under this title"
     },
     {
       "name": "Punk 04 - Pythagoras",
       "slug": "punk-04-pythagoras",
+      "asked_for": "Punk 04 - Pythagoras",
       "why": "no wiki page under this title"
     },
     {
       "name": "Punk 05 - Atlas",
       "slug": "punk-05-atlas",
+      "asked_for": "Punk 05 - Atlas",
       "why": "no wiki page under this title"
     },
     {
       "name": "Punk 06 - York",
       "slug": "punk-06-york",
-      "why": "no wiki page under this title"
-    },
-    {
-      "name": "Karazu",
-      "slug": "karazu",
+      "asked_for": "Punk 06 - York",
       "why": "no wiki page under this title"
     },
     {
       "name": "Imu Neronna",
       "slug": "imu-neronna",
+      "asked_for": "Imu Neronna",
       "why": "no wiki page under this title"
     },
     {
       "name": "Vegapunk “Shaka”",
       "slug": "vegapunk-shaka",
+      "asked_for": "Vegapunk “Shaka”",
       "why": "no wiki page under this title"
     },
     {
       "name": "Vegapunk “Lilith”",
       "slug": "vegapunk-lilith",
+      "asked_for": "Vegapunk “Lilith”",
       "why": "no wiki page under this title"
     },
     {
       "name": "Vegapunk “Edison”",
       "slug": "vegapunk-edison",
+      "asked_for": "Vegapunk “Edison”",
       "why": "no wiki page under this title"
     },
     {
       "name": "Vegapunk “Pythagoras”",
       "slug": "vegapunk-pythagoras",
+      "asked_for": "Vegapunk “Pythagoras”",
       "why": "no wiki page under this title"
     },
     {
       "name": "Vegapunk “Atlas”",
       "slug": "vegapunk-atlas",
+      "asked_for": "Vegapunk “Atlas”",
       "why": "no wiki page under this title"
     },
     {
       "name": "Vegapunk “York”",
       "slug": "vegapunk-york",
+      "asked_for": "Vegapunk “York”",
       "why": "no wiki page under this title"
     }
   ],
@@ -993,34 +651,41 @@
       "epithet": "Straw Hat Luffy",
       "origin": "East Blue (Foosha Village)",
       "birthday": "May 5th (Children's Day)",
-      "height_cm": 91.0,
+      "height_cm": 174.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 3000000000,
           "as_of_chapter": 1053
         },
         {
+          "order": 1,
           "amount": 1500000000,
           "as_of_chapter": 903
         },
         {
+          "order": 2,
           "amount": 500000000,
           "as_of_chapter": 800
         },
         {
+          "order": 3,
           "amount": 400000000,
           "as_of_chapter": 601
         },
         {
+          "order": 4,
           "amount": 300000000,
           "as_of_chapter": 435
         },
         {
+          "order": 5,
           "amount": 100000000,
           "as_of_chapter": 213
         },
         {
+          "order": 6,
           "amount": 30000000,
           "as_of_chapter": 96
         }
@@ -1037,25 +702,29 @@
       "debut_chapter": 3,
       "debut_episode": 1,
       "canon_status": "manga",
-      "epithet": "\"Pirate Hunter Zoro\"",
+      "epithet": "Pirate Hunter Zoro",
       "origin": "East Blue",
       "birthday": "November 11th",
-      "height_cm": 178.0,
+      "height_cm": 181.0,
       "blood_type": "XF",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 1111000000,
-          "as_of_chapter": null
+          "as_of_chapter": 1058
         },
         {
+          "order": 1,
           "amount": 320000000,
           "as_of_chapter": 801
         },
         {
+          "order": 2,
           "amount": 120000000,
           "as_of_chapter": 435
         },
         {
+          "order": 3,
           "amount": 60000000,
           "as_of_chapter": 213
         }
@@ -1075,20 +744,23 @@
       "epithet": "Cat Burglar",
       "origin": "East Blue (Conomi Islands)",
       "birthday": "July 3rd",
-      "height_cm": 169.0,
+      "height_cm": 170.0,
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 366000000,
-          "as_of_chapter": null
+          "as_of_chapter": 1058
         },
         {
+          "order": 1,
           "amount": 66000000,
           "as_of_chapter": 801
         },
         {
+          "order": 2,
           "amount": 16000000,
-          "as_of_chapter": null
+          "as_of_chapter": 435
         }
       ],
       "bounty_current": 366000000,
@@ -1103,23 +775,26 @@
       "debut_chapter": 23,
       "debut_episode": 8,
       "canon_status": "manga",
-      "epithet": "\"King of Snipers\"; \"God\"",
+      "epithet": "King of Snipers",
       "origin": "East Blue (Gecko Islands)",
       "birthday": "April 1st (April Fool's Day)",
-      "height_cm": 174.0,
+      "height_cm": 176.0,
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 500000000,
-          "as_of_chapter": null
+          "as_of_chapter": 1058
         },
         {
+          "order": 1,
           "amount": 200000000,
-          "as_of_chapter": null
+          "as_of_chapter": 801
         },
         {
+          "order": 2,
           "amount": 30000000,
-          "as_of_chapter": null
+          "as_of_chapter": 435
         }
       ],
       "bounty_current": 500000000,
@@ -1134,31 +809,69 @@
       "debut_chapter": 43,
       "debut_episode": 20,
       "canon_status": "manga",
-      "epithet": "\"Black Leg\"",
+      "epithet": "Black Leg",
       "origin": "North Blue (Germa Kingdom)",
       "birthday": "March 2nd",
-      "height_cm": 177.0,
+      "height_cm": 180.0,
       "blood_type": "S (RH-)",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 1032000000,
-          "as_of_chapter": null
+          "as_of_chapter": 1058
         },
         {
+          "order": 1,
           "amount": 330000000,
           "as_of_chapter": 903
         },
         {
+          "order": 2,
           "amount": 177000000,
           "as_of_chapter": 801
         },
         {
+          "order": 3,
           "amount": 77000000,
-          "as_of_chapter": null
+          "as_of_chapter": 435
         }
       ],
       "bounty_current": 1032000000,
       "source_ref": "onepiece.fandom.com/wiki/Sanji#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "tony-tony-chopper",
+      "name": "Tony-Tony Chopper",
+      "character_id": 6,
+      "page_title": "Tony Tony Chopper",
+      "debut_chapter": 134,
+      "debut_episode": 81,
+      "canon_status": "manga",
+      "epithet": "Cotton Candy Lover",
+      "origin": "Grand Line (Drum Island)",
+      "birthday": "December 24th (Christmas Eve)",
+      "height_cm": 90.0,
+      "blood_type": "X",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 1000,
+          "as_of_chapter": 1058
+        },
+        {
+          "order": 1,
+          "amount": 100,
+          "as_of_chapter": 801
+        },
+        {
+          "order": 2,
+          "amount": 50,
+          "as_of_chapter": 435
+        }
+      ],
+      "bounty_current": 1000,
+      "source_ref": "onepiece.fandom.com/wiki/Tony_Tony_Chopper#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -1169,25 +882,29 @@
       "debut_chapter": 114,
       "debut_episode": 67,
       "canon_status": "manga",
-      "epithet": "\"Devil Child\"; \"Light of the Revolution\"",
+      "epithet": "Devil Child",
       "origin": "West Blue",
       "birthday": "February 6th",
       "height_cm": 188.0,
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 930000000,
-          "as_of_chapter": null
+          "as_of_chapter": 1058
         },
         {
+          "order": 1,
           "amount": 130000000,
           "as_of_chapter": 801
         },
         {
+          "order": 2,
           "amount": 80000000,
-          "as_of_chapter": null
+          "as_of_chapter": 435
         },
         {
+          "order": 3,
           "amount": 79000000,
           "as_of_chapter": 201
         }
@@ -1204,23 +921,26 @@
       "debut_chapter": 329,
       "debut_episode": 233,
       "canon_status": "manga",
-      "epithet": "\"Iron Man\" Franky \"Cyborg\" Franky\"フランキー|Saibōgu Furankī}} (former)",
+      "epithet": "Iron Man Franky",
       "origin": "South Blue",
       "birthday": "March 9th",
-      "height_cm": 225.0,
+      "height_cm": 240.0,
       "blood_type": "XF",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 394000000,
-          "as_of_chapter": null
+          "as_of_chapter": 1058
         },
         {
+          "order": 1,
           "amount": 94000000,
           "as_of_chapter": 801
         },
         {
+          "order": 2,
           "amount": 44000000,
-          "as_of_chapter": null
+          "as_of_chapter": 435
         }
       ],
       "bounty_current": 394000000,
@@ -1235,23 +955,26 @@
       "debut_chapter": 442,
       "debut_episode": 337,
       "canon_status": "manga",
-      "epithet": "\"Humming Brook\"; \"Soul King\"",
+      "epithet": "Humming Brook",
       "origin": "West Blue (Esperia Kingdom)",
       "birthday": "April 3rd",
-      "height_cm": 266.0,
+      "height_cm": 277.0,
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 383000000,
-          "as_of_chapter": null
+          "as_of_chapter": 1058
         },
         {
+          "order": 1,
           "amount": 83000000,
-          "as_of_chapter": null
+          "as_of_chapter": 801
         },
         {
+          "order": 2,
           "amount": 33000000,
-          "as_of_chapter": null
+          "as_of_chapter": 489
         }
       ],
       "bounty_current": 383000000,
@@ -1266,25 +989,29 @@
       "debut_chapter": 528,
       "debut_episode": 430,
       "canon_status": "manga",
-      "epithet": "\"Knight of the Sea\" Jinbe \"Boss Jinbe\"",
+      "epithet": "Knight of the Sea Jinbe",
       "origin": "Grand Line (Ryugu Kingdom)",
       "birthday": "April 2nd",
       "height_cm": 301.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 1100000000,
-          "as_of_chapter": null
+          "as_of_chapter": 1058
         },
         {
+          "order": 1,
           "amount": 438000000,
           "as_of_chapter": 976
         },
         {
+          "order": 2,
           "amount": 250000000,
           "as_of_chapter": 528
         },
         {
+          "order": 3,
           "amount": 76000000,
           "as_of_chapter": 622
         }
@@ -1301,7 +1028,7 @@
       "debut_chapter": 827,
       "debut_episode": 786,
       "canon_status": "manga",
-      "epithet": "\"Zeus the Thundercloud\"",
+      "epithet": "Zeus the Thundercloud",
       "origin": "Grand Line",
       "birthday": "June 26th",
       "height_cm": 232.0,
@@ -1319,19 +1046,21 @@
       "debut_chapter": 704,
       "debut_episode": 632,
       "canon_status": "manga",
-      "epithet": "\"Cavendish of the White Horse\"; \"Pirate Prince\"",
+      "epithet": "Cavendish of the White Horse",
       "origin": "Grand Line (Bourgeois Kingdom)",
       "birthday": "August 31st",
       "height_cm": 208.0,
       "blood_type": "XF",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 330000000,
           "as_of_chapter": 801
         },
         {
+          "order": 1,
           "amount": 280000000,
-          "as_of_chapter": null
+          "as_of_chapter": 704
         }
       ],
       "bounty_current": 330000000,
@@ -1346,13 +1075,14 @@
       "debut_chapter": 704,
       "debut_episode": 632,
       "canon_status": "manga",
-      "epithet": "\"Suleiman the Beheader\"",
+      "epithet": "Suleiman the Beheader",
       "origin": "South Blue",
       "birthday": "January 30th",
       "height_cm": 240.0,
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 67000000,
           "as_of_chapter": null
         }
@@ -1369,17 +1099,19 @@
       "debut_chapter": 705,
       "debut_episode": 633,
       "canon_status": "manga",
-      "epithet": "\"Bartolomeo the Cannibal\"",
+      "epithet": "Bartolomeo the Cannibal",
       "origin": "East Blue",
       "birthday": "October 6th",
       "height_cm": 220.0,
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 200000000,
           "as_of_chapter": 801
         },
         {
+          "order": 1,
           "amount": 150000000,
           "as_of_chapter": 706
         }
@@ -1396,15 +1128,16 @@
       "debut_chapter": 705,
       "debut_episode": 634,
       "canon_status": "manga",
-      "epithet": "\"The Missionary\"",
+      "epithet": "The Missionary",
       "origin": null,
       "birthday": "February 18th",
       "height_cm": null,
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 67000000,
-          "as_of_chapter": null
+          "as_of_chapter": 705
         }
       ],
       "bounty_current": 67000000,
@@ -1419,13 +1152,14 @@
       "debut_chapter": 704,
       "debut_episode": 632,
       "canon_status": "manga",
-      "epithet": "Don Sai・サイ|Don Sai}}",
+      "epithet": "Don Sai",
       "origin": "West Blue (Kano Country)",
       "birthday": "August 13th",
       "height_cm": 242.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 210000000,
           "as_of_chapter": null
         }
@@ -1478,7 +1212,7 @@
       "debut_chapter": 706,
       "debut_episode": 633,
       "canon_status": "manga",
-      "epithet": "\"Destruction Cannon\"",
+      "epithet": "Destruction Cannon",
       "origin": "Grand Line",
       "birthday": "October 10th",
       "height_cm": 225.0,
@@ -1540,6 +1274,24 @@
       "bounty_history": [],
       "bounty_current": null,
       "source_ref": "onepiece.fandom.com/wiki/Jeet#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "léo",
+      "name": "Léo",
+      "character_id": 23,
+      "page_title": "Leo",
+      "debut_chapter": 710,
+      "debut_episode": 640,
+      "canon_status": "manga",
+      "epithet": "Warrior",
+      "origin": "Grand Line (Green Bit)",
+      "birthday": "July 24th",
+      "height_cm": 23.0,
+      "blood_type": "S",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Leo#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -1658,17 +1410,19 @@
       "debut_chapter": 704,
       "debut_episode": 632,
       "canon_status": "manga",
-      "epithet": "\"Massacre Ruler\" \"Made-Up Explorer\" \"Pioneer Explorer\"",
+      "epithet": "Massacre Ruler",
       "origin": "Grand Line (Standing Kingdom)",
       "birthday": "June 23rd",
       "height_cm": 480.0,
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 148000000,
           "as_of_chapter": null
         },
         {
+          "order": 1,
           "amount": 98000000,
           "as_of_chapter": null
         }
@@ -1685,13 +1439,14 @@
       "debut_chapter": 9,
       "debut_episode": 4,
       "canon_status": "manga",
-      "epithet": "\"Buggy the Clown\" \"Buggy the Star Clown\"",
+      "epithet": "Buggy the Clown",
       "origin": "Grand Line",
       "birthday": "August 8th",
-      "height_cm": 192.0,
+      "height_cm": 130.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 3189000000,
           "as_of_chapter": 1058
         }
@@ -1708,13 +1463,14 @@
       "debut_chapter": 2,
       "debut_episode": 1,
       "canon_status": "manga",
-      "epithet": "\"Iron Mace\"",
+      "epithet": "Iron Mace",
       "origin": "East Blue",
       "birthday": "March 14th",
       "height_cm": 198.0,
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 5000000,
           "as_of_chapter": null
         }
@@ -1731,13 +1487,14 @@
       "debut_chapter": 117,
       "debut_episode": 70,
       "canon_status": "manga",
-      "epithet": "\"Loan Shark\"",
+      "epithet": "Loan Shark",
       "origin": "South Blue",
       "birthday": "March 3rd",
       "height_cm": 179.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 24000000,
           "as_of_chapter": null
         }
@@ -1754,7 +1511,7 @@
       "debut_chapter": 9,
       "debut_episode": 7,
       "canon_status": "manga",
-      "epithet": "\"Cabaji the Acrobat\"",
+      "epithet": "Cabaji the Acrobat",
       "origin": "East Blue",
       "birthday": "September 8th",
       "height_cm": 208.0,
@@ -1772,13 +1529,14 @@
       "debut_chapter": 23,
       "debut_episode": 9,
       "canon_status": "manga",
-      "epithet": "\"Kuro of a Hundred Plans\"",
+      "epithet": "Kuro of a Hundred Plans",
       "origin": "East Blue",
       "birthday": "April 22nd",
       "height_cm": 207.0,
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 16000000,
           "as_of_chapter": null
         }
@@ -1795,13 +1553,14 @@
       "debut_chapter": 31,
       "debut_episode": 13,
       "canon_status": "manga",
-      "epithet": "\"Nyaban Brothers\"|Nyāban Burazāzu|English versions: \"Meowban Brothers\"}}",
+      "epithet": "Nyaban Brothers",
       "origin": "East Blue",
       "birthday": "April 19th",
       "height_cm": 201.0,
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 7000000,
           "as_of_chapter": null
         }
@@ -1818,19 +1577,68 @@
       "debut_chapter": 31,
       "debut_episode": 13,
       "canon_status": "manga",
-      "epithet": "\"Nyaban Brothers\"|Nyāban Burazāzu|English versions: \"Meowban Brothers\"}}",
+      "epithet": "Nyaban Brothers",
       "origin": "East Blue",
       "birthday": "February 7th",
       "height_cm": 216.0,
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 7000000,
           "as_of_chapter": null
         }
       ],
       "bounty_current": 7000000,
       "source_ref": "onepiece.fandom.com/wiki/Buchi#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "krieg-don-krieg",
+      "name": "Krieg / Don Krieg",
+      "character_id": 40,
+      "page_title": "Krieg",
+      "debut_chapter": 45,
+      "debut_episode": 21,
+      "canon_status": "manga",
+      "epithet": "Don Krieg",
+      "origin": "East Blue",
+      "birthday": "September 19th",
+      "height_cm": 243.0,
+      "blood_type": "XF",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 17000000,
+          "as_of_chapter": 96
+        }
+      ],
+      "bounty_current": 17000000,
+      "source_ref": "onepiece.fandom.com/wiki/Krieg#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "gyn",
+      "name": "Gyn",
+      "character_id": 41,
+      "page_title": "Gin",
+      "debut_chapter": 44,
+      "debut_episode": 21,
+      "canon_status": "manga",
+      "epithet": "Gin the Man-Demon",
+      "origin": "East Blue",
+      "birthday": "April 7th",
+      "height_cm": 186.0,
+      "blood_type": "S",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 12000000,
+          "as_of_chapter": null
+        }
+      ],
+      "bounty_current": 12000000,
+      "source_ref": "onepiece.fandom.com/wiki/Gin#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -1841,7 +1649,7 @@
       "debut_chapter": 54,
       "debut_episode": 25,
       "canon_status": "manga",
-      "epithet": "\"Pearl the Iron Wall\"}}",
+      "epithet": "Pearl the Iron Wall",
       "origin": "East Blue",
       "birthday": "July 11th",
       "height_cm": 239.0,
@@ -1866,6 +1674,7 @@
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 25000000,
           "as_of_chapter": null
         }
@@ -1882,13 +1691,14 @@
       "debut_chapter": 219,
       "debut_episode": 144,
       "canon_status": "manga",
-      "epithet": "\"Salvage King\" Masira",
+      "epithet": "Salvage King Masira",
       "origin": "North Blue",
       "birthday": "March 4th",
       "height_cm": 345.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 23000000,
           "as_of_chapter": null
         }
@@ -1905,13 +1715,14 @@
       "debut_chapter": 226,
       "debut_episode": 147,
       "canon_status": "manga",
-      "epithet": "\"Sonar King\" Shoujou",
+      "epithet": "Sonar King Shoujou",
       "origin": "South Blue",
       "birthday": "May 8th",
       "height_cm": 351.0,
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 36000000,
           "as_of_chapter": 226
         }
@@ -1928,19 +1739,38 @@
       "debut_chapter": 305,
       "debut_episode": 207,
       "canon_status": "manga",
-      "epithet": "\"Silver Fox\"",
+      "epithet": "Silver Fox",
       "origin": "South Blue",
       "birthday": "April 4th",
       "height_cm": 180.0,
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 24000000,
-          "as_of_chapter": null
+          "as_of_chapter": 305
         }
       ],
       "bounty_current": 24000000,
       "source_ref": "onepiece.fandom.com/wiki/Foxy#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "porché",
+      "name": "Porché",
+      "character_id": 47,
+      "page_title": "Porche",
+      "debut_chapter": 305,
+      "debut_episode": 207,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": null,
+      "birthday": "November 16th",
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Porche#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -1951,7 +1781,7 @@
       "debut_chapter": 305,
       "debut_episode": 207,
       "canon_status": "manga",
-      "epithet": "\"Four-Footed Dash Freak\"",
+      "epithet": "Four-Footed Dash Freak",
       "origin": null,
       "birthday": "February 22nd",
       "height_cm": null,
@@ -1976,6 +1806,7 @@
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 320000000,
           "as_of_chapter": 455
         }
@@ -1992,7 +1823,7 @@
       "debut_chapter": 446,
       "debut_episode": 340,
       "canon_status": "manga",
-      "epithet": "\"Doctor Hogback\" \"Genius Surgeon\"",
+      "epithet": "Doctor Hogback",
       "origin": "West Blue",
       "birthday": "December 19th",
       "height_cm": 223.0,
@@ -2028,7 +1859,7 @@
       "debut_chapter": 443,
       "debut_episode": 338,
       "canon_status": "manga",
-      "epithet": "\"Ghost Princess\"",
+      "epithet": "Ghost Princess",
       "origin": "West Blue",
       "birthday": "June 7th",
       "height_cm": 160.0,
@@ -2046,13 +1877,14 @@
       "debut_chapter": 476,
       "debut_episode": 370,
       "canon_status": "manga",
-      "epithet": "\"Marriage Proposal Lola\"",
+      "epithet": "Marriage Proposal Lola",
       "origin": "Grand Line (Totto Land)",
       "birthday": "January 27th (Proposal Day)",
       "height_cm": 215.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 24000000,
           "as_of_chapter": null
         }
@@ -2069,31 +1901,31 @@
       "debut_chapter": 498,
       "debut_episode": 392,
       "canon_status": "manga",
-      "epithet": "\"Surgeon of Death\"",
+      "epithet": "Surgeon of Death",
       "origin": "North Blue",
       "birthday": "October 6th",
       "height_cm": 191.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 3000000000,
           "as_of_chapter": 1053
         },
         {
+          "order": 1,
           "amount": 500000000,
           "as_of_chapter": 801
         },
         {
+          "order": 2,
           "amount": 440000000,
           "as_of_chapter": 659
         },
         {
+          "order": 3,
           "amount": 200000000,
-          "as_of_chapter": null
-        },
-        {
-          "amount": 80000000,
-          "as_of_chapter": 1
+          "as_of_chapter": 498
         }
       ],
       "bounty_current": 3000000000,
@@ -2115,7 +1947,13 @@
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 1500,
+          "as_of_chapter": null
+        },
+        {
+          "order": 1,
+          "amount": 500,
           "as_of_chapter": null
         }
       ],
@@ -2160,6 +1998,24 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "pingouin",
+      "name": "Pingouin",
+      "character_id": 58,
+      "page_title": "Penguin",
+      "debut_chapter": 498,
+      "debut_episode": 392,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "North Blue",
+      "birthday": "April 25th",
+      "height_cm": null,
+      "blood_type": "X",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Penguin#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "eustass-kidd",
       "name": "Eustass Kidd",
       "character_id": 59,
@@ -2167,23 +2023,26 @@
       "debut_chapter": 498,
       "debut_episode": 392,
       "canon_status": "manga",
-      "epithet": "\"Captain\"",
+      "epithet": "Captain",
       "origin": "South Blue (Kutsukku Island)",
       "birthday": "January 10th",
       "height_cm": 205.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 3000000000,
           "as_of_chapter": 1053
         },
         {
+          "order": 1,
           "amount": 470000000,
           "as_of_chapter": 677
         },
         {
+          "order": 2,
           "amount": 315000000,
-          "as_of_chapter": null
+          "as_of_chapter": 498
         }
       ],
       "bounty_current": 3000000000,
@@ -2198,19 +2057,21 @@
       "debut_chapter": 498,
       "debut_episode": 392,
       "canon_status": "manga",
-      "epithet": "\"Massacre Soldier\"",
+      "epithet": "Massacre Soldier",
       "origin": "South Blue (Kutsukku Island)",
       "birthday": "February 2nd",
       "height_cm": 195.0,
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 200000000,
           "as_of_chapter": 677
         },
         {
+          "order": 1,
           "amount": 162000000,
-          "as_of_chapter": null
+          "as_of_chapter": 498
         }
       ],
       "bounty_current": 200000000,
@@ -2261,21 +2122,24 @@
       "debut_chapter": 498,
       "debut_episode": 392,
       "canon_status": "manga",
-      "epithet": "\"Gang\"",
+      "epithet": "Gang",
       "origin": "West Blue",
       "birthday": "January 17th",
       "height_cm": 166.0,
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 350000000,
           "as_of_chapter": null
         },
         {
+          "order": 1,
           "amount": 300000000,
           "as_of_chapter": 812
         },
         {
+          "order": 2,
           "amount": 138000000,
           "as_of_chapter": 498
         }
@@ -2292,13 +2156,14 @@
       "debut_chapter": 812,
       "debut_episode": 763,
       "canon_status": "manga",
-      "epithet": "\"Monster Gun\"",
+      "epithet": "Monster Gun",
       "origin": "West Blue",
       "birthday": "October 21st",
       "height_cm": 242.0,
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 95000000,
           "as_of_chapter": null
         }
@@ -2322,6 +2187,7 @@
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 90000000,
           "as_of_chapter": null
         }
@@ -2356,19 +2222,21 @@
       "debut_chapter": 498,
       "debut_episode": 392,
       "canon_status": "manga",
-      "epithet": "\"Big Eater\"",
+      "epithet": "Big Eater",
       "origin": "Red Line (Mary Geoise)",
       "birthday": "September 1st",
       "height_cm": 174.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 320000000,
           "as_of_chapter": 1060
         },
         {
+          "order": 1,
           "amount": 140000000,
-          "as_of_chapter": null
+          "as_of_chapter": 498
         }
       ],
       "bounty_current": 320000000,
@@ -2383,15 +2251,16 @@
       "debut_chapter": 498,
       "debut_episode": 392,
       "canon_status": "manga",
-      "epithet": "\"Mad Monk\"",
+      "epithet": "Mad Monk",
       "origin": "Sky Island",
       "birthday": "August 1st",
       "height_cm": 388.0,
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 108000000,
-          "as_of_chapter": null
+          "as_of_chapter": 498
         }
       ],
       "bounty_current": 108000000,
@@ -2406,17 +2275,19 @@
       "debut_chapter": 516,
       "debut_episode": 409,
       "canon_status": "manga",
-      "epithet": "\"Snake Princess\"; \"Pirate Empress\"",
+      "epithet": "Snake Princess",
       "origin": "Calm Belt (Amazon Lily)",
       "birthday": "September 2nd",
       "height_cm": 191.0,
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 1659000000,
           "as_of_chapter": 1059
         },
         {
+          "order": 1,
           "amount": 80000000,
           "as_of_chapter": 522
         }
@@ -2440,6 +2311,7 @@
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 40000000,
           "as_of_chapter": null
         }
@@ -2463,6 +2335,7 @@
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 40000000,
           "as_of_chapter": null
         }
@@ -2497,7 +2370,7 @@
       "debut_chapter": 0,
       "debut_episode": 425,
       "canon_status": "manga",
-      "epithet": "\"Shiki the Golden Lion\"; \"The Flying Pirate\"",
+      "epithet": "Shiki the Golden Lion",
       "origin": "Yano Country",
       "birthday": "March 20th",
       "height_cm": null,
@@ -2533,15 +2406,16 @@
       "debut_chapter": 600,
       "debut_episode": 519,
       "canon_status": "manga",
-      "epithet": "\"Wet-Haired Caribou\"",
+      "epithet": "Wet-Haired Caribou",
       "origin": "North Blue",
       "birthday": "July 4th",
       "height_cm": 228.0,
       "blood_type": "XF",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 210000000,
-          "as_of_chapter": null
+          "as_of_chapter": 600
         }
       ],
       "bounty_current": 210000000,
@@ -2556,19 +2430,44 @@
       "debut_chapter": 600,
       "debut_episode": 519,
       "canon_status": "manga",
-      "epithet": "\"Blood-Splatterer\" Coribou",
+      "epithet": "Blood-Splatterer Coribou",
       "origin": "North Blue",
       "birthday": "May 2nd",
       "height_cm": 250.0,
       "blood_type": "XF",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 190000000,
-          "as_of_chapter": null
+          "as_of_chapter": 600
         }
       ],
       "bounty_current": 190000000,
       "source_ref": "onepiece.fandom.com/wiki/Coribou#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "ficher-tiger",
+      "name": "Ficher Tiger",
+      "character_id": 78,
+      "page_title": "Fisher Tiger",
+      "debut_chapter": 521,
+      "debut_episode": 415,
+      "canon_status": "manga",
+      "epithet": "The AdventurerHero of Slaves",
+      "origin": "Grand Line (Ryugu Kingdom)",
+      "birthday": "November 5th",
+      "height_cm": 520.0,
+      "blood_type": "S (RH-)",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 230000000,
+          "as_of_chapter": 622
+        }
+      ],
+      "bounty_current": 230000000,
+      "source_ref": "onepiece.fandom.com/wiki/Fisher_Tiger#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -2590,6 +2489,24 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "charlotte-praliné",
+      "name": "Charlotte Praliné",
+      "character_id": 80,
+      "page_title": "Charlotte Praline",
+      "debut_chapter": 830,
+      "debut_episode": 790,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "Grand Line (Totto Land)",
+      "birthday": "July 22nd",
+      "height_cm": 800.0,
+      "blood_type": "S (RH-)",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Charlotte_Praline#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "dracule-mihawk",
       "name": "Dracule Mihawk",
       "character_id": 81,
@@ -2597,13 +2514,14 @@
       "debut_chapter": 49,
       "debut_episode": 23,
       "canon_status": "manga",
-      "epithet": "\"Hawk Eyes Mihawk\" \"Strongest Swordsman in the World\" \"Marine Hunter\"",
+      "epithet": "Hawk Eyes Mihawk",
       "origin": null,
       "birthday": "March 9th",
       "height_cm": 198.0,
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 3590000000,
           "as_of_chapter": 1058
         }
@@ -2620,19 +2538,21 @@
       "debut_chapter": 126,
       "debut_episode": 76,
       "canon_status": "manga",
-      "epithet": "\"Sir Crocodile\" \"Desert King\"",
+      "epithet": "Sir Crocodile",
       "origin": "Grand Line",
       "birthday": "September 5th",
       "height_cm": 253.0,
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 1965000000,
           "as_of_chapter": 1058
         },
         {
+          "order": 1,
           "amount": 81000000,
-          "as_of_chapter": null
+          "as_of_chapter": 155
         }
       ],
       "bounty_current": 1965000000,
@@ -2647,13 +2567,14 @@
       "debut_chapter": 160,
       "debut_episode": 103,
       "canon_status": "manga",
-      "epithet": "\"The Killer\"",
+      "epithet": "The Killer",
       "origin": "West Blue",
       "birthday": "January 1st",
       "height_cm": 212.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 75000000,
           "as_of_chapter": null
         }
@@ -2677,8 +2598,9 @@
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 480000000,
-          "as_of_chapter": null
+          "as_of_chapter": 802
         }
       ],
       "bounty_current": 480000000,
@@ -2693,17 +2615,19 @@
       "debut_chapter": 1,
       "debut_episode": 4,
       "canon_status": "manga",
-      "epithet": "\"Red-Haired Shanks\"",
+      "epithet": "Red-Haired Shanks",
       "origin": "West Blue (God Valley)",
       "birthday": "March 9th",
-      "height_cm": 199.0,
+      "height_cm": 132.0,
       "blood_type": "XF",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 4048900000,
           "as_of_chapter": 957
         },
         {
+          "order": 1,
           "amount": 1040000000,
           "as_of_chapter": null
         }
@@ -2756,7 +2680,7 @@
       "debut_chapter": 1,
       "debut_episode": 4,
       "canon_status": "manga",
-      "epithet": "\"Chaser\"|Cheisā}}",
+      "epithet": "Chaser",
       "origin": "East Blue (Gecko Islands)",
       "birthday": "August 2nd",
       "height_cm": 183.0,
@@ -2871,12 +2795,71 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 94000000,
-          "as_of_chapter": null
+          "as_of_chapter": 234
         }
       ],
       "bounty_current": 94000000,
       "source_ref": "onepiece.fandom.com/wiki/Rockstar#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "charlotte-linlin-big-mom",
+      "name": "Charlotte Linlin / Big Mom",
+      "character_id": 96,
+      "page_title": "Charlotte Linlin",
+      "debut_chapter": 651,
+      "debut_episode": 571,
+      "canon_status": "manga",
+      "epithet": "Big Mom (Funimation subs (formerly): Big Mam)",
+      "origin": "Grand Line",
+      "birthday": "February 15th",
+      "height_cm": 880.0,
+      "blood_type": "X",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 4388000000,
+          "as_of_chapter": 957
+        },
+        {
+          "order": 1,
+          "amount": 500000000,
+          "as_of_chapter": 868
+        },
+        {
+          "order": 2,
+          "amount": 50000000,
+          "as_of_chapter": 868
+        }
+      ],
+      "bounty_current": 4388000000,
+      "source_ref": "onepiece.fandom.com/wiki/Charlotte_Linlin#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "charlotte-dent-de-chien",
+      "name": "Charlotte Dent-de-chien",
+      "character_id": 97,
+      "page_title": "Charlotte Katakuri",
+      "debut_chapter": 860,
+      "debut_episode": 825,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "Grand Line (On a boat)",
+      "birthday": "November 25th",
+      "height_cm": 509.0,
+      "blood_type": "XF",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 1057000000,
+          "as_of_chapter": 860
+        }
+      ],
+      "bounty_current": 1057000000,
+      "source_ref": "onepiece.fandom.com/wiki/Charlotte_Katakuri#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -2894,8 +2877,9 @@
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 932000000,
-          "as_of_chapter": null
+          "as_of_chapter": 846
         }
       ],
       "bounty_current": 932000000,
@@ -2910,15 +2894,16 @@
       "debut_chapter": 835,
       "debut_episode": 796,
       "canon_status": "manga",
-      "epithet": "\"Thousand Arms Cracker\" \"Biscuit Knight\"",
+      "epithet": "Thousand Arms Cracker",
       "origin": "Grand Line (On a boat)",
       "birthday": "February 28th",
       "height_cm": 307.0,
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 860000000,
-          "as_of_chapter": null
+          "as_of_chapter": 836
         }
       ],
       "bounty_current": 860000000,
@@ -2940,6 +2925,7 @@
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 300000000,
           "as_of_chapter": null
         }
@@ -2963,6 +2949,7 @@
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 300000000,
           "as_of_chapter": null
         }
@@ -2979,7 +2966,7 @@
       "debut_chapter": 827,
       "debut_episode": 786,
       "canon_status": "manga",
-      "epithet": "\"Demon Lady\"",
+      "epithet": "Demon Lady",
       "origin": null,
       "birthday": "December 10th",
       "height_cm": null,
@@ -2987,6 +2974,24 @@
       "bounty_history": [],
       "bounty_current": null,
       "source_ref": "onepiece.fandom.com/wiki/Charlotte_Amande#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "charlotte-opéra",
+      "name": "Charlotte Opéra",
+      "character_id": 104,
+      "page_title": "Charlotte Opera",
+      "debut_chapter": 829,
+      "debut_episode": 789,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": null,
+      "birthday": "September 29th",
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Charlotte_Opera#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -3005,6 +3010,30 @@
       "bounty_history": [],
       "bounty_current": null,
       "source_ref": "onepiece.fandom.com/wiki/Charlotte_Brûlée#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "charlotte-mont-dor",
+      "name": "Charlotte Mont d’Or",
+      "character_id": 106,
+      "page_title": "Charlotte Mont-d'Or",
+      "debut_chapter": 829,
+      "debut_episode": 789,
+      "canon_status": "manga",
+      "epithet": "Scribe",
+      "origin": "Grand Line (On a boat)",
+      "birthday": "April 23rd (World Book Day)",
+      "height_cm": 260.0,
+      "blood_type": "X",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 120000000,
+          "as_of_chapter": null
+        }
+      ],
+      "bounty_current": 120000000,
+      "source_ref": "onepiece.fandom.com/wiki/Charlotte_Mont-d'Or#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -3040,8 +3069,9 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 600000000,
-          "as_of_chapter": null
+          "as_of_chapter": 894
         }
       ],
       "bounty_current": 600000000,
@@ -4017,6 +4047,7 @@
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 330000000,
           "as_of_chapter": 652
         }
@@ -4033,7 +4064,7 @@
       "debut_chapter": 858,
       "debut_episode": 827,
       "canon_status": "manga",
-      "epithet": "\"Gourmet Knight\"",
+      "epithet": "Gourmet Knight",
       "origin": "Grand Line",
       "birthday": "April 27th",
       "height_cm": 140.0,
@@ -4041,6 +4072,60 @@
       "bounty_history": [],
       "bounty_current": null,
       "source_ref": "onepiece.fandom.com/wiki/Streusen#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "prométhée",
+      "name": "Prométhée",
+      "character_id": 183,
+      "page_title": "Prometheus",
+      "debut_chapter": 827,
+      "debut_episode": 786,
+      "canon_status": "manga",
+      "epithet": "Prometheus the Sun",
+      "origin": "Grand Line",
+      "birthday": "July 19th",
+      "height_cm": 239.0,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Prometheus#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "napoléon",
+      "name": "Napoléon",
+      "character_id": 184,
+      "page_title": "Napoleon",
+      "debut_chapter": 651,
+      "debut_episode": 571,
+      "canon_status": "manga",
+      "epithet": "Napoleon the Bicorne",
+      "origin": "Grand Line",
+      "birthday": "December 2nd",
+      "height_cm": 848.0,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Napoleon#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "héra",
+      "name": "Héra",
+      "character_id": 185,
+      "page_title": "Hera",
+      "debut_chapter": 1011,
+      "debut_episode": 1028,
+      "canon_status": "manga",
+      "epithet": "Hera the Thundercloud",
+      "origin": "Grand Line (Onigashima)",
+      "birthday": "March 17th",
+      "height_cm": 212.0,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Hera#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -4069,19 +4154,21 @@
       "debut_chapter": 795,
       "debut_episode": 736,
       "canon_status": "manga",
-      "epithet": "\"Kaidou of the Beasts\" \"The Strongest Creature\" \"Wise King\"",
+      "epithet": "Kaidou of the Beasts",
       "origin": "Grand Line",
       "birthday": "May 1st",
       "height_cm": 710.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 4611100000,
           "as_of_chapter": 957
         },
         {
+          "order": 1,
           "amount": 70000000,
-          "as_of_chapter": null
+          "as_of_chapter": 1049
         }
       ],
       "bounty_current": 4611100000,
@@ -4096,13 +4183,14 @@
       "debut_chapter": 920,
       "debut_episode": 910,
       "canon_status": "manga",
-      "epithet": "\"King the Conflagration\"",
+      "epithet": "King the Conflagration",
       "origin": "Grand Line",
       "birthday": "December 1st",
       "height_cm": 613.0,
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 1390000000,
           "as_of_chapter": null
         }
@@ -4119,13 +4207,14 @@
       "debut_chapter": 920,
       "debut_episode": 910,
       "canon_status": "manga",
-      "epithet": "\"Queen the Plague\"",
+      "epithet": "Queen the Plague",
       "origin": "Grand Line",
       "birthday": "July 13th",
       "height_cm": 612.0,
       "blood_type": "XF",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 1320000000,
           "as_of_chapter": 935
         }
@@ -4142,13 +4231,14 @@
       "debut_chapter": 801,
       "debut_episode": 746,
       "canon_status": "manga",
-      "epithet": "\"Jack the Drought\"",
+      "epithet": "Jack the Drought",
       "origin": "Grand Line",
       "birthday": "September 28th",
       "height_cm": 830.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 1000000000,
           "as_of_chapter": 809
         }
@@ -4172,6 +4262,7 @@
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 290000000,
           "as_of_chapter": null
         }
@@ -4195,12 +4286,37 @@
       "blood_type": "XF",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 400000000,
           "as_of_chapter": null
         }
       ],
       "bounty_current": 400000000,
       "source_ref": "onepiece.fandom.com/wiki/Ulti#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "whos-who",
+      "name": "Who’s Who",
+      "character_id": 193,
+      "page_title": "Who's-Who",
+      "debut_chapter": 977,
+      "debut_episode": 954,
+      "canon_status": "manga",
+      "epithet": "Who of the Droplets",
+      "origin": "North Blue",
+      "birthday": "March 15th",
+      "height_cm": 336.0,
+      "blood_type": "F",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 546000000,
+          "as_of_chapter": null
+        }
+      ],
+      "bounty_current": 546000000,
+      "source_ref": "onepiece.fandom.com/wiki/Who's-Who#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -4218,6 +4334,7 @@
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 480000000,
           "as_of_chapter": null
         }
@@ -4234,19 +4351,38 @@
       "debut_chapter": 977,
       "debut_episode": 954,
       "canon_status": "manga",
-      "epithet": "\"Overflowing Sasaki\"",
+      "epithet": "Overflowing Sasaki",
       "origin": "Grand Line",
       "birthday": "February 3rd",
       "height_cm": 318.0,
       "blood_type": "XF",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 472000000,
           "as_of_chapter": null
         }
       ],
       "bounty_current": 472000000,
       "source_ref": "onepiece.fandom.com/wiki/Sasaki#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "sheeps-head",
+      "name": "Sheep’s Head",
+      "character_id": 196,
+      "page_title": "Sheepshead",
+      "debut_chapter": 795,
+      "debut_episode": 739,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "Grand Line",
+      "birthday": "June 6th",
+      "height_cm": 293.0,
+      "blood_type": "F",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Sheepshead#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -4257,17 +4393,19 @@
       "debut_chapter": 498,
       "debut_episode": 392,
       "canon_status": "manga",
-      "epithet": "\"Magician\"",
+      "epithet": "Magician",
       "origin": "North Blue",
       "birthday": "September 9th",
       "height_cm": 210.0,
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 320000000,
-          "as_of_chapter": null
+          "as_of_chapter": 677
         },
         {
+          "order": 1,
           "amount": 249000000,
           "as_of_chapter": 498
         }
@@ -4562,6 +4700,42 @@
       "bounty_history": [],
       "bounty_current": null,
       "source_ref": "onepiece.fandom.com/wiki/Caimanlady#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "nuré-onna",
+      "name": "Nuré-Onna",
+      "character_id": 222,
+      "page_title": "Nure-Onna",
+      "debut_chapter": 998,
+      "debut_episode": 1013,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": null,
+      "birthday": null,
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Nure-Onna#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "wa-nyudo",
+      "name": "Wa-Nyudo",
+      "character_id": 223,
+      "page_title": "Wanyudo",
+      "debut_chapter": 1005,
+      "debut_episode": 1021,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": null,
+      "birthday": null,
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Wanyudo#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -4914,23 +5088,59 @@
       "debut_chapter": 498,
       "debut_episode": 392,
       "canon_status": "manga",
-      "epithet": "\"Roar of the Sea\"",
+      "epithet": "Roar of the Sea",
       "origin": "Grand Line",
       "birthday": "March 19th",
       "height_cm": 256.0,
       "blood_type": "XF",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 350000000,
           "as_of_chapter": 677
         },
         {
+          "order": 1,
           "amount": 198000000,
-          "as_of_chapter": null
+          "as_of_chapter": 498
         }
       ],
       "bounty_current": 350000000,
       "source_ref": "onepiece.fandom.com/wiki/Scratchmen_Apoo#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "marshall-d-teach-blackbeard",
+      "name": "Marshall D. Teach (Blackbeard)",
+      "character_id": 247,
+      "page_title": "Marshall D. Teach",
+      "debut_chapter": 223,
+      "debut_episode": 146,
+      "canon_status": "manga",
+      "epithet": "Blackbeard",
+      "origin": "Grand Line (Shade Port)",
+      "birthday": "August 3rd",
+      "height_cm": 344.0,
+      "blood_type": "F",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 3996000000,
+          "as_of_chapter": 1059
+        },
+        {
+          "order": 1,
+          "amount": 2247600000,
+          "as_of_chapter": 925
+        },
+        {
+          "order": 2,
+          "amount": 0,
+          "as_of_chapter": 474
+        }
+      ],
+      "bounty_current": 3996000000,
+      "source_ref": "onepiece.fandom.com/wiki/Marshall_D._Teach#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -4941,13 +5151,14 @@
       "debut_chapter": 222,
       "debut_episode": 146,
       "canon_status": "manga",
-      "epithet": "\"Champion\"",
+      "epithet": "Champion",
       "origin": "Grand Line",
       "birthday": "December 25th",
       "height_cm": 355.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 20000000,
           "as_of_chapter": null
         }
@@ -4964,7 +5175,7 @@
       "debut_chapter": 538,
       "debut_episode": 440,
       "canon_status": "manga",
-      "epithet": "\"Shiryu of the Rain\"",
+      "epithet": "Shiryu of the Rain",
       "origin": "Grand Line",
       "birthday": "June 11th",
       "height_cm": 340.0,
@@ -4982,13 +5193,14 @@
       "debut_chapter": 222,
       "debut_episode": 146,
       "canon_status": "manga",
-      "epithet": "\"The Supersonic\"",
+      "epithet": "The Supersonic",
       "origin": "East Blue",
       "birthday": "October 5th",
       "height_cm": 340.0,
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 64000000,
           "as_of_chapter": null
         }
@@ -5005,7 +5217,7 @@
       "debut_chapter": 575,
       "debut_episode": 484,
       "canon_status": "manga",
-      "epithet": "\"Corrupt King\"",
+      "epithet": "Corrupt King",
       "origin": "North Blue",
       "birthday": "September 30th",
       "height_cm": 505.0,
@@ -5023,13 +5235,14 @@
       "debut_chapter": 234,
       "debut_episode": 151,
       "canon_status": "manga",
-      "epithet": "\"Demon Sheriff\"",
+      "epithet": "Demon Sheriff",
       "origin": "West Blue",
       "birthday": "March 13th",
       "height_cm": 340.0,
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 42200000,
           "as_of_chapter": null
         }
@@ -5046,7 +5259,7 @@
       "debut_chapter": 575,
       "debut_episode": 484,
       "canon_status": "manga",
-      "epithet": "\"Crescent Moon Hunter\"",
+      "epithet": "Crescent Moon Hunter",
       "origin": "South Blue",
       "birthday": "March 29th",
       "height_cm": 361.0,
@@ -5064,7 +5277,7 @@
       "debut_chapter": 575,
       "debut_episode": 484,
       "canon_status": "manga",
-      "epithet": "\"Colossal Battleship\"",
+      "epithet": "Colossal Battleship",
       "origin": "West Blue",
       "birthday": "March 2nd",
       "height_cm": null,
@@ -5082,7 +5295,7 @@
       "debut_chapter": 575,
       "debut_episode": 484,
       "canon_status": "manga",
-      "epithet": "\"Heavy Drinker\" Vasco Shot",
+      "epithet": "Heavy Drinker Vasco Shot",
       "origin": "South Blue",
       "birthday": "August 5th",
       "height_cm": 573.0,
@@ -5100,13 +5313,14 @@
       "debut_chapter": 223,
       "debut_episode": 146,
       "canon_status": "manga",
-      "epithet": "\"Death God\"",
+      "epithet": "Death God",
       "origin": "North Blue",
       "birthday": "October 18th",
       "height_cm": 342.0,
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 72000000,
           "as_of_chapter": null
         }
@@ -5130,6 +5344,7 @@
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 5564800000,
           "as_of_chapter": 957
         }
@@ -5146,7 +5361,7 @@
       "debut_chapter": 19,
       "debut_episode": 8,
       "canon_status": "manga",
-      "epithet": "\"Dark King\"; \"Right Hand of the Pirate King\"",
+      "epithet": "Dark King",
       "origin": null,
       "birthday": "May 13th",
       "height_cm": 188.0,
@@ -5164,7 +5379,7 @@
       "debut_chapter": 19,
       "debut_episode": null,
       "canon_status": "manga",
-      "epithet": "\"Mountain-Eater\"; \"Left Hand of the Pirate King\"",
+      "epithet": "Mountain-Eater",
       "origin": null,
       "birthday": null,
       "height_cm": null,
@@ -5218,7 +5433,7 @@
       "debut_chapter": 575,
       "debut_episode": 484,
       "canon_status": "manga",
-      "epithet": "\"Colossal Battleship\"",
+      "epithet": "Colossal Battleship",
       "origin": "West Blue",
       "birthday": "March 2nd",
       "height_cm": null,
@@ -5434,13 +5649,14 @@
       "debut_chapter": 69,
       "debut_episode": 31,
       "canon_status": "manga",
-      "epithet": "\"Arlong the Saw\" (English versions: \"Saw-Tooth Arlong\")",
+      "epithet": "Arlong the Saw (English versions: Saw-Tooth Arlong)",
       "origin": "Grand Line (Ryugu Kingdom)",
       "birthday": "May 3rd",
       "height_cm": 263.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 20000000,
           "as_of_chapter": 69
         }
@@ -5464,6 +5680,7 @@
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 9000000,
           "as_of_chapter": null
         }
@@ -5480,7 +5697,7 @@
       "debut_chapter": 103,
       "debut_episode": 63,
       "canon_status": "manga",
-      "epithet": "\"Calico\" Yorki",
+      "epithet": "Calico Yorki",
       "origin": null,
       "birthday": "April 9th",
       "height_cm": null,
@@ -5498,19 +5715,44 @@
       "debut_chapter": 222,
       "debut_episode": 146,
       "canon_status": "manga",
-      "epithet": "\"Big Knife Sarquiss\"",
+      "epithet": "Big Knife Sarquiss",
       "origin": "North Blue (Notice)",
       "birthday": "July 12th",
       "height_cm": 228.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 38000000,
-          "as_of_chapter": null
+          "as_of_chapter": 223
         }
       ],
       "bounty_current": 38000000,
       "source_ref": "onepiece.fandom.com/wiki/Sarquiss#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "edward-newgate-whitebeard",
+      "name": "Edward Newgate (Whitebeard)",
+      "character_id": 289,
+      "page_title": "Edward Newgate",
+      "debut_chapter": 159,
+      "debut_episode": 95,
+      "canon_status": "manga",
+      "epithet": "Whitebeard",
+      "origin": "Grand Line (Sphinx)",
+      "birthday": "April 6th",
+      "height_cm": 666.0,
+      "blood_type": "F",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 5046000000,
+          "as_of_chapter": 957
+        }
+      ],
+      "bounty_current": 5046000000,
+      "source_ref": "onepiece.fandom.com/wiki/Edward_Newgate#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -5521,23 +5763,43 @@
       "debut_chapter": 154,
       "debut_episode": 91,
       "canon_status": "manga",
-      "epithet": "\"Fire Fist\" Ace (\"Heat Fist Trace\" in the edited dub)",
+      "epithet": "Fire Fist Ace",
       "origin": "South Blue (Baterilla)",
       "birthday": "January 1st",
-      "height_cm": 185.0,
+      "height_cm": 103.0,
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 550000000,
           "as_of_chapter": null
         },
         {
+          "order": 1,
           "amount": 100000000,
-          "as_of_chapter": 1
+          "as_of_chapter": null
         }
       ],
       "bounty_current": 550000000,
       "source_ref": "onepiece.fandom.com/wiki/Portgas_D._Ace#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "diamond-joz",
+      "name": "Diamond Joz",
+      "character_id": 291,
+      "page_title": "Jozu",
+      "debut_chapter": 234,
+      "debut_episode": 151,
+      "canon_status": "manga",
+      "epithet": "Diamond Jozu",
+      "origin": "West Blue",
+      "birthday": "November 11th",
+      "height_cm": 503.0,
+      "blood_type": "X",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Jozu#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -5566,7 +5828,7 @@
       "debut_chapter": 552,
       "debut_episode": null,
       "canon_status": "manga",
-      "epithet": "\"Vista of the Flower Swords\"",
+      "epithet": "Vista of the Flower Swords",
       "origin": "North Blue",
       "birthday": "February 5th",
       "height_cm": 328.0,
@@ -5692,7 +5954,7 @@
       "debut_chapter": 553,
       "debut_episode": 461,
       "canon_status": "manga",
-      "epithet": "\"Water Buffalo\"",
+      "epithet": "Water Buffalo",
       "origin": "West Blue",
       "birthday": "March 19th",
       "height_cm": null,
@@ -5700,6 +5962,24 @@
       "bounty_history": [],
       "bounty_current": null,
       "source_ref": "onepiece.fandom.com/wiki/Atmos#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "speed-jill",
+      "name": "Speed Jill",
+      "character_id": 301,
+      "page_title": "Speed Jiru",
+      "debut_chapter": 553,
+      "debut_episode": 461,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "East Blue",
+      "birthday": "April 6th",
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Speed_Jiru#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -5735,6 +6015,7 @@
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 510000000,
           "as_of_chapter": null
         }
@@ -5751,7 +6032,7 @@
       "debut_chapter": 551,
       "debut_episode": 460,
       "canon_status": "manga",
-      "epithet": "\"Bohemian Knight\"",
+      "epithet": "Bohemian Knight",
       "origin": null,
       "birthday": "February 1st",
       "height_cm": null,
@@ -5762,6 +6043,24 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "frères-decalvan",
+      "name": "Frères DeCalvan",
+      "character_id": 305,
+      "page_title": "Decalvan Brothers",
+      "debut_chapter": 551,
+      "debut_episode": 460,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": null,
+      "birthday": "May 22nd",
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Decalvan_Brothers#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "squardo",
       "name": "Squardo",
       "character_id": 306,
@@ -5769,13 +6068,14 @@
       "debut_chapter": 551,
       "debut_episode": 460,
       "canon_status": "manga",
-      "epithet": "\"Maelstrom Spider\"",
+      "epithet": "Maelstrom Spider",
       "origin": "Grand Line",
       "birthday": "September 6th",
       "height_cm": 228.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 210000000,
           "as_of_chapter": null
         }
@@ -5792,7 +6092,7 @@
       "debut_chapter": 556,
       "debut_episode": 462,
       "canon_status": "manga",
-      "epithet": "\"Ice Witch\"",
+      "epithet": "Ice Witch",
       "origin": null,
       "birthday": "October 31st",
       "height_cm": null,
@@ -5800,6 +6100,48 @@
       "bounty_history": [],
       "bounty_current": null,
       "source_ref": "onepiece.fandom.com/wiki/Whitey_Bay#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "little-oz-junior",
+      "name": "Little Oz Junior",
+      "character_id": 308,
+      "page_title": "Little Oars Jr.",
+      "debut_chapter": 554,
+      "debut_episode": 463,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "Grand Line",
+      "birthday": "February 12th",
+      "height_cm": null,
+      "blood_type": "F",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 550000000,
+          "as_of_chapter": null
+        }
+      ],
+      "bounty_current": 550000000,
+      "source_ref": "onepiece.fandom.com/wiki/Little_Oars_Jr.#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "mc-guy",
+      "name": "Mc Guy",
+      "character_id": 309,
+      "page_title": "McGuy",
+      "debut_chapter": 551,
+      "debut_episode": 460,
+      "canon_status": "manga",
+      "epithet": "Thunder Lord",
+      "origin": null,
+      "birthday": "September 3rd",
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/McGuy#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -6415,6 +6757,30 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "barbos-bruneriguez-brownbeard",
+      "name": "Barbos Bruneriguez (Brownbeard)",
+      "character_id": 347,
+      "page_title": "Chadros Higelyges",
+      "debut_chapter": 581,
+      "debut_episode": 490,
+      "canon_status": "manga",
+      "epithet": "Brownbeard",
+      "origin": "Grand Line",
+      "birthday": "February 3rd",
+      "height_cm": 691.0,
+      "blood_type": "S",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 80060000,
+          "as_of_chapter": 661
+        }
+      ],
+      "bounty_current": 80060000,
+      "source_ref": "onepiece.fandom.com/wiki/Chadros_Higelyges#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "bluejam",
       "name": "Bluejam",
       "character_id": 348,
@@ -6429,6 +6795,7 @@
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 14300000,
           "as_of_chapter": null
         }
@@ -6452,6 +6819,7 @@
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 3400000,
           "as_of_chapter": null
         }
@@ -6468,13 +6836,14 @@
       "debut_chapter": 598,
       "debut_episode": 517,
       "canon_status": "manga",
-      "epithet": "\"Three-Tongued\" Demalo Black (Viz, Funimation: \"Triple-Tongued\")",
+      "epithet": "Three-Tongued Demalo Black",
       "origin": "East Blue",
       "birthday": "May 5th",
       "height_cm": 245.0,
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 26000000,
           "as_of_chapter": 601
         }
@@ -6653,7 +7022,7 @@
       "debut_chapter": 611,
       "debut_episode": 530,
       "canon_status": "manga",
-      "epithet": "\"Noble of the Fish-Man District\"",
+      "epithet": "Noble of the Fish-Man District",
       "origin": "Grand Line (Ryugu Kingdom)",
       "birthday": "November 11th",
       "height_cm": 325.0,
@@ -6736,6 +7105,30 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "don-quijote-doflamingo",
+      "name": "Don Quijote Doflamingo",
+      "character_id": 365,
+      "page_title": "Donquixote Doflamingo",
+      "debut_chapter": 233,
+      "debut_episode": 151,
+      "canon_status": "manga",
+      "epithet": "Heavenly Yaksha",
+      "origin": "Red Line (Mary Geoise)",
+      "birthday": "October 23rd",
+      "height_cm": 305.0,
+      "blood_type": "X",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 340000000,
+          "as_of_chapter": 234
+        }
+      ],
+      "bounty_current": 340000000,
+      "source_ref": "onepiece.fandom.com/wiki/Donquixote_Doflamingo#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "trébol",
       "name": "Trébol",
       "character_id": 366,
@@ -6750,6 +7143,7 @@
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 99000000,
           "as_of_chapter": null
         }
@@ -6773,6 +7167,7 @@
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 99000000,
           "as_of_chapter": null
         }
@@ -6796,6 +7191,7 @@
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 99000000,
           "as_of_chapter": null
         }
@@ -6812,7 +7208,7 @@
       "debut_chapter": 671,
       "debut_episode": 597,
       "canon_status": "manga",
-      "epithet": "\"Demon Bamboo\" Vergo",
+      "epithet": "Demon Bamboo Vergo",
       "origin": "North Blue",
       "birthday": "July 5th",
       "height_cm": 247.0,
@@ -6873,6 +7269,7 @@
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 61000000,
           "as_of_chapter": null
         }
@@ -6896,6 +7293,7 @@
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 58000000,
           "as_of_chapter": null
         }
@@ -6919,6 +7317,7 @@
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 11000000,
           "as_of_chapter": null
         }
@@ -6942,6 +7341,7 @@
       "blood_type": "S (RH-)",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 15000000,
           "as_of_chapter": null
         }
@@ -6965,12 +7365,31 @@
       "blood_type": "XF",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 31000000,
           "as_of_chapter": null
         }
       ],
       "bounty_current": 31000000,
       "source_ref": "onepiece.fandom.com/wiki/Gladius#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "buffallo",
+      "name": "Buffallo",
+      "character_id": 377,
+      "page_title": "Buffalo",
+      "debut_chapter": 692,
+      "debut_episode": 618,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "North Blue",
+      "birthday": "April 8th",
+      "height_cm": 696.0,
+      "blood_type": "F",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Buffalo#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -7004,14 +7423,27 @@
       "birthday": null,
       "height_cm": 435.0,
       "blood_type": null,
-      "bounty_history": [
-        {
-          "amount": 1154,
-          "as_of_chapter": 1154
-        }
-      ],
-      "bounty_current": 1154,
+      "bounty_history": [],
+      "bounty_current": null,
       "source_ref": "onepiece.fandom.com/wiki/Rocks_D._Xebec#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "im-sama",
+      "name": "Im Sama",
+      "character_id": 380,
+      "page_title": "Nerona Imu",
+      "debut_chapter": 906,
+      "debut_episode": 885,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": null,
+      "birthday": null,
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Nerona_Imu#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -7048,6 +7480,24 @@
       "bounty_history": [],
       "bounty_current": null,
       "source_ref": "onepiece.fandom.com/wiki/Rosward_Charlos#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "sharlia",
+      "name": "Sharlia",
+      "character_id": 388,
+      "page_title": "Rosward Shalria",
+      "debut_chapter": 497,
+      "debut_episode": 391,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "Red Line (Mary Geoise)",
+      "birthday": "March 29th",
+      "height_cm": 178.0,
+      "blood_type": "XF",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Rosward_Shalria#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -7094,7 +7544,7 @@
       "debut_chapter": 323,
       "debut_episode": 230,
       "canon_status": "manga",
-      "epithet": "\"Massacre Weapon\"",
+      "epithet": "Massacre Weapon",
       "origin": "Grand Line (Guanhao)",
       "birthday": "June 2nd",
       "height_cm": 212.0,
@@ -7102,6 +7552,24 @@
       "bounty_history": [],
       "bounty_current": null,
       "source_ref": "onepiece.fandom.com/wiki/Rob_Lucci#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "hittori",
+      "name": "Hittori",
+      "character_id": 393,
+      "page_title": "Hattori",
+      "debut_chapter": 323,
+      "debut_episode": 230,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": null,
+      "birthday": "August 10th",
+      "height_cm": 25.0,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Hattori#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -7123,6 +7591,24 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "funckfreed",
+      "name": "Funckfreed",
+      "character_id": 395,
+      "page_title": "Funkfreed",
+      "debut_chapter": 365,
+      "debut_episode": 254,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": null,
+      "birthday": "April 28th (Elephant Day)",
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Funkfreed#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "kaku",
       "name": "Kaku",
       "character_id": 396,
@@ -7130,7 +7616,7 @@
       "debut_chapter": 323,
       "debut_episode": 230,
       "canon_status": "manga",
-      "epithet": "\"Mountain Wind\"",
+      "epithet": "Mountain Wind",
       "origin": "East Blue",
       "birthday": "August 7th",
       "height_cm": 193.0,
@@ -7195,6 +7681,24 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "wanzé",
+      "name": "Wanzé",
+      "character_id": 400,
+      "page_title": "Wanze",
+      "debut_chapter": 367,
+      "debut_episode": 257,
+      "canon_status": "manga",
+      "epithet": "Mad Wanze",
+      "origin": "West Blue",
+      "birthday": "September 4th",
+      "height_cm": 173.0,
+      "blood_type": "F",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Wanze#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "bas",
       "name": "Bas",
       "character_id": 401,
@@ -7202,7 +7706,7 @@
       "debut_chapter": 379,
       "debut_episode": 267,
       "canon_status": "manga",
-      "epithet": "\"Three-Headed Baskerville\"",
+      "epithet": "Three-Headed Baskerville",
       "origin": "Grand Line",
       "birthday": "Bas: March 30th And: March 31st Kerville: April 1st",
       "height_cm": 512.0,
@@ -7220,7 +7724,7 @@
       "debut_chapter": 379,
       "debut_episode": 267,
       "canon_status": "manga",
-      "epithet": "\"Three-Headed Baskerville\"",
+      "epithet": "Three-Headed Baskerville",
       "origin": "Grand Line",
       "birthday": "Bas: March 30th And: March 31st Kerville: April 1st",
       "height_cm": 512.0,
@@ -7238,7 +7742,7 @@
       "debut_chapter": 379,
       "debut_episode": 267,
       "canon_status": "manga",
-      "epithet": "\"Three-Headed Baskerville\"",
+      "epithet": "Three-Headed Baskerville",
       "origin": "Grand Line",
       "birthday": "Bas: March 30th And: March 31st Kerville: April 1st",
       "height_cm": 512.0,
@@ -7339,6 +7843,24 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "minotaure",
+      "name": "Minotaure",
+      "character_id": 409,
+      "page_title": "Minotaurus",
+      "debut_chapter": 525,
+      "debut_episode": 422,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": null,
+      "birthday": "March 4th",
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Minotaurus#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "minokoala",
       "name": "Minokoala",
       "character_id": 410,
@@ -7357,6 +7879,102 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "sakazuki-akainu",
+      "name": "Sakazuki / Akainu",
+      "character_id": 414,
+      "page_title": "Sakazuki",
+      "debut_chapter": 397,
+      "debut_episode": 278,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "North Blue",
+      "birthday": "August 16th",
+      "height_cm": 306.0,
+      "blood_type": "F",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 5000000000,
+          "as_of_chapter": null
+        }
+      ],
+      "bounty_current": 5000000000,
+      "source_ref": "onepiece.fandom.com/wiki/Sakazuki#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "borsalino-kizaru",
+      "name": "Borsalino / Kizaru",
+      "character_id": 415,
+      "page_title": "Borsalino",
+      "debut_chapter": 504,
+      "debut_episode": 398,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "North Blue",
+      "birthday": "November 23rd",
+      "height_cm": 302.0,
+      "blood_type": "XF",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 3000000000,
+          "as_of_chapter": 1087
+        }
+      ],
+      "bounty_current": 3000000000,
+      "source_ref": "onepiece.fandom.com/wiki/Borsalino#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "issho-fujitora",
+      "name": "Issho / Fujitora",
+      "character_id": 416,
+      "page_title": "Issho",
+      "debut_chapter": 701,
+      "debut_episode": 630,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "Grand Line (Aoi Kingdom)",
+      "birthday": "August 10th",
+      "height_cm": 270.0,
+      "blood_type": "S",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 3000000000,
+          "as_of_chapter": 1087
+        }
+      ],
+      "bounty_current": 3000000000,
+      "source_ref": "onepiece.fandom.com/wiki/Issho#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "aramaki-ryokugyu",
+      "name": "Aramaki / Ryokugyu",
+      "character_id": 417,
+      "page_title": "Aramaki",
+      "debut_chapter": 905,
+      "debut_episode": 882,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "South Blue (Taya Kingdom)",
+      "birthday": "February 29th",
+      "height_cm": 308.0,
+      "blood_type": "X",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 3000000000,
+          "as_of_chapter": 1087
+        }
+      ],
+      "bounty_current": 3000000000,
+      "source_ref": "onepiece.fandom.com/wiki/Aramaki#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "monkey-d-garp",
       "name": "Monkey D. Garp",
       "character_id": 418,
@@ -7364,13 +7982,14 @@
       "debut_chapter": 92,
       "debut_episode": 68,
       "canon_status": "manga",
-      "epithet": "\"Garp the Fist\"; Hero of the Marines (VIZ: \"Naval Hero\")",
+      "epithet": "Garp the Fist",
       "origin": "East Blue (Goa Kingdom)",
       "birthday": "May 2nd",
       "height_cm": 287.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 3000000000,
           "as_of_chapter": 1087
         }
@@ -7387,13 +8006,14 @@
       "debut_chapter": 234,
       "debut_episode": 151,
       "canon_status": "manga",
-      "epithet": "\"Great Staff Officer\"",
+      "epithet": "Great Staff Officer",
       "origin": "North Blue",
       "birthday": "March 26th",
       "height_cm": 204.0,
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 500000000,
           "as_of_chapter": null
         }
@@ -7417,6 +8037,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 500000000,
           "as_of_chapter": null
         }
@@ -7440,6 +8061,7 @@
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 500000000,
           "as_of_chapter": null
         }
@@ -7463,6 +8085,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 500000000,
           "as_of_chapter": null
         }
@@ -7486,6 +8109,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 500000000,
           "as_of_chapter": null
         }
@@ -7509,6 +8133,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 500000000,
           "as_of_chapter": null
         }
@@ -7532,12 +8157,37 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 500000000,
           "as_of_chapter": null
         }
       ],
       "bounty_current": 500000000,
       "source_ref": "onepiece.fandom.com/wiki/Yamakaji#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "dalmatien",
+      "name": "Dalmatien",
+      "character_id": 427,
+      "page_title": "Dalmatian",
+      "debut_chapter": 553,
+      "debut_episode": 462,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": null,
+      "birthday": "November 1st",
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 500000000,
+          "as_of_chapter": null
+        }
+      ],
+      "bounty_current": 500000000,
+      "source_ref": "onepiece.fandom.com/wiki/Dalmatian#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -7548,13 +8198,14 @@
       "debut_chapter": 553,
       "debut_episode": 462,
       "canon_status": "manga",
-      "epithet": "\"Shark Cutter\"",
+      "epithet": "Shark Cutter",
       "origin": "Grand Line",
       "birthday": "July 14th",
       "height_cm": 291.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 500000000,
           "as_of_chapter": null
         }
@@ -7571,13 +8222,14 @@
       "debut_chapter": 97,
       "debut_episode": 48,
       "canon_status": "manga",
-      "epithet": "\"Smoker the White Hunter\"; \"White Chase Smoker\" (VIZ); \"Smoke Hunter\" (4Kids)",
+      "epithet": "Smoker the White Hunter",
       "origin": "Grand Line",
       "birthday": "March 14th",
       "height_cm": 209.0,
       "blood_type": "XF",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 500000000,
           "as_of_chapter": null
         }
@@ -7594,13 +8246,14 @@
       "debut_chapter": 705,
       "debut_episode": 634,
       "canon_status": "manga",
-      "epithet": "\"Maynard the Pursuer\"",
+      "epithet": "Maynard the Pursuer",
       "origin": null,
       "birthday": "May 7th",
       "height_cm": null,
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 500000000,
           "as_of_chapter": null
         }
@@ -7624,6 +8277,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 500000000,
           "as_of_chapter": null
         }
@@ -7640,19 +8294,44 @@
       "debut_chapter": 171,
       "debut_episode": 127,
       "canon_status": "manga",
-      "epithet": "\"Black Cage Hina\"",
+      "epithet": "Black Cage Hina",
       "origin": "West Blue",
       "birthday": "March 3rd",
       "height_cm": 181.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 200000000,
           "as_of_chapter": null
         }
       ],
       "bounty_current": 200000000,
       "source_ref": "onepiece.fandom.com/wiki/Hina#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "t-bone",
+      "name": "T. Bone",
+      "character_id": 433,
+      "page_title": "T Bone",
+      "debut_chapter": 365,
+      "debut_episode": 255,
+      "canon_status": "manga",
+      "epithet": "Ship Cutter",
+      "origin": "Grand Line",
+      "birthday": "September 10th",
+      "height_cm": 200.0,
+      "blood_type": "X",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 500000000,
+          "as_of_chapter": null
+        }
+      ],
+      "bounty_current": 500000000,
+      "source_ref": "onepiece.fandom.com/wiki/T_Bone#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -7688,12 +8367,37 @@
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 100000000,
           "as_of_chapter": null
         }
       ],
       "bounty_current": 100000000,
       "source_ref": "onepiece.fandom.com/wiki/Brannew#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "verygood",
+      "name": "Verygood",
+      "character_id": 437,
+      "page_title": "Very Good",
+      "debut_chapter": 426,
+      "debut_episode": 309,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": null,
+      "birthday": "September 10th",
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 100000000,
+          "as_of_chapter": null
+        }
+      ],
+      "bounty_current": 100000000,
+      "source_ref": "onepiece.fandom.com/wiki/Very_Good#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -7711,6 +8415,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 100000000,
           "as_of_chapter": null
         }
@@ -7734,6 +8439,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 100000000,
           "as_of_chapter": null
         }
@@ -7757,12 +8463,37 @@
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 100000000,
           "as_of_chapter": null
         }
       ],
       "bounty_current": 100000000,
       "source_ref": "onepiece.fandom.com/wiki/Tashigi#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "kobby",
+      "name": "Kobby",
+      "character_id": 441,
+      "page_title": "Koby",
+      "debut_chapter": 2,
+      "debut_episode": 1,
+      "canon_status": "manga",
+      "epithet": "Hero",
+      "origin": "East Blue (Satsuruzo Kingdom)",
+      "birthday": "May 13th",
+      "height_cm": 167.0,
+      "blood_type": "F",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 500000000,
+          "as_of_chapter": 1080
+        }
+      ],
+      "bounty_current": 500000000,
+      "source_ref": "onepiece.fandom.com/wiki/Koby#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -7780,12 +8511,55 @@
       "blood_type": "XF",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 100000000,
           "as_of_chapter": null
         }
       ],
       "bounty_current": 100000000,
       "source_ref": "onepiece.fandom.com/wiki/Nezumi#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "don-quijote-rosinante",
+      "name": "Don Quijote Rosinante",
+      "character_id": 443,
+      "page_title": "Donquixote Rosinante",
+      "debut_chapter": 761,
+      "debut_episode": 686,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "Red Line (Mary Geoise)",
+      "birthday": "July 15th",
+      "height_cm": 293.0,
+      "blood_type": "S",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Donquixote_Rosinante#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "hermep",
+      "name": "Hermep",
+      "character_id": 444,
+      "page_title": "Helmeppo",
+      "debut_chapter": 3,
+      "debut_episode": 2,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": null,
+      "birthday": "July 16th",
+      "height_cm": 179.0,
+      "blood_type": "S",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 100000000,
+          "as_of_chapter": null
+        }
+      ],
+      "bounty_current": 100000000,
+      "source_ref": "onepiece.fandom.com/wiki/Helmeppo#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -7796,13 +8570,14 @@
       "debut_chapter": 43,
       "debut_episode": 20,
       "canon_status": "manga",
-      "epithet": "\"Double Ironfist Fullbody\" \"Ironfist Fullbody\" (former)",
+      "epithet": "Double Ironfist Fullbody",
       "origin": "North Blue",
       "birthday": "September 7th",
       "height_cm": 184.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 1000000,
           "as_of_chapter": null
         }
@@ -7819,22 +8594,24 @@
       "debut_chapter": 25,
       "debut_episode": 9,
       "canon_status": "manga",
-      "epithet": "\"One-Two\" Jango (as a pirate); \"Jango the Turncoat\" (Marine)",
+      "epithet": "One-Two Jango (as a pirate)",
       "origin": "East Blue",
       "birthday": "December 28th",
       "height_cm": 207.0,
       "blood_type": "S",
       "bounty_history": [
         {
-          "amount": 1000000,
+          "order": 0,
+          "amount": 9000000,
           "as_of_chapter": null
         },
         {
-          "amount": 9000000,
+          "order": 1,
+          "amount": 1000000,
           "as_of_chapter": null
         }
       ],
-      "bounty_current": 1000000,
+      "bounty_current": 9000000,
       "source_ref": "onepiece.fandom.com/wiki/Jango#Char_Box",
       "canon_confidence": "canon"
     },
@@ -7846,7 +8623,7 @@
       "debut_chapter": 234,
       "debut_episode": 151,
       "canon_status": "manga",
-      "epithet": "\"Sengoku the Buddha\"; \"The Resourceful General\"",
+      "epithet": "Sengoku the Buddha",
       "origin": "South Blue",
       "birthday": "May 9th",
       "height_cm": 278.0,
@@ -7871,12 +8648,37 @@
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 500000000,
           "as_of_chapter": null
         }
       ],
       "bounty_current": 500000000,
       "source_ref": "onepiece.fandom.com/wiki/Sentomaru#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "x-drake",
+      "name": "X-Drake",
+      "character_id": 449,
+      "page_title": "X Drake",
+      "debut_chapter": 498,
+      "debut_episode": 392,
+      "canon_status": "manga",
+      "epithet": "Red Flag",
+      "origin": "North Blue",
+      "birthday": "October 24th",
+      "height_cm": 233.0,
+      "blood_type": "X",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 222000000,
+          "as_of_chapter": 498
+        }
+      ],
+      "bounty_current": 222000000,
+      "source_ref": "onepiece.fandom.com/wiki/X_Drake#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -7894,6 +8696,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 500000000,
           "as_of_chapter": null
         }
@@ -7917,6 +8720,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 500000000,
           "as_of_chapter": null
         }
@@ -7940,6 +8744,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 500000000,
           "as_of_chapter": null
         }
@@ -7963,6 +8768,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 500000000,
           "as_of_chapter": null
         }
@@ -7986,6 +8792,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 500000000,
           "as_of_chapter": null
         }
@@ -8009,6 +8816,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 200000000,
           "as_of_chapter": null
         }
@@ -8032,6 +8840,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 200000000,
           "as_of_chapter": null
         }
@@ -8055,6 +8864,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 200000000,
           "as_of_chapter": null
         }
@@ -8096,6 +8906,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 100000000,
           "as_of_chapter": null
         }
@@ -8119,6 +8930,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 100000000,
           "as_of_chapter": null
         }
@@ -8232,6 +9044,7 @@
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 7800000,
           "as_of_chapter": null
         }
@@ -8291,12 +9104,31 @@
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 8000000,
           "as_of_chapter": 1
         }
       ],
       "bounty_current": 8000000,
       "source_ref": "onepiece.fandom.com/wiki/Higuma#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "kozaburo-shimotsuki",
+      "name": "Kozaburo Shimotsuki",
+      "character_id": 473,
+      "page_title": "Shimotsuki Kouzaburou",
+      "debut_chapter": 1033,
+      "debut_episode": 1060,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "Grand Line (Wano Country)",
+      "birthday": "November 14th",
+      "height_cm": 221.0,
+      "blood_type": "XF",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Shimotsuki_Kouzaburou#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -8372,6 +9204,24 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "gaimone",
+      "name": "Gaimone",
+      "character_id": 478,
+      "page_title": "Gaimon",
+      "debut_chapter": 22,
+      "debut_episode": 18,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "East Blue",
+      "birthday": "August 5th",
+      "height_cm": 130.0,
+      "blood_type": "X",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Gaimon#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "sarfunkel",
       "name": "Sarfunkel",
       "character_id": 479,
@@ -8426,6 +9276,60 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "oignon",
+      "name": "Oignon",
+      "character_id": 482,
+      "page_title": "Tamanegi",
+      "debut_chapter": 23,
+      "debut_episode": 9,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "East Blue (Gecko Islands)",
+      "birthday": "April 10th",
+      "height_cm": 124.0,
+      "blood_type": "S",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Tamanegi#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "piment",
+      "name": "Piment",
+      "character_id": 483,
+      "page_title": "Piiman",
+      "debut_chapter": 23,
+      "debut_episode": 9,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "East Blue (Gecko Islands)",
+      "birthday": "April 9th",
+      "height_cm": 120.0,
+      "blood_type": "XF",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Piiman#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "carotte",
+      "name": "Carotte",
+      "character_id": 484,
+      "page_title": "Carrot",
+      "debut_chapter": 804,
+      "debut_episode": 753,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "Grand Line (Mokomo Dukedom)",
+      "birthday": "May 24th",
+      "height_cm": 161.0,
+      "blood_type": "F",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Carrot#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "banchina",
       "name": "Banchina",
       "character_id": 485,
@@ -8451,7 +9355,7 @@
       "debut_chapter": 43,
       "debut_episode": 20,
       "canon_status": "manga",
-      "epithet": "\"Red-Leg Zeff\"",
+      "epithet": "Red-Leg Zeff",
       "origin": "East Blue",
       "birthday": "April 2nd",
       "height_cm": 189.0,
@@ -8477,6 +9381,24 @@
       "bounty_history": [],
       "bounty_current": null,
       "source_ref": "onepiece.fandom.com/wiki/Patty#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "belmer",
+      "name": "Belmer",
+      "character_id": 489,
+      "page_title": "Bell-mère",
+      "debut_chapter": 77,
+      "debut_episode": 32,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "East Blue (Conomi Islands)",
+      "birthday": "December 3rd",
+      "height_cm": 186.0,
+      "blood_type": "S",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Bell-mère#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -8552,6 +9474,24 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "johny",
+      "name": "Johny",
+      "character_id": 494,
+      "page_title": "Johnny",
+      "debut_chapter": 42,
+      "debut_episode": 19,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "East Blue",
+      "birthday": "November 12th",
+      "height_cm": 186.0,
+      "blood_type": "F",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Johnny#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "yosaku",
       "name": "Yosaku",
       "character_id": 495,
@@ -8595,7 +9535,7 @@
       "debut_chapter": 286,
       "debut_episode": 187,
       "canon_status": "manga",
-      "epithet": "\"Liar Noland\"",
+      "epithet": "Liar Noland",
       "origin": "North Blue (Lvneel Kingdom)",
       "birthday": "October 9th",
       "height_cm": 220.0,
@@ -8603,6 +9543,24 @@
       "bounty_history": [],
       "bounty_current": null,
       "source_ref": "onepiece.fandom.com/wiki/Mont_Blanc_Noland#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "don-quijote-homing",
+      "name": "Don Quijote Homing",
+      "character_id": 498,
+      "page_title": "Donquixote Homing",
+      "debut_chapter": 760,
+      "debut_episode": 699,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": null,
+      "birthday": null,
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Donquixote_Homing#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -8631,7 +9589,7 @@
       "debut_chapter": 131,
       "debut_episode": 79,
       "canon_status": "manga",
-      "epithet": "\"Tin-Plate\" Wapol",
+      "epithet": "Tin-Plate Wapol",
       "origin": "Grand Line (Drum Kingdom)",
       "birthday": "August 9th",
       "height_cm": 207.0,
@@ -8649,7 +9607,7 @@
       "debut_chapter": 261,
       "debut_episode": 778,
       "canon_status": "manga",
-      "epithet": "\"Miss Universe\"",
+      "epithet": "Miss Universe",
       "origin": null,
       "birthday": "January 20th",
       "height_cm": null,
@@ -8692,12 +9650,31 @@
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 79000000,
           "as_of_chapter": null
         }
       ],
       "bounty_current": 79000000,
       "source_ref": "onepiece.fandom.com/wiki/Nico_Olvia#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "haguar-d-sauro",
+      "name": "Haguar D. Sauro",
+      "character_id": 504,
+      "page_title": "Jaguar D. Saul",
+      "debut_chapter": 392,
+      "debut_episode": 275,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "South Blue",
+      "birthday": "March 6th",
+      "height_cm": 950.0,
+      "blood_type": "F",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Jaguar_D._Saul#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -8726,13 +9703,14 @@
       "debut_chapter": 704,
       "debut_episode": 632,
       "canon_status": "manga",
-      "epithet": "Don Chinjao・チンジャオ|Don Chinjao}}; \"Chinjao the Drill\"",
+      "epithet": "Don Chinjao",
       "origin": "West Blue (Kano Country)",
       "birthday": "December 12th",
       "height_cm": 520.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 542000000,
           "as_of_chapter": null
         }
@@ -8796,6 +9774,24 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "mr-9",
+      "name": "Mr 9",
+      "character_id": 510,
+      "page_title": "Mr. 9",
+      "debut_chapter": 103,
+      "debut_episode": 62,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "Grand Line",
+      "birthday": "September 27th",
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Mr._9#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "dorry",
       "name": "Dorry",
       "character_id": 511,
@@ -8810,10 +9806,12 @@
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 1800000000,
           "as_of_chapter": 1130
         },
         {
+          "order": 1,
           "amount": 100000000,
           "as_of_chapter": 118
         }
@@ -8837,10 +9835,12 @@
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 1800000000,
           "as_of_chapter": 1130
         },
         {
+          "order": 1,
           "amount": 100000000,
           "as_of_chapter": 118
         }
@@ -8875,7 +9875,7 @@
       "debut_chapter": 134,
       "debut_episode": 80,
       "canon_status": "manga",
-      "epithet": "\"Witch\"; \"Master of Doctors\"",
+      "epithet": "Witch",
       "origin": "Grand Line (Drum Kingdom)",
       "birthday": "September 8th",
       "height_cm": 188.0,
@@ -9019,7 +10019,7 @@
       "debut_chapter": 155,
       "debut_episode": 91,
       "canon_status": "manga",
-      "epithet": "\"Chaka the Jackal\"",
+      "epithet": "Chaka the Jackal",
       "origin": "Grand Line (Arabasta Kingdom)",
       "birthday": "April 26th",
       "height_cm": 213.0,
@@ -9037,7 +10037,7 @@
       "debut_chapter": 155,
       "debut_episode": 91,
       "canon_status": "manga",
-      "epithet": "\"Pell the Falcon\"",
+      "epithet": "Pell the Falcon",
       "origin": "Grand Line (Arabasta Kingdom)",
       "birthday": "August 23rd",
       "height_cm": 189.0,
@@ -9045,6 +10045,24 @@
       "bounty_history": [],
       "bounty_current": null,
       "source_ref": "onepiece.fandom.com/wiki/Pell#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "kaloo",
+      "name": "Kaloo",
+      "character_id": 524,
+      "page_title": "Karoo",
+      "debut_chapter": 109,
+      "debut_episode": 65,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "Grand Line (Arabasta Kingdom)",
+      "birthday": "November 8th",
+      "height_cm": 150.0,
+      "blood_type": "F",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Karoo#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -9199,7 +10217,7 @@
       "debut_chapter": 241,
       "debut_episode": 155,
       "canon_status": "manga",
-      "epithet": "Sky Boss Sky Punk (4Kids, FUNimation)",
+      "epithet": "Sky Boss",
       "origin": "Sky Islands (Birka)",
       "birthday": "August 10th",
       "height_cm": 220.0,
@@ -9390,6 +10408,42 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "gonbei",
+      "name": "Gonbei",
+      "character_id": 547,
+      "page_title": "Gonbe",
+      "debut_chapter": 322,
+      "debut_episode": 229,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": null,
+      "birthday": "February 8th",
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Gonbe#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "yokozuma",
+      "name": "Yokozuma",
+      "character_id": 548,
+      "page_title": "Yokozuna",
+      "debut_chapter": 322,
+      "debut_episode": 228,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": null,
+      "birthday": null,
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Yokozuna#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "silvers-rayleigh",
       "name": "Silvers Rayleigh",
       "character_id": 549,
@@ -9397,7 +10451,7 @@
       "debut_chapter": 19,
       "debut_episode": 8,
       "canon_status": "manga",
-      "epithet": "\"Dark King\"; \"Right Hand of the Pirate King\"",
+      "epithet": "Dark King",
       "origin": null,
       "birthday": "May 13th",
       "height_cm": 188.0,
@@ -9433,7 +10487,7 @@
       "debut_chapter": 500,
       "debut_episode": 394,
       "canon_status": "manga",
-      "epithet": "\"Walking Super Bazaar\"",
+      "epithet": "Walking Super Bazaar",
       "origin": "Grand Line",
       "birthday": "June 12th",
       "height_cm": null,
@@ -9451,7 +10505,7 @@
       "debut_chapter": 491,
       "debut_episode": 386,
       "canon_status": "manga",
-      "epithet": "\"Iron Mask Duval\"",
+      "epithet": "Iron Mask Duval",
       "origin": "Grand Line",
       "birthday": "August 11th",
       "height_cm": 470.0,
@@ -9462,6 +10516,24 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "héraclès",
+      "name": "Héraclès",
+      "character_id": 553,
+      "page_title": "Heracles",
+      "debut_chapter": 524,
+      "debut_episode": 420,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "South Blue",
+      "birthday": "May 10th",
+      "height_cm": 214.0,
+      "blood_type": "F",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Heracles#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "loki",
       "name": "Loki",
       "character_id": 554,
@@ -9469,13 +10541,14 @@
       "debut_chapter": 1130,
       "debut_episode": 1160,
       "canon_status": "manga",
-      "epithet": "\"Accursed Prince\"; \"Shame of Elbaph\"; \"Sun God\"",
+      "epithet": "Accursed Prince",
       "origin": "Grand Line (Elbaph)",
       "birthday": null,
       "height_cm": null,
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 2600000000,
           "as_of_chapter": 1131
         }
@@ -9492,7 +10565,7 @@
       "debut_chapter": 866,
       "debut_episode": 836,
       "canon_status": "manga",
-      "epithet": "\"Waterfall Beard\" Jorul",
+      "epithet": "Waterfall Beard Jorul",
       "origin": "Grand Line (Elbaph)",
       "birthday": "December 4th",
       "height_cm": 150.0,
@@ -9510,7 +10583,7 @@
       "debut_chapter": 866,
       "debut_episode": 836,
       "canon_status": "manga",
-      "epithet": "\"Mountain Beard\" Jarul",
+      "epithet": "Mountain Beard Jarul",
       "origin": "Grand Line (Elbaph)",
       "birthday": "December 8th",
       "height_cm": 50.0,
@@ -9557,6 +10630,114 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "sukiyaki-kozuki",
+      "name": "Sukiyaki Kozuki",
+      "character_id": 559,
+      "page_title": "Kouzuki Sukiyaki",
+      "debut_chapter": 911,
+      "debut_episode": 894,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "Grand Line (Wano Country)",
+      "birthday": "May 19th",
+      "height_cm": 214.0,
+      "blood_type": "F",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Kouzuki_Sukiyaki#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "oden-kozuki",
+      "name": "Oden Kozuki",
+      "character_id": 560,
+      "page_title": "Kouzuki Oden",
+      "debut_chapter": 920,
+      "debut_episode": 910,
+      "canon_status": "manga",
+      "epithet": "Idiot Lord",
+      "origin": "Grand Line (Wano Country)",
+      "birthday": "February 22nd",
+      "height_cm": 382.0,
+      "blood_type": "F",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Kouzuki_Oden#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "toki-kozuki",
+      "name": "Toki Kozuki",
+      "character_id": 561,
+      "page_title": "Kouzuki Toki",
+      "debut_chapter": 919,
+      "debut_episode": 893,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": null,
+      "birthday": "January 19th",
+      "height_cm": 190.0,
+      "blood_type": "X",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Kouzuki_Toki#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "mononosuké-kozuki",
+      "name": "Mononosuké Kozuki",
+      "character_id": 562,
+      "page_title": "Kouzuki Momonosuke",
+      "debut_chapter": 684,
+      "debut_episode": 609,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "Grand Line (Moby Dick)",
+      "birthday": "October 7th",
+      "height_cm": 322.0,
+      "blood_type": "X",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Kouzuki_Momonosuke#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "hiyori-kozuki",
+      "name": "Hiyori Kozuki",
+      "character_id": 563,
+      "page_title": "Kouzuki Hiyori",
+      "debut_chapter": 909,
+      "debut_episode": 892,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "Grand Line (Moby Dick)",
+      "birthday": "December 23rd",
+      "height_cm": 170.0,
+      "blood_type": "XF",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Kouzuki_Hiyori#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "kinémon",
+      "name": "Kinémon",
+      "character_id": 564,
+      "page_title": "Kin'emon",
+      "debut_chapter": 656,
+      "debut_episode": 580,
+      "canon_status": "manga",
+      "epithet": "Foxfire Kin'emon",
+      "origin": "Grand Line (Wano Country)",
+      "birthday": "January 29th",
+      "height_cm": 295.0,
+      "blood_type": "X",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Kin'emon#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "denjiro",
       "name": "Denjiro",
       "character_id": 565,
@@ -9564,7 +10745,7 @@
       "debut_chapter": 919,
       "debut_episode": 909,
       "canon_status": "manga",
-      "epithet": "\"Dozing Kyoshiro\"",
+      "epithet": "Dozing Kyoshiro",
       "origin": "Grand Line (Wano Country)",
       "birthday": "October 26th",
       "height_cm": 306.0,
@@ -9589,6 +10770,7 @@
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 510000000,
           "as_of_chapter": null
         }
@@ -9605,7 +10787,7 @@
       "debut_chapter": 913,
       "debut_episode": 899,
       "canon_status": "manga",
-      "epithet": "\"Kikunojo of the Lingering Snow\"",
+      "epithet": "Kikunojo of the Lingering Snow",
       "origin": "Grand Line (Wano Country)",
       "birthday": "September 9th",
       "height_cm": 287.0,
@@ -9623,7 +10805,7 @@
       "debut_chapter": 817,
       "debut_episode": 768,
       "canon_status": "manga",
-      "epithet": "\"Raizo of the Mist\"",
+      "epithet": "Raizo of the Mist",
       "origin": "Grand Line (Wano Country)",
       "birthday": "February 26th",
       "height_cm": 311.0,
@@ -9659,7 +10841,7 @@
       "debut_chapter": 920,
       "debut_episode": 910,
       "canon_status": "manga",
-      "epithet": "\"Kawamatsu the Kappa\", \"Yokozuna Kawamatsu\"",
+      "epithet": "Kawamatsu the Kappa",
       "origin": "Grand Line (Ryugu Kingdom)",
       "birthday": "June 14th",
       "height_cm": 271.0,
@@ -9677,7 +10859,7 @@
       "debut_chapter": 921,
       "debut_episode": 911,
       "canon_status": "manga",
-      "epithet": "\"Bewitching Kunoichi\"; \"Shinobu the Man-Killer\"",
+      "epithet": "Bewitching Kunoichi",
       "origin": "Grand Line (Wano Country)",
       "birthday": "October 23rd",
       "height_cm": 180.0,
@@ -9688,6 +10870,78 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "orochi-kurozumi",
+      "name": "Orochi Kurozumi",
+      "character_id": 572,
+      "page_title": "Kurozumi Orochi",
+      "debut_chapter": 927,
+      "debut_episode": 921,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "Grand Line (Wano Country)",
+      "birthday": "September 23rd",
+      "height_cm": 350.0,
+      "blood_type": "XF",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Kurozumi_Orochi#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "kanjuro-kurozumi",
+      "name": "Kanjuro Kurozumi",
+      "character_id": 573,
+      "page_title": "Kurozumi Kanjuro",
+      "debut_chapter": 700,
+      "debut_episode": 629,
+      "canon_status": "manga",
+      "epithet": "Evening Shower",
+      "origin": "Grand Line (Wano Country)",
+      "birthday": "July 21st",
+      "height_cm": 347.0,
+      "blood_type": "X",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Kurozumi_Kanjuro#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "semimaru-kurozumi",
+      "name": "Semimaru Kurozumi",
+      "character_id": 574,
+      "page_title": "Kurozumi Semimaru",
+      "debut_chapter": 965,
+      "debut_episode": 965,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "Grand Line (Wano Country)",
+      "birthday": "August 23rd",
+      "height_cm": 116.0,
+      "blood_type": "F",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Kurozumi_Semimaru#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "higurashi-kurozumi",
+      "name": "Higurashi Kurozumi",
+      "character_id": 575,
+      "page_title": "Kurozumi Higurashi",
+      "debut_chapter": 965,
+      "debut_episode": 965,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "Grand Line (Wano Country)",
+      "birthday": "August 19th",
+      "height_cm": 193.0,
+      "blood_type": "F",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Kurozumi_Higurashi#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "ryuma-shimotsuki",
       "name": "Ryuma Shimotsuki",
       "character_id": 576,
@@ -9695,7 +10949,7 @@
       "debut_chapter": 1023,
       "debut_episode": 1046,
       "canon_status": "manga",
-      "epithet": "Legendary Samurai; Sword God; Ryuma de King",
+      "epithet": "Legendary Samurai",
       "origin": "Wano Country",
       "birthday": "November 6th",
       "height_cm": 179.0,
@@ -9703,6 +10957,24 @@
       "bounty_history": [],
       "bounty_current": null,
       "source_ref": "onepiece.fandom.com/wiki/Shimotsuki_Ryuma#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "yasui-shimotsuki",
+      "name": "Yasui Shimotsuki",
+      "character_id": 577,
+      "page_title": "Shimotsuki Yasuie",
+      "debut_chapter": 929,
+      "debut_episode": 916,
+      "canon_status": "manga",
+      "epithet": "Yasu the Hedgehog",
+      "origin": "Grand Line (Wano Country)",
+      "birthday": "April 2nd",
+      "height_cm": 155.0,
+      "blood_type": "F",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Shimotsuki_Yasuie#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -9731,7 +11003,7 @@
       "debut_chapter": 936,
       "debut_episode": 932,
       "canon_status": "manga",
-      "epithet": "\"Gyukimaru on Oihagi Bridge\"",
+      "epithet": "Gyukimaru on Oihagi Bridge",
       "origin": "Grand Line (Wano Country)",
       "birthday": "November 19th",
       "height_cm": 428.0,
@@ -9749,7 +11021,7 @@
       "debut_chapter": 926,
       "debut_episode": 919,
       "canon_status": "manga",
-      "epithet": "\"Hyougoro of the Flower\"",
+      "epithet": "Hyougoro of the Flower",
       "origin": "Grand Line (Wano Country)",
       "birthday": "February 14th",
       "height_cm": 100.0,
@@ -9767,7 +11039,7 @@
       "debut_chapter": 952,
       "debut_episode": 946,
       "canon_status": "manga",
-      "epithet": "\"Blood-Writing Omasa\"",
+      "epithet": "Blood-Writing Omasa",
       "origin": null,
       "birthday": null,
       "height_cm": null,
@@ -9785,7 +11057,7 @@
       "debut_chapter": 947,
       "debut_episode": 946,
       "canon_status": "manga",
-      "epithet": "\"Broken Hat Tsunagoro\"",
+      "epithet": "Broken Hat Tsunagoro",
       "origin": null,
       "birthday": null,
       "height_cm": null,
@@ -9803,7 +11075,7 @@
       "debut_chapter": 952,
       "debut_episode": 946,
       "canon_status": "manga",
-      "epithet": "\"Moonflower O-Cho\"",
+      "epithet": "Moonflower O-Cho",
       "origin": null,
       "birthday": null,
       "height_cm": null,
@@ -9893,7 +11165,7 @@
       "debut_chapter": 971,
       "debut_episode": 972,
       "canon_status": "manga",
-      "epithet": "\"Oni Princess\"",
+      "epithet": "Oni Princess",
       "origin": null,
       "birthday": "November 3rd",
       "height_cm": 263.0,
@@ -9911,13 +11183,14 @@
       "debut_chapter": 665,
       "debut_episode": 591,
       "canon_status": "manga",
-      "epithet": "\"Killers of the Snowy Mountain\"",
+      "epithet": "Killers of the Snowy Mountain",
       "origin": "Grand Line",
       "birthday": "December 11th",
       "height_cm": 250.0,
       "blood_type": "S (RH-)",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 20000000,
           "as_of_chapter": null
         }
@@ -9934,7 +11207,7 @@
       "debut_chapter": 595,
       "debut_episode": 513,
       "canon_status": "manga",
-      "epithet": "\"Iron Boy\"",
+      "epithet": "Iron Boy",
       "origin": null,
       "birthday": null,
       "height_cm": null,
@@ -9970,7 +11243,7 @@
       "debut_chapter": 706,
       "debut_episode": 636,
       "canon_status": "manga",
-      "epithet": "\"King of Miracles\"",
+      "epithet": "King of Miracles",
       "origin": "Grand Line (Dressrosa)",
       "birthday": "June 27th",
       "height_cm": 261.0,
@@ -10042,7 +11315,7 @@
       "debut_chapter": 704,
       "debut_episode": 633,
       "canon_status": "manga",
-      "epithet": "\"The Undefeated Woman\" \"The Phantom Princess\"",
+      "epithet": "The Undefeated Woman",
       "origin": "Grand Line (Dressrosa)",
       "birthday": "August 4th",
       "height_cm": 171.0,
@@ -10107,6 +11380,24 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "zunesh",
+      "name": "Zunesh",
+      "character_id": 603,
+      "page_title": "Zunesha",
+      "debut_chapter": 802,
+      "debut_episode": 751,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "Grand Line",
+      "birthday": "December 18th",
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Zunesha#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "giovanni",
       "name": "Giovanni",
       "character_id": 609,
@@ -10168,13 +11459,14 @@
       "debut_chapter": 805,
       "debut_episode": 754,
       "canon_status": "manga",
-      "epithet": "\"Pedro of the Treetops\"",
+      "epithet": "Pedro of the Treetops",
       "origin": "Grand Line (Mokomo Dukedom)",
       "birthday": "June 16th",
       "height_cm": 233.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 382000000,
           "as_of_chapter": 850
         }
@@ -10191,7 +11483,7 @@
       "debut_chapter": 704,
       "debut_episode": 632,
       "canon_status": "manga",
-      "epithet": "\"The Fighting King\"",
+      "epithet": "The Fighting King",
       "origin": "Grand Line (Prodence Kingdom)",
       "birthday": "February 2nd",
       "height_cm": 436.0,
@@ -10234,6 +11526,7 @@
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 57000000,
           "as_of_chapter": null
         }
@@ -10257,12 +11550,49 @@
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 36000000,
           "as_of_chapter": null
         }
       ],
       "bounty_current": 36000000,
       "source_ref": "onepiece.fandom.com/wiki/Bobby_Funk#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "judge-vinsmoke",
+      "name": "Judge Vinsmoke",
+      "character_id": 617,
+      "page_title": "Vinsmoke Judge",
+      "debut_chapter": 832,
+      "debut_episode": 793,
+      "canon_status": "manga",
+      "epithet": "Garuda",
+      "origin": "North Blue (Germa Kingdom)",
+      "birthday": "May 12th",
+      "height_cm": 272.0,
+      "blood_type": "S",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Vinsmoke_Judge#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "sora-vinsmoke",
+      "name": "Sora Vinsmoke",
+      "character_id": 618,
+      "page_title": "Vinsmoke Sora",
+      "debut_chapter": 841,
+      "debut_episode": 803,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": null,
+      "birthday": "July 9th",
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Vinsmoke_Sora#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -10273,7 +11603,7 @@
       "debut_chapter": 826,
       "debut_episode": 784,
       "canon_status": "manga",
-      "epithet": "\"Poison Pink\"",
+      "epithet": "Poison Pink",
       "origin": "North Blue (Germa Kingdom)",
       "birthday": "November 30th",
       "height_cm": 173.0,
@@ -10284,6 +11614,42 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "ichiji-vinsmoke",
+      "name": "Ichiji Vinsmoke",
+      "character_id": 620,
+      "page_title": "Vinsmoke Ichiji",
+      "debut_chapter": 828,
+      "debut_episode": 787,
+      "canon_status": "manga",
+      "epithet": "Sparking Red",
+      "origin": "North Blue (Germa Kingdom)",
+      "birthday": "March 2nd",
+      "height_cm": 186.0,
+      "blood_type": "S (RH-)",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Vinsmoke_Ichiji#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "niji-vinsmoke",
+      "name": "Niji Vinsmoke",
+      "character_id": 621,
+      "page_title": "Vinsmoke Niji",
+      "debut_chapter": 828,
+      "debut_episode": 787,
+      "canon_status": "manga",
+      "epithet": "Dengeki Blue",
+      "origin": "North Blue (Germa Kingdom)",
+      "birthday": "March 2nd",
+      "height_cm": 185.0,
+      "blood_type": "S (RH-)",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Vinsmoke_Niji#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "yonji-vinsmoke",
       "name": "Yonji Vinsmoke",
       "character_id": 622,
@@ -10291,7 +11657,7 @@
       "debut_chapter": 825,
       "debut_episode": 783,
       "canon_status": "manga",
-      "epithet": "\"Winch Green\"",
+      "epithet": "Winch Green",
       "origin": "North Blue (Germa Kingdom)",
       "birthday": "March 2nd",
       "height_cm": 194.0,
@@ -10309,19 +11675,38 @@
       "debut_chapter": 234,
       "debut_episode": 151,
       "canon_status": "manga",
-      "epithet": "\"Marco the Phoenix\"",
+      "epithet": "Marco the Phoenix",
       "origin": "Grand Line",
       "birthday": "October 5th",
       "height_cm": 203.0,
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 1374000000,
           "as_of_chapter": null
         }
       ],
       "bounty_current": 1374000000,
       "source_ref": "onepiece.fandom.com/wiki/Polo_Marco#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "gan-forr",
+      "name": "Gan Forr",
+      "character_id": 624,
+      "page_title": "Gan Fall",
+      "debut_chapter": 237,
+      "debut_episode": 153,
+      "canon_status": "manga",
+      "epithet": "Knight of the Sky",
+      "origin": "Grand Line (Skypiea)",
+      "birthday": "December 22nd",
+      "height_cm": 180.0,
+      "blood_type": "X",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Gan_Fall#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -10404,7 +11789,7 @@
       "debut_chapter": 237,
       "debut_episode": 153,
       "canon_status": "manga",
-      "epithet": "\"Berserker\"",
+      "epithet": "Berserker",
       "origin": "Sky Islands (Skypiea)",
       "birthday": "August 18th",
       "height_cm": 183.0,
@@ -10512,7 +11897,7 @@
       "debut_chapter": 255,
       "debut_episode": 168,
       "canon_status": "manga",
-      "epithet": "\"Master of the Sky\"",
+      "epithet": "Master of the Sky",
       "origin": null,
       "birthday": "March 10th",
       "height_cm": null,
@@ -10530,7 +11915,7 @@
       "debut_chapter": 286,
       "debut_episode": 187,
       "canon_status": "manga",
-      "epithet": "\"The Demon of Shandora\"; \"The Great Warrior of Shandora\"",
+      "epithet": "The Demon of Shandora",
       "origin": "Grand Line (Jaya)",
       "birthday": "October 4th",
       "height_cm": 222.0,
@@ -10541,6 +11926,24 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "om",
+      "name": "Om",
+      "character_id": 638,
+      "page_title": "Ohm",
+      "debut_chapter": 241,
+      "debut_episode": 155,
+      "canon_status": "manga",
+      "epithet": "Skybreeder",
+      "origin": "Sky Islands (Birka)",
+      "birthday": "March 25th",
+      "height_cm": 189.0,
+      "blood_type": "XF",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Ohm#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "satori",
       "name": "Satori",
       "character_id": 639,
@@ -10548,7 +11951,7 @@
       "debut_chapter": 241,
       "debut_episode": 155,
       "canon_status": "manga",
-      "epithet": "\"Satori of the Forest\"",
+      "epithet": "Satori of the Forest",
       "origin": "Sky Islands (Birka)",
       "birthday": "March 10th",
       "height_cm": 179.0,
@@ -10566,7 +11969,7 @@
       "debut_chapter": 241,
       "debut_episode": 155,
       "canon_status": "manga",
-      "epithet": "\"Sky Rider\"",
+      "epithet": "Sky Rider",
       "origin": "Sky Islands (Birka)",
       "birthday": "September 20th",
       "height_cm": 191.0,
@@ -10656,7 +12059,7 @@
       "debut_chapter": 611,
       "debut_episode": 530,
       "canon_status": "manga",
-      "epithet": "God of the Sea; Great Knight of the Sea",
+      "epithet": "God of the Sea",
       "origin": "Grand Line (Ryugu Kingdom)",
       "birthday": "July 3rd",
       "height_cm": 220.0,
@@ -10746,7 +12149,7 @@
       "debut_chapter": 612,
       "debut_episode": 531,
       "canon_status": "manga",
-      "epithet": "\"Mermaid Princess\"",
+      "epithet": "Mermaid Princess",
       "origin": "Grand Line (Ryugu Kingdom)",
       "birthday": "April 4th",
       "height_cm": 187.0,
@@ -10754,6 +12157,24 @@
       "bounty_history": [],
       "bounty_current": null,
       "source_ref": "onepiece.fandom.com/wiki/Shirahoshi#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "mégalo",
+      "name": "Mégalo",
+      "character_id": 652,
+      "page_title": "Megalo",
+      "debut_chapter": 605,
+      "debut_episode": 525,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": null,
+      "birthday": "April 8th",
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Megalo#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -10811,6 +12232,30 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "octy",
+      "name": "Octy",
+      "character_id": 658,
+      "page_title": "Hatchan",
+      "debut_chapter": 69,
+      "debut_episode": 31,
+      "canon_status": "manga",
+      "epithet": "Six Sword Style Hachi",
+      "origin": null,
+      "birthday": "August 8th",
+      "height_cm": 220.0,
+      "blood_type": "S",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 8000000,
+          "as_of_chapter": null
+        }
+      ],
+      "bounty_current": 8000000,
+      "source_ref": "onepiece.fandom.com/wiki/Hatchan#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "den",
       "name": "Den",
       "character_id": 659,
@@ -10836,7 +12281,7 @@
       "debut_chapter": 254,
       "debut_episode": 167,
       "canon_status": "manga",
-      "epithet": "\"God Enel\"・エネル|Goddo Eneru}}",
+      "epithet": "God Enel",
       "origin": "Sky Islands (Birka)",
       "birthday": "May 6th",
       "height_cm": 266.0,
@@ -10854,7 +12299,7 @@
       "debut_chapter": 100,
       "debut_episode": 52,
       "canon_status": "manga",
-      "epithet": "\"Rebellious Dragon\" \"World's Worst Criminal\"",
+      "epithet": "Rebellious Dragon",
       "origin": "East Blue (Goa Kingdom)",
       "birthday": "October 5th",
       "height_cm": 256.0,
@@ -10872,22 +12317,19 @@
       "debut_chapter": 583,
       "debut_episode": 494,
       "canon_status": "manga",
-      "epithet": "\"Flame Emperor\"",
+      "epithet": "Flame Emperor",
       "origin": "East Blue (Goa Kingdom)",
       "birthday": "March 20th",
-      "height_cm": 100.0,
+      "height_cm": 187.0,
       "blood_type": "X",
       "bounty_history": [
         {
-          "amount": 659,
-          "as_of_chapter": null
-        },
-        {
+          "order": 0,
           "amount": 602000000,
           "as_of_chapter": null
         }
       ],
-      "bounty_current": 659,
+      "bounty_current": 602000000,
       "source_ref": "onepiece.fandom.com/wiki/Sabo#Char_Box",
       "canon_confidence": "canon"
     },
@@ -10899,13 +12341,14 @@
       "debut_chapter": 537,
       "debut_episode": 438,
       "canon_status": "manga",
-      "epithet": "\"Okama King\"; \"Miracle Person\"",
+      "epithet": "Okama King",
       "origin": "Grand Line (Kamabakka Kingdom)",
       "birthday": "January 8th",
       "height_cm": 449.0,
       "blood_type": "XF",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 100000000,
           "as_of_chapter": 536
         }
@@ -10929,6 +12372,7 @@
       "blood_type": "XF",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 457000000,
           "as_of_chapter": null
         }
@@ -10945,13 +12389,14 @@
       "debut_chapter": 904,
       "debut_episode": 880,
       "canon_status": "manga",
-      "epithet": "\"Morley of Fur\"",
+      "epithet": "Morley of Fur",
       "origin": "West Blue",
       "birthday": "September 11th",
       "height_cm": 253.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 293000000,
           "as_of_chapter": null
         }
@@ -10975,6 +12420,7 @@
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 316000000,
           "as_of_chapter": null
         }
@@ -10998,8 +12444,9 @@
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 100000000,
-          "as_of_chapter": null
+          "as_of_chapter": 536
         }
       ],
       "bounty_current": 100000000,
@@ -11032,7 +12479,7 @@
       "debut_chapter": 706,
       "debut_episode": 633,
       "canon_status": "manga",
-      "epithet": "\"Hundredth Dan Hack\"",
+      "epithet": "Hundredth Dan Hack",
       "origin": "Grand Line (Ryugu Kingdom)",
       "birthday": "August 9th",
       "height_cm": 280.0,
@@ -11050,13 +12497,14 @@
       "debut_chapter": 155,
       "debut_episode": 103,
       "canon_status": "manga",
-      "epithet": "\"Poison Spider Zala\"",
+      "epithet": "Poison Spider Zala",
       "origin": "Grand Line",
       "birthday": "July 30th",
       "height_cm": 187.0,
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 35000000,
           "as_of_chapter": null
         }
@@ -11073,13 +12521,14 @@
       "debut_chapter": 129,
       "debut_episode": 78,
       "canon_status": "manga",
-      "epithet": "\"Bentham of the Wild\"",
+      "epithet": "Bentham of the Wild",
       "origin": "East Blue",
       "birthday": "August 15th",
       "height_cm": 238.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 32000000,
           "as_of_chapter": null
         }
@@ -11096,13 +12545,14 @@
       "debut_chapter": 117,
       "debut_episode": 70,
       "canon_status": "manga",
-      "epithet": "\"Flag-Bearer of Freedom\"",
+      "epithet": "Flag-Bearer of Freedom",
       "origin": "North Blue",
       "birthday": "April 29th",
       "height_cm": 145.0,
       "blood_type": "XF",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 29000000,
           "as_of_chapter": null
         }
@@ -11119,13 +12569,14 @@
       "debut_chapter": 160,
       "debut_episode": 103,
       "canon_status": "manga",
-      "epithet": "\"Catcher-Killing\" Babe",
+      "epithet": "Catcher-Killing Babe",
       "origin": "Grand Line",
       "birthday": "June 19th",
       "height_cm": 218.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 3200000,
           "as_of_chapter": null
         }
@@ -11160,13 +12611,14 @@
       "debut_chapter": 160,
       "debut_episode": 103,
       "canon_status": "manga",
-      "epithet": "\"Town-Collapser\" Drophy",
+      "epithet": "Town-Collapser Drophy",
       "origin": "Grand Line",
       "birthday": "December 25th",
       "height_cm": 156.0,
       "blood_type": "S",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 14000000,
           "as_of_chapter": null
         }
@@ -11183,13 +12635,14 @@
       "debut_chapter": 110,
       "debut_episode": 65,
       "canon_status": "manga",
-      "epithet": "\"Courier\"",
+      "epithet": "Courier",
       "origin": "West Blue",
       "birthday": "February 14th",
       "height_cm": 177.0,
       "blood_type": "XF",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 7500000,
           "as_of_chapter": null
         }
@@ -11260,7 +12713,7 @@
       "debut_chapter": 375,
       "debut_episode": 264,
       "canon_status": "manga",
-      "epithet": "\"Fukurou the Silent\"",
+      "epithet": "Fukurou the Silent",
       "origin": "Grand Line",
       "birthday": "June 29th",
       "height_cm": 331.0,
@@ -11296,7 +12749,7 @@
       "debut_chapter": 367,
       "debut_episode": 257,
       "canon_status": "manga",
-      "epithet": "\"Nero the Sea Weasel\"",
+      "epithet": "Nero the Sea Weasel",
       "origin": "West Blue",
       "birthday": "January 26th",
       "height_cm": 202.0,
@@ -11325,6 +12778,24 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "kuzan-aokiji",
+      "name": "Kuzan / Aokiji",
+      "character_id": 687,
+      "page_title": "Kuzan",
+      "debut_chapter": 303,
+      "debut_episode": 225,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "South Blue (Vespa Kingdom territory)",
+      "birthday": "September 21st",
+      "height_cm": 298.0,
+      "blood_type": "F",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Kuzan#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "morgan",
       "name": "Morgan",
       "character_id": 688,
@@ -11350,19 +12821,21 @@
       "debut_chapter": 222,
       "debut_episode": 146,
       "canon_status": "manga",
-      "epithet": "\"Bellamy the Hyena\"; \"Deadly Bullet of Dressrosa\"; \"The Big-Time Rookie\"",
+      "epithet": "Bellamy the Hyena",
       "origin": "North Blue (Notice)",
       "birthday": "August 7th",
       "height_cm": 240.0,
       "blood_type": "F",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 195000000,
-          "as_of_chapter": null
+          "as_of_chapter": 706
         },
         {
+          "order": 1,
           "amount": 55000000,
-          "as_of_chapter": null
+          "as_of_chapter": 222
         }
       ],
       "bounty_current": 195000000,
@@ -11377,19 +12850,44 @@
       "debut_chapter": 233,
       "debut_episode": 151,
       "canon_status": "manga",
-      "epithet": "\"Tyrant\" \"Pacifist\" \"Hero\"",
+      "epithet": "Tyrant",
       "origin": "South Blue (Sorbet Kingdom)",
       "birthday": "February 9th",
       "height_cm": 689.0,
       "blood_type": "X",
       "bounty_history": [
         {
+          "order": 0,
           "amount": 296000000,
           "as_of_chapter": 234
         }
       ],
       "bounty_current": 296000000,
       "source_ref": "onepiece.fandom.com/wiki/Bartholomew_Kuma#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "césar-clown",
+      "name": "César Clown",
+      "character_id": 691,
+      "page_title": "Caesar Clown",
+      "debut_chapter": 658,
+      "debut_episode": 581,
+      "canon_status": "manga",
+      "epithet": "Master",
+      "origin": "Grand Line",
+      "birthday": "April 9th",
+      "height_cm": 309.0,
+      "blood_type": "X",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 300000000,
+          "as_of_chapter": 664
+        }
+      ],
+      "bounty_current": 300000000,
+      "source_ref": "onepiece.fandom.com/wiki/Caesar_Clown#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -11400,7 +12898,7 @@
       "debut_chapter": 860,
       "debut_episode": 828,
       "canon_status": "manga",
-      "epithet": "\"Big News\"",
+      "epithet": "Big News",
       "origin": "Grand Line",
       "birthday": "July 14th",
       "height_cm": 305.0,
@@ -11425,6 +12923,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 8000000,
           "as_of_chapter": null
         }
@@ -11477,13 +12976,14 @@
       "debut_chapter": null,
       "debut_episode": null,
       "canon_status": "non_canon",
-      "epithet": "\"Great Gold Pirate\"",
+      "epithet": "Great Gold Pirate",
       "origin": "East Blue",
       "birthday": null,
       "height_cm": null,
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 60000000,
           "as_of_chapter": null
         }
@@ -11507,6 +13007,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 11600000,
           "as_of_chapter": null
         }
@@ -11530,6 +13031,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 7800000,
           "as_of_chapter": null
         }
@@ -11553,6 +13055,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 9900000,
           "as_of_chapter": null
         }
@@ -11576,6 +13079,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 3200000,
           "as_of_chapter": null
         }
@@ -11599,6 +13103,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 6000000,
           "as_of_chapter": null
         }
@@ -11615,7 +13120,7 @@
       "debut_chapter": null,
       "debut_episode": null,
       "canon_status": "non_canon",
-      "epithet": "\"Thief Brothers\"",
+      "epithet": "Thief Brothers",
       "origin": null,
       "birthday": null,
       "height_cm": null,
@@ -11633,7 +13138,7 @@
       "debut_chapter": null,
       "debut_episode": null,
       "canon_status": "non_canon",
-      "epithet": "\"Thief Brothers\"",
+      "epithet": "Thief Brothers",
       "origin": null,
       "birthday": null,
       "height_cm": null,
@@ -11651,13 +13156,14 @@
       "debut_chapter": null,
       "debut_episode": null,
       "canon_status": "non_canon",
-      "epithet": "\"Hotdog the Mad Dog\" \"General Hotdog\"",
+      "epithet": "Hotdog the Mad Dog",
       "origin": null,
       "birthday": null,
       "height_cm": null,
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 4000000,
           "as_of_chapter": null
         }
@@ -11692,19 +13198,44 @@
       "debut_chapter": null,
       "debut_episode": null,
       "canon_status": "non_canon",
-      "epithet": "\"Heaby the Poison Snake\" \"President Heaby\"",
+      "epithet": "Heaby the Poison Snake",
       "origin": null,
       "birthday": null,
       "height_cm": null,
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 4200000,
           "as_of_chapter": null
         }
       ],
       "bounty_current": 4200000,
       "source_ref": "onepiece.fandom.com/wiki/Heaby#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "général-gasparde",
+      "name": "Général Gasparde",
+      "character_id": 709,
+      "page_title": "Gasparde",
+      "debut_chapter": null,
+      "debut_episode": null,
+      "canon_status": "non_canon",
+      "epithet": "General Gasparde",
+      "origin": null,
+      "birthday": null,
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 95000000,
+          "as_of_chapter": null
+        }
+      ],
+      "bounty_current": 95000000,
+      "source_ref": "onepiece.fandom.com/wiki/Gasparde#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -11722,6 +13253,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 57000000,
           "as_of_chapter": null
         }
@@ -11810,7 +13342,7 @@
       "debut_chapter": null,
       "debut_episode": null,
       "canon_status": "non_canon",
-      "epithet": "\"Light Speed Swordsman\"",
+      "epithet": "Light Speed Swordsman",
       "origin": null,
       "birthday": null,
       "height_cm": null,
@@ -12055,6 +13587,24 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "musshul",
+      "name": "Musshul",
+      "character_id": 729,
+      "page_title": "Musshuru",
+      "debut_chapter": null,
+      "debut_episode": null,
+      "canon_status": "non_canon",
+      "epithet": null,
+      "origin": null,
+      "birthday": null,
+      "height_cm": null,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Musshuru#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "scarlett",
       "name": "Scarlett",
       "character_id": 730,
@@ -12145,6 +13695,24 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "zéphyr",
+      "name": "Zéphyr",
+      "character_id": 735,
+      "page_title": "Z",
+      "debut_chapter": 691,
+      "debut_episode": 577,
+      "canon_status": "manga",
+      "epithet": "Black Arm Zephyr",
+      "origin": null,
+      "birthday": null,
+      "height_cm": 348.0,
+      "blood_type": null,
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Z#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "ain",
       "name": "Ain",
       "character_id": 736,
@@ -12188,7 +13756,7 @@
       "debut_chapter": 817,
       "debut_episode": 750,
       "canon_status": "manga",
-      "epithet": "\"Golden Emperor\"; \"Monster of the New World\"",
+      "epithet": "Golden Emperor",
       "origin": null,
       "birthday": "January 24th",
       "height_cm": null,
@@ -12260,7 +13828,7 @@
       "debut_chapter": 829,
       "debut_episode": null,
       "canon_status": "manga",
-      "epithet": "\"Phantom Thief\" \"Vixen\"",
+      "epithet": "Phantom Thief",
       "origin": "East Blue",
       "birthday": null,
       "height_cm": null,
@@ -12278,7 +13846,7 @@
       "debut_chapter": null,
       "debut_episode": null,
       "canon_status": "non_canon",
-      "epithet": "\"Demon Heir\"",
+      "epithet": "Demon Heir",
       "origin": null,
       "birthday": null,
       "height_cm": 355.0,
@@ -12296,7 +13864,7 @@
       "debut_chapter": null,
       "debut_episode": 895,
       "canon_status": "anime",
-      "epithet": "\"Master of Festivities\" \"Worst Warmonger\"",
+      "epithet": "Master of Festivities",
       "origin": null,
       "birthday": null,
       "height_cm": null,
@@ -12314,7 +13882,7 @@
       "debut_chapter": null,
       "debut_episode": null,
       "canon_status": "non_canon",
-      "epithet": "Diva Ann}}",
+      "epithet": "Diva Ann",
       "origin": null,
       "birthday": "January 1st",
       "height_cm": null,
@@ -12411,6 +13979,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 500000000,
           "as_of_chapter": null
         }
@@ -12474,6 +14043,35 @@
       "canon_confidence": "canon"
     },
     {
+      "slug": "orlombus",
+      "name": "Orlombus",
+      "character_id": 754,
+      "page_title": "Orlumbus",
+      "debut_chapter": 704,
+      "debut_episode": 632,
+      "canon_status": "manga",
+      "epithet": "Massacre Ruler",
+      "origin": "Grand Line (Standing Kingdom)",
+      "birthday": "June 23rd",
+      "height_cm": 480.0,
+      "blood_type": "X",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 148000000,
+          "as_of_chapter": null
+        },
+        {
+          "order": 1,
+          "amount": 98000000,
+          "as_of_chapter": null
+        }
+      ],
+      "bounty_current": 148000000,
+      "source_ref": "onepiece.fandom.com/wiki/Orlumbus#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
+      "canon_confidence": "canon"
+    },
+    {
       "slug": "macro",
       "name": "Macro",
       "character_id": 755,
@@ -12524,6 +14122,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 3333333,
           "as_of_chapter": null
         }
@@ -12565,6 +14164,7 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 14800000,
           "as_of_chapter": null
         }
@@ -12588,12 +14188,31 @@
       "blood_type": null,
       "bounty_history": [
         {
+          "order": 0,
           "amount": 14900000,
           "as_of_chapter": null
         }
       ],
       "bounty_current": 14900000,
       "source_ref": "onepiece.fandom.com/wiki/Bigalo#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "végapunk",
+      "name": "Végapunk",
+      "character_id": 761,
+      "page_title": "Vegapunk",
+      "debut_chapter": 684,
+      "debut_episode": 610,
+      "canon_status": "manga",
+      "epithet": "The Man With the Best Brain in the World",
+      "origin": "Grand Line (Karakuri Island)",
+      "birthday": "August 9th",
+      "height_cm": 314.0,
+      "blood_type": "S",
+      "bounty_history": [],
+      "bounty_current": null,
+      "source_ref": "onepiece.fandom.com/wiki/Vegapunk#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {
@@ -12684,6 +14303,30 @@
       "bounty_history": [],
       "bounty_current": null,
       "source_ref": "onepiece.fandom.com/wiki/S-Shark#Char_Box",
+      "canon_confidence": "canon"
+    },
+    {
+      "slug": "karazu",
+      "name": "Karazu",
+      "character_id": 773,
+      "page_title": "Karasu",
+      "debut_chapter": 593,
+      "debut_episode": 510,
+      "canon_status": "manga",
+      "epithet": null,
+      "origin": "North Blue",
+      "birthday": "September 18th",
+      "height_cm": 265.0,
+      "blood_type": "S",
+      "bounty_history": [
+        {
+          "order": 0,
+          "amount": 400000000,
+          "as_of_chapter": null
+        }
+      ],
+      "bounty_current": 400000000,
+      "source_ref": "onepiece.fandom.com/wiki/Karasu#Char_Box (title from canon/overrides.json:wiki_title_overrides)",
       "canon_confidence": "canon"
     },
     {

@@ -114,6 +114,28 @@ export const Island = z.object({
 });
 export type Island = z.infer<typeof Island>;
 
+/**
+ * One row of a bounty progression.
+ *
+ * The two numbers are two different axes and neither derives from the other:
+ * `order` is STORY time (0 = the newest bounty this character has ever carried)
+ * and `as_of_chapter` is READER time (the chapter that row was revealed in).
+ * Flashbacks separate them — Jinbe's 250,000,000 is revealed ch. 528 and his
+ * EARLIER 76,000,000 ch. 622 — so the gate is "of the rows revealed by your
+ * chapter, take the lowest order", never "the latest chapter". That gate is
+ * written exactly once, in lib/canon.ts::bountyAt.
+ */
+export const BountyRow = z.object({
+  order: z.number().int().nonnegative(),
+  amount: z.number().int().nonnegative(),
+  /** Never null: normalize.py drops ungated rows, because they cannot be fogged. */
+  as_of_chapter: z.number().int().positive(),
+  source_ref: z.string().min(1),
+  canon_confidence: CanonConfidence,
+  verified: z.boolean(),
+});
+export type BountyRow = z.infer<typeof BountyRow>;
+
 export const Character = z.object({
   id: z.number().int(),
   name: z.string(),
@@ -129,6 +151,24 @@ export const Character = z.object({
   crew_name: z.string().nullable(),
   fruit_id: z.number().int().nullable(),
   fruit_name: z.string().nullable(),
+  // --- the Char Box overlay (Phase 7B). Null for characters with no wiki box.
+  /** The wanted-poster alias: "Straw Hat Luffy". */
+  epithet: z.string().nullable(),
+  origin: z.string().nullable(),
+  birthday: z.string().nullable(),
+  blood_type: z.string().nullable(),
+  /** The wiki lists every age a character was drawn at; this is the last (adult). */
+  height_cm: z.number().nullable(),
+  /**
+   * DEBUT — the chapter the READER first saw them. This is NOT the chapter they
+   * joined a crew: Jinbe debuts at 528 and joins at 976. join_chapter lives in
+   * crew_joins and nowhere else. Conflating them would sail him with the crew
+   * for four hundred chapters he was not aboard.
+   */
+  debut_chapter: z.number().int().positive().nullable(),
+  debut_episode: z.number().int().positive().nullable(),
+  bounty_history: z.array(BountyRow),
+  wiki_source_ref: z.string().nullable(),
   source_ref: z.string().min(1),
   canon_confidence: CanonConfidence,
 });
