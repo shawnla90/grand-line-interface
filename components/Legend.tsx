@@ -20,15 +20,18 @@
  * the fandom to correct it.
  */
 
-import type { World, WorldAt, FruitType, HakiType } from "@/lib/canon";
-import { presenceWindowAt } from "@/lib/canon";
-import { crewColor, WARLORD_COLOR } from "@/lib/crews";
+import type { World, WorldAt, FruitType, HakiType, StatusKind } from "@/lib/canon";
+import { presenceWindowAt, statusHoldersAt } from "@/lib/canon";
+import { affiliationColor, crewColor, WARLORD_COLOR } from "@/lib/crews";
 import {
   FRUIT_TYPE_ORDER,
   FRUIT_TYPE_STYLE,
   HAKI_RANK,
   HAKI_STYLE,
+  STATUS_KINDS,
+  STATUS_STYLE,
   UNREVEALED_COLOR,
+  focusKey,
   revealedFruit,
   revealedHaki,
   type Focus,
@@ -122,16 +125,11 @@ export default function Legend({
   onFocus?: (f: Focus | null) => void;
 }) {
   const pc = world.counts.positionConfidence;
-  const toggle = (f: Focus) => {
-    if (!onFocus) return;
-    const same =
-      focus &&
-      focus.kind === f.kind &&
-      (focus.kind === "crew"
-        ? focus.slug === (f as { slug?: string }).slug
-        : (focus as { type?: string }).type === (f as { type?: string }).type);
-    onFocus(same ? null : f);
-  };
+  // focusKey is the identity of a focus everywhere (URL, React keys, this
+  // toggle) — comparing kind + a hand-picked field per shape got fragile the
+  // moment a shape without `slug` or `type` existed.
+  const isActive = (f: Focus) => !!focus && focusKey(focus) === focusKey(f);
+  const toggle = (f: Focus) => onFocus?.(isActive(f) ? null : f);
 
   // Who is on the water at the SHOWN chapter. Names render only for entities the
   // reader has met; the rest collapse into one anonymous count — the same
@@ -164,6 +162,34 @@ export default function Legend({
     const rh = revealedHaki(e, at.chapter);
     if (rh.length === 0) noHaki++;
     for (const h of rh) hakiCounts[h.type]++;
+  }
+
+  // ---- the master filter's categories, counted AS OF this chapter.
+  // Constructed only where a holder is actually on the board: a chip is built
+  // iff its count > 0, so at chapter 1 the strings "Emperors", "Warlords" and
+  // "Supernovas" are not in the DOM at all. That is the same constructive gate
+  // the search palette keeps — absent, not hidden.
+  const onBoardSlugs = new Set<string>();
+  for (const c of activeCrews) {
+    onBoardSlugs.add(c.slug);
+    for (const m of c.members) if (m.fromChapter <= at.chapter) onBoardSlugs.add(m.slug);
+  }
+  for (const c of activeChars) onBoardSlugs.add(c.slug);
+  // the voyage crew is always on the board — it is the ship you are following
+  onBoardSlugs.add(world.voyage.crewSlug);
+  for (const m of at.crew) onBoardSlugs.add(m.slug);
+
+  const statusCounts = STATUS_KINDS.map((k) => {
+    const holders = statusHoldersAt(world, k, at.chapter);
+    let n = 0;
+    for (const slug of holders) if (onBoardSlugs.has(slug)) n++;
+    return { kind: k, count: n };
+  }).filter((s) => s.count > 0);
+
+  const affiliationCounts = new Map<string, number>();
+  for (const c of activeChars) {
+    if (c.affiliation === "Warlord") continue; // the status chip already says this
+    affiliationCounts.set(c.affiliation, (affiliationCounts.get(c.affiliation) ?? 0) + 1);
   }
 
   // Count what is ACTUALLY PLOTTED, not what exists. The off-canon layer is where
@@ -207,6 +233,50 @@ export default function Legend({
           count={at.foggedIslands.length}
         />
       </ul>
+
+      {lens !== "off" && (statusCounts.length > 0 || affiliationCounts.size > 0) && (
+        <div className="mt-2.5 border-t border-rope/60 pt-2.5">
+          <div className="font-mono text-[9px] uppercase tracking-[0.22em] text-muted-2">
+            Isolate
+          </div>
+          <ul className="mt-1.5 flex flex-wrap gap-x-2.5 gap-y-1">
+            {statusCounts.map(({ kind, count }) => (
+              <li key={kind}>
+                <FocusChip
+                  active={isActive({ kind: "status", status: kind })}
+                  onClick={() => toggle({ kind: "status", status: kind })}
+                >
+                  <span
+                    className="block h-2 w-2 rotate-45"
+                    style={{ background: STATUS_STYLE[kind].color }}
+                  />
+                  <span className="text-[10px] text-muted">
+                    {STATUS_STYLE[kind].label}{" "}
+                    <span className="tnum font-mono text-[9px] text-muted-2">{count}</span>
+                  </span>
+                </FocusChip>
+              </li>
+            ))}
+            {[...affiliationCounts].map(([name, count]) => (
+              <li key={name}>
+                <FocusChip
+                  active={isActive({ kind: "affiliation", name })}
+                  onClick={() => toggle({ kind: "affiliation", name })}
+                >
+                  <span
+                    className="block h-2 w-2 rounded-sm"
+                    style={{ background: affiliationColor(name) }}
+                  />
+                  <span className="text-[10px] text-muted">
+                    {name}s{" "}
+                    <span className="tnum font-mono text-[9px] text-muted-2">{count}</span>
+                  </span>
+                </FocusChip>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {lens !== "off" && (
         <div className="mt-2.5 border-t border-rope/60 pt-2.5">
@@ -253,6 +323,22 @@ export default function Legend({
               {/* One chip per type PRESENT among revealed on-board entities —
                   the legend never names a category the map is not showing. */}
               <ul className="mt-1.5 flex flex-wrap gap-x-2.5 gap-y-1">
+                {fruitCounts.size > 1 && (
+                  <li>
+                    <FocusChip
+                      active={isActive({ kind: "fruit-all" })}
+                      onClick={() => toggle({ kind: "fruit-all" })}
+                    >
+                      <span className="block h-2 w-2 rounded-full border border-gold-2" />
+                      <span className="text-[10px] text-muted">
+                        all fruits{" "}
+                        <span className="tnum font-mono text-[9px] text-muted-2">
+                          {onBoard.length - noFruit}
+                        </span>
+                      </span>
+                    </FocusChip>
+                  </li>
+                )}
                 {FRUIT_TYPE_ORDER.filter((t) => (fruitCounts.get(t) ?? 0) > 0).map((t) => (
                   <li key={t}>
                     <FocusChip

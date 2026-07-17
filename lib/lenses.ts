@@ -15,7 +15,10 @@
  * the fruit and haki lenses.
  */
 
-import type { FruitType, HakiType, WorldFruitReveal, WorldHakiFact } from "./canon";
+import type {
+  FruitType, HakiType, StatusKind, World, WorldFruitReveal, WorldHakiFact,
+} from "./canon";
+import { statusHoldersAt } from "./canon";
 import { affiliationColor, crewColor } from "./crews";
 
 export type Lens = "crew" | "fruit" | "haki";
@@ -82,26 +85,117 @@ export function topHaki(e: PowerCarrier, ch: number): HakiType | null {
 }
 
 /**
- * The isolate filter (Phase "identify & filter"): pick one crew, fruit type,
- * or haki type and everything else on the presence layer dims to near-
- * invisible. Pure predicate — map orbs, HTML marker pools, and any future
- * renderer all go through it, so they can never disagree about who matches.
+ * The master filter: pick one thing and everything else on the presence layer
+ * dims to near-invisible. Pure predicate — map orbs, HTML marker pools, the
+ * legend and any future renderer all go through it, so they can never disagree
+ * about who matches.
+ *
+ * SINGLE-SELECT on purpose. A set-valued focus ("Emperors AND Logia users")
+ * multiplies the URL encoding, the chip state, and the spoiler-audit matrix,
+ * while the grammar people actually reach for is "show me just the Red Hair
+ * Pirates". If multi-select is ever wanted it is `Focus[]` with OR semantics
+ * over this same predicate, and none of the below has to change.
  */
 export type Focus =
   | { kind: "crew"; slug: string }
   | { kind: "fruit"; type: FruitType }
-  | { kind: "haki"; type: HakiType };
+  /** Anyone whose fruit the reader has seen — "who has a power at all". */
+  | { kind: "fruit-all" }
+  | { kind: "haki"; type: HakiType }
+  | { kind: "status"; status: StatusKind }
+  | { kind: "affiliation"; name: string };
+
+/** Stable string for URLs and React keys: focus=status:yonko, focus=crew:red-hair-pirates. */
+export function focusKey(f: Focus): string {
+  switch (f.kind) {
+    case "crew": return `crew:${f.slug}`;
+    case "fruit": return `fruit:${f.type}`;
+    case "fruit-all": return "fruit:*";
+    case "haki": return `haki:${f.type}`;
+    case "status": return `status:${f.status}`;
+    case "affiliation": return `affiliation:${f.name}`;
+  }
+}
+
+/** Parse a ?focus= param. Unknown/garbage -> null; never throws on a URL. */
+export function parseFocus(raw: string | null | undefined): Focus | null {
+  if (!raw) return null;
+  const i = raw.indexOf(":");
+  if (i < 0) return null;
+  const kind = raw.slice(0, i);
+  const val = raw.slice(i + 1);
+  if (!val) return null;
+  if (kind === "crew") return { kind: "crew", slug: val };
+  if (kind === "fruit") {
+    if (val === "*") return { kind: "fruit-all" };
+    return FRUIT_TYPE_ORDER.includes(val as FruitType)
+      ? { kind: "fruit", type: val as FruitType }
+      : null;
+  }
+  if (kind === "haki") {
+    return HAKI_RANK.includes(val as HakiType) ? { kind: "haki", type: val as HakiType } : null;
+  }
+  if (kind === "status") {
+    return STATUS_KINDS.includes(val as StatusKind)
+      ? { kind: "status", status: val as StatusKind }
+      : null;
+  }
+  if (kind === "affiliation") return { kind: "affiliation", name: val };
+  return null;
+}
+
+export const STATUS_KINDS: StatusKind[] = ["yonko", "warlord", "supernova"];
+
+export const STATUS_STYLE: Record<StatusKind, LensInk> = {
+  yonko: { color: "#d9a441", label: "Emperors" },
+  warlord: { color: "#8c9ab5", label: "Warlords" },
+  supernova: { color: "#c2708a", label: "Supernovas" },
+};
+
+/**
+ * A focus with its holder set already resolved.
+ *
+ * Status and affiliation are set-membership questions about the WORLD at a
+ * chapter, not properties of an entity, so they cannot be answered by a pure
+ * per-entity predicate. Resolving once per frame keeps matchesFocus a slug test
+ * instead of an O(statuses) scan per orb per paint.
+ */
+export type ResolvedFocus = { focus: Focus; holders: Set<string> | null };
+
+export function resolveFocus(world: World, focus: Focus, ch: number): ResolvedFocus {
+  if (focus.kind === "status") {
+    return { focus, holders: statusHoldersAt(world, focus.status, ch) };
+  }
+  if (focus.kind === "affiliation") {
+    const holders = new Set<string>();
+    for (const c of world.presence.characters) {
+      if (c.affiliation === focus.name) holders.add(c.slug);
+    }
+    return { focus, holders };
+  }
+  return { focus, holders: null };
+}
 
 export function matchesFocus(
-  focus: Focus,
+  rf: ResolvedFocus | Focus,
   e: PowerCarrier & { slug?: string },
   ch: number,
 ): boolean {
+  const focus = "kind" in rf ? rf : rf.focus;
+  const holders = "kind" in rf ? null : rf.holders;
   if (focus.kind === "crew") return e.crewSlug === focus.slug || e.slug === focus.slug;
   if (focus.kind === "fruit") return revealedFruit(e, ch)?.type === focus.type;
-  // includes, not top-rank: "focus Armament" shows every revealed armament
-  // user even when Conqueror outranks it for their orb color
-  return revealedHaki(e, ch).some((h) => h.type === focus.type);
+  if (focus.kind === "fruit-all") return revealedFruit(e, ch) !== null;
+  if (focus.kind === "haki") {
+    // includes, not top-rank: "focus Armament" shows every revealed armament
+    // user even when Conqueror outranks it for their orb color
+    return revealedHaki(e, ch).some((h) => h.type === focus.type);
+  }
+  // status / affiliation: a holder set was resolved for this frame. The crew
+  // slug counts too, so isolating Emperors at ch. 700 lights up Big Mom's whole
+  // crew and not just the flag.
+  if (!holders) return false;
+  return (!!e.slug && holders.has(e.slug)) || (!!e.crewSlug && holders.has(e.crewSlug));
 }
 
 /**

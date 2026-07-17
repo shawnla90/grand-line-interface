@@ -32,7 +32,7 @@ import {
   type Axis,
 } from "@/lib/canon";
 import { BRAND } from "@/config/brand";
-import type { Focus, PresenceLens } from "@/lib/lenses";
+import { focusKey, type Focus, type PresenceLens } from "@/lib/lenses";
 import type { BuildLog } from "@/lib/buildlog";
 import type { Art } from "@/lib/art";
 import WorldMap, { type Projection } from "./WorldMap";
@@ -174,13 +174,16 @@ type Props = {
   initialAxis: Axis;
   /** The presence lens from ?lens= — "crew" on a plain load. */
   initialLens: PresenceLens;
+  initialFocus?: Focus | null;
   /** The shipwright's log — build provenance, rendered from the footer. */
   buildLog?: BuildLog;
 };
 
 const DEFAULT_CHAPTER = 1044;
 
-export default function Atlas({ world, art, initialChapter, initialAxis, initialLens, buildLog }: Props) {
+export default function Atlas({
+  world, art, initialChapter, initialAxis, initialLens, initialFocus = null, buildLog,
+}: Props) {
   const engine = useChapterEngine(world, initialChapter ?? DEFAULT_CHAPTER);
   const { chapter, swept, playing, speed } = engine;
   const [axis, setAxis] = useState<Axis>(initialAxis);
@@ -197,7 +200,7 @@ export default function Atlas({ world, art, initialChapter, initialAxis, initial
   // Selecting an island or dragging the globe is the reader looking elsewhere.
   const [follow, setFollow] = useState(true);
   // The isolate filter + the search palette (Unit: identify & filter).
-  const [focus, setFocusRaw] = useState<Focus | null>(null);
+  const [focus, setFocusRaw] = useState<Focus | null>(initialFocus);
   const [searchOpen, setSearchOpen] = useState(false);
   // Camera target for non-island search hits (crews have no selection slug).
   const [flyTarget, setFlyTarget] = useState<{ lng: number; lat: number; key: number } | null>(null);
@@ -213,7 +216,11 @@ export default function Atlas({ world, art, initialChapter, initialAxis, initial
   const setFocus = useCallback((f: Focus | null) => {
     setFocusRaw(f);
     if (!f) return;
-    if (f.kind === "fruit") setLens("fruit");
+    // The lens decides what an orb's COLOR means, so a focus drags it to the
+    // matching dimension — isolating Logia users while the orbs are painted by
+    // crew would light up the right dots in the wrong language. Status and
+    // affiliation have no lens of their own; they only need presence visible.
+    if (f.kind === "fruit" || f.kind === "fruit-all") setLens("fruit");
     else if (f.kind === "haki") setLens("haki");
     else setLens((l) => (l === "off" ? "crew" : l));
   }, []);
@@ -258,10 +265,13 @@ export default function Atlas({ world, art, initialChapter, initialAxis, initial
       q.set("ch", String(chapter));
       if (axis === "episode") q.set("axis", "episode");
       if (lens !== "crew") q.set("lens", lens);
+      // The isolation travels with the link: ?ch=700&focus=status:yonko is a
+      // shareable claim about the world, not just a bookmark of the chapter.
+      if (focus) q.set("focus", focusKey(focus));
       window.history.replaceState(null, "", `?${q.toString()}`);
     }, 180);
     return () => clearTimeout(t);
-  }, [chapter, axis, lens, hero]);
+  }, [chapter, axis, lens, focus, hero]);
 
   /* -------------------------------------------------------------- keyboard */
   useEffect(() => {
@@ -475,9 +485,13 @@ export default function Atlas({ world, art, initialChapter, initialAxis, initial
                   "presence hidden — islands and the voyage only."}
                 {lens === "crew" && (
                   <>
+                    {/* Not "Warlords" any more, for two reasons: the standalone
+                        figures are now admirals and revolutionaries too, and the
+                        word itself is a ch. 69 reveal that has no business in a
+                        chapter-1 reader's page. */}
                     who sails here: {world.counts.presenceCrews} crews ·{" "}
-                    {world.counts.presenceCharacters} Warlords. Chapter-gated, like everything
-                    else.
+                    {world.counts.presenceCharacters} figures who sail alone. Chapter-gated,
+                    like everything else.
                   </>
                 )}
                 {lens === "fruit" &&

@@ -36,7 +36,10 @@ import type { World, WorldIsland, WorldFruitReveal, WorldHakiFact } from "@/lib/
 import type { Art } from "@/lib/art";
 import { voyageGeometryAt, vesselAtChapter, presenceWindowAt } from "@/lib/canon";
 import { crewColor, WARLORD_COLOR } from "@/lib/crews";
-import { lensColor, matchesFocus, revealedFruit, revealedHaki, HAKI_STYLE } from "@/lib/lenses";
+import {
+  lensColor, matchesFocus, resolveFocus, focusKey, revealedFruit, revealedHaki, HAKI_STYLE,
+  type ResolvedFocus,
+} from "@/lib/lenses";
 import type { Focus, Lens, PresenceLens } from "@/lib/lenses";
 import { altitudeT, columnOpacity, expandSkyWaypoints, transitBase } from "./skypiea";
 import type { HakiType } from "@/lib/canon";
@@ -546,7 +549,7 @@ function presenceLayout(world: World, ch: number): Map<string, PlacedPresence> {
  */
 function presenceOrbs(
   world: World, ch: number, layout: Map<string, PlacedPresence>, lens: Lens,
-  focus: Focus | null = null,
+  focus: ResolvedFocus | null = null,
 ) {
   // dim: 0|1 stamped per feature — the isolate filter, resolved by the same
   // matchesFocus predicate the HTML pools use. Rebuilt every frame like the
@@ -716,6 +719,28 @@ export default function WorldMap({
     lensRef.current = lens;
   }, [lens]);
   const focusRef = useRef<Focus | null>(focus);
+
+  /**
+   * The focus, with any holder set resolved for this chapter.
+   *
+   * "Emperors" and "Marines" are set-membership questions about the world at a
+   * chapter, not properties of an orb, so they cost an O(statuses) scan to
+   * answer. Resolving once per (focus, chapter) instead of once per orb per
+   * paint keeps a 4x playback sweep from re-deriving the same set eighty times a
+   * frame. Memoised on the floored chapter because that is the gate's own
+   * resolution — the tween's fractional chapter cannot change who holds a seat.
+   */
+  const resolvedFocus = useCallback((): ResolvedFocus | null => {
+    const f = focusRef.current;
+    if (!f) return null;
+    const ch = Math.floor(chapterRef.current);
+    const key = `${focusKey(f)}@${ch}`;
+    if (resolvedRef.current?.key !== key) {
+      resolvedRef.current = { key, rf: resolveFocus(world, f, ch) };
+    }
+    return resolvedRef.current.rf;
+  }, [world]);
+  const resolvedRef = useRef<{ key: string; rf: ResolvedFocus } | null>(null);
 
   // Placement mode is read by the click handler, which is registered once on
   // mount and so must read current values through a ref (same pattern as chapter).
@@ -1352,7 +1377,7 @@ export default function WorldMap({
         chars: warlordMarks.current,
         members: memberMarks.current,
         lens: lensRef.current,
-        focus: focusRef.current,
+        focus: resolvedFocus(),
       }, art);
     });
 
@@ -1385,7 +1410,7 @@ export default function WorldMap({
       chars: warlordMarks.current,
       members: memberMarks.current,
       lens: lensRef.current,
-      focus: focusRef.current,
+      focus: resolvedFocus(),
     }, art);
     chase(); // one damped camera step per sweep frame; settles on its own after
   }, [chapter, world, art, chase]);
@@ -1403,7 +1428,7 @@ export default function WorldMap({
       chars: warlordMarks.current,
       members: memberMarks.current,
       lens: lensRef.current,
-      focus: focusRef.current,
+      focus: resolvedFocus(),
     }, art);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [features]);
@@ -1451,7 +1476,7 @@ export default function WorldMap({
       chars: warlordMarks.current,
       members: memberMarks.current,
       lens,
-      focus: focusRef.current,
+      focus: resolvedFocus(),
     }, art);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lens]);
@@ -1467,7 +1492,7 @@ export default function WorldMap({
       chars: warlordMarks.current,
       members: memberMarks.current,
       lens: lensRef.current,
-      focus,
+      focus: resolvedFocus(),
     }, art);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [focus]);
@@ -1629,7 +1654,7 @@ type PresencePools = {
   chars: Map<string, PresenceHandle>;
   members: Map<string, PresenceHandle>;
   lens: PresenceLens;
-  focus: Focus | null;
+  focus: ResolvedFocus | null;
 };
 
 /** Hide a pooled presence marker AND scrub its user-visible content out of the DOM. */

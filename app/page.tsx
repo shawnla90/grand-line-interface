@@ -15,7 +15,7 @@ import { loadCanon } from "@/lib/schema";
 import { loadBuildLog } from "@/lib/buildlog";
 import { loadArt } from "@/lib/art";
 import { buildWorld, chapterForEpisode, clampChapter, clampEpisode, type Axis } from "@/lib/canon";
-import { isPresenceLens, type PresenceLens } from "@/lib/lenses";
+import { isPresenceLens, parseFocus, type Focus, type PresenceLens } from "@/lib/lenses";
 import Atlas from "@/components/Atlas";
 
 function one(v: string | string[] | undefined): string | undefined {
@@ -40,6 +40,9 @@ export default async function Page({
   const ep = int(one(sp.ep));
   const lensParam = one(sp.lens);
   const initialLens: PresenceLens = isPresenceLens(lensParam) ? lensParam : "crew";
+  // ?focus=status:yonko — the share mechanic carries the isolation, not just the
+  // chapter. Garbage parses to null rather than throwing: a URL is user input.
+  const initialFocus: Focus | null = parseFocus(one(sp.focus));
 
   // ?ep= is accepted as a convenience and folded straight back onto the chapter
   // axis — the chapter is the only state the app actually keeps.
@@ -60,6 +63,7 @@ export default async function Page({
       initialChapter={initialChapter}
       initialAxis={initialAxis}
       initialLens={initialLens}
+      initialFocus={initialFocus}
       buildLog={loadBuildLog()}
     />
   );

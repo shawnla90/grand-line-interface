@@ -19,6 +19,10 @@ contract the lenses must keep:
      430, and un-renders on a backward scrub to 100.
   8. the Navy is on the chart, in its own ink — the admirals are at Marineford
      at 560 and none of them exists before Loguetown.
+  9. the master filter — the status chips do not EXIST at ch 1 (the words are
+     absent, not hidden); focus=status:warlord at 90 lights Mihawk alone;
+     focus=status:yonko at 1100 lights Buggy and not Big Mom, and the same
+     focus at 500 lights Whitebeard and not the Straw Hats.
 
 Requires the dev server (window.__map is dev-only): the script starts its own
 on AUDIT_PORT (default 3210) unless AUDIT_URL is set.
@@ -266,6 +270,57 @@ def main() -> int:
             navy = slugs & {"smoker", "monkey-d-garp", "sengoku", "sakazuki-akainu",
                             "borsalino-kizaru", "kuzan-aokiji"}
             check("ch50/crew: no Marine is charted before Loguetown", not navy, f"leaked: {navy}")
+
+            # ---- 9. the master filter. The chips are CONSTRUCTED, not hidden:
+            # at ch. 1 the words themselves must be absent from the page, because
+            # "Emperors" is a ch. 432 concept and "Supernovas" a ch. 498 one.
+            page.goto(f"{BASE}/?ch=1&lens=crew")
+            wait_map(page)
+            text = body_text(page)
+            early = [w for w in ("Emperors", "Warlords", "Supernovas") if w in text]
+            check("ch1: no status chip exists yet", not early, f"leaked: {early}")
+
+            # ch90: Mihawk is the only Warlord the reader has met AND he is on the
+            # board (he is in East Blue hunting Krieg's fleet until ch. 96 —
+            # at 100 the title is still his but the man is off the chart, which is
+            # the filter working, not failing).
+            page.goto(f"{BASE}/?ch=90&lens=crew&focus=status:warlord")
+            wait_map(page)
+            props = presence_props(page)
+            # a set: querySourceFeatures returns a feature once per tile it touches,
+            # so the same orb legitimately comes back several times
+            lit = {pr["slug"] for pr in props if pr.get("dim") != 1}
+            check("ch90/focus=warlord: exactly one holder is lit", lit == {"dracule-mihawk"},
+                  f"lit={sorted(lit)}")
+            check("ch90/focus=warlord: everyone else is dimmed",
+                  all(pr.get("dim") == 1 for pr in props if pr["slug"] not in lit),
+                  f"{len(props)} features on the board")
+
+            # ch1100: the Emperors are Blackbeard, Shanks, the Straw Hats and
+            # Buggy — and NOT Big Mom, whose seat ended at Wano.
+            page.goto(f"{BASE}/?ch=1100&lens=crew&focus=status:yonko")
+            wait_map(page)
+            props = presence_props(page)
+            lit = {pr["slug"] for pr in props if pr.get("dim") != 1}
+            check("ch1100/focus=yonko: Buggy is an Emperor", "buggy-pirates" in lit, f"lit={lit}")
+            check("ch1100/focus=yonko: Big Mom is not", "big-mom-pirates" not in lit)
+
+            # hold the focus and scrub BACK: the holder set must shrink, not persist
+            page.goto(f"{BASE}/?ch=500&lens=crew&focus=status:yonko")
+            wait_map(page)
+            lit_500 = {pr["slug"] for pr in presence_props(page) if pr.get("dim") != 1}
+            check("ch500/focus=yonko: the seat set is the older four",
+                  "straw-hat-pirates" not in lit_500 and "whitebeard-pirates" in lit_500,
+                  f"lit={lit_500}")
+
+            # ?focus= survives the round trip it claims to
+            page.goto(f"{BASE}/?ch=700&lens=fruit&focus=fruit:Logia")
+            wait_map(page)
+            props = presence_props(page)
+            lit = [pr for pr in props if pr.get("dim") != 1]
+            check("ch700/focus=fruit:Logia: only Logia users are lit",
+                  bool(lit) and all(pr.get("fruitType") == "Logia" for pr in lit),
+                  f"{len(lit)} lit of {len(props)}")
 
             browser.close()
     finally:
