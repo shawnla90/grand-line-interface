@@ -135,6 +135,35 @@
         "note": "Measured from the Claude Code session transcript over this run's window (761 assistant turns). Includes cached input, like the Codex counter beside it: a workload snapshot, not an invoice. Reasoning tokens are not itemised by this harness. HONEST DISCREPANCY: the transcript labels every turn in this window claude-opus-4-8 while the runtime identified itself as Fable 5 — recorded as measured rather than reconciled, and worth Shawn's correction."
       },
       "verified": false
+    },
+    {
+      "phase": "8 (Every dot is a door)",
+      "title": "Entry pages for islands, characters, crews and fruits; chapter-stamped OG cards; the narrative scene registry; and the first Blender asset on the globe",
+      "builder": "Claude Fable 5",
+      "harness": "Claude Code",
+      "role": "plan + build",
+      "commits": [
+        "8c70d9e",
+        "269fa80",
+        "b905a83",
+        "9b17b6d",
+        "9e8df83",
+        "07f58ad",
+        "d99c5d5",
+        "b9989e3",
+        "2ca8304"
+      ],
+      "usage": {
+        "measuredAt": "2026-07-17T05:47:00Z",
+        "inputTokens": 267377978,
+        "cachedInputTokens": 266712206,
+        "uncachedInputTokens": 665772,
+        "outputTokens": 388263,
+        "reasoningOutputTokens": null,
+        "totalTokens": 267766241,
+        "note": "Measured from the Claude Code session transcript over this phase's window (310 assistant turns). Includes cached input, like the Codex counter beside it. Reasoning is not itemised by this harness — null rather than 0, because 0 would be a claim. Same model-label discrepancy as the entry above: the transcript says claude-opus-4-8, the runtime said Fable 5."
+      },
+      "verified": false
     }
   ]
 }
