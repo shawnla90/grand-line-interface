@@ -35,6 +35,7 @@
 
 import type {
   Canon,
+  Character,
   Island,
   Arc,
   CrewJoin,
@@ -107,6 +108,18 @@ export type WorldSaga = {
   chapterEnd: number | null;
 };
 
+export type WorldBountyRow = {
+  /** STORY time: 0 is the newest bounty this character has ever carried. */
+  order: number;
+  amount: number;
+  /** READER time: the chapter this row was revealed in. Never null — an ungated
+   *  row cannot be fogged, so normalize.py drops it before it gets here. */
+  asOfChapter: number;
+  verified: boolean;
+  confidence: Confidence;
+  sourceRef: string;
+};
+
 export type WorldCrewMember = {
   slug: string;
   name: string;
@@ -115,6 +128,10 @@ export type WorldCrewMember = {
   joinArc: string;
   joinSaga: string;
   order: number;
+  /** The wanted-poster alias, e.g. "Straw Hat Luffy". Null until it is earned. */
+  epithet: string | null;
+  /** Newest-first by amount. Read through bountyAt(), never indexed directly. */
+  bountyHistory: WorldBountyRow[];
   /** false = no human has checked this against the manga. The UI MUST show it. */
   verified: boolean;
   confidence: Confidence;
@@ -439,7 +456,7 @@ function toArc(a: Arc): WorldArc {
   };
 }
 
-function toCrew(j: CrewJoin): WorldCrewMember {
+function toCrew(j: CrewJoin, char: Character | undefined): WorldCrewMember {
   return {
     slug: j.slug,
     name: j.name,
@@ -448,6 +465,15 @@ function toCrew(j: CrewJoin): WorldCrewMember {
     joinArc: j.join_arc,
     joinSaga: j.join_saga,
     order: j.order,
+    epithet: char?.epithet ?? null,
+    bountyHistory: (char?.bounty_history ?? []).map((b) => ({
+      order: b.order,
+      amount: b.amount,
+      asOfChapter: b.as_of_chapter,
+      verified: b.verified,
+      confidence: b.canon_confidence,
+      sourceRef: b.source_ref,
+    })),
     verified: j.verified,
     confidence: j.canon_confidence,
     sourceRef: j.source_ref,
@@ -586,11 +612,16 @@ function derivesSagas(arcs: WorldArc[]): WorldSaga[] {
  * title. The 10 crew members the roster renders come from crew_joins, not from
  * characters.
  *
- * characters[].bounty and characters[].status are dropped for a product reason,
- * not a size one: the dataset stores ONE current-day value per character. Luffy's
- * bounty is 3,000,000,000 — showing that next to his name at chapter 100 would
- * spoil ~950 chapters in the one app whose entire promise is that it will not.
- * A bounty is only safe to render if it is versioned by chapter, and it is not.
+ * characters[].bounty and characters[].status are STILL dropped, for a product
+ * reason and not a size one: those two fields store ONE current-day value per
+ * character. Luffy's is 3,000,000,000 — next to his name at chapter 100 that
+ * spoils ~950 chapters in the one app whose whole promise is that it will not.
+ *
+ * characters[].bounty_history is a different animal and DOES ship, joined onto
+ * the roster below. A bounty is safe to render exactly when it is versioned by
+ * chapter, and that table is: {order, amount, as_of_chapter} per row, gated
+ * through bountyAt(). The rule never was "no bounties" — it was "no bounty we
+ * cannot fog", and now there is one we can.
  */
 export function buildWorld(canon: Canon): World {
   const chapterMax = deriveChapterMax(canon);
@@ -601,7 +632,22 @@ export function buildWorld(canon: Canon): World {
 
   const islands = canon.islands.map(toIsland);
   const arcs = canon.arcs.map(toArc).sort((a, b) => a.order - b.order);
-  const crew = canon.crew_joins.map(toCrew).sort((a, b) => a.order - b.order);
+  // The roster is crew_joins; the bounty progression and epithet are on the
+  // character. The two tables agree on slugs for all ten Straw Hats — asserted
+  // here rather than assumed, because a silent miss would read as "no bounty
+  // posted yet" forever, which looks exactly like the honest pre-bounty answer.
+  const charBySlug = new Map(canon.characters.map((c) => [c.slug, c]));
+  for (const j of canon.crew_joins) {
+    if (!charBySlug.has(j.slug)) {
+      throw new Error(
+        `crew_joins slug "${j.slug}" has no character row to take a bounty history from. ` +
+          `A miss here is invisible in the UI — it renders as "no bounty posted yet".`,
+      );
+    }
+  }
+  const crew = canon.crew_joins
+    .map((j) => toCrew(j, charBySlug.get(j.slug)))
+    .sort((a, b) => a.order - b.order);
   const sagas = derivesSagas(arcs);
 
   const voyage = {
@@ -752,6 +798,31 @@ export function voyageGeometryAt(
 }
 
 /** The last vessel whose fromChapter <= chapter. null before the first ship sets sail. */
+/**
+ * The bounty a character is carrying AS OF a chapter — the ONE place this gate
+ * is written. null means "no bounty posted yet", which is a FACT about the
+ * story, not missing data: Luffy has no bounty until Arlong Park.
+ *
+ * Of the rows the reader has been shown, take the one with the LOWEST order —
+ * the most recent bounty they know about. NOT the latest as_of_chapter, which
+ * is the trap: Jinbe's 250,000,000 is revealed ch. 528 and his EARLIER
+ * 76,000,000 ch. 622, in a flashback. Sorting by chapter hands a ch. 700 reader
+ * 76,000,000 — a real number, on the right character, and wrong.
+ */
+export function bountyAt(history: WorldBountyRow[], chapter: number): WorldBountyRow | null {
+  let best: WorldBountyRow | null = null;
+  for (const r of history) {
+    if (r.asOfChapter > chapter) continue;
+    if (best === null || r.order < best.order) best = r;
+  }
+  return best;
+}
+
+/** Berry formatting, in the one place, so the sign and the grouping agree. */
+export function formatBerry(amount: number): string {
+  return `฿${amount.toLocaleString("en-US")}`;
+}
+
 export function vesselAtChapter(vessels: WorldVessel[], chapter: number): WorldVessel | null {
   let cur: WorldVessel | null = null;
   for (const v of vessels) {

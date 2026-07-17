@@ -8,6 +8,7 @@
  */
 
 import type { World, WorldAt } from "@/lib/canon";
+import { bountyAt, formatBerry } from "@/lib/canon";
 
 function Stat({ label, value, sub }: { label: string; value: string; sub?: string }) {
   return (
@@ -21,6 +22,22 @@ function Stat({ label, value, sub }: { label: string; value: string; sub?: strin
 
 export default function Readout({ at, world }: { at: WorldAt; world: World }) {
   const { stats } = at;
+
+  // The crew's total bounty AS OF this chapter — the sum of what the reader has
+  // actually been shown, not the sum of the final numbers. It ticks up while you
+  // sail: 96, 213, 435, 800, 903, 1053. `asOf` is the newest reveal in the sum,
+  // because a total assembled from rows revealed at different chapters is only
+  // as current as its most recent one, and saying so is the honest version.
+  let bountyTotal = 0;
+  let asOf = 0;
+  let posted = 0;
+  for (const m of at.crew) {
+    const b = bountyAt(m.bountyHistory, at.chapter);
+    if (!b) continue;
+    bountyTotal += b.amount;
+    asOf = Math.max(asOf, b.asOfChapter);
+    posted++;
+  }
 
   return (
     <div className="border-b border-rope/60 px-5 py-4">
@@ -58,6 +75,23 @@ export default function Readout({ at, world }: { at: WorldAt; world: World }) {
         />
         <Stat label="Crew" value={`${stats.crewSize}`} sub={`of ${stats.crewTotal} aboard`} />
       </div>
+
+      {/* Constructed only once a bounty has been posted: before Arlong Park no
+          Straw Hat is wanted, so the label does not exist rather than reading
+          zero — the crew is not worth nothing, they are not yet worth noticing. */}
+      {posted > 0 && (
+        <div className="mt-4 border-t border-rope/60 pt-3">
+          <Stat
+            label="Crew bounty"
+            value={formatBerry(bountyTotal)}
+            sub={
+              posted === stats.crewSize
+                ? `as of ch. ${asOf}`
+                : `as of ch. ${asOf} · ${posted} of ${stats.crewSize} wanted`
+            }
+          />
+        </div>
+      )}
 
       <div className="mt-4">
         <div className="h-px w-full bg-rope/70">

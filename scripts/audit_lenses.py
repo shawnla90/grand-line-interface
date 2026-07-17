@@ -322,6 +322,35 @@ def main() -> int:
                   bool(lit) and all(pr.get("fruitType") == "Logia" for pr in lit),
                   f"{len(lit)} lit of {len(props)}")
 
+            # ---- 10. bounties, versioned by chapter.
+            # The single most spoiler-dense number in One Piece: "3,000,000,000"
+            # beside Luffy's name gives away twenty years of story. It may appear
+            # at 1053 and nowhere before it.
+            page.goto(f"{BASE}/?ch=95")
+            wait_map(page)
+            text = body_text(page)
+            check("ch95: Luffy is not wanted yet", "no bounty posted yet" in text)
+            check("ch95: no berry figure is on the page", "฿" not in text, text[:0])
+
+            page.goto(f"{BASE}/?ch=100")
+            wait_map(page)
+            text = body_text(page)
+            check("ch100: Luffy's first bounty reads 30,000,000", "30,000,000" in text)
+            for late in ("3,000,000,000", "1,500,000,000", "500,000,000"):
+                check(f"ch100: {late} is not on the page", late not in text)
+
+            page.goto(f"{BASE}/?ch=1053")
+            wait_map(page)
+            text = body_text(page)
+            check("ch1053: the 3,000,000,000 finally lands", "3,000,000,000" in text)
+
+            # and it un-reads on a backward scrub
+            page.goto(f"{BASE}/?ch=90")
+            wait_map(page)
+            text = body_text(page)
+            check("refog ch90: every bounty is gone again",
+                  "3,000,000,000" not in text and "30,000,000" not in text)
+
             browser.close()
     finally:
         if server is not None:

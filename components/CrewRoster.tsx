@@ -18,26 +18,42 @@
  * good typography.
  *
  * ============================================================================
- * NO BOUNTIES HERE, ON PURPOSE
+ * BOUNTIES, VERSIONED BY CHAPTER
  * ============================================================================
- * The dataset stores ONE current-day bounty per character. Luffy's is
- * 3,000,000,000. Printing that beside his name at chapter 100 would spoil roughly
- * 950 chapters — in the one app whose entire promise is that it will not. A
- * bounty is only safe to show if it is versioned by chapter, and it is not. Same
- * for `status: alive | dead`. Both are dropped in lib/canon.ts.
+ * This panel used to refuse bounties outright, and the reason was sound: the
+ * dataset stored ONE current-day value per character. Luffy's is 3,000,000,000,
+ * and printing that beside his name at chapter 100 spoils ~950 chapters in the
+ * one app whose whole promise is that it won't.
+ *
+ * The rule was never "no bounties" — it was "no bounty we cannot fog". Phase 7B
+ * parsed the wiki's full progression WITH the chapter each amount was revealed
+ * in, so now there is one we can: bountyAt(history, ch) resolves what the reader
+ * has actually been shown, and the number ticks up as they read — 30M at 96,
+ * 100M at 213, 300M at 435. `status: alive | dead` is still a single
+ * present-day value and is still dropped.
+ *
+ * null from bountyAt is not missing data, it is the story: Luffy has no bounty
+ * until Arlong Park, so the row says so rather than showing a blank.
  *
  * FUTURE MEMBERS HAVE NO NAME IN THE DOM. An empty slot is a silhouette, not a
- * redacted name — you cannot read it out of the page source.
+ * redacted name — you cannot read it out of the page source. Same for the
+ * numbers: an unrevealed bounty is not in the page at all.
  */
 
-import type { WorldAt, World } from "@/lib/canon";
+import { useState } from "react";
+import type { WorldAt, World, WorldCrewMember } from "@/lib/canon";
+import { bountyAt, formatBerry } from "@/lib/canon";
 import type { Art } from "@/lib/art";
 import JollyRoger from "./marks/JollyRoger";
+import WantedCard from "./WantedCard";
 
 export default function CrewRoster({ at, world, art }: { at: WorldAt; world: World; art: Art }) {
   const aboard = at.crew;
   const total = world.counts.crew;
   const unverified = world.counts.crew - world.counts.crewVerified;
+  // The hovered slot's poster. Only ever set from an ABOARD member, so an empty
+  // slot cannot open a card for someone the reader has not met.
+  const [poster, setPoster] = useState<WorldCrewMember | null>(null);
 
   return (
     <div className="border-b border-rope/60 px-5 py-4">
@@ -55,7 +71,7 @@ export default function CrewRoster({ at, world, art }: { at: WorldAt; world: Wor
 
       {/* Ten slots. They fill in join order — which is NOT the order the fandom
           recites: by join chapter, Nami is fifth, not third. */}
-      <div className="mt-3 grid grid-cols-10 gap-1">
+      <div className="relative mt-3 grid grid-cols-10 gap-1">
         {Array.from({ length: total }, (_, idx) => {
           const member = aboard[idx];
           const filled = member !== undefined;
@@ -66,6 +82,8 @@ export default function CrewRoster({ at, world, art }: { at: WorldAt; world: Wor
             <div
               key={idx}
               title={filled ? `${member.name} — joined ch. ${member.joinChapter}` : "Not yet aboard"}
+              onMouseEnter={() => filled && setPoster(member)}
+              onMouseLeave={() => filled && setPoster(null)}
               className={[
                 "h-9 overflow-hidden rounded-sm border transition-all duration-500",
                 filled
@@ -85,25 +103,57 @@ export default function CrewRoster({ at, world, art }: { at: WorldAt; world: Wor
             </div>
           );
         })}
+        {poster && (
+          <div className="pointer-events-none absolute left-1/2 top-full z-20 mt-2 -translate-x-1/2">
+            <WantedCard
+              member={poster}
+              chapter={at.chapter}
+              portrait={art.characters[poster.slug]}
+            />
+          </div>
+        )}
       </div>
 
-      <ul className="mt-3 space-y-1">
-        {aboard.map((m) => (
-          <li key={m.slug} className="dr-enter flex items-center justify-between gap-2">
-            <span className="flex min-w-0 items-center gap-1.5">
-              {art.characters[m.slug] && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={art.characters[m.slug]}
-                  alt=""
-                  className="h-4 w-4 shrink-0 rounded-full object-cover ring-1 ring-gold/40"
-                />
-              )}
-              <span className="truncate text-[12px] text-parchment">{m.name}</span>
-            </span>
-            <span className="tnum shrink-0 font-mono text-[10px] text-muted-2">ch. {m.joinChapter}</span>
-          </li>
-        ))}
+      <ul className="mt-3 space-y-1.5">
+        {aboard.map((m) => {
+          const b = bountyAt(m.bountyHistory, at.chapter);
+          return (
+            <li key={m.slug} className="dr-enter flex items-baseline justify-between gap-2">
+              <span className="flex min-w-0 items-center gap-1.5">
+                {art.characters[m.slug] && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={art.characters[m.slug]}
+                    alt=""
+                    className="h-4 w-4 shrink-0 rounded-full object-cover ring-1 ring-gold/40"
+                  />
+                )}
+                <span className="min-w-0">
+                  <span className="block truncate text-[12px] text-parchment">{m.name}</span>
+                  {b ? (
+                    <span className="tnum block font-mono text-[10px] text-gold-2">
+                      {formatBerry(b.amount)}
+                    </span>
+                  ) : (
+                    <span className="block text-[10px] italic text-muted-2">
+                      no bounty posted yet
+                    </span>
+                  )}
+                </span>
+              </span>
+              <span className="shrink-0 text-right">
+                <span className="tnum block font-mono text-[10px] text-muted-2">
+                  ch. {m.joinChapter}
+                </span>
+                {b && (
+                  <span className="tnum block font-mono text-[9px] text-muted-2/70">
+                    as of {b.asOfChapter}
+                  </span>
+                )}
+              </span>
+            </li>
+          );
+        })}
         {aboard.length === 0 && (
           <li className="text-[11px] text-muted-2">Nobody aboard yet.</li>
         )}

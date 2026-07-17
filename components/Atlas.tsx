@@ -393,10 +393,11 @@ export default function Atlas({
               </div>
               <ul className="mt-2 space-y-1.5 text-[10px] leading-snug text-muted-2">
                 <li>
-                  <span className="text-muted">Bounties are omitted.</span>{" "}
-                  The dataset holds one
-                  current value per character — printing Luffy&apos;s at chapter 100 would spoil 950
-                  chapters.
+                  <span className="text-muted">Bounties are as of your chapter</span>, not
+                  today&apos;s. The wiki&apos;s single current value would spoil 950 chapters, so
+                  the full progression is parsed with the chapter each amount was revealed in —
+                  and the ones the wiki never ties to a chapter are dropped rather than shown
+                  early.
                 </li>
                 <li>
                   <span className="text-muted">The anime lags the manga.</span> Chapters{" "}
