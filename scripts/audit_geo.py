@@ -43,11 +43,17 @@ HEROES = {
     "punk-hazard": {"lng": 18.7, "lat": -5.2},
     "arabasta-kingdom": {"lng": -125.5, "lat": -2.1},
     "skypiea": {"lng": -91.1, "lat": 17.1},
+    # Its PIN debuts at ch. 68 (Arlong names it in East Blue), but nobody sees
+    # the place until 604 — so the terrain carries its own later gate, and the
+    # fogged-at-ch1 check below is really a check that a name is not a
+    # photograph. See gen_terrain.py:TERRAIN_SEEN.
+    "fish-man-island": {"lng": -5.93, "lat": -2.85},
 }
 # every layer that draws island geometry; extend as terrain layers land
 GEO_LAYERS = ["island-shapes", "island-shapes-coast",
               "terrain-fill", "terrain-line", "terrain-glow",
-              "sky-shadow", "sky-column", "sky-jet"]
+              "sky-shadow", "sky-column", "sky-jet",
+              "dive-shimmer"]
 ZOOM = 4.0
 PATCH = 44  # half-side of the sampled square, px
 
@@ -155,6 +161,36 @@ def main() -> int:
                 d = diff(fogged, refog)
                 check(f"refog/{slug}: back at ch1 the pixels match", d < 2.0,
                       f"mean px diff {d:.2f}")
+
+            # ---- A NAME IS NOT A PHOTOGRAPH.
+            # Fish-Man Island's pin debuts at ch. 68 — Arlong says the name in
+            # East Blue, five hundred chapters before anyone goes there. So the
+            # PIN is correctly on the map at 100, and the terrain must NOT be:
+            # a reader who has only heard the name should not be able to zoom in
+            # and find the bubble dome, the coral, and the shape of a city.
+            # Pixels, not queryRenderedFeatures: that call ignores paint opacity,
+            # so an opacity-0 feature still comes back from it (which is the
+            # whole reason the checks above sample screenshots). Hide the terrain
+            # layers at ch. 100 and the picture must not change by one pixel.
+            page.goto(f"{BASE}/?ch=100")
+            wait_map(page)
+            fmi = HEROES["fish-man-island"]
+            hide_terrain = "".join(
+                f"window.__map.setLayoutProperty('{l}','visibility','none');"
+                for l in ("terrain-fill", "terrain-line", "terrain-glow")
+            )
+            show_terrain = "".join(
+                f"window.__map.setLayoutProperty('{l}','visibility','visible');"
+                for l in ("terrain-fill", "terrain-line", "terrain-glow")
+            )
+            before = patch_at(page, fmi["lng"], fmi["lat"])
+            page.evaluate(f"() => {{ {hide_terrain} }}")
+            page.wait_for_timeout(400)
+            after = patch_at(page, fmi["lng"], fmi["lat"])
+            page.evaluate(f"() => {{ {show_terrain} }}")
+            d = diff(before, after)
+            check("ch100/fish-man-island: the name is charted but the place is not", d < 0.5,
+                  f"mean px diff {d:.2f}")
 
             browser.close()
     finally:

@@ -812,6 +812,37 @@ def poneglyphs_gated(doc):
             f"and standing on a charted island, {unverified} still verified:false")
 
 
+@check("geo_artifacts_fresh")
+def geo_artifacts_fresh(doc):
+    """public/geo/*.json must be rebuilt from the inputs currently on disk.
+
+    This exists because the dependency is not visible: an island's FOOTPRINT
+    grows when a crew starts anchoring there, so editing canon/crew_presence.json
+    silently invalidates every coastline — and the coastlines are a committed
+    artifact nobody thinks to regenerate after typing a presence window. It
+    happened exactly once, in the run that added 29 crews: Baltigo and Long Ring
+    Long Land became anchors and kept their old pin-sized outlines, and nothing
+    anywhere said so. Now this does.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from gen_silhouettes import inputs_sha  # noqa: PLC0415 — shared with the generators
+
+    want = inputs_sha()
+    for rel in ("public/geo/islands.silhouettes.json", "public/geo/islands.terrain.json"):
+        path = ROOT / rel
+        assert path.exists(), f"{rel} is missing"
+        meta = json.loads(path.read_text())["_meta"]
+        got = meta.get("inputs_sha")
+        assert got, f"{rel} carries no inputs_sha — regenerate it"
+        assert got == want, (
+            f"{rel} is STALE: it was built from different inputs than the ones on disk "
+            f"({got[:12]} vs {want[:12]}). Re-run scripts/gen_silhouettes.py and "
+            f"scripts/gen_terrain.py — an island's footprint depends on canon/crew_presence.json "
+            f"and canon/voyage_legs.json, not just on its coordinates."
+        )
+    return f"silhouettes + terrain both built from inputs {want[:12]}"
+
+
 CHECKS = [
     jinbe_test, crew_joins_are_human, straw_hats_complete,
     islands_have_positions, islands_fog_key, no_mojibake,
@@ -821,6 +852,7 @@ CHECKS = [
     presence_windows_forward, presence_spoiler_and_roster,
     fruit_reveals_gated, haki_users_gated, biomes_valid,
     bounty_history_gated, wiki_debut_is_not_join, statuses_gated, poneglyphs_gated,
+    geo_artifacts_fresh,
 ]
 
 

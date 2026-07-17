@@ -45,7 +45,7 @@ COORD_DECIMALS = 4   # ~11m; plenty for a stylized chart, keeps the file small
 # Hero islands carry deep terrain (gen_terrain.py) and survive the z8.5 dive,
 # so their coastlines get more vertices. Extra points draw NOTHING from the
 # rng stream — only hero features change when this set grows.
-HERO_SLUGS = {"punk-hazard", "arabasta-kingdom", "skypiea"}
+HERO_SLUGS = {"punk-hazard", "arabasta-kingdom", "skypiea", "fish-man-island"}
 HERO_POINTS = 128
 
 
@@ -163,6 +163,27 @@ def geometry_for(island: dict, biome: str, lng: float, lat: float, radius: float
     return {"type": "Polygon", "coordinates": [blob(rng, lng, lat, r_lng, r_lat, prof, points)]}
 
 
+SILHOUETTE_INPUTS = (
+    "data/generated/islands.json",
+    "canon/islands.coords.json",
+    "canon/islands.biomes.json",
+    "canon/islands.shapes.json",
+    "canon/voyage_legs.json",
+    "canon/crew_presence.json",
+)
+
+
+def inputs_sha() -> str:
+    """sha256 over every input file, in a fixed order. Missing files hash as
+    empty — canon/islands.shapes.json is an optional override door."""
+    h = hashlib.sha256()
+    for rel in SILHOUETTE_INPUTS:
+        f = REPO_ROOT / rel
+        h.update(rel.encode())
+        h.update(f.read_bytes() if f.exists() else b"")
+    return h.hexdigest()
+
+
 def main() -> int:
     islands = json.loads((GENERATED / "islands.json").read_text())
     coords = json.loads((CANON_DIR / "islands.coords.json").read_text())["islands"]
@@ -219,6 +240,13 @@ def main() -> int:
         "type": "FeatureCollection",
         "_meta": {
             "generator": "scripts/gen_silhouettes.py",
+            # The fingerprint of every input this run read. check_canon compares
+            # it against the files on disk, because this artifact's shape depends
+            # on things that do not look like geometry: an island's footprint
+            # grows when a crew starts anchoring there, so editing
+            # crew_presence.json silently invalidates the coastlines. It did
+            # exactly that once, and nothing said so.
+            "inputs_sha": inputs_sha(),
             "license": "Original generated geometry — MIT, same as the code.",
             "note": "Deterministic per-slug: regenerating without input changes is a no-op diff.",
             "islands": len(features),

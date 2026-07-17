@@ -43,6 +43,9 @@ import {
 import type { Focus, Lens, PresenceLens } from "@/lib/lenses";
 import { poneglyphSvg, PONEGLYPH_INK } from "./marks/poneglyph";
 import { altitudeT, columnOpacity, expandSkyWaypoints, transitBase } from "./skypiea";
+import {
+  depthT, expandDiveWaypoints, shimmerOpacity, transitBase as diveBase,
+} from "./fishman";
 import type { HakiType } from "@/lib/canon";
 import { jollyRogerSvg } from "./marks/jolly-roger";
 import CompassRose from "./marks/CompassRose";
@@ -168,12 +171,23 @@ const TERRAIN_FILL: Record<string, string> = {
   "cloud-puff-a": "#454c58",
   "cloud-puff-b": "#565e6b",
   "cloud-puff-c": "#6a7280",
+  // Fish-Man Island, ten thousand metres down. Cold, dark, and lit from inside
+  // its own bubble — the exact inverse of Skypiea's pearl.
+  "abyss-veil": "#071e2c",
+  "seabed": "#123640",
+  "coral-a": "#3d6470",
+  "coral-b": "#5c4a63",
+  "shimmer-soft": "#12384a",
+  "shimmer-core": "#2f7a94",
 };
 const TERRAIN_LINE: Record<string, string> = {
   "crevasse": "#9fb4c8",
   "river": "#3d6a8a",
   "riverbank": "#2a2416",
   "cloud-wisp": "#d5dce6",
+  "bubble-dome-outer": "#8fd4e8",
+  "bubble-dome-inner": "#6fb3d2",
+  "dome-highlight": "#dff2f8",
 };
 const byKind = (table: Record<string, string>, fallback: string): ExpressionSpecification =>
   ["match", ["get", "kind"], ...Object.entries(table).flat(), fallback] as unknown as ExpressionSpecification;
@@ -686,15 +700,24 @@ function presenceOrbs(
 const revealed = (ch: number): ExpressionSpecification => ["<=", ["get", "debut"], ch];
 
 /**
- * The voyage with Skypiea's ascent written in (virtual waypoints riding the
- * Knock-Up Stream). Memoized per waypoint array so the per-frame paint sweep
- * stays allocation-free; worldAtChapter/Readout keep the pure canon list.
+ * The voyage with both vertical legs written in: Skypiea's ascent up the
+ * Knock-Up Stream, and the dive to Fish-Man Island.
+ *
+ * A COMPOSITION, not two systems. Each expander splices virtual waypoints
+ * around its own island and leaves the rest of the list alone, so they commute —
+ * and everything downstream (the ship position, the dashed path, the follow-cam)
+ * reads the voyage only through this one function. That is why neither vertical
+ * leg needed a special case anywhere else: to the interpolator, going up a
+ * water spout and going down to the seabed are both just the next waypoint.
+ *
+ * Memoized per waypoint array so the per-frame paint sweep stays
+ * allocation-free; worldAtChapter/Readout keep the pure canon list.
  */
 const skyExpandedCache = new WeakMap<object, ReturnType<typeof expandSkyWaypoints>>();
 function expandedWaypoints(wps: World["voyage"]["waypoints"]) {
   let e = skyExpandedCache.get(wps);
   if (!e) {
-    e = expandSkyWaypoints(wps);
+    e = expandDiveWaypoints(expandSkyWaypoints(wps));
     skyExpandedCache.set(wps, e);
   }
   return e;
@@ -996,7 +1019,10 @@ export default function WorldMap({
         { id: "terrain-fill", type: "fill", source: "terrain",
           // the sky-* furniture (shadow, column) has its own layers + gating
           filter: ["!", ["in", ["get", "kind"], ["literal",
-            ["sky-shadow-soft", "sky-shadow-core", "sky-column-1", "sky-column-2", "sky-column-3", "sky-jet"]]]],
+            ["sky-shadow-soft", "sky-shadow-core", "sky-column-1", "sky-column-2", "sky-column-3", "sky-jet",
+             "shimmer-soft", "shimmer-core",
+             // lines, not fills — the mirror of terrain-line's allowlist
+             "bubble-dome-outer", "bubble-dome-inner", "dome-highlight"]]]],
           layout: { "fill-sort-key": ["get", "sort"] } as never,
           paint: {
             "fill-color": byKind(TERRAIN_FILL, C.isle),
@@ -1012,11 +1038,13 @@ export default function WorldMap({
           } },
         { id: "terrain-line", type: "line", source: "terrain",
           // line layers also outline polygons — restrict to the true lines
-          filter: ["in", ["get", "kind"], ["literal", ["crevasse", "river", "riverbank", "cloud-wisp"]]],
+          filter: ["in", ["get", "kind"], ["literal", ["crevasse", "river", "riverbank", "cloud-wisp",
+            "bubble-dome-outer", "bubble-dome-inner", "dome-highlight"]]],
           paint: {
             "line-color": byKind(TERRAIN_LINE, C.isleCoast),
             "line-width": ["match", ["get", "kind"],
-              "riverbank", 3.2, "river", 1.3, "cloud-wisp", 0.9, 0.8] as never,
+              "riverbank", 3.2, "river", 1.3, "cloud-wisp", 0.9,
+              "bubble-dome-outer", 1.4, "bubble-dome-inner", 0.9, "dome-highlight", 1.8, 0.8] as never,
             "line-opacity": 0,
           } },
 
@@ -1045,6 +1073,15 @@ export default function WorldMap({
         { id: "sky-jet", type: "line", source: "terrain",
           filter: ["==", ["get", "kind"], "sky-jet"],
           paint: { "line-color": "#dfe7f2", "line-width": 1.6, "line-blur": 4, "line-opacity": 0 } },
+
+        // THE DIVE SCAR. The mirror of the stream, and it lives beside it for
+        // the same reason: both are things happening to the SEA, not to an
+        // island, so neither rides the terrain layers' zoom crossfade — you
+        // should be able to see the water close over from orbit.
+        // Opacity is shimmerOpacity(ch), set per frame in paint().
+        { id: "dive-shimmer", type: "fill", source: "terrain",
+          filter: ["in", ["get", "kind"], ["literal", ["shimmer-soft", "shimmer-core"]]],
+          paint: { "fill-color": byKind(TERRAIN_FILL, "#12384a"), "fill-opacity": 0 } },
 
         // THE VOYAGE: the crew's actual traveled route, drawn up to the reader's
         // chapter. Brighter and heavier than the Grand Line (which is the sea's
@@ -1867,6 +1904,34 @@ function paint(
         ship.glyph.style.filter = "";
         ship.shadowEl.style.display = "none";
       }
+
+      // THE DIVE — the same idea with the sign flipped. Aloft the ship swells
+      // and throws light; under the sea it shrinks, the colour drains out of it,
+      // and the water above closes into a haze. The transform and filter are set
+      // on the GLYPH, an inner node: MapLibre owns the marker element's own
+      // opacity (that is how it fades marks behind the globe), so writing there
+      // gets silently clobbered.
+      //
+      // Written AFTER the ascent block on purpose, and safely: the two events
+      // are 350 chapters apart, so at most one of them is ever mid-transit, and
+      // the surface case of each is a no-op reset.
+      const d = depthT(ch);
+      if (d > 0) {
+        const shrink = 1 - 0.3 * d;
+        ship.glyph.style.transform = `scale(${shrink.toFixed(3)})`;
+        ship.glyph.style.filter =
+          `saturate(${(1 - 0.6 * d).toFixed(2)}) brightness(${(1 - 0.25 * d).toFixed(2)}) ` +
+          `drop-shadow(0 0 ${(6 * d).toFixed(1)}px rgba(63,140,168,0.55))`;
+        // Falling or rising, the surface they left is still up there.
+        if (d < 1) {
+          ship.shadow.setLngLat(diveBase(ch));
+          ship.shadowEl.style.display = "";
+          ship.shadowEl.style.opacity = ((1 - d) * 0.4).toFixed(3);
+          ship.shadowEl.style.transform = `scale(${(1 - d * 0.5).toFixed(3)})`;
+        } else {
+          ship.shadowEl.style.display = "none";
+        }
+      }
     } else {
       ship.marker.getElement().style.display = "none";
       ship.shadowEl.style.display = "none";
@@ -1886,6 +1951,17 @@ function paint(
     "interpolate", ["linear"], ["zoom"],
     2.0, 0,
     3.2, ["case", revealed(ch), ["match", ["get", "kind"], "sky-shadow-core", 0.3, 0.12], 0],
+  ]);
+
+  // THE DIVE SCAR, the same idea upside down. shimmerOpacity is its story beat
+  // (the sea closes at 602-605, stands as a scar while the crew is under, fades
+  // to a trace once they surface). No revealed() gate and no zoom fade, and both
+  // are deliberate: the scar is drawn at DIVE_BASE, off Sabaody — an island the
+  // reader is standing on when it happens — so it is not Fish-Man Island's
+  // geometry leaking, it is the water they just went through.
+  const so = shimmerOpacity(ch);
+  m.setPaintProperty("dive-shimmer", "fill-opacity", [
+    "match", ["get", "kind"], "shimmer-core", 0.85 * so, "shimmer-soft", 0.5 * so, 0,
   ]);
 
   // Revealed islands, styled by how much we actually trust their position.

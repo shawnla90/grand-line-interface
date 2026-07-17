@@ -37,7 +37,10 @@ import sys
 from pathlib import Path
 
 from biomes import biome_for
-from gen_silhouettes import COORD_DECIMALS, HERO_SLUGS, Rng, profile_for, radius_fn
+from gen_silhouettes import (
+    COORD_DECIMALS, HERO_SLUGS, Rng, profile_for, radius_fn,
+    inputs_sha as sil_inputs_sha,
+)
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 GENERATED = REPO_ROOT / "data" / "generated"
@@ -272,10 +275,86 @@ def skypiea(ring: HeroRing, slug: str, debut: int) -> list[dict]:
     return out
 
 
+# MUST MATCH components/fishman.ts:DIVE_BASE. The scar on the surface and the
+# ship that dives through it are drawn by two different systems; if these drift,
+# the ship goes under in one place and the water closes over in another.
+DIVE_BASE = (-48.2843, 2.9)
+
+
+def fish_man_island(ring: HeroRing, slug: str, debut: int) -> list[dict]:
+    """The mirror of skypiea(). Ten thousand metres DOWN instead of up, so the
+    same three ideas invert: the island is domed instead of open to the air, the
+    sea above it is a weight instead of a lift, and the mark on the surface is a
+    scar the ship left rather than a stream carrying it."""
+    rng = Rng(f"terrain:{slug}")
+    out: list[dict] = []
+
+    # THE ABYSS VEIL: an annulus OUTSIDE the coast. Skypiea's shadow says
+    # "there is nothing under me"; this says "there are ten thousand metres of
+    # water on top of me". Sort 0 so it lies beneath everything else.
+    veil = ring.ring(1.18, wobble=0.05, wobble_freq=4, wobble_phase=rng.range(0, TAU))
+    out.append(feat(slug, debut, "abyss-veil", 0, poly(veil)))
+
+    # THE SEABED. The island's own footprint, filled dark, because everything
+    # above this is the biome system telling the truth about the wrong axis:
+    # Fish-Man Island classifies as temperate, which is correct (it is warm and
+    # green down there) and paints it the same meadow-olive as Syrup Village.
+    # Ten thousand metres of water is not a climate, so the depth is painted
+    # here as terrain rather than fought over in biomes.py.
+    out.append(feat(slug, debut, "seabed", 1,
+                    poly(ring.ring(0.995, wobble=0.01, wobble_freq=3,
+                                   wobble_phase=rng.range(0, TAU)))))
+
+    # THE BUBBLE: concentric rings of the dome that keeps the sea out. Drawn as
+    # lines, not fills — you are meant to see the island THROUGH it.
+    for t, kind in ((0.99, "bubble-dome-outer"), (0.82, "bubble-dome-inner")):
+        out.append(feat(slug, debut, kind, 5, line(
+            ring.ring(t, wobble=0.03, wobble_freq=6, wobble_phase=rng.range(0, TAU)))))
+    # the highlight arc — where the light catches the dome
+    out.append(feat(slug, debut, "dome-highlight", 6, line(ring.arc(0.5, 2.0, 0.93))))
+
+    # CORAL. Clustered toward the middle, in two inks so the seabed reads as
+    # grown rather than printed.
+    for i in range(7):
+        th = rng.range(0, TAU)
+        t = rng.range(0.28, 0.72)
+        kind = "coral-a" if i % 2 == 0 else "coral-b"
+        out.append(feat(slug, debut, kind, 2 + (i % 2),
+                        poly(ring.small_blob(rng, th, t, rng.range(0.1, 0.22)))))
+
+    # THE SCAR: where the coated ship went under, off Sabaody. Two stacked
+    # ellipses — the inverse of the sky shadow, which is two stacked rings of
+    # the island. This one is not the island's shape: nothing up there is
+    # casting it. It is just water closing over.
+    for rx, ry, kind in ((0.62, 0.34, "shimmer-soft"), (0.34, 0.19, "shimmer-core")):
+        pts = []
+        for i in range(49):
+            th = TAU * i / 48
+            pts.append([round(DIVE_BASE[0] + math.cos(th) * rx, COORD_DECIMALS),
+                        round(DIVE_BASE[1] + math.sin(th) * ry, COORD_DECIMALS)])
+        out.append(feat(slug, debut, kind, 0, poly(pts)))
+    return out
+
+
 BUILDERS = {
     "punk-hazard": punk_hazard,
     "arabasta-kingdom": arabasta,
     "skypiea": skypiea,
+    "fish-man-island": fish_man_island,
+}
+
+# Terrain reveals when the island is SEEN, which is not always when it is NAMED.
+#
+# For every hero but one those are the same chapter, so `debut` is the gate. Not
+# for Fish-Man Island: its debut_chapter is 68, because Arlong says the name in
+# East Blue — five hundred chapters before anyone goes there. That is a correct
+# fog key for the PIN (the reader does learn the place exists at 68) and a
+# terrible one for the terrain, which would let a chapter-100 reader zoom in and
+# find the bubble dome, the coral, and the shape of a city nobody has visited.
+#
+# A name is not a photograph. This is where that distinction gets written down.
+TERRAIN_SEEN = {
+    "fish-man-island": 604,  # the crew comes through the bottom of the descent
 }
 
 
@@ -297,8 +376,12 @@ def main() -> int:
     for slug, builder in BUILDERS.items():
         assert slug in HERO_SLUGS, f"{slug} must be in gen_silhouettes.HERO_SLUGS (128-pt ring)"
         isl, pos = islands[slug], coords[slug]
-        debut = isl["debut_chapter"]
+        debut = TERRAIN_SEEN.get(slug, isl["debut_chapter"])
         assert isinstance(debut, int), f"{slug} has no debut chapter"
+        assert debut >= isl["debut_chapter"], (
+            f"{slug}: terrain would reveal at ch. {debut}, BEFORE the island itself is charted "
+            f"at ch. {isl['debut_chapter']} — painted ground on a fogged pin"
+        )
         biome = biome_for(isl, pos.get("sea"), biome_overrides)
         ring = HeroRing(isl, pos, biome, voyage_slugs, anchor_slugs)
         features.extend(builder(ring, slug, debut))
@@ -307,6 +390,10 @@ def main() -> int:
         "type": "FeatureCollection",
         "_meta": {
             "generator": "scripts/gen_terrain.py",
+            # Same fingerprint as the silhouettes, and for the same reason: this
+            # geometry is derived from each island's ring, which is itself
+            # derived from presence and the voyage. See gen_silhouettes.
+            "inputs_sha": sil_inputs_sha(),
             "license": "Original generated geometry — MIT, same as the code.",
             "note": "Deterministic per-slug: regenerating without input changes is a no-op diff. "
                     "Shapes are polar fractions of each island's silhouette ring (same seed), "
