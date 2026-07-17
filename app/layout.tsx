@@ -14,6 +14,10 @@ const pirata = Pirata_One({ variable: "--font-pirata", weight: "400", subsets: [
 const fell = IM_Fell_English({ variable: "--font-fell", weight: "400", subsets: ["latin"], style: ["normal", "italic"] });
 
 export const metadata: Metadata = {
+  // Crawlers need ABSOLUTE og:image urls; without a base, Next emits relative
+  // ones and every share preview silently falls back to nothing.
+  // NEXT_PUBLIC_SITE_URL is set in production; localhost is the dev default.
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: `${BRAND.name} — ${BRAND.shortName === BRAND.name ? "a spoiler-safe One Piece atlas" : BRAND.shortName}`,
   description: BRAND.tagline,
 };

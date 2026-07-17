@@ -24,15 +24,21 @@ type Props = {
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   const world = buildWorld(loadCanon());
   const [{ slug }, sp] = await Promise.all([params, searchParams]);
-  const entry = crewEntry(world, slug, readChapter(world, sp));
+  const ctx = readChapter(world, sp);
+  const entry = crewEntry(world, slug, ctx);
   if (entry.state === "uncharted") {
     return {
       title: `Uncharted — ${BRAND.shortName}`,
       description: "Beyond your chapter.",
       robots: { index: false, follow: false },
+      openGraph: { images: [`/api/og/crew/${slug}?ch=${ctx.chapter}`] },
     };
   }
-  return { title: `${entry.data.name} — ${BRAND.shortName}`, description: BRAND.tagline };
+  return {
+    title: `${entry.data.name} — ${BRAND.shortName}`,
+    description: BRAND.tagline,
+    openGraph: { images: [`/api/og/crew/${slug}?ch=${ctx.chapter}`] },
+  };
 }
 
 export default async function Page({ params, searchParams }: Props) {

@@ -197,6 +197,44 @@ def main() -> int:
         present("ch800/mera-mera-no-mi: and now Sabo does",
                 "/fruit/mera-mera-no-mi?ch=800", "Sabo")
 
+        print("\n  the share card")
+
+        def card(path: str) -> tuple[int, bytes]:
+            try:
+                with urllib.request.urlopen(f"{BASE}{path}", timeout=60) as r:
+                    return r.status, r.read()
+            except urllib.error.HTTPError as e:
+                return e.code, e.read()
+
+        s_ok, png_charted = card("/api/og/island/water-7?ch=400")
+        check("a charted card renders", s_ok == 200 and png_charted[:4] == b"\x89PNG",
+              f"status={s_ok} bytes={len(png_charted)}")
+
+        # THE OG ORACLE. A card is the most public surface in the product — it
+        # renders in a group chat, a timeline and a crawler's cache, for people
+        # who never clicked. A fogged share must preview exactly like a typo.
+        _, png_fog = card("/api/og/island/water-7?ch=100")
+        _, png_non = card("/api/og/island/qwertyuiop?ch=100")
+        h_fog = hashlib.sha256(png_fog).hexdigest()
+        h_non = hashlib.sha256(png_non).hexdigest()
+        check("THE OG ORACLE: a fogged card is byte-identical to a nonexistent one",
+              h_fog == h_non, f"{h_fog[:12]} vs {h_non[:12]}")
+        check("and it is NOT the charted card",
+              hashlib.sha256(png_charted).hexdigest() != h_fog)
+
+        # The chapter is really in the image, not just in the URL.
+        _, png_1000 = card("/api/og/character/monkey-d-luffy?ch=1000")
+        _, png_50 = card("/api/og/character/monkey-d-luffy?ch=50")
+        check("the card is stamped with the sharer's chapter (1000 != 50)",
+              hashlib.sha256(png_1000).hexdigest() != hashlib.sha256(png_50).hexdigest())
+
+        # A garbage family is uncharted, not a 500 — and at the SAME chapter it
+        # is the same card, because the footer legitimately stamps the chapter.
+        s_bad, png_bad = card("/api/og/nonsense/water-7?ch=100")
+        check("a bad family is uncharted, not an error",
+              s_bad == 200 and hashlib.sha256(png_bad).hexdigest() == h_fog,
+              f"status={s_bad}")
+
     finally:
         if server:
             server.terminate()

@@ -29,13 +29,15 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   const canon = loadCanon();
   const world = buildWorld(canon);
   const [{ slug }, sp] = await Promise.all([params, searchParams]);
-  const entry = characterEntry(canon, slug, readChapter(world, sp));
+  const ctx = readChapter(world, sp);
+  const entry = characterEntry(canon, slug, ctx);
 
   if (entry.state === "uncharted") {
     return {
       title: `Uncharted — ${BRAND.shortName}`,
       description: "Beyond your chapter.",
       robots: { index: false, follow: false },
+      openGraph: { images: [`/api/og/character/${slug}?ch=${ctx.chapter}`] },
     };
   }
   // The epithet is already bounty-gated by the VM, so the title cannot call him
@@ -44,6 +46,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   return {
     title: `${poster.name} — ${BRAND.shortName}`,
     description: poster.epithet ? `"${poster.epithet}". ${BRAND.tagline}` : BRAND.tagline,
+    openGraph: { images: [`/api/og/character/${slug}?ch=${ctx.chapter}`] },
   };
 }
 

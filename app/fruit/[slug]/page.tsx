@@ -26,15 +26,21 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   const canon = loadCanon();
   const world = buildWorld(canon);
   const [{ slug }, sp] = await Promise.all([params, searchParams]);
-  const entry = fruitEntry(canon, world, slug, readChapter(world, sp));
+  const ctx = readChapter(world, sp);
+  const entry = fruitEntry(canon, world, slug, ctx);
   if (entry.state === "uncharted") {
     return {
       title: `Uncharted — ${BRAND.shortName}`,
       description: "Beyond your chapter.",
       robots: { index: false, follow: false },
+      openGraph: { images: [`/api/og/fruit/${slug}?ch=${ctx.chapter}`] },
     };
   }
-  return { title: `${entry.data.name} — ${BRAND.shortName}`, description: BRAND.tagline };
+  return {
+    title: `${entry.data.name} — ${BRAND.shortName}`,
+    description: BRAND.tagline,
+    openGraph: { images: [`/api/og/fruit/${slug}?ch=${ctx.chapter}`] },
+  };
 }
 
 export default async function Page({ params, searchParams }: Props) {

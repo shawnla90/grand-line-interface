@@ -40,11 +40,13 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
       title: `Uncharted — ${BRAND.shortName}`,
       description: "Beyond your chapter.",
       robots: { index: false, follow: false },
+      openGraph: { images: [`/api/og/island/${slug}?ch=${ctx.chapter}`] },
     };
   }
   return {
     title: `${entry.data.island.name} — ${BRAND.shortName}`,
     description: `${entry.data.island.name}, charted as of chapter ${ctx.chapter}. ${BRAND.tagline}`,
+    openGraph: { images: [`/api/og/island/${slug}?ch=${ctx.chapter}`] },
   };
 }
 
