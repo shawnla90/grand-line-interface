@@ -107,6 +107,34 @@
         "note": "Includes cached context; workload snapshot, not a direct invoice."
       },
       "verified": true
+    },
+    {
+      "phase": "7B-8 (The Populated Sea)",
+      "title": "Bounty progressions, presence 18->47, status timelines, the master filter, poneglyphs, the Fish-Man Island dive, and twelve signature islands",
+      "builder": "Claude Fable 5",
+      "harness": "Claude Code",
+      "role": "plan + build",
+      "commits": [
+        "ef0e9ab",
+        "005a995",
+        "b0cad0d",
+        "d77bfc5",
+        "0d5157d",
+        "29c746d",
+        "6c4c371",
+        "8c4ce15"
+      ],
+      "usage": {
+        "measuredAt": "2026-07-17T03:46:48Z",
+        "inputTokens": 304773111,
+        "cachedInputTokens": 303480916,
+        "uncachedInputTokens": 1292195,
+        "outputTokens": 663872,
+        "reasoningOutputTokens": null,
+        "totalTokens": 305436983,
+        "note": "Measured from the Claude Code session transcript over this run's window (761 assistant turns). Includes cached input, like the Codex counter beside it: a workload snapshot, not an invoice. Reasoning tokens are not itemised by this harness. HONEST DISCREPANCY: the transcript labels every turn in this window claude-opus-4-8 while the runtime identified itself as Fable 5 — recorded as measured rather than reconciled, and worth Shawn's correction."
+      },
+      "verified": false
     }
   ]
 }

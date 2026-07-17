@@ -29,7 +29,9 @@ export const BuildLogEntry = z.object({
       cachedInputTokens: z.number().int().nonnegative(),
       uncachedInputTokens: z.number().int().nonnegative(),
       outputTokens: z.number().int().nonnegative(),
-      reasoningOutputTokens: z.number().int().nonnegative(),
+      /** null when the harness does not itemise it — Claude Code does not.
+       *  Zero would be a claim ("it did no reasoning"); null is the truth. */
+      reasoningOutputTokens: z.number().int().nonnegative().nullable(),
       totalTokens: z.number().int().nonnegative(),
       note: z.string(),
     })

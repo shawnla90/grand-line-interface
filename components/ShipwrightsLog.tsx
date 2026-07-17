@@ -89,8 +89,13 @@ export default function ShipwrightsLog({
                   </div>
                   <div>
                     {formatTokens(e.usage.uncachedInputTokens)} uncached input ·{" "}
-                    {formatTokens(e.usage.outputTokens)} output ·{" "}
-                    {formatTokens(e.usage.reasoningOutputTokens)} reasoning
+                    {formatTokens(e.usage.outputTokens)} output
+                    {/* Only harnesses that itemise reasoning get a reasoning line.
+                        Printing "0 reasoning" for one that does not is a claim,
+                        not a measurement. */}
+                    {e.usage.reasoningOutputTokens !== null && (
+                      <> · {formatTokens(e.usage.reasoningOutputTokens)} reasoning</>
+                    )}
                   </div>
                   <div className="mt-0.5 text-muted-2/70">{e.usage.note}</div>
                 </div>
