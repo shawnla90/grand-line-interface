@@ -1263,19 +1263,52 @@ export default function WorldMap({
   }, [onFollowBreak]);
   const chaseRaf = useRef<number | null>(null);
 
+  // The cinematic journey rides the SAME camera path as the follow chase, on
+  // purpose. The first version gave it its own rAF; it read chapterRef a frame or
+  // two behind the ship and visibly TRAILED the route line. The chase runs inside
+  // the paint effect, in the same commit as each swept update (chapterRef is
+  // refreshed by an earlier effect on the same [chapter] dep), so it is
+  // frame-synced to the ship — which is exactly why manual scrubbing tracks the
+  // line and the old journey did not.
+  const journeyRef = useRef(journey);
+  const journeyZoomRef = useRef(journeyZoom);
+  useEffect(() => {
+    journeyZoomRef.current = journeyZoom;
+  }, [journeyZoom]);
+
   const chase = useCallback(function chaseStep() {
     chaseRaf.current = null;
     const m = map.current;
-    if (!m || !ready.current || !followRef.current) return;
+    if (!m || !ready.current) return;
+    const journeying = journeyRef.current;
+    if (!followRef.current && !journeying) return;
     const { ship: pos } = voyageGeometryAt(expandedWaypoints(world.voyage.waypoints), chapterRef.current);
     if (!pos) return;
     const c = m.getCenter();
     const dLng = ((((pos[0] - c.lng) % 360) + 540) % 360) - 180; // shortest way round
     const dLat = pos[1] - c.lat;
-    if (Math.hypot(dLng, dLat) < 0.02) return; // settled — stop scheduling
-    const k = 0.18;
-    m.jumpTo({ center: [c.lng + dLng * k, c.lat + dLat * k] });
-    chaseRaf.current = requestAnimationFrame(chaseStep);
+    // The journey glues the ship near screen centre so it never drifts off the
+    // line — a much tighter pull than the follow chase, which leads the ship a
+    // little while you scrub. Zoom eases separately toward the schedule's target.
+    const k = journeying ? 0.5 : 0.18;
+    const upd: { center: [number, number]; zoom?: number } = {
+      center: [c.lng + dLng * k, c.lat + dLat * k],
+    };
+    let settledZoom = true;
+    if (journeying && journeyZoomRef.current != null) {
+      const z = m.getZoom();
+      const dz = journeyZoomRef.current - z;
+      if (Math.abs(dz) > 0.008) {
+        upd.zoom = z + dz * 0.12;
+        settledZoom = false;
+      }
+    }
+    if (Math.hypot(dLng, dLat) < 0.02 && settledZoom) return; // fully settled
+    m.jumpTo(upd);
+    // During the journey the paint effect drives a step every swept frame, so
+    // self-scheduling here would double the rate; only the follow-settle case
+    // (no swept change) needs the self-scheduled tail.
+    if (!journeying) chaseRaf.current = requestAnimationFrame(chaseStep);
   }, [world]);
 
   useEffect(() => {
@@ -1288,66 +1321,23 @@ export default function WorldMap({
     chase(); // re-engaging the follow recenters on the ship immediately
   }, [follow, chase]);
 
-  // ─── THE CINEMATIC JOURNEY CAMERA ──────────────────────────────────────────
-  // While the journey runs, the map flies itself: center damps toward the ship
-  // every frame (like the follow chase) and zoom damps toward the schedule's
-  // target (out over open sea, deep at a 3D island). Manual input is locked out
-  // for the duration — no pan, no globe-rotate, no grab-and-spin — so a stray
-  // touch mid-recording cannot derail the shot. Everything restores on stop.
-  const journeyRef = useRef(journey);
-  const journeyZoomRef = useRef(journeyZoom);
-  useEffect(() => {
-    journeyZoomRef.current = journeyZoom;
-  }, [journeyZoom]);
-  const journeyCamRaf = useRef<number | null>(null);
-
+  // ─── THE CINEMATIC JOURNEY: JUST THE HELM LOCK ─────────────────────────────
+  // The camera itself is driven by `chase` above (frame-synced). This effect only
+  // locks manual input for the run — no pan, no globe-rotate, no grab-and-spin,
+  // so a stray touch mid-recording cannot derail the shot — and restores it after.
   useEffect(() => {
     journeyRef.current = journey;
     const m = map.current;
     if (!m || !ready.current) return;
-
     if (journey) {
-      // Lock the helm. The journey owns the camera; the orbit machine checks
-      // journeyRef and stands down (see updateOrbit), so it will not re-enable pan.
       m.dragPan.disable();
       m.dragRotate.disable();
-      const step = () => {
-        const map0 = map.current;
-        if (!map0 || !journeyRef.current) {
-          journeyCamRaf.current = null;
-          return;
-        }
-        const { ship } = voyageGeometryAt(expandedWaypoints(world.voyage.waypoints), chapterRef.current);
-        if (ship) {
-          const c = map0.getCenter();
-          const dLng = ((((ship[0] - c.lng) % 360) + 540) % 360) - 180;
-          const dLat = ship[1] - c.lat;
-          const k = 0.16;
-          const upd: { center: [number, number]; zoom?: number } = {
-            center: [c.lng + dLng * k, c.lat + dLat * k],
-          };
-          const zt = journeyZoomRef.current;
-          if (zt != null) {
-            const z = map0.getZoom();
-            upd.zoom = z + (zt - z) * 0.09; // gentle so arrivals ease, not snap
-          }
-          map0.jumpTo(upd);
-        }
-        journeyCamRaf.current = requestAnimationFrame(step);
-      };
-      journeyCamRaf.current = requestAnimationFrame(step);
-      return () => {
-        if (journeyCamRaf.current !== null) cancelAnimationFrame(journeyCamRaf.current);
-        journeyCamRaf.current = null;
-      };
+      chase(); // begin tracking immediately, without waiting for the first frame
+    } else {
+      m.dragPan.enable();
+      if (m.getProjection()?.type === "globe") m.dragRotate.enable();
     }
-
-    // Journey ended — hand the helm back exactly as the projection expects.
-    if (journeyCamRaf.current !== null) cancelAnimationFrame(journeyCamRaf.current);
-    journeyCamRaf.current = null;
-    m.dragPan.enable();
-    if (m.getProjection()?.type === "globe") m.dragRotate.enable();
-  }, [journey, world]);
+  }, [journey, chase]);
 
   const [hover, setHover] = useState<{
     x: number;

@@ -62,6 +62,7 @@ function smooth(x: number): number {
 export const DEEP_VOYAGE_SLUGS = new Set<string>([
   "conomi-islands", // Arlong Park
   "loguetown",
+  "skypiea", // the Knock-Up Stream — the ship rides the water column up; the hero beat
   "sabaody-archipelago",
   "fish-man-island",
   "dressrosa",
