@@ -92,6 +92,61 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+# The two absolute prefixes the asset track stamps into its contracts. They are
+# where an asset was AUTHORED, on one particular Mac. Both denote the same two
+# places in any checkout, and the asset track states the rule itself: "Hashes
+# remain the authority. The absolute string is provenance, not a runtime path."
+PROVENANCE_PREFIXES = (
+    # the sibling Blender workspace -> the in-repo copy. The two original pilots
+    # (skypiea-knock-up-stream, wano-waterfall-ascent) were authored there and
+    # still carry it; the new batch carries the in-repo prefix. Longest first:
+    # "/Users/.../dead-reckoning" is a prefix of "/Users/.../dead-reckoning-blender-assets",
+    # so testing the short one first would mangle every sibling path into
+    # "<ROOT>/-blender-assets/...".
+    ("/Users/shawnos.ai/dead-reckoning-blender-assets", lambda: ASSETS),
+    ("/Users/shawnos.ai/dead-reckoning", lambda: ROOT),
+)
+
+
+def resolve_evidence(raw: str, contract: str) -> Path:
+    """An evidence path -> a real file in THIS checkout.
+
+    THE BUG THIS FIXES WAS INVISIBLE HERE AND FATAL EVERYWHERE ELSE. This used to
+    read:
+
+        p = Path(ev["path"])
+        if not p.is_absolute():
+            p = ROOT / p
+        if not p.exists():
+            raise DataError(...)
+
+    which resolves a RELATIVE path against the repo and uses an ABSOLUTE one
+    verbatim. Every contract's evidence path is now absolute
+    ("/Users/shawnos.ai/dead-reckoning/data/generated/islands.json"), so the
+    branch that repairs it never ran. On the machine that authored the contracts
+    the file is exactly there and the sync passes; on Railway, in CI, or in any
+    fresh clone it does not exist and this RAISES — the app cannot build. A bug
+    that only one computer in the world cannot see.
+
+    So absolute strings are never used as paths. They are translated by prefix,
+    and the sha256 beside them decides whether we got the right bytes. An
+    absolute path we do not recognise is a hard error rather than a skip: silently
+    ignoring evidence would turn the drift tripwire off without saying so, which
+    is the one failure mode this file's whole design is built to prevent.
+    """
+    if not raw.startswith("/"):
+        return ROOT / raw
+    for prefix, base in PROVENANCE_PREFIXES:
+        if raw == prefix or raw.startswith(prefix + "/"):
+            return base() / raw[len(prefix):].lstrip("/")
+    raise DataError(
+        f"{contract}: evidence path {raw!r} is absolute and outside the two known "
+        f"provenance roots {[p for p, _ in PROVENANCE_PREFIXES]}. Refusing to guess "
+        f"where it lives — an unrecognised absolute path would work on one machine "
+        f"and break the build on every other."
+    )
+
+
 def validate(scene: dict, path: str) -> None:
     """Mirror the contract's own schema. Tolerant where the schema is (it has no
     additionalProperties:false, and every real file carries priority/topology/
@@ -167,9 +222,7 @@ def main() -> int:
         for ev in scene["evidence"]:
             if ev.get("ownership") != "atlas_read_only":
                 continue
-            p = Path(ev["path"])
-            if not p.is_absolute():
-                p = ROOT / p
+            p = resolve_evidence(ev["path"], path)
             if not p.exists():
                 raise DataError(f"{path}: evidence names {ev['path']}, which is not on disk")
             got = sha256(p)
