@@ -120,11 +120,17 @@ Both syncs are polite (sequential, ~1 req/sec, explicit User-Agent, retries) and
 - **`/admin/place`** — the dev-only coordinate tool (see Contributing).
 - **Crews & characters on the map, chapter-gated** — 10 crews (the Yonko, Kid, Law/Heart, Kuja, Donquixote, Buggy) fly their Jolly Rogers at authored *presence windows*, so they **move**: Whitebeard sails the New World, appears at Marineford for the war, and is gone after it. 8 Warlords and ~14 named crew members ride as portrait rings over ink orbs, a "who sails here" toggle, and live crew chips in the legend. All windows hand-authored in `canon/crew_presence.json`, `verified:false` until manga-checked — same honesty as every pin.
 
+- **The By Crew / By Devil Fruit / By Haki lens** *(Phase 6A)* — recolor the world by what a character is: crew affiliation, revealed fruit nature, or highest revealed haki. `?lens=` in the URL; every lens shows revealed facts only, so at ch. 1 each shows exactly nothing.
+- **Every dot a door** *(Phase 8)* — wanted-poster entry pages for `/character/[slug]`, `/crew/[slug]`, `/fruit/[slug]`, with OG cards.
+- **The third dimension** *(Phase 9)* — a three.js GLB layer on the MapLibre globe; 11 runtime island models (flag-gated, off in prod).
+
 **Next**
-- **The By Crew / By Devil Fruit / By Haki lens** — recolor the world by what a character is.
+- **The canon events layer** — the duels, wars, deaths and declarations as chapter-gated map facts (the Zoro–Mihawk duel at the Baratie, the war at Marineford), hand-authored in `canon/events.json` with the same honesty rules as every pin.
 - **Expand the roster** — the rest of the Worst Generation (Hawkins, Drake, Bonney, Capone, Urouge, Apoo), Sun Pirates, Baroque Works. The schema is done; it's authoring + one Jolly Roger each. `scripts/seed_presence.py` prints a scaffold.
-- **Verify the canon** — flip `verified: false → true` on crew joins, ships, presence windows, and island positions.
+- **Verify the canon** — flip `verified: false → true` on crew joins, ships, presence windows, and island positions. The full debt is enumerated by `scripts/verification_queue.py` → [`data/review/verification-queue.md`](data/review/verification-queue.md).
 - **Iceberg lore & theory layers** — see "Fork it" above.
+
+The cross-track master plan (three parallel builders, one reconciliation point) lives in [`docs/ROADMAP.md`](docs/ROADMAP.md).
 
 ---
 
