@@ -881,13 +881,61 @@ const GLB_MIN_ZOOM = 4.6;
 const GLB_FULL_ZOOM = 5.4;
 
 /**
- * The live model, or null when its gate is shut. Module scope because paint() is
- * module scope and there is exactly one map; `unload_when_hidden: true` means
- * this is null far more often than not.
+ * FISH-MAN ISLAND — the first Blender ISLAND on the globe, and a different
+ * animal from the Knock-Up Stream in every way that matters.
+ *
+ * Its flag is its own: runtime-3d.json v2 moved the flag per-model, and this
+ * one declares NEXT_PUBLIC_RUNTIME_3D_ASSETS. The two pilots keep
+ * NEXT_PUBLIC_RUNTIME_3D_TRANSITIONS. Not a tidy-up to merge them — they gate
+ * different tracks, and the asset track names both.
+ *
+ * THE SCALE IS MEASURED HERE, not derived, because this model is GEO-REFERENCED
+ * and the Skypiea sprite is not. island-plates.json hands us a coastline_contract
+ * whose seed is "silhouette:fish-man-island" — our OWN deterministic generator's
+ * parameters — plus the resulting geometry/fish-man-island-coastline.geojson. Put
+ * the GLB's horizontal bounds next to that coastline's bbox and they are the same
+ * number to four decimals: X span 5.0274 == lng span 5.0274, Z span 3.5254 ==
+ * lat span 3.5254. THE MODEL IS AUTHORED IN DEGREES. Both axes independently give
+ * ~111,190 m/unit and agree to 0.01%, which is just metres-per-degree.
+ *
+ * So: one unit is one degree of latitude. Not a guess, and not the same trap as
+ * Skypiea — there the sprite declares "no geographic coastline clipping" and no
+ * scale at all, so its metres-per-unit had to be derived from its two anchors.
+ * Here the asset track shipped the footprint and we measured it.
+ *
+ * (The image-source corners would have said 127,411 m/unit — a 14% margin around
+ * the render. Framing, not semantics, exactly as on the Knock-Up Stream.)
+ *
+ * MERCATOR ONLY, which is THEIR call and not ours. The model declares
+ * `projection_support: ["mercator_closeup"]` and `globe_policy: "transparent
+ * fallback; do not apply a naive mercator model matrix on globe"`. Our layer is
+ * not naive — it routes through getMatrixForModel and we have pixels proving the
+ * Knock-Up Stream draws correctly on the globe — so the premise behind that
+ * restriction does not hold for us. But `projection_support` is DATA, and the
+ * manifest is the boundary; overriding it here because we happen to know better
+ * is how a track stops being able to trust the other one. It is one field for
+ * them to widen. Reported, not patched.
  */
+const RUNTIME_ASSETS_ON = process.env.NEXT_PUBLIC_RUNTIME_3D_ASSETS === "1";
+const FISH_MAN_GLB = "/art/runtime/fish-man-island.glb";
+const FISH_MAN_GLB_ID = "fishman-glb";
+/** islands.coords.json == the manifest's integration.anchor, byte-identical. */
+const FISH_MAN_ANCHOR: [number, number] = [-5.9349, -2.8548];
+/** integration.chapter_beats.base_reveal (and safe_full_scene). */
+const FISH_MAN_REVEAL = 68;
+/** Measured against the shipped coastline: 1 unit == 1 degree. */
+const DEG_PER_UNIT_M = 111_195;
+
+/**
+ * The live models, or null when their gates are shut. Module scope because
+ * paint() is module scope and there is exactly one map; `unload_when_hidden:
+ * true` means these are null far more often than not.
+ */
+let fishManLayer: GlbLayer | null = null;
 let knockUpLayer: GlbLayer | null = null;
 /** The chapter the model's per-frame opacity closure reads. paint() owns it. */
 let knockUpChapter = 1;
+let fishManChapter = 1;
 
 /** 0..1 for the model: the zoom hand-off, times the beat the manifest names. */
 function glbOpacity(m: MLMap, ch: number): number {
@@ -925,6 +973,38 @@ function rasterOpacity(ch: number): ExpressionSpecification {
  * Add-on-demand IS the gate, same as the raster: a layer's onAdd is what fetches
  * three.js and the 2.5MB model, so a chapter-1 reader at zoom 6 requests neither.
  */
+/**
+ * Fish-Man Island's gate. Same four conditions, one of them for real this time:
+ * `projection_support: ["mercator_closeup"]`, so the globe gets the flat plate
+ * and only mercator gets the model. That is the manifest's call — see the block
+ * above. Reuses createGlbLayer rather than growing a second loader, which is the
+ * asset track's integration rule #1: "do not create one loader per island."
+ */
+function syncFishManGlb(m: MLMap, ch: number) {
+  fishManChapter = ch;
+  const open =
+    ch >= FISH_MAN_REVEAL &&
+    m.getZoom() >= GLB_MIN_ZOOM &&
+    m.getProjection()?.type === "mercator";
+  const present = !!m.getLayer(FISH_MAN_GLB_ID);
+  if (open && !present) {
+    fishManLayer = createGlbLayer({
+      id: FISH_MAN_GLB_ID,
+      url: FISH_MAN_GLB,
+      lngLat: FISH_MAN_ANCHOR,
+      metersPerUnit: DEG_PER_UNIT_M,
+      opacity: () => {
+        const z = m.getZoom();
+        return Math.min(1, Math.max(0, (z - GLB_MIN_ZOOM) / (GLB_FULL_ZOOM - GLB_MIN_ZOOM)));
+      },
+    });
+    m.addLayer(fishManLayer, "voyage-glow");
+  } else if (!open && present) {
+    m.removeLayer(FISH_MAN_GLB_ID);
+    fishManLayer = null;
+  }
+}
+
 function syncKnockUpGlb(m: MLMap, ch: number) {
   knockUpChapter = ch;
   const open = columnOpacity(ch) > 0 && m.getZoom() >= GLB_MIN_ZOOM;
@@ -1595,10 +1675,16 @@ export default function WorldMap({
     // The model's gate is half chapter and half ZOOM, and paint() only runs on
     // the chapter tween — so without this, diving toward an erupting stream would
     // never add the layer. Cheap: a getLayer check and an early return.
-    if (RUNTIME_3D_ON) {
-      const syncGlb = () => syncKnockUpGlb(m!, chapterRef.current);
+    if (RUNTIME_3D_ON || RUNTIME_ASSETS_ON) {
+      const syncGlb = () => {
+        if (RUNTIME_3D_ON) syncKnockUpGlb(m!, chapterRef.current);
+        // Fish-Man Island also gates on PROJECTION, and setProjection fires
+        // neither zoom nor moveend — hence the explicit third listener.
+        if (RUNTIME_ASSETS_ON) syncFishManGlb(m!, chapterRef.current);
+      };
       m.on("zoom", syncGlb);
       m.on("moveend", syncGlb);
+      m.on("projectiontransition", syncGlb);
     }
 
     // A drag or a user rotate is the reader taking the wheel — follow yields.
@@ -2292,6 +2378,7 @@ function paint(
     }
     syncKnockUpGlb(m, ch);
   }
+  if (RUNTIME_ASSETS_ON) syncFishManGlb(m, ch);
 
   // THE DIVE SCAR, the same idea upside down. shimmerOpacity is its story beat
   // (the sea closes at 602-605, stands as a scar while the crew is under, fades

@@ -1,18 +1,16 @@
 {
   "_meta": {
-    "generated_at": "2026-07-17T05:33:13.289106+00:00",
+    "generated_at": "2026-07-17T06:25:08.917063+00:00",
     "generator": "scripts/sync_scenes.py",
     "source": "blender-assets/ (read-only; owned by the Blender asset track)",
-    "warnings": [
-      "EVIDENCE DRIFT: 11 contracts were built against canon/islands.coords.json at 9dce495d7b82; it is now f4c2b67c9e98. Their claims about their own scenes are unaffected, but any atlas_anchor derived from that file is stale. The asset track should re-run scripts/build_narrative_scene_contracts.py."
-    ],
+    "warnings": [],
     "note": "Joined from the narrative-scene INDEX (never a glob — two other schema_version-2 contracts are not v2 narrative scenes). integration_ready is a queue property, joined here; it is never a field on a scene.",
     "counts": {
       "scenes": 11,
-      "with_blockout": 2,
-      "runtime_exportable": 0,
-      "integration_ready": 0,
-      "evidence_sha256_checked": 22
+      "with_blockout": 11,
+      "runtime_exportable": 11,
+      "integration_ready": 11,
+      "evidence_sha256_checked": 55
     }
   },
   "scenes": [
@@ -254,30 +252,30 @@
         },
         {
           "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
-          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "sha256": "f4c2b67c9e98606bf4eb297266c81e11f0b3f1c7ef70ba7f6032906a68dd36eb",
           "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/research/narrative-scene-overrides.json",
           "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/contracts/narrative-scene.schema.json",
           "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         }
       ],
       "queue": {
-        "state": "visual_contract",
+        "state": "integration_ready",
         "kind": "nested_landmark_compound",
-        "next": "pagoda_headquarters_and_map_room_blockout",
+        "next": "claude_code_runtime_loader",
         "replaced_as_integration_unit_by": null
       },
       "blockout": {
-        "exists": false,
-        "runtime_export": false,
-        "maturity": null
+        "exists": true,
+        "runtime_export": true,
+        "maturity": "runtime_blockout_v1"
       },
       "source_ref": "blender-assets/contracts/conomi-arlong-park.visual.json"
     },
@@ -763,30 +761,30 @@
         },
         {
           "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
-          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "sha256": "f4c2b67c9e98606bf4eb297266c81e11f0b3f1c7ef70ba7f6032906a68dd36eb",
           "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/research/narrative-scene-overrides.json",
           "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/contracts/narrative-scene.schema.json",
           "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         }
       ],
       "queue": {
-        "state": "visual_contract",
+        "state": "integration_ready",
         "kind": "kingdom_region_system",
-        "next": "kingdom_route_board_then_alubarna_event_blockout",
+        "next": "claude_code_runtime_loader",
         "replaced_as_integration_unit_by": null
       },
       "blockout": {
-        "exists": false,
-        "runtime_export": false,
-        "maturity": null
+        "exists": true,
+        "runtime_export": true,
+        "maturity": "runtime_blockout_v1"
       },
       "source_ref": "blender-assets/contracts/arabasta-kingdom.visual.json"
     },
@@ -1023,30 +1021,30 @@
         },
         {
           "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
-          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "sha256": "f4c2b67c9e98606bf4eb297266c81e11f0b3f1c7ef70ba7f6032906a68dd36eb",
           "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/research/narrative-scene-overrides.json",
           "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/contracts/narrative-scene.schema.json",
           "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         }
       ],
       "queue": {
-        "state": "visual_contract",
+        "state": "integration_ready",
         "kind": "island_town_system",
-        "next": "grave_mountain_silhouette_study",
+        "next": "claude_code_runtime_loader",
         "replaced_as_integration_unit_by": null
       },
       "blockout": {
-        "exists": false,
-        "runtime_export": false,
-        "maturity": null
+        "exists": true,
+        "runtime_export": true,
+        "maturity": "runtime_blockout_v1"
       },
       "source_ref": "blender-assets/contracts/cactus-island-whisky-peak.visual.json"
     },
@@ -1403,30 +1401,30 @@
         },
         {
           "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
-          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "sha256": "f4c2b67c9e98606bf4eb297266c81e11f0b3f1c7ef70ba7f6032906a68dd36eb",
           "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/research/narrative-scene-overrides.json",
           "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/contracts/narrative-scene.schema.json",
           "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         }
       ],
       "queue": {
-        "state": "system_sketch",
+        "state": "integration_ready",
         "kind": "island_bridge_system",
-        "next": "pre_pica_and_post_pica_blender_blockouts",
+        "next": "claude_code_runtime_loader",
         "replaced_as_integration_unit_by": null
       },
       "blockout": {
-        "exists": false,
-        "runtime_export": false,
-        "maturity": null
+        "exists": true,
+        "runtime_export": true,
+        "maturity": "runtime_blockout_v1"
       },
       "source_ref": "blender-assets/contracts/dressrosa-green-bit.visual.json"
     },
@@ -1691,30 +1689,30 @@
         },
         {
           "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
-          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "sha256": "f4c2b67c9e98606bf4eb297266c81e11f0b3f1c7ef70ba7f6032906a68dd36eb",
           "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/research/narrative-scene-overrides.json",
           "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/contracts/narrative-scene.schema.json",
           "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         }
       ],
       "queue": {
-        "state": "system_sketch",
+        "state": "integration_ready",
         "kind": "moving_world_entity",
-        "next": "rigged_scale_blockout_and_moving_anchor_test",
+        "next": "claude_code_runtime_loader",
         "replaced_as_integration_unit_by": null
       },
       "blockout": {
-        "exists": false,
-        "runtime_export": false,
-        "maturity": null
+        "exists": true,
+        "runtime_export": true,
+        "maturity": "runtime_blockout_v1"
       },
       "source_ref": "blender-assets/contracts/zou-zunesha.visual.json"
     },
@@ -1915,30 +1913,30 @@
         },
         {
           "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
-          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "sha256": "f4c2b67c9e98606bf4eb297266c81e11f0b3f1c7ef70ba7f6032906a68dd36eb",
           "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/research/narrative-scene-overrides.json",
           "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/contracts/narrative-scene.schema.json",
           "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         }
       ],
       "queue": {
-        "state": "visual_contract",
+        "state": "integration_ready",
         "kind": "mountain_city_system",
-        "next": "mountain_exterior_to_city_bowl_reveal_sketch",
+        "next": "claude_code_runtime_loader",
         "replaced_as_integration_unit_by": null
       },
       "blockout": {
-        "exists": false,
-        "runtime_export": false,
-        "maturity": null
+        "exists": true,
+        "runtime_export": true,
+        "maturity": "runtime_blockout_v1"
       },
       "source_ref": "blender-assets/contracts/amazon-lily.visual.json"
     },
@@ -2206,30 +2204,30 @@
         },
         {
           "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
-          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "sha256": "f4c2b67c9e98606bf4eb297266c81e11f0b3f1c7ef70ba7f6032906a68dd36eb",
           "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/research/narrative-scene-overrides.json",
           "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/contracts/narrative-scene.schema.json",
           "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         }
       ],
       "queue": {
-        "state": "visual_contract",
+        "state": "integration_ready",
         "kind": "vertical_political_world_structure",
-        "next": "spoiler_safe_red_line_cross_section",
+        "next": "claude_code_runtime_loader",
         "replaced_as_integration_unit_by": null
       },
       "blockout": {
-        "exists": false,
-        "runtime_export": false,
-        "maturity": null
+        "exists": true,
+        "runtime_export": true,
+        "maturity": "runtime_blockout_v1"
       },
       "source_ref": "blender-assets/contracts/mary-geoise-red-line.visual.json"
     },
@@ -2525,30 +2523,30 @@
         },
         {
           "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
-          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "sha256": "f4c2b67c9e98606bf4eb297266c81e11f0b3f1c7ef70ba7f6032906a68dd36eb",
           "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/research/narrative-scene-overrides.json",
           "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/contracts/narrative-scene.schema.json",
           "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         }
       ],
       "queue": {
-        "state": "system_sketch",
+        "state": "integration_ready",
         "kind": "mangrove_grove_network",
-        "next": "numbered_grove_graph_and_root_kit_blockout",
+        "next": "claude_code_runtime_loader",
         "replaced_as_integration_unit_by": null
       },
       "blockout": {
-        "exists": false,
-        "runtime_export": false,
-        "maturity": null
+        "exists": true,
+        "runtime_export": true,
+        "maturity": "runtime_blockout_v1"
       },
       "source_ref": "blender-assets/contracts/sabaody-grove-network.visual.json"
     },
@@ -2848,30 +2846,30 @@
         },
         {
           "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
-          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "sha256": "f4c2b67c9e98606bf4eb297266c81e11f0b3f1c7ef70ba7f6032906a68dd36eb",
           "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/research/narrative-scene-overrides.json",
           "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/contracts/narrative-scene.schema.json",
           "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         }
       ],
       "queue": {
-        "state": "system_sketch",
+        "state": "integration_ready",
         "kind": "sky_archipelago_system",
-        "next": "cloud_sea_upper_yard_and_giant_jack_blockout",
+        "next": "claude_code_runtime_loader",
         "replaced_as_integration_unit_by": null
       },
       "blockout": {
-        "exists": false,
-        "runtime_export": false,
-        "maturity": null
+        "exists": true,
+        "runtime_export": true,
+        "maturity": "runtime_blockout_v1"
       },
       "source_ref": "blender-assets/contracts/skypiea-sky-system.visual.json"
     },
@@ -3084,30 +3082,30 @@
         },
         {
           "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
-          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "sha256": "f4c2b67c9e98606bf4eb297266c81e11f0b3f1c7ef70ba7f6032906a68dd36eb",
           "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/research/narrative-scene-overrides.json",
           "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/contracts/narrative-scene.schema.json",
           "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         }
       ],
       "queue": {
-        "state": "scene_3d",
+        "state": "integration_ready",
         "kind": "city_landmark_event_system",
-        "next": "panel_accuracy_review_then_architecture_material_and_event_camera_pass",
+        "next": "claude_code_runtime_loader",
         "replaced_as_integration_unit_by": null
       },
       "blockout": {
         "exists": true,
-        "runtime_export": false,
-        "maturity": "3d_blockout_not_final_art"
+        "runtime_export": true,
+        "maturity": "runtime_blockout_v1"
       },
       "source_ref": "blender-assets/contracts/loguetown-roger-execution.visual.json"
     },
@@ -3592,30 +3590,30 @@
         },
         {
           "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
-          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "sha256": "f4c2b67c9e98606bf4eb297266c81e11f0b3f1c7ef70ba7f6032906a68dd36eb",
           "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/research/narrative-scene-overrides.json",
           "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         },
         {
-          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/contracts/narrative-scene.schema.json",
           "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
-          "ownership": "asset_workspace"
+          "ownership": "atlas_read_only"
         }
       ],
       "queue": {
-        "state": "scene_3d",
+        "state": "integration_ready",
         "kind": "sea_train_route_network",
-        "next": "route_panel_verification_then_maplibre_line_proof_and_train_detail_pass",
+        "next": "claude_code_runtime_loader",
         "replaced_as_integration_unit_by": null
       },
       "blockout": {
         "exists": true,
-        "runtime_export": false,
-        "maturity": "3d_blockout_not_final_art"
+        "runtime_export": true,
+        "maturity": "runtime_blockout_v1"
       },
       "source_ref": "blender-assets/contracts/water-7-sea-train-network.visual.json"
     }

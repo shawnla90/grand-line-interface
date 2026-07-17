@@ -1,40 +1,57 @@
 #!/usr/bin/env python3
 """sync_runtime_assets.py — copy the SANCTIONED runtime assets into public/.
-MACHINE-OWNED.
+MACHINE-OWNED. Schema version 2.
 
 THE MANIFEST IS THE BOUNDARY, NOT CHAT HISTORY. The asset track's WORKFLOW says
 it in those words: "Claude Code reads the manifests and integrates only approved
 assets behind chapter gates and a feature flag." So this script reads
-manifests/runtime-3d.json, checks the asset's own queue state, and copies
+manifests/runtime-3d.json, checks each asset's own queue state, and copies
 nothing else. A human deciding an asset "looks done" is not an input here.
 
-WHAT IT REFUSES:
-  - anything whose queue state is not `integration_ready`. Today that is every
-    one of the 11 v2 narrative scenes (they are at visual_contract /
-    system_sketch / scene_3d), and both of their blockouts are additionally
-    marked runtime_export:false, hard-asserted by the asset track's own
-    verifier. A `scene_3d` entry is reviewable source, not permission.
-  - anything whose bytes do not match the sha256 the manifest recorded.
+WHAT IT COPIES: the `glb` and the `fallback.path` of every model whose queue
+state is `integration_ready` and whose bytes match the manifest's sha256 — the
+16 validated models of the runtime batch.
 
-WHAT IT COPIES: the fallback raster AND the .glb of the two entries that ARE
-integration_ready and addressed to us (`next: claude_code_pilot`) — the Skypiea
-Knock-Up Stream and the Wano waterfall ascent.
+WHAT IT REFUSES, and why the last one is the point of this file:
 
-The GLB is new here, and the reason it was refused has expired rather than been
-overruled. This script used to say: "NOT the .glb — the GLB upgrade needs a 3D
-renderer MapLibre does not have (a CustomLayerInterface plus three.js, ~600KB).
-The Skypiea ascent was built deliberately without three.js; adding it should be a
-decision someone makes on purpose, not a side effect of a sync script." That was
-true and it held the line for exactly as long as it should have. The decision has
-now been made on purpose: components/glb-layer.ts is that renderer. So the
-condition is met and the refusal lifts. `runtime_policy.default` is still
-"fallback_raster" and both files still ship — the raster is what a far-zoom or
-globe-projection reader sees, per `enable_glb_when`, so it is the default in
-fact and not only in the manifest.
+  - anything whose queue state is not `integration_ready`. A `scene_3d` or
+    `study_only` entry is reviewable source, not permission.
+  - anything whose bytes do not match the sha256 the manifest recorded. That is
+    the asset track's signature on this exact file; we serve these bytes to a
+    browser, so the signature is the gate and not a smell test.
+  - ANY MODEL DECLARING A WITHHELD COMPONENT IT CANNOT EXPRESS.
+
+That last rule exists because the batch contains real instances of it, and
+nothing else catches them. The handoff's acceptance list says "A GLB node is
+never rendered before its component gate", and runtime_policy.node_gate_policy
+says to "read component_id, reveal_chapter, gate_confidence, and default_hidden
+from glTF node extras". So a component gate marked `default_hidden` or
+`chapter_to_verify` is only enforceable if some node in the GLB carries that
+component_id in its extras. Two models declare gates they cannot honour:
+
+  arabasta-kingdom :: yuba-oasis        default_hidden, and 9 nodes named
+                                        "yuba district", "yuba 1 house", ... are
+                                        in the file with NO component_id on them.
+  water-7-sea-train-network :: day-station, rocketman, aqua-laguna
+                                        default_hidden; "Day Station" and the
+                                        Shift Station nodes are present, and the
+                                        GLB's only extras are `coordinate_status`
+                                        and `preview_vehicle` — not one
+                                        component_id in the whole file.
+
+Rendering either would draw geometry the manifest itself says to hide. Contrast
+skypiea-sky-system, which declares giant-jack and golden-belfry-cloud withheld
+and simply DOES NOT SHIP THAT GEOMETRY — withheld at export, nothing to leak,
+correct. That is the difference this check measures: not "does the model declare
+a gate" but "could the app actually honour it".
+
+Both of the asset track's verifiers pass all 16 models, so this is not a
+disagreement with them — they check that the models are well-formed, which they
+are. Nobody was checking whether a declared gate had anything to bite on.
 
 Inputs   blender-assets/manifests/runtime-3d.json
          blender-assets/queue/asset-requests.json
-Output   public/art/runtime/<id>.png + public/art/runtime/<id>.glb
+Output   public/art/runtime/<id>.glb + public/art/runtime/<id>.png
          (+ data/generated/runtime_assets.json)
 
 Run: python3 scripts/sync_runtime_assets.py
@@ -45,6 +62,7 @@ from __future__ import annotations
 import hashlib
 import json
 import shutil
+import struct
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -63,13 +81,51 @@ def sha256(p: Path) -> str:
     return hashlib.sha256(p.read_bytes()).hexdigest()
 
 
+def gltf_json(p: Path) -> dict:
+    """The JSON chunk of a .glb. We only ever READ these bytes."""
+    b = p.read_bytes()
+    if b[:4] != b"glTF":
+        raise DataError(f"{p.name} is not a glb")
+    clen, _ = struct.unpack("<II", b[12:20])
+    return json.loads(b[20 : 20 + clen])
+
+
+def tagged_component_ids(j: dict) -> dict[str, int]:
+    """component_id -> node count, read from glTF node extras."""
+    out: dict[str, int] = {}
+    for n in j.get("nodes", []):
+        cid = (n.get("extras") or {}).get("component_id")
+        if cid:
+            out[cid] = out.get(cid, 0) + 1
+    return out
+
+
+def ungateable(m: dict, j: dict) -> list[str]:
+    """Withheld component gates with no node in the GLB to hide. See the header."""
+    tagged = tagged_component_ids(j)
+    bad = []
+    for g in (m.get("integration") or {}).get("component_gates") or []:
+        withheld = g.get("default_hidden") or g.get("verification") == "chapter_to_verify"
+        if not withheld:
+            continue
+        if g["id"] in tagged:
+            continue
+        # No tagged node. Harmless IF the geometry is absent (withheld at export,
+        # like skypiea's giant-jack); a leak if it is present but untagged. We
+        # cannot prove absence from a name, so the check is conservative in the
+        # only direction that is safe: refuse, and say which gate.
+        why = "default_hidden" if g.get("default_hidden") else str(g.get("verification"))
+        bad.append(f"{g['id']} ({why})")
+    return bad
+
+
 def main() -> int:
     manifest = json.loads((ASSETS / "manifests" / "runtime-3d.json").read_text())
     queue = {a["id"]: a for a in json.loads((ASSETS / "queue" / "asset-requests.json").read_text())["assets"]}
 
-    flag = manifest.get("feature_flag")
-    if not flag:
-        raise DataError("runtime-3d.json declares no feature_flag — refusing to invent one")
+    schema = manifest.get("schema_version")
+    if schema != 2:
+        raise DataError(f"runtime-3d.json is schema_version {schema!r}; this script reads 2")
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     copied, refused = [], []
@@ -82,65 +138,90 @@ def main() -> int:
             refused.append({"id": mid, "why": f"queue state is {state!r}, not integration_ready"})
             continue
 
-        # The GLB's integrity. This was always checked, back when the bytes were
-        # only inspected and not shipped — the reasoning being that if they moved
-        # under the manifest the whole entry was suspect and the raster beside it
-        # was no more trustworthy than the model. Now that we serve these bytes to
-        # a browser it stops being a smell test and becomes the actual gate: the
-        # sha256 in `build` is the asset track's signature on this exact file.
         glb = ASSETS / m["glb"]
         want = (m.get("build") or {}).get("glb_sha256")
         if not glb.exists():
             refused.append({"id": mid, "why": f"glb missing: {m['glb']}"})
             continue
         if not want:
-            refused.append({"id": mid, "why": "manifest declares no build.glb_sha256 — refusing to ship unsigned bytes"})
+            refused.append({"id": mid, "why": "no build.glb_sha256 — refusing to ship unsigned bytes"})
             continue
         if sha256(glb) != want:
             refused.append({"id": mid, "why": "glb bytes do not match the manifest's sha256"})
             continue
 
-        src = ASSETS / m["fallback_raster"]
-        if not src.exists():
-            refused.append({"id": mid, "why": f"fallback raster missing: {m['fallback_raster']}"})
+        j = gltf_json(glb)
+        bad = ungateable(m, j)
+        if bad:
+            refused.append({
+                "id": mid,
+                "why": "declares withheld component(s) with no tagged node to hide: " + ", ".join(bad),
+                "actionable": "tag the geometry with component_id in the glTF node extras, or omit it from the export",
+            })
             continue
 
-        dst = OUT_DIR / f"{mid}.png"
-        shutil.copyfile(src, dst)
+        # The fallback. v2 moved it under `fallback` with its own sha256; the two
+        # pilots still carry the v1 `fallback_raster` string beside it.
+        fb = m.get("fallback") or {}
+        fb_path = fb.get("path") or m.get("fallback_raster")
+        if not fb_path:
+            refused.append({"id": mid, "why": "no fallback declared"})
+            continue
+        src = ASSETS / fb_path
+        if not src.exists():
+            refused.append({"id": mid, "why": f"fallback missing: {fb_path}"})
+            continue
+        if fb.get("sha256") and sha256(src) != fb["sha256"]:
+            refused.append({"id": mid, "why": "fallback bytes do not match the manifest's sha256"})
+            continue
+
+        png_dst = OUT_DIR / f"{mid}.png"
         glb_dst = OUT_DIR / f"{mid}.glb"
+        shutil.copyfile(src, png_dst)
         shutil.copyfile(glb, glb_dst)
-        beats = (m.get("integration") or {}).get("chapter_beats") or {}
+
+        integ = m.get("integration") or {}
+        pol = m.get("runtime_policy") or {}
+        beats = integ.get("chapter_beats") or {}
         # A beat set the asset track itself flags as unverified is NOT a gate.
         # Wano says: "proposed; exact waterfall climb beats need human
         # verification". The registry calls that gate_unverified and withholds it;
         # the asset being ready is a different question from the chapter being known.
         unverified = bool(beats.get("status")) or any(
-            v is None for k, v in beats.items() if k != "status"
+            v is None for k, v in beats.items() if k != "status" and not isinstance(v, dict)
         )
-        integ = m.get("integration") or {}
         copied.append({
             "id": mid,
-            "raster": f"/art/runtime/{mid}.png",
-            "bytes": dst.stat().st_size,
+            "label": m.get("label"),
             "glb": f"/art/runtime/{mid}.glb",
             "glb_bytes": glb_dst.stat().st_size,
             "glb_sha256": want,
-            # The two anchors and the model's own bounds are what let the app
-            # derive a metres-per-unit instead of inventing one: the model's
-            # vertical span IS the distance between the anchors. Carried through
-            # so that derivation reads declared data at runtime rather than a
-            # number somebody once typed into a .ts file. bounds_blender is Z-up
-            # (Blender); the exported glTF is Y-up. Same span either way.
+            "raster": f"/art/runtime/{mid}.png",
+            "bytes": png_dst.stat().st_size,
+            "maturity": m.get("maturity"),
+            # The anchors and the model's own bounds are what let the app derive a
+            # metres-per-unit instead of inventing one. Carried through so that
+            # derivation reads declared data at runtime rather than a number
+            # somebody typed into a .ts file. bounds_blender is Z-up; the exported
+            # glTF is Y-up. Same span either way.
+            "anchor": integ.get("anchor") or integ.get("source_anchor"),
             "source_anchor": integ.get("source_anchor"),
             "destination_anchor": integ.get("destination_anchor"),
+            "anchor_confidence": integ.get("anchor_confidence"),
             "bounds_blender": (m.get("stats") or {}).get("bounds_blender"),
             "mode": integ.get("mode"),
+            "fallback_mode": integ.get("fallback_mode"),
             "coordinates": integ.get("coordinates"),
             "runtime_module": integ.get("runtime_module"),
             "chapter_beats": beats,
+            "component_gates": integ.get("component_gates") or [],
+            "tagged_component_ids": tagged_component_ids(j),
+            "layout_status": integ.get("layout_status"),
+            "projection_support": integ.get("projection_support"),
             "gate_unverified": unverified,
-            "runtime_policy": m.get("runtime_policy"),
-            "source_ref": f"blender-assets/{m['fallback_raster']}",
+            "feature_flag": pol.get("feature_flag") or manifest.get("feature_flag"),
+            "runtime_policy": pol,
+            "source_ref": f"blender-assets/{fb_path}",
             "glb_source_ref": f"blender-assets/{m['glb']}",
         })
 
@@ -148,13 +229,13 @@ def main() -> int:
         "_meta": {
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "generator": "scripts/sync_runtime_assets.py",
-            "feature_flag": flag,
+            "schema_version": schema,
+            "feature_flag": manifest.get("feature_flag"),
             "note": (
-                "Only queue entries marked integration_ready are copied, and only when the "
-                "bytes match the manifest's build.glb_sha256. Both the raster and the GLB "
-                "ship: runtime_policy.default is fallback_raster, which is a real default "
-                "and not a formality — enable_glb_when requires close zoom and a supported "
-                "projection, so the raster is what a far-zoom reader actually sees."
+                "Only integration_ready entries whose bytes match their sha256 AND whose "
+                "withheld component gates each resolve to a tagged glTF node are copied. "
+                "A model that declares default_hidden geometry it cannot address is refused: "
+                "the app would otherwise draw what the manifest says to hide."
             ),
             "counts": {"copied": len(copied), "refused": len(refused)},
         },
@@ -164,13 +245,12 @@ def main() -> int:
     OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
     OUT_JSON.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
 
-    print(f"feature flag: {flag}")
     for c in copied:
-        gate = " (gate_unverified — the app will withhold it)" if c["gate_unverified"] else ""
-        print(f"  copied  {c['id']:28} raster {c['bytes']:>9,}  glb {c['glb_bytes']:>9,}  mode={c['mode']}{gate}")
+        gate = "  gate_unverified" if c["gate_unverified"] else ""
+        print(f"  copied  {c['id']:32} glb {c['glb_bytes']:>9,}  png {c['bytes']:>9,}{gate}")
     for r in refused:
-        print(f"  refused {r['id']:28} {r['why']}")
-    print(f"\nwrote {OUT_JSON.relative_to(ROOT)}")
+        print(f"  REFUSED {r['id']:32} {r['why']}")
+    print(f"\n{len(copied)} copied, {len(refused)} refused -> {OUT_JSON.relative_to(ROOT)}")
     return 0
 
 
