@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "representation": "camera-facing-2d-atlas",
+  "character_count": 14,
+  "characters": [
+    {
+      "id": "romance-dawn-origin-tableaux",
+      "kind": "tableau",
+      "variant": "chapter-1-origin",
+      "metadata": "runtime/east-blue-2d/characters/romance-dawn-origin-tableaux/character.json",
+      "atlas": "runtime/east-blue-2d/characters/romance-dawn-origin-tableaux/atlas.png",
+      "atlas_sha256": "73ee4a59751d438bc0eb2db4c91fc9011604bc414fd36e3c4f36abd5b1677987",
+      "poses": [
+        "fruit-discovery",
+        "fruit-bite",
+        "crew-reaction",
+        "sea-king-rescue",
+        "sacrifice-aftermath",
+        "hat-promise"
+      ],
+      "map_height": 1.12
+    },
+    {
+      "id": "monkey-d-luffy",
+      "kind": "character",
+      "variant": "east-blue",
+      "metadata": "runtime/east-blue-2d/characters/monkey-d-luffy/character.json",
+      "atlas": "runtime/east-blue-2d/characters/monkey-d-luffy/atlas.png",
+      "atlas_sha256": "8a66b1ade59576910fbef9fdc22873c7fb8896246685b4776828c37b348d0807",
+      "poses": [
+        "idle",
+        "dash",
+        "rubber-punch",
+        "recoil",
+        "recover",
+        "victory"
+      ],
+      "map_height": 1.0
+    },
+    {
+      "id": "roronoa-zoro",
+      "kind": "character",
+      "variant": "baratie-east-blue",
+      "metadata": "runtime/east-blue-2d/characters/roronoa-zoro/character.json",
+      "atlas": "runtime/east-blue-2d/characters/roronoa-zoro/atlas.png",
+      "atlas_sha256": "d104e9006d5b0a1b458f9ca4bffa60bad73a73689320b0d5e21e7735c6eb4ef4",
+      "poses": [
+        "idle",
+        "guard",
+        "dash",
+        "three-sword-slash",
+        "recoil",
+        "defeated"
+      ],
+      "map_height": 1.03
+    },
+    {
+      "id": "nami",
+      "kind": "character",
+      "variant": "east-blue",
+      "metadata": "runtime/east-blue-2d/characters/nami/character.json",
+      "atlas": "runtime/east-blue-2d/characters/nami/atlas.png",
+      "atlas_sha256": "5a85feca0c9d393bf674633d9af4707633ef14c2ca5f4246bd67913ab4371c68",
+      "poses": [
+        "map-idle",
+        "dash",
+        "staff-guard",
+        "staff-strike",
+        "recoil",
+        "victory"
+      ],
+      "map_height": 0.96
+    },
+    {
+      "id": "usopp",
+      "kind": "character",
+      "variant": "east-blue",
+      "metadata": "runtime/east-blue-2d/characters/usopp/character.json",
+      "atlas": "runtime/east-blue-2d/characters/usopp/atlas.png",
+      "atlas_sha256": "58c088f74f7acfd86afb13ca1268385414f637729562829bd617401c185c8547",
+      "poses": [
+        "idle",
+        "aim",
+        "fire",
+        "dash",
+        "recoil",
+        "victory"
+      ],
+      "map_height": 1.02
+    },
+    {
+      "id": "sanji",
+      "kind": "character",
+      "variant": "baratie-east-blue",
+      "metadata": "runtime/east-blue-2d/characters/sanji/character.json",
+      "atlas": "runtime/east-blue-2d/characters/sanji/atlas.png",
+      "atlas_sha256": "0233a39e1743078e0475e57fd9864553d4b9de203d0d031d3f0ab960537687a5",
+      "poses": [
+        "idle",
+        "guard",
+        "dash",
+        "roundhouse-kick",
+        "recoil",
+        "victory"
+      ],
+      "map_height": 1.08
+    },
+    {
+      "id": "alvida",
+      "kind": "character",
+      "variant": "romance-dawn-original",
+      "metadata": "runtime/east-blue-2d/characters/alvida/character.json",
+      "atlas": "runtime/east-blue-2d/characters/alvida/atlas.png",
+      "atlas_sha256": "875fa3923e7dab2afc3e4b64b97c89ab76a556af9ef606d0ca392986f3608b18",
+      "poses": [
+        "idle",
+        "guard",
+        "charge",
+        "mace-swing",
+        "rubber-punch-recoil",
+        "launched"
+      ],
+      "map_height": 1.08
+    },
+    {
+      "id": "buggy",
+      "kind": "character",
+      "variant": "orange-town-loguetown",
+      "metadata": "runtime/east-blue-2d/characters/buggy/character.json",
+      "atlas": "runtime/east-blue-2d/characters/buggy/atlas.png",
+      "atlas_sha256": "d4e8ef40da416aacaf925196078e87237480388a1e454345ed3030bd87b58c92",
+      "poses": [
+        "idle",
+        "knife-guard",
+        "detach-attack",
+        "split-evade",
+        "recoil",
+        "scaffold-attack"
+      ],
+      "map_height": 1.06
+    },
+    {
+      "id": "captain-kuro",
+      "kind": "character",
+      "variant": "syrup-village",
+      "metadata": "runtime/east-blue-2d/characters/captain-kuro/character.json",
+      "atlas": "runtime/east-blue-2d/characters/captain-kuro/atlas.png",
+      "atlas_sha256": "7da0a6ec04010ffd5f498d75d6cab107f84f8e2032a69de7f051299fc1a59b51",
+      "poses": [
+        "idle",
+        "claw-guard",
+        "silent-step",
+        "claw-slash",
+        "recoil",
+        "defeated"
+      ],
+      "map_height": 1.1
+    },
+    {
+      "id": "dracule-mihawk",
+      "kind": "character",
+      "variant": "baratie-east-blue",
+      "metadata": "runtime/east-blue-2d/characters/dracule-mihawk/character.json",
+      "atlas": "runtime/east-blue-2d/characters/dracule-mihawk/atlas.png",
+      "atlas_sha256": "e8eb8b1e7303479d65a57bbc694528ffcc611d06220e109f54440bafbe708cf2",
+      "poses": [
+        "idle",
+        "guard",
+        "sidestep",
+        "yoru-slash",
+        "recoil",
+        "victory"
+      ],
+      "map_height": 1.16
+    },
+    {
+      "id": "don-krieg",
+      "kind": "character",
+      "variant": "baratie",
+      "metadata": "runtime/east-blue-2d/characters/don-krieg/character.json",
+      "atlas": "runtime/east-blue-2d/characters/don-krieg/atlas.png",
+      "atlas_sha256": "e9b9956dd82eed05826f41c8d94ae825fb7d0d9d394cc6e04325a53f29066a4a",
+      "poses": [
+        "idle",
+        "guard",
+        "charge",
+        "battle-spear-strike",
+        "armor-break-recoil",
+        "defeated"
+      ],
+      "map_height": 1.24
+    },
+    {
+      "id": "arlong",
+      "kind": "character",
+      "variant": "arlong-park",
+      "metadata": "runtime/east-blue-2d/characters/arlong/character.json",
+      "atlas": "runtime/east-blue-2d/characters/arlong/atlas.png",
+      "atlas_sha256": "1760be6d1f6c1ad0655972a2ddbcc5985733db4f277be6f16083e0646e6b417b",
+      "poses": [
+        "idle",
+        "guard",
+        "dash",
+        "kiribachi-slash",
+        "recoil",
+        "defeated"
+      ],
+      "map_height": 1.22
+    },
+    {
+      "id": "gol-d-roger",
+      "kind": "character",
+      "variant": "loguetown-execution",
+      "metadata": "runtime/east-blue-2d/characters/gol-d-roger/character.json",
+      "atlas": "runtime/east-blue-2d/characters/gol-d-roger/atlas.png",
+      "atlas_sha256": "31fee8795643b148c18d6cd22683acc39da56ac950c36fb05180fb4ffb673094",
+      "poses": [
+        "chained-walk",
+        "standing-prisoner",
+        "scaffold-kneel",
+        "fearless-grin",
+        "final-declaration",
+        "execution-hold"
+      ],
+      "map_height": 1.13
+    },
+    {
+      "id": "smoker",
+      "kind": "character",
+      "variant": "loguetown",
+      "metadata": "runtime/east-blue-2d/characters/smoker/character.json",
+      "atlas": "runtime/east-blue-2d/characters/smoker/atlas.png",
+      "atlas_sha256": "76346e6e90e5549dd68ab649289c8ae87522a676e16ad67b4c80cc70ccfc3d99",
+      "poses": [
+        "idle",
+        "jitte-guard",
+        "smoke-lunge",
+        "capture",
+        "storm-recoil",
+        "hold"
+      ],
+      "map_height": 1.16
+    }
+  ]
+}

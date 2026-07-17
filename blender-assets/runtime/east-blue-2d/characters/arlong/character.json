@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "id": "arlong",
+  "display_name": "Arlong",
+  "kind": "character",
+  "variant": "arlong-park",
+  "representation": "camera-facing-2d-atlas",
+  "source_sheet": "art/east-blue/keyed-sheets/arlong-arlong-park-pose-sheet-v1.png",
+  "source_sha256": "34e4de90aadecf746a011b09f1cec6e58af67f95e36fa3c330a63f79a9850d61",
+  "atlas": "runtime/east-blue-2d/characters/arlong/atlas.png",
+  "atlas_sha256": "1760be6d1f6c1ad0655972a2ddbcc5985733db4f277be6f16083e0646e6b417b",
+  "atlas_size": {
+    "width": 1152,
+    "height": 768
+  },
+  "grid": {
+    "columns": 3,
+    "rows": 2,
+    "cell_px": 384
+  },
+  "map_height": 1.22,
+  "facing": "camera",
+  "frames": {
+    "idle": {
+      "index": 0,
+      "pixel_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "guard": {
+      "index": 1,
+      "pixel_rect": {
+        "x": 384,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.3333333333333333,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "dash": {
+      "index": 2,
+      "pixel_rect": {
+        "x": 768,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.6666666666666666,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "kiribachi-slash": {
+      "index": 3,
+      "pixel_rect": {
+        "x": 0,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.0,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "recoil": {
+      "index": 4,
+      "pixel_rect": {
+        "x": 384,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.3333333333333333,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "defeated": {
+      "index": 5,
+      "pixel_rect": {
+        "x": 768,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.6666666666666666,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    }
+  },
+  "runtime_rules": {
+    "pose_interpolation": "step",
+    "transform_interpolation": "linear-or-authored-ease",
+    "depth_write": false,
+    "alpha_test": 0.05,
+    "reduced_motion": "idle"
+  }
+}

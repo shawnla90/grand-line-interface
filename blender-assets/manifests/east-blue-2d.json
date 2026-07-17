@@ -1,0 +1,287 @@
+{
+  "schema_version": 1,
+  "id": "east-blue-saga-2d",
+  "state": "runtime_verified",
+  "integration_ready": false,
+  "representation": "camera-facing-2d-atlas-with-authored-movement-and-3d-fx",
+  "contract": {
+    "path": "contracts/east-blue-saga.simulation.json",
+    "bytes": 27229,
+    "sha256": "bff504974733b6da5cee56a19fef4b179c517c4168da2e702a890ffc2c7b24b6"
+  },
+  "character_index": {
+    "path": "runtime/east-blue-2d/character-index.json",
+    "bytes": 7310,
+    "sha256": "d28fb488f63ebdf6571a93d0a0a84d658b5257c786574fda0c753d9c35743f70"
+  },
+  "metrics": {
+    "character_packages": 14,
+    "pose_frames": 84,
+    "atlas_bytes": 9890136,
+    "scenes": 14,
+    "runtime_ready_scenes": 12,
+    "art_partial_scenes": 2,
+    "actor_tracks": 32,
+    "movement_keyframes": 101,
+    "fx_events": 33,
+    "review_video_seconds": 28.0
+  },
+  "characters": [
+    {
+      "id": "romance-dawn-origin-tableaux",
+      "kind": "tableau",
+      "variant": "chapter-1-origin",
+      "atlas": {
+        "path": "runtime/east-blue-2d/characters/romance-dawn-origin-tableaux/atlas.png",
+        "bytes": 908450,
+        "sha256": "73ee4a59751d438bc0eb2db4c91fc9011604bc414fd36e3c4f36abd5b1677987"
+      },
+      "metadata": {
+        "path": "runtime/east-blue-2d/characters/romance-dawn-origin-tableaux/character.json",
+        "bytes": 3094,
+        "sha256": "c94044a63b7a328c616109d1d66b437b1a0873bb990ec1b622aa63f798f2751c"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "monkey-d-luffy",
+      "kind": "character",
+      "variant": "east-blue",
+      "atlas": {
+        "path": "runtime/east-blue-2d/characters/monkey-d-luffy/atlas.png",
+        "bytes": 568802,
+        "sha256": "8a66b1ade59576910fbef9fdc22873c7fb8896246685b4776828c37b348d0807"
+      },
+      "metadata": {
+        "path": "runtime/east-blue-2d/characters/monkey-d-luffy/character.json",
+        "bytes": 3000,
+        "sha256": "8572f167ed8d75af3816232a8ae65f2a068308d099d43950ed6fa54dd2bf9bbf"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "roronoa-zoro",
+      "kind": "character",
+      "variant": "baratie-east-blue",
+      "atlas": {
+        "path": "runtime/east-blue-2d/characters/roronoa-zoro/atlas.png",
+        "bytes": 602987,
+        "sha256": "d104e9006d5b0a1b458f9ca4bffa60bad73a73689320b0d5e21e7735c6eb4ef4"
+      },
+      "metadata": {
+        "path": "runtime/east-blue-2d/characters/roronoa-zoro/character.json",
+        "bytes": 3002,
+        "sha256": "2296462b2f3a5515c47a093b563bef7bf8cf77006cab287b71312ed0198f51c0"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "nami",
+      "kind": "character",
+      "variant": "east-blue",
+      "atlas": {
+        "path": "runtime/east-blue-2d/characters/nami/atlas.png",
+        "bytes": 438619,
+        "sha256": "5a85feca0c9d393bf674633d9af4707633ef14c2ca5f4246bd67913ab4371c68"
+      },
+      "metadata": {
+        "path": "runtime/east-blue-2d/characters/nami/character.json",
+        "bytes": 2972,
+        "sha256": "b08f37d30459406bcf52a0aba848b645ca64d0a96a5adf1ed3bfd0658cbd475b"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "usopp",
+      "kind": "character",
+      "variant": "east-blue",
+      "atlas": {
+        "path": "runtime/east-blue-2d/characters/usopp/atlas.png",
+        "bytes": 649317,
+        "sha256": "58c088f74f7acfd86afb13ca1268385414f637729562829bd617401c185c8547"
+      },
+      "metadata": {
+        "path": "runtime/east-blue-2d/characters/usopp/character.json",
+        "bytes": 2952,
+        "sha256": "96a20509ad31a50d7f52b88182a4979122c7da503beb1bf124a1d5c3877efb57"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "sanji",
+      "kind": "character",
+      "variant": "baratie-east-blue",
+      "atlas": {
+        "path": "runtime/east-blue-2d/characters/sanji/atlas.png",
+        "bytes": 378217,
+        "sha256": "0233a39e1743078e0475e57fd9864553d4b9de203d0d031d3f0ab960537687a5"
+      },
+      "metadata": {
+        "path": "runtime/east-blue-2d/characters/sanji/character.json",
+        "bytes": 2971,
+        "sha256": "ce560305b3ac08e66dfec36b965f5e6d854bfcba7e5c8af68ad5f710a728c419"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "alvida",
+      "kind": "character",
+      "variant": "romance-dawn-original",
+      "atlas": {
+        "path": "runtime/east-blue-2d/characters/alvida/atlas.png",
+        "bytes": 919220,
+        "sha256": "875fa3923e7dab2afc3e4b64b97c89ab76a556af9ef606d0ca392986f3608b18"
+      },
+      "metadata": {
+        "path": "runtime/east-blue-2d/characters/alvida/character.json",
+        "bytes": 2995,
+        "sha256": "f28949aaa433bd4ff56abd43e18884c318e87d4f651aa511bc6c02a9796ef2ef"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "buggy",
+      "kind": "character",
+      "variant": "orange-town-loguetown",
+      "atlas": {
+        "path": "runtime/east-blue-2d/characters/buggy/atlas.png",
+        "bytes": 823373,
+        "sha256": "d4e8ef40da416aacaf925196078e87237480388a1e454345ed3030bd87b58c92"
+      },
+      "metadata": {
+        "path": "runtime/east-blue-2d/characters/buggy/character.json",
+        "bytes": 2996,
+        "sha256": "737f31b511a2dfdbd5845e29940ad8aacf8ca233fc7a3c4b0c225a33692ac519"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "captain-kuro",
+      "kind": "character",
+      "variant": "syrup-village",
+      "atlas": {
+        "path": "runtime/east-blue-2d/characters/captain-kuro/atlas.png",
+        "bytes": 645741,
+        "sha256": "7da0a6ec04010ffd5f498d75d6cab107f84f8e2032a69de7f051299fc1a59b51"
+      },
+      "metadata": {
+        "path": "runtime/east-blue-2d/characters/captain-kuro/character.json",
+        "bytes": 3008,
+        "sha256": "590724ee58ead9a336f6d138fa180c6bf669fef2509dfc663c1c497f0eb1feca"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "dracule-mihawk",
+      "kind": "character",
+      "variant": "baratie-east-blue",
+      "atlas": {
+        "path": "runtime/east-blue-2d/characters/dracule-mihawk/atlas.png",
+        "bytes": 669499,
+        "sha256": "e8eb8b1e7303479d65a57bbc694528ffcc611d06220e109f54440bafbe708cf2"
+      },
+      "metadata": {
+        "path": "runtime/east-blue-2d/characters/dracule-mihawk/character.json",
+        "bytes": 3006,
+        "sha256": "4dd0fca4e17707afb663ce48e28d6fe420d6ca12c80fc72c3f667e337c56ab60"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "don-krieg",
+      "kind": "character",
+      "variant": "baratie",
+      "atlas": {
+        "path": "runtime/east-blue-2d/characters/don-krieg/atlas.png",
+        "bytes": 897522,
+        "sha256": "e9b9956dd82eed05826f41c8d94ae825fb7d0d9d394cc6e04325a53f29066a4a"
+      },
+      "metadata": {
+        "path": "runtime/east-blue-2d/characters/don-krieg/character.json",
+        "bytes": 2996,
+        "sha256": "338186de86f03754cebf00034f8433f10923390cc037234c7b0ebe27f4a6067c"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "arlong",
+      "kind": "character",
+      "variant": "arlong-park",
+      "atlas": {
+        "path": "runtime/east-blue-2d/characters/arlong/atlas.png",
+        "bytes": 669350,
+        "sha256": "1760be6d1f6c1ad0655972a2ddbcc5985733db4f277be6f16083e0646e6b417b"
+      },
+      "metadata": {
+        "path": "runtime/east-blue-2d/characters/arlong/character.json",
+        "bytes": 2974,
+        "sha256": "bde2c539d8b11350b3edc3b398998a608c46de89b46f62334f0d5acd9aee125a"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "gol-d-roger",
+      "kind": "character",
+      "variant": "loguetown-execution",
+      "atlas": {
+        "path": "runtime/east-blue-2d/characters/gol-d-roger/atlas.png",
+        "bytes": 830899,
+        "sha256": "31fee8795643b148c18d6cd22683acc39da56ac950c36fb05180fb4ffb673094"
+      },
+      "metadata": {
+        "path": "runtime/east-blue-2d/characters/gol-d-roger/character.json",
+        "bytes": 3054,
+        "sha256": "486ea432174d285a9d4d7f57a2305f2997892697ea5b887fc87fb99e774d5102"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "smoker",
+      "kind": "character",
+      "variant": "loguetown",
+      "atlas": {
+        "path": "runtime/east-blue-2d/characters/smoker/atlas.png",
+        "bytes": 888140,
+        "sha256": "76346e6e90e5549dd68ab649289c8ae87522a676e16ad67b4c80cc70ccfc3d99"
+      },
+      "metadata": {
+        "path": "runtime/east-blue-2d/characters/smoker/character.json",
+        "bytes": 2977,
+        "sha256": "b7ef38c512f169bb3bc61d50800fb4e7bd54a4a1326ae4cbd5126727ed6fddb2"
+      },
+      "pose_count": 6
+    }
+  ],
+  "reviews": [
+    {
+      "path": "renders/east-blue-2d/east-blue-character-atlas-catalog.png",
+      "bytes": 1034985,
+      "sha256": "3b51fc089fd4ac7c81ab8cc625cd9509d1d0cd7c2eb6069715735502033e812a"
+    },
+    {
+      "path": "renders/east-blue-2d/east-blue-saga-scene-board.png",
+      "bytes": 686155,
+      "sha256": "01b7263f003de8af436abf7daaaab1c296460f2ea56b744c07badc116a167ee7"
+    },
+    {
+      "path": "renders/east-blue-2d/east-blue-saga-sampler-poster.png",
+      "bytes": 235500,
+      "sha256": "5ffebcc3f9ddcd8b1fc1598231216fe143f1d5503dcc095c5eddd88a6faa1501"
+    },
+    {
+      "path": "renders/east-blue-2d/east-blue-saga-sampler.mp4",
+      "bytes": 3592672,
+      "sha256": "78fb1e5065cb0f79e492ecd5e9389214a4a4df8508309b132e071893163a8c2e"
+    }
+  ],
+  "blockers": [
+    "App-side Three.js atlas renderer and chapter orchestrator are not wired in this asset folder.",
+    "Shells Town remains disabled until Morgan and Koby art exists.",
+    "The Loguetown storm escape remains disabled until Dragon and Tashigi art exists."
+  ],
+  "supersedes_visible_art": [
+    "east-blue-zoro-mihawk",
+    "east-blue-luffy-buggy",
+    "east-blue-luffy-arlong"
+  ]
+}

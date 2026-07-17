@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "id": "dracule-mihawk",
+  "display_name": "Dracule Mihawk",
+  "kind": "character",
+  "variant": "baratie-east-blue",
+  "representation": "camera-facing-2d-atlas",
+  "source_sheet": "art/east-blue/keyed-sheets/dracule-mihawk-baratie-pose-sheet-v1.png",
+  "source_sha256": "e6586914a721b4a117138e7e499894fc9edab0756c5a2a988786c2e2bf4e4ff7",
+  "atlas": "runtime/east-blue-2d/characters/dracule-mihawk/atlas.png",
+  "atlas_sha256": "e8eb8b1e7303479d65a57bbc694528ffcc611d06220e109f54440bafbe708cf2",
+  "atlas_size": {
+    "width": 1152,
+    "height": 768
+  },
+  "grid": {
+    "columns": 3,
+    "rows": 2,
+    "cell_px": 384
+  },
+  "map_height": 1.16,
+  "facing": "camera",
+  "frames": {
+    "idle": {
+      "index": 0,
+      "pixel_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "guard": {
+      "index": 1,
+      "pixel_rect": {
+        "x": 384,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.3333333333333333,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "sidestep": {
+      "index": 2,
+      "pixel_rect": {
+        "x": 768,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.6666666666666666,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "yoru-slash": {
+      "index": 3,
+      "pixel_rect": {
+        "x": 0,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.0,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "recoil": {
+      "index": 4,
+      "pixel_rect": {
+        "x": 384,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.3333333333333333,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "victory": {
+      "index": 5,
+      "pixel_rect": {
+        "x": 768,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.6666666666666666,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    }
+  },
+  "runtime_rules": {
+    "pose_interpolation": "step",
+    "transform_interpolation": "linear-or-authored-ease",
+    "depth_write": false,
+    "alpha_test": 0.05,
+    "reduced_motion": "idle"
+  }
+}

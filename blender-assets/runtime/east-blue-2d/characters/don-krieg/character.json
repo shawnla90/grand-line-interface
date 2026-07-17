@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "id": "don-krieg",
+  "display_name": "Don Krieg",
+  "kind": "character",
+  "variant": "baratie",
+  "representation": "camera-facing-2d-atlas",
+  "source_sheet": "art/east-blue/keyed-sheets/don-krieg-baratie-pose-sheet-v1.png",
+  "source_sha256": "6dd104cce2c56632d3aad7659af34d3793db89c39f0d4101d8741053a9fa97f5",
+  "atlas": "runtime/east-blue-2d/characters/don-krieg/atlas.png",
+  "atlas_sha256": "e9b9956dd82eed05826f41c8d94ae825fb7d0d9d394cc6e04325a53f29066a4a",
+  "atlas_size": {
+    "width": 1152,
+    "height": 768
+  },
+  "grid": {
+    "columns": 3,
+    "rows": 2,
+    "cell_px": 384
+  },
+  "map_height": 1.24,
+  "facing": "camera",
+  "frames": {
+    "idle": {
+      "index": 0,
+      "pixel_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "guard": {
+      "index": 1,
+      "pixel_rect": {
+        "x": 384,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.3333333333333333,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "charge": {
+      "index": 2,
+      "pixel_rect": {
+        "x": 768,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.6666666666666666,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "battle-spear-strike": {
+      "index": 3,
+      "pixel_rect": {
+        "x": 0,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.0,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "armor-break-recoil": {
+      "index": 4,
+      "pixel_rect": {
+        "x": 384,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.3333333333333333,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "defeated": {
+      "index": 5,
+      "pixel_rect": {
+        "x": 768,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.6666666666666666,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    }
+  },
+  "runtime_rules": {
+    "pose_interpolation": "step",
+    "transform_interpolation": "linear-or-authored-ease",
+    "depth_write": false,
+    "alpha_test": 0.05,
+    "reduced_motion": "idle"
+  }
+}

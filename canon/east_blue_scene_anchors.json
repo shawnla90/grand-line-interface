@@ -1,0 +1,26 @@
+{
+  "_warning": "HAND-AUTHORED wiring between the East Blue 2.5D simulation pack and the atlas. Each scene anchors to a canon event slug (preferred: the scene and the /event page then share one spoiler gate and one coordinate), an island slug, or — only where no canon coordinate exists — a literal sea position. check_simulations.py enforces: event anchors never open before the event occurred; island anchors never open before the island debuts; literal anchors must carry a NEEDS HUMAN VERIFICATION note.",
+  "_semantics": "The anchor decides WHERE a scene plays and inherits nothing else. Chapter gating comes from the pack's own verified chapter_gate; the check only proves the two calendars can never disagree in the leaking direction.",
+  "anchors": {
+    "roger-execution-prologue": { "event": "rogers-execution" },
+    "romance-dawn-fruit-and-promise": { "event": "the-straw-hat-promise" },
+    "luffy-punches-alvida": {
+      "lng": -136.0,
+      "lat": -56.0,
+      "note": "Hand-authored: Alvida's ship at sea between Foosha Village and Shells Town; no canon coordinate exists for the deck fight. NEEDS HUMAN VERIFICATION against the manga."
+    },
+    "orange-town-luffy-vs-buggy": { "event": "buggy-blasted-away" },
+    "syrup-village-luffy-vs-kuro": { "event": "kuro-of-a-hundred-plans-falls" },
+    "baratie-zoro-vs-mihawk": { "event": "zoro-vs-mihawk-baratie" },
+    "baratie-luffy-vs-krieg": { "event": "don-krieg-defeated" },
+    "sanji-leaves-baratie": { "event": "don-krieg-defeated" },
+    "nami-asks-for-help": { "island": "cocoyasi-village" },
+    "arlong-park-final-clash": { "event": "arlong-park-falls" },
+    "luffy-near-execution": { "event": "the-loguetown-escape" },
+    "east-blue-grand-line-vows": {
+      "lng": -177.0,
+      "lat": -12.0,
+      "note": "Hand-authored: open sea on the Reverse Mountain approach. Deliberately NOT anchored to reverse-mountain (island debuts ch101, after this scene's ch100 gate) nor to the into-the-grand-line event (occurs ch101) — either would leak. NEEDS HUMAN VERIFICATION against the manga."
+    }
+  }
+}

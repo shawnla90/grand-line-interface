@@ -1,0 +1,2596 @@
+{
+  "_meta": {
+    "generator": "scripts/sync_east_blue_2d.py",
+    "schema_version": 1,
+    "pack_id": "east-blue-saga-2d",
+    "chapter_span": {
+      "start": 1,
+      "end": 100
+    },
+    "source_manifest_sha256": "0abbd6ff4c36d4e485feb177dc4ebbff47ddf0a2b8078ac84bfed124c2440be0",
+    "integration_ready": false,
+    "feature_flag": "NEXT_PUBLIC_EAST_BLUE_2D_SIMULATIONS",
+    "note": "Only runtime_ready scenes with verified chapter gates ship. The refused list is load-bearing: check_simulations.py pins it so an art_partial scene cannot be re-enabled without new signed art.",
+    "counts": {
+      "scenes": 12,
+      "refused": 2,
+      "assets": 14
+    }
+  },
+  "arcs": [
+    {
+      "id": "romance-dawn",
+      "label": "Romance Dawn",
+      "chapters": [
+        1,
+        7
+      ]
+    },
+    {
+      "id": "orange-town",
+      "label": "Orange Town",
+      "chapters": [
+        8,
+        21
+      ]
+    },
+    {
+      "id": "syrup-village",
+      "label": "Syrup Village",
+      "chapters": [
+        22,
+        41
+      ]
+    },
+    {
+      "id": "baratie",
+      "label": "Baratie",
+      "chapters": [
+        42,
+        68
+      ]
+    },
+    {
+      "id": "arlong-park",
+      "label": "Arlong Park",
+      "chapters": [
+        69,
+        95
+      ]
+    },
+    {
+      "id": "loguetown",
+      "label": "Loguetown",
+      "chapters": [
+        96,
+        100
+      ]
+    }
+  ],
+  "runtime_policy": {
+    "chapter_gate": "Never fetch a scene before a verified start chapter. research_hold scenes remain disabled.",
+    "playback": "Play once on entering the active chapter window, hold the authored final frame, and allow explicit replay afterward.",
+    "backward_scrub": "Reset scene time, actor transforms, pose selection, effects, and landmark state deterministically.",
+    "lod0": "Existing portrait bubble or icon.",
+    "lod1": "Static atlas frame; at most three visible story beats.",
+    "lod2": "One active 2D atlas simulation plus local 3D or shader effects.",
+    "lod3": "Explicit inspect/replay using the same movement contract; optional sound later.",
+    "missing_art": "Do not substitute rigid mannequins. Show a disabled story marker with missing_assets metadata.",
+    "max_active_close_scenes": 1,
+    "max_distant_loops": 3,
+    "reduced_motion": "Use the final safe pose and suppress camera shake, rain motion, and repeated effects."
+  },
+  "scenes": [
+    {
+      "id": "roger-execution-prologue",
+      "label": "Roger starts the Great Pirate Era",
+      "arc_id": "romance-dawn",
+      "type": "tableau",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 1,
+        "end": 1,
+        "verification": "verified",
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_1"
+      },
+      "place": {
+        "id": "loguetown",
+        "landmark": "execution-platform",
+        "arena": "loguetown-scaffold"
+      },
+      "duration_ms": 8000,
+      "actors": [
+        {
+          "id": "roger",
+          "asset_id": "gol-d-roger",
+          "z": 20,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.72,
+              "y": 0,
+              "scale": 0.8,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "chained-walk"
+            },
+            {
+              "t": 2200,
+              "x": 0,
+              "y": 0,
+              "scale": 0.88,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "standing-prisoner",
+              "ease": "smooth"
+            },
+            {
+              "t": 4000,
+              "x": 0,
+              "y": 0,
+              "scale": 0.92,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "scaffold-kneel"
+            },
+            {
+              "t": 5600,
+              "x": 0,
+              "y": 0.02,
+              "scale": 1.02,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "final-declaration"
+            },
+            {
+              "t": 7400,
+              "x": 0,
+              "y": 0,
+              "scale": 0.96,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "execution-hold"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 0,
+          "type": "crowd",
+          "duration_ms": 8000,
+          "intensity": 0.7
+        },
+        {
+          "t": 5200,
+          "type": "wind",
+          "duration_ms": 1800,
+          "intensity": 0.6
+        },
+        {
+          "t": 6500,
+          "type": "era-pulse",
+          "duration_ms": 1200,
+          "intensity": 1.0
+        }
+      ],
+      "anchor": {
+        "kind": "event",
+        "ref": "rogers-execution",
+        "lng": -174,
+        "lat": -20
+      }
+    },
+    {
+      "id": "romance-dawn-fruit-and-promise",
+      "label": "The fruit, the sacrifice, and the straw-hat promise",
+      "arc_id": "romance-dawn",
+      "type": "tableau",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 1,
+        "end": 1,
+        "verification": "verified",
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_1"
+      },
+      "place": {
+        "id": "foosha-village",
+        "landmark": "party-bar-and-coast",
+        "arena": "coastal-memory"
+      },
+      "duration_ms": 9000,
+      "actors": [
+        {
+          "id": "origin-tableau",
+          "asset_id": "romance-dawn-origin-tableaux",
+          "z": 20,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0,
+              "y": 0,
+              "scale": 1.0,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "fruit-discovery"
+            },
+            {
+              "t": 1600,
+              "x": 0,
+              "y": 0,
+              "scale": 1.0,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "fruit-bite"
+            },
+            {
+              "t": 3000,
+              "x": 0,
+              "y": 0,
+              "scale": 1.0,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "crew-reaction"
+            },
+            {
+              "t": 4400,
+              "x": 0,
+              "y": 0,
+              "scale": 1.06,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "sea-king-rescue"
+            },
+            {
+              "t": 6000,
+              "x": 0,
+              "y": 0,
+              "scale": 1.0,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "sacrifice-aftermath"
+            },
+            {
+              "t": 7600,
+              "x": 0,
+              "y": 0,
+              "scale": 1.04,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "hat-promise"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 4300,
+          "type": "wave",
+          "duration_ms": 1700,
+          "intensity": 0.9
+        },
+        {
+          "t": 7600,
+          "type": "promise-pulse",
+          "duration_ms": 1400,
+          "intensity": 0.8
+        }
+      ],
+      "anchor": {
+        "kind": "event",
+        "ref": "the-straw-hat-promise",
+        "lng": -130,
+        "lat": -60
+      }
+    },
+    {
+      "id": "luffy-punches-alvida",
+      "label": "Luffy proves the rubber power against Alvida",
+      "arc_id": "romance-dawn",
+      "type": "encounter",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 2,
+        "end": 2,
+        "verification": "verified",
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_2"
+      },
+      "place": {
+        "id": "alvida-pirate-ship",
+        "landmark": "main-deck",
+        "arena": "ship-deck"
+      },
+      "duration_ms": 7000,
+      "actors": [
+        {
+          "id": "luffy",
+          "asset_id": "monkey-d-luffy",
+          "z": 20,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.72,
+              "y": 0,
+              "scale": 0.82,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "idle"
+            },
+            {
+              "t": 2100,
+              "x": -0.35,
+              "y": 0.02,
+              "scale": 0.86,
+              "rotation": -3,
+              "opacity": 1,
+              "pose": "dash",
+              "ease": "accelerate"
+            },
+            {
+              "t": 3300,
+              "x": -0.04,
+              "y": 0.02,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "rubber-punch"
+            },
+            {
+              "t": 5000,
+              "x": -0.1,
+              "y": 0,
+              "scale": 0.86,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "victory"
+            }
+          ]
+        },
+        {
+          "id": "alvida",
+          "asset_id": "alvida",
+          "z": 18,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.62,
+              "y": 0,
+              "scale": 0.92,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "idle"
+            },
+            {
+              "t": 1800,
+              "x": 0.45,
+              "y": 0,
+              "scale": 0.94,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "mace-swing"
+            },
+            {
+              "t": 3350,
+              "x": 0.48,
+              "y": 0.05,
+              "scale": 0.98,
+              "rotation": 7,
+              "opacity": 1,
+              "pose": "rubber-punch-recoil"
+            },
+            {
+              "t": 4700,
+              "x": 1.12,
+              "y": 0.28,
+              "scale": 0.86,
+              "rotation": 26,
+              "opacity": 0.2,
+              "pose": "launched",
+              "ease": "accelerate"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 3200,
+          "type": "rubber-stretch",
+          "duration_ms": 900,
+          "intensity": 1.0
+        },
+        {
+          "t": 3400,
+          "type": "impact",
+          "duration_ms": 650,
+          "intensity": 1.0
+        }
+      ],
+      "anchor": {
+        "kind": "literal",
+        "ref": null,
+        "lng": -136.0,
+        "lat": -56.0,
+        "note": "Hand-authored: Alvida's ship at sea between Foosha Village and Shells Town; no canon coordinate exists for the deck fight. NEEDS HUMAN VERIFICATION against the manga."
+      }
+    },
+    {
+      "id": "orange-town-luffy-vs-buggy",
+      "label": "Luffy launches Buggy from Orange Town",
+      "arc_id": "orange-town",
+      "type": "encounter",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 20,
+        "end": 20,
+        "verification": "verified",
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_20"
+      },
+      "place": {
+        "id": "orange-town",
+        "landmark": "town-square",
+        "arena": "damaged-town-square"
+      },
+      "duration_ms": 8000,
+      "actors": [
+        {
+          "id": "luffy",
+          "asset_id": "monkey-d-luffy",
+          "z": 20,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.66,
+              "y": 0,
+              "scale": 0.84,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "idle"
+            },
+            {
+              "t": 2300,
+              "x": -0.28,
+              "y": 0,
+              "scale": 0.88,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "dash"
+            },
+            {
+              "t": 4300,
+              "x": -0.04,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "rubber-punch"
+            },
+            {
+              "t": 6500,
+              "x": -0.1,
+              "y": 0,
+              "scale": 0.86,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "victory"
+            }
+          ]
+        },
+        {
+          "id": "buggy",
+          "asset_id": "buggy",
+          "z": 19,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.6,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "knife-guard"
+            },
+            {
+              "t": 2200,
+              "x": 0.36,
+              "y": 0.08,
+              "scale": 0.92,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "detach-attack"
+            },
+            {
+              "t": 3500,
+              "x": 0.45,
+              "y": 0.02,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "split-evade"
+            },
+            {
+              "t": 4500,
+              "x": 0.48,
+              "y": 0.08,
+              "scale": 0.96,
+              "rotation": 10,
+              "opacity": 1,
+              "pose": "recoil"
+            },
+            {
+              "t": 6100,
+              "x": 1.15,
+              "y": 0.34,
+              "scale": 0.76,
+              "rotation": 30,
+              "opacity": 0.1,
+              "pose": "recoil",
+              "ease": "accelerate"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 2100,
+          "type": "detach",
+          "duration_ms": 1300,
+          "intensity": 0.8
+        },
+        {
+          "t": 4400,
+          "type": "impact",
+          "duration_ms": 700,
+          "intensity": 1.0
+        }
+      ],
+      "anchor": {
+        "kind": "event",
+        "ref": "buggy-blasted-away",
+        "lng": -152,
+        "lat": -45
+      }
+    },
+    {
+      "id": "syrup-village-luffy-vs-kuro",
+      "label": "Luffy stops Kuro's plan",
+      "arc_id": "syrup-village",
+      "type": "encounter",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 40,
+        "end": 40,
+        "verification": "verified",
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_40"
+      },
+      "place": {
+        "id": "syrup-village",
+        "landmark": "coastal-slope",
+        "arena": "grassy-slope"
+      },
+      "duration_ms": 8000,
+      "actors": [
+        {
+          "id": "luffy",
+          "asset_id": "monkey-d-luffy",
+          "z": 20,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.58,
+              "y": 0,
+              "scale": 0.86,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "recover"
+            },
+            {
+              "t": 3100,
+              "x": -0.1,
+              "y": 0,
+              "scale": 0.92,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "dash"
+            },
+            {
+              "t": 5200,
+              "x": 0.04,
+              "y": 0,
+              "scale": 0.94,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "rubber-punch"
+            },
+            {
+              "t": 6800,
+              "x": -0.08,
+              "y": 0,
+              "scale": 0.86,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "victory"
+            }
+          ]
+        },
+        {
+          "id": "kuro",
+          "asset_id": "captain-kuro",
+          "z": 19,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.58,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "idle"
+            },
+            {
+              "t": 1900,
+              "x": 0.12,
+              "y": 0.04,
+              "scale": 0.94,
+              "rotation": -5,
+              "opacity": 1,
+              "pose": "silent-step",
+              "ease": "accelerate"
+            },
+            {
+              "t": 3300,
+              "x": -0.02,
+              "y": 0.02,
+              "scale": 0.95,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "claw-slash"
+            },
+            {
+              "t": 5350,
+              "x": 0.25,
+              "y": 0.12,
+              "scale": 0.92,
+              "rotation": 12,
+              "opacity": 1,
+              "pose": "recoil"
+            },
+            {
+              "t": 6600,
+              "x": 0.52,
+              "y": 0,
+              "scale": 0.84,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "defeated"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 1900,
+          "type": "speed-lines",
+          "duration_ms": 1600,
+          "intensity": 0.9
+        },
+        {
+          "t": 3300,
+          "type": "slash",
+          "duration_ms": 700,
+          "intensity": 1.0
+        },
+        {
+          "t": 5200,
+          "type": "impact",
+          "duration_ms": 650,
+          "intensity": 0.9
+        }
+      ],
+      "anchor": {
+        "kind": "event",
+        "ref": "kuro-of-a-hundred-plans-falls",
+        "lng": -160,
+        "lat": -52
+      }
+    },
+    {
+      "id": "baratie-zoro-vs-mihawk",
+      "label": "Zoro challenges Mihawk",
+      "arc_id": "baratie",
+      "type": "encounter",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 51,
+        "end": 51,
+        "verification": "verified",
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_51"
+      },
+      "place": {
+        "id": "baratie",
+        "landmark": "exterior-deck",
+        "arena": "baratie-deck"
+      },
+      "duration_ms": 8000,
+      "actors": [
+        {
+          "id": "zoro",
+          "asset_id": "roronoa-zoro",
+          "z": 20,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.56,
+              "y": 0,
+              "scale": 0.88,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "guard"
+            },
+            {
+              "t": 2200,
+              "x": -0.18,
+              "y": 0.02,
+              "scale": 0.92,
+              "rotation": -3,
+              "opacity": 1,
+              "pose": "dash"
+            },
+            {
+              "t": 3400,
+              "x": 0.02,
+              "y": 0.02,
+              "scale": 0.96,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "three-sword-slash"
+            },
+            {
+              "t": 4850,
+              "x": -0.18,
+              "y": 0.08,
+              "scale": 0.92,
+              "rotation": -9,
+              "opacity": 1,
+              "pose": "recoil"
+            },
+            {
+              "t": 6400,
+              "x": -0.42,
+              "y": 0,
+              "scale": 0.88,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "defeated"
+            }
+          ]
+        },
+        {
+          "id": "mihawk",
+          "asset_id": "dracule-mihawk",
+          "z": 19,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.5,
+              "y": 0,
+              "scale": 0.96,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "idle"
+            },
+            {
+              "t": 3000,
+              "x": 0.26,
+              "y": 0,
+              "scale": 0.98,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "guard"
+            },
+            {
+              "t": 4100,
+              "x": 0.12,
+              "y": 0.02,
+              "scale": 1.02,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "yoru-slash"
+            },
+            {
+              "t": 6100,
+              "x": 0.36,
+              "y": 0,
+              "scale": 0.98,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "victory"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 3400,
+          "type": "slash",
+          "duration_ms": 750,
+          "intensity": 0.9
+        },
+        {
+          "t": 4100,
+          "type": "black-blade-slash",
+          "duration_ms": 850,
+          "intensity": 1.0
+        },
+        {
+          "t": 4700,
+          "type": "impact",
+          "duration_ms": 700,
+          "intensity": 1.0
+        }
+      ],
+      "anchor": {
+        "kind": "event",
+        "ref": "zoro-vs-mihawk-baratie",
+        "lng": -165.0,
+        "lat": -40.0
+      }
+    },
+    {
+      "id": "baratie-luffy-vs-krieg",
+      "label": "Luffy breaks Don Krieg's armor",
+      "arc_id": "baratie",
+      "type": "encounter",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 66,
+        "end": 66,
+        "verification": "verified",
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_66"
+      },
+      "place": {
+        "id": "baratie",
+        "landmark": "wreckage-field",
+        "arena": "floating-wreckage"
+      },
+      "duration_ms": 8000,
+      "actors": [
+        {
+          "id": "luffy",
+          "asset_id": "monkey-d-luffy",
+          "z": 20,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.62,
+              "y": 0,
+              "scale": 0.84,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "recover"
+            },
+            {
+              "t": 2500,
+              "x": -0.22,
+              "y": 0.03,
+              "scale": 0.88,
+              "rotation": -4,
+              "opacity": 1,
+              "pose": "dash"
+            },
+            {
+              "t": 4200,
+              "x": 0.02,
+              "y": 0.08,
+              "scale": 0.92,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "rubber-punch"
+            },
+            {
+              "t": 6500,
+              "x": -0.12,
+              "y": 0,
+              "scale": 0.86,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "victory"
+            }
+          ]
+        },
+        {
+          "id": "krieg",
+          "asset_id": "don-krieg",
+          "z": 19,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.58,
+              "y": 0,
+              "scale": 0.92,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "guard"
+            },
+            {
+              "t": 2100,
+              "x": 0.34,
+              "y": 0,
+              "scale": 0.96,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "battle-spear-strike"
+            },
+            {
+              "t": 4300,
+              "x": 0.4,
+              "y": 0.08,
+              "scale": 1.0,
+              "rotation": 8,
+              "opacity": 1,
+              "pose": "armor-break-recoil"
+            },
+            {
+              "t": 6300,
+              "x": 0.5,
+              "y": 0,
+              "scale": 0.88,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "defeated"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 2100,
+          "type": "explosion",
+          "duration_ms": 900,
+          "intensity": 0.8
+        },
+        {
+          "t": 4200,
+          "type": "armor-break",
+          "duration_ms": 1200,
+          "intensity": 1.0
+        },
+        {
+          "t": 4300,
+          "type": "impact",
+          "duration_ms": 700,
+          "intensity": 1.0
+        }
+      ],
+      "anchor": {
+        "kind": "event",
+        "ref": "don-krieg-defeated",
+        "lng": -165.0,
+        "lat": -40.0
+      }
+    },
+    {
+      "id": "sanji-leaves-baratie",
+      "label": "Sanji says goodbye and joins the crew",
+      "arc_id": "baratie",
+      "type": "tableau",
+      "priority": "supporting",
+      "chapter_gate": {
+        "start": 68,
+        "end": 68,
+        "verification": "verified",
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_68"
+      },
+      "place": {
+        "id": "baratie",
+        "landmark": "front-deck",
+        "arena": "baratie-deck"
+      },
+      "duration_ms": 6500,
+      "actors": [
+        {
+          "id": "sanji",
+          "asset_id": "sanji",
+          "z": 21,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.22,
+              "y": 0,
+              "scale": 0.92,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "idle"
+            },
+            {
+              "t": 3900,
+              "x": 0.08,
+              "y": 0,
+              "scale": 0.94,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "victory"
+            }
+          ]
+        },
+        {
+          "id": "luffy",
+          "asset_id": "monkey-d-luffy",
+          "z": 20,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.42,
+              "y": 0,
+              "scale": 0.82,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "idle"
+            },
+            {
+              "t": 3900,
+              "x": -0.24,
+              "y": 0,
+              "scale": 0.84,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "victory"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 3800,
+          "type": "farewell-pulse",
+          "duration_ms": 1700,
+          "intensity": 0.7
+        }
+      ],
+      "anchor": {
+        "kind": "event",
+        "ref": "don-krieg-defeated",
+        "lng": -165.0,
+        "lat": -40.0
+      }
+    },
+    {
+      "id": "nami-asks-for-help",
+      "label": "Nami asks Luffy for help",
+      "arc_id": "arlong-park",
+      "type": "tableau",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 81,
+        "end": 81,
+        "verification": "verified",
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_81"
+      },
+      "place": {
+        "id": "cocoyasi-village",
+        "landmark": "village-road",
+        "arena": "village-road"
+      },
+      "duration_ms": 8500,
+      "actors": [
+        {
+          "id": "nami",
+          "asset_id": "nami",
+          "z": 24,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.16,
+              "y": 0,
+              "scale": 0.94,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "recoil"
+            },
+            {
+              "t": 4200,
+              "x": 0.34,
+              "y": 0,
+              "scale": 0.86,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "map-idle"
+            }
+          ]
+        },
+        {
+          "id": "luffy",
+          "asset_id": "monkey-d-luffy",
+          "z": 23,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.22,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "idle"
+            },
+            {
+              "t": 4200,
+              "x": -0.18,
+              "y": 0,
+              "scale": 0.94,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "recover"
+            },
+            {
+              "t": 6100,
+              "x": -0.42,
+              "y": 0,
+              "scale": 0.86,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "dash"
+            }
+          ]
+        },
+        {
+          "id": "zoro",
+          "asset_id": "roronoa-zoro",
+          "z": 20,
+          "keyframes": [
+            {
+              "t": 5600,
+              "x": -0.1,
+              "y": 0,
+              "scale": 0.78,
+              "rotation": 0,
+              "opacity": 0,
+              "pose": "idle"
+            },
+            {
+              "t": 7000,
+              "x": -0.1,
+              "y": 0,
+              "scale": 0.78,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "guard"
+            }
+          ]
+        },
+        {
+          "id": "usopp",
+          "asset_id": "usopp",
+          "z": 19,
+          "keyframes": [
+            {
+              "t": 5600,
+              "x": 0.16,
+              "y": 0,
+              "scale": 0.75,
+              "rotation": 0,
+              "opacity": 0,
+              "pose": "idle"
+            },
+            {
+              "t": 7000,
+              "x": 0.16,
+              "y": 0,
+              "scale": 0.75,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "aim"
+            }
+          ]
+        },
+        {
+          "id": "sanji",
+          "asset_id": "sanji",
+          "z": 18,
+          "keyframes": [
+            {
+              "t": 5600,
+              "x": 0.42,
+              "y": 0,
+              "scale": 0.78,
+              "rotation": 0,
+              "opacity": 0,
+              "pose": "idle"
+            },
+            {
+              "t": 7000,
+              "x": 0.42,
+              "y": 0,
+              "scale": 0.78,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "guard"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 3900,
+          "type": "promise-pulse",
+          "duration_ms": 1300,
+          "intensity": 0.9
+        },
+        {
+          "t": 6500,
+          "type": "walk-up-dust",
+          "duration_ms": 1600,
+          "intensity": 0.7
+        }
+      ],
+      "anchor": {
+        "kind": "island",
+        "ref": "cocoyasi-village",
+        "lng": -110.078,
+        "lat": -25.3729
+      }
+    },
+    {
+      "id": "arlong-park-final-clash",
+      "label": "Luffy defeats Arlong and frees Nami",
+      "arc_id": "arlong-park",
+      "type": "encounter",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 93,
+        "end": 93,
+        "verification": "verified",
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_93"
+      },
+      "place": {
+        "id": "arlong-park",
+        "landmark": "map-room-and-headquarters",
+        "arena": "arlong-park-compound"
+      },
+      "duration_ms": 8500,
+      "actors": [
+        {
+          "id": "luffy",
+          "asset_id": "monkey-d-luffy",
+          "z": 21,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.62,
+              "y": 0,
+              "scale": 0.86,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "recover"
+            },
+            {
+              "t": 2500,
+              "x": -0.2,
+              "y": 0.04,
+              "scale": 0.9,
+              "rotation": -4,
+              "opacity": 1,
+              "pose": "dash"
+            },
+            {
+              "t": 4500,
+              "x": 0.03,
+              "y": 0.12,
+              "scale": 0.94,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "rubber-punch"
+            },
+            {
+              "t": 6800,
+              "x": -0.04,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "victory"
+            }
+          ]
+        },
+        {
+          "id": "arlong",
+          "asset_id": "arlong",
+          "z": 20,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.58,
+              "y": 0,
+              "scale": 0.98,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "guard"
+            },
+            {
+              "t": 2100,
+              "x": 0.25,
+              "y": 0.02,
+              "scale": 1.02,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "kiribachi-slash"
+            },
+            {
+              "t": 4650,
+              "x": 0.38,
+              "y": 0.1,
+              "scale": 1.02,
+              "rotation": 10,
+              "opacity": 1,
+              "pose": "recoil"
+            },
+            {
+              "t": 6500,
+              "x": 0.5,
+              "y": 0,
+              "scale": 0.92,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "defeated"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 2100,
+          "type": "slash",
+          "duration_ms": 800,
+          "intensity": 0.9
+        },
+        {
+          "t": 4500,
+          "type": "impact",
+          "duration_ms": 700,
+          "intensity": 1.0
+        },
+        {
+          "t": 5000,
+          "type": "structure-collapse",
+          "duration_ms": 2800,
+          "intensity": 1.0
+        }
+      ],
+      "anchor": {
+        "kind": "event",
+        "ref": "arlong-park-falls",
+        "lng": -121.1536,
+        "lat": -39.3092
+      }
+    },
+    {
+      "id": "luffy-near-execution",
+      "label": "Buggy nearly executes Luffy on Roger's scaffold",
+      "arc_id": "loguetown",
+      "type": "tableau",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 99,
+        "end": 99,
+        "verification": "verified",
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_99"
+      },
+      "place": {
+        "id": "loguetown",
+        "landmark": "execution-platform",
+        "arena": "loguetown-scaffold-storm"
+      },
+      "duration_ms": 8000,
+      "actors": [
+        {
+          "id": "luffy",
+          "asset_id": "monkey-d-luffy",
+          "z": 20,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0,
+              "y": 0.02,
+              "scale": 0.86,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "recoil"
+            },
+            {
+              "t": 4800,
+              "x": 0,
+              "y": 0.02,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "victory"
+            },
+            {
+              "t": 6100,
+              "x": -0.52,
+              "y": 0.03,
+              "scale": 0.82,
+              "rotation": -4,
+              "opacity": 1,
+              "pose": "dash",
+              "ease": "accelerate"
+            }
+          ]
+        },
+        {
+          "id": "buggy",
+          "asset_id": "buggy",
+          "z": 22,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.3,
+              "y": 0.08,
+              "scale": 0.92,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "scaffold-attack"
+            },
+            {
+              "t": 4200,
+              "x": 0.28,
+              "y": 0.14,
+              "scale": 0.94,
+              "rotation": 12,
+              "opacity": 1,
+              "pose": "recoil"
+            },
+            {
+              "t": 5800,
+              "x": 0.72,
+              "y": 0.04,
+              "scale": 0.78,
+              "rotation": 18,
+              "opacity": 0.4,
+              "pose": "recoil"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 0,
+          "type": "rain",
+          "duration_ms": 8000,
+          "intensity": 0.7
+        },
+        {
+          "t": 3900,
+          "type": "lightning",
+          "duration_ms": 900,
+          "intensity": 1.0
+        },
+        {
+          "t": 4100,
+          "type": "scaffold-break",
+          "duration_ms": 1500,
+          "intensity": 1.0
+        }
+      ],
+      "anchor": {
+        "kind": "event",
+        "ref": "the-loguetown-escape",
+        "lng": -174,
+        "lat": -20
+      }
+    },
+    {
+      "id": "east-blue-grand-line-vows",
+      "label": "The crew declares its dreams and enters the Grand Line",
+      "arc_id": "loguetown",
+      "type": "tableau",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 100,
+        "end": 100,
+        "verification": "verified",
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_100"
+      },
+      "place": {
+        "id": "reverse-mountain-approach",
+        "landmark": "going-merry-deck",
+        "arena": "open-sea"
+      },
+      "duration_ms": 8000,
+      "actors": [
+        {
+          "id": "luffy",
+          "asset_id": "monkey-d-luffy",
+          "z": 24,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0,
+              "y": 0.06,
+              "scale": 0.86,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "victory"
+            }
+          ]
+        },
+        {
+          "id": "zoro",
+          "asset_id": "roronoa-zoro",
+          "z": 22,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.42,
+              "y": 0,
+              "scale": 0.74,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "idle"
+            }
+          ]
+        },
+        {
+          "id": "nami",
+          "asset_id": "nami",
+          "z": 21,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.42,
+              "y": 0,
+              "scale": 0.72,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "victory"
+            }
+          ]
+        },
+        {
+          "id": "usopp",
+          "asset_id": "usopp",
+          "z": 20,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.72,
+              "y": 0,
+              "scale": 0.68,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "victory"
+            }
+          ]
+        },
+        {
+          "id": "sanji",
+          "asset_id": "sanji",
+          "z": 19,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.72,
+              "y": 0,
+              "scale": 0.7,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "victory"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 0,
+          "type": "wind",
+          "duration_ms": 8000,
+          "intensity": 0.35
+        },
+        {
+          "t": 5200,
+          "type": "route-pulse",
+          "duration_ms": 2200,
+          "intensity": 1.0
+        }
+      ],
+      "anchor": {
+        "kind": "literal",
+        "ref": null,
+        "lng": -177.0,
+        "lat": -12.0,
+        "note": "Hand-authored: open sea on the Reverse Mountain approach. Deliberately NOT anchored to reverse-mountain (island debuts ch101, after this scene's ch100 gate) nor to the into-the-grand-line event (occurs ch101) — either would leak. NEEDS HUMAN VERIFICATION against the manga."
+      }
+    }
+  ],
+  "refused": [
+    {
+      "id": "zoro-joins-at-shells-town",
+      "readiness": "art_partial",
+      "why": "readiness is 'art_partial', not runtime_ready",
+      "missing_assets": [
+        "axe-hand-morgan",
+        "koby"
+      ]
+    },
+    {
+      "id": "smoker-dragon-storm-escape",
+      "readiness": "art_partial",
+      "why": "readiness is 'art_partial', not runtime_ready",
+      "missing_assets": [
+        "monkey-d-dragon",
+        "tashigi"
+      ]
+    }
+  ],
+  "assets": {
+    "romance-dawn-origin-tableaux": {
+      "url": "/art/east-blue-2d/romance-dawn-origin-tableaux/atlas.png",
+      "sha256": "73ee4a59751d438bc0eb2db4c91fc9011604bc414fd36e3c4f36abd5b1677987",
+      "kind": "tableau",
+      "variant": "chapter-1-origin",
+      "map_height": 1.12,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "fruit-discovery": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "fruit-bite": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "crew-reaction": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "sea-king-rescue": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "sacrifice-aftermath": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "hat-promise": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "fruit-discovery"
+      }
+    },
+    "monkey-d-luffy": {
+      "url": "/art/east-blue-2d/monkey-d-luffy/atlas.png",
+      "sha256": "8a66b1ade59576910fbef9fdc22873c7fb8896246685b4776828c37b348d0807",
+      "kind": "character",
+      "variant": "east-blue",
+      "map_height": 1.0,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "idle": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "dash": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "rubber-punch": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "recoil": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "recover": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "victory": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "idle"
+      }
+    },
+    "roronoa-zoro": {
+      "url": "/art/east-blue-2d/roronoa-zoro/atlas.png",
+      "sha256": "d104e9006d5b0a1b458f9ca4bffa60bad73a73689320b0d5e21e7735c6eb4ef4",
+      "kind": "character",
+      "variant": "baratie-east-blue",
+      "map_height": 1.03,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "idle": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "guard": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "dash": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "three-sword-slash": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "recoil": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "defeated": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "idle"
+      }
+    },
+    "nami": {
+      "url": "/art/east-blue-2d/nami/atlas.png",
+      "sha256": "5a85feca0c9d393bf674633d9af4707633ef14c2ca5f4246bd67913ab4371c68",
+      "kind": "character",
+      "variant": "east-blue",
+      "map_height": 0.96,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "map-idle": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "dash": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "staff-guard": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "staff-strike": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "recoil": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "victory": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "map-idle"
+      }
+    },
+    "usopp": {
+      "url": "/art/east-blue-2d/usopp/atlas.png",
+      "sha256": "58c088f74f7acfd86afb13ca1268385414f637729562829bd617401c185c8547",
+      "kind": "character",
+      "variant": "east-blue",
+      "map_height": 1.02,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "idle": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "aim": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "fire": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "dash": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "recoil": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "victory": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "idle"
+      }
+    },
+    "sanji": {
+      "url": "/art/east-blue-2d/sanji/atlas.png",
+      "sha256": "0233a39e1743078e0475e57fd9864553d4b9de203d0d031d3f0ab960537687a5",
+      "kind": "character",
+      "variant": "baratie-east-blue",
+      "map_height": 1.08,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "idle": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "guard": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "dash": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "roundhouse-kick": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "recoil": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "victory": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "idle"
+      }
+    },
+    "alvida": {
+      "url": "/art/east-blue-2d/alvida/atlas.png",
+      "sha256": "875fa3923e7dab2afc3e4b64b97c89ab76a556af9ef606d0ca392986f3608b18",
+      "kind": "character",
+      "variant": "romance-dawn-original",
+      "map_height": 1.08,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "idle": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "guard": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "charge": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "mace-swing": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "rubber-punch-recoil": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "launched": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "idle"
+      }
+    },
+    "buggy": {
+      "url": "/art/east-blue-2d/buggy/atlas.png",
+      "sha256": "d4e8ef40da416aacaf925196078e87237480388a1e454345ed3030bd87b58c92",
+      "kind": "character",
+      "variant": "orange-town-loguetown",
+      "map_height": 1.06,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "idle": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "knife-guard": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "detach-attack": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "split-evade": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "recoil": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "scaffold-attack": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "idle"
+      }
+    },
+    "captain-kuro": {
+      "url": "/art/east-blue-2d/captain-kuro/atlas.png",
+      "sha256": "7da0a6ec04010ffd5f498d75d6cab107f84f8e2032a69de7f051299fc1a59b51",
+      "kind": "character",
+      "variant": "syrup-village",
+      "map_height": 1.1,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "idle": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "claw-guard": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "silent-step": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "claw-slash": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "recoil": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "defeated": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "idle"
+      }
+    },
+    "dracule-mihawk": {
+      "url": "/art/east-blue-2d/dracule-mihawk/atlas.png",
+      "sha256": "e8eb8b1e7303479d65a57bbc694528ffcc611d06220e109f54440bafbe708cf2",
+      "kind": "character",
+      "variant": "baratie-east-blue",
+      "map_height": 1.16,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "idle": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "guard": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "sidestep": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "yoru-slash": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "recoil": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "victory": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "idle"
+      }
+    },
+    "don-krieg": {
+      "url": "/art/east-blue-2d/don-krieg/atlas.png",
+      "sha256": "e9b9956dd82eed05826f41c8d94ae825fb7d0d9d394cc6e04325a53f29066a4a",
+      "kind": "character",
+      "variant": "baratie",
+      "map_height": 1.24,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "idle": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "guard": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "charge": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "battle-spear-strike": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "armor-break-recoil": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "defeated": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "idle"
+      }
+    },
+    "arlong": {
+      "url": "/art/east-blue-2d/arlong/atlas.png",
+      "sha256": "1760be6d1f6c1ad0655972a2ddbcc5985733db4f277be6f16083e0646e6b417b",
+      "kind": "character",
+      "variant": "arlong-park",
+      "map_height": 1.22,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "idle": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "guard": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "dash": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "kiribachi-slash": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "recoil": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "defeated": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "idle"
+      }
+    },
+    "gol-d-roger": {
+      "url": "/art/east-blue-2d/gol-d-roger/atlas.png",
+      "sha256": "31fee8795643b148c18d6cd22683acc39da56ac950c36fb05180fb4ffb673094",
+      "kind": "character",
+      "variant": "loguetown-execution",
+      "map_height": 1.13,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "chained-walk": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "standing-prisoner": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "scaffold-kneel": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "fearless-grin": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "final-declaration": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "execution-hold": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "chained-walk"
+      }
+    },
+    "smoker": {
+      "url": "/art/east-blue-2d/smoker/atlas.png",
+      "sha256": "76346e6e90e5549dd68ab649289c8ae87522a676e16ad67b4c80cc70ccfc3d99",
+      "kind": "character",
+      "variant": "loguetown",
+      "map_height": 1.16,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "idle": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "jitte-guard": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "smoke-lunge": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "capture": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "storm-recoil": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "hold": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "idle"
+      }
+    }
+  },
+  "supersedes_visible_art": [
+    "east-blue-zoro-mihawk",
+    "east-blue-luffy-buggy",
+    "east-blue-luffy-arlong"
+  ]
+}
