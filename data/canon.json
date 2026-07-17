@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-17T21:14:48.044253+00:00",
+    "generated_at": "2026-07-17T21:27:16.206285+00:00",
     "generator": "scripts/normalize.py",
     "source_manifest_sha": "be7af436b558b373ae1e6f28cc5007ef89153529fb274cb7efd1a47b4f1ef25a",
     "sources": {
@@ -50,8 +50,8 @@
       "vessels": 4,
       "vessels_verified": 0,
       "presence_crews": 31,
-      "presence_characters": 16,
-      "presence_windows": 96,
+      "presence_characters": 19,
+      "presence_windows": 102,
       "presence_windows_verified": 0,
       "statuses": 29,
       "poneglyphs": 7,
@@ -53692,6 +53692,108 @@
             "verified": false
           }
         ]
+      },
+      {
+        "slug": "silvers-rayleigh",
+        "name": "Silvers Rayleigh",
+        "affiliation": "The Dark King",
+        "crew_slug": null,
+        "windows": [
+          {
+            "order": 1,
+            "island_slug": "sabaody-archipelago",
+            "label": "Sabaody — the Dark King coats ships",
+            "from_chapter": 498,
+            "to_chapter": 590,
+            "lng": -48.2843,
+            "lat": 3.7912,
+            "source_ref": "Hand-authored. Rayleigh surfaces at Sabaody around the crew's arrival (~ch. 498) and works as a coating mechanic; he remains the archipelago's open secret through Marineford. The window end is a reading of the arc. NEEDS HUMAN VERIFICATION against the manga.",
+            "canon_confidence": "derived",
+            "verified": false
+          },
+          {
+            "order": 2,
+            "island_slug": "amazon-lily",
+            "label": "Amazon Lily — he swam",
+            "from_chapter": 591,
+            "to_chapter": 596,
+            "lng": 165.1452,
+            "lat": 12.0706,
+            "source_ref": "Hand-authored. Rayleigh reaches Amazon Lily after Marineford to make Luffy the two-year offer (~ch. 591-597). NEEDS HUMAN VERIFICATION against the manga.",
+            "canon_confidence": "derived",
+            "verified": false
+          },
+          {
+            "order": 3,
+            "island_slug": "rusukaina",
+            "label": "Rusukaina — two years of haki",
+            "from_chapter": 597,
+            "to_chapter": 601,
+            "lng": -15.9002,
+            "lat": 12.402,
+            "source_ref": "Hand-authored. The training island, ch. 597 to the timeskip's close (~ch. 601). The two in-world years live inside these few reader chapters — presence is reader-time like every gate here. NEEDS HUMAN VERIFICATION against the manga.",
+            "canon_confidence": "derived",
+            "verified": false
+          }
+        ],
+        "fruit": null,
+        "haki": []
+      },
+      {
+        "slug": "nefertari-vivi",
+        "name": "Nefertari Vivi",
+        "affiliation": "Arabasta Kingdom",
+        "crew_slug": null,
+        "windows": [
+          {
+            "order": 1,
+            "island_slug": "whisky-peak",
+            "label": "Whisky Peak — Miss Wednesday",
+            "from_chapter": 106,
+            "to_chapter": 114,
+            "lng": -121.3706,
+            "lat": 4.162,
+            "source_ref": "Hand-authored. The bounty-hunter welcome at Whisky Peak, where Miss Wednesday is unmasked as the princess of Arabasta (~ch. 106-114). NEEDS HUMAN VERIFICATION against the manga.",
+            "canon_confidence": "canon",
+            "verified": false
+          },
+          {
+            "order": 2,
+            "island_slug": "arabasta-kingdom",
+            "label": "Home — the princess who stayed",
+            "from_chapter": 155,
+            "to_chapter": null,
+            "lng": -125.4532,
+            "lat": -2.0675,
+            "source_ref": "Hand-authored. The crew reaches Arabasta ~ch. 155; Vivi chooses her kingdom over the sea at ch. 216 and stays. Her chapters ABOARD the Going Merry (~114-154) are deliberately unwindowed — she rides the voyage line, not an anchorage — and the Levely trip (~ch. 903-908) is left for a later pass. NEEDS HUMAN VERIFICATION against the manga.",
+            "canon_confidence": "derived",
+            "verified": false
+          }
+        ],
+        "fruit": null,
+        "haki": []
+      },
+      {
+        "slug": "ener",
+        "name": "Ener",
+        "affiliation": "God of Skypiea",
+        "crew_slug": null,
+        "windows": [
+          {
+            "order": 1,
+            "island_slug": "skypiea",
+            "label": "Upper Yard — the God of Skypiea",
+            "from_chapter": 254,
+            "to_chapter": 299,
+            "lng": -91.1362,
+            "lat": 17.0745,
+            "source_ref": "Hand-authored. Ener appears on-page in Upper Yard (~ch. 254) and falls with the Ark Maxim at the arc's end (~ch. 299). His departure for the moon is a cover story and stays off this map. NEEDS HUMAN VERIFICATION against the manga.",
+            "canon_confidence": "derived",
+            "verified": false
+          }
+        ],
+        "fruit": null,
+        "haki": []
       }
     ]
   },

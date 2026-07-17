@@ -126,7 +126,7 @@ Both syncs are polite (sequential, ~1 req/sec, explicit User-Agent, retries) and
 
 **Next**
 - **The canon events layer** — the duels, wars, deaths and declarations as chapter-gated map facts (the Zoro–Mihawk duel at the Baratie, the war at Marineford), hand-authored in `canon/events.json` with the same honesty rules as every pin.
-- **Expand the roster** — the rest of the Worst Generation (Hawkins, Drake, Bonney, Capone, Urouge, Apoo), Sun Pirates, Baroque Works. The schema is done; it's authoring + one Jolly Roger each. `scripts/seed_presence.py` prints a scaffold.
+- **Expand the roster** — the Worst Generation, Sun Pirates and Baroque Works are IN (31 crews, 19 characters windowed). What's left is depth, not breadth: more members per crew, more windows per life (Vivi's Levely trip, Rayleigh's later Sabaody years), and the still-missing names (Yamato, Magellan; Koby has no upstream character row at all). `scripts/seed_presence.py` prints a scaffold.
 - **Verify the canon** — flip `verified: false → true` on crew joins, ships, presence windows, and island positions. The full debt is enumerated by `scripts/verification_queue.py` → [`data/review/verification-queue.md`](data/review/verification-queue.md).
 - **Iceberg lore & theory layers** — see "Fork it" above.
 
