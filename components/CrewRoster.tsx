@@ -43,6 +43,7 @@
 import { useState } from "react";
 import type { WorldAt, World, WorldCrewMember } from "@/lib/canon";
 import { bountyAt, formatBerry } from "@/lib/canon";
+import { posterFromCrewMember } from "@/lib/entry";
 import type { Art } from "@/lib/art";
 import JollyRoger from "./marks/JollyRoger";
 import WantedCard from "./WantedCard";
@@ -106,7 +107,7 @@ export default function CrewRoster({ at, world, art }: { at: WorldAt; world: Wor
         {poster && (
           <div className="pointer-events-none absolute left-1/2 top-full z-20 mt-2 -translate-x-1/2">
             <WantedCard
-              member={poster}
+              poster={posterFromCrewMember(poster)}
               chapter={at.chapter}
               portrait={art.characters[poster.slug]}
             />

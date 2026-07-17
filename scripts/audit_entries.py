@@ -127,6 +127,48 @@ def main() -> int:
         check("no ?ch: asks where you are rather than guessing",
               "Where are you?" in bare and "Water 7" not in bare)
 
+        print("\n  the wanted poster")
+        # The nine dropped fields, tested where they would actually hurt. Luffy
+        # debuts in chapter 1, so this page is CHARTED — everything below is a
+        # field the raw canon row was holding and the poster refused.
+        absent(
+            "ch1/luffy: charted, and still no future bounty",
+            "/character/monkey-d-luffy?ch=1",
+            ["3,000,000,000", "3000000000", "1,500,000,000", "30,000,000"],
+        )
+        absent(
+            "ch1/luffy: no devil fruit (the raw row says 'Nika model')",
+            "/character/monkey-d-luffy?ch=1",
+            ["Nika", "Hito Hito", "Gomu Gomu"],
+        )
+        absent(
+            "ch1/luffy: no epithet — the alias rides the bounty",
+            "/character/monkey-d-luffy?ch=1",
+            ["Straw Hat Luffy"],
+        )
+        present("ch1/luffy: says so, honestly", "/character/monkey-d-luffy?ch=1",
+                "no bounty posted yet")
+        present("ch100/luffy: the first bounty lands", "/character/monkey-d-luffy?ch=100",
+                "฿30,000,000")
+        present("ch100/luffy: and the alias arrives with it",
+                "/character/monkey-d-luffy?ch=100", "Straw Hat Luffy")
+        present("ch1053/luffy: the 3B, at last", "/character/monkey-d-luffy?ch=1053",
+                "฿3,000,000,000")
+
+        # THE JINBE TRAP, at page level. He debuts 528 and joins 976; his raw
+        # canon row says crew_name "Straw Hat Pirates" and job "Helmsman".
+        absent(
+            "ch600/jinbe: charted, but NOT a Straw Hat for another 376 chapters",
+            "/character/jinbe?ch=600",
+            ["Straw Hat", "Helmsman"],
+        )
+        # status: alive|dead is a single present-day value and is dropped.
+        absent("ch200/ace: no status — he does not die for 374 chapters",
+               "/character/portgas-d-ace?ch=200", ["dead", "deceased"])
+        # A character the reader has not met is uncharted, like any fogged thing.
+        absent("ch1/katakuri: not met yet", "/character/charlotte-katakuri?ch=1",
+               ["Katakuri", "Charlotte"])
+
     finally:
         if server:
             server.terminate()
