@@ -1,0 +1,292 @@
+{
+  "schema_version": 2,
+  "id": "zou-zunesha",
+  "label": "Zou carried by Zunesha",
+  "entity_type": "moving_world_entity",
+  "priority": 1,
+  "contract_status": "ready_for_system_sketch",
+  "identity": {
+    "anchor": {
+      "slug": "zou",
+      "name": "Zou",
+      "japanese": "ゾウ",
+      "romaji": "Zō",
+      "region": "New World",
+      "sea": null,
+      "island_type": null,
+      "debut_chapter": 795,
+      "debut_episode": 739,
+      "canon_status": "manga",
+      "canon_confidence": "canon",
+      "affiliation": null,
+      "wiki_url": "https://onepiece.fandom.com/wiki/Zou",
+      "source_ref": "onepiece.fandom.com/wiki/Zou#Island_Box",
+      "id": "zou",
+      "record_origin": "generated_wiki_record",
+      "atlas_anchor": {
+        "lng": 53.1494,
+        "lat": -4.3461,
+        "confidence": "derived",
+        "source_ref": "derived: region='New World'; lng by voyage order 27 (zou, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+        "usage": "scene_entry_anchor_only",
+        "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+      }
+    },
+    "components": [
+      {
+        "slug": "zou",
+        "name": "Zou",
+        "japanese": "ゾウ",
+        "romaji": "Zō",
+        "region": "New World",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 795,
+        "debut_episode": 739,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Zou",
+        "source_ref": "onepiece.fandom.com/wiki/Zou#Island_Box",
+        "id": "zou",
+        "role": "island_settlement",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": 53.1494,
+          "lat": -4.3461,
+          "confidence": "derived",
+          "source_ref": "derived: region='New World'; lng by voyage order 27 (zou, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "mokomo-dukedom",
+        "name": "Mokomo Dukedom",
+        "japanese": "モコモ公国",
+        "romaji": "Mokomo Kōkoku",
+        "region": "New World (Zou)",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 804,
+        "debut_episode": 753,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Mokomo_Dukedom",
+        "source_ref": "onepiece.fandom.com/wiki/Mokomo_Dukedom#Island_Box",
+        "id": "mokomo-dukedom",
+        "role": "nation_on_back",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": 54.1236,
+          "lat": 2.9703,
+          "confidence": "derived",
+          "source_ref": "derived: region='New World (Zou)'; lng by voyage order 27 (zou, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "id": "zunesha",
+        "slug": null,
+        "name": "Zunesha",
+        "role": "moving_elephant_world_entity",
+        "debut_chapter": 795,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://one-piece.com/story/zou/index.html",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "zunesha-legs",
+        "slug": null,
+        "name": "Zunesha's two-jointed legs",
+        "role": "seafloor_reaching_supports",
+        "debut_chapter": 795,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Zunesha",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "zunesha-trunk",
+        "slug": null,
+        "name": "Zunesha's trunk",
+        "role": "rain_and_event_emitter",
+        "debut_chapter": 795,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Zunesha",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "from": "zou",
+      "type": "carried_on_back_of",
+      "to": "zunesha",
+      "confidence": "canon"
+    },
+    {
+      "from": "mokomo-dukedom",
+      "type": "on",
+      "to": "zou",
+      "confidence": "canon"
+    },
+    {
+      "from": "zunesha-legs",
+      "type": "reach",
+      "to": "seafloor",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "zunesha-trunk",
+      "type": "sprays_recurring_rain_over",
+      "to": "zou",
+      "confidence": "cited_summary"
+    }
+  ],
+  "topology": {
+    "summary": "Zou is not a stationary island coordinate: it is a nation carried on Zunesha's back. The runtime anchor must follow a moving entity path or use a chapter-local encounter position.",
+    "sources": [
+      "https://one-piece.com/story/zou/index.html",
+      "https://onepiece.fandom.com/wiki/Zunesha",
+      "https://onepiece.fandom.com/wiki/Mokomo_Dukedom"
+    ],
+    "exact_distances": "unknown",
+    "exact_bearings": "partially_known_or_unknown",
+    "layout_mode": "relationship_graph_not_atlas_jitter"
+  },
+  "chapter_logic": {
+    "base_reveal_chapter": 795,
+    "temporal_variants": [
+      {
+        "id": "walking-dry",
+        "reveal_chapter": 795,
+        "state": "Zunesha walking with Zou visible above the cloud/mist layer.",
+        "verification": "verified"
+      },
+      {
+        "id": "eruption-rain",
+        "reveal_chapter": 795,
+        "state": "Recurring trunk spray floods the city channels.",
+        "verification": "verified"
+      },
+      {
+        "id": "trunk-strike",
+        "reveal_chapter": null,
+        "state": "Story-specific attack pose and water/debris response.",
+        "verification": "chapter_to_verify"
+      }
+    ],
+    "event_scenes": [
+      {
+        "id": "zunesha-eruption-rain",
+        "importance": 1,
+        "reveal_chapter": 795,
+        "landmark": "zunesha-trunk",
+        "state_delta": "Trunk spray becomes a moving water volume across Zou.",
+        "verification": "verified",
+        "camera_cue": "Begin near sea level, rise along the legs through cloud to the city, then reveal the trunk arc.",
+        "fx": [
+          "ocean spray",
+          "cloud penetration",
+          "city runoff"
+        ]
+      },
+      {
+        "id": "zunesha-trunk-strike",
+        "importance": 1,
+        "reveal_chapter": null,
+        "landmark": "zunesha-trunk",
+        "state_delta": "Rig switches to attack pose with impact wake.",
+        "verification": "chapter_to_verify",
+        "camera_cue": "Wide side silhouette so the scale of the elephant and strike remains legible.",
+        "fx": [
+          "impact wake",
+          "mist blast",
+          "debris"
+        ]
+      }
+    ],
+    "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+    "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+  },
+  "coordinate_policy": {
+    "atlas_anchor": "Use the app coordinate only to place or open the local scene on the globe.",
+    "local_topology": "Build only from cited containment and relationship evidence. Never infer local bearings or distances from deterministic atlas jitter.",
+    "runtime": "Use an expanded local inset, path graph, or moving entity transform when a single flat raster cannot express the place."
+  },
+  "api_coverage": {
+    "raw_api_matches": [],
+    "raw_api_missing_or_nested": [
+      "Mokomo Dukedom",
+      "Zou",
+      "Zunesha",
+      "Zunesha's trunk",
+      "Zunesha's two-jointed legs"
+    ],
+    "generated_component_count": 2,
+    "manual_topology_node_count": 3
+  },
+  "visual_program": {
+    "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+    "must_show": [
+      "full elephant silhouette",
+      "extremely long two-jointed legs descending through the sea",
+      "Zou and Mokomo Dukedom on the back",
+      "recurring eruption rain",
+      "moving-anchor behavior"
+    ],
+    "must_not_show": [
+      "Zou as a stationary ordinary island plate",
+      "short terrestrial elephant proportions",
+      "a single atlas point presented as Zunesha's permanent canon location"
+    ],
+    "collection_pattern": [
+      "00_TOPOLOGY",
+      "10_LANDMARKS",
+      "20_EVENT_STATES",
+      "30_ATMOSPHERE_FX",
+      "40_RUNTIME_LOD"
+    ],
+    "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+  },
+  "unresolved": [
+    "Runtime path for an intentionally roaming world entity.",
+    "Exact chapter for the trunk-strike event.",
+    "Performance strategy for extreme vertical scale."
+  ],
+  "evidence": [
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+      "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+      "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+      "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+      "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+      "ownership": "asset_workspace"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+      "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+      "ownership": "asset_workspace"
+    }
+  ]
+}

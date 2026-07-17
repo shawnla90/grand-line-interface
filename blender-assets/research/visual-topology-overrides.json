@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-07-16",
+  "purpose": "Small, cited topology layer for relationships the upstream location API does not encode. This file never invents geographic coordinates.",
+  "systems": {
+    "totto-land": {
+      "entity_type": "archipelago_system",
+      "central_slug": "whole-cake-island",
+      "subsidiary_selector": {
+        "field": "region",
+        "equals": "Totto Land"
+      },
+      "subsidiary_extras": [
+        "cheese-island",
+        "nuts-island"
+      ],
+      "expected_subsidiary_count": 34,
+      "topology": "central island with subsidiary islands arranged roughly in concentric circles",
+      "topology_source": "https://onepiece.fandom.com/wiki/Totto_Land#Layout",
+      "manga_reference": "Chapter 827, pages 5-6, via the cited source's reference list",
+      "placement_hints": {
+        "biscuits-island": {"direction": "northwest", "ring": null, "medium": "manga_and_anime"},
+        "black-island": {"direction": "northwest", "ring": null, "medium": "anime"},
+        "cacao-island": {"direction": "southwest", "ring": "outermost", "medium": "manga_and_anime"},
+        "candy-island": {"direction": "southwest", "ring": "innermost", "medium": "manga_and_anime"},
+        "cheese-island": {"direction": "west", "ring": null, "medium": "manga_and_anime"},
+        "flavor-island": {"direction": "northwest", "ring": null, "medium": "anime"},
+        "fruits-island": {"direction": "east", "ring": null, "medium": "anime"},
+        "funwari-island": {"direction": "southwest", "ring": null, "medium": "anime"},
+        "futoru-island": {"direction": "north", "ring": null, "medium": "anime"},
+        "ice-island": {"direction": "southeast", "ring": null, "medium": "anime"},
+        "jam-island": {"direction": "west", "ring": null, "medium": "manga_and_anime"},
+        "jelly-island": {"direction": "south", "ring": null, "medium": "anime"},
+        "liqueur-island": {"direction": "southwest", "ring": null, "medium": "manga; anime placement conflicts"},
+        "milenge-island": {"direction": "south", "ring": null, "medium": "anime"},
+        "nuts-island": {"direction": "west", "ring": null, "medium": "manga_and_anime"},
+        "package-island": {"direction": "northwest", "ring": null, "medium": "anime"},
+        "piepie-island": {"direction": "northeast", "ring": null, "medium": "anime"},
+        "rokumitsu-island": {"direction": "south", "ring": null, "medium": "anime"},
+        "topping-island": {"direction": "northwest", "ring": null, "medium": "anime"}
+      }
+    },
+    "world-government-tarai-system": {
+      "entity_type": "connected_world_structure",
+      "facility_slugs": [
+        "enies-lobby",
+        "impel-down",
+        "marineford"
+      ],
+      "infrastructure_slugs": [
+        "gates-of-justice",
+        "tarai-current"
+      ],
+      "topology": "three facilities form a triangle around the Tarai Current; Gates of Justice redirect and control access to the current",
+      "topology_source": "https://onepiece.fandom.com/wiki/Tarai_Current",
+      "manga_references": [
+        "Chapter 522, pages 10-11",
+        "Chapter 549, page 8"
+      ],
+      "temporal_note": "This is the pre-timeskip Marineford headquarters configuration. After Chapter 598, Marine Headquarters has moved; New Marineford must not be inserted into the old Tarai triangle.",
+      "relationships": [
+        {"from": "enies-lobby", "type": "facility_on", "to": "tarai-current"},
+        {"from": "impel-down", "type": "facility_on", "to": "tarai-current"},
+        {"from": "marineford", "type": "facility_on", "to": "tarai-current"},
+        {"from": "gates-of-justice", "type": "controls_access_to", "to": "tarai-current"},
+        {"from": "gates-of-justice", "type": "redirects_water_into", "to": "tarai-current"}
+      ]
+    }
+  }
+}

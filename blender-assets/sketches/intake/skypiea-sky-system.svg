@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1100" viewBox="0 0 1800 1100">
+<title>SKYPIEA — BUILD THE WORLD ABOVE THE STREAM</title>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#102a38"/><stop offset="1" stop-color="#050d14"/></linearGradient>
+  <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1b748e"/><stop offset="1" stop-color="#092938"/></linearGradient>
+  <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e0d0b3"/><stop offset="1" stop-color="#745f55"/></linearGradient>
+  <linearGradient id="cloud" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fffde8"/><stop offset="1" stop-color="#9ed8e5"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="shadow"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-opacity=".35"/></filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#75dfef"/></marker>
+</defs>
+<rect width="1800" height="1100" fill="url(#bg)"/>
+<circle cx="1510" cy="-60" r="390" fill="#fff0a1" opacity=".06"/>
+<text x="64" y="75" fill="#fff7df" font-family="Georgia,serif" font-size="45">SKYPIEA — BUILD THE WORLD ABOVE THE STREAM</text>
+<text x="66" y="114" fill="#95b8c1" font-family="Arial,sans-serif" font-size="19">Vertical destination board • cloud ocean / Angel Island / Upper Yard / Giant Jack / Belfry</text>
+<rect x="1500" y="46" width="238" height="54" rx="27" fill="#0a1720" stroke="#fff0a1" stroke-width="2"/>
+<text x="1619" y="80" text-anchor="middle" fill="#fff0a1" font-family="Arial,sans-serif" font-size="17">PRIORITY 01</text>
+
+<rect x="58" y="155" width="1684" height="780" rx="24" fill="#5a9db4" stroke="#96d9e8"/>
+<rect x="59" y="760" width="1682" height="174" fill="#073446"/>
+<path d="M60 760H1740" stroke="#9cf0f4" stroke-width="7"/>
+<path d="M870 935Q795 805 850 672Q915 535 870 430" fill="none" stroke="#c7f6ff" stroke-width="90" opacity=".65"/>
+<path d="M870 935Q795 805 850 672Q915 535 870 430" fill="none" stroke="#f7ffff" stroke-width="18" stroke-dasharray="14 18"/>
+<g fill="url(#cloud)" stroke="#f7fff6" stroke-width="7" filter="url(#shadow)">
+  <path d="M180 565Q250 485 340 540Q405 435 500 530Q590 482 660 565Q580 630 420 627Q260 630 180 565Z"/>
+  <path d="M1040 500Q1110 420 1210 478Q1300 370 1420 475Q1510 430 1605 520Q1510 592 1320 585Q1135 592 1040 500Z"/>
+  <path d="M730 310Q795 250 870 290Q935 220 1015 295Q1080 266 1142 325Q1060 375 930 370Q800 380 730 310Z"/>
+</g>
+<text x="420" y="565" text-anchor="middle" fill="#365f66" font-family="Georgia,serif" font-size="25">ANGEL ISLAND</text>
+<path d="M1085 500Q1190 420 1395 452Q1510 470 1555 530Q1480 655 1300 670Q1120 650 1055 565Z" fill="#667d45" stroke="#d6c487" stroke-width="10"/>
+<path d="M1170 568Q1250 520 1335 565Q1380 600 1435 578" fill="none" stroke="#b98e55" stroke-width="11"/>
+<path d="M1288 528Q1210 455 1245 360Q1270 260 1255 184" fill="none" stroke="#788449" stroke-width="38" stroke-linecap="round"/>
+<path d="M1288 528Q1210 455 1245 360Q1270 260 1255 184" fill="none" stroke="#d0d889" stroke-width="7"/>
+<rect x="1265" y="548" width="95" height="55" fill="#9f7652" stroke="#f1d18a" stroke-width="5"/>
+<text x="1310" y="700" text-anchor="middle" fill="#fff5c8" font-family="Georgia,serif" font-size="24">UPPER YARD — SOLID JAYA LAND</text>
+<text x="1310" y="731" text-anchor="middle" fill="#d8ebdf" font-family="Arial,sans-serif" font-size="15">SHANDORA RUINS WITHIN</text>
+<text x="1180" y="250" fill="#edf3b9" font-family="Arial,sans-serif" font-size="17">GIANT JACK</text>
+<g transform="translate(930 305)">
+  <rect x="-32" y="-18" width="64" height="54" fill="#d4a849" stroke="#fff0a1" stroke-width="5"/>
+  <path d="M-50 -18Q0 -72 50 -18" fill="#e9c75d" stroke="#fff0a1" stroke-width="5"/>
+  <circle cx="0" cy="10" r="14" fill="#ffec91"/>
+</g>
+<text x="930" y="405" text-anchor="middle" fill="#fff1a0" font-family="Arial,sans-serif" font-size="16">GOLDEN BELFRY CLOUD — GATED</text>
+<text x="165" y="740" fill="#dbffff" font-family="Arial,sans-serif" font-size="18">WHITE-WHITE SEA / CLOUD OCEAN</text>
+<text x="742" y="878" fill="#d9ffff" font-family="Arial,sans-serif" font-size="17">KNOCK-UP STREAM</text>
+<path d="M900 445V220" stroke="#efffff" stroke-width="4" stroke-dasharray="11 9" marker-end="url(#arrow)"/>
+<rect x="95" y="210" width="390" height="158" rx="17" fill="#164457" stroke="#d9ffff"/>
+<text x="122" y="249" fill="#fff0a1" font-family="Arial,sans-serif" font-size="17">THE STREAM IS THE ENTRANCE</text>
+<text x="122" y="286" fill="#fff" font-family="Georgia,serif" font-size="22">The destination is a layered world.</text>
+<text x="122" y="322" fill="#d0e7eb" font-family="Arial,sans-serif" font-size="15">cloud sea • cloud island • solid land</text>
+<text x="122" y="348" fill="#d0e7eb" font-family="Arial,sans-serif" font-size="15">ruins • vine axis • higher bell cloud</text>
+<rect x="60" y="962" width="1680" height="102" rx="18" fill="#07141d" stroke="#315363"/>
+<text x="88" y="998" fill="#f1c86a" font-family="Arial,sans-serif" font-size="16">BLENDER RULE — separate cloud volumes from the solid Upper Yard mesh</text>
+<text x="88" y="1027" fill="#b8cdd1" font-family="Arial,sans-serif" font-size="15">Existing Knock-Up Stream GLB becomes the transition into this scene, not the finished Skypiea asset.</text>
+</svg>

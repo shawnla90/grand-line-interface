@@ -86,6 +86,25 @@
         "ee70b5d"
       ],
       "verified": true
+    },
+    {
+      "phase": "7A (asset factory)",
+      "title": "Canon-aware Blender asset factory — visual contracts, system boards, 2.5D plates, and 3D blockouts",
+      "builder": "Codex Sol",
+      "harness": "Codex Desktop · Blender 4.5.3 LTS",
+      "role": "research + art direction + procedural build + verification",
+      "commits": [],
+      "usage": {
+        "measuredAt": "2026-07-17T03:04:50.321Z",
+        "inputTokens": 22440567,
+        "cachedInputTokens": 21036544,
+        "uncachedInputTokens": 1404023,
+        "outputTokens": 189772,
+        "reasoningOutputTokens": 45603,
+        "totalTokens": 22630339,
+        "note": "Includes cached context; workload snapshot, not a direct invoice."
+      },
+      "verified": true
     }
   ]
 }

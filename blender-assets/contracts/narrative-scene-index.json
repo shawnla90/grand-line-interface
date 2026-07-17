@@ -1,0 +1,95 @@
+{
+  "schema_version": 2,
+  "generator": "scripts/build_narrative_scene_contracts.py",
+  "contract_count": 11,
+  "contracts": [
+    {
+      "id": "conomi-arlong-park",
+      "label": "Conomi Islands and Arlong Park",
+      "entity_type": "nested_landmark_compound",
+      "priority": 2,
+      "state": "ready_for_system_sketch",
+      "path": "contracts/conomi-arlong-park.visual.json"
+    },
+    {
+      "id": "arabasta-kingdom",
+      "label": "Arabasta kingdom region system",
+      "entity_type": "kingdom_region_system",
+      "priority": 2,
+      "state": "ready_for_system_sketch",
+      "path": "contracts/arabasta-kingdom.visual.json"
+    },
+    {
+      "id": "cactus-island-whisky-peak",
+      "label": "Cactus Island and Whisky Peak",
+      "entity_type": "island_town_system",
+      "priority": 3,
+      "state": "ready_for_system_sketch",
+      "path": "contracts/cactus-island-whisky-peak.visual.json"
+    },
+    {
+      "id": "dressrosa-green-bit",
+      "label": "Dressrosa, Green Bit, and King's Plateau",
+      "entity_type": "island_bridge_system",
+      "priority": 1,
+      "state": "ready_for_system_sketch",
+      "path": "contracts/dressrosa-green-bit.visual.json"
+    },
+    {
+      "id": "zou-zunesha",
+      "label": "Zou carried by Zunesha",
+      "entity_type": "moving_world_entity",
+      "priority": 1,
+      "state": "ready_for_system_sketch",
+      "path": "contracts/zou-zunesha.visual.json"
+    },
+    {
+      "id": "amazon-lily",
+      "label": "Amazon Lily mountain city",
+      "entity_type": "mountain_city_system",
+      "priority": 2,
+      "state": "ready_for_system_sketch",
+      "path": "contracts/amazon-lily.visual.json"
+    },
+    {
+      "id": "mary-geoise-red-line",
+      "label": "Mary Geoise atop the Red Line",
+      "entity_type": "vertical_political_world_structure",
+      "priority": 2,
+      "state": "ready_for_system_sketch",
+      "path": "contracts/mary-geoise-red-line.visual.json"
+    },
+    {
+      "id": "sabaody-grove-network",
+      "label": "Sabaody 79-grove mangrove network",
+      "entity_type": "mangrove_grove_network",
+      "priority": 1,
+      "state": "ready_for_system_sketch",
+      "path": "contracts/sabaody-grove-network.visual.json"
+    },
+    {
+      "id": "skypiea-sky-system",
+      "label": "Skypiea sky-island system",
+      "entity_type": "sky_archipelago_system",
+      "priority": 1,
+      "state": "ready_for_system_sketch",
+      "path": "contracts/skypiea-sky-system.visual.json"
+    },
+    {
+      "id": "loguetown-roger-execution",
+      "label": "Loguetown and Roger execution platform",
+      "entity_type": "city_landmark_event_system",
+      "priority": 1,
+      "state": "ready_for_system_sketch",
+      "path": "contracts/loguetown-roger-execution.visual.json"
+    },
+    {
+      "id": "water-7-sea-train-network",
+      "label": "Water 7 Sea Train network",
+      "entity_type": "sea_train_route_network",
+      "priority": 1,
+      "state": "ready_for_system_sketch",
+      "path": "contracts/water-7-sea-train-network.visual.json"
+    }
+  ]
+}

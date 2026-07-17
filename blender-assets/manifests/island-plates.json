@@ -1,0 +1,327 @@
+{
+  "schema_version": 1,
+  "integration_status": "asset-only; atlas currently has no plate-loading layer",
+  "repo_write_contract": "read-only",
+  "plates": [
+    {
+      "id": "fish-man-island",
+      "label": "Fish-Man Island \u2014 deep pilot",
+      "source_blend": "source/fish-man-island.blend",
+      "raster": "renders/fish-man-island.png",
+      "preview": "renders/fish-man-island-preview.png",
+      "coastline": "geometry/fish-man-island-coastline.geojson",
+      "projection": "MapLibre image source coordinates, equirectangular near equator",
+      "coordinates": [
+        [
+          -8.815543,
+          0.025843
+        ],
+        [
+          -3.054257,
+          0.025843
+        ],
+        [
+          -3.054257,
+          -5.735443
+        ],
+        [
+          -8.815543,
+          -5.735443
+        ]
+      ],
+      "center": [
+        -5.9349,
+        -2.8548
+      ],
+      "pixel_size": [
+        2048,
+        2048
+      ],
+      "alpha_contract": "opaque only inside the deterministic 128-point HeroRing footprint",
+      "coastline_contract": {
+        "seed": "silhouette:fish-man-island",
+        "weight": "voyage",
+        "biome": "temperate",
+        "radius": 1.845317795976,
+        "elong": 1.149834875693,
+        "points": 128
+      },
+      "spoiler_gate": {
+        "debut_chapter": 68
+      },
+      "descent_contract": {
+        "body": [
+          -5.9349,
+          -2.8548
+        ],
+        "dive_base": [
+          -48.2843,
+          2.9
+        ],
+        "chapters": {
+          "dive": 602,
+          "deep": 605,
+          "riseStart": 651,
+          "surface": 653
+        },
+        "depth_meters": 10000
+      },
+      "art_direction": [
+        "deep teal murk",
+        "surface light shafts",
+        "bubble rim highlight",
+        "coral distance field",
+        "warm Ryugu glow",
+        "caustic arcs"
+      ]
+    },
+    {
+      "id": "whole-cake-island",
+      "label": "Whole Cake Island \u2014 Blender plate",
+      "source_blend": "source/whole-cake-island.blend",
+      "raster": "renders/whole-cake-island.png",
+      "preview": "renders/whole-cake-island-preview.png",
+      "coastline": "geometry/whole-cake-island-coastline.geojson",
+      "projection": "MapLibre image source coordinates, equirectangular",
+      "coordinates": [
+        [
+          70.181005,
+          -0.722205
+        ],
+        [
+          74.374595,
+          -0.722205
+        ],
+        [
+          74.374595,
+          -4.915795
+        ],
+        [
+          70.181005,
+          -4.915795
+        ]
+      ],
+      "center": [
+        72.2778,
+        -2.819
+      ],
+      "pixel_size": [
+        2048,
+        2048
+      ],
+      "alpha_contract": "opaque only inside the current Polygon silhouette",
+      "coastline_contract": {
+        "source": "public/geo/islands.silhouettes.json",
+        "geometry_type": "Polygon",
+        "polygon_count": 1,
+        "points_per_polygon": [
+          56
+        ],
+        "biome": "summer"
+      },
+      "spoiler_gate": {
+        "debut_chapter": 651,
+        "route_arrival_chapter": 827
+      },
+      "art_direction": [
+        "layered cake terrain",
+        "chocolate river",
+        "candy forest",
+        "strawberry icing districts",
+        "warm sugar sparkle"
+      ],
+      "build": {
+        "blender": "4.5.3 LTS",
+        "script": "scripts/build_additional_plates.py",
+        "raster_sha256": "b84e8f299cc785e73c163d1d22a6d6a3c52e01420be8855b7fd1dad59ab4df25",
+        "preview_sha256": "b902b09e02a5269d9802161ba4fbef3eaa9b6084c194cfe197845178c2c61ec3",
+        "blend_sha256": "f16c5f72148f30894000f6e37cd316121e1c146b0dd4d54681c09d84e2488d93",
+        "geometry_sha256": "a1fa05046eb538f13098c0a28891e51738676104cf04f7ef0b5fe317c5277f10"
+      }
+    },
+    {
+      "id": "impel-down",
+      "label": "Impel Down \u2014 Blender plate",
+      "source_blend": "source/impel-down.blend",
+      "raster": "renders/impel-down.png",
+      "preview": "renders/impel-down-preview.png",
+      "coastline": "geometry/impel-down-coastline.geojson",
+      "projection": "MapLibre image source coordinates, equirectangular",
+      "coordinates": [
+        [
+          -50.185615,
+          15.156815
+        ],
+        [
+          -46.721585,
+          15.156815
+        ],
+        [
+          -46.721585,
+          11.692785
+        ],
+        [
+          -50.185615,
+          11.692785
+        ]
+      ],
+      "center": [
+        -48.4536,
+        13.4248
+      ],
+      "pixel_size": [
+        2048,
+        2048
+      ],
+      "alpha_contract": "opaque only inside the current Polygon silhouette",
+      "coastline_contract": {
+        "source": "public/geo/islands.silhouettes.json",
+        "geometry_type": "Polygon",
+        "polygon_count": 1,
+        "points_per_polygon": [
+          56
+        ],
+        "biome": "temperate"
+      },
+      "spoiler_gate": {
+        "debut_chapter": 525,
+        "route_arrival_chapter": 525
+      },
+      "art_direction": [
+        "submerged concentric prison levels",
+        "black iron shaft",
+        "radial chains",
+        "inferno core",
+        "Calm Belt abyss"
+      ],
+      "build": {
+        "blender": "4.5.3 LTS",
+        "script": "scripts/build_additional_plates.py",
+        "raster_sha256": "8bb68527280911da11079b806607a8d6e06828db5942441df120becdc3a49382",
+        "preview_sha256": "9d3e6f1d18fa74561f0bcf87a363fbfab23b651c391b98df5326e976f2a8a131",
+        "blend_sha256": "192d720c7cc16dde661cfa213cc15996f6404b4ef4468245e9b339b435ff450e",
+        "geometry_sha256": "b23ef40352576a83e75a90d77f253c666c6c627510b04779f872adbbedbffc13"
+      }
+    },
+    {
+      "id": "sabaody-archipelago",
+      "label": "Sabaody Archipelago \u2014 Blender plate",
+      "source_blend": "source/sabaody-archipelago.blend",
+      "raster": "renders/sabaody-archipelago.png",
+      "preview": "renders/sabaody-archipelago-preview.png",
+      "coastline": "geometry/sabaody-archipelago-coastline.geojson",
+      "projection": "MapLibre image source coordinates, equirectangular",
+      "coordinates": [
+        [
+          -50.856735,
+          6.363635
+        ],
+        [
+          -45.711865,
+          6.363635
+        ],
+        [
+          -45.711865,
+          1.218765
+        ],
+        [
+          -50.856735,
+          1.218765
+        ]
+      ],
+      "center": [
+        -48.2843,
+        3.7912
+      ],
+      "pixel_size": [
+        2048,
+        2048
+      ],
+      "alpha_contract": "opaque only inside the current MultiPolygon silhouette",
+      "coastline_contract": {
+        "source": "public/geo/islands.silhouettes.json",
+        "geometry_type": "MultiPolygon",
+        "polygon_count": 3,
+        "points_per_polygon": [
+          56,
+          56,
+          56
+        ],
+        "biome": "jungle"
+      },
+      "spoiler_gate": {
+        "debut_chapter": 496,
+        "route_arrival_chapter": 490
+      },
+      "art_direction": [
+        "three exact grove polygons",
+        "resin mangroves",
+        "root networks",
+        "floating bubbles",
+        "lagoon-green light"
+      ],
+      "build": {
+        "blender": "4.5.3 LTS",
+        "script": "scripts/build_additional_plates.py",
+        "raster_sha256": "da75fd5f99b371988218586c26aa813e762b2a7e8f8b11012bc801793ababaf5",
+        "preview_sha256": "9b3737a2cea01045e7f02476ebbe5e650d6313360ed1f603dafca314d74c968b",
+        "blend_sha256": "9ce735531cfe6b5d247d3901de72bb5784005512a8399a89c52a23d836501f72",
+        "geometry_sha256": "b703a40e4ca346cc91b118b00f18ea7dad891788d8299c5ca9492ac9e2f8887d"
+      }
+    }
+  ],
+  "source": {
+    "repo": "/Users/shawnos.ai/dead-reckoning",
+    "git_head_at_build": "ef0e9abe4d129440ca3fee9e923d4defd7c90921",
+    "input_sha256": {
+      "data/generated/islands.json": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+      "canon/islands.coords.json": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+      "canon/voyage_legs.json": "a1b5bdd2133663af977ea277229c17ef6ff1bc2f90653f8560033c41f24ec035",
+      "canon/crew_presence.json": "131998698eb8a564ecbf3de3238a287f5eade479e16491515e35fce584eee796",
+      "canon/islands.biomes.json": "e8f6d045e687c5dec8b2d02d5cad3918d372bcc9761ac8f7571669a18ef205e5",
+      "scripts/gen_silhouettes.py": "e06b39f34273f58cc2c01fdf2ea7ac882522fa46331f6fbf314e980c88d2ab58",
+      "scripts/gen_terrain.py": "4affc8e63fc5bdfbeec6fe5ba4a1e1341b9adf396199584c5673bb1491fef426"
+    }
+  },
+  "build": {
+    "blender": "4.5.3 LTS",
+    "script": "scripts/build_fishman_plate.py",
+    "raster_sha256": "37a5e6d0539b888335214c1cb456edf6a714906cc9652e5a2c56c1559f35d1e1",
+    "preview_sha256": "a1da5993cd2bb763f31797bdc246c53bf298800f6f71835ed7766442359eba41",
+    "blend_sha256": "b8832f369137bf0f18ec68e7354dedd530c583eeea899b7ecefcd715490188e3"
+  },
+  "additional_batch": {
+    "script": "scripts/build_additional_plates.py",
+    "blender": "4.5.3 LTS",
+    "git_head_at_build": "ef0e9abe4d129440ca3fee9e923d4defd7c90921",
+    "plates": [
+      "sabaody-archipelago"
+    ]
+  },
+  "sources_by_plate": {
+    "whole-cake-island": {
+      "input_sha256": {
+        "data/generated/islands.json": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+        "canon/islands.coords.json": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+        "public/geo/islands.silhouettes.json": "db0fd985227d73e5461918c0eb4c7da9fe6be488b5aceeb2925428f5dccc679a",
+        "canon/voyage_legs.json": "a1b5bdd2133663af977ea277229c17ef6ff1bc2f90653f8560033c41f24ec035"
+      }
+    },
+    "impel-down": {
+      "input_sha256": {
+        "data/generated/islands.json": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+        "canon/islands.coords.json": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+        "public/geo/islands.silhouettes.json": "db0fd985227d73e5461918c0eb4c7da9fe6be488b5aceeb2925428f5dccc679a",
+        "canon/voyage_legs.json": "a1b5bdd2133663af977ea277229c17ef6ff1bc2f90653f8560033c41f24ec035"
+      }
+    },
+    "sabaody-archipelago": {
+      "input_sha256": {
+        "data/generated/islands.json": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+        "canon/islands.coords.json": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+        "public/geo/islands.silhouettes.json": "db0fd985227d73e5461918c0eb4c7da9fe6be488b5aceeb2925428f5dccc679a",
+        "canon/voyage_legs.json": "a1b5bdd2133663af977ea277229c17ef6ff1bc2f90653f8560033c41f24ec035"
+      }
+    }
+  }
+}

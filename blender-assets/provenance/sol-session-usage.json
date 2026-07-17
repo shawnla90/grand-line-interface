@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "model_label": "Codex Sol",
+  "model_family_confirmed": "GPT-5",
+  "model_provider": "OpenAI",
+  "harness": "Codex Desktop",
+  "session_id": "019f6d98-6aae-7ce1-8cdf-88cbf1b6aff0",
+  "measured_at": "2026-07-17T03:04:50.321Z",
+  "usage": {
+    "input_tokens": 22440567,
+    "cached_input_tokens": 21036544,
+    "uncached_input_tokens": 1404023,
+    "output_tokens": 189772,
+    "reasoning_output_tokens": 45603,
+    "total_tokens": 22630339
+  },
+  "model_context_window": 258400,
+  "scope": "Blender asset factory, visual contracts, system boards, Blender blockouts, verification, and Claude Code handoff through the measured timestamp.",
+  "meter_semantics": "total_tokens includes cached input tokens and is a Codex workload/context-reuse counter, not a direct invoice or a count of newly authored words.",
+  "source": "Local Codex Desktop session token_count event"
+}

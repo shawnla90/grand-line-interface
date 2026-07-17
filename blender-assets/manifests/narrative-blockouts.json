@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "generator": "scripts/build_priority_narrative_blockouts.py",
+  "assets": [
+    {
+      "id": "loguetown-roger-execution",
+      "blend": "source/loguetown-roger-execution.blend",
+      "render": "renders/blockouts/loguetown-roger-execution.png",
+      "frame_end": 120,
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "contract": "contracts/loguetown-roger-execution.visual.json",
+      "contract_sha256": "f08270d57f883c29e9e6b05834fcba40ae1d4fba5f3bac5518e853ca5ef679ae",
+      "maturity": "3d_blockout_not_final_art",
+      "runtime_export": false,
+      "blend_sha256": "37ae8cd2c3ca32a066a27e2ea7d73ab29102020eb042c5d5e6a295f2a6a283b8",
+      "render_sha256": "c98af4153fe01c9105c2363c867045df9a5d721b4f125291790e0ce92c82de88"
+    },
+    {
+      "id": "water-7-sea-train-network",
+      "blend": "source/water-7-sea-train-network.blend",
+      "render": "renders/blockouts/water-7-sea-train-network.png",
+      "frame_end": 120,
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "contract": "contracts/water-7-sea-train-network.visual.json",
+      "contract_sha256": "2afd663b32fefa0595757d6821f4c2920fee90ba280d5f0f913b700f23aeeb42",
+      "maturity": "3d_blockout_not_final_art",
+      "runtime_export": false,
+      "blend_sha256": "4db9c6b1dbc15b6637076e17139497194431da9a376c285a705266843d747295",
+      "render_sha256": "4a0e6957c7f4a75166a4838ddd16f5a6687c2b0dddc2d19697815d9aeddc7e5a"
+    }
+  ]
+}

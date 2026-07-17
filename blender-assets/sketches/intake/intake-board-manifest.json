@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "generator": "scripts/build_intake_scene_boards.py",
+  "coordinate_policy": "relationship schematics; no atlas coordinate geometry",
+  "outputs": [
+    {
+      "id": "loguetown-roger-execution",
+      "contract": "contracts/loguetown-roger-execution.visual.json",
+      "contract_sha256": "f08270d57f883c29e9e6b05834fcba40ae1d4fba5f3bac5518e853ca5ef679ae",
+      "sketch": "sketches/intake/loguetown-roger-execution.svg",
+      "sketch_sha256": "801332b9ec3d300cd03bd8b6f5c5d1c36b7dfc166c3e69bf07033fb5a24896fe",
+      "preview": "sketches/intake/previews/loguetown-roger-execution.png",
+      "preview_sha256": "e76d411a26488a00a282ea0335dba99d6713e9bb67832b30ef95a8f3377bc4f1",
+      "status": "system_sketch_not_final_art"
+    },
+    {
+      "id": "dressrosa-green-bit",
+      "contract": "contracts/dressrosa-green-bit.visual.json",
+      "contract_sha256": "50974b5ad7954bdc0c8802c81319993485090781a4dc9575d7f628bd7baa832d",
+      "sketch": "sketches/intake/dressrosa-green-bit.svg",
+      "sketch_sha256": "ab15d9d41313bdfeda19236757bcfd339076ed57c5136eb8c190293eef10d42a",
+      "preview": "sketches/intake/previews/dressrosa-green-bit.png",
+      "preview_sha256": "a743a6d370d36739b3d190e0e18b3a2f22c7beffdc38832c8c0c89398dab6f04",
+      "status": "system_sketch_not_final_art"
+    },
+    {
+      "id": "zou-zunesha",
+      "contract": "contracts/zou-zunesha.visual.json",
+      "contract_sha256": "ffbc434a369da7fff0f556b0f6fa20cb1c78eeab9949126a90edfd391ca6b5d1",
+      "sketch": "sketches/intake/zou-zunesha.svg",
+      "sketch_sha256": "f5858c9f1ee25521b5c5c44e47097b75b5f31d06bf7b7111228e3b77f787766a",
+      "preview": "sketches/intake/previews/zou-zunesha.png",
+      "preview_sha256": "1c3b6faace4604f21a94c820631b8b1e742ea4e1262994a82d96e315162c21c0",
+      "status": "system_sketch_not_final_art"
+    },
+    {
+      "id": "sabaody-grove-network",
+      "contract": "contracts/sabaody-grove-network.visual.json",
+      "contract_sha256": "eb465152fffa56ff91f1cc5601f0ae4d423fd1f888c7433cf6156c69d3ab2e78",
+      "sketch": "sketches/intake/sabaody-grove-network.svg",
+      "sketch_sha256": "c5baca01e82a9107b492c6fd37171b1161907ccb1f265c6b403c44c3e8809258",
+      "preview": "sketches/intake/previews/sabaody-grove-network.png",
+      "preview_sha256": "da3a7596652ad4fdabea539e9ac7b32d2521f1c5988a283bbb484c5ec70f0be5",
+      "status": "system_sketch_not_final_art"
+    },
+    {
+      "id": "skypiea-sky-system",
+      "contract": "contracts/skypiea-sky-system.visual.json",
+      "contract_sha256": "4abccf3279efe1932fa0431f441a5bd3b199d8ddf11f5d3947edf1f4f22e401e",
+      "sketch": "sketches/intake/skypiea-sky-system.svg",
+      "sketch_sha256": "d8bf0ba07c4d89418e451abeb09edd9bd01bd3f54774694113d539f1079cadc9",
+      "preview": "sketches/intake/previews/skypiea-sky-system.png",
+      "preview_sha256": "d501fec0b059ba87b9cdac0f30f863f9287bfd754e7637eb7876e416f7c90625",
+      "status": "system_sketch_not_final_art"
+    },
+    {
+      "id": "water-7-sea-train-network",
+      "contract": "contracts/water-7-sea-train-network.visual.json",
+      "contract_sha256": "2afd663b32fefa0595757d6821f4c2920fee90ba280d5f0f913b700f23aeeb42",
+      "sketch": "sketches/intake/water-7-sea-train-network.svg",
+      "sketch_sha256": "68e69c30e6615ca06cfd2fa688d8fe1055d2e1e2a00ee91216090f3e66bfd42a",
+      "preview": "sketches/intake/previews/water-7-sea-train-network.png",
+      "preview_sha256": "9424ee6ed9397c2d8120045a54ac79f04da5f0551dd9c99694145ed96775ab44",
+      "status": "system_sketch_not_final_art"
+    }
+  ]
+}

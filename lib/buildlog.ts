@@ -21,6 +21,19 @@ export const BuildLogEntry = z.object({
   role: z.string(),
   /** Short SHAs of the commits this phase landed as. Empty for plan-only entries. */
   commits: z.array(z.string()),
+  /** Optional measured workload snapshot. Cached input is included in totalTokens. */
+  usage: z
+    .object({
+      measuredAt: z.string(),
+      inputTokens: z.number().int().nonnegative(),
+      cachedInputTokens: z.number().int().nonnegative(),
+      uncachedInputTokens: z.number().int().nonnegative(),
+      outputTokens: z.number().int().nonnegative(),
+      reasoningOutputTokens: z.number().int().nonnegative(),
+      totalTokens: z.number().int().nonnegative(),
+      note: z.string(),
+    })
+    .optional(),
   verified: z.boolean(),
 });
 export type BuildLogEntry = z.infer<typeof BuildLogEntry>;

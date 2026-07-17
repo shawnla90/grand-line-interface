@@ -1,0 +1,297 @@
+{
+  "schema_version": 2,
+  "id": "mary-geoise-red-line",
+  "label": "Mary Geoise atop the Red Line",
+  "entity_type": "vertical_political_world_structure",
+  "priority": 2,
+  "contract_status": "ready_for_system_sketch",
+  "identity": {
+    "anchor": {
+      "slug": "mary-geoise",
+      "name": "Mary Geoise",
+      "japanese": "マリージョア",
+      "romaji": "Marījoa",
+      "region": "Red Line",
+      "sea": null,
+      "island_type": null,
+      "debut_chapter": 142,
+      "debut_episode": 91,
+      "canon_status": "manga",
+      "canon_confidence": "canon",
+      "affiliation": "World Government",
+      "wiki_url": "https://onepiece.fandom.com/wiki/Mary_Geoise",
+      "source_ref": "onepiece.fandom.com/wiki/Mary_Geoise#Island_Box",
+      "id": "mary-geoise",
+      "record_origin": "generated_wiki_record",
+      "atlas_anchor": {
+        "lng": -2.7363,
+        "lat": -9.3782,
+        "confidence": "derived",
+        "source_ref": "derived: region='Red Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+        "usage": "scene_entry_anchor_only",
+        "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+      }
+    },
+    "components": [
+      {
+        "slug": "mary-geoise",
+        "name": "Mary Geoise",
+        "japanese": "マリージョア",
+        "romaji": "Marījoa",
+        "region": "Red Line",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 142,
+        "debut_episode": 91,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "World Government",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Mary_Geoise",
+        "source_ref": "onepiece.fandom.com/wiki/Mary_Geoise#Island_Box",
+        "id": "mary-geoise",
+        "role": "summit_city",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -2.7363,
+          "lat": -9.3782,
+          "confidence": "derived",
+          "source_ref": "derived: region='Red Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "pangaea-castle",
+        "name": "Pangaea Castle",
+        "japanese": "パンゲア城",
+        "romaji": "Pangea-jō",
+        "region": "Mary Geoise (Red Line)",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 142,
+        "debut_episode": 91,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "World Government",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Pangaea_Castle",
+        "source_ref": "onepiece.fandom.com/wiki/Pangaea_Castle#Island_Box",
+        "id": "pangaea-castle",
+        "role": "central_castle",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -0.739,
+          "lat": -70.1224,
+          "confidence": "derived",
+          "source_ref": "derived: region='Mary Geoise (Red Line)' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "id": "red-line-summit",
+        "slug": null,
+        "name": "Red Line summit",
+        "role": "continental_wall",
+        "debut_chapter": 142,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Mary_Geoise",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "red-port-paradise",
+        "slug": null,
+        "name": "Red Port, Paradise side",
+        "role": "lower_port",
+        "debut_chapter": null,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Mary_Geoise",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "red-port-new-world",
+        "slug": null,
+        "name": "Red Port, New World side",
+        "role": "lower_port",
+        "debut_chapter": null,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Mary_Geoise",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "bondola-route",
+        "slug": null,
+        "name": "Bondola vertical route",
+        "role": "vertical_transit",
+        "debut_chapter": null,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Mary_Geoise",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "from": "mary-geoise",
+      "type": "atop",
+      "to": "red-line-summit",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "pangaea-castle",
+      "type": "central_within",
+      "to": "mary-geoise",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "red-port-paradise",
+      "type": "below",
+      "to": "mary-geoise",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "red-port-new-world",
+      "type": "below_opposite_side",
+      "to": "mary-geoise",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "bondola-route",
+      "type": "connects_vertical",
+      "to": "mary-geoise",
+      "confidence": "cited_summary"
+    }
+  ],
+  "topology": {
+    "summary": "Mary Geoise is a summit city at the world-crossing Red Line, linked vertically to Red Ports on opposite sides; Pangaea Castle is a central landmark, not the whole city.",
+    "sources": [
+      "https://onepiece.fandom.com/wiki/Mary_Geoise",
+      "https://onepiece.fandom.com/wiki/Pangaea_Castle",
+      "https://onepiece.fandom.com/wiki/World_Government"
+    ],
+    "exact_distances": "unknown",
+    "exact_bearings": "partially_known_or_unknown",
+    "layout_mode": "relationship_graph_not_atlas_jitter"
+  },
+  "chapter_logic": {
+    "base_reveal_chapter": 142,
+    "temporal_variants": [
+      {
+        "id": "exterior-spoiler-safe",
+        "reveal_chapter": 142,
+        "state": "Red Line summit, city silhouette, and Pangaea Castle exterior only.",
+        "verification": "verified"
+      },
+      {
+        "id": "levely-state",
+        "reveal_chapter": null,
+        "state": "Delegation traffic and summit gathering state.",
+        "verification": "chapter_to_verify"
+      },
+      {
+        "id": "late-interior-reveals",
+        "reveal_chapter": null,
+        "state": "Spoiler-locked castle interiors and later political revelations.",
+        "verification": "chapter_to_verify"
+      }
+    ],
+    "event_scenes": [
+      {
+        "id": "red-line-summit-arrival",
+        "importance": 1,
+        "reveal_chapter": null,
+        "landmark": "bondola-route",
+        "state_delta": "The globe route becomes a vertical ascent from Red Port to the summit city.",
+        "verification": "chapter_to_verify",
+        "camera_cue": "Track from sea-level Red Port up the wall until Pangaea Castle clears the rim.",
+        "fx": [
+          "high-altitude cloud",
+          "vertical transit",
+          "sun glare"
+        ]
+      }
+    ],
+    "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+    "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+  },
+  "coordinate_policy": {
+    "atlas_anchor": "Use the app coordinate only to place or open the local scene on the globe.",
+    "local_topology": "Build only from cited containment and relationship evidence. Never infer local bearings or distances from deterministic atlas jitter.",
+    "runtime": "Use an expanded local inset, path graph, or moving entity transform when a single flat raster cannot express the place."
+  },
+  "api_coverage": {
+    "raw_api_matches": [
+      "Mary Geoise"
+    ],
+    "raw_api_missing_or_nested": [
+      "Bondola vertical route",
+      "Pangaea Castle",
+      "Red Line summit",
+      "Red Port, New World side",
+      "Red Port, Paradise side"
+    ],
+    "generated_component_count": 2,
+    "manual_topology_node_count": 4
+  },
+  "visual_program": {
+    "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+    "must_show": [
+      "Red Line as overwhelming vertical world structure",
+      "ports on opposite lower sides",
+      "vertical ascent route",
+      "summit city distinct from Pangaea Castle"
+    ],
+    "must_not_show": [
+      "Mary Geoise floating at sea level",
+      "late castle interiors in the chapter-142 state",
+      "uncited spoiler reveals baked into the exterior"
+    ],
+    "collection_pattern": [
+      "00_TOPOLOGY",
+      "10_LANDMARKS",
+      "20_EVENT_STATES",
+      "30_ATMOSPHERE_FX",
+      "40_RUNTIME_LOD"
+    ],
+    "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+  },
+  "unresolved": [
+    "Exact chapter gates for both Red Ports and the Bondola route.",
+    "Spoiler-safe inventory of Pangaea Castle interiors.",
+    "Exact summit-city street topology."
+  ],
+  "evidence": [
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+      "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+      "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+      "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+      "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+      "ownership": "asset_workspace"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+      "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+      "ownership": "asset_workspace"
+    }
+  ]
+}

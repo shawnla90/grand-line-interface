@@ -1,0 +1,522 @@
+{
+  "schema_version": 2,
+  "id": "water-7-sea-train-network",
+  "label": "Water 7 Sea Train network",
+  "entity_type": "sea_train_route_network",
+  "priority": 1,
+  "contract_status": "ready_for_system_sketch",
+  "identity": {
+    "anchor": {
+      "slug": "water-7",
+      "name": "Water 7",
+      "japanese": "ウォーターセブン",
+      "romaji": "Wōtā Sebun",
+      "region": "Paradise",
+      "sea": null,
+      "island_type": null,
+      "debut_chapter": 323,
+      "debut_episode": 229,
+      "canon_status": "manga",
+      "canon_confidence": "canon",
+      "affiliation": null,
+      "wiki_url": "https://onepiece.fandom.com/wiki/Water_7",
+      "source_ref": "onepiece.fandom.com/wiki/Water_7#Island_Box",
+      "id": "water-7",
+      "record_origin": "generated_wiki_record",
+      "atlas_anchor": {
+        "lng": -73.7901,
+        "lat": 3.1588,
+        "confidence": "derived",
+        "source_ref": "derived: region='Paradise'; lng by voyage order 14 (water-7, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+        "usage": "scene_entry_anchor_only",
+        "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+      }
+    },
+    "components": [
+      {
+        "slug": "water-7",
+        "name": "Water 7",
+        "japanese": "ウォーターセブン",
+        "romaji": "Wōtā Sebun",
+        "region": "Paradise",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 323,
+        "debut_episode": 229,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Water_7",
+        "source_ref": "onepiece.fandom.com/wiki/Water_7#Island_Box",
+        "id": "water-7",
+        "role": "network_hub_city",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -73.7901,
+          "lat": 3.1588,
+          "confidence": "derived",
+          "source_ref": "derived: region='Paradise'; lng by voyage order 14 (water-7, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "enies-lobby",
+        "name": "Enies Lobby",
+        "japanese": "エニエスロビー",
+        "romaji": "Eniesu Robī",
+        "region": "Paradise",
+        "sea": null,
+        "island_type": "Afternoon/Never-night Island",
+        "debut_chapter": 358,
+        "debut_episode": 263,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "World Government; Marines",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Enies_Lobby",
+        "source_ref": "onepiece.fandom.com/wiki/Enies_Lobby#Island_Box",
+        "id": "enies-lobby",
+        "role": "government_terminus",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -68.3696,
+          "lat": -7.1283,
+          "confidence": "derived",
+          "source_ref": "derived: region='Paradise'; lng by voyage order 15 (enies-lobby, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "pucci",
+        "name": "Pucci",
+        "japanese": "プッチ",
+        "romaji": "Putchi",
+        "region": "Paradise",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 657,
+        "debut_episode": 227,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Pucci",
+        "source_ref": "onepiece.fandom.com/wiki/Pucci#Island_Box",
+        "id": "pucci",
+        "role": "connected_island",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -109.2305,
+          "lat": 7.2998,
+          "confidence": "derived",
+          "source_ref": "derived: region='Paradise'; debut arc punk-hazard is in New World but region says Paradise — region wins, lng not by voyage order | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "st-poplar",
+        "name": "St. Poplar",
+        "japanese": "セント・ポプラ",
+        "romaji": "Sento Popura",
+        "region": "Paradise",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 496,
+        "debut_episode": null,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/St._Poplar",
+        "source_ref": "onepiece.fandom.com/wiki/St._Poplar#Island_Box",
+        "id": "st-poplar",
+        "role": "connected_island",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -52.0394,
+          "lat": 1.7874,
+          "confidence": "derived",
+          "source_ref": "derived: region='Paradise'; lng by voyage order 18 (sabaody-archipelago, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "san-faldo",
+        "name": "San Faldo",
+        "japanese": "サン・ファルド",
+        "romaji": "San Farudo",
+        "region": "Paradise",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 322,
+        "debut_episode": 229,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/San_Faldo",
+        "source_ref": "onepiece.fandom.com/wiki/San_Faldo#Island_Box",
+        "id": "san-faldo",
+        "role": "connected_island",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -77.5522,
+          "lat": -2.4804,
+          "confidence": "derived",
+          "source_ref": "derived: region='Paradise'; lng by voyage order 14 (water-7, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "shift-station",
+        "name": "Shift Station",
+        "japanese": "シフト",
+        "romaji": "Shifuto Sutēshon",
+        "region": "Paradise",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 322,
+        "debut_episode": 228,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Shift_Station",
+        "source_ref": "onepiece.fandom.com/wiki/Shift_Station#Island_Box",
+        "id": "shift-station",
+        "role": "intermediate_station_and_lighthouse",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -77.7092,
+          "lat": -5.9823,
+          "confidence": "derived",
+          "source_ref": "derived: region='Paradise'; lng by voyage order 14 (water-7, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "id": "blue-station",
+        "slug": null,
+        "name": "Blue Station",
+        "role": "water_7_station",
+        "debut_chapter": 322,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Sea_Train",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "day-station",
+        "slug": null,
+        "name": "Day Station",
+        "role": "enies_lobby_station",
+        "debut_chapter": null,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Enies_Lobby",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "puffing-tom",
+        "slug": null,
+        "name": "Puffing Tom",
+        "role": "commercial_sea_train",
+        "debut_chapter": 322,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Sea_Train",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "rocketman",
+        "slug": null,
+        "name": "Rocketman",
+        "role": "uncontrollable_prototype_train",
+        "debut_chapter": null,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Sea_Train",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "puffing-ice",
+        "slug": null,
+        "name": "Puffing Ice",
+        "role": "post_timeskip_train",
+        "debut_chapter": 656,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Sea_Train",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "subsurface-sea-rails",
+        "slug": null,
+        "name": "Subsurface sea rails",
+        "role": "route_geometry",
+        "debut_chapter": 322,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Sea_Train",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "aqua-laguna",
+        "slug": null,
+        "name": "Aqua Laguna",
+        "role": "annual_route_hazard",
+        "debut_chapter": null,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Water_7_Arc",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "from": "blue-station",
+      "type": "station_at",
+      "to": "water-7",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "day-station",
+      "type": "station_at",
+      "to": "enies-lobby",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "subsurface-sea-rails",
+      "type": "connects",
+      "to": "water-7",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "subsurface-sea-rails",
+      "type": "connects",
+      "to": "enies-lobby",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "subsurface-sea-rails",
+      "type": "branches_to",
+      "to": "pucci",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "subsurface-sea-rails",
+      "type": "branches_to",
+      "to": "st-poplar",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "subsurface-sea-rails",
+      "type": "branches_to",
+      "to": "san-faldo",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "puffing-tom",
+      "type": "travels_on",
+      "to": "subsurface-sea-rails",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "rocketman",
+      "type": "travels_on",
+      "to": "subsurface-sea-rails",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "aqua-laguna",
+      "type": "disrupts",
+      "to": "water-7-sea-train-network",
+      "confidence": "cited_summary"
+    }
+  ],
+  "topology": {
+    "summary": "The Sea Train is a route network over rails just below the ocean surface. Water 7 connects to Enies Lobby and nearby Pucci, St. Poplar, and San Faldo; Shift Station is an intermediate lighthouse station. Exact bearings must remain schematic until panel-level route evidence is collected.",
+    "sources": [
+      "https://onepiece.fandom.com/wiki/Sea_Train",
+      "https://onepiece.fandom.com/wiki/Water_7",
+      "https://onepiece.fandom.com/wiki/Enies_Lobby"
+    ],
+    "exact_distances": "unknown",
+    "exact_bearings": "partially_known_or_unknown",
+    "layout_mode": "relationship_graph_not_atlas_jitter"
+  },
+  "chapter_logic": {
+    "base_reveal_chapter": 323,
+    "temporal_variants": [
+      {
+        "id": "network-first-reveal",
+        "reveal_chapter": 322,
+        "state": "Sea rails, Puffing Tom, Shift Station, and the Water 7 connection become visible.",
+        "verification": "verified"
+      },
+      {
+        "id": "aqua-laguna-pursuit",
+        "reveal_chapter": null,
+        "state": "Storm overlay, damaged service state, and Rocketman pursuit to Enies Lobby.",
+        "verification": "chapter_to_verify"
+      },
+      {
+        "id": "puffing-ice-post-timeskip",
+        "reveal_chapter": 656,
+        "state": "Puffing Ice becomes an available later-era train variant.",
+        "verification": "verified"
+      }
+    ],
+    "event_scenes": [
+      {
+        "id": "puffing-tom-route-reveal",
+        "importance": 1,
+        "reveal_chapter": 322,
+        "landmark": "subsurface-sea-rails",
+        "state_delta": "Rails illuminate beneath the ocean surface and Puffing Tom traverses the visible route.",
+        "verification": "verified",
+        "camera_cue": "Start beside the rail at wave height, pull to globe scale while the route lights toward connected islands.",
+        "fx": [
+          "wheel spray",
+          "paddle wake",
+          "subsurface rail shimmer"
+        ]
+      },
+      {
+        "id": "rocketman-aqua-laguna-pursuit",
+        "importance": 1,
+        "reveal_chapter": null,
+        "landmark": "rocketman",
+        "state_delta": "Route changes to storm hazard state with Rocketman pursuing Puffing Tom toward Enies Lobby.",
+        "verification": "chapter_to_verify",
+        "camera_cue": "Race beside the prototype at water level, then reveal the storm wall and Enies Lobby terminus.",
+        "fx": [
+          "Aqua Laguna waves",
+          "rain",
+          "steam",
+          "sparks",
+          "wake"
+        ]
+      }
+    ],
+    "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+    "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+  },
+  "coordinate_policy": {
+    "atlas_anchor": "Use the app coordinate only to place or open the local scene on the globe.",
+    "local_topology": "Build only from cited containment and relationship evidence. Never infer local bearings or distances from deterministic atlas jitter.",
+    "runtime": "Use an expanded local inset, path graph, or moving entity transform when a single flat raster cannot express the place."
+  },
+  "api_coverage": {
+    "raw_api_matches": [
+      "Enies Lobby"
+    ],
+    "raw_api_missing_or_nested": [
+      "Aqua Laguna",
+      "Blue Station",
+      "Day Station",
+      "Pucci",
+      "Puffing Ice",
+      "Puffing Tom",
+      "Rocketman",
+      "San Faldo",
+      "Shift Station",
+      "St. Poplar",
+      "Subsurface sea rails",
+      "Water 7"
+    ],
+    "generated_component_count": 6,
+    "manual_topology_node_count": 7
+  },
+  "visual_program": {
+    "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+    "must_show": [
+      "Water 7 as hub rather than the only node",
+      "rail just below the ocean surface",
+      "Puffing Tom moving on the revealed line",
+      "branches to Enies Lobby, Pucci, St. Poplar, and San Faldo",
+      "Blue, Shift, and Day stations",
+      "Aqua Laguna as a route state"
+    ],
+    "must_not_show": [
+      "dry land railway embankments",
+      "exact bearings inferred from atlas jitter",
+      "Puffing Ice before chapter 656",
+      "Rocketman pursuit permanently active"
+    ],
+    "collection_pattern": [
+      "00_TOPOLOGY",
+      "10_LANDMARKS",
+      "20_EVENT_STATES",
+      "30_ATMOSPHERE_FX",
+      "40_RUNTIME_LOD"
+    ],
+    "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+  },
+  "unresolved": [
+    "Panel-verified branch ordering and bearings among the five connected islands.",
+    "Exact reveal chapter for Rocketman and Aqua Laguna pursuit.",
+    "Which connected-island stations are named versus only known to exist.",
+    "MapLibre representation for submerged rails when the globe is tilted."
+  ],
+  "evidence": [
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+      "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+      "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+      "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+      "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+      "ownership": "asset_workspace"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+      "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+      "ownership": "asset_workspace"
+    }
+  ],
+  "route_network": {
+    "render_mode": "chapter_gated_maplibre_route_plus_animated_glb_vehicle",
+    "edge_geometry": "curved local great-circle approximations are integration scaffolds, not canon cartography",
+    "track_elevation": "just_below_ocean_surface",
+    "track_motion": "sways_with_tides",
+    "known_terminals": [
+      "water-7",
+      "enies-lobby",
+      "pucci",
+      "st-poplar",
+      "san-faldo"
+    ],
+    "known_stations": [
+      "blue-station",
+      "shift-station",
+      "day-station"
+    ],
+    "vehicle_states": [
+      "puffing-tom-commercial",
+      "rocketman-pursuit",
+      "puffing-ice-post-timeskip"
+    ],
+    "travel_interaction": "Selecting a revealed route can animate the train along the globe line, then open the destination inset."
+  }
+}

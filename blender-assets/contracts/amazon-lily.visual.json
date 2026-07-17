@@ -1,0 +1,228 @@
+{
+  "schema_version": 2,
+  "id": "amazon-lily",
+  "label": "Amazon Lily mountain city",
+  "entity_type": "mountain_city_system",
+  "priority": 2,
+  "contract_status": "ready_for_system_sketch",
+  "identity": {
+    "anchor": {
+      "slug": "amazon-lily",
+      "name": "Amazon Lily",
+      "japanese": "アマゾン・リリー",
+      "romaji": "Amazon Rirī",
+      "region": "Calm Belt",
+      "sea": null,
+      "island_type": null,
+      "debut_chapter": 514,
+      "debut_episode": 408,
+      "canon_status": "manga",
+      "canon_confidence": "canon",
+      "affiliation": "Kuja Kuja Pirates Monkey D. Luffy",
+      "wiki_url": "https://onepiece.fandom.com/wiki/Amazon_Lily",
+      "source_ref": "onepiece.fandom.com/wiki/Amazon_Lily#Island_Box",
+      "id": "amazon-lily",
+      "record_origin": "generated_wiki_record",
+      "atlas_anchor": {
+        "lng": 165.1452,
+        "lat": 12.0706,
+        "confidence": "derived",
+        "source_ref": "derived: region='Calm Belt' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+        "usage": "scene_entry_anchor_only",
+        "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+      }
+    },
+    "components": [
+      {
+        "slug": "amazon-lily",
+        "name": "Amazon Lily",
+        "japanese": "アマゾン・リリー",
+        "romaji": "Amazon Rirī",
+        "region": "Calm Belt",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 514,
+        "debut_episode": 408,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Kuja Kuja Pirates Monkey D. Luffy",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Amazon_Lily",
+        "source_ref": "onepiece.fandom.com/wiki/Amazon_Lily#Island_Box",
+        "id": "amazon-lily",
+        "role": "calm_belt_island_nation",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": 165.1452,
+          "lat": 12.0706,
+          "confidence": "derived",
+          "source_ref": "derived: region='Calm Belt' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "id": "amazon-lily-mountain-bowl",
+        "slug": null,
+        "name": "Mountain-top hollow",
+        "role": "city_container",
+        "debut_chapter": 514,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Amazon_Lily_Arc",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "kuja-village",
+        "slug": null,
+        "name": "Kuja village",
+        "role": "city_inside_mountain",
+        "debut_chapter": 514,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Amazon_Lily_Arc",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "kuja-palace",
+        "slug": null,
+        "name": "Kuja palace",
+        "role": "royal_landmark",
+        "debut_chapter": 514,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Amazon_Lily",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "from": "kuja-village",
+      "type": "inside",
+      "to": "amazon-lily-mountain-bowl",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "amazon-lily-mountain-bowl",
+      "type": "at_top_of",
+      "to": "amazon-lily",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "kuja-palace",
+      "type": "within",
+      "to": "kuja-village",
+      "confidence": "cited_summary"
+    }
+  ],
+  "topology": {
+    "summary": "The central village sits inside a huge hollow at the top of the island's mountain. Serpents are a Kuja cultural and architectural motif; current evidence does not support making the entire island silhouette a serpent.",
+    "sources": [
+      "https://onepiece.fandom.com/wiki/Amazon_Lily",
+      "https://onepiece.fandom.com/wiki/Amazon_Lily_Arc"
+    ],
+    "exact_distances": "unknown",
+    "exact_bearings": "partially_known_or_unknown",
+    "layout_mode": "relationship_graph_not_atlas_jitter"
+  },
+  "chapter_logic": {
+    "base_reveal_chapter": 514,
+    "temporal_variants": [
+      {
+        "id": "mountain-city-default",
+        "reveal_chapter": 514,
+        "state": "Exterior mountain shell plus hidden city bowl.",
+        "verification": "verified"
+      }
+    ],
+    "event_scenes": [
+      {
+        "id": "mountain-bowl-reveal",
+        "importance": 2,
+        "reveal_chapter": 514,
+        "landmark": "amazon-lily-mountain-bowl",
+        "state_delta": "Camera crosses the rim and reveals the enclosed village below.",
+        "verification": "verified",
+        "camera_cue": "Approach as an apparently steep mountain, then crest the rim into the inhabited hollow.",
+        "fx": [
+          "Calm Belt haze",
+          "jungle canopy",
+          "rim mist"
+        ]
+      }
+    ],
+    "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+    "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+  },
+  "coordinate_policy": {
+    "atlas_anchor": "Use the app coordinate only to place or open the local scene on the globe.",
+    "local_topology": "Build only from cited containment and relationship evidence. Never infer local bearings or distances from deterministic atlas jitter.",
+    "runtime": "Use an expanded local inset, path graph, or moving entity transform when a single flat raster cannot express the place."
+  },
+  "api_coverage": {
+    "raw_api_matches": [
+      "Amazon Lily"
+    ],
+    "raw_api_missing_or_nested": [
+      "Kuja palace",
+      "Kuja village",
+      "Mountain-top hollow"
+    ],
+    "generated_component_count": 1,
+    "manual_topology_node_count": 3
+  },
+  "visual_program": {
+    "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+    "must_show": [
+      "mountain exterior and interior city bowl",
+      "dense jungle and Calm Belt isolation",
+      "serpent motifs in culture, ships, sculpture, and architecture"
+    ],
+    "must_not_show": [
+      "a whole-island serpent silhouette presented as canon",
+      "a flat exposed city visible from every approach"
+    ],
+    "collection_pattern": [
+      "00_TOPOLOGY",
+      "10_LANDMARKS",
+      "20_EVENT_STATES",
+      "30_ATMOSPHERE_FX",
+      "40_RUNTIME_LOD"
+    ],
+    "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+  },
+  "unresolved": [
+    "Exact plan of village districts and palace within the mountain hollow.",
+    "Which serpent motifs belong in the earliest spoiler-safe state."
+  ],
+  "evidence": [
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+      "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+      "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+      "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+      "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+      "ownership": "asset_workspace"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+      "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+      "ownership": "asset_workspace"
+    }
+  ]
+}

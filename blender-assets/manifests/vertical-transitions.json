@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "asset_class": "vertical-transition-sprite",
+  "integration_status": "asset-only; no transition loader is written by this track",
+  "repo_write_contract": "read-only",
+  "transitions": [
+    {
+      "id": "skypiea-knock-up-stream",
+      "label": "Skypiea \u2014 Knock-Up Stream",
+      "source_blend": "source/skypiea-knock-up-stream.blend",
+      "raster": "renders/skypiea-knock-up-stream.png",
+      "preview": "renders/skypiea-knock-up-stream-preview.png",
+      "pixel_size": [
+        1024,
+        2048
+      ],
+      "alpha_contract": "transparent portrait sprite; no geographic coastline clipping",
+      "animation_reference": {
+        "frames": [
+          1,
+          120
+        ],
+        "fps": 30,
+        "preview_frame": 58,
+        "proxy_note": "Blender proxy demonstrates direction only; runtime ship marker owns motion"
+      },
+      "art_direction": [
+        "erupting vertical ocean column",
+        "spiraling water helices",
+        "sea-level cloud shadow",
+        "cloud shelf above",
+        "upward route tracer"
+      ],
+      "integration": {
+        "mode": "maplibre_image_source",
+        "coordinates": [
+          [
+            -93.804825,
+            17.9745
+          ],
+          [
+            -88.467575,
+            17.9745
+          ],
+          [
+            -88.467575,
+            7.3
+          ],
+          [
+            -93.804825,
+            7.3
+          ]
+        ],
+        "source_anchor": [
+          -91.1362,
+          8.2
+        ],
+        "destination_anchor": [
+          -91.1362,
+          17.0745
+        ],
+        "runtime_module": "components/skypiea.ts",
+        "chapter_beats": {
+          "start": 235,
+          "top": 237,
+          "dwellEnd": 300,
+          "splash": 304
+        },
+        "runtime_rule": "opacity follows columnOpacity(ch); ship motion stays altitudeT(ch)"
+      },
+      "build": {
+        "blender": "4.5.3 LTS",
+        "script": "scripts/build_vertical_transitions.py",
+        "raster_sha256": "6341b87537b08e1455bfa88e0eba85265b9546befc8c23cc60ac445116445d87",
+        "preview_sha256": "1647d5a24b58160362e045c964e90248305d0133a412e73da39fa48cfee71dec",
+        "blend_sha256": "ceea9d55542f17f7d596a7b0d250231471d402e048b420762ed2e2f31c29aa87"
+      }
+    },
+    {
+      "id": "wano-waterfall-ascent",
+      "label": "Wano \u2014 waterfall ascent",
+      "source_blend": "source/wano-waterfall-ascent.blend",
+      "raster": "renders/wano-waterfall-ascent.png",
+      "preview": "renders/wano-waterfall-ascent-preview.png",
+      "pixel_size": [
+        1024,
+        2048
+      ],
+      "alpha_contract": "transparent portrait sprite; no geographic coastline clipping",
+      "animation_reference": {
+        "frames": [
+          1,
+          120
+        ],
+        "fps": 30,
+        "preview_frame": 58,
+        "proxy_note": "Blender proxy demonstrates direction only; runtime ship marker owns motion"
+      },
+      "art_direction": [
+        "raised cliff plateau",
+        "visible dark understructure",
+        "vertical waterfall ribbon",
+        "crest and base mist",
+        "upward ship tracer"
+      ],
+      "integration": {
+        "mode": "screen_space_html_marker",
+        "anchor": [
+          118.3801,
+          5.3077
+        ],
+        "crest_anchor": [
+          118.3801,
+          6.0377
+        ],
+        "destination_anchor": [
+          118.2306,
+          7.5751
+        ],
+        "transform_origin": "50% 100%",
+        "proposed_runtime_module": "components/wano.ts",
+        "chapter_beats": {
+          "arrival": 909,
+          "start": null,
+          "crest": null,
+          "status": "proposed; exact waterfall climb beats need human verification"
+        },
+        "runtime_rule": "sprite is pixel-space; real ship marker follows a pure climbT(ch) path"
+      },
+      "build": {
+        "blender": "4.5.3 LTS",
+        "script": "scripts/build_vertical_transitions.py",
+        "raster_sha256": "946979362315736d9a4aef2d837182e049027cd93921d33e871e9fd62075ce79",
+        "preview_sha256": "b3a2640659a068f36a9d279288c6c6f0f7365f186f6fd3cb9c934de0a1a891a0",
+        "blend_sha256": "49f4ac8bed3dcf223ca599ae338175def037d95edd4129ae10d8d9f28b04078c"
+      }
+    }
+  ],
+  "source": {
+    "repo": "/Users/shawnos.ai/dead-reckoning",
+    "git_head_at_build": "ef0e9abe4d129440ca3fee9e923d4defd7c90921",
+    "input_sha256": {
+      "data/generated/islands.json": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+      "canon/islands.coords.json": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+      "public/geo/islands.silhouettes.json": "db0fd985227d73e5461918c0eb4c7da9fe6be488b5aceeb2925428f5dccc679a",
+      "components/skypiea.ts": "f07f1560fa5955548bd43fbfdf31f609b2fb4c78e7a8b46eb183ccf03a1d7637"
+    }
+  }
+}

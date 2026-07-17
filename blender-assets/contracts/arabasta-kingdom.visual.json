@@ -1,0 +1,521 @@
+{
+  "schema_version": 2,
+  "id": "arabasta-kingdom",
+  "label": "Arabasta kingdom region system",
+  "entity_type": "kingdom_region_system",
+  "priority": 2,
+  "contract_status": "ready_for_system_sketch",
+  "identity": {
+    "anchor": {
+      "slug": "arabasta-kingdom",
+      "name": "Arabasta Kingdom",
+      "japanese": "アラバスタ王国",
+      "romaji": "Arabasuta Ōkoku",
+      "region": "Paradise",
+      "sea": null,
+      "island_type": "Summer Island",
+      "debut_chapter": 113,
+      "debut_episode": 78,
+      "canon_status": "manga",
+      "canon_confidence": "canon",
+      "affiliation": "World Government",
+      "wiki_url": "https://onepiece.fandom.com/wiki/Arabasta_Kingdom",
+      "source_ref": "onepiece.fandom.com/wiki/Arabasta_Kingdom#Island_Box",
+      "id": "arabasta-kingdom",
+      "record_origin": "generated_wiki_record",
+      "atlas_anchor": {
+        "lng": -125.4532,
+        "lat": -2.0675,
+        "confidence": "derived",
+        "source_ref": "derived: region='Paradise'; lng by voyage order 7 (whisky-peak, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+        "usage": "scene_entry_anchor_only",
+        "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+      }
+    },
+    "components": [
+      {
+        "slug": "arabasta-kingdom",
+        "name": "Arabasta Kingdom",
+        "japanese": "アラバスタ王国",
+        "romaji": "Arabasuta Ōkoku",
+        "region": "Paradise",
+        "sea": null,
+        "island_type": "Summer Island",
+        "debut_chapter": 113,
+        "debut_episode": 78,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "World Government",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Arabasta_Kingdom",
+        "source_ref": "onepiece.fandom.com/wiki/Arabasta_Kingdom#Island_Box",
+        "id": "arabasta-kingdom",
+        "role": "kingdom_landmass",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -125.4532,
+          "lat": -2.0675,
+          "confidence": "derived",
+          "source_ref": "derived: region='Paradise'; lng by voyage order 7 (whisky-peak, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "sandora-river",
+        "name": "Sandora River",
+        "japanese": "サンドラ川",
+        "romaji": "Sandora-gawa",
+        "region": "Arabasta Kingdom",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 161,
+        "debut_episode": 96,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Sandora_River",
+        "source_ref": "onepiece.fandom.com/wiki/Sandora_River#Island_Box",
+        "id": "sandora-river",
+        "role": "dividing_river",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -102.2394,
+          "lat": -0.8817,
+          "confidence": "derived",
+          "source_ref": "derived: region='Arabasta Kingdom'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "sandora-desert",
+        "name": "Sandora Desert",
+        "japanese": "サンドラ砂漠",
+        "romaji": "Sandora Sabaku",
+        "region": "Arabasta Kingdom",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 162,
+        "debut_episode": 97,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Sandora_Desert",
+        "source_ref": "onepiece.fandom.com/wiki/Sandora_Desert#Island_Box",
+        "id": "sandora-desert",
+        "role": "desert_region",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -100.9057,
+          "lat": 6.7642,
+          "confidence": "derived",
+          "source_ref": "derived: region='Arabasta Kingdom'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "nanohana",
+        "name": "Nanohana",
+        "japanese": "ナノハナ",
+        "romaji": "Nanohana",
+        "region": "Arabasta",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 155,
+        "debut_episode": 92,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Nanohana",
+        "source_ref": "onepiece.fandom.com/wiki/Nanohana#Island_Box",
+        "id": "nanohana",
+        "role": "port_city",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -102.8707,
+          "lat": 0.4813,
+          "confidence": "derived",
+          "source_ref": "derived: region='Arabasta'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "rainbase",
+        "name": "Rainbase",
+        "japanese": "レインベース",
+        "romaji": "Reinbēsu",
+        "region": "Arabasta",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 126,
+        "debut_episode": 76,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Rainbase",
+        "source_ref": "onepiece.fandom.com/wiki/Rainbase#Island_Box",
+        "id": "rainbase",
+        "role": "casino_city",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -116.2875,
+          "lat": 6.0506,
+          "confidence": "derived",
+          "source_ref": "derived: region='Arabasta'; lng by voyage order 8 (little-garden, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "erumalu",
+        "name": "Erumalu",
+        "japanese": "エルマル",
+        "romaji": "Erumaru",
+        "region": "Arabasta",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 161,
+        "debut_episode": 96,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Erumalu",
+        "source_ref": "onepiece.fandom.com/wiki/Erumalu#Island_Box",
+        "id": "erumalu",
+        "role": "ruined_city",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -105.667,
+          "lat": 3.6337,
+          "confidence": "derived",
+          "source_ref": "derived: region='Arabasta'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "yuba",
+        "name": "Yuba",
+        "japanese": "ユバ",
+        "romaji": null,
+        "region": "Arabasta",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 162,
+        "debut_episode": 103,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Yuba",
+        "source_ref": "onepiece.fandom.com/wiki/Yuba#Island_Box",
+        "id": "yuba",
+        "role": "oasis_town",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -103.3064,
+          "lat": 7.2403,
+          "confidence": "derived",
+          "source_ref": "derived: region='Arabasta'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "yuba-oasis",
+        "name": "Yuba Oasis",
+        "japanese": "・オアシス",
+        "romaji": "Yuba Oashisu",
+        "region": "Arabasta",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": null,
+        "debut_episode": null,
+        "canon_status": "non_canon",
+        "canon_confidence": "derived",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Yuba_Oasis",
+        "source_ref": "onepiece.fandom.com/wiki/Yuba_Oasis#Island_Box",
+        "id": "yuba-oasis",
+        "role": "oasis",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -157.7114,
+          "lat": 2.9063,
+          "confidence": "derived",
+          "source_ref": "derived: region='Arabasta' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "katorea",
+        "name": "Katorea",
+        "japanese": "カトレア",
+        "romaji": "Katorea",
+        "region": "Arabasta",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 164,
+        "debut_episode": 93,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Katorea",
+        "source_ref": "onepiece.fandom.com/wiki/Katorea#Island_Box",
+        "id": "katorea",
+        "role": "rebel_base",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -104.6587,
+          "lat": 8.0187,
+          "confidence": "derived",
+          "source_ref": "derived: region='Arabasta'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "alubarna",
+        "name": "Alubarna",
+        "japanese": "アルバーナ",
+        "romaji": "Arubāna",
+        "region": "Arabasta",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 129,
+        "debut_episode": 78,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Alubarna",
+        "source_ref": "onepiece.fandom.com/wiki/Alubarna#Island_Box",
+        "id": "alubarna",
+        "role": "capital_city",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -120.1992,
+          "lat": -0.7873,
+          "confidence": "derived",
+          "source_ref": "derived: region='Arabasta'; lng by voyage order 8 (little-garden, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "tomb-of-the-kings",
+        "name": "Tomb of the Kings",
+        "japanese": "王家の墓",
+        "romaji": "Ōke no Haka",
+        "region": "Arabasta Kingdom",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 202,
+        "debut_episode": 123,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Tomb_of_the_Kings",
+        "source_ref": "onepiece.fandom.com/wiki/Tomb_of_the_Kings#Island_Box",
+        "id": "tomb-of-the-kings",
+        "role": "subterranean_landmark",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -103.9584,
+          "lat": 2.39,
+          "confidence": "derived",
+          "source_ref": "derived: region='Arabasta Kingdom'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "id": "alubarna-clock-tower",
+        "slug": null,
+        "name": "Alubarna clock tower",
+        "role": "event_landmark",
+        "debut_chapter": null,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Alubarna",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "alubarna-palace",
+        "slug": null,
+        "name": "Arabasta royal palace",
+        "role": "capital_landmark",
+        "debut_chapter": 129,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Alubarna",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "from": "sandora-river",
+      "type": "divides",
+      "to": "arabasta-kingdom",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "alubarna",
+      "type": "capital_of",
+      "to": "arabasta-kingdom",
+      "confidence": "canon"
+    },
+    {
+      "from": "alubarna",
+      "type": "atop",
+      "to": "massive_rock_plateau",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "tomb-of-the-kings",
+      "type": "beneath",
+      "to": "alubarna",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "alubarna-clock-tower",
+      "type": "within",
+      "to": "alubarna",
+      "confidence": "cited_summary"
+    }
+  ],
+  "topology": {
+    "summary": "Arabasta is a kingdom-scale landmass with a major dividing river, desert routes, differentiated cities and oases, and a raised circular capital—not one desert island plate.",
+    "sources": [
+      "https://onepiece.fandom.com/wiki/Arabasta_Kingdom",
+      "https://onepiece.fandom.com/wiki/Sandora_River",
+      "https://onepiece.fandom.com/wiki/Alubarna"
+    ],
+    "exact_distances": "unknown",
+    "exact_bearings": "partially_known_or_unknown",
+    "layout_mode": "relationship_graph_not_atlas_jitter"
+  },
+  "chapter_logic": {
+    "base_reveal_chapter": 113,
+    "temporal_variants": [
+      {
+        "id": "drought-and-rebellion",
+        "reveal_chapter": 113,
+        "state": "Dry kingdom, stressed oases, ruined Erumalu, and political conflict.",
+        "verification": "verified"
+      },
+      {
+        "id": "capital-climax",
+        "reveal_chapter": null,
+        "state": "Alubarna battle and clock-tower crisis.",
+        "verification": "chapter_to_verify"
+      },
+      {
+        "id": "rain-restored",
+        "reveal_chapter": null,
+        "state": "Rainfall and post-conflict recovery.",
+        "verification": "chapter_to_verify"
+      }
+    ],
+    "event_scenes": [
+      {
+        "id": "alubarna-clock-tower-crisis",
+        "importance": 1,
+        "reveal_chapter": null,
+        "landmark": "alubarna-clock-tower",
+        "state_delta": "The clock tower becomes the vertical focal point of the capital climax.",
+        "verification": "chapter_to_verify",
+        "camera_cue": "Climb from circular capital streets toward the clock face and rooftop.",
+        "fx": [
+          "dust haze",
+          "countdown cue",
+          "battle debris"
+        ]
+      }
+    ],
+    "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+    "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+  },
+  "coordinate_policy": {
+    "atlas_anchor": "Use the app coordinate only to place or open the local scene on the globe.",
+    "local_topology": "Build only from cited containment and relationship evidence. Never infer local bearings or distances from deterministic atlas jitter.",
+    "runtime": "Use an expanded local inset, path graph, or moving entity transform when a single flat raster cannot express the place."
+  },
+  "api_coverage": {
+    "raw_api_matches": [],
+    "raw_api_missing_or_nested": [
+      "Alubarna",
+      "Alubarna clock tower",
+      "Arabasta Kingdom",
+      "Arabasta royal palace",
+      "Erumalu",
+      "Katorea",
+      "Nanohana",
+      "Rainbase",
+      "Sandora Desert",
+      "Sandora River",
+      "Tomb of the Kings",
+      "Yuba",
+      "Yuba Oasis"
+    ],
+    "generated_component_count": 11,
+    "manual_topology_node_count": 2
+  },
+  "visual_program": {
+    "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+    "must_show": [
+      "Sandora River as kingdom-scale structure",
+      "distinct cities and oases",
+      "Alubarna elevated on a huge circular rock mass",
+      "palace, clock tower, and tomb as separate addressable landmarks"
+    ],
+    "must_not_show": [
+      "a single undifferentiated desert disc",
+      "all cities rendered as the same settlement kit",
+      "restored rain before its chapter gate"
+    ],
+    "collection_pattern": [
+      "00_TOPOLOGY",
+      "10_LANDMARKS",
+      "20_EVENT_STATES",
+      "30_ATMOSPHERE_FX",
+      "40_RUNTIME_LOD"
+    ],
+    "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+  },
+  "unresolved": [
+    "Exact relative bearings and travel distances among cities.",
+    "Exact chapter gates for the clock-tower climax and restored-rain state."
+  ],
+  "evidence": [
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+      "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+      "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+      "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+      "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+      "ownership": "asset_workspace"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+      "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+      "ownership": "asset_workspace"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "wano-waterfall-ascent",
+  "source_blend": "/Users/shawnos.ai/dead-reckoning-blender-assets/source/wano-waterfall-ascent.blend",
+  "runtime_glb": "/Users/shawnos.ai/dead-reckoning-blender-assets/runtime/wano-waterfall-ascent.glb",
+  "model_units": "stylized Blender units; runtime scale is defined by the integration manifest",
+  "coordinate_system": "glTF 2.0 Y-up; Blender exporter converts from Z-up",
+  "export": {
+    "exporter": "Blender built-in glTF 2.0 exporter",
+    "compression": "none; optional gltfpack binary is not installed",
+    "animations": false,
+    "preview_proxy_excluded": true,
+    "curves_converted_to_mesh": [
+      "Falls foam edge left",
+      "Falls foam edge right",
+      "Runtime ship waterfall path"
+    ],
+    "excluded_objects": [
+      "Vertical transition camera",
+      "Vertical key",
+      "Vertical warm fill",
+      "Ship waterfall proxy"
+    ]
+  },
+  "stats": {
+    "objects": 62,
+    "vertices_input": 12680,
+    "triangles_input": 24796,
+    "materials": 8,
+    "bounds_blender": {
+      "min": [
+        -2.25,
+        -3.754884,
+        0.0
+      ],
+      "max": [
+        2.379191,
+        2.62,
+        5.759767
+      ]
+    },
+    "bytes": 1607508
+  },
+  "build": {
+    "blender": "4.5.3 LTS",
+    "glb_sha256": "f8df00598b12b8e213e86f93e151ce85a482f229d92715e6b5f87370c9b9aa47",
+    "glb_header": {
+      "magic": "glTF",
+      "version": 2,
+      "declared_length": 1607508
+    }
+  }
+}

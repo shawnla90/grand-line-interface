@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "generator": "scripts/build_system_sketches.py",
+  "coordinate_policy": "relational schematic; no atlas coordinate geometry",
+  "outputs": [
+    {
+      "id": "totto-land",
+      "contract": "contracts/totto-land.visual.json",
+      "contract_sha256": "072ffcd674cde13d85e3ed761c4ec6912bbe34d0300ef0bf8f326054a71584d3",
+      "sketch": "sketches/totto-land-system.svg",
+      "sketch_sha256": "38e09e0b09aca4ede08e09aecf6a431a6e48208c026098013589306d1f3b4c65",
+      "preview": "sketches/previews/totto-land-system.png",
+      "preview_sha256": "d80f68b1d03e3e00e137605e5c2a17ec4bbe9e5883d27f9a9e818103f21f9d00",
+      "status": "system_sketch_not_final_art"
+    },
+    {
+      "id": "world-government-tarai-system",
+      "contract": "contracts/world-government-tarai-system.visual.json",
+      "contract_sha256": "5e696367d98f5616b6a4afa74f07f2a7df8b489b61a105d063363cf3f172de6e",
+      "sketch": "sketches/world-government-tarai-system.svg",
+      "sketch_sha256": "16a9ec4d35951619eff24eff59324e51a2487bc4b74c29730676d47aa76d4cb9",
+      "preview": "sketches/previews/world-government-tarai-system.png",
+      "preview_sha256": "3efcef436dc97d1cdd3ffb153768aae1402da57e31c7301f3135489077b93fe6",
+      "status": "system_sketch_not_final_art"
+    }
+  ]
+}

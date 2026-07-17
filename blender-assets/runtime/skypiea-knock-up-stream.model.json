@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "skypiea-knock-up-stream",
+  "source_blend": "/Users/shawnos.ai/dead-reckoning-blender-assets/source/skypiea-knock-up-stream.blend",
+  "runtime_glb": "/Users/shawnos.ai/dead-reckoning-blender-assets/runtime/skypiea-knock-up-stream.glb",
+  "model_units": "stylized Blender units; runtime scale is defined by the integration manifest",
+  "coordinate_system": "glTF 2.0 Y-up; Blender exporter converts from Z-up",
+  "export": {
+    "exporter": "Blender built-in glTF 2.0 exporter",
+    "compression": "none; optional gltfpack binary is not installed",
+    "animations": false,
+    "preview_proxy_excluded": true,
+    "curves_converted_to_mesh": [
+      "Rising water helix 1",
+      "Rising water helix 2",
+      "Rising water helix 3",
+      "Rising water helix 4",
+      "Rising water helix 5",
+      "Runtime ship ascent path"
+    ],
+    "excluded_objects": [
+      "Vertical transition camera",
+      "Vertical key",
+      "Vertical warm fill",
+      "Ship ascent proxy"
+    ]
+  },
+  "stats": {
+    "objects": 64,
+    "vertices_input": 22226,
+    "triangles_input": 43660,
+    "materials": 8,
+    "bounds_blender": {
+      "min": [
+        -2.330912,
+        -2.033916,
+        -0.041364
+      ],
+      "max": [
+        2.276462,
+        1.66935,
+        6.225642
+      ]
+    },
+    "bytes": 2522360
+  },
+  "build": {
+    "blender": "4.5.3 LTS",
+    "glb_sha256": "7e54bd58a0de54a417cc8e1d36ded149267a97fd7e063c8ae216819c7215684f",
+    "glb_header": {
+      "magic": "glTF",
+      "version": 2,
+      "declared_length": 2522360
+    }
+  }
+}

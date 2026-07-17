@@ -1,0 +1,388 @@
+{
+  "schema_version": 2,
+  "id": "dressrosa-green-bit",
+  "label": "Dressrosa, Green Bit, and King's Plateau",
+  "entity_type": "island_bridge_system",
+  "priority": 1,
+  "contract_status": "ready_for_system_sketch",
+  "identity": {
+    "anchor": {
+      "slug": "dressrosa",
+      "name": "Dressrosa",
+      "japanese": "ドレスローザ",
+      "romaji": "Doresurōza",
+      "region": "New World",
+      "sea": null,
+      "island_type": null,
+      "debut_chapter": 682,
+      "debut_episode": 608,
+      "canon_status": "manga",
+      "canon_confidence": "canon",
+      "affiliation": "World Government (Riku Family) Donquixote Pirates (Donquixote Family)",
+      "wiki_url": "https://onepiece.fandom.com/wiki/Dressrosa",
+      "source_ref": "onepiece.fandom.com/wiki/Dressrosa#Island_Box",
+      "id": "dressrosa",
+      "record_origin": "generated_wiki_record",
+      "atlas_anchor": {
+        "lng": 42.463,
+        "lat": 7.6766,
+        "confidence": "derived",
+        "source_ref": "derived: region='New World'; lng by voyage order 26 (dressrosa, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+        "usage": "scene_entry_anchor_only",
+        "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+      }
+    },
+    "components": [
+      {
+        "slug": "dressrosa",
+        "name": "Dressrosa",
+        "japanese": "ドレスローザ",
+        "romaji": "Doresurōza",
+        "region": "New World",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 682,
+        "debut_episode": 608,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "World Government (Riku Family) Donquixote Pirates (Donquixote Family)",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Dressrosa",
+        "source_ref": "onepiece.fandom.com/wiki/Dressrosa#Island_Box",
+        "id": "dressrosa",
+        "role": "main_island_kingdom",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": 42.463,
+          "lat": 7.6766,
+          "confidence": "derived",
+          "source_ref": "derived: region='New World'; lng by voyage order 26 (dressrosa, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "green-bit",
+        "name": "Green Bit",
+        "japanese": "グリーンビット",
+        "romaji": "Gurīn Bitto",
+        "region": "New World",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 710,
+        "debut_episode": 639,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Green_Bit",
+        "source_ref": "onepiece.fandom.com/wiki/Green_Bit#Island_Box",
+        "id": "green-bit",
+        "role": "northern_satellite_island",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": 33.445,
+          "lat": -6.0878,
+          "confidence": "derived",
+          "source_ref": "derived: region='New World'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "corrida-colosseum",
+        "name": "Corrida Colosseum",
+        "japanese": "コリーダコロシアム",
+        "romaji": "Korīda Koroshiamu",
+        "region": "Dressrosa",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 702,
+        "debut_episode": 631,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Donquixote Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Corrida_Colosseum",
+        "source_ref": "onepiece.fandom.com/wiki/Corrida_Colosseum#Island_Box",
+        "id": "corrida-colosseum",
+        "role": "arena_landmark",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": 28.9164,
+          "lat": 6.6618,
+          "confidence": "derived",
+          "source_ref": "derived: region='Dressrosa'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "flower-hill",
+        "name": "Flower Hill",
+        "japanese": "花畑",
+        "romaji": "Hanabatake",
+        "region": "Dressrosa",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 701,
+        "debut_episode": 630,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Flower_Hill",
+        "source_ref": "onepiece.fandom.com/wiki/Flower_Hill#Island_Box",
+        "id": "flower-hill",
+        "role": "flower_field_landmark",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": 44.6171,
+          "lat": 0.3143,
+          "confidence": "derived",
+          "source_ref": "derived: region='Dressrosa'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "smile-factory",
+        "name": "SMILE Factory",
+        "japanese": "工場",
+        "romaji": "Sumairu Kōjō",
+        "region": "Dressrosa (Underground Trade Port)",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 738,
+        "debut_episode": 671,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Donquixote Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/SMILE_Factory",
+        "source_ref": "onepiece.fandom.com/wiki/SMILE_Factory#Island_Box",
+        "id": "smile-factory",
+        "role": "underground_industrial_landmark",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": 40.2226,
+          "lat": -0.8683,
+          "confidence": "derived",
+          "source_ref": "derived: region='Dressrosa (Underground Trade Port)'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "id": "green-bit-iron-bridge",
+        "slug": null,
+        "name": "Iron bridge to Green Bit",
+        "role": "bridge",
+        "debut_chapter": 710,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Dressrosa",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "kings-plateau",
+        "slug": null,
+        "name": "King's Plateau",
+        "role": "central_crown_plateau",
+        "debut_chapter": 682,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Dressrosa",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "dressrosa-royal-palace",
+        "slug": null,
+        "name": "Dressrosa royal palace",
+        "role": "palace",
+        "debut_chapter": 682,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Dressrosa",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "from": "green-bit",
+      "type": "north_of",
+      "to": "dressrosa",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "green-bit-iron-bridge",
+      "type": "connects",
+      "to": "dressrosa",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "green-bit-iron-bridge",
+      "type": "connects",
+      "to": "green-bit",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "kings-plateau",
+      "type": "central_within",
+      "to": "dressrosa",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "dressrosa-royal-palace",
+      "type": "atop_pre_landscape_change",
+      "to": "kings-plateau",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "smile-factory",
+      "type": "underground_within",
+      "to": "dressrosa",
+      "confidence": "canon"
+    }
+  ],
+  "topology": {
+    "summary": "Green Bit's northern iron bridge and Doflamingo's palace on the central King's Plateau are different structures. Pica later changes the landscape and palace placement, so both layouts require separate variants.",
+    "sources": [
+      "https://onepiece.fandom.com/wiki/Dressrosa",
+      "https://onepiece.fandom.com/wiki/Green_Bit"
+    ],
+    "exact_distances": "unknown",
+    "exact_bearings": "partially_known_or_unknown",
+    "layout_mode": "relationship_graph_not_atlas_jitter"
+  },
+  "chapter_logic": {
+    "base_reveal_chapter": 682,
+    "temporal_variants": [
+      {
+        "id": "pre-pica-city",
+        "reveal_chapter": 682,
+        "state": "Crown-shaped King's Plateau is central and the royal palace sits atop it.",
+        "verification": "verified"
+      },
+      {
+        "id": "pica-remodeled-city",
+        "reveal_chapter": null,
+        "state": "Landscape is rearranged; the palace is relocated to a newly formed King's Plateau at Flower Hill.",
+        "verification": "chapter_to_verify"
+      },
+      {
+        "id": "birdcage-state",
+        "reveal_chapter": null,
+        "state": "Birdcage encloses the island as a temporary event volume.",
+        "verification": "chapter_to_verify"
+      }
+    ],
+    "event_scenes": [
+      {
+        "id": "dressrosa-landscape-remodel",
+        "importance": 1,
+        "reveal_chapter": null,
+        "landmark": "kings-plateau",
+        "state_delta": "Terrain and palace position transform into the later battle layout.",
+        "verification": "chapter_to_verify",
+        "camera_cue": "Lock camera above the city so the terrain displacement reads as a before/after transformation.",
+        "fx": [
+          "rising stone",
+          "dust rings",
+          "building displacement"
+        ]
+      },
+      {
+        "id": "birdcage-contraction",
+        "importance": 1,
+        "reveal_chapter": null,
+        "landmark": "dressrosa",
+        "state_delta": "A contracting cage volume overlays the kingdom.",
+        "verification": "chapter_to_verify",
+        "camera_cue": "Orbit outside the cage, then pass through to the palace/plateau axis.",
+        "fx": [
+          "thread cage",
+          "sparks",
+          "debris"
+        ]
+      }
+    ],
+    "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+    "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+  },
+  "coordinate_policy": {
+    "atlas_anchor": "Use the app coordinate only to place or open the local scene on the globe.",
+    "local_topology": "Build only from cited containment and relationship evidence. Never infer local bearings or distances from deterministic atlas jitter.",
+    "runtime": "Use an expanded local inset, path graph, or moving entity transform when a single flat raster cannot express the place."
+  },
+  "api_coverage": {
+    "raw_api_matches": [
+      "Dressrosa",
+      "Green Bit"
+    ],
+    "raw_api_missing_or_nested": [
+      "Corrida Colosseum",
+      "Dressrosa royal palace",
+      "Flower Hill",
+      "Iron bridge to Green Bit",
+      "King's Plateau",
+      "SMILE Factory"
+    ],
+    "generated_component_count": 5,
+    "manual_topology_node_count": 3
+  },
+  "visual_program": {
+    "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+    "must_show": [
+      "Green Bit as a distinct northern island",
+      "iron bridge as its connector",
+      "central crown-shaped King's Plateau",
+      "palace location changing between variants",
+      "colosseum, Flower Hill, and underground factory as distinct landmarks"
+    ],
+    "must_not_show": [
+      "the Green Bit bridge leading directly to Doflamingo's palace",
+      "pre- and post-Pica layouts combined into one impossible map",
+      "Birdcage before its event gate"
+    ],
+    "collection_pattern": [
+      "00_TOPOLOGY",
+      "10_LANDMARKS",
+      "20_EVENT_STATES",
+      "30_ATMOSPHERE_FX",
+      "40_RUNTIME_LOD"
+    ],
+    "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+  },
+  "unresolved": [
+    "Exact chapter of the Pica landscape transition.",
+    "Exact chapter at which the Birdcage becomes visible.",
+    "Exact local bearings for secondary landmarks not fixed by cited topology."
+  ],
+  "evidence": [
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+      "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+      "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+      "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+      "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+      "ownership": "asset_workspace"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+      "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+      "ownership": "asset_workspace"
+    }
+  ]
+}

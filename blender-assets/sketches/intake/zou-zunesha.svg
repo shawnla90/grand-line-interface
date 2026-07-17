@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1100" viewBox="0 0 1800 1100">
+<title>ZOU — A COUNTRY ON A MOVING ELEPHANT</title>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#102a38"/><stop offset="1" stop-color="#050d14"/></linearGradient>
+  <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1b748e"/><stop offset="1" stop-color="#092938"/></linearGradient>
+  <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e0d0b3"/><stop offset="1" stop-color="#745f55"/></linearGradient>
+  <linearGradient id="cloud" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fffde8"/><stop offset="1" stop-color="#9ed8e5"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="shadow"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-opacity=".35"/></filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#75dfef"/></marker>
+</defs>
+<rect width="1800" height="1100" fill="url(#bg)"/>
+<circle cx="1510" cy="-60" r="390" fill="#bde39a" opacity=".06"/>
+<text x="64" y="75" fill="#fff7df" font-family="Georgia,serif" font-size="45">ZOU — A COUNTRY ON A MOVING ELEPHANT</text>
+<text x="66" y="114" fill="#95b8c1" font-family="Arial,sans-serif" font-size="19">Vertical scale board • moving entity / carried nation / recurring water event</text>
+<rect x="1500" y="46" width="238" height="54" rx="27" fill="#0a1720" stroke="#bde39a" stroke-width="2"/>
+<text x="1619" y="80" text-anchor="middle" fill="#bde39a" font-family="Arial,sans-serif" font-size="17">PRIORITY 01</text>
+
+<rect x="58" y="155" width="1684" height="780" rx="24" fill="#082434" stroke="#335865"/>
+<rect x="59" y="650" width="1682" height="285" fill="url(#sea)"/>
+<path d="M60 650H1740" stroke="#7fe3ef" stroke-width="6"/>
+<path d="M60 910Q300 875 540 910T1020 910T1500 910T1740 910V935H60Z" fill="#192b2f" stroke="#536968" stroke-width="5"/>
+<g transform="translate(900 0)" filter="url(#shadow)">
+  <path d="M-320 410Q-225 265 -40 276Q170 240 335 355Q380 405 337 468Q280 535 135 526L-65 535Q-215 530 -300 470Z" fill="#6a7770" stroke="#c4cfbf" stroke-width="8"/>
+  <ellipse cx="315" cy="370" rx="112" ry="94" fill="#6a7770" stroke="#c4cfbf" stroke-width="8"/>
+  <path d="M382 395Q510 470 492 620Q478 745 590 777" fill="none" stroke="#6a7770" stroke-width="62" stroke-linecap="round"/>
+  <path d="M382 395Q510 470 492 620Q478 745 590 777" fill="none" stroke="#c4cfbf" stroke-width="8" stroke-linecap="round"/>
+  <path d="M-195 490Q-240 620 -205 747L-178 910H-102L-105 748Q-76 620 -85 505Z" fill="#596963" stroke="#bac7b8" stroke-width="8"/>
+  <path d="M95 506Q62 620 100 744L122 910H202L195 742Q224 615 205 492Z" fill="#596963" stroke="#bac7b8" stroke-width="8"/>
+  <path d="M-205 747Q-150 795 -105 748M100 744Q150 790 195 742" fill="none" stroke="#d7e0d1" stroke-width="7"/>
+  <path d="M-255 327Q-170 235 -75 300Q18 225 120 302Q195 263 280 330L260 365H-255Z" fill="#668a54" stroke="#bee097" stroke-width="7"/>
+  <path d="M-220 320Q-175 280 -130 320M-95 315Q-40 260 10 315M45 315Q100 265 150 315" fill="none" stroke="#8dd275" stroke-width="10"/>
+  <g fill="#d2b57e" stroke="#fff0c3" stroke-width="3">
+    <rect x="-135" y="282" width="38" height="35"/><rect x="-70" y="270" width="46" height="48"/><rect x="5" y="282" width="35" height="35"/><rect x="72" y="269" width="48" height="49"/>
+  </g>
+  <text x="0" y="238" text-anchor="middle" fill="#e9ffd8" font-family="Georgia,serif" font-size="26">ZOU / MOKOMO DUKEDOM</text>
+  <circle cx="347" cy="345" r="7" fill="#fff8c7"/>
+</g>
+<path d="M1460 742Q1310 600 1170 525" fill="none" stroke="#a8eff5" stroke-width="18" opacity=".78"/>
+<path d="M1460 742Q1310 600 1170 525" fill="none" stroke="#e9ffff" stroke-width="5" stroke-dasharray="10 13"/>
+<text x="1395" y="575" fill="#d9ffff" font-family="Arial,sans-serif" font-size="17">ERUPTION RAIN ARC</text>
+<path d="M410 655V880" stroke="#8ee6f0" stroke-width="3" stroke-dasharray="12 9" marker-end="url(#arrow)"/>
+<text x="150" y="720" fill="#9ec5cf" font-family="Arial,sans-serif" font-size="16">SEA LEVEL</text>
+<text x="120" y="900" fill="#9ec5cf" font-family="Arial,sans-serif" font-size="16">SEAFLOOR</text>
+<rect x="100" y="208" width="390" height="155" rx="17" fill="#07151d" stroke="#6f8b7e"/>
+<text x="127" y="247" fill="#f1c86a" font-family="Arial,sans-serif" font-size="17">RUNTIME BEHAVIOR</text>
+<text x="127" y="284" fill="#dfe8e4" font-family="Arial,sans-serif" font-size="18">Zunesha is the moving anchor.</text>
+<text x="127" y="316" fill="#a9c0c5" font-family="Arial,sans-serif" font-size="15">The atlas point opens an encounter;</text>
+<text x="127" y="342" fill="#a9c0c5" font-family="Arial,sans-serif" font-size="15">it is not a permanent canon location.</text>
+<rect x="60" y="962" width="1680" height="102" rx="18" fill="#07141d" stroke="#315363"/>
+<text x="88" y="998" fill="#f1c86a" font-family="Arial,sans-serif" font-size="16">BLENDER RULE — rig the elephant first; the city rides on the back collection</text>
+<text x="88" y="1027" fill="#b8cdd1" font-family="Arial,sans-serif" font-size="15">Extreme scale LODs: seafloor legs  •  cloud crossing  •  city blockout  •  trunk rain event</text>
+</svg>

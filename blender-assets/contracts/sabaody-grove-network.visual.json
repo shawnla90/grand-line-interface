@@ -1,0 +1,325 @@
+{
+  "schema_version": 2,
+  "id": "sabaody-grove-network",
+  "label": "Sabaody 79-grove mangrove network",
+  "entity_type": "mangrove_grove_network",
+  "priority": 1,
+  "contract_status": "ready_for_system_sketch",
+  "identity": {
+    "anchor": {
+      "slug": "sabaody-archipelago",
+      "name": "Sabaody Archipelago",
+      "japanese": "シャボンディ諸島",
+      "romaji": "Shabondi Shotō",
+      "region": "Paradise",
+      "sea": null,
+      "island_type": null,
+      "debut_chapter": 496,
+      "debut_episode": 390,
+      "canon_status": "manga",
+      "canon_confidence": "canon",
+      "affiliation": null,
+      "wiki_url": "https://onepiece.fandom.com/wiki/Sabaody_Archipelago",
+      "source_ref": "onepiece.fandom.com/wiki/Sabaody_Archipelago#Island_Box",
+      "id": "sabaody-archipelago",
+      "record_origin": "generated_wiki_record",
+      "atlas_anchor": {
+        "lng": -48.2843,
+        "lat": 3.7912,
+        "confidence": "derived",
+        "source_ref": "derived: region='Paradise'; lng by voyage order 18 (sabaody-archipelago, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+        "usage": "scene_entry_anchor_only",
+        "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+      }
+    },
+    "components": [
+      {
+        "slug": "sabaody-archipelago",
+        "name": "Sabaody Archipelago",
+        "japanese": "シャボンディ諸島",
+        "romaji": "Shabondi Shotō",
+        "region": "Paradise",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 496,
+        "debut_episode": 390,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Sabaody_Archipelago",
+        "source_ref": "onepiece.fandom.com/wiki/Sabaody_Archipelago#Island_Box",
+        "id": "sabaody-archipelago",
+        "role": "mangrove_root_archipelago",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -48.2843,
+          "lat": 3.7912,
+          "confidence": "derived",
+          "source_ref": "derived: region='Paradise'; lng by voyage order 18 (sabaody-archipelago, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "sabaody-park",
+        "name": "Sabaody Park",
+        "japanese": "シャボンディパーク",
+        "romaji": "Shabondi Pāku",
+        "region": "Paradise",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 499,
+        "debut_episode": 393,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Sabaody_Park",
+        "source_ref": "onepiece.fandom.com/wiki/Sabaody_Park#Island_Box",
+        "id": "sabaody-park",
+        "role": "amusement_landmark",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -47.1958,
+          "lat": 4.2902,
+          "confidence": "derived",
+          "source_ref": "derived: region='Paradise'; lng by voyage order 18 (sabaody-archipelago, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "human-auctioning-house",
+        "name": "Human Auctioning House",
+        "japanese": "オークション会場",
+        "romaji": "Hyūman Ōkushon Kaijō",
+        "region": "Paradise",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 501,
+        "debut_episode": 394,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Human_Auctioning_House",
+        "source_ref": "onepiece.fandom.com/wiki/Human_Auctioning_House#Island_Box",
+        "id": "human-auctioning-house",
+        "role": "event_landmark",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -51.2008,
+          "lat": 6.2035,
+          "confidence": "derived",
+          "source_ref": "derived: region='Paradise'; lng by voyage order 18 (sabaody-archipelago, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "id": "yarukiman-mangroves",
+        "slug": null,
+        "name": "79 Yarukiman Mangrove groves",
+        "role": "numbered_tree_root_nodes",
+        "debut_chapter": 496,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Sabaody_Archipelago",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "sabaody-root-bridges",
+        "slug": null,
+        "name": "Root bridges",
+        "role": "inter_grove_connections",
+        "debut_chapter": 496,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Sabaody_Archipelago",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "sabaody-bubble-layer",
+        "slug": null,
+        "name": "Resin bubble ecology",
+        "role": "transport_and_atmosphere_system",
+        "debut_chapter": 496,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Sabaody_Archipelago",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "from": "yarukiman-mangroves",
+      "type": "forms",
+      "to": "sabaody-archipelago",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "sabaody-root-bridges",
+      "type": "connects",
+      "to": "yarukiman-mangroves",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "sabaody-bubble-layer",
+      "type": "generated_by_resin_of",
+      "to": "yarukiman-mangroves",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "sabaody-park",
+      "type": "within_grove_network",
+      "to": "sabaody-archipelago",
+      "confidence": "canon"
+    },
+    {
+      "from": "human-auctioning-house",
+      "type": "within_grove_network",
+      "to": "sabaody-archipelago",
+      "confidence": "canon"
+    }
+  ],
+  "topology": {
+    "summary": "Sabaody is a numbered network built from the roots of 79 enormous mangrove trees, not ordinary land islands. Bridges, resin bubbles, coated transport, and grove zoning are the core visual system.",
+    "sources": [
+      "https://onepiece.fandom.com/wiki/Sabaody_Archipelago"
+    ],
+    "exact_distances": "unknown",
+    "exact_bearings": "partially_known_or_unknown",
+    "layout_mode": "relationship_graph_not_atlas_jitter"
+  },
+  "chapter_logic": {
+    "base_reveal_chapter": 496,
+    "temporal_variants": [
+      {
+        "id": "arrival-network",
+        "reveal_chapter": 496,
+        "state": "Grove roots, bridges, bubbles, and numbered wayfinding visible.",
+        "verification": "verified"
+      },
+      {
+        "id": "auction-house-event",
+        "reveal_chapter": 501,
+        "state": "Auction house becomes an active narrative landmark.",
+        "verification": "verified"
+      },
+      {
+        "id": "post-timeskip-return",
+        "reveal_chapter": null,
+        "state": "Later return-state activity and character visibility.",
+        "verification": "chapter_to_verify"
+      }
+    ],
+    "event_scenes": [
+      {
+        "id": "sabaody-bubble-travel",
+        "importance": 1,
+        "reveal_chapter": 496,
+        "landmark": "sabaody-bubble-layer",
+        "state_delta": "Bubbles become moving transport, hotel, and helmet instances across the grove network.",
+        "verification": "verified",
+        "camera_cue": "Travel under colossal roots, then rise alongside bubbles to reveal the numbered canopy network.",
+        "fx": [
+          "iridescent bubbles",
+          "resin glints",
+          "root fog"
+        ]
+      },
+      {
+        "id": "auction-house-confrontation",
+        "importance": 1,
+        "reveal_chapter": null,
+        "landmark": "human-auctioning-house",
+        "state_delta": "Interior event state activates while the surrounding grove remains navigable.",
+        "verification": "chapter_to_verify",
+        "camera_cue": "Route from grove signage to the auction-house exterior, then switch to a gated interior set.",
+        "fx": [
+          "crowd silhouettes",
+          "interior dust",
+          "impact cue"
+        ]
+      }
+    ],
+    "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+    "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+  },
+  "coordinate_policy": {
+    "atlas_anchor": "Use the app coordinate only to place or open the local scene on the globe.",
+    "local_topology": "Build only from cited containment and relationship evidence. Never infer local bearings or distances from deterministic atlas jitter.",
+    "runtime": "Use an expanded local inset, path graph, or moving entity transform when a single flat raster cannot express the place."
+  },
+  "api_coverage": {
+    "raw_api_matches": [
+      "Sabaody Archipelago"
+    ],
+    "raw_api_missing_or_nested": [
+      "79 Yarukiman Mangrove groves",
+      "Human Auctioning House",
+      "Resin bubble ecology",
+      "Root bridges",
+      "Sabaody Park"
+    ],
+    "generated_component_count": 3,
+    "manual_topology_node_count": 3
+  },
+  "visual_program": {
+    "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+    "must_show": [
+      "79 numbered mangrove-root grove nodes",
+      "bridges among roots",
+      "bubble ecology and bubble transport",
+      "grove-scale zoning and signage",
+      "landmarks nested within the network"
+    ],
+    "must_not_show": [
+      "three generic island polygons",
+      "ordinary rock islands standing in for mangrove roots",
+      "auction event before its gate"
+    ],
+    "collection_pattern": [
+      "00_TOPOLOGY",
+      "10_LANDMARKS",
+      "20_EVENT_STATES",
+      "30_ATMOSPHERE_FX",
+      "40_RUNTIME_LOD"
+    ],
+    "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+  },
+  "unresolved": [
+    "Exact map positions for all 79 grove numbers and zone categories.",
+    "Exact chapter for the auction-house confrontation event.",
+    "Runtime LOD strategy for thousands of bubbles and root structures."
+  ],
+  "evidence": [
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+      "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+      "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+      "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+      "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+      "ownership": "asset_workspace"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+      "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+      "ownership": "asset_workspace"
+    }
+  ]
+}

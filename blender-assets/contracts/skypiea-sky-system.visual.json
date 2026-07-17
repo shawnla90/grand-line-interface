@@ -1,0 +1,330 @@
+{
+  "schema_version": 2,
+  "id": "skypiea-sky-system",
+  "label": "Skypiea sky-island system",
+  "entity_type": "sky_archipelago_system",
+  "priority": 1,
+  "contract_status": "ready_for_system_sketch",
+  "identity": {
+    "anchor": {
+      "slug": "skypiea",
+      "name": "Skypiea",
+      "japanese": "スカイピア",
+      "romaji": "Sukaipia",
+      "region": "Sky",
+      "sea": null,
+      "island_type": null,
+      "debut_chapter": 239,
+      "debut_episode": 154,
+      "canon_status": "manga",
+      "canon_confidence": "canon",
+      "affiliation": null,
+      "wiki_url": "https://onepiece.fandom.com/wiki/Skypiea",
+      "source_ref": "onepiece.fandom.com/wiki/Skypiea#Island_Box",
+      "id": "skypiea",
+      "record_origin": "generated_wiki_record",
+      "atlas_anchor": {
+        "lng": -91.1362,
+        "lat": 17.0745,
+        "confidence": "derived",
+        "source_ref": "derived: region='Sky'; lng by voyage order 12 (skypiea, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+        "usage": "scene_entry_anchor_only",
+        "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+      }
+    },
+    "components": [
+      {
+        "slug": "skypiea",
+        "name": "Skypiea",
+        "japanese": "スカイピア",
+        "romaji": "Sukaipia",
+        "region": "Sky",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 239,
+        "debut_episode": 154,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Skypiea",
+        "source_ref": "onepiece.fandom.com/wiki/Skypiea#Island_Box",
+        "id": "skypiea",
+        "role": "sky_region",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -91.1362,
+          "lat": 17.0745,
+          "confidence": "derived",
+          "source_ref": "derived: region='Sky'; lng by voyage order 12 (skypiea, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "shandora",
+        "name": "Shandora",
+        "japanese": "シャンドラ",
+        "romaji": "Shandora",
+        "region": "Sky; Paradise (former)",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 268,
+        "debut_episode": 174,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Shandora",
+        "source_ref": "onepiece.fandom.com/wiki/Shandora#Island_Box",
+        "id": "shandora",
+        "role": "ancient_city_ruins",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -89.9611,
+          "lat": 15.9676,
+          "confidence": "derived",
+          "source_ref": "derived: region='Sky; Paradise (former)'; lng by voyage order 12 (skypiea, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "id": "angel-island",
+        "slug": null,
+        "name": "Angel Island",
+        "role": "island_cloud_settlement",
+        "debut_chapter": 239,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Skypiea_Arc",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "upper-yard",
+        "slug": null,
+        "name": "Upper Yard",
+        "role": "solid_jaya_landmass",
+        "debut_chapter": 239,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Upper_Yard",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "giant-jack",
+        "slug": null,
+        "name": "Giant Jack",
+        "role": "vertical_vine_axis",
+        "debut_chapter": null,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Upper_Yard",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "golden-belfry-cloud",
+        "slug": null,
+        "name": "Golden Belfry island cloud",
+        "role": "high_altitude_landmark",
+        "debut_chapter": null,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Upper_Yard",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "white-white-sea",
+        "slug": null,
+        "name": "White-White Sea",
+        "role": "cloud_ocean",
+        "debut_chapter": 239,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Skypiea_Arc",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "from": "angel-island",
+      "type": "made_of",
+      "to": "island_cloud",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "upper-yard",
+      "type": "solid_land_within",
+      "to": "skypiea",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "shandora",
+      "type": "within",
+      "to": "upper-yard",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "giant-jack",
+      "type": "passes_through",
+      "to": "upper-yard",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "golden-belfry-cloud",
+      "type": "above",
+      "to": "upper-yard",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "white-white-sea",
+      "type": "supports_cloud_islands_of",
+      "to": "skypiea",
+      "confidence": "cited_summary"
+    }
+  ],
+  "topology": {
+    "summary": "The destination above the Knock-Up Stream is a layered sky system: cloud sea, Angel Island, the solid displaced Jaya landmass of Upper Yard, Shandora ruins, Giant Jack, and the higher Belfry cloud.",
+    "sources": [
+      "https://onepiece.fandom.com/wiki/Upper_Yard",
+      "https://onepiece.fandom.com/wiki/Skypiea_Arc"
+    ],
+    "exact_distances": "unknown",
+    "exact_bearings": "partially_known_or_unknown",
+    "layout_mode": "relationship_graph_not_atlas_jitter"
+  },
+  "chapter_logic": {
+    "base_reveal_chapter": 239,
+    "temporal_variants": [
+      {
+        "id": "arrival-cloud-sea",
+        "reveal_chapter": 239,
+        "state": "White-White Sea and Angel Island become visible.",
+        "verification": "verified"
+      },
+      {
+        "id": "upper-yard-reveal",
+        "reveal_chapter": 239,
+        "state": "Solid Upper Yard is distinguished from cloud islands.",
+        "verification": "verified"
+      },
+      {
+        "id": "giant-jack-and-belfry",
+        "reveal_chapter": null,
+        "state": "Vertical vine and highest bell landmark become visible when revealed.",
+        "verification": "chapter_to_verify"
+      }
+    ],
+    "event_scenes": [
+      {
+        "id": "knock-up-stream-arrival",
+        "importance": 1,
+        "reveal_chapter": 239,
+        "landmark": "white-white-sea",
+        "state_delta": "Existing vertical stream route breaks through the cloud sea into the navigable sky system.",
+        "verification": "verified",
+        "camera_cue": "Continue the current upward camera through the cloud membrane, then level into the sky archipelago.",
+        "fx": [
+          "cloud breach",
+          "water plume",
+          "sun halo"
+        ]
+      },
+      {
+        "id": "golden-bell-ring",
+        "importance": 1,
+        "reveal_chapter": null,
+        "landmark": "golden-belfry-cloud",
+        "state_delta": "Bell animation and long-distance sound/light pulse activate.",
+        "verification": "chapter_to_verify",
+        "camera_cue": "Rise along Giant Jack to the Belfry, then send the sound pulse across Upper Yard and below the clouds.",
+        "fx": [
+          "gold resonance",
+          "cloud shockwave",
+          "sun shafts"
+        ]
+      }
+    ],
+    "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+    "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+  },
+  "coordinate_policy": {
+    "atlas_anchor": "Use the app coordinate only to place or open the local scene on the globe.",
+    "local_topology": "Build only from cited containment and relationship evidence. Never infer local bearings or distances from deterministic atlas jitter.",
+    "runtime": "Use an expanded local inset, path graph, or moving entity transform when a single flat raster cannot express the place."
+  },
+  "api_coverage": {
+    "raw_api_matches": [
+      "Shandora",
+      "Upper Yard"
+    ],
+    "raw_api_missing_or_nested": [
+      "Angel Island",
+      "Giant Jack",
+      "Golden Belfry island cloud",
+      "Skypiea",
+      "White-White Sea"
+    ],
+    "generated_component_count": 2,
+    "manual_topology_node_count": 5
+  },
+  "visual_program": {
+    "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+    "must_show": [
+      "actual cloud islands beyond the stream",
+      "Angel Island distinct from solid Upper Yard",
+      "Shandora embedded in Upper Yard",
+      "Giant Jack as a vertical axis",
+      "Belfry on a higher island cloud"
+    ],
+    "must_not_show": [
+      "the Knock-Up Stream as the entire Skypiea asset",
+      "Upper Yard rendered as another soft cloud",
+      "late landmarks before their reveal"
+    ],
+    "collection_pattern": [
+      "00_TOPOLOGY",
+      "10_LANDMARKS",
+      "20_EVENT_STATES",
+      "30_ATMOSPHERE_FX",
+      "40_RUNTIME_LOD"
+    ],
+    "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+  },
+  "unresolved": [
+    "Exact reveal chapters for Giant Jack and the Golden Belfry.",
+    "Exact relative placement of Angel Island and Upper Yard in a spoiler-safe local inset.",
+    "Transition LOD between globe stream and sky-system scene."
+  ],
+  "evidence": [
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+      "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+      "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+      "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+      "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+      "ownership": "asset_workspace"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+      "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+      "ownership": "asset_workspace"
+    }
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "schema_version": 1,
+  "id": "world-government-tarai-system",
+  "label": "World Government Tarai Current system",
+  "entity_type": "connected_world_structure",
+  "contract_status": "ready_for_system_sketch",
+  "identity": {
+    "components": [
+      {
+        "slug": "enies-lobby",
+        "name": "Enies Lobby",
+        "japanese": "エニエスロビー",
+        "romaji": "Eniesu Robī",
+        "region": "Paradise",
+        "sea": null,
+        "island_type": "Afternoon/Never-night Island",
+        "debut_chapter": 358,
+        "debut_episode": 263,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "World Government; Marines",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Enies_Lobby",
+        "source_ref": "onepiece.fandom.com/wiki/Enies_Lobby#Island_Box",
+        "role": "judicial_facility",
+        "atlas_anchor": {
+          "lng": -68.3696,
+          "lat": -7.1283,
+          "confidence": "derived",
+          "source_ref": "derived: region='Paradise'; lng by voyage order 15 (enies-lobby, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "impel-down",
+        "name": "Impel Down",
+        "japanese": "インペルダウン",
+        "romaji": "Inperu Daun",
+        "region": "Calm Belt",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 525,
+        "debut_episode": 422,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "World Government Marines",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Impel_Down",
+        "source_ref": "onepiece.fandom.com/wiki/Impel_Down#Island_Box",
+        "role": "underwater_prison",
+        "atlas_anchor": {
+          "lng": -48.4536,
+          "lat": 13.4248,
+          "confidence": "derived",
+          "source_ref": "derived: region='Calm Belt' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "marineford",
+        "name": "Marineford",
+        "japanese": "マリンフォード",
+        "romaji": "Marinfōdo",
+        "region": "Paradise",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 94,
+        "debut_episode": 43,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Marines",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Marineford",
+        "source_ref": "onepiece.fandom.com/wiki/Marineford#Island_Box",
+        "role": "former_marine_headquarters",
+        "atlas_anchor": {
+          "lng": -30.6541,
+          "lat": -6.3056,
+          "confidence": "derived",
+          "source_ref": "derived: region='Paradise'; lng by voyage order 21 (marineford, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "gates-of-justice",
+        "name": "Gates of Justice",
+        "japanese": "正義の門",
+        "romaji": "Seigi no Mon",
+        "region": "Paradise",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 376,
+        "debut_episode": 264,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Marines; World Government",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Gates_of_Justice",
+        "source_ref": "onepiece.fandom.com/wiki/Gates_of_Justice#Island_Box",
+        "role": "distributed_access_infrastructure",
+        "atlas_anchor": {
+          "lng": -66.7953,
+          "lat": 6.1997,
+          "confidence": "derived",
+          "source_ref": "derived: region='Paradise'; lng by voyage order 15 (enies-lobby, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "tarai-current",
+        "name": "Tarai Current",
+        "japanese": "タライ海流",
+        "romaji": "Tarai Kairyū",
+        "region": "Paradise Calm Belt",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 522,
+        "debut_episode": 416,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "World Government",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Tarai_Current",
+        "source_ref": "onepiece.fandom.com/wiki/Tarai_Current#Island_Box",
+        "role": "connecting_water_system",
+        "atlas_anchor": {
+          "lng": -92.4053,
+          "lat": 11.8445,
+          "confidence": "derived",
+          "source_ref": "derived: region='Paradise Calm Belt' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "from": "enies-lobby",
+        "type": "facility_on",
+        "to": "tarai-current"
+      },
+      {
+        "from": "impel-down",
+        "type": "facility_on",
+        "to": "tarai-current"
+      },
+      {
+        "from": "marineford",
+        "type": "facility_on",
+        "to": "tarai-current"
+      },
+      {
+        "from": "gates-of-justice",
+        "type": "controls_access_to",
+        "to": "tarai-current"
+      },
+      {
+        "from": "gates-of-justice",
+        "type": "redirects_water_into",
+        "to": "tarai-current"
+      }
+    ]
+  },
+  "topology": {
+    "rule": "three facilities form a triangle around the Tarai Current; Gates of Justice redirect and control access to the current",
+    "layout_mode": "relational_triangle",
+    "exact_angles": "unknown",
+    "exact_distances": "unknown",
+    "source": "https://onepiece.fandom.com/wiki/Tarai_Current",
+    "manga_references": [
+      "Chapter 522, pages 10-11",
+      "Chapter 549, page 8"
+    ]
+  },
+  "temporal_logic": {
+    "variant": "pre_timeskip_active_system",
+    "active_through_chapter": 597,
+    "state_change_chapter": 598,
+    "note": "This is the pre-timeskip Marineford headquarters configuration. After Chapter 598, Marine Headquarters has moved; New Marineford must not be inserted into the old Tarai triangle.",
+    "post_timeskip_rule": "Keep old Marineford as a historical/former node; do not connect New Marineford to this triangle without new evidence."
+  },
+  "api_coverage": {
+    "raw_api_matches": [
+      "Enies Lobby",
+      "Impel Down"
+    ],
+    "raw_api_missing": [
+      "Gates of Justice",
+      "Marineford",
+      "Tarai Current"
+    ],
+    "generated_wiki_component_count": 5
+  },
+  "visual_program": {
+    "master_scene": "One relational system scene with separate collections for facilities, gates, current, atmosphere, and chapter-state variants.",
+    "sketch_order": [
+      "triangle/current diagram using relationships, not atlas jitter",
+      "distinct facility silhouettes",
+      "surface-to-depth cross-section for Impel Down",
+      "distributed Gate of Justice structures and directed water flow",
+      "pre/post-timeskip visibility variants"
+    ],
+    "must_show": [
+      "three different facilities surrounding one current system",
+      "Impel Down extending underwater rather than reading as an ordinary island",
+      "Gates of Justice as access infrastructure, not a standalone island",
+      "Tarai Current as connective motion and topology"
+    ],
+    "must_not_show": [
+      "five unrelated island plates",
+      "New Marineford substituted into the historical triangle",
+      "straight connections between independently jittered atlas coordinates presented as canon"
+    ]
+  },
+  "unresolved": [
+    "Exact cartographic bearings and scale between the three facilities.",
+    "Whether the runtime representation is a geographically expanded inset or a chapter-triggered local system scene.",
+    "Post-timeskip visual state of the old Tarai system beyond Marineford's headquarters move."
+  ],
+  "evidence": [
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+      "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+      "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+      "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/visual-topology-overrides.json",
+      "sha256": "80a84eab06ed3db3b53470e279ff1dcc7667b072c8f78d92610e9a11d58e9102",
+      "ownership": "asset_workspace"
+    }
+  ]
+}

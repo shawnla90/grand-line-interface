@@ -12,6 +12,12 @@
 import { useEffect } from "react";
 import type { BuildLogEntry } from "@/lib/buildlog";
 
+function formatTokens(value: number): string {
+  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(2)}M`;
+  if (value >= 1_000) return `${(value / 1_000).toFixed(1)}K`;
+  return value.toLocaleString("en-US");
+}
+
 export default function ShipwrightsLog({
   entries,
   onClose,
@@ -75,15 +81,29 @@ export default function ShipwrightsLog({
                   </span>
                 )}
               </div>
+              {e.usage && (
+                <div className="mt-1.5 rounded-sm border border-rope/40 bg-abyss/35 px-2.5 py-2 font-mono text-[9px] leading-relaxed text-muted-2">
+                  <div className="text-gold/85">
+                    {formatTokens(e.usage.totalTokens)} tokens metered ·{" "}
+                    {formatTokens(e.usage.cachedInputTokens)} cached input
+                  </div>
+                  <div>
+                    {formatTokens(e.usage.uncachedInputTokens)} uncached input ·{" "}
+                    {formatTokens(e.usage.outputTokens)} output ·{" "}
+                    {formatTokens(e.usage.reasoningOutputTokens)} reasoning
+                  </div>
+                  <div className="mt-0.5 text-muted-2/70">{e.usage.note}</div>
+                </div>
+              )}
             </li>
           ))}
         </ul>
 
         <p className="mt-4 border-t border-rope/50 pt-3 text-[10px] leading-relaxed text-muted-2">
-          Phases 1–4 were built by Claude Opus 4.8 running ultracode. The Phase 5 plan was drafted
-          by a Codex session; Phase 5 onward is built by Claude Fable 5 in Claude Code. Commit
-          stamps are checkable against <span className="font-mono">git log</span> — provenance is
-          part of the product.
+          Phases 1–4 were built by Claude Opus 4.8 running ultracode. Later phases combine Claude
+          Code for the application and Codex Sol with Blender for the visual asset factory. Token
+          figures are timestamped workload counters, not invoices. Commit stamps are checkable
+          against <span className="font-mono">git log</span> — provenance is part of the product.
         </p>
       </div>
     </div>

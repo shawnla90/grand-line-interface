@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1100" viewBox="0 0 1800 1100">
+<title>WATER 7 — THE SEA TRAIN BECOMES A TRAVEL SYSTEM</title>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#102a38"/><stop offset="1" stop-color="#050d14"/></linearGradient>
+  <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1b748e"/><stop offset="1" stop-color="#092938"/></linearGradient>
+  <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e0d0b3"/><stop offset="1" stop-color="#745f55"/></linearGradient>
+  <linearGradient id="cloud" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fffde8"/><stop offset="1" stop-color="#9ed8e5"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="shadow"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-opacity=".35"/></filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#75dfef"/></marker>
+</defs>
+<rect width="1800" height="1100" fill="url(#bg)"/>
+<circle cx="1510" cy="-60" r="390" fill="#94e5eb" opacity=".06"/>
+<text x="64" y="75" fill="#fff7df" font-family="Georgia,serif" font-size="45">WATER 7 — THE SEA TRAIN BECOMES A TRAVEL SYSTEM</text>
+<text x="66" y="114" fill="#95b8c1" font-family="Arial,sans-serif" font-size="19">Route-network board • chapter-gated rails / stations / animated train / storm state</text>
+<rect x="1500" y="46" width="238" height="54" rx="27" fill="#0a1720" stroke="#94e5eb" stroke-width="2"/>
+<text x="1619" y="80" text-anchor="middle" fill="#94e5eb" font-family="Arial,sans-serif" font-size="17">PRIORITY 01</text>
+
+<rect x="58" y="155" width="1684" height="780" rx="24" fill="url(#sea)" stroke="#64b4c7"/>
+<path d="M60 720Q260 680 460 720T860 720T1260 720T1660 720T1740 720V935H60Z" fill="#0d5265" opacity=".42"/>
+<path d="M500 535Q905.0 640 1320 535" fill="none" stroke="#093a4a" stroke-width="22"/><path d="M500 535Q905.0 640 1320 535" fill="none" stroke="#9ce7e9" stroke-width="5" stroke-dasharray="17 11"/><path d="M500 535Q590.0 225 690 300" fill="none" stroke="#093a4a" stroke-width="22"/><path d="M500 535Q590.0 225 690 300" fill="none" stroke="#9ce7e9" stroke-width="5" stroke-dasharray="17 11"/><path d="M500 535Q675.0 170 860 245" fill="none" stroke="#093a4a" stroke-width="22"/><path d="M500 535Q675.0 170 860 245" fill="none" stroke="#9ce7e9" stroke-width="5" stroke-dasharray="17 11"/><path d="M500 535Q757.5 240 1025 315" fill="none" stroke="#093a4a" stroke-width="22"/><path d="M500 535Q757.5 240 1025 315" fill="none" stroke="#9ce7e9" stroke-width="5" stroke-dasharray="17 11"/>
+<circle cx="420" cy="535" r="120" fill="#63a7b9" stroke="#ecffff" stroke-width="7" filter="url(#shadow)"/><text x="420" y="541" text-anchor="middle" fill="#08222c" font-family="Georgia,serif" font-size="22">WATER 7</text><circle cx="1390" cy="535" r="120" fill="#d8d7c7" stroke="#ecffff" stroke-width="7" filter="url(#shadow)"/><text x="1390" y="541" text-anchor="middle" fill="#08222c" font-family="Georgia,serif" font-size="22">ENIES LOBBY</text><circle cx="760" cy="300" r="64" fill="#d99872" stroke="#ecffff" stroke-width="7" filter="url(#shadow)"/><text x="760" y="306" text-anchor="middle" fill="#08222c" font-family="Georgia,serif" font-size="14">PUCCI</text><circle cx="930" cy="245" r="64" fill="#79b77c" stroke="#ecffff" stroke-width="7" filter="url(#shadow)"/><text x="930" y="251" text-anchor="middle" fill="#08222c" font-family="Georgia,serif" font-size="14">ST POPLAR</text><circle cx="1095" cy="315" r="64" fill="#e4be64" stroke="#ecffff" stroke-width="7" filter="url(#shadow)"/><text x="1095" y="321" text-anchor="middle" fill="#08222c" font-family="Georgia,serif" font-size="14">SAN FALDO</text><circle cx="865" cy="620" r="45" fill="#9f8d75" stroke="#ecffff" stroke-width="7" filter="url(#shadow)"/><text x="865" y="626" text-anchor="middle" fill="#08222c" font-family="Georgia,serif" font-size="14">SHIFT STATION</text>
+<g transform="translate(975 585)" filter="url(#shadow)">
+  <rect x="-90" y="-32" width="180" height="65" rx="14" fill="#292c2b" stroke="#ebd9a3" stroke-width="5"/>
+  <rect x="-38" y="-88" width="82" height="58" fill="#323536" stroke="#ebd9a3" stroke-width="5"/>
+  <path d="M-20 -88V-135" stroke="#252728" stroke-width="23"/>
+  <circle cx="-52" cy="38" r="22" fill="#7b472d" stroke="#f3ca7c" stroke-width="5"/><circle cx="48" cy="38" r="22" fill="#7b472d" stroke="#f3ca7c" stroke-width="5"/>
+  <path d="M-110 30Q-155 50 -190 28M110 30Q155 50 190 28" stroke="#e3ffff" stroke-width="8" opacity=".7"/>
+</g>
+<text x="975" y="690" text-anchor="middle" fill="#fff1bf" font-family="Georgia,serif" font-size="22">PUFFING TOM — ANIMATED VEHICLE</text>
+<path d="M550 775H1330" stroke="#061e28" stroke-width="24" opacity=".75"/>
+<path d="M550 775H1330" stroke="#a0e6e8" stroke-width="6" stroke-dasharray="19 12"/>
+<text x="940" y="812" text-anchor="middle" fill="#d7ffff" font-family="Arial,sans-serif" font-size="16">RAILS JUST BELOW OCEAN SURFACE • SWAY WITH TIDES</text>
+<rect x="98" y="208" width="375" height="155" rx="17" fill="#07151d" stroke="#86d7e5"/>
+<text x="125" y="247" fill="#f1c86a" font-family="Arial,sans-serif" font-size="17">CHAPTER 322 — NETWORK REVEAL</text>
+<text x="125" y="284" fill="#e8efed" font-family="Georgia,serif" font-size="22">The route appears on the globe.</text>
+<text x="125" y="320" fill="#a7c0c5" font-family="Arial,sans-serif" font-size="15">Select a line → train travels → inset opens.</text>
+<text x="125" y="347" fill="#a7c0c5" font-family="Arial,sans-serif" font-size="15">Bearings remain schematic until verified.</text>
+<rect x="1320" y="720" width="330" height="145" rx="17" fill="#07151d" stroke="#818fa4"/>
+<text x="1347" y="758" fill="#a9b9d9" font-family="Arial,sans-serif" font-size="17">AQUA LAGUNA STATE</text>
+<text x="1347" y="795" fill="#e6ecec" font-family="Arial,sans-serif" font-size="16">storm volume • Rocketman pursuit</text>
+<text x="1347" y="824" fill="#9eb4ba" font-family="Arial,sans-serif" font-size="15">chapter gate still to verify</text>
+<rect x="60" y="962" width="1680" height="102" rx="18" fill="#07141d" stroke="#315363"/>
+<text x="88" y="998" fill="#f1c86a" font-family="Arial,sans-serif" font-size="16">MAPLIBRE + BLENDER RULE — the line is geographic UI; the train, stations, spray, and storm are 3D</text>
+<text x="88" y="1027" fill="#b8cdd1" font-family="Arial,sans-serif" font-size="15">Known network nodes: Water 7 • Enies Lobby • Pucci • St. Poplar • San Faldo • Shift Station</text>
+</svg>

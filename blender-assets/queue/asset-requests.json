@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "workflow": "requested -> identified -> visual_contract -> system_sketch -> proof_2_5d -> scene_3d -> runtime_glb -> integration_ready -> integrated",
+  "instructions": "Shawn names new assets in this Codex task; the asset task updates this queue and manifests. Claude Code integrates only integration_ready entries.",
+  "assets": [
+    {
+      "id": "fish-man-island",
+      "kind": "island_plate",
+      "state": "scene_3d",
+      "next": "runtime_glb_if_selected"
+    },
+    {
+      "id": "whole-cake-island",
+      "kind": "component_study",
+      "state": "study_only",
+      "next": "reuse_palette_and_massing_inside_totto_land_contract",
+      "replaced_as_integration_unit_by": "totto-land",
+      "note": "Current Blender scene is a useful central-island visual study, not a representation of the full territory."
+    },
+    {
+      "id": "impel-down",
+      "kind": "component_study",
+      "state": "study_only",
+      "next": "reuse_depth_language_inside_world_government_tarai_system",
+      "replaced_as_integration_unit_by": "world-government-tarai-system",
+      "note": "Current Blender scene is an Impel Down depth study, not the complete connected facility system."
+    },
+    {
+      "id": "sabaody-archipelago",
+      "kind": "component_study",
+      "state": "study_only",
+      "next": "reuse_palette_and_bubble_materials_inside_sabaody_grove_network",
+      "replaced_as_integration_unit_by": "sabaody-grove-network",
+      "note": "Current three-grove Blender study does not represent the canon 79-tree mangrove network."
+    },
+    {
+      "id": "skypiea-knock-up-stream",
+      "kind": "vertical_transition",
+      "state": "integration_ready",
+      "next": "claude_code_pilot"
+    },
+    {
+      "id": "wano-waterfall-ascent",
+      "kind": "vertical_transition",
+      "state": "integration_ready",
+      "next": "claude_code_pilot"
+    },
+    {
+      "id": "totto-land",
+      "kind": "archipelago_system",
+      "state": "system_sketch",
+      "contract": "contracts/totto-land.visual.json",
+      "sketch": "sketches/totto-land-system.svg",
+      "next": "component_silhouette_and_material_proofs"
+    },
+    {
+      "id": "world-government-tarai-system",
+      "kind": "connected_world_structure",
+      "state": "system_sketch",
+      "contract": "contracts/world-government-tarai-system.visual.json",
+      "sketch": "sketches/world-government-tarai-system.svg",
+      "next": "component_cross_sections_then_2_5d_system_proof"
+    },
+    {
+      "id": "conomi-arlong-park",
+      "kind": "nested_landmark_compound",
+      "priority": 2,
+      "state": "visual_contract",
+      "contract": "contracts/conomi-arlong-park.visual.json",
+      "next": "pagoda_headquarters_and_map_room_blockout"
+    },
+    {
+      "id": "arabasta-kingdom",
+      "kind": "kingdom_region_system",
+      "priority": 2,
+      "state": "visual_contract",
+      "contract": "contracts/arabasta-kingdom.visual.json",
+      "next": "kingdom_route_board_then_alubarna_event_blockout"
+    },
+    {
+      "id": "cactus-island-whisky-peak",
+      "kind": "island_town_system",
+      "priority": 3,
+      "state": "visual_contract",
+      "contract": "contracts/cactus-island-whisky-peak.visual.json",
+      "next": "grave_mountain_silhouette_study"
+    },
+    {
+      "id": "dressrosa-green-bit",
+      "kind": "island_bridge_system",
+      "priority": 1,
+      "state": "system_sketch",
+      "contract": "contracts/dressrosa-green-bit.visual.json",
+      "sketch": "sketches/intake/dressrosa-green-bit.svg",
+      "next": "pre_pica_and_post_pica_blender_blockouts"
+    },
+    {
+      "id": "zou-zunesha",
+      "kind": "moving_world_entity",
+      "priority": 1,
+      "state": "system_sketch",
+      "contract": "contracts/zou-zunesha.visual.json",
+      "sketch": "sketches/intake/zou-zunesha.svg",
+      "next": "rigged_scale_blockout_and_moving_anchor_test"
+    },
+    {
+      "id": "amazon-lily",
+      "kind": "mountain_city_system",
+      "priority": 2,
+      "state": "visual_contract",
+      "contract": "contracts/amazon-lily.visual.json",
+      "next": "mountain_exterior_to_city_bowl_reveal_sketch"
+    },
+    {
+      "id": "mary-geoise-red-line",
+      "kind": "vertical_political_world_structure",
+      "priority": 2,
+      "state": "visual_contract",
+      "contract": "contracts/mary-geoise-red-line.visual.json",
+      "next": "spoiler_safe_red_line_cross_section"
+    },
+    {
+      "id": "sabaody-grove-network",
+      "kind": "mangrove_grove_network",
+      "priority": 1,
+      "state": "system_sketch",
+      "contract": "contracts/sabaody-grove-network.visual.json",
+      "sketch": "sketches/intake/sabaody-grove-network.svg",
+      "next": "numbered_grove_graph_and_root_kit_blockout"
+    },
+    {
+      "id": "skypiea-sky-system",
+      "kind": "sky_archipelago_system",
+      "priority": 1,
+      "state": "system_sketch",
+      "contract": "contracts/skypiea-sky-system.visual.json",
+      "sketch": "sketches/intake/skypiea-sky-system.svg",
+      "next": "cloud_sea_upper_yard_and_giant_jack_blockout"
+    },
+    {
+      "id": "loguetown-roger-execution",
+      "kind": "city_landmark_event_system",
+      "priority": 1,
+      "state": "scene_3d",
+      "maturity": "3d_blockout_not_final_art",
+      "contract": "contracts/loguetown-roger-execution.visual.json",
+      "sketch": "sketches/intake/loguetown-roger-execution.svg",
+      "blend": "source/loguetown-roger-execution.blend",
+      "review_render": "renders/blockouts/loguetown-roger-execution.png",
+      "next": "panel_accuracy_review_then_architecture_material_and_event_camera_pass"
+    },
+    {
+      "id": "water-7-sea-train-network",
+      "kind": "sea_train_route_network",
+      "priority": 1,
+      "state": "scene_3d",
+      "maturity": "3d_blockout_not_final_art",
+      "contract": "contracts/water-7-sea-train-network.visual.json",
+      "sketch": "sketches/intake/water-7-sea-train-network.svg",
+      "blend": "source/water-7-sea-train-network.blend",
+      "review_render": "renders/blockouts/water-7-sea-train-network.png",
+      "next": "route_panel_verification_then_maplibre_line_proof_and_train_detail_pass"
+    }
+  ]
+}

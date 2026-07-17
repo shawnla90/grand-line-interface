@@ -1,0 +1,1319 @@
+{
+  "schema_version": 1,
+  "id": "totto-land",
+  "label": "Totto Land archipelago",
+  "entity_type": "archipelago_system",
+  "contract_status": "ready_for_component_sketches",
+  "identity": {
+    "central": {
+      "slug": "whole-cake-island",
+      "name": "Whole Cake Island",
+      "japanese": "ホールケーキアイランド",
+      "romaji": "Hōru Kēki Airando",
+      "region": "New World",
+      "sea": null,
+      "island_type": null,
+      "debut_chapter": 651,
+      "debut_episode": 571,
+      "canon_status": "manga",
+      "canon_confidence": "canon",
+      "affiliation": "Big Mom Pirates",
+      "wiki_url": "https://onepiece.fandom.com/wiki/Whole_Cake_Island",
+      "source_ref": "onepiece.fandom.com/wiki/Whole_Cake_Island#Island_Box",
+      "role": "central_main_island",
+      "theme_hint": {
+        "theme": "cake",
+        "confidence": "canon_summary"
+      },
+      "atlas_anchor": {
+        "lng": 72.2778,
+        "lat": -2.819,
+        "confidence": "derived",
+        "source_ref": "derived: region='New World'; lng by voyage order 28 (whole-cake-island, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+        "usage": "atlas_anchor_only",
+        "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+      }
+    },
+    "nested_landmark": {
+      "slug": "whole-cake-chateau",
+      "name": "Whole Cake Chateau",
+      "japanese": "ホールケーキ",
+      "romaji": "Hōru Kēki Shatō",
+      "region": "Whole Cake Island",
+      "sea": null,
+      "island_type": null,
+      "debut_chapter": 651,
+      "debut_episode": 571,
+      "canon_status": "manga",
+      "canon_confidence": "canon",
+      "affiliation": "Big Mom Pirates",
+      "wiki_url": "https://onepiece.fandom.com/wiki/Whole_Cake_Chateau",
+      "source_ref": "onepiece.fandom.com/wiki/Whole_Cake_Chateau#Island_Box"
+    },
+    "subsidiary_count": 34,
+    "subsidiaries": [
+      {
+        "slug": "100-island",
+        "name": "100% Island",
+        "japanese": "100%島",
+        "romaji": "100%-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": null,
+        "debut_episode": null,
+        "canon_status": "unknown",
+        "canon_confidence": "derived",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/100%25_Island",
+        "source_ref": "onepiece.fandom.com/wiki/100%_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "juice",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": null,
+          "ring": null,
+          "medium": "unresolved"
+        },
+        "atlas_anchor": {
+          "lng": 15.1504,
+          "lat": -2.6353,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "biscuits-island",
+        "name": "Biscuits Island",
+        "japanese": "ビスケット島",
+        "romaji": "Bisuketto-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 828,
+        "debut_episode": 787,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Biscuits_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Biscuits_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "biscuits",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": "northwest",
+          "ring": null,
+          "medium": "manga_and_anime"
+        },
+        "atlas_anchor": {
+          "lng": 70.9799,
+          "lat": 1.7671,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "black-island",
+        "name": "Black Island",
+        "japanese": "ブラック島",
+        "romaji": "Burakku-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": null,
+        "debut_episode": 868,
+        "canon_status": "anime",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Black_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Black_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "tea",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": "northwest",
+          "ring": null,
+          "medium": "anime"
+        },
+        "atlas_anchor": {
+          "lng": 152.5899,
+          "lat": 0.1037,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "cacao-island",
+        "name": "Cacao Island",
+        "japanese": "カカオ島",
+        "romaji": "Kakao-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 827,
+        "debut_episode": 785,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Cacao_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Cacao_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "cacao",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": "southwest",
+          "ring": "outermost",
+          "medium": "manga_and_anime"
+        },
+        "atlas_anchor": {
+          "lng": 81.5004,
+          "lat": 7.9972,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "candy-island",
+        "name": "Candy Island",
+        "japanese": "キャンディ島",
+        "romaji": "Kyandi-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 828,
+        "debut_episode": 787,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Candy_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Candy_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "candy",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": "southwest",
+          "ring": "innermost",
+          "medium": "manga_and_anime"
+        },
+        "atlas_anchor": {
+          "lng": 79.5751,
+          "lat": 7.4515,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "cheese-island",
+        "name": "Cheese Island",
+        "japanese": "チーズ島",
+        "romaji": "Chīzu-tō",
+        "region": "New World",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 859,
+        "debut_episode": 829,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Cheese_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Cheese_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "cheese",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": "west",
+          "ring": null,
+          "medium": "manga_and_anime"
+        },
+        "atlas_anchor": {
+          "lng": 69.8538,
+          "lat": -0.5771,
+          "confidence": "derived",
+          "source_ref": "derived: region='New World'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "cutlery-island",
+        "name": "Cutlery Island",
+        "japanese": "カトラリー島",
+        "romaji": "Katorarī-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 899,
+        "debut_episode": 874,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Cutlery_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Cutlery_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "cutlery",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": null,
+          "ring": null,
+          "medium": "unresolved"
+        },
+        "atlas_anchor": {
+          "lng": 82.6133,
+          "lat": 5.4654,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "flavor-island",
+        "name": "Flavor Island",
+        "japanese": "フレーバー島",
+        "romaji": "Furēbā-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 874,
+        "debut_episode": 845,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Flavor_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Flavor_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "flavor",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": "northwest",
+          "ring": null,
+          "medium": "anime"
+        },
+        "atlas_anchor": {
+          "lng": 72.1537,
+          "lat": -4.8002,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "fruits-island",
+        "name": "Fruits Island",
+        "japanese": "フルーツ島",
+        "romaji": "Furūtsu-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 894,
+        "debut_episode": 868,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Fruits_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Fruits_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "fruits",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": "east",
+          "ring": null,
+          "medium": "anime"
+        },
+        "atlas_anchor": {
+          "lng": 86.8832,
+          "lat": -4.5112,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "funwari-island",
+        "name": "Funwari Island",
+        "japanese": "ふんわり島",
+        "romaji": "Funwari-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 899,
+        "debut_episode": 871,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Funwari_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Funwari_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "funwari",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": "southwest",
+          "ring": null,
+          "medium": "anime"
+        },
+        "atlas_anchor": {
+          "lng": 86.0557,
+          "lat": 3.2103,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "futoru-island",
+        "name": "Futoru Island",
+        "japanese": "フトル島",
+        "romaji": "Futoru-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": null,
+        "debut_episode": 868,
+        "canon_status": "anime",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Futoru_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Futoru_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "tasting",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": "north",
+          "ring": null,
+          "medium": "anime"
+        },
+        "atlas_anchor": {
+          "lng": 82.3839,
+          "lat": -2.6673,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "ice-island",
+        "name": "Ice Island",
+        "japanese": "アイス島",
+        "romaji": "Aisu-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 899,
+        "debut_episode": 874,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Ice_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Ice_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "ice",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": "southeast",
+          "ring": null,
+          "medium": "anime"
+        },
+        "atlas_anchor": {
+          "lng": 79.9846,
+          "lat": 0.9734,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "jam-island",
+        "name": "Jam Island",
+        "japanese": "ジャム島",
+        "romaji": "Jamu-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 829,
+        "debut_episode": 788,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Jam_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Jam_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "jam",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": "west",
+          "ring": null,
+          "medium": "manga_and_anime"
+        },
+        "atlas_anchor": {
+          "lng": 88.5957,
+          "lat": 1.6132,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "jelly-island",
+        "name": "Jelly Island",
+        "japanese": "ゼリー島",
+        "romaji": "Zerī-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 894,
+        "debut_episode": 868,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Jelly_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Jelly_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "jelly",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": "south",
+          "ring": null,
+          "medium": "anime"
+        },
+        "atlas_anchor": {
+          "lng": 82.1102,
+          "lat": 3.5421,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "kibo-island",
+        "name": "Kibo Island",
+        "japanese": "キーボ 島",
+        "romaji": "Kībo-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": null,
+        "debut_episode": null,
+        "canon_status": "non_canon",
+        "canon_confidence": "derived",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Kibo_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Kibo_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "yeast",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": null,
+          "ring": null,
+          "medium": "unresolved"
+        },
+        "atlas_anchor": {
+          "lng": 161.0808,
+          "lat": 5.7211,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "kimi-island",
+        "name": "Kimi Island",
+        "japanese": "キミ 島",
+        "romaji": "Kimi-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": null,
+        "debut_episode": 868,
+        "canon_status": "anime",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Kimi_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Kimi_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "eggs",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": null,
+          "ring": null,
+          "medium": "unresolved"
+        },
+        "atlas_anchor": {
+          "lng": 97.0653,
+          "lat": -1.9723,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "kinko-island",
+        "name": "Kinko Island",
+        "japanese": "キンコ島",
+        "romaji": "Kinko-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 886,
+        "debut_episode": 860,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Kinko_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Kinko_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "finance",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": null,
+          "ring": null,
+          "medium": "unresolved"
+        },
+        "atlas_anchor": {
+          "lng": 90.2752,
+          "lat": -1.8087,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "komugi-island",
+        "name": "Komugi Island",
+        "japanese": "コムギ島",
+        "romaji": "Komugi-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 891,
+        "debut_episode": 865,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Komugi_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Komugi_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "flour",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": null,
+          "ring": null,
+          "medium": "unresolved"
+        },
+        "atlas_anchor": {
+          "lng": 75.6469,
+          "lat": -2.0485,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "liqueur-island",
+        "name": "Liqueur Island",
+        "japanese": "リキュール島",
+        "romaji": "Rikyūru-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 894,
+        "debut_episode": 868,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Liqueur_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Liqueur_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "liqueur",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": "southwest",
+          "ring": null,
+          "medium": "manga; anime placement conflicts"
+        },
+        "atlas_anchor": {
+          "lng": 70.0222,
+          "lat": 3.5719,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "loving-island",
+        "name": "Loving Island",
+        "japanese": "ラビング 島",
+        "romaji": "Rabingu-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": null,
+        "debut_episode": null,
+        "canon_status": "non_canon",
+        "canon_confidence": "derived",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Loving_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Loving_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "love",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": null,
+          "ring": null,
+          "medium": "unresolved"
+        },
+        "atlas_anchor": {
+          "lng": 61.6962,
+          "lat": -5.8285,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "margarine-island",
+        "name": "Margarine Island",
+        "japanese": "マーガリン 島",
+        "romaji": "Māgarin-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": null,
+        "debut_episode": 868,
+        "canon_status": "anime",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Margarine_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Margarine_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "margarine",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": null,
+          "ring": null,
+          "medium": "unresolved"
+        },
+        "atlas_anchor": {
+          "lng": 143.4218,
+          "lat": 3.4355,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "milenge-island",
+        "name": "Milenge Island",
+        "japanese": "ミレンゲ島",
+        "romaji": "Mirenge-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 894,
+        "debut_episode": null,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Milenge_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Milenge_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "meringue",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": "south",
+          "ring": null,
+          "medium": "anime"
+        },
+        "atlas_anchor": {
+          "lng": 86.1322,
+          "lat": 0.1495,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "noko-island",
+        "name": "Noko Island",
+        "japanese": "濃厚島",
+        "romaji": "Nōkō-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": null,
+        "debut_episode": null,
+        "canon_status": "non_canon",
+        "canon_confidence": "derived",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Noko_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Noko_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "whipped-cream",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": null,
+          "ring": null,
+          "medium": "unresolved"
+        },
+        "atlas_anchor": {
+          "lng": 120.4563,
+          "lat": 2.7914,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "nuts-island",
+        "name": "Nuts Island",
+        "japanese": "ナッツ島",
+        "romaji": "Nattsu-tō",
+        "region": "New World",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 859,
+        "debut_episode": 829,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Nuts_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Nuts_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "nuts",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": "west",
+          "ring": null,
+          "medium": "manga_and_anime"
+        },
+        "atlas_anchor": {
+          "lng": 88.3633,
+          "lat": -0.9931,
+          "confidence": "derived",
+          "source_ref": "derived: region='New World'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "package-island",
+        "name": "Package Island",
+        "japanese": "パッケージ島",
+        "romaji": "Pakkēji-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": null,
+        "debut_episode": 845,
+        "canon_status": "anime",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Package_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Package_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "package",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": "northwest",
+          "ring": null,
+          "medium": "anime"
+        },
+        "atlas_anchor": {
+          "lng": 144.1255,
+          "lat": -6.5583,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "piepie-island",
+        "name": "Piepie Island",
+        "japanese": "パイパイ島",
+        "romaji": "Paipai-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 894,
+        "debut_episode": null,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Piepie_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Piepie_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "piepie",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": "northeast",
+          "ring": null,
+          "medium": "anime"
+        },
+        "atlas_anchor": {
+          "lng": 73.7019,
+          "lat": 4.218,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "poripori-island",
+        "name": "Poripori Island",
+        "japanese": "ポリポリ島",
+        "romaji": "Poripori-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 899,
+        "debut_episode": 874,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Poripori_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Poripori_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "beans",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": null,
+          "ring": null,
+          "medium": "unresolved"
+        },
+        "atlas_anchor": {
+          "lng": 82.868,
+          "lat": -2.8184,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "potato-island",
+        "name": "Potato Island",
+        "japanese": "ポテト島",
+        "romaji": "Poteto-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 886,
+        "debut_episode": 860,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Potato_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Potato_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "potato",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": null,
+          "ring": null,
+          "medium": "unresolved"
+        },
+        "atlas_anchor": {
+          "lng": 85.9036,
+          "lat": -6.8019,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "rokumitsu-island",
+        "name": "Rokumitsu Island",
+        "japanese": "ロクミツ島",
+        "romaji": "Rokumitsu-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 894,
+        "debut_episode": null,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Rokumitsu_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Rokumitsu_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "rokumitsu",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": "south",
+          "ring": null,
+          "medium": "anime"
+        },
+        "atlas_anchor": {
+          "lng": 82.9449,
+          "lat": 4.8698,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land'; lng by voyage order 28 (whole-cake-island, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "sanshoku-island",
+        "name": "Sanshoku Island",
+        "japanese": "三色島",
+        "romaji": "Sanshoku-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": null,
+        "debut_episode": null,
+        "canon_status": "non_canon",
+        "canon_confidence": "derived",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Sanshoku_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Sanshoku_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "mix",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": null,
+          "ring": null,
+          "medium": "unresolved"
+        },
+        "atlas_anchor": {
+          "lng": 64.0474,
+          "lat": 8.6516,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "tanega-island",
+        "name": "Tanega Island",
+        "japanese": "タネガ島",
+        "romaji": "Tanega-shima",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": null,
+        "debut_episode": null,
+        "canon_status": "non_canon",
+        "canon_confidence": "derived",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Tanega_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Tanega_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "seeds",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": null,
+          "ring": null,
+          "medium": "unresolved"
+        },
+        "atlas_anchor": {
+          "lng": 54.128,
+          "lat": -5.6703,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "topping-island",
+        "name": "Topping Island",
+        "japanese": "トッピング島",
+        "romaji": "Toppingu-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": null,
+        "debut_episode": 868,
+        "canon_status": "anime",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Topping_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Topping_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "topping",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": "northwest",
+          "ring": null,
+          "medium": "anime"
+        },
+        "atlas_anchor": {
+          "lng": 15.0295,
+          "lat": -1.8504,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "unique-island",
+        "name": "Unique Island",
+        "japanese": "ユニーク 島",
+        "romaji": "Yunīku-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": null,
+        "debut_episode": 868,
+        "canon_status": "anime",
+        "canon_confidence": "canon",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Unique_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Unique_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "design",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": null,
+          "ring": null,
+          "medium": "unresolved"
+        },
+        "atlas_anchor": {
+          "lng": 147.4613,
+          "lat": -4.4282,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      },
+      {
+        "slug": "yakigashi-island",
+        "name": "Yakigashi Island",
+        "japanese": "ヤキガシ島",
+        "romaji": "Yakigashi-tō",
+        "region": "Totto Land",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": null,
+        "debut_episode": null,
+        "canon_status": "non_canon",
+        "canon_confidence": "derived",
+        "affiliation": "Big Mom Pirates",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Yakigashi_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Yakigashi_Island#Island_Box",
+        "role": "subsidiary_island",
+        "theme_hint": {
+          "theme": "browned-food",
+          "confidence": "directional_only",
+          "rule": "Use this to choose a research lane, not to invent literal topography."
+        },
+        "relative_placement": {
+          "direction": null,
+          "ring": null,
+          "medium": "unresolved"
+        },
+        "atlas_anchor": {
+          "lng": 83.3387,
+          "lat": -3.6016,
+          "confidence": "derived",
+          "source_ref": "derived: region='Totto Land' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "atlas_anchor_only",
+          "warning": "Deterministic atlas placement; never use it as evidence of relative canon topology."
+        }
+      }
+    ]
+  },
+  "topology": {
+    "rule": "central island with subsidiary islands arranged roughly in concentric circles",
+    "layout_mode": "semantic_concentric_archipelago",
+    "exact_angles": "partially_known",
+    "exact_distances": "unknown",
+    "source": "https://onepiece.fandom.com/wiki/Totto_Land#Layout",
+    "manga_reference": "Chapter 827, pages 5-6, via the cited source's reference list"
+  },
+  "api_coverage": {
+    "raw_api_has_whole_cake_island": true,
+    "raw_api_component_count": 0,
+    "generated_wiki_component_count": 34,
+    "classification_repairs": [
+      {
+        "slug": "cheese-island",
+        "problem": "upstream region is New World instead of Totto Land",
+        "action": "included through cited topology override"
+      },
+      {
+        "slug": "nuts-island",
+        "problem": "upstream region is New World instead of Totto Land",
+        "action": "included through cited topology override"
+      }
+    ]
+  },
+  "visual_program": {
+    "master_scene": "One Blender collection per island, instanced into a Totto Land system scene.",
+    "sketch_order": [
+      "macro topology: central Whole Cake Island plus concentric subsidiary rings",
+      "individual silhouette families: no repeated generic island disc",
+      "food/material massing derived from researched component references",
+      "shared sea, cotton-candy weather, juice-water boundaries, and security outposts",
+      "lighting and final runtime LODs"
+    ],
+    "must_show": [
+      "Whole Cake Island is the central hub, not the whole territory",
+      "34 independently addressable subsidiary islands",
+      "distinct silhouette and material language per researched food/theme family"
+    ],
+    "must_not_show": [
+      "one giant cake island standing in for Totto Land",
+      "34 evenly cloned cake meshes",
+      "relative placement copied from current deterministic atlas jitter"
+    ]
+  },
+  "unresolved": [
+    "Exact ring and bearing for subsidiaries without a cited placement hint.",
+    "Exact silhouette/topography for every component; theme names alone are insufficient.",
+    "How the app will replace independent jittered points with a coherent local cluster."
+  ],
+  "evidence": [
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+      "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+      "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+      "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/visual-topology-overrides.json",
+      "sha256": "80a84eab06ed3db3b53470e279ff1dcc7667b072c8f78d92610e9a11d58e9102",
+      "ownership": "asset_workspace"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "purpose": "Perspective review renders that expose the actual scene depth hidden by production top-down cameras.",
+  "assets": [
+    {
+      "id": "fish-man-island",
+      "source": "source/fish-man-island.blend",
+      "preview": "renders/perspective/fish-man-island.png",
+      "depth_status": "3d_plate_scene",
+      "runtime_glb": null,
+      "next": "runtime optimization if selected"
+    },
+    {
+      "id": "whole-cake-island",
+      "source": "source/whole-cake-island.blend",
+      "preview": "renders/perspective/whole-cake-island.png",
+      "depth_status": "3d_component_study_over_flatter_map_plate",
+      "runtime_glb": null,
+      "next": "reuse as the central component of the Totto Land system; do not integrate alone"
+    },
+    {
+      "id": "impel-down",
+      "source": "source/impel-down.blend",
+      "preview": "renders/perspective/impel-down.png",
+      "depth_status": "2_5d_component_study",
+      "runtime_glb": null,
+      "next": "replace flat rings with an underwater prison cross-section inside the Tarai system"
+    },
+    {
+      "id": "sabaody-archipelago",
+      "source": "source/sabaody-archipelago.blend",
+      "preview": "renders/perspective/sabaody-archipelago.png",
+      "depth_status": "3d_plate_scene",
+      "runtime_glb": null,
+      "next": "contract audit and runtime optimization if selected"
+    },
+    {
+      "id": "skypiea-knock-up-stream",
+      "source": "source/skypiea-knock-up-stream.blend",
+      "preview": "renders/perspective/skypiea-knock-up-stream.png",
+      "depth_status": "full_vertical_3d_transition",
+      "runtime_glb": "runtime/skypiea-knock-up-stream.glb",
+      "next": "Claude Code MapLibre pilot"
+    },
+    {
+      "id": "wano-waterfall-ascent",
+      "source": "source/wano-waterfall-ascent.blend",
+      "preview": "renders/perspective/wano-waterfall-ascent.png",
+      "depth_status": "full_vertical_3d_transition",
+      "runtime_glb": "runtime/wano-waterfall-ascent.glb",
+      "next": "verify exact chapter beats before MapLibre activation"
+    }
+  ]
+}

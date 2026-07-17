@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200">
+<title>World Government Tarai system sketch</title>
+<defs>
+  <radialGradient id="ocean" cx="50%" cy="45%"><stop offset="0" stop-color="#153e54"/><stop offset="1" stop-color="#06131d"/></radialGradient>
+  <linearGradient id="cake" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff2bd"/><stop offset=".5" stop-color="#ef9fb9"/><stop offset="1" stop-color="#8f456b"/></linearGradient>
+  <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dce8ed"/><stop offset=".5" stop-color="#647a86"/><stop offset="1" stop-color="#1d2b34"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#78d6e7"/></marker>
+</defs>
+<rect width="1800" height="1200" fill="url(#ocean)"/>
+<text x="70" y="82" fill="#eef3f2" font-family="Georgia,serif" font-size="48">WORLD GOVERNMENT — TARAI SYSTEM SKETCH 01</text>
+<text x="72" y="122" fill="#8fb9c4" font-family="Arial,sans-serif" font-size="20">Relational pre-timeskip topology • chapter state changes at 598 • atlas jitter excluded</text>
+<rect x="1450" y="52" width="282" height="55" rx="28" fill="#6f2634" stroke="#f2a6ac" stroke-width="2"/>
+<text x="1591" y="87" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="18">PRE-TIMESKIP ACTIVE</text>
+<path d="M390 390 Q900 115 1410 390 Q1530 720 900 930 Q270 720 390 390Z" fill="none" stroke="#76d8e7" stroke-width="24" opacity=".18"/>
+<path d="M425 410 Q900 170 1375 410 Q1450 690 900 870 Q350 690 425 410Z" fill="none" stroke="#78d6e7" stroke-width="7" stroke-dasharray="24 16" marker-end="url(#arrow)"/>
+<path d="M790 430 C1110 260 1240 700 910 760 C575 820 560 455 830 360 C1060 282 1135 565 910 650 C690 732 645 500 820 438" fill="none" stroke="#b5f3f0" stroke-width="11" opacity=".64" marker-end="url(#arrow)"/>
+<text x="900" y="560" text-anchor="middle" fill="#d7ffff" font-family="Georgia,serif" font-size="30">TARAI CURRENT</text>
+<text x="900" y="592" text-anchor="middle" fill="#78aeb9" font-family="Arial,sans-serif" font-size="16">controlled current / private fast-travel system</text>
+<g transform="translate(365 340)">
+<ellipse cx="0" cy="86" rx="144" ry="54" fill="#0b1116" opacity=".5"/>
+<path d="M-124 45 Q0 -20 124 45 L92 105 Q0 145 -92 105Z" fill="#b9c9c6" stroke="#edf1e9" stroke-width="5"/>
+<path d="M-84 102 Q0 180 84 102 L54 260 Q0 330 -54 260Z" fill="#79d7e6" opacity=".45"/>
+<rect x="-52" y="-22" width="104" height="82" fill="url(#steel)" stroke="#f0f1e6" stroke-width="4"/>
+<path d="M-70 -22 L0 -92 L70 -22Z" fill="#dce3dc" stroke="#f0f1e6" stroke-width="4"/>
+</g>
+<text x="365" y="700" text-anchor="middle" fill="#fff" font-family="Georgia,serif" font-size="29">Enies Lobby</text>
+<text x="365" y="730" text-anchor="middle" fill="#9bb6bd" font-family="Arial,sans-serif" font-size="16">judicial facility / waterfall void</text>
+<g transform="translate(1435 355)">
+<path d="M-150 110 Q0 35 150 110 Q95 205 0 185 Q-95 205 -150 110Z" fill="#596d75" stroke="#d6e1df" stroke-width="5"/>
+<path d="M-100 100 Q0 168 100 100" fill="none" stroke="#8be3ec" stroke-width="15"/>
+<rect x="-76" y="5" width="152" height="104" fill="url(#steel)" stroke="#e6edeb" stroke-width="4"/>
+<rect x="-42" y="-65" width="84" height="72" fill="#798b91" stroke="#e6edeb" stroke-width="4"/>
+<circle cx="0" cy="-29" r="20" fill="#e6edeb"/><path d="M-12 -29H12M0 -41V-17" stroke="#30444e" stroke-width="5"/>
+</g>
+<text x="1435" y="700" text-anchor="middle" fill="#fff" font-family="Georgia,serif" font-size="29">Marineford</text>
+<text x="1435" y="730" text-anchor="middle" fill="#9bb6bd" font-family="Arial,sans-serif" font-size="16">Marine HQ in this historical variant</text>
+<g transform="translate(900 870)">
+<line x1="-235" y1="0" x2="235" y2="0" stroke="#75d7e5" stroke-width="7"/>
+<ellipse cx="0" cy="0" rx="92" ry="25" fill="#151f25" stroke="#c9d4d5" stroke-width="4"/>
+<path d="M-70 0 L-52 205 Q0 278 52 205 L70 0Z" fill="#182128" stroke="#8ea1a8" stroke-width="5"/>
+<path d="M-55 44H55M-52 85H52M-48 126H48M-43 167H43M-32 208H32" stroke="#d04e45" stroke-width="6" opacity=".8"/>
+<circle cx="0" cy="235" r="34" fill="#f0643b" opacity=".8" filter="url(#glow)"/>
+</g>
+<text x="900" y="1140" text-anchor="middle" fill="#fff" font-family="Georgia,serif" font-size="29">Impel Down</text>
+<text x="900" y="1170" text-anchor="middle" fill="#9bb6bd" font-family="Arial,sans-serif" font-size="16">underwater prison / depth is the primary form</text>
+<g transform="translate(565 360) rotate(-18)">
+<rect x="-46" y="-70" width="30" height="140" fill="url(#steel)" stroke="#eef1ea" stroke-width="3"/>
+<rect x="16" y="-70" width="30" height="140" fill="url(#steel)" stroke="#eef1ea" stroke-width="3"/>
+<path d="M-16 -52 Q0 -70 16 -52V52Q0 70 -16 52Z" fill="#692b35" stroke="#f1b3ad" stroke-width="3"/>
+</g>
+<g transform="translate(1235 360) rotate(18)">
+<rect x="-46" y="-70" width="30" height="140" fill="url(#steel)" stroke="#eef1ea" stroke-width="3"/>
+<rect x="16" y="-70" width="30" height="140" fill="url(#steel)" stroke="#eef1ea" stroke-width="3"/>
+<path d="M-16 -52 Q0 -70 16 -52V52Q0 70 -16 52Z" fill="#692b35" stroke="#f1b3ad" stroke-width="3"/>
+</g>
+<g transform="translate(900 782) rotate(0)">
+<rect x="-46" y="-70" width="30" height="140" fill="url(#steel)" stroke="#eef1ea" stroke-width="3"/>
+<rect x="16" y="-70" width="30" height="140" fill="url(#steel)" stroke="#eef1ea" stroke-width="3"/>
+<path d="M-16 -52 Q0 -70 16 -52V52Q0 70 -16 52Z" fill="#692b35" stroke="#f1b3ad" stroke-width="3"/>
+</g>
+<text x="900" y="188" text-anchor="middle" fill="#f1c6ba" font-family="Arial,sans-serif" font-size="20">GATES OF JUSTICE = DISTRIBUTED ACCESS INFRASTRUCTURE</text>
+<rect x="74" y="905" width="540" height="178" rx="18" fill="#07151d" stroke="#2d5968"/>
+<text x="101" y="946" fill="#f0c66b" font-family="Arial,sans-serif" font-size="17">BLENDER COLLECTIONS</text>
+<text x="101" y="980" fill="#d5e4e7" font-family="Arial,sans-serif" font-size="17">Facilities • gate instances • current volume</text>
+<text x="101" y="1012" fill="#d5e4e7" font-family="Arial,sans-serif" font-size="17">water surface • underwater depth • era states</text>
+<text x="101" y="1054" fill="#8fb9c4" font-family="Arial,sans-serif" font-size="15">Do not build five unrelated island plates.</text>
+<rect x="1185" y="905" width="540" height="178" rx="18" fill="#07151d" stroke="#6f4650" stroke-dasharray="9 7"/>
+<text x="1212" y="946" fill="#ef9ca6" font-family="Arial,sans-serif" font-size="17">CHAPTER 598 STATE CHANGE</text>
+<text x="1212" y="980" fill="#d5e4e7" font-family="Arial,sans-serif" font-size="17">Old Marineford becomes a former node.</text>
+<text x="1212" y="1012" fill="#d5e4e7" font-family="Arial,sans-serif" font-size="17">New Marineford is not substituted into this triangle.</text>
+<text x="1212" y="1054" fill="#8fb9c4" font-family="Arial,sans-serif" font-size="15">Post-timeskip topology remains a research question.</text>
+</svg>

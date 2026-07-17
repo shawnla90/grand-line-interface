@@ -1,0 +1,263 @@
+{
+  "schema_version": 2,
+  "id": "cactus-island-whisky-peak",
+  "label": "Cactus Island and Whisky Peak",
+  "entity_type": "island_town_system",
+  "priority": 3,
+  "contract_status": "ready_for_system_sketch",
+  "identity": {
+    "anchor": {
+      "slug": "cactus-island",
+      "name": "Cactus Island",
+      "japanese": "サボテン島",
+      "romaji": "Saboten-jima",
+      "region": "Paradise",
+      "sea": null,
+      "island_type": null,
+      "debut_chapter": 106,
+      "debut_episode": 64,
+      "canon_status": "manga",
+      "canon_confidence": "canon",
+      "affiliation": "Baroque Works",
+      "wiki_url": "https://onepiece.fandom.com/wiki/Cactus_Island",
+      "source_ref": "onepiece.fandom.com/wiki/Cactus_Island#Island_Box",
+      "id": "cactus-island",
+      "record_origin": "generated_wiki_record",
+      "atlas_anchor": {
+        "lng": -121.5765,
+        "lat": -5.8639,
+        "confidence": "derived",
+        "source_ref": "derived: region='Paradise'; lng by voyage order 7 (whisky-peak, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+        "usage": "scene_entry_anchor_only",
+        "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+      }
+    },
+    "components": [
+      {
+        "slug": "cactus-island",
+        "name": "Cactus Island",
+        "japanese": "サボテン島",
+        "romaji": "Saboten-jima",
+        "region": "Paradise",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 106,
+        "debut_episode": 64,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": "Baroque Works",
+        "wiki_url": "https://onepiece.fandom.com/wiki/Cactus_Island",
+        "source_ref": "onepiece.fandom.com/wiki/Cactus_Island#Island_Box",
+        "id": "cactus-island",
+        "role": "island",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -121.5765,
+          "lat": -5.8639,
+          "confidence": "derived",
+          "source_ref": "derived: region='Paradise'; lng by voyage order 7 (whisky-peak, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "whisky-peak",
+        "name": "Whisky Peak",
+        "japanese": "ウイスキーピーク",
+        "romaji": "Uisukī Pīku",
+        "region": "Cactus Island",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 106,
+        "debut_episode": 64,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Whisky_Peak",
+        "source_ref": "onepiece.fandom.com/wiki/Whisky_Peak#Island_Box",
+        "id": "whisky-peak",
+        "role": "only_town",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -121.3706,
+          "lat": 4.162,
+          "confidence": "derived",
+          "source_ref": "derived: region='Cactus Island'; lng by voyage order 7 (whisky-peak, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "slug": "sapoten-graveyard",
+        "name": "Sapoten Graveyard",
+        "japanese": "N/A",
+        "romaji": "N/A",
+        "region": "Cactus Island",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 107,
+        "debut_episode": 64,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Sapoten_Graveyard",
+        "source_ref": "onepiece.fandom.com/wiki/Sapoten_Graveyard#Island_Box",
+        "id": "sapoten-graveyard",
+        "role": "graveyard_mountains",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -126.0886,
+          "lat": 4.7063,
+          "confidence": "derived",
+          "source_ref": "derived: region='Cactus Island'; lng by voyage order 7 (whisky-peak, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "id": "whisky-peak-river-dock",
+        "slug": null,
+        "name": "Whisky Peak inland river dock",
+        "role": "arrival_route",
+        "debut_chapter": 106,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Cactus_Island",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "from": "whisky-peak",
+      "type": "only_town_on",
+      "to": "cactus-island",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "sapoten-graveyard",
+      "type": "forms_cactus_like_mountains_around",
+      "to": "whisky-peak",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "whisky-peak-river-dock",
+      "type": "connects_coast_to",
+      "to": "whisky-peak",
+      "confidence": "cited_summary"
+    }
+  ],
+  "topology": {
+    "summary": "The town sits inland on Cactus Island; grave-covered rock mountains create the cactus silhouette and a river admits ships to the town dock.",
+    "sources": [
+      "https://onepiece.fandom.com/wiki/Cactus_Island",
+      "https://onepiece.fandom.com/wiki/Sapoten_Graveyard"
+    ],
+    "exact_distances": "unknown",
+    "exact_bearings": "partially_known_or_unknown",
+    "layout_mode": "relationship_graph_not_atlas_jitter"
+  },
+  "chapter_logic": {
+    "base_reveal_chapter": 106,
+    "temporal_variants": [
+      {
+        "id": "welcome-festival",
+        "reveal_chapter": 106,
+        "state": "Town presents a celebratory arrival state.",
+        "verification": "verified"
+      },
+      {
+        "id": "bounty-hunter-ambush",
+        "reveal_chapter": null,
+        "state": "Night ambush reveals the town's second function.",
+        "verification": "chapter_to_verify"
+      }
+    ],
+    "event_scenes": [
+      {
+        "id": "whisky-peak-night-ambush",
+        "importance": 2,
+        "reveal_chapter": null,
+        "landmark": "whisky-peak",
+        "state_delta": "Festival lighting gives way to a rooftop and street ambush.",
+        "verification": "chapter_to_verify",
+        "camera_cue": "Descend from cactus-shaped grave mountains into the night town.",
+        "fx": [
+          "lanterns",
+          "moonlight",
+          "dust"
+        ]
+      }
+    ],
+    "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+    "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+  },
+  "coordinate_policy": {
+    "atlas_anchor": "Use the app coordinate only to place or open the local scene on the globe.",
+    "local_topology": "Build only from cited containment and relationship evidence. Never infer local bearings or distances from deterministic atlas jitter.",
+    "runtime": "Use an expanded local inset, path graph, or moving entity transform when a single flat raster cannot express the place."
+  },
+  "api_coverage": {
+    "raw_api_matches": [],
+    "raw_api_missing_or_nested": [
+      "Cactus Island",
+      "Sapoten Graveyard",
+      "Whisky Peak",
+      "Whisky Peak inland river dock"
+    ],
+    "generated_component_count": 3,
+    "manual_topology_node_count": 1
+  },
+  "visual_program": {
+    "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+    "must_show": [
+      "cactus silhouette formed by rock mountains and graves",
+      "the inland river route and dock",
+      "Whisky Peak as the island's town rather than a second island"
+    ],
+    "must_not_show": [
+      "literal green cactus plants replacing the grave mountains",
+      "Whisky Peak as a separate floating island"
+    ],
+    "collection_pattern": [
+      "00_TOPOLOGY",
+      "10_LANDMARKS",
+      "20_EVENT_STATES",
+      "30_ATMOSPHERE_FX",
+      "40_RUNTIME_LOD"
+    ],
+    "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+  },
+  "unresolved": [
+    "Exact number and spacing of the grave-covered peaks.",
+    "Exact chapter for the ambush state transition."
+  ],
+  "evidence": [
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+      "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+      "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+      "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+      "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+      "ownership": "asset_workspace"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+      "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+      "ownership": "asset_workspace"
+    }
+  ]
+}

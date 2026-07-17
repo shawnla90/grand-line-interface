@@ -1,0 +1,434 @@
+{
+  "schema_version": 1,
+  "coordinate_policy": {
+    "atlas_anchor": "Use the app coordinate only to place or open the local scene on the globe.",
+    "local_topology": "Build only from cited containment and relationship evidence. Never infer local bearings or distances from deterministic atlas jitter.",
+    "runtime": "Use an expanded local inset, path graph, or moving entity transform when a single flat raster cannot express the place."
+  },
+  "systems": [
+    {
+      "id": "conomi-arlong-park",
+      "label": "Conomi Islands and Arlong Park",
+      "entity_type": "nested_landmark_compound",
+      "priority": 2,
+      "anchor_slug": "conomi-islands",
+      "components": [
+        { "slug": "conomi-islands", "role": "island_group" },
+        { "slug": "cocoyasi-village", "role": "village" },
+        { "slug": "arlong-park", "role": "fortified_headquarters" }
+      ],
+      "manual_components": [
+        { "id": "arlong-map-room", "name": "Arlong Park map room", "role": "narrative_landmark", "reveal_chapter": 69, "source_url": "https://onepiece.fandom.com/wiki/Arlong_Park" }
+      ],
+      "relationships": [
+        { "from": "arlong-park", "type": "within", "to": "conomi-islands", "confidence": "canon" },
+        { "from": "cocoyasi-village", "type": "within", "to": "conomi-islands", "confidence": "canon" },
+        { "from": "arlong-map-room", "type": "inside", "to": "arlong-park", "confidence": "cited_summary" }
+      ],
+      "topology_summary": "Treat Arlong Park as an eight-story headquarters compound in the wider Conomi Islands, not as the coastline of an entire island.",
+      "topology_sources": ["https://onepiece.fandom.com/wiki/Arlong_Park"],
+      "temporal_variants": [
+        { "id": "arlong-park-intact", "reveal_chapter": 69, "state": "Headquarters and map room intact.", "verification": "verified" },
+        { "id": "arlong-park-collapse", "reveal_chapter": null, "state": "Map room and headquarters collapse during the climax.", "verification": "chapter_to_verify" },
+        { "id": "arlong-park-ruins", "reveal_chapter": null, "state": "Post-battle destroyed compound.", "verification": "chapter_to_verify" }
+      ],
+      "event_scenes": [
+        { "id": "map-room-collapse", "importance": 1, "reveal_chapter": null, "landmark": "arlong-map-room", "state_delta": "Interior ruptures and the upper compound collapses.", "verification": "chapter_to_verify", "camera_cue": "Start inside the map room, then pull through the breaking facade to reveal Cocoyasi beyond.", "fx": ["dust", "masonry fragments", "paper maps"] }
+      ],
+      "must_show": ["the pagoda-like multi-story headquarters", "map room as an addressable interior landmark", "Cocoyasi and Arlong Park as distinct places in one island group"],
+      "must_not_show": ["Arlong Park as a generic island silhouette", "the destroyed state before its chapter gate"],
+      "unresolved": ["Exact shoreline relationship between Cocoyasi Village and Arlong Park.", "Exact manga chapter for the collapse state transition."]
+    },
+    {
+      "id": "arabasta-kingdom",
+      "label": "Arabasta kingdom region system",
+      "entity_type": "kingdom_region_system",
+      "priority": 2,
+      "anchor_slug": "arabasta-kingdom",
+      "components": [
+        { "slug": "arabasta-kingdom", "role": "kingdom_landmass" },
+        { "slug": "sandora-river", "role": "dividing_river" },
+        { "slug": "sandora-desert", "role": "desert_region" },
+        { "slug": "nanohana", "role": "port_city" },
+        { "slug": "rainbase", "role": "casino_city" },
+        { "slug": "erumalu", "role": "ruined_city" },
+        { "slug": "yuba", "role": "oasis_town" },
+        { "slug": "yuba-oasis", "role": "oasis" },
+        { "slug": "katorea", "role": "rebel_base" },
+        { "slug": "alubarna", "role": "capital_city" },
+        { "slug": "tomb-of-the-kings", "role": "subterranean_landmark" }
+      ],
+      "manual_components": [
+        { "id": "alubarna-clock-tower", "name": "Alubarna clock tower", "role": "event_landmark", "reveal_chapter": null, "source_url": "https://onepiece.fandom.com/wiki/Alubarna" },
+        { "id": "alubarna-palace", "name": "Arabasta royal palace", "role": "capital_landmark", "reveal_chapter": 129, "source_url": "https://onepiece.fandom.com/wiki/Alubarna" }
+      ],
+      "relationships": [
+        { "from": "sandora-river", "type": "divides", "to": "arabasta-kingdom", "confidence": "cited_summary" },
+        { "from": "alubarna", "type": "capital_of", "to": "arabasta-kingdom", "confidence": "canon" },
+        { "from": "alubarna", "type": "atop", "to": "massive_rock_plateau", "confidence": "cited_summary" },
+        { "from": "tomb-of-the-kings", "type": "beneath", "to": "alubarna", "confidence": "cited_summary" },
+        { "from": "alubarna-clock-tower", "type": "within", "to": "alubarna", "confidence": "cited_summary" }
+      ],
+      "topology_summary": "Arabasta is a kingdom-scale landmass with a major dividing river, desert routes, differentiated cities and oases, and a raised circular capital—not one desert island plate.",
+      "topology_sources": ["https://onepiece.fandom.com/wiki/Arabasta_Kingdom", "https://onepiece.fandom.com/wiki/Sandora_River", "https://onepiece.fandom.com/wiki/Alubarna"],
+      "temporal_variants": [
+        { "id": "drought-and-rebellion", "reveal_chapter": 113, "state": "Dry kingdom, stressed oases, ruined Erumalu, and political conflict.", "verification": "verified" },
+        { "id": "capital-climax", "reveal_chapter": null, "state": "Alubarna battle and clock-tower crisis.", "verification": "chapter_to_verify" },
+        { "id": "rain-restored", "reveal_chapter": null, "state": "Rainfall and post-conflict recovery.", "verification": "chapter_to_verify" }
+      ],
+      "event_scenes": [
+        { "id": "alubarna-clock-tower-crisis", "importance": 1, "reveal_chapter": null, "landmark": "alubarna-clock-tower", "state_delta": "The clock tower becomes the vertical focal point of the capital climax.", "verification": "chapter_to_verify", "camera_cue": "Climb from circular capital streets toward the clock face and rooftop.", "fx": ["dust haze", "countdown cue", "battle debris"] }
+      ],
+      "must_show": ["Sandora River as kingdom-scale structure", "distinct cities and oases", "Alubarna elevated on a huge circular rock mass", "palace, clock tower, and tomb as separate addressable landmarks"],
+      "must_not_show": ["a single undifferentiated desert disc", "all cities rendered as the same settlement kit", "restored rain before its chapter gate"],
+      "unresolved": ["Exact relative bearings and travel distances among cities.", "Exact chapter gates for the clock-tower climax and restored-rain state."]
+    },
+    {
+      "id": "cactus-island-whisky-peak",
+      "label": "Cactus Island and Whisky Peak",
+      "entity_type": "island_town_system",
+      "priority": 3,
+      "anchor_slug": "cactus-island",
+      "components": [
+        { "slug": "cactus-island", "role": "island" },
+        { "slug": "whisky-peak", "role": "only_town" },
+        { "slug": "sapoten-graveyard", "role": "graveyard_mountains" }
+      ],
+      "manual_components": [
+        { "id": "whisky-peak-river-dock", "name": "Whisky Peak inland river dock", "role": "arrival_route", "reveal_chapter": 106, "source_url": "https://onepiece.fandom.com/wiki/Cactus_Island" }
+      ],
+      "relationships": [
+        { "from": "whisky-peak", "type": "only_town_on", "to": "cactus-island", "confidence": "cited_summary" },
+        { "from": "sapoten-graveyard", "type": "forms_cactus_like_mountains_around", "to": "whisky-peak", "confidence": "cited_summary" },
+        { "from": "whisky-peak-river-dock", "type": "connects_coast_to", "to": "whisky-peak", "confidence": "cited_summary" }
+      ],
+      "topology_summary": "The town sits inland on Cactus Island; grave-covered rock mountains create the cactus silhouette and a river admits ships to the town dock.",
+      "topology_sources": ["https://onepiece.fandom.com/wiki/Cactus_Island", "https://onepiece.fandom.com/wiki/Sapoten_Graveyard"],
+      "temporal_variants": [
+        { "id": "welcome-festival", "reveal_chapter": 106, "state": "Town presents a celebratory arrival state.", "verification": "verified" },
+        { "id": "bounty-hunter-ambush", "reveal_chapter": null, "state": "Night ambush reveals the town's second function.", "verification": "chapter_to_verify" }
+      ],
+      "event_scenes": [
+        { "id": "whisky-peak-night-ambush", "importance": 2, "reveal_chapter": null, "landmark": "whisky-peak", "state_delta": "Festival lighting gives way to a rooftop and street ambush.", "verification": "chapter_to_verify", "camera_cue": "Descend from cactus-shaped grave mountains into the night town.", "fx": ["lanterns", "moonlight", "dust"] }
+      ],
+      "must_show": ["cactus silhouette formed by rock mountains and graves", "the inland river route and dock", "Whisky Peak as the island's town rather than a second island"],
+      "must_not_show": ["literal green cactus plants replacing the grave mountains", "Whisky Peak as a separate floating island"],
+      "unresolved": ["Exact number and spacing of the grave-covered peaks.", "Exact chapter for the ambush state transition."]
+    },
+    {
+      "id": "dressrosa-green-bit",
+      "label": "Dressrosa, Green Bit, and King's Plateau",
+      "entity_type": "island_bridge_system",
+      "priority": 1,
+      "anchor_slug": "dressrosa",
+      "components": [
+        { "slug": "dressrosa", "role": "main_island_kingdom" },
+        { "slug": "green-bit", "role": "northern_satellite_island" },
+        { "slug": "corrida-colosseum", "role": "arena_landmark" },
+        { "slug": "flower-hill", "role": "flower_field_landmark" },
+        { "slug": "smile-factory", "role": "underground_industrial_landmark" }
+      ],
+      "manual_components": [
+        { "id": "green-bit-iron-bridge", "name": "Iron bridge to Green Bit", "role": "bridge", "reveal_chapter": 710, "source_url": "https://onepiece.fandom.com/wiki/Dressrosa" },
+        { "id": "kings-plateau", "name": "King's Plateau", "role": "central_crown_plateau", "reveal_chapter": 682, "source_url": "https://onepiece.fandom.com/wiki/Dressrosa" },
+        { "id": "dressrosa-royal-palace", "name": "Dressrosa royal palace", "role": "palace", "reveal_chapter": 682, "source_url": "https://onepiece.fandom.com/wiki/Dressrosa" }
+      ],
+      "relationships": [
+        { "from": "green-bit", "type": "north_of", "to": "dressrosa", "confidence": "cited_summary" },
+        { "from": "green-bit-iron-bridge", "type": "connects", "to": "dressrosa", "confidence": "cited_summary" },
+        { "from": "green-bit-iron-bridge", "type": "connects", "to": "green-bit", "confidence": "cited_summary" },
+        { "from": "kings-plateau", "type": "central_within", "to": "dressrosa", "confidence": "cited_summary" },
+        { "from": "dressrosa-royal-palace", "type": "atop_pre_landscape_change", "to": "kings-plateau", "confidence": "cited_summary" },
+        { "from": "smile-factory", "type": "underground_within", "to": "dressrosa", "confidence": "canon" }
+      ],
+      "topology_summary": "Green Bit's northern iron bridge and Doflamingo's palace on the central King's Plateau are different structures. Pica later changes the landscape and palace placement, so both layouts require separate variants.",
+      "topology_sources": ["https://onepiece.fandom.com/wiki/Dressrosa", "https://onepiece.fandom.com/wiki/Green_Bit"],
+      "temporal_variants": [
+        { "id": "pre-pica-city", "reveal_chapter": 682, "state": "Crown-shaped King's Plateau is central and the royal palace sits atop it.", "verification": "verified" },
+        { "id": "pica-remodeled-city", "reveal_chapter": null, "state": "Landscape is rearranged; the palace is relocated to a newly formed King's Plateau at Flower Hill.", "verification": "chapter_to_verify" },
+        { "id": "birdcage-state", "reveal_chapter": null, "state": "Birdcage encloses the island as a temporary event volume.", "verification": "chapter_to_verify" }
+      ],
+      "event_scenes": [
+        { "id": "dressrosa-landscape-remodel", "importance": 1, "reveal_chapter": null, "landmark": "kings-plateau", "state_delta": "Terrain and palace position transform into the later battle layout.", "verification": "chapter_to_verify", "camera_cue": "Lock camera above the city so the terrain displacement reads as a before/after transformation.", "fx": ["rising stone", "dust rings", "building displacement"] },
+        { "id": "birdcage-contraction", "importance": 1, "reveal_chapter": null, "landmark": "dressrosa", "state_delta": "A contracting cage volume overlays the kingdom.", "verification": "chapter_to_verify", "camera_cue": "Orbit outside the cage, then pass through to the palace/plateau axis.", "fx": ["thread cage", "sparks", "debris"] }
+      ],
+      "must_show": ["Green Bit as a distinct northern island", "iron bridge as its connector", "central crown-shaped King's Plateau", "palace location changing between variants", "colosseum, Flower Hill, and underground factory as distinct landmarks"],
+      "must_not_show": ["the Green Bit bridge leading directly to Doflamingo's palace", "pre- and post-Pica layouts combined into one impossible map", "Birdcage before its event gate"],
+      "unresolved": ["Exact chapter of the Pica landscape transition.", "Exact chapter at which the Birdcage becomes visible.", "Exact local bearings for secondary landmarks not fixed by cited topology."]
+    },
+    {
+      "id": "zou-zunesha",
+      "label": "Zou carried by Zunesha",
+      "entity_type": "moving_world_entity",
+      "priority": 1,
+      "anchor_slug": "zou",
+      "components": [
+        { "slug": "zou", "role": "island_settlement" },
+        { "slug": "mokomo-dukedom", "role": "nation_on_back" }
+      ],
+      "manual_components": [
+        { "id": "zunesha", "name": "Zunesha", "role": "moving_elephant_world_entity", "reveal_chapter": 795, "source_url": "https://one-piece.com/story/zou/index.html" },
+        { "id": "zunesha-legs", "name": "Zunesha's two-jointed legs", "role": "seafloor_reaching_supports", "reveal_chapter": 795, "source_url": "https://onepiece.fandom.com/wiki/Zunesha" },
+        { "id": "zunesha-trunk", "name": "Zunesha's trunk", "role": "rain_and_event_emitter", "reveal_chapter": 795, "source_url": "https://onepiece.fandom.com/wiki/Zunesha" }
+      ],
+      "relationships": [
+        { "from": "zou", "type": "carried_on_back_of", "to": "zunesha", "confidence": "canon" },
+        { "from": "mokomo-dukedom", "type": "on", "to": "zou", "confidence": "canon" },
+        { "from": "zunesha-legs", "type": "reach", "to": "seafloor", "confidence": "cited_summary" },
+        { "from": "zunesha-trunk", "type": "sprays_recurring_rain_over", "to": "zou", "confidence": "cited_summary" }
+      ],
+      "topology_summary": "Zou is not a stationary island coordinate: it is a nation carried on Zunesha's back. The runtime anchor must follow a moving entity path or use a chapter-local encounter position.",
+      "topology_sources": ["https://one-piece.com/story/zou/index.html", "https://onepiece.fandom.com/wiki/Zunesha", "https://onepiece.fandom.com/wiki/Mokomo_Dukedom"],
+      "temporal_variants": [
+        { "id": "walking-dry", "reveal_chapter": 795, "state": "Zunesha walking with Zou visible above the cloud/mist layer.", "verification": "verified" },
+        { "id": "eruption-rain", "reveal_chapter": 795, "state": "Recurring trunk spray floods the city channels.", "verification": "verified" },
+        { "id": "trunk-strike", "reveal_chapter": null, "state": "Story-specific attack pose and water/debris response.", "verification": "chapter_to_verify" }
+      ],
+      "event_scenes": [
+        { "id": "zunesha-eruption-rain", "importance": 1, "reveal_chapter": 795, "landmark": "zunesha-trunk", "state_delta": "Trunk spray becomes a moving water volume across Zou.", "verification": "verified", "camera_cue": "Begin near sea level, rise along the legs through cloud to the city, then reveal the trunk arc.", "fx": ["ocean spray", "cloud penetration", "city runoff"] },
+        { "id": "zunesha-trunk-strike", "importance": 1, "reveal_chapter": null, "landmark": "zunesha-trunk", "state_delta": "Rig switches to attack pose with impact wake.", "verification": "chapter_to_verify", "camera_cue": "Wide side silhouette so the scale of the elephant and strike remains legible.", "fx": ["impact wake", "mist blast", "debris"] }
+      ],
+      "must_show": ["full elephant silhouette", "extremely long two-jointed legs descending through the sea", "Zou and Mokomo Dukedom on the back", "recurring eruption rain", "moving-anchor behavior"],
+      "must_not_show": ["Zou as a stationary ordinary island plate", "short terrestrial elephant proportions", "a single atlas point presented as Zunesha's permanent canon location"],
+      "unresolved": ["Runtime path for an intentionally roaming world entity.", "Exact chapter for the trunk-strike event.", "Performance strategy for extreme vertical scale."]
+    },
+    {
+      "id": "amazon-lily",
+      "label": "Amazon Lily mountain city",
+      "entity_type": "mountain_city_system",
+      "priority": 2,
+      "anchor_slug": "amazon-lily",
+      "components": [
+        { "slug": "amazon-lily", "role": "calm_belt_island_nation" }
+      ],
+      "manual_components": [
+        { "id": "amazon-lily-mountain-bowl", "name": "Mountain-top hollow", "role": "city_container", "reveal_chapter": 514, "source_url": "https://onepiece.fandom.com/wiki/Amazon_Lily_Arc" },
+        { "id": "kuja-village", "name": "Kuja village", "role": "city_inside_mountain", "reveal_chapter": 514, "source_url": "https://onepiece.fandom.com/wiki/Amazon_Lily_Arc" },
+        { "id": "kuja-palace", "name": "Kuja palace", "role": "royal_landmark", "reveal_chapter": 514, "source_url": "https://onepiece.fandom.com/wiki/Amazon_Lily" }
+      ],
+      "relationships": [
+        { "from": "kuja-village", "type": "inside", "to": "amazon-lily-mountain-bowl", "confidence": "cited_summary" },
+        { "from": "amazon-lily-mountain-bowl", "type": "at_top_of", "to": "amazon-lily", "confidence": "cited_summary" },
+        { "from": "kuja-palace", "type": "within", "to": "kuja-village", "confidence": "cited_summary" }
+      ],
+      "topology_summary": "The central village sits inside a huge hollow at the top of the island's mountain. Serpents are a Kuja cultural and architectural motif; current evidence does not support making the entire island silhouette a serpent.",
+      "topology_sources": ["https://onepiece.fandom.com/wiki/Amazon_Lily", "https://onepiece.fandom.com/wiki/Amazon_Lily_Arc"],
+      "temporal_variants": [
+        { "id": "mountain-city-default", "reveal_chapter": 514, "state": "Exterior mountain shell plus hidden city bowl.", "verification": "verified" }
+      ],
+      "event_scenes": [
+        { "id": "mountain-bowl-reveal", "importance": 2, "reveal_chapter": 514, "landmark": "amazon-lily-mountain-bowl", "state_delta": "Camera crosses the rim and reveals the enclosed village below.", "verification": "verified", "camera_cue": "Approach as an apparently steep mountain, then crest the rim into the inhabited hollow.", "fx": ["Calm Belt haze", "jungle canopy", "rim mist"] }
+      ],
+      "must_show": ["mountain exterior and interior city bowl", "dense jungle and Calm Belt isolation", "serpent motifs in culture, ships, sculpture, and architecture"],
+      "must_not_show": ["a whole-island serpent silhouette presented as canon", "a flat exposed city visible from every approach"],
+      "unresolved": ["Exact plan of village districts and palace within the mountain hollow.", "Which serpent motifs belong in the earliest spoiler-safe state."]
+    },
+    {
+      "id": "mary-geoise-red-line",
+      "label": "Mary Geoise atop the Red Line",
+      "entity_type": "vertical_political_world_structure",
+      "priority": 2,
+      "anchor_slug": "mary-geoise",
+      "components": [
+        { "slug": "mary-geoise", "role": "summit_city" },
+        { "slug": "pangaea-castle", "role": "central_castle" }
+      ],
+      "manual_components": [
+        { "id": "red-line-summit", "name": "Red Line summit", "role": "continental_wall", "reveal_chapter": 142, "source_url": "https://onepiece.fandom.com/wiki/Mary_Geoise" },
+        { "id": "red-port-paradise", "name": "Red Port, Paradise side", "role": "lower_port", "reveal_chapter": null, "source_url": "https://onepiece.fandom.com/wiki/Mary_Geoise" },
+        { "id": "red-port-new-world", "name": "Red Port, New World side", "role": "lower_port", "reveal_chapter": null, "source_url": "https://onepiece.fandom.com/wiki/Mary_Geoise" },
+        { "id": "bondola-route", "name": "Bondola vertical route", "role": "vertical_transit", "reveal_chapter": null, "source_url": "https://onepiece.fandom.com/wiki/Mary_Geoise" }
+      ],
+      "relationships": [
+        { "from": "mary-geoise", "type": "atop", "to": "red-line-summit", "confidence": "cited_summary" },
+        { "from": "pangaea-castle", "type": "central_within", "to": "mary-geoise", "confidence": "cited_summary" },
+        { "from": "red-port-paradise", "type": "below", "to": "mary-geoise", "confidence": "cited_summary" },
+        { "from": "red-port-new-world", "type": "below_opposite_side", "to": "mary-geoise", "confidence": "cited_summary" },
+        { "from": "bondola-route", "type": "connects_vertical", "to": "mary-geoise", "confidence": "cited_summary" }
+      ],
+      "topology_summary": "Mary Geoise is a summit city at the world-crossing Red Line, linked vertically to Red Ports on opposite sides; Pangaea Castle is a central landmark, not the whole city.",
+      "topology_sources": ["https://onepiece.fandom.com/wiki/Mary_Geoise", "https://onepiece.fandom.com/wiki/Pangaea_Castle", "https://onepiece.fandom.com/wiki/World_Government"],
+      "temporal_variants": [
+        { "id": "exterior-spoiler-safe", "reveal_chapter": 142, "state": "Red Line summit, city silhouette, and Pangaea Castle exterior only.", "verification": "verified" },
+        { "id": "levely-state", "reveal_chapter": null, "state": "Delegation traffic and summit gathering state.", "verification": "chapter_to_verify" },
+        { "id": "late-interior-reveals", "reveal_chapter": null, "state": "Spoiler-locked castle interiors and later political revelations.", "verification": "chapter_to_verify" }
+      ],
+      "event_scenes": [
+        { "id": "red-line-summit-arrival", "importance": 1, "reveal_chapter": null, "landmark": "bondola-route", "state_delta": "The globe route becomes a vertical ascent from Red Port to the summit city.", "verification": "chapter_to_verify", "camera_cue": "Track from sea-level Red Port up the wall until Pangaea Castle clears the rim.", "fx": ["high-altitude cloud", "vertical transit", "sun glare"] }
+      ],
+      "must_show": ["Red Line as overwhelming vertical world structure", "ports on opposite lower sides", "vertical ascent route", "summit city distinct from Pangaea Castle"],
+      "must_not_show": ["Mary Geoise floating at sea level", "late castle interiors in the chapter-142 state", "uncited spoiler reveals baked into the exterior"],
+      "unresolved": ["Exact chapter gates for both Red Ports and the Bondola route.", "Spoiler-safe inventory of Pangaea Castle interiors.", "Exact summit-city street topology."]
+    },
+    {
+      "id": "sabaody-grove-network",
+      "label": "Sabaody 79-grove mangrove network",
+      "entity_type": "mangrove_grove_network",
+      "priority": 1,
+      "anchor_slug": "sabaody-archipelago",
+      "components": [
+        { "slug": "sabaody-archipelago", "role": "mangrove_root_archipelago" },
+        { "slug": "sabaody-park", "role": "amusement_landmark" },
+        { "slug": "human-auctioning-house", "role": "event_landmark" }
+      ],
+      "manual_components": [
+        { "id": "yarukiman-mangroves", "name": "79 Yarukiman Mangrove groves", "role": "numbered_tree_root_nodes", "reveal_chapter": 496, "source_url": "https://onepiece.fandom.com/wiki/Sabaody_Archipelago" },
+        { "id": "sabaody-root-bridges", "name": "Root bridges", "role": "inter_grove_connections", "reveal_chapter": 496, "source_url": "https://onepiece.fandom.com/wiki/Sabaody_Archipelago" },
+        { "id": "sabaody-bubble-layer", "name": "Resin bubble ecology", "role": "transport_and_atmosphere_system", "reveal_chapter": 496, "source_url": "https://onepiece.fandom.com/wiki/Sabaody_Archipelago" }
+      ],
+      "relationships": [
+        { "from": "yarukiman-mangroves", "type": "forms", "to": "sabaody-archipelago", "confidence": "cited_summary" },
+        { "from": "sabaody-root-bridges", "type": "connects", "to": "yarukiman-mangroves", "confidence": "cited_summary" },
+        { "from": "sabaody-bubble-layer", "type": "generated_by_resin_of", "to": "yarukiman-mangroves", "confidence": "cited_summary" },
+        { "from": "sabaody-park", "type": "within_grove_network", "to": "sabaody-archipelago", "confidence": "canon" },
+        { "from": "human-auctioning-house", "type": "within_grove_network", "to": "sabaody-archipelago", "confidence": "canon" }
+      ],
+      "topology_summary": "Sabaody is a numbered network built from the roots of 79 enormous mangrove trees, not ordinary land islands. Bridges, resin bubbles, coated transport, and grove zoning are the core visual system.",
+      "topology_sources": ["https://onepiece.fandom.com/wiki/Sabaody_Archipelago"],
+      "temporal_variants": [
+        { "id": "arrival-network", "reveal_chapter": 496, "state": "Grove roots, bridges, bubbles, and numbered wayfinding visible.", "verification": "verified" },
+        { "id": "auction-house-event", "reveal_chapter": 501, "state": "Auction house becomes an active narrative landmark.", "verification": "verified" },
+        { "id": "post-timeskip-return", "reveal_chapter": null, "state": "Later return-state activity and character visibility.", "verification": "chapter_to_verify" }
+      ],
+      "event_scenes": [
+        { "id": "sabaody-bubble-travel", "importance": 1, "reveal_chapter": 496, "landmark": "sabaody-bubble-layer", "state_delta": "Bubbles become moving transport, hotel, and helmet instances across the grove network.", "verification": "verified", "camera_cue": "Travel under colossal roots, then rise alongside bubbles to reveal the numbered canopy network.", "fx": ["iridescent bubbles", "resin glints", "root fog"] },
+        { "id": "auction-house-confrontation", "importance": 1, "reveal_chapter": null, "landmark": "human-auctioning-house", "state_delta": "Interior event state activates while the surrounding grove remains navigable.", "verification": "chapter_to_verify", "camera_cue": "Route from grove signage to the auction-house exterior, then switch to a gated interior set.", "fx": ["crowd silhouettes", "interior dust", "impact cue"] }
+      ],
+      "must_show": ["79 numbered mangrove-root grove nodes", "bridges among roots", "bubble ecology and bubble transport", "grove-scale zoning and signage", "landmarks nested within the network"],
+      "must_not_show": ["three generic island polygons", "ordinary rock islands standing in for mangrove roots", "auction event before its gate"],
+      "unresolved": ["Exact map positions for all 79 grove numbers and zone categories.", "Exact chapter for the auction-house confrontation event.", "Runtime LOD strategy for thousands of bubbles and root structures."]
+    },
+    {
+      "id": "skypiea-sky-system",
+      "label": "Skypiea sky-island system",
+      "entity_type": "sky_archipelago_system",
+      "priority": 1,
+      "anchor_slug": "skypiea",
+      "components": [
+        { "slug": "skypiea", "role": "sky_region" },
+        { "slug": "shandora", "role": "ancient_city_ruins" }
+      ],
+      "manual_components": [
+        { "id": "angel-island", "name": "Angel Island", "role": "island_cloud_settlement", "reveal_chapter": 239, "source_url": "https://onepiece.fandom.com/wiki/Skypiea_Arc" },
+        { "id": "upper-yard", "name": "Upper Yard", "role": "solid_jaya_landmass", "reveal_chapter": 239, "source_url": "https://onepiece.fandom.com/wiki/Upper_Yard" },
+        { "id": "giant-jack", "name": "Giant Jack", "role": "vertical_vine_axis", "reveal_chapter": null, "source_url": "https://onepiece.fandom.com/wiki/Upper_Yard" },
+        { "id": "golden-belfry-cloud", "name": "Golden Belfry island cloud", "role": "high_altitude_landmark", "reveal_chapter": null, "source_url": "https://onepiece.fandom.com/wiki/Upper_Yard" },
+        { "id": "white-white-sea", "name": "White-White Sea", "role": "cloud_ocean", "reveal_chapter": 239, "source_url": "https://onepiece.fandom.com/wiki/Skypiea_Arc" }
+      ],
+      "relationships": [
+        { "from": "angel-island", "type": "made_of", "to": "island_cloud", "confidence": "cited_summary" },
+        { "from": "upper-yard", "type": "solid_land_within", "to": "skypiea", "confidence": "cited_summary" },
+        { "from": "shandora", "type": "within", "to": "upper-yard", "confidence": "cited_summary" },
+        { "from": "giant-jack", "type": "passes_through", "to": "upper-yard", "confidence": "cited_summary" },
+        { "from": "golden-belfry-cloud", "type": "above", "to": "upper-yard", "confidence": "cited_summary" },
+        { "from": "white-white-sea", "type": "supports_cloud_islands_of", "to": "skypiea", "confidence": "cited_summary" }
+      ],
+      "topology_summary": "The destination above the Knock-Up Stream is a layered sky system: cloud sea, Angel Island, the solid displaced Jaya landmass of Upper Yard, Shandora ruins, Giant Jack, and the higher Belfry cloud.",
+      "topology_sources": ["https://onepiece.fandom.com/wiki/Upper_Yard", "https://onepiece.fandom.com/wiki/Skypiea_Arc"],
+      "temporal_variants": [
+        { "id": "arrival-cloud-sea", "reveal_chapter": 239, "state": "White-White Sea and Angel Island become visible.", "verification": "verified" },
+        { "id": "upper-yard-reveal", "reveal_chapter": 239, "state": "Solid Upper Yard is distinguished from cloud islands.", "verification": "verified" },
+        { "id": "giant-jack-and-belfry", "reveal_chapter": null, "state": "Vertical vine and highest bell landmark become visible when revealed.", "verification": "chapter_to_verify" }
+      ],
+      "event_scenes": [
+        { "id": "knock-up-stream-arrival", "importance": 1, "reveal_chapter": 239, "landmark": "white-white-sea", "state_delta": "Existing vertical stream route breaks through the cloud sea into the navigable sky system.", "verification": "verified", "camera_cue": "Continue the current upward camera through the cloud membrane, then level into the sky archipelago.", "fx": ["cloud breach", "water plume", "sun halo"] },
+        { "id": "golden-bell-ring", "importance": 1, "reveal_chapter": null, "landmark": "golden-belfry-cloud", "state_delta": "Bell animation and long-distance sound/light pulse activate.", "verification": "chapter_to_verify", "camera_cue": "Rise along Giant Jack to the Belfry, then send the sound pulse across Upper Yard and below the clouds.", "fx": ["gold resonance", "cloud shockwave", "sun shafts"] }
+      ],
+      "must_show": ["actual cloud islands beyond the stream", "Angel Island distinct from solid Upper Yard", "Shandora embedded in Upper Yard", "Giant Jack as a vertical axis", "Belfry on a higher island cloud"],
+      "must_not_show": ["the Knock-Up Stream as the entire Skypiea asset", "Upper Yard rendered as another soft cloud", "late landmarks before their reveal"],
+      "unresolved": ["Exact reveal chapters for Giant Jack and the Golden Belfry.", "Exact relative placement of Angel Island and Upper Yard in a spoiler-safe local inset.", "Transition LOD between globe stream and sky-system scene."]
+    },
+    {
+      "id": "loguetown-roger-execution",
+      "label": "Loguetown and Roger execution platform",
+      "entity_type": "city_landmark_event_system",
+      "priority": 1,
+      "anchor_slug": "loguetown",
+      "components": [
+        { "slug": "loguetown", "role": "east_blue_city" }
+      ],
+      "manual_components": [
+        { "id": "execution-platform", "name": "Execution Platform", "role": "central_scaffold_tower", "reveal_chapter": 1, "source_url": "https://onepiece.fandom.com/wiki/Loguetown" },
+        { "id": "loguetown-central-square", "name": "Loguetown central square", "role": "event_space", "reveal_chapter": 1, "source_url": "https://onepiece.fandom.com/wiki/Loguetown" }
+      ],
+      "relationships": [
+        { "from": "execution-platform", "type": "at_heart_of", "to": "loguetown", "confidence": "cited_summary" },
+        { "from": "execution-platform", "type": "within", "to": "loguetown-central-square", "confidence": "cited_summary" }
+      ],
+      "topology_summary": "Loguetown is a city landmark system whose central execution scaffold anchors both the chapter-one historical event and a later mirrored near-execution. The scaffold must remain individually addressable from the globe.",
+      "topology_sources": ["https://onepiece.fandom.com/wiki/Loguetown", "https://onepiece.fandom.com/wiki/Gol_D._Roger"],
+      "temporal_variants": [
+        { "id": "roger-execution-history", "reveal_chapter": 1, "state": "Historical crowd and Roger execution tableau at the central platform.", "verification": "verified" },
+        { "id": "present-day-landmark", "reveal_chapter": 1, "state": "Empty preserved scaffold within the active city.", "verification": "verified" },
+        { "id": "luffy-near-execution-storm", "reveal_chapter": null, "state": "Later event state with storm, crowd, and lightning.", "verification": "chapter_to_verify" }
+      ],
+      "event_scenes": [
+        { "id": "roger-execution", "importance": 1, "reveal_chapter": 1, "landmark": "execution-platform", "state_delta": "Historical crowd, scaffold occupancy, banners, and cinematic lighting activate.", "verification": "verified", "camera_cue": "Begin at city-street height, reveal the scaffold over the crowd, then isolate Roger against the sky.", "fx": ["crowd motion", "sea wind", "historical color grade"] },
+        { "id": "luffy-near-execution", "importance": 1, "reveal_chapter": null, "landmark": "execution-platform", "state_delta": "Mirrored execution staging switches to storm and lightning state.", "verification": "chapter_to_verify", "camera_cue": "Reuse the Roger composition with a different subject and violent weather to make the parallel legible.", "fx": ["thunderclouds", "lightning strike", "rain", "crowd panic"] }
+      ],
+      "must_show": ["execution scaffold/tower as the city's central visual anchor", "surrounding square and dense town fabric", "separate historical, empty-landmark, and storm event variants", "repeatable camera language connecting the two execution scenes"],
+      "must_not_show": ["a generic town plate with no scaffold", "Roger permanently present in free-roam mode", "the later lightning event before its gate"],
+      "unresolved": ["Exact chapter for Luffy's near-execution and lightning state.", "Manga-accurate scaffold dimensions and square sightlines.", "How many crowd agents remain legible at globe and inset LODs."]
+    },
+    {
+      "id": "water-7-sea-train-network",
+      "label": "Water 7 Sea Train network",
+      "entity_type": "sea_train_route_network",
+      "priority": 1,
+      "anchor_slug": "water-7",
+      "components": [
+        { "slug": "water-7", "role": "network_hub_city" },
+        { "slug": "enies-lobby", "role": "government_terminus" },
+        { "slug": "pucci", "role": "connected_island" },
+        { "slug": "st-poplar", "role": "connected_island" },
+        { "slug": "san-faldo", "role": "connected_island" },
+        { "slug": "shift-station", "role": "intermediate_station_and_lighthouse" }
+      ],
+      "manual_components": [
+        { "id": "blue-station", "name": "Blue Station", "role": "water_7_station", "reveal_chapter": 322, "source_url": "https://onepiece.fandom.com/wiki/Sea_Train" },
+        { "id": "day-station", "name": "Day Station", "role": "enies_lobby_station", "reveal_chapter": null, "source_url": "https://onepiece.fandom.com/wiki/Enies_Lobby" },
+        { "id": "puffing-tom", "name": "Puffing Tom", "role": "commercial_sea_train", "reveal_chapter": 322, "source_url": "https://onepiece.fandom.com/wiki/Sea_Train" },
+        { "id": "rocketman", "name": "Rocketman", "role": "uncontrollable_prototype_train", "reveal_chapter": null, "source_url": "https://onepiece.fandom.com/wiki/Sea_Train" },
+        { "id": "puffing-ice", "name": "Puffing Ice", "role": "post_timeskip_train", "reveal_chapter": 656, "source_url": "https://onepiece.fandom.com/wiki/Sea_Train" },
+        { "id": "subsurface-sea-rails", "name": "Subsurface sea rails", "role": "route_geometry", "reveal_chapter": 322, "source_url": "https://onepiece.fandom.com/wiki/Sea_Train" },
+        { "id": "aqua-laguna", "name": "Aqua Laguna", "role": "annual_route_hazard", "reveal_chapter": null, "source_url": "https://onepiece.fandom.com/wiki/Water_7_Arc" }
+      ],
+      "relationships": [
+        { "from": "blue-station", "type": "station_at", "to": "water-7", "confidence": "cited_summary" },
+        { "from": "day-station", "type": "station_at", "to": "enies-lobby", "confidence": "cited_summary" },
+        { "from": "subsurface-sea-rails", "type": "connects", "to": "water-7", "confidence": "cited_summary" },
+        { "from": "subsurface-sea-rails", "type": "connects", "to": "enies-lobby", "confidence": "cited_summary" },
+        { "from": "subsurface-sea-rails", "type": "branches_to", "to": "pucci", "confidence": "cited_summary" },
+        { "from": "subsurface-sea-rails", "type": "branches_to", "to": "st-poplar", "confidence": "cited_summary" },
+        { "from": "subsurface-sea-rails", "type": "branches_to", "to": "san-faldo", "confidence": "cited_summary" },
+        { "from": "puffing-tom", "type": "travels_on", "to": "subsurface-sea-rails", "confidence": "cited_summary" },
+        { "from": "rocketman", "type": "travels_on", "to": "subsurface-sea-rails", "confidence": "cited_summary" },
+        { "from": "aqua-laguna", "type": "disrupts", "to": "water-7-sea-train-network", "confidence": "cited_summary" }
+      ],
+      "topology_summary": "The Sea Train is a route network over rails just below the ocean surface. Water 7 connects to Enies Lobby and nearby Pucci, St. Poplar, and San Faldo; Shift Station is an intermediate lighthouse station. Exact bearings must remain schematic until panel-level route evidence is collected.",
+      "topology_sources": ["https://onepiece.fandom.com/wiki/Sea_Train", "https://onepiece.fandom.com/wiki/Water_7", "https://onepiece.fandom.com/wiki/Enies_Lobby"],
+      "route_network": {
+        "render_mode": "chapter_gated_maplibre_route_plus_animated_glb_vehicle",
+        "edge_geometry": "curved local great-circle approximations are integration scaffolds, not canon cartography",
+        "track_elevation": "just_below_ocean_surface",
+        "track_motion": "sways_with_tides",
+        "known_terminals": ["water-7", "enies-lobby", "pucci", "st-poplar", "san-faldo"],
+        "known_stations": ["blue-station", "shift-station", "day-station"],
+        "vehicle_states": ["puffing-tom-commercial", "rocketman-pursuit", "puffing-ice-post-timeskip"],
+        "travel_interaction": "Selecting a revealed route can animate the train along the globe line, then open the destination inset."
+      },
+      "temporal_variants": [
+        { "id": "network-first-reveal", "reveal_chapter": 322, "state": "Sea rails, Puffing Tom, Shift Station, and the Water 7 connection become visible.", "verification": "verified" },
+        { "id": "aqua-laguna-pursuit", "reveal_chapter": null, "state": "Storm overlay, damaged service state, and Rocketman pursuit to Enies Lobby.", "verification": "chapter_to_verify" },
+        { "id": "puffing-ice-post-timeskip", "reveal_chapter": 656, "state": "Puffing Ice becomes an available later-era train variant.", "verification": "verified" }
+      ],
+      "event_scenes": [
+        { "id": "puffing-tom-route-reveal", "importance": 1, "reveal_chapter": 322, "landmark": "subsurface-sea-rails", "state_delta": "Rails illuminate beneath the ocean surface and Puffing Tom traverses the visible route.", "verification": "verified", "camera_cue": "Start beside the rail at wave height, pull to globe scale while the route lights toward connected islands.", "fx": ["wheel spray", "paddle wake", "subsurface rail shimmer"] },
+        { "id": "rocketman-aqua-laguna-pursuit", "importance": 1, "reveal_chapter": null, "landmark": "rocketman", "state_delta": "Route changes to storm hazard state with Rocketman pursuing Puffing Tom toward Enies Lobby.", "verification": "chapter_to_verify", "camera_cue": "Race beside the prototype at water level, then reveal the storm wall and Enies Lobby terminus.", "fx": ["Aqua Laguna waves", "rain", "steam", "sparks", "wake"] }
+      ],
+      "must_show": ["Water 7 as hub rather than the only node", "rail just below the ocean surface", "Puffing Tom moving on the revealed line", "branches to Enies Lobby, Pucci, St. Poplar, and San Faldo", "Blue, Shift, and Day stations", "Aqua Laguna as a route state"],
+      "must_not_show": ["dry land railway embankments", "exact bearings inferred from atlas jitter", "Puffing Ice before chapter 656", "Rocketman pursuit permanently active"],
+      "unresolved": ["Panel-verified branch ordering and bearings among the five connected islands.", "Exact reveal chapter for Rocketman and Aqua Laguna pursuit.", "Which connected-island stations are named versus only known to exist.", "MapLibre representation for submerged rails when the globe is tilted."]
+    }
+  ]
+}

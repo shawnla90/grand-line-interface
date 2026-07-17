@@ -1,0 +1,238 @@
+{
+  "schema_version": 2,
+  "id": "loguetown-roger-execution",
+  "label": "Loguetown and Roger execution platform",
+  "entity_type": "city_landmark_event_system",
+  "priority": 1,
+  "contract_status": "ready_for_system_sketch",
+  "identity": {
+    "anchor": {
+      "slug": "loguetown",
+      "name": "Loguetown",
+      "japanese": "ローグタウン",
+      "romaji": "Rōgutaun",
+      "region": "East Blue",
+      "sea": null,
+      "island_type": null,
+      "debut_chapter": 1,
+      "debut_episode": null,
+      "canon_status": "manga",
+      "canon_confidence": "canon",
+      "affiliation": null,
+      "wiki_url": "https://onepiece.fandom.com/wiki/Loguetown",
+      "source_ref": "onepiece.fandom.com/wiki/Loguetown#Island_Box",
+      "id": "loguetown",
+      "record_origin": "generated_wiki_record",
+      "atlas_anchor": {
+        "lng": -174,
+        "lat": -20,
+        "confidence": "derived",
+        "source_ref": "Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard.",
+        "usage": "scene_entry_anchor_only",
+        "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+      }
+    },
+    "components": [
+      {
+        "slug": "loguetown",
+        "name": "Loguetown",
+        "japanese": "ローグタウン",
+        "romaji": "Rōgutaun",
+        "region": "East Blue",
+        "sea": null,
+        "island_type": null,
+        "debut_chapter": 1,
+        "debut_episode": null,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "affiliation": null,
+        "wiki_url": "https://onepiece.fandom.com/wiki/Loguetown",
+        "source_ref": "onepiece.fandom.com/wiki/Loguetown#Island_Box",
+        "id": "loguetown",
+        "role": "east_blue_city",
+        "record_origin": "generated_wiki_record",
+        "atlas_anchor": {
+          "lng": -174,
+          "lat": -20,
+          "confidence": "derived",
+          "source_ref": "Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard.",
+          "usage": "scene_entry_anchor_only",
+          "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+        }
+      },
+      {
+        "id": "execution-platform",
+        "slug": null,
+        "name": "Execution Platform",
+        "role": "central_scaffold_tower",
+        "debut_chapter": 1,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Loguetown",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      },
+      {
+        "id": "loguetown-central-square",
+        "slug": null,
+        "name": "Loguetown central square",
+        "role": "event_space",
+        "debut_chapter": 1,
+        "canon_status": "manga_or_official_summary",
+        "canon_confidence": "cited_summary",
+        "source_ref": "https://onepiece.fandom.com/wiki/Loguetown",
+        "record_origin": "cited_manual_topology_node",
+        "atlas_anchor": null
+      }
+    ]
+  },
+  "relationships": [
+    {
+      "from": "execution-platform",
+      "type": "at_heart_of",
+      "to": "loguetown",
+      "confidence": "cited_summary"
+    },
+    {
+      "from": "execution-platform",
+      "type": "within",
+      "to": "loguetown-central-square",
+      "confidence": "cited_summary"
+    }
+  ],
+  "topology": {
+    "summary": "Loguetown is a city landmark system whose central execution scaffold anchors both the chapter-one historical event and a later mirrored near-execution. The scaffold must remain individually addressable from the globe.",
+    "sources": [
+      "https://onepiece.fandom.com/wiki/Loguetown",
+      "https://onepiece.fandom.com/wiki/Gol_D._Roger"
+    ],
+    "exact_distances": "unknown",
+    "exact_bearings": "partially_known_or_unknown",
+    "layout_mode": "relationship_graph_not_atlas_jitter"
+  },
+  "chapter_logic": {
+    "base_reveal_chapter": 1,
+    "temporal_variants": [
+      {
+        "id": "roger-execution-history",
+        "reveal_chapter": 1,
+        "state": "Historical crowd and Roger execution tableau at the central platform.",
+        "verification": "verified"
+      },
+      {
+        "id": "present-day-landmark",
+        "reveal_chapter": 1,
+        "state": "Empty preserved scaffold within the active city.",
+        "verification": "verified"
+      },
+      {
+        "id": "luffy-near-execution-storm",
+        "reveal_chapter": null,
+        "state": "Later event state with storm, crowd, and lightning.",
+        "verification": "chapter_to_verify"
+      }
+    ],
+    "event_scenes": [
+      {
+        "id": "roger-execution",
+        "importance": 1,
+        "reveal_chapter": 1,
+        "landmark": "execution-platform",
+        "state_delta": "Historical crowd, scaffold occupancy, banners, and cinematic lighting activate.",
+        "verification": "verified",
+        "camera_cue": "Begin at city-street height, reveal the scaffold over the crowd, then isolate Roger against the sky.",
+        "fx": [
+          "crowd motion",
+          "sea wind",
+          "historical color grade"
+        ]
+      },
+      {
+        "id": "luffy-near-execution",
+        "importance": 1,
+        "reveal_chapter": null,
+        "landmark": "execution-platform",
+        "state_delta": "Mirrored execution staging switches to storm and lightning state.",
+        "verification": "chapter_to_verify",
+        "camera_cue": "Reuse the Roger composition with a different subject and violent weather to make the parallel legible.",
+        "fx": [
+          "thunderclouds",
+          "lightning strike",
+          "rain",
+          "crowd panic"
+        ]
+      }
+    ],
+    "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+    "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+  },
+  "coordinate_policy": {
+    "atlas_anchor": "Use the app coordinate only to place or open the local scene on the globe.",
+    "local_topology": "Build only from cited containment and relationship evidence. Never infer local bearings or distances from deterministic atlas jitter.",
+    "runtime": "Use an expanded local inset, path graph, or moving entity transform when a single flat raster cannot express the place."
+  },
+  "api_coverage": {
+    "raw_api_matches": [],
+    "raw_api_missing_or_nested": [
+      "Execution Platform",
+      "Loguetown",
+      "Loguetown central square"
+    ],
+    "generated_component_count": 1,
+    "manual_topology_node_count": 2
+  },
+  "visual_program": {
+    "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+    "must_show": [
+      "execution scaffold/tower as the city's central visual anchor",
+      "surrounding square and dense town fabric",
+      "separate historical, empty-landmark, and storm event variants",
+      "repeatable camera language connecting the two execution scenes"
+    ],
+    "must_not_show": [
+      "a generic town plate with no scaffold",
+      "Roger permanently present in free-roam mode",
+      "the later lightning event before its gate"
+    ],
+    "collection_pattern": [
+      "00_TOPOLOGY",
+      "10_LANDMARKS",
+      "20_EVENT_STATES",
+      "30_ATMOSPHERE_FX",
+      "40_RUNTIME_LOD"
+    ],
+    "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+  },
+  "unresolved": [
+    "Exact chapter for Luffy's near-execution and lightning state.",
+    "Manga-accurate scaffold dimensions and square sightlines.",
+    "How many crowd agents remain legible at globe and inset LODs."
+  ],
+  "evidence": [
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+      "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+      "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+      "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+      "ownership": "atlas_read_only"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+      "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+      "ownership": "asset_workspace"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+      "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+      "ownership": "asset_workspace"
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "asset_class": "maplibre-runtime-3d",
+  "repo_write_contract": "read-only asset production; integration happens in Claude Code",
+  "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_TRANSITIONS",
+  "models": [
+    {
+      "id": "skypiea-knock-up-stream",
+      "glb": "runtime/skypiea-knock-up-stream.glb",
+      "fallback_raster": "renders/skypiea-knock-up-stream.png",
+      "fallback_preview": "renders/skypiea-knock-up-stream-preview.png",
+      "source_blend": "source/skypiea-knock-up-stream.blend",
+      "integration": {
+        "mode": "maplibre_image_source",
+        "coordinates": [
+          [
+            -93.804825,
+            17.9745
+          ],
+          [
+            -88.467575,
+            17.9745
+          ],
+          [
+            -88.467575,
+            7.3
+          ],
+          [
+            -93.804825,
+            7.3
+          ]
+        ],
+        "source_anchor": [
+          -91.1362,
+          8.2
+        ],
+        "destination_anchor": [
+          -91.1362,
+          17.0745
+        ],
+        "runtime_module": "components/skypiea.ts",
+        "chapter_beats": {
+          "start": 235,
+          "top": 237,
+          "dwellEnd": 300,
+          "splash": 304
+        },
+        "runtime_rule": "opacity follows columnOpacity(ch); ship motion stays altitudeT(ch)"
+      },
+      "runtime_policy": {
+        "default": "fallback_raster",
+        "enable_glb_when": "feature flag on, close zoom, supported projection, chapter gate open",
+        "unload_when_hidden": true,
+        "ship_motion_owner": "atlas runtime; preview proxy is excluded from GLB"
+      },
+      "stats": {
+        "objects": 64,
+        "vertices_input": 22226,
+        "triangles_input": 43660,
+        "materials": 8,
+        "bounds_blender": {
+          "min": [
+            -2.330912,
+            -2.033916,
+            -0.041364
+          ],
+          "max": [
+            2.276462,
+            1.66935,
+            6.225642
+          ]
+        },
+        "bytes": 2522360
+      },
+      "build": {
+        "blender": "4.5.3 LTS",
+        "glb_sha256": "7e54bd58a0de54a417cc8e1d36ded149267a97fd7e063c8ae216819c7215684f",
+        "glb_header": {
+          "magic": "glTF",
+          "version": 2,
+          "declared_length": 2522360
+        }
+      }
+    },
+    {
+      "id": "wano-waterfall-ascent",
+      "glb": "runtime/wano-waterfall-ascent.glb",
+      "fallback_raster": "renders/wano-waterfall-ascent.png",
+      "fallback_preview": "renders/wano-waterfall-ascent-preview.png",
+      "source_blend": "source/wano-waterfall-ascent.blend",
+      "integration": {
+        "mode": "screen_space_html_marker",
+        "anchor": [
+          118.3801,
+          5.3077
+        ],
+        "crest_anchor": [
+          118.3801,
+          6.0377
+        ],
+        "destination_anchor": [
+          118.2306,
+          7.5751
+        ],
+        "transform_origin": "50% 100%",
+        "proposed_runtime_module": "components/wano.ts",
+        "chapter_beats": {
+          "arrival": 909,
+          "start": null,
+          "crest": null,
+          "status": "proposed; exact waterfall climb beats need human verification"
+        },
+        "runtime_rule": "sprite is pixel-space; real ship marker follows a pure climbT(ch) path"
+      },
+      "runtime_policy": {
+        "default": "fallback_raster",
+        "enable_glb_when": "feature flag on, close zoom, supported projection, chapter gate open",
+        "unload_when_hidden": true,
+        "ship_motion_owner": "atlas runtime; preview proxy is excluded from GLB"
+      },
+      "stats": {
+        "objects": 62,
+        "vertices_input": 12680,
+        "triangles_input": 24796,
+        "materials": 8,
+        "bounds_blender": {
+          "min": [
+            -2.25,
+            -3.754884,
+            0.0
+          ],
+          "max": [
+            2.379191,
+            2.62,
+            5.759767
+          ]
+        },
+        "bytes": 1607508
+      },
+      "build": {
+        "blender": "4.5.3 LTS",
+        "glb_sha256": "f8df00598b12b8e213e86f93e151ce85a482f229d92715e6b5f87370c9b9aa47",
+        "glb_header": {
+          "magic": "glTF",
+          "version": 2,
+          "declared_length": 1607508
+        }
+      }
+    }
+  ]
+}
