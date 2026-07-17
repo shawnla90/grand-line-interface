@@ -1,0 +1,23 @@
+{
+  "_warning": "HAND-AUTHORED. A sync script that overwrites this file is a bug. These are islands the wiki harvest cannot see, because the wiki does not file them as islands.",
+  "_why_this_file_exists": "scripts/sync_wiki.py walks the Fandom wiki's island category and pulls every {{Island Box}}. Thriller Bark has no Island Box: the wiki files it as a SHIP, which is correct — it is a ship, the largest ever built, and the crew spends an arc on it as though it were land. The harvest was right to miss it and the map is wrong without it, so the fix belongs here rather than in the scraper. Anything added here is merged AFTER the generated set and may never shadow a slug that already exists.",
+  "_the_rules": "Same as every island: a slug, a debut chapter (the fog key), a canon_status, and a hand-authored source_ref saying who decided. The POSITION goes in canon/islands.coords.json like all the others — this file is the record, not the pin.",
+  "islands": [
+    {
+      "slug": "thriller-bark",
+      "name": "Thriller Bark",
+      "japanese": null,
+      "romaji": "Suriraa Baaku",
+      "region": "Florian Triangle",
+      "debut_chapter": 442,
+      "debut_episode": 337,
+      "canon_status": "manga",
+      "debut_source": null,
+      "affiliation": "Thriller Bark Pirates",
+      "island_type": "Ship",
+      "wiki_url": "https://onepiece.fandom.com/wiki/Thriller_Bark",
+      "source_ref": "Hand-authored. The wiki files Thriller Bark as a ship, not an island, so scripts/sync_wiki.py never saw it — it walks the island category. It is the largest ship ever built and it drifts in the Florian Triangle; the crew treats it as land for an entire arc, and so does this map. Debut ch. 442. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon"
+    }
+  ]
+}

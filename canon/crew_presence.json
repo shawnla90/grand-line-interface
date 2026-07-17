@@ -835,13 +835,13 @@
       "windows": [
         {
           "order": 1,
-          "island_slug": null,
-          "lng": -57.5,
-          "lat": 1.8,
+          "island_slug": "thriller-bark",
+          "lng": null,
+          "lat": null,
           "label": "Thriller Bark — adrift in the Florian Triangle",
           "from_chapter": 442,
           "to_chapter": 489,
-          "source_ref": "Hand-authored. Thriller Bark is a ship, not an island: it drifts in the Florian Triangle, ch. 442-489. Position is set beside the Florian Triangle pin. The island record itself does not exist upstream — the wiki files Thriller Bark as a vessel — so this window carries an explicit coordinate. NEEDS HUMAN VERIFICATION against the manga.",
+          "source_ref": "Hand-authored. Thriller Bark drifts in the Florian Triangle, ch. 442-489. The window now resolves through the island record rather than carrying its own coordinate — canon/islands.extra.json gives the ship a slug. NEEDS HUMAN VERIFICATION against the manga.",
           "canon_confidence": "derived",
           "verified": false
         }

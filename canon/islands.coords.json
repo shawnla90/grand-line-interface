@@ -3337,6 +3337,15 @@
       "source_ref": "derived: region='Punk Hazard (Ice Lands)'; lng by voyage order 25 (punk-hazard, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
     },
     {
+      "slug": "thriller-bark",
+      "name": "Thriller Bark",
+      "lng": -57.5,
+      "lat": 1.8,
+      "sea": "Paradise",
+      "canon_confidence": "guess",
+      "source_ref": "Hand-authored. Thriller Bark is a SHIP adrift in the Florian Triangle, so it has no fixed position at all — this places it beside the Florian Triangle pin (-58.3636, -0.666), between Enies Lobby and Sabaody on the voyage. A guess, and marked as one: the honest answer to 'where is it' is 'moving'."
+    },
+    {
       "slug": "tomb-of-the-kings",
       "name": "Tomb of the Kings",
       "lng": -103.9584,

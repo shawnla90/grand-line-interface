@@ -153,6 +153,15 @@
     },
     {
       "order": 17,
+      "slug": "thriller-bark",
+      "chapter": 444,
+      "label": "Thriller Bark — the Florian Triangle",
+      "source_ref": "Hand-authored. The crew is drawn into the Florian Triangle and boards Thriller Bark at ch. 442-444, between Enies Lobby and Sabaody. The route skipped it because the island did not exist in the data: the wiki files Thriller Bark as a ship, so the island harvest never saw it. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "order": 18,
       "slug": "sabaody-archipelago",
       "chapter": 490,
       "label": "Sabaody Archipelago — the crew is scattered",
@@ -161,7 +170,7 @@
       "verified": false
     },
     {
-      "order": 18,
+      "order": 19,
       "slug": "fish-man-island",
       "chapter": 608,
       "label": "Fish-Man Island — beneath the Red Line",
@@ -170,7 +179,7 @@
       "verified": false
     },
     {
-      "order": 19,
+      "order": 20,
       "slug": "punk-hazard",
       "chapter": 655,
       "label": "Punk Hazard — the burning, frozen island",
@@ -179,7 +188,7 @@
       "verified": false
     },
     {
-      "order": 20,
+      "order": 21,
       "slug": "dressrosa",
       "chapter": 700,
       "label": "Dressrosa — Doflamingo",
@@ -188,7 +197,7 @@
       "verified": false
     },
     {
-      "order": 21,
+      "order": 22,
       "slug": "zou",
       "chapter": 802,
       "label": "Zou — the island on the elephant",
@@ -197,7 +206,7 @@
       "verified": false
     },
     {
-      "order": 22,
+      "order": 23,
       "slug": "whole-cake-island",
       "chapter": 827,
       "label": "Whole Cake Island — Big Mom; Sanji rescue",
@@ -206,7 +215,7 @@
       "verified": false
     },
     {
-      "order": 23,
+      "order": 24,
       "slug": "wano-country",
       "chapter": 909,
       "label": "Wano Country — the raid on Onigashima",
@@ -215,7 +224,7 @@
       "verified": false
     },
     {
-      "order": 24,
+      "order": 25,
       "slug": "egghead",
       "chapter": 1061,
       "label": "Egghead — Vegapunk's island of the future",
@@ -224,7 +233,7 @@
       "verified": false
     },
     {
-      "order": 25,
+      "order": 26,
       "slug": "elbaph",
       "chapter": 1125,
       "label": "Elbaf — the land of the giants (the frontier)",

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-17T02:34:37.372908+00:00",
+    "generated_at": "2026-07-17T03:00:55.214514+00:00",
     "generator": "scripts/normalize.py",
     "source_manifest_sha": "be7af436b558b373ae1e6f28cc5007ef89153529fb274cb7efd1a47b4f1ef25a",
     "sources": {
@@ -30,9 +30,9 @@
     "counts": {
       "sagas": 10,
       "arcs": 33,
-      "islands": 413,
-      "islands_manga_canon": 256,
-      "islands_with_position": 413,
+      "islands": 414,
+      "islands_manga_canon": 257,
+      "islands_with_position": 414,
       "characters": 786,
       "characters_with_char_box": 689,
       "characters_with_epithet": 217,
@@ -44,7 +44,7 @@
       "episodes": 1162,
       "crew_joins": 10,
       "crew_joins_verified": 0,
-      "voyage_waypoints": 25,
+      "voyage_waypoints": 26,
       "voyage_waypoints_verified": 0,
       "vessels": 4,
       "vessels_verified": 0,
@@ -9446,6 +9446,26 @@
       "wiki_url": "https://onepiece.fandom.com/wiki/Zou",
       "canon_confidence": "derived",
       "source_ref": "onepiece.fandom.com/wiki/Zou#Island_Box | position: derived: region='New World'; lng by voyage order 27 (zou, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter"
+    },
+    {
+      "slug": "thriller-bark",
+      "name": "Thriller Bark",
+      "japanese": null,
+      "romaji": "Suriraa Baaku",
+      "region": "Florian Triangle",
+      "sea": "Paradise",
+      "lng": -57.5,
+      "lat": 1.8,
+      "debut_chapter": 442,
+      "debut_episode": 337,
+      "debut_arc": "thriller-bark",
+      "debut_saga": "Thriller Bark Saga",
+      "canon_status": "manga",
+      "debut_source": null,
+      "affiliation": "Thriller Bark Pirates",
+      "wiki_url": "https://onepiece.fandom.com/wiki/Thriller_Bark",
+      "canon_confidence": "guess",
+      "source_ref": "Hand-authored. The wiki files Thriller Bark as a ship, not an island, so scripts/sync_wiki.py never saw it — it walks the island category. It is the largest ship ever built and it drifts in the Florian Triangle; the crew treats it as land for an entire arc, and so does this map. Debut ch. 442. NEEDS HUMAN VERIFICATION against the manga. | position: Hand-authored. Thriller Bark is a SHIP adrift in the Florian Triangle, so it has no fixed position at all — this places it beside the Florian Triangle pin (-58.3636, -0.666), between Enies Lobby and Sabaody on the voyage. A guess, and marked as one: the honest answer to 'where is it' is 'moving'."
     }
   ],
   "characters": [
@@ -50945,6 +50965,17 @@
       },
       {
         "order": 17,
+        "slug": "thriller-bark",
+        "label": "Thriller Bark — the Florian Triangle",
+        "chapter": 444,
+        "lng": -57.5,
+        "lat": 1.8,
+        "source_ref": "Hand-authored. The crew is drawn into the Florian Triangle and boards Thriller Bark at ch. 442-444, between Enies Lobby and Sabaody. The route skipped it because the island did not exist in the data: the wiki files Thriller Bark as a ship, so the island harvest never saw it. NEEDS HUMAN VERIFICATION against the manga.",
+        "canon_confidence": "canon",
+        "verified": false
+      },
+      {
+        "order": 18,
         "slug": "sabaody-archipelago",
         "label": "Sabaody Archipelago — the crew is scattered",
         "chapter": 490,
@@ -50955,7 +50986,7 @@
         "verified": false
       },
       {
-        "order": 18,
+        "order": 19,
         "slug": "fish-man-island",
         "label": "Fish-Man Island — beneath the Red Line",
         "chapter": 608,
@@ -50966,7 +50997,7 @@
         "verified": false
       },
       {
-        "order": 19,
+        "order": 20,
         "slug": "punk-hazard",
         "label": "Punk Hazard — the burning, frozen island",
         "chapter": 655,
@@ -50977,7 +51008,7 @@
         "verified": false
       },
       {
-        "order": 20,
+        "order": 21,
         "slug": "dressrosa",
         "label": "Dressrosa — Doflamingo",
         "chapter": 700,
@@ -50988,7 +51019,7 @@
         "verified": false
       },
       {
-        "order": 21,
+        "order": 22,
         "slug": "zou",
         "label": "Zou — the island on the elephant",
         "chapter": 802,
@@ -50999,7 +51030,7 @@
         "verified": false
       },
       {
-        "order": 22,
+        "order": 23,
         "slug": "whole-cake-island",
         "label": "Whole Cake Island — Big Mom; Sanji rescue",
         "chapter": 827,
@@ -51010,7 +51041,7 @@
         "verified": false
       },
       {
-        "order": 23,
+        "order": 24,
         "slug": "wano-country",
         "label": "Wano Country — the raid on Onigashima",
         "chapter": 909,
@@ -51021,7 +51052,7 @@
         "verified": false
       },
       {
-        "order": 24,
+        "order": 25,
         "slug": "egghead",
         "label": "Egghead — Vegapunk's island of the future",
         "chapter": 1061,
@@ -51032,7 +51063,7 @@
         "verified": false
       },
       {
-        "order": 25,
+        "order": 26,
         "slug": "elbaph",
         "label": "Elbaf — the land of the giants (the frontier)",
         "chapter": 1125,
@@ -52232,13 +52263,13 @@
         "windows": [
           {
             "order": 1,
-            "island_slug": null,
+            "island_slug": "thriller-bark",
             "label": "Thriller Bark — adrift in the Florian Triangle",
             "from_chapter": 442,
             "to_chapter": 489,
             "lng": -57.5,
             "lat": 1.8,
-            "source_ref": "Hand-authored. Thriller Bark is a ship, not an island: it drifts in the Florian Triangle, ch. 442-489. Position is set beside the Florian Triangle pin. The island record itself does not exist upstream — the wiki files Thriller Bark as a vessel — so this window carries an explicit coordinate. NEEDS HUMAN VERIFICATION against the manga.",
+            "source_ref": "Hand-authored. Thriller Bark drifts in the Florian Triangle, ch. 442-489. The window now resolves through the island record rather than carrying its own coordinate — canon/islands.extra.json gives the ship a slug. NEEDS HUMAN VERIFICATION against the manga.",
             "canon_confidence": "derived",
             "verified": false
           }

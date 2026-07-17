@@ -34,7 +34,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 
 import type { World, WorldIsland, WorldFruitReveal, WorldHakiFact } from "@/lib/canon";
 import type { Art } from "@/lib/art";
-import { voyageGeometryAt, vesselAtChapter, presenceWindowAt } from "@/lib/canon";
+import { voyageGeometryAt, vesselAtChapter, presenceWindowAt, statusHoldersAt } from "@/lib/canon";
 import { crewColor, WARLORD_COLOR } from "@/lib/crews";
 import {
   lensColor, matchesFocus, resolveFocus, focusKey, revealedFruit, revealedHaki, HAKI_STYLE,
@@ -179,6 +179,39 @@ const TERRAIN_FILL: Record<string, string> = {
   "coral-b": "#5c4a63",
   "shimmer-soft": "#12384a",
   "shimmer-core": "#2f7a94",
+  // Thriller Bark — a ship, so: timber, not soil.
+  "hull-deck": "#2b2320",
+  "mast": "#443630",
+  // rgba, not hex: terrain-fill's own opacity is the zoom x chapter crossfade,
+  // so a kind that needs to be SEEN THROUGH carries its alpha in its ink.
+  "grave-fog": "rgba(150,163,176,0.28)",
+  // Whole Cake — sponge and cream, muted to chart inks. It should read as a
+  // cake without leaving the atlas's register and turning into a birthday card.
+  "cake-tier-a": "#5a3340",
+  "cake-tier-b": "#7a5560",
+  "candy-dot": "#c98aa0",
+  // Water 7 — the city, its stone paler than the sea it stands in.
+  "city-ground": "#3a3730",
+  "dock": "#4e463a",
+  // Enies Lobby — an island over a hole; the chasm is the darkest ink here.
+  "chasm": "#02060a",
+  "court-ground": "#3b3a33",
+  "tower": "#6b6354",
+  // Marineford — the crescent bay and the fortress that closes it.
+  "fort-ground": "#39352f",
+  "bay-water": "#0a2136",
+  "fortress": "#585044",
+  // Impel Down — the levels, darkening as they go down.
+  "prison-level-0": "#2a2622",
+  "prison-level-1": "#1d1a17",
+  // Drum — snow, and the flat-topped drums standing in it.
+  "snowfield": "#39434e",
+  "drum-peak": "#4d5865",
+  "drum-cap": "#68747f",
+  // Zou — the back of a walking elephant.
+  "back-ground": "#2c3a2a",
+  "whale-tree": "#4a5c3c",
+  "leg": "#3a3128",
 };
 const TERRAIN_LINE: Record<string, string> = {
   "crevasse": "#9fb4c8",
@@ -188,6 +221,14 @@ const TERRAIN_LINE: Record<string, string> = {
   "bubble-dome-outer": "#8fd4e8",
   "bubble-dome-inner": "#6fb3d2",
   "dome-highlight": "#dff2f8",
+  "hull-rail": "#8a7256",
+  "rigging": "#6d6355",
+  "icing-river": "#e8d4d8",
+  "canal": "#4f86a8",
+  "fountain": "#9fd0e0",
+  "falls": "#7fa8c4",
+  "prison-ring": "#0f0d0b",
+  "trunk": "#4a4034",
 };
 const byKind = (table: Record<string, string>, fallback: string): ExpressionSpecification =>
   ["match", ["get", "kind"], ...Object.entries(table).flat(), fallback] as unknown as ExpressionSpecification;
@@ -476,6 +517,56 @@ function makeWarlordElement(): {
  * sentence about the plot, so the name lives in the hover tooltip where the
  * reader has to ask for it.
  */
+/**
+ * The Baratie: a fish-shaped boat, because that is what it is.
+ *
+ * It is the only waypoint on the route with no island under it — the voyage
+ * carries it as a slug-less stop at ch. 43, since the wiki has no Island Box
+ * for a restaurant that floats. So it gets a marker rather than a coastline:
+ * the sea does not have a Baratie on it, the Baratie is ON the sea.
+ */
+function makeBaratieElement(): { el: HTMLDivElement; wrap: HTMLDivElement } {
+  const el = document.createElement("div");
+  el.className = "baratieMarker";
+  el.style.display = "none";
+  el.style.pointerEvents = "none";
+  el.style.textAlign = "center";
+  const wrap = makeScaleWrap("50% 100%");
+
+  const boat = document.createElement("div");
+  boat.style.margin = "0 auto";
+  boat.style.width = "34px";
+  boat.style.height = "20px";
+  boat.style.filter = "drop-shadow(0 1px 3px rgba(0,0,0,0.75))";
+  // hull as a fish: blunt head at the bow, tail fin at the stern, one round eye
+  boat.innerHTML = `<svg width="34" height="20" viewBox="0 0 34 20" fill="none" aria-hidden="true">
+    <path d="M4.5 12.5c2-5 7-8.5 13-8.5 4.6 0 8 2 10 4.6L31 5.2v10.2l-3.4-3.2C25.6 14.7 22.2 17 17.5 17c-6 0-11-2.6-13-4.5z"
+          fill="#7d5a3c" stroke="#2a1d12" stroke-width="1" stroke-linejoin="round"/>
+    <circle cx="24.5" cy="9" r="1.4" fill="#f0e2c8" stroke="#2a1d12" stroke-width=".6"/>
+    <path d="M8 9.5c2.5-1 5-1.4 7.5-1.2" stroke="#c9a06a" stroke-width=".9" stroke-linecap="round"/>
+  </svg>`;
+
+  const label = document.createElement("div");
+  label.style.marginTop = "1px";
+  label.style.fontSize = "7px";
+  label.style.letterSpacing = "0.14em";
+  label.style.textTransform = "uppercase";
+  label.style.whiteSpace = "nowrap";
+  label.style.color = "rgba(201,160,106,0.95)";
+  label.style.fontFamily = "var(--font-geist-mono), monospace";
+  label.style.textShadow = "0 1px 3px rgba(0,0,0,0.9)";
+  label.textContent = "Baratie";
+
+  wrap.appendChild(boat);
+  wrap.appendChild(label);
+  el.appendChild(wrap);
+  // `wrap` is handed back, not `el`: MapLibre owns the marker element's own
+  // opacity (that is how it fades marks behind the globe), so anything written
+  // to el.style.opacity is silently overwritten on the next camera move. Same
+  // trap the Skypiea sea-shadow fell into.
+  return { el, wrap };
+}
+
 function makePoneglyphElement(): {
   el: HTMLDivElement;
   stone: HTMLDivElement;
@@ -696,6 +787,13 @@ function presenceOrbs(
 /* paint expressions                                                           */
 /* -------------------------------------------------------------------------- */
 
+/**
+ * The Baratie's stop on the route. It has no island record — the wiki has no
+ * Island Box for a floating restaurant — so it rides the voyage as a slug-less
+ * waypoint and gets a marker instead of a coastline.
+ */
+const BARATIE_CHAPTER = 43;
+
 /** Revealed: the reader has met this island. */
 const revealed = (ch: number): ExpressionSpecification => ["<=", ["get", "debut"], ch];
 
@@ -781,6 +879,7 @@ export default function WorldMap({
   // (unique across crews). Positions track the member-orb ring around the flag.
   const memberMarks = useRef<Map<string, PresenceHandle>>(new Map());
   const poneglyphMarks = useRef<Map<string, PresenceHandle>>(new Map());
+  const baratie = useRef<{ marker: MLMarker; el: HTMLDivElement; wrap: HTMLDivElement } | null>(null);
   // paint() runs on the chapter tween; it reads the live lens through this ref.
   const lensRef = useRef(lens);
   useEffect(() => {
@@ -950,6 +1049,10 @@ export default function WorldMap({
         // told about are ever in the source, so a fogged stone has nothing to
         // hover, nothing to query, and no pixels.
         poneglyphs: { type: "geojson", data: { type: "FeatureCollection", features: [] } },
+        // Yonko territory: a soft disc per Emperor, rebuilt per frame from who
+        // actually holds a seat at this chapter. Same rule as everything else —
+        // if it is in this source, the reader has been told.
+        territory: { type: "geojson", data: { type: "FeatureCollection", features: [] } },
       },
       layers: [
         { id: "ocean", type: "background", paint: { "background-color": C.ocean } },
@@ -1010,6 +1113,16 @@ export default function WorldMap({
           filter: ["in", ["get", "kind"], ["literal", ["sky-shadow-soft", "sky-shadow-core"]]],
           paint: { "fill-color": "#04070d", "fill-opacity": 0 } },
 
+        // THE CARVED-UP SEA. At orbit the New World should look claimed, because
+        // it is: four Emperors, and everyone else lives in the gaps between
+        // them. Fades out by z4 — up close this is a map of places, not a map
+        // of who is winning.
+        { id: "territory", type: "fill", source: "territory",
+          paint: {
+            "fill-color": ["get", "color"],
+            "fill-opacity": ["interpolate", ["linear"], ["zoom"], 1.4, 0.14, 4.0, 0],
+          } },
+
         { id: "island-shapes", type: "fill", source: "silhouettes",
           paint: { "fill-color": byBiome(BIOME_FILL, C.isle), "fill-opacity": 0 } },
 
@@ -1022,7 +1135,9 @@ export default function WorldMap({
             ["sky-shadow-soft", "sky-shadow-core", "sky-column-1", "sky-column-2", "sky-column-3", "sky-jet",
              "shimmer-soft", "shimmer-core",
              // lines, not fills — the mirror of terrain-line's allowlist
-             "bubble-dome-outer", "bubble-dome-inner", "dome-highlight"]]]],
+             "bubble-dome-outer", "bubble-dome-inner", "dome-highlight",
+             "hull-rail", "rigging", "icing-river", "canal", "fountain",
+             "falls", "prison-ring", "trunk"]]]],
           layout: { "fill-sort-key": ["get", "sort"] } as never,
           paint: {
             "fill-color": byKind(TERRAIN_FILL, C.isle),
@@ -1039,12 +1154,16 @@ export default function WorldMap({
         { id: "terrain-line", type: "line", source: "terrain",
           // line layers also outline polygons — restrict to the true lines
           filter: ["in", ["get", "kind"], ["literal", ["crevasse", "river", "riverbank", "cloud-wisp",
-            "bubble-dome-outer", "bubble-dome-inner", "dome-highlight"]]],
+            "bubble-dome-outer", "bubble-dome-inner", "dome-highlight",
+            "hull-rail", "rigging", "icing-river", "canal", "fountain",
+            "falls", "prison-ring", "trunk"]]],
           paint: {
             "line-color": byKind(TERRAIN_LINE, C.isleCoast),
             "line-width": ["match", ["get", "kind"],
               "riverbank", 3.2, "river", 1.3, "cloud-wisp", 0.9,
-              "bubble-dome-outer", 1.4, "bubble-dome-inner", 0.9, "dome-highlight", 1.8, 0.8] as never,
+              "bubble-dome-outer", 1.4, "bubble-dome-inner", 0.9, "dome-highlight", 1.8,
+              "hull-rail", 1.6, "rigging", 0.7, "icing-river", 2.6, "canal", 1.8,
+              "fountain", 1.1, "falls", 1.2, "prison-ring", 0.6, "trunk", 5.0, 0.8] as never,
             "line-opacity": 0,
           } },
 
@@ -1414,6 +1533,18 @@ export default function WorldMap({
     // One stele per stone, built once, hidden and EMPTY — the same pooling as
     // every other mark. A stone the reader has not been told about has no
     // element populated, so its name is not in the DOM to be read out.
+    // The Baratie. Its position comes from the voyage waypoint itself — the
+    // slug-less stop at ch. 43 — so the restaurant and the route can never
+    // disagree about where dinner is.
+    const bw = world.voyage.waypoints.find((w) => w.slug === null && w.chapter === BARATIE_CHAPTER);
+    if (bw) {
+      const parts = makeBaratieElement();
+      const marker = new maplibregl.Marker({ element: parts.el, opacityWhenCovered: "0.1" })
+        .setLngLat([bw.lng, bw.lat])
+        .addTo(m);
+      baratie.current = { marker, el: parts.el, wrap: parts.wrap };
+    }
+
     const poneglyphPool = poneglyphMarks.current;
     for (const pg of world.poneglyphs) {
       const p = makePoneglyphElement();
@@ -1535,6 +1666,7 @@ export default function WorldMap({
         chars: warlordMarks.current,
         members: memberMarks.current,
         poneglyphs: poneglyphMarks.current,
+        baratie: baratie.current,
         lens: lensRef.current,
         focus: resolvedFocus(),
       }, art);
@@ -1569,6 +1701,7 @@ export default function WorldMap({
       chars: warlordMarks.current,
       members: memberMarks.current,
       poneglyphs: poneglyphMarks.current,
+      baratie: baratie.current,
       lens: lensRef.current,
       focus: resolvedFocus(),
     }, art);
@@ -1588,6 +1721,7 @@ export default function WorldMap({
       chars: warlordMarks.current,
       members: memberMarks.current,
       poneglyphs: poneglyphMarks.current,
+      baratie: baratie.current,
       lens: lensRef.current,
       focus: resolvedFocus(),
     }, art);
@@ -1637,6 +1771,7 @@ export default function WorldMap({
       chars: warlordMarks.current,
       members: memberMarks.current,
       poneglyphs: poneglyphMarks.current,
+      baratie: baratie.current,
       lens,
       focus: resolvedFocus(),
     }, art);
@@ -1654,6 +1789,7 @@ export default function WorldMap({
       chars: warlordMarks.current,
       members: memberMarks.current,
       poneglyphs: poneglyphMarks.current,
+      baratie: baratie.current,
       lens: lensRef.current,
       focus: resolvedFocus(),
     }, art);
@@ -1844,6 +1980,7 @@ type PresencePools = {
   members: Map<string, PresenceHandle>;
   lens: PresenceLens;
   poneglyphs: Map<string, PresenceHandle>;
+  baratie: { marker: MLMarker; el: HTMLDivElement; wrap: HTMLDivElement } | null;
   focus: ResolvedFocus | null;
 };
 
@@ -2164,6 +2301,50 @@ function paint(
       (m.getSource("presence") as GeoJSONSource | undefined)?.setData(
         presenceOrbs(world, ch, layout, pools.lens, pools.focus),
       );
+    }
+  }
+
+  /* -------------------------------------------------------------- territory */
+  // Who holds the sea, as of this chapter. A disc at each Emperor crew's
+  // active anchorage, in their own ink. Both halves of statusHoldersAt matter
+  // here: Whitebeard's water goes back to being nobody's when he dies, and the
+  // Straw Hats' does not exist until 1053.
+  {
+    const holders = statusHoldersAt(world, "yonko", Math.floor(ch));
+    const features: GeoJSON.Feature[] = [];
+    for (const crew of world.presence.crews) {
+      if (!holders.has(crew.slug)) continue;
+      const w = presenceWindowAt(crew.windows, ch);
+      if (!w) continue;
+      // a 48-gon rather than a circle-layer: a real polygon follows the globe's
+      // curvature, and these are big enough (9 degrees) for that to show
+      const ring: [number, number][] = [];
+      for (let i = 0; i <= 48; i++) {
+        const th = (i / 48) * Math.PI * 2;
+        ring.push([w.lng + Math.cos(th) * 9, w.lat + Math.sin(th) * 9 * 0.72]);
+      }
+      features.push({
+        type: "Feature",
+        properties: { slug: crew.slug, color: crewColor(crew.slug) },
+        geometry: { type: "Polygon", coordinates: [ring] },
+      });
+    }
+    (m.getSource("territory") as GeoJSONSource | undefined)?.setData({
+      type: "FeatureCollection", features,
+    });
+  }
+
+  /* ---------------------------------------------------------------- Baratie */
+  // Two beats, no window table needed for one mark: it appears when the reader
+  // reaches it, and it stays. It never sinks and nobody blows it up — it just
+  // stops being where the story is, so it dims to a landmark rather than
+  // vanishing. (The Grand Line has no monopoly on places that matter.)
+  if (pools?.baratie) {
+    if (ch >= BARATIE_CHAPTER) {
+      pools.baratie.el.style.display = "";
+      pools.baratie.wrap.style.opacity = ch > 68 ? "0.5" : "1";
+    } else {
+      pools.baratie.el.style.display = "none";
     }
   }
 

@@ -280,6 +280,7 @@ def main() -> int:
     bounties_doc = load(CANON_DIR / "bounties.json")
     statuses_doc = load(CANON_DIR / "statuses.json")
     poneglyphs_doc = load(CANON_DIR / "poneglyphs.json")
+    islands_extra_doc = load(CANON_DIR / "islands.extra.json")
 
     status_map = ov["character_status"]
     crew_status_map = ov["crew_status"]
@@ -370,8 +371,28 @@ def main() -> int:
 
     # -------------------------------------------------------------- islands
     coords = {c["slug"]: c for c in coords_doc["islands"]}
+
+    # The wiki harvest walks the island CATEGORY, so it cannot see a place the
+    # wiki files as something else. Thriller Bark is a ship. It is also, for one
+    # arc, the ground the story happens on. canon/islands.extra.json is where a
+    # human says so; it is merged after the generated set and may never shadow a
+    # slug the harvest already found — if the wiki starts filing one of these as
+    # an island, this raises rather than silently winning the argument.
+    gen_slugs = {i["slug"] for i in gen_islands}
+    extra_islands = []
+    for x in islands_extra_doc["islands"]:
+        if x["slug"] in gen_slugs:
+            raise die(
+                f"canon/islands.extra.json defines {x['slug']!r}, but the wiki harvest already "
+                f"has it. Delete the hand-authored row — upstream now knows about it, and two "
+                f"sources for one island is how they drift apart.", x)
+        src = x.get("source_ref") or ""
+        if not src.lower().lstrip().startswith("hand-authored"):
+            raise die(f"islands.extra row {x['slug']!r} must declare a hand-authored source_ref", x)
+        extra_islands.append(x)
+
     islands = []
-    for isl in gen_islands:
+    for isl in [*gen_islands, *extra_islands]:
         slug = isl["slug"]
         pos = coords.get(slug)
         if pos is None or pos.get("lng") is None or pos.get("lat") is None:

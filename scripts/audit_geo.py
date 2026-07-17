@@ -48,12 +48,16 @@ HEROES = {
     # fogged-at-ch1 check below is really a check that a name is not a
     # photograph. See gen_terrain.py:TERRAIN_SEEN.
     "fish-man-island": {"lng": -5.93, "lat": -2.85},
+    # The signature islands: a ship, a cake, and a city of canals.
+    "thriller-bark": {"lng": -57.5, "lat": 1.8},
+    "whole-cake-island": {"lng": 72.28, "lat": -2.82},
+    "water-7": {"lng": -73.79, "lat": 3.16},
 }
 # every layer that draws island geometry; extend as terrain layers land
 GEO_LAYERS = ["island-shapes", "island-shapes-coast",
               "terrain-fill", "terrain-line", "terrain-glow",
               "sky-shadow", "sky-column", "sky-jet",
-              "dive-shimmer"]
+              "dive-shimmer", "territory"]
 ZOOM = 4.0
 PATCH = 44  # half-side of the sampled square, px
 

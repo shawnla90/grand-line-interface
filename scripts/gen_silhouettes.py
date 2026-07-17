@@ -45,7 +45,11 @@ COORD_DECIMALS = 4   # ~11m; plenty for a stylized chart, keeps the file small
 # Hero islands carry deep terrain (gen_terrain.py) and survive the z8.5 dive,
 # so their coastlines get more vertices. Extra points draw NOTHING from the
 # rng stream — only hero features change when this set grows.
-HERO_SLUGS = {"punk-hazard", "arabasta-kingdom", "skypiea", "fish-man-island"}
+HERO_SLUGS = {
+    "punk-hazard", "arabasta-kingdom", "skypiea", "fish-man-island",
+    "thriller-bark", "whole-cake-island", "water-7",
+    "enies-lobby", "marineford", "impel-down", "drum-island", "zou",
+}
 HERO_POINTS = 128
 
 
@@ -81,6 +85,13 @@ def profile_for(island: dict, biome: str) -> dict:
     name = island["name"].lower()
     if "archipelago" in name or "islands" in name.split()[-1:]:
         return {"kind": "archipelago"}
+    # A SHIP, not a coastline. Thriller Bark is the largest vessel ever built
+    # and the story stands on it for an arc, so it is an island on this map —
+    # but a blob-shaped one is a lie the eye catches instantly. A hull is still
+    # star-convex about its centre, so it fits the same machinery: it is just a
+    # different f(theta), and gen_terrain can re-derive it like any other.
+    if island.get("island_type") == "Ship":
+        return {"kind": "hull", "freqs": [], "spike": 0.0}
     if biome == "sky":
         # cloud islands: soft, puffy, low-frequency
         return {"kind": "blob", "freqs": [(2, 0.16), (3, 0.10)], "spike": 0.0}
@@ -114,6 +125,19 @@ def radius_fn(rng: Rng, profile: dict):
     phases = [rng.range(0, 2 * math.pi) for _ in freqs]
     spike = profile.get("spike", 0.0)
     spike_at = rng.range(0, 2 * math.pi)
+
+    if profile.get("kind") == "hull":
+        # A hull, in polar form. The radius is LARGEST along the keel (theta 0
+        # and pi — bow and stern) and squeezed abeam, which is what makes a lens
+        # rather than an ellipse; the |sin| exponent is the fineness of the
+        # entry. The cos term lets the stern out a little so the thing has a
+        # direction. The draws above are consumed either way, so the seed stream
+        # stays aligned with every other island's.
+        def hull_of(th: float) -> float:
+            beam = 1.0 - 0.58 * abs(math.sin(th)) ** 1.5
+            return max(0.2, beam * (1.0 - 0.10 * math.cos(th)))
+
+        return hull_of
 
     def f_of(th: float) -> float:
         f = 1.0
@@ -165,6 +189,7 @@ def geometry_for(island: dict, biome: str, lng: float, lat: float, radius: float
 
 SILHOUETTE_INPUTS = (
     "data/generated/islands.json",
+    "canon/islands.extra.json",
     "canon/islands.coords.json",
     "canon/islands.biomes.json",
     "canon/islands.shapes.json",
@@ -184,8 +209,22 @@ def inputs_sha() -> str:
     return h.hexdigest()
 
 
-def main() -> int:
+def load_islands() -> list[dict]:
+    """The generated harvest PLUS the hand-authored extras.
+
+    Both generators and normalize.py must agree on what an island is, or the
+    map grows a pin with no coastline under it. The extras exist because the
+    wiki files Thriller Bark as a ship — see canon/islands.extra.json.
+    """
     islands = json.loads((GENERATED / "islands.json").read_text())
+    extra_path = CANON_DIR / "islands.extra.json"
+    if extra_path.exists():
+        islands = [*islands, *json.loads(extra_path.read_text())["islands"]]
+    return islands
+
+
+def main() -> int:
+    islands = load_islands()
     coords = json.loads((CANON_DIR / "islands.coords.json").read_text())["islands"]
     voyage = json.loads((CANON_DIR / "voyage_legs.json").read_text())
     presence = json.loads((CANON_DIR / "crew_presence.json").read_text())

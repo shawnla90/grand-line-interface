@@ -38,7 +38,7 @@ from pathlib import Path
 
 from biomes import biome_for
 from gen_silhouettes import (
-    COORD_DECIMALS, HERO_SLUGS, Rng, profile_for, radius_fn,
+    COORD_DECIMALS, HERO_SLUGS, Rng, load_islands, profile_for, radius_fn,
     inputs_sha as sil_inputs_sha,
 )
 
@@ -336,11 +336,246 @@ def fish_man_island(ring: HeroRing, slug: str, debut: int) -> list[dict]:
     return out
 
 
+# ---------------------------------------------------------------------------
+# Thriller Bark — not an island. A ship, the largest ever built, with a whole
+# arc's worth of story standing on its deck. So it is drawn as what it is: a
+# hull with a rail, three masts, rigging, and the graveyard fog it drags along.
+# ---------------------------------------------------------------------------
+
+def thriller_bark(ring: HeroRing, slug: str, debut: int) -> list[dict]:
+    rng = Rng(f"terrain:{slug}")
+    out: list[dict] = []
+    # The keel IS the long axis: profile_for gives a Ship a hull-shaped f(theta)
+    # pinched at theta 0 and pi, so bow and stern are there and nowhere else.
+    # (rng.range is still called: the seed stream must not shift.)
+    rng.range(0, TAU)
+    keel = 0.0
+
+    out.append(feat(slug, debut, "hull-deck", 1, poly(ring.ring(0.97))))
+    out.append(feat(slug, debut, "hull-rail", 5, line(ring.ring(0.9))))
+
+    # three masts along the keel, tallest amidships, each with a spar
+    for i, (t, size) in enumerate(((0.62, 0.15), (0.0, 0.2), (-0.62, 0.16))):
+        th = keel if t >= 0 else keel + math.pi
+        at = abs(t)
+        out.append(feat(slug, debut, "mast", 3,
+                        poly(ring.small_blob(Rng(f"terrain:{slug}:mast{i}"), th, at, size))))
+        # the spar: a chord across the keel at this mast
+        p0 = ring.pt(th + 0.42, at + 0.16)
+        p1 = ring.pt(th - 0.42, at + 0.16)
+        out.append(feat(slug, debut, "rigging", 4, line([p0, p1])))
+
+    # rigging: lines from the bow and the stern up to the mainmast
+    bow, stern = ring.pt(keel, 0.9), ring.pt(keel + math.pi, 0.9)
+    main = ring.pt(keel, 0.0)
+    for end in (bow, stern):
+        out.append(feat(slug, debut, "rigging", 4, line([end, main])))
+
+    # the fog it drags with it. Sort 6: OVER everything, because that is what
+    # fog does — the Florian Triangle is the point of the place.
+    for i in range(3):
+        th = rng.range(0, TAU)
+        t = rng.range(0.3, 0.8)
+        out.append(feat(slug, debut, "grave-fog", 6,
+                        poly(ring.small_blob(Rng(f"terrain:{slug}:fog{i}"), th, t,
+                                             rng.range(0.16, 0.26)))))
+    return out
+
+
+# ---------------------------------------------------------------------------
+# Whole Cake Island — a cake. Tiers, icing running down the sides, and the
+# candy that grows on it.
+# ---------------------------------------------------------------------------
+
+def whole_cake(ring: HeroRing, slug: str, debut: int) -> list[dict]:
+    rng = Rng(f"terrain:{slug}")
+    out: list[dict] = []
+
+    # the tiers, alternating sponge and cream, each smaller than the last
+    for i, t in enumerate((0.88, 0.66, 0.44, 0.24)):
+        kind = "cake-tier-a" if i % 2 == 0 else "cake-tier-b"
+        out.append(feat(slug, debut, kind, 1 + i,
+                        poly(ring.ring(t, wobble=0.05, wobble_freq=7,
+                                       wobble_phase=rng.range(0, TAU)))))
+
+    # icing: it runs DOWN from the top tier, so each drip starts at the middle
+    # and falls outward. Two of them, on opposite-ish sides.
+    for i in range(2):
+        th0 = rng.range(0, TAU)
+        pts = []
+        steps = 18
+        for s in range(steps + 1):
+            t = 0.2 + (0.95 - 0.2) * s / steps
+            wobble = 0.16 * math.sin(3.5 * s / steps + i)
+            pts.append(ring.pt(th0 + wobble, t))
+        out.append(feat(slug, debut, "icing-river", 6, line(pts)))
+
+    # candy — scattered on the tiers
+    for i in range(9):
+        th = rng.range(0, TAU)
+        t = rng.range(0.3, 0.8)
+        out.append(feat(slug, debut, "candy-dot", 7,
+                        poly(ring.small_blob(Rng(f"terrain:{slug}:candy{i}"), th, t,
+                                             rng.range(0.04, 0.08)))))
+    return out
+
+
+# ---------------------------------------------------------------------------
+# Water 7 — the city of water: ring canals, a fountain at the centre, and the
+# shipyard docks on the seaward side.
+# ---------------------------------------------------------------------------
+
+def water_7(ring: HeroRing, slug: str, debut: int) -> list[dict]:
+    rng = Rng(f"terrain:{slug}")
+    out: list[dict] = []
+    out.append(feat(slug, debut, "city-ground", 1, poly(ring.ring(0.96))))
+    for t in (0.82, 0.62, 0.42):
+        out.append(feat(slug, debut, "canal", 5,
+                        line(ring.ring(t, wobble=0.02, wobble_freq=5,
+                                       wobble_phase=rng.range(0, TAU)))))
+    # the fountain: a spiral from the centre out, tight
+    pts = []
+    th0 = rng.range(0, TAU)
+    for s in range(41):
+        th = th0 + 3.4 * s / 40
+        pts.append(ring.pt(th, 0.04 + 0.3 * s / 40))
+    out.append(feat(slug, debut, "fountain", 6, line(pts)))
+    # docks on the coast, clustered on one side (the yard faces the sea lane)
+    face = rng.range(0, TAU)
+    for i in range(4):
+        out.append(feat(slug, debut, "dock", 3,
+                        poly(ring.small_blob(Rng(f"terrain:{slug}:dock{i}"),
+                                             face + (i - 1.5) * 0.34, 0.86,
+                                             rng.range(0.07, 0.11)))))
+    return out
+
+
+# ---------------------------------------------------------------------------
+# Enies Lobby — an island standing over a hole. The sea pours off every edge,
+# which is why the whole arc is about getting OFF it.
+# ---------------------------------------------------------------------------
+
+def enies_lobby(ring: HeroRing, slug: str, debut: int) -> list[dict]:
+    rng = Rng(f"terrain:{slug}")
+    out: list[dict] = []
+    # the chasm: an annulus OUTSIDE the coast, near-black. Sort 0 — under
+    # everything, including the island it is swallowing.
+    out.append(feat(slug, debut, "chasm", 0,
+                    poly(ring.ring(1.32, wobble=0.06, wobble_freq=5,
+                                   wobble_phase=rng.range(0, TAU)))))
+    out.append(feat(slug, debut, "court-ground", 1, poly(ring.ring(0.95))))
+    # the falls: radial lines pouring over the rim
+    for i in range(10):
+        th = TAU * i / 10 + rng.range(-0.1, 0.1)
+        out.append(feat(slug, debut, "falls", 4, line([ring.pt(th, 0.92), ring.pt(th, 1.28)])))
+    # the tower at the centre
+    out.append(feat(slug, debut, "tower", 5,
+                    poly(ring.small_blob(rng, 0, 0.0, 0.16))))
+    return out
+
+
+# ---------------------------------------------------------------------------
+# Marineford — a crescent bay with the fortress closing it. The whole war is
+# fought in the bowl between them.
+# ---------------------------------------------------------------------------
+
+def marineford(ring: HeroRing, slug: str, debut: int) -> list[dict]:
+    rng = Rng(f"terrain:{slug}")
+    out: list[dict] = []
+    face = rng.range(0, TAU)  # the bay faces this way
+    out.append(feat(slug, debut, "fort-ground", 1, poly(ring.ring(0.96))))
+    # the bay: a wedge of sea cut into the island, mouth on the coast
+    bay = ring.arc(face - 1.05, face + 1.05, 0.92)
+    bay.append(ring.pt(face, 0.12))
+    bay.append(bay[0])
+    out.append(feat(slug, debut, "bay-water", 3, poly(bay)))
+    # the fortress: a band opposite the bay
+    band = ring.arc(face + math.pi - 1.0, face + math.pi + 1.0, 0.82)
+    band += list(reversed(ring.arc(face + math.pi - 1.0, face + math.pi + 1.0, 0.52)))
+    band.append(band[0])
+    out.append(feat(slug, debut, "fortress", 4, poly(band)))
+    # the execution platform, in the middle of the bowl
+    out.append(feat(slug, debut, "tower", 5, poly(ring.small_blob(rng, face + math.pi, 0.3, 0.09))))
+    return out
+
+
+# ---------------------------------------------------------------------------
+# Impel Down — six levels, each one further down. Drawn as rings darkening
+# inward, because down is the only direction that place has.
+# ---------------------------------------------------------------------------
+
+def impel_down(ring: HeroRing, slug: str, debut: int) -> list[dict]:
+    rng = Rng(f"terrain:{slug}")
+    out: list[dict] = []
+    for i, t in enumerate((0.94, 0.78, 0.62, 0.46, 0.30)):
+        out.append(feat(slug, debut, f"prison-level-{i % 2}", 1 + i,
+                        poly(ring.ring(t, wobble=0.015, wobble_freq=8,
+                                       wobble_phase=rng.range(0, TAU)))))
+        out.append(feat(slug, debut, "prison-ring", 6, line(ring.ring(t))))
+    out.append(feat(slug, debut, "tower", 7, poly(ring.small_blob(rng, 0, 0.0, 0.1))))
+    return out
+
+
+# ---------------------------------------------------------------------------
+# Drum Island — the drums: flat-topped cylinder peaks in the snow.
+# ---------------------------------------------------------------------------
+
+def drum_island(ring: HeroRing, slug: str, debut: int) -> list[dict]:
+    rng = Rng(f"terrain:{slug}")
+    out: list[dict] = []
+    out.append(feat(slug, debut, "snowfield", 1, poly(ring.ring(0.96))))
+    for i in range(4):
+        th = rng.range(0, TAU)
+        t = rng.range(0.2, 0.6)
+        size = rng.range(0.12, 0.19)
+        out.append(feat(slug, debut, "drum-peak", 2,
+                        poly(ring.small_blob(Rng(f"terrain:{slug}:peak{i}"), th, t, size))))
+        # the flat top — a smaller blob inside, paler: that IS the drum read
+        out.append(feat(slug, debut, "drum-cap", 3,
+                        poly(ring.small_blob(Rng(f"terrain:{slug}:cap{i}"), th, t, size * 0.55))))
+    return out
+
+
+# ---------------------------------------------------------------------------
+# Zou — an island on the back of an elephant. The island is what you see; the
+# trunk is what tells you what you are standing on.
+# ---------------------------------------------------------------------------
+
+def zou(ring: HeroRing, slug: str, debut: int) -> list[dict]:
+    rng = Rng(f"terrain:{slug}")
+    out: list[dict] = []
+    out.append(feat(slug, debut, "back-ground", 1, poly(ring.ring(0.95))))
+    # the whale tree, off-centre, where the Road Poneglyph lives
+    out.append(feat(slug, debut, "whale-tree", 4, poly(ring.small_blob(rng, 1.2, 0.35, 0.14))))
+    # the trunk: leaves the coast and curls out over the sea. The one mark that
+    # says this is not an island.
+    th0 = rng.range(0, TAU)
+    pts = []
+    for s in range(19):
+        f = s / 18
+        pts.append(ring.pt(th0 + 0.55 * f * f, 0.9 + 0.5 * f))
+    out.append(feat(slug, debut, "trunk", 5, line(pts)))
+    # and the legs it stands on — four stumps under the rim
+    for i in range(4):
+        th = th0 + math.pi + (i - 1.5) * 0.5
+        out.append(feat(slug, debut, "leg", 0,
+                        poly(ring.small_blob(Rng(f"terrain:{slug}:leg{i}"), th, 1.05, 0.1))))
+    return out
+
+
 BUILDERS = {
     "punk-hazard": punk_hazard,
     "arabasta-kingdom": arabasta,
     "skypiea": skypiea,
     "fish-man-island": fish_man_island,
+    "thriller-bark": thriller_bark,
+    "whole-cake-island": whole_cake,
+    "water-7": water_7,
+    "enies-lobby": enies_lobby,
+    "marineford": marineford,
+    "impel-down": impel_down,
+    "drum-island": drum_island,
+    "zou": zou,
 }
 
 # Terrain reveals when the island is SEEN, which is not always when it is NAMED.
@@ -359,7 +594,7 @@ TERRAIN_SEEN = {
 
 
 def main() -> int:
-    islands = {i["slug"]: i for i in json.loads((GENERATED / "islands.json").read_text())}
+    islands = {i["slug"]: i for i in load_islands()}
     coords = {c["slug"]: c for c in json.loads((CANON_DIR / "islands.coords.json").read_text())["islands"]}
     voyage = json.loads((CANON_DIR / "voyage_legs.json").read_text())
     presence = json.loads((CANON_DIR / "crew_presence.json").read_text())
