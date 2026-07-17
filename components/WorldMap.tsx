@@ -903,6 +903,14 @@ const GLB_FULL_ZOOM = 5.4;
  * proof it was right is that this block was about to be copied eleven times.
  */
 const RUNTIME_ASSETS_ON = process.env.NEXT_PUBLIC_RUNTIME_3D_ASSETS === "1";
+// The East Blue 2.5D story layer (sim-models owns every gate; the dynamic
+// import keeps zod + the artifact out of flag-off bundles). Its host
+// self-registers zoomend/moveend listeners on first call.
+const EAST_BLUE_2D_ON = process.env.NEXT_PUBLIC_EAST_BLUE_2D_SIMULATIONS === "1";
+function syncSims(m: MLMap, ch: number) {
+  if (!EAST_BLUE_2D_ON) return;
+  void import("@/components/sim-models").then((s) => s.syncSimulations(m, ch));
+}
 
 /**
  * The live models, or null when their gates are shut. Module scope because
@@ -1332,10 +1340,31 @@ export default function WorldMap({
     if (journey) {
       m.dragPan.disable();
       m.dragRotate.disable();
+      // THE TRAIL IS THE STORY. At the resting style the voyage line is a faint
+      // thread you cannot read at speed; the journey makes it the hero — a thick
+      // gold wake with a bright glow — so the route the ship traces is the thing
+      // you watch. Restored on stop.
+      m.setPaintProperty("voyage-glow", "line-width", 16);
+      m.setPaintProperty("voyage-glow", "line-blur", 10);
+      m.setPaintProperty("voyage-glow", "line-opacity", 0.6);
+      m.setPaintProperty("voyage-line", "line-color", C.goldLit);
+      m.setPaintProperty("voyage-line", "line-width", [
+        "interpolate", ["linear"], ["zoom"], 0, 3, 3, 4, 6, 5.5,
+      ] as never);
+      m.setPaintProperty("voyage-line", "line-opacity", 1);
       chase(); // begin tracking immediately, without waiting for the first frame
     } else {
       m.dragPan.enable();
       if (m.getProjection()?.type === "globe") m.dragRotate.enable();
+      // Restore the resting voyage style.
+      m.setPaintProperty("voyage-glow", "line-width", 6);
+      m.setPaintProperty("voyage-glow", "line-blur", 7);
+      m.setPaintProperty("voyage-glow", "line-opacity", 0.3);
+      m.setPaintProperty("voyage-line", "line-color", C.parchment);
+      m.setPaintProperty("voyage-line", "line-width", [
+        "interpolate", ["linear"], ["zoom"], 0, 1.4, 3, 2, 6, 2.8,
+      ] as never);
+      m.setPaintProperty("voyage-line", "line-opacity", 0.85);
     }
   }, [journey, chase]);
 
@@ -1807,12 +1836,13 @@ export default function WorldMap({
     // The model's gate is half chapter and half ZOOM, and paint() only runs on
     // the chapter tween — so without this, diving toward an erupting stream would
     // never add the layer. Cheap: a getLayer check and an early return.
-    if (RUNTIME_3D_ON || RUNTIME_ASSETS_ON) {
+    if (RUNTIME_3D_ON || RUNTIME_ASSETS_ON || EAST_BLUE_2D_ON) {
       const syncGlb = () => {
         if (RUNTIME_3D_ON) syncKnockUpGlb(m!, chapterRef.current);
         // Fish-Man Island also gates on PROJECTION, and setProjection fires
         // neither zoom nor moveend — hence the explicit third listener.
         if (RUNTIME_ASSETS_ON) syncModels(m!, chapterRef.current);
+        syncSims(m!, chapterRef.current);
       };
       m.on("zoom", syncGlb);
       m.on("moveend", syncGlb);
@@ -2592,6 +2622,7 @@ function paint(
     syncKnockUpGlb(m, ch);
   }
   if (RUNTIME_ASSETS_ON) syncModels(m, ch);
+  syncSims(m, ch);
 
   // THE DIVE SCAR, the same idea upside down. shimmerOpacity is its story beat
   // (the sea closes at 602-605, stands as a scar while the crew is under, fades
