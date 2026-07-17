@@ -768,6 +768,50 @@ def statuses_gated(doc):
             f"{unverified} still verified:false")
 
 
+@check("poneglyphs_gated")
+def poneglyphs_gated(doc):
+    """The stones. Two gates, and both have to hold: the reader must have been
+    told a stone exists (revealed_chapter) and it must be somewhere they can see
+    (an active custody window). A stone standing on a fogged island is the worst
+    leak this map could produce — it draws a pin in what should be empty water
+    AND names the island by implication."""
+    kinds = {"road", "instructional", "historical", "rio"}
+    pgs = doc["poneglyphs"]
+    assert pgs, "no poneglyphs reached the artifact"
+    debut = {i["slug"]: i["debut_chapter"] for i in doc["islands"]}
+
+    for p in pgs:
+        assert p["kind"] in kinds, f"{p['slug']}: bad kind {p['kind']!r}"
+        assert p["custody"], f"{p['slug']}: no custody window — it can never render"
+        first = min(w["from_chapter"] for w in p["custody"])
+        assert p["revealed_chapter"] <= first, (
+            f"{p['slug']}: revealed at ch. {p['revealed_chapter']} but its first custody window "
+            f"opens at {first} — it would stand on the map before the reader knows it exists"
+        )
+        for w in p["custody"]:
+            assert w["from_chapter"] >= 1, f"{p['slug']}: from_chapter < 1"
+            isl = w["island_slug"]
+            if isl is None:
+                continue
+            assert isl in debut, f"{p['slug']}: custody names unknown island {isl!r}"
+            assert debut[isl] is not None and w["from_chapter"] >= debut[isl], (
+                f"{p['slug']} stands on {isl!r} from ch. {w['from_chapter']}, but that island is "
+                f"not charted until ch. {debut[isl]}"
+            )
+
+    # THERE ARE FOUR ROAD PONEGLYPHS, and the fourth's location is the plot.
+    # Three is the honest count: inventing a pin for the fourth would be
+    # inventing the answer to the story.
+    roads = [p["slug"] for p in pgs if p["kind"] == "road"]
+    assert len(roads) == 3, (
+        f"{len(roads)} Road Poneglyphs are placed ({roads}). Three are findable in the story; "
+        f"the fourth's location is the plot and must not be guessed at."
+    )
+    unverified = sum(1 for p in pgs for w in p["custody"] if not w["verified"])
+    return (f"{len(pgs)} stones ({len(roads)} Road), every one revealed before it is placed "
+            f"and standing on a charted island, {unverified} still verified:false")
+
+
 CHECKS = [
     jinbe_test, crew_joins_are_human, straw_hats_complete,
     islands_have_positions, islands_fog_key, no_mojibake,
@@ -776,7 +820,7 @@ CHECKS = [
     voyage_route_forward, vessels_chapter_gated,
     presence_windows_forward, presence_spoiler_and_roster,
     fruit_reveals_gated, haki_users_gated, biomes_valid,
-    bounty_history_gated, wiki_debut_is_not_join, statuses_gated,
+    bounty_history_gated, wiki_debut_is_not_join, statuses_gated, poneglyphs_gated,
 ]
 
 

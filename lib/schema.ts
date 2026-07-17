@@ -465,6 +465,30 @@ export const Presence = z.object({
 });
 export type Presence = z.infer<typeof Presence>;
 
+export const PoneglyphKind = z.enum(["road", "instructional", "historical", "rio"]);
+export type PoneglyphKind = z.infer<typeof PoneglyphKind>;
+
+/**
+ * A stone, and where it is as of a chapter.
+ *
+ * custody reuses PresenceWindow verbatim — "where is it now" is the same
+ * question for a stone as for a crew, and stones do move (a copy is carried
+ * away; the original stays). revealed_chapter is when the READER learns the
+ * stone exists, which is never later than its first custody window: normalize.py
+ * refuses the inverse, because a pin standing on the map before the reader knows
+ * the thing exists is the whole spoiler.
+ */
+export const Poneglyph = z.object({
+  slug: z.string(),
+  name: z.string(),
+  kind: PoneglyphKind,
+  /** "Pluton", "Joy Boy's apology" — a short gloss, or null. */
+  note: z.string().nullable(),
+  revealed_chapter: z.number().int().positive(),
+  custody: z.array(PresenceWindow).min(1),
+});
+export type Poneglyph = z.infer<typeof Poneglyph>;
+
 export const StatusKind = z.enum(["warlord", "yonko", "supernova"]);
 export type StatusKind = z.infer<typeof StatusKind>;
 
@@ -527,6 +551,7 @@ export const Canon = z.object({
   vessels: z.array(Vessel),
   presence: Presence,
   statuses: z.array(Status),
+  poneglyphs: z.array(Poneglyph),
   boats: z.array(Boat),
   locations: z.array(CanonLocation),
   swords: z.array(Sword),

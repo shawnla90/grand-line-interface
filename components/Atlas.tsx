@@ -313,6 +313,16 @@ export default function Atlas({
         setSelected(h.slug);
         return;
       }
+      // A stone is not a person: isolate the poneglyph layer and fly to where
+      // it currently sits (the hit carries its own resolved coordinate, so a
+      // stone that has been moved goes to where it is now, not where it was).
+      if (h.kind === "poneglyph") {
+        setFocus({ kind: "poneglyph" });
+        setFollow(false);
+        flyKey.current += 1;
+        setFlyTarget({ lng: h.lng, lat: h.lat, key: flyKey.current });
+        return;
+      }
       // A warlord focuses on themselves (matchesFocus matches e.slug too);
       // a member focuses their whole crew.
       const crewSlug = h.kind === "member" ? h.crewSlug : h.slug;

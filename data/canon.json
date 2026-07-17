@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-17T02:18:48.009002+00:00",
+    "generated_at": "2026-07-17T02:34:37.372908+00:00",
     "generator": "scripts/normalize.py",
     "source_manifest_sha": "be7af436b558b373ae1e6f28cc5007ef89153529fb274cb7efd1a47b4f1ef25a",
     "sources": {
@@ -22,6 +22,7 @@
       "vessels contains UNVERIFIED rows. Ship-acquisition chapters are not manga-confirmed. The UI must render them as unverified.",
       "crew_presence contains UNVERIFIED windows. Who-is-where chapter stamps are not manga-confirmed. The UI must render presence as unverified.",
       "statuses contains UNVERIFIED windows. Warlord/Emperor/Supernova reveal chapters are not manga-confirmed. The UI must render them as unverified.",
+      "poneglyphs contains UNVERIFIED custody windows (7 stones, 3 of them Road Poneglyphs). Reveal chapters are not manga-confirmed. The UI must render them as unverified.",
       "fruit_reveals contains UNVERIFIED rows. Fruit reveal chapters are not manga-confirmed. The UI must render fruit facts as unverified.",
       "haki_users contains UNVERIFIED rows. Haki reveal chapters are not manga-confirmed. The UI must render haki facts as unverified.",
       "124 bounty rows were dropped for carrying no reveal chapter (databook, Vivre Card and magazine figures the wiki never ties to a chapter). An ungated bounty cannot be fogged, so it is dropped rather than shown from chapter 1. To restore one, give it a chapter in canon/bounties.json."
@@ -52,6 +53,8 @@
       "presence_windows": 96,
       "presence_windows_verified": 0,
       "statuses": 29,
+      "poneglyphs": 7,
+      "poneglyphs_road": 3,
       "status_windows": 29,
       "status_windows_verified": 0,
       "fruit_reveals": 35,
@@ -54026,6 +54029,155 @@
           "to_chapter": null,
           "source_ref": "Hand-authored. X Drake is one of the eleven Supernovas at Sabaody, ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
           "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    }
+  ],
+  "poneglyphs": [
+    {
+      "slug": "alabasta-poneglyph",
+      "name": "The Poneglyph of Alabasta",
+      "kind": "instructional",
+      "note": "Pluton",
+      "revealed_chapter": 202,
+      "custody": [
+        {
+          "order": 1,
+          "island_slug": "arabasta-kingdom",
+          "label": "The tomb beneath Alubarna",
+          "from_chapter": 202,
+          "to_chapter": null,
+          "lng": -125.4532,
+          "lat": -2.0675,
+          "source_ref": "Hand-authored. Robin reads the stone in the royal tomb and finds it does not say what Crocodile came for (~ch. 202). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "shandora-poneglyph",
+      "name": "The Poneglyph of Shandora",
+      "kind": "instructional",
+      "note": "Poseidon",
+      "revealed_chapter": 272,
+      "custody": [
+        {
+          "order": 1,
+          "island_slug": "skypiea",
+          "label": "The golden belfry of Shandora",
+          "from_chapter": 272,
+          "to_chapter": null,
+          "lng": -91.1362,
+          "lat": 17.0745,
+          "source_ref": "Hand-authored. The stone in the belfry, which Robin reads during the Skypiea arc (~ch. 272), and beneath it Gol D. Roger's own message. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "ohara-poneglyph",
+      "name": "The Poneglyph of Ohara",
+      "kind": "historical",
+      "note": null,
+      "revealed_chapter": 395,
+      "custody": [
+        {
+          "order": 1,
+          "island_slug": "ohara",
+          "label": "The Tree of Knowledge — the scholars' stone",
+          "from_chapter": 395,
+          "to_chapter": null,
+          "lng": 158.826,
+          "lat": 56.7155,
+          "source_ref": "Hand-authored. Shown in the Ohara flashback (~ch. 395), the stone the archaeologists died for. The island is destroyed; the stone is what the story is about. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "sea-forest-poneglyph",
+      "name": "The Sea Forest Poneglyph",
+      "kind": "historical",
+      "note": "Joy Boy's apology",
+      "revealed_chapter": 649,
+      "custody": [
+        {
+          "order": 1,
+          "island_slug": "sea-forest",
+          "label": "The Sea Forest — Joy Boy's apology to Poseidon",
+          "from_chapter": 649,
+          "to_chapter": null,
+          "lng": -4.7587,
+          "lat": -4.9572,
+          "source_ref": "Hand-authored. Robin reads the apology in the Sea Forest during the Fish-Man Island arc (~ch. 649). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "road-zou",
+      "name": "Road Poneglyph — the Whale Tree",
+      "kind": "road",
+      "note": null,
+      "revealed_chapter": 818,
+      "custody": [
+        {
+          "order": 1,
+          "island_slug": "zou",
+          "label": "Inside the Whale Tree, kept by the Mink Tribe",
+          "from_chapter": 818,
+          "to_chapter": null,
+          "lng": 53.1494,
+          "lat": -4.3461,
+          "source_ref": "Hand-authored. The Dukes show the crew the Road Poneglyph the Minks have guarded for centuries (~ch. 818) — the reader's first Road Poneglyph, and the first time the word means anything. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "road-whole-cake",
+      "name": "Road Poneglyph — Big Mom's repository",
+      "kind": "road",
+      "note": null,
+      "revealed_chapter": 846,
+      "custody": [
+        {
+          "order": 1,
+          "island_slug": "whole-cake-island",
+          "label": "The treasure repository of Whole Cake Chateau",
+          "from_chapter": 846,
+          "to_chapter": null,
+          "lng": 72.2778,
+          "lat": -2.819,
+          "source_ref": "Hand-authored. Big Mom's Road Poneglyph, the reason the crew sails into her territory at all. The reveal chapter is a reading of the arc's opening, not a caption. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "road-wano",
+      "name": "Road Poneglyph — Onigashima",
+      "kind": "road",
+      "note": null,
+      "revealed_chapter": 954,
+      "custody": [
+        {
+          "order": 1,
+          "island_slug": "onigashima",
+          "label": "Kaido's stronghold on Onigashima",
+          "from_chapter": 954,
+          "to_chapter": null,
+          "lng": 33.4161,
+          "lat": 3.9116,
+          "source_ref": "Hand-authored. The third Road Poneglyph, held by Kaido in Wano. The reveal chapter is a reading of the arc. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
           "verified": false
         }
       ]

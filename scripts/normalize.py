@@ -279,6 +279,7 @@ def main() -> int:
     haki_users_doc = load(CANON_DIR / "haki_users.json")
     bounties_doc = load(CANON_DIR / "bounties.json")
     statuses_doc = load(CANON_DIR / "statuses.json")
+    poneglyphs_doc = load(CANON_DIR / "poneglyphs.json")
 
     status_map = ov["character_status"]
     crew_status_map = ov["crew_status"]
@@ -1112,6 +1113,64 @@ def main() -> int:
             "are not manga-confirmed. The UI must render them as unverified."
         )
 
+    # ----------------------------------------------------------- poneglyphs
+    # The stones. No upstream source has them as entities — they exist only
+    # inside chapter prose — so this is authored end to end. Custody reuses the
+    # presence window shape (and build_windows itself), because "where is it, as
+    # of a chapter" is the same question for a stone as for a crew: a copy gets
+    # carried off, an original stays put.
+    PONEGLYPH_KINDS = {"road", "instructional", "historical", "rio"}
+    island_debut = {i["slug"]: i["debut_chapter"] for i in islands}
+    poneglyphs = []
+    seen_pg: set[str] = set()
+    for pg in poneglyphs_doc["poneglyphs"]:
+        slug = pg["slug"]
+        if slug in seen_pg:
+            raise die(f"duplicate poneglyph slug {slug!r}", pg)
+        seen_pg.add(slug)
+        if pg["kind"] not in PONEGLYPH_KINDS:
+            raise die(f"poneglyph {slug!r} has kind {pg['kind']!r}, not one of "
+                      f"{sorted(PONEGLYPH_KINDS)}", pg)
+        revealed = pg["revealed_chapter"]
+        if not isinstance(revealed, int) or revealed < 1:
+            raise die(f"poneglyph {slug!r} has revealed_chapter {revealed!r} (< 1)", pg)
+        custody = build_windows(pg["custody"], slug)
+        if revealed > custody[0]["from_chapter"]:
+            raise die(
+                f"poneglyph {slug!r} is revealed at ch. {revealed} but its first custody window "
+                f"opens at ch. {custody[0]['from_chapter']} — it would be standing on the map "
+                f"before the reader knows it exists.", pg)
+        for w in custody:
+            isl = w["island_slug"]
+            if isl is None:
+                continue
+            debut = island_debut.get(isl)
+            if debut is None:
+                raise die(f"poneglyph {slug!r} custody names island {isl!r}, which is not in "
+                          "canon.json", w)
+            if w["from_chapter"] < debut:
+                raise die(
+                    f"poneglyph {slug!r} stands on {isl!r} from ch. {w['from_chapter']}, but that "
+                    f"island is not charted until ch. {debut}. A stone must never render on a "
+                    f"fogged island — it would draw a pin in empty water and name the island by "
+                    f"implication.", w)
+        poneglyphs.append({
+            "slug": slug,
+            "name": pg["name"],
+            "kind": pg["kind"],
+            "note": pg.get("note"),
+            "revealed_chapter": revealed,
+            "custody": custody,
+        })
+
+    roads = sum(1 for p in poneglyphs if p["kind"] == "road")
+    if any(not w["verified"] for p in poneglyphs for w in p["custody"]):
+        warnings.append(
+            f"poneglyphs contains UNVERIFIED custody windows ({len(poneglyphs)} stones, "
+            f"{roads} of them Road Poneglyphs). Reveal chapters are not manga-confirmed. The UI "
+            f"must render them as unverified."
+        )
+
     if any(not r["verified"] for r in fruit_reveals):
         warnings.append(
             "fruit_reveals contains UNVERIFIED rows. Fruit reveal chapters are not "
@@ -1174,6 +1233,8 @@ def main() -> int:
                 "presence_windows": len(presence_windows),
                 "presence_windows_verified": sum(1 for w in presence_windows if w["verified"]),
                 "statuses": len(statuses),
+                "poneglyphs": len(poneglyphs),
+                "poneglyphs_road": sum(1 for p in poneglyphs if p["kind"] == "road"),
                 "status_windows": sum(len(s["windows"]) for s in statuses),
                 "status_windows_verified": sum(1 for s in statuses for w in s["windows"]
                                                if w["verified"]),
@@ -1204,6 +1265,8 @@ def main() -> int:
         # Warlord / Emperor / Supernova on a time axis — a flat table because a
         # status is many-per-entity, windowed, and cross-cuts crews AND people.
         "statuses": statuses,
+        # The stones. Custody windows, same shape as presence.
+        "poneglyphs": poneglyphs,
         # Phase 7A — the arsenal. Small tables (~120KB total) that make entity
         # views possible: every crew's ship, canonical locations with sea/region
         # joins, the named blades, dials, and Luffy's whole move-list.

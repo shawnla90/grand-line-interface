@@ -351,6 +351,51 @@ def main() -> int:
             check("refog ch90: every bounty is gone again",
                   "3,000,000,000" not in text and "30,000,000" not in text)
 
+            # ---- 11. the stones. The poneglyphs ARE the plot, so this is the
+            # strictest gate on the map: the WORD must not exist before ch. 202.
+            def stone_slugs():
+                return {f["slug"] for f in page.evaluate(
+                    """() => (window.__map.querySourceFeatures('poneglyphs') || [])
+                             .map(f => f.properties)""")}
+
+            page.goto(f"{BASE}/?ch=1")
+            wait_map(page)
+            check("ch1: the word 'Poneglyph' is nowhere in the page",
+                  "oneglyph" not in body_text(page))
+            check("ch1: no stone is in the source", not stone_slugs())
+
+            # ch273: exactly two stones are known — Alabasta (202) and Shandora (272)
+            page.goto(f"{BASE}/?ch=273")
+            wait_map(page)
+            s = stone_slugs()
+            check("ch273: exactly the two stones read so far",
+                  s == {"alabasta-poneglyph", "shandora-poneglyph"}, f"{sorted(s)}")
+            check("ch273: no Road Poneglyph exists yet",
+                  "Road Poneglyph" not in body_text(page))
+
+            page.goto(f"{BASE}/?ch=850")
+            wait_map(page)
+            s = stone_slugs()
+            check("ch850: the Zou and Big Mom road stones are charted",
+                  {"road-zou", "road-whole-cake"} <= s, f"{sorted(s)}")
+            check("ch850: Kaido's is not — that is 100 chapters away",
+                  "road-wano" not in s)
+
+            # scrub back: the stones un-render
+            page.goto(f"{BASE}/?ch=200")
+            wait_map(page)
+            check("refog ch200: every stone is gone", not stone_slugs())
+
+            # focusing the stones dims the people
+            page.goto(f"{BASE}/?ch=850&lens=crew&focus=poneglyph:*")
+            wait_map(page)
+            props = presence_props(page)
+            check("ch850/focus=poneglyph: every presence orb dims",
+                  bool(props) and all(pr.get("dim") == 1 for pr in props),
+                  f"{len(props)} orbs")
+            check("ch850/focus=poneglyph: the stones are still on the map",
+                  len(stone_slugs()) >= 4)
+
             browser.close()
     finally:
         if server is not None:

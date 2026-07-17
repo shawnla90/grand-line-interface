@@ -22,6 +22,7 @@
 
 import type { World, WorldAt, FruitType, HakiType, StatusKind } from "@/lib/canon";
 import { presenceWindowAt, statusHoldersAt } from "@/lib/canon";
+import { PONEGLYPH_INK } from "./marks/poneglyph";
 import { affiliationColor, crewColor, WARLORD_COLOR } from "@/lib/crews";
 import {
   FRUIT_TYPE_ORDER,
@@ -186,6 +187,14 @@ export default function Legend({
     return { kind: k, count: n };
   }).filter((s) => s.count > 0);
 
+  // The stones the reader has been told about AND that are somewhere right now.
+  // Zero of them means the chip is not built, so at ch. 1 the word "Poneglyph"
+  // is not in the page — which matters more here than anywhere else on this
+  // panel: the poneglyphs ARE the plot.
+  const stonesShown = world.poneglyphs.filter(
+    (p) => p.revealedChapter <= at.chapter && presenceWindowAt(p.custody, at.chapter),
+  ).length;
+
   const affiliationCounts = new Map<string, number>();
   for (const c of activeChars) {
     if (c.affiliation === "Warlord") continue; // the status chip already says this
@@ -234,7 +243,7 @@ export default function Legend({
         />
       </ul>
 
-      {lens !== "off" && (statusCounts.length > 0 || affiliationCounts.size > 0) && (
+      {(statusCounts.length > 0 || affiliationCounts.size > 0 || stonesShown > 0) && (
         <div className="mt-2.5 border-t border-rope/60 pt-2.5">
           <div className="font-mono text-[9px] uppercase tracking-[0.22em] text-muted-2">
             Isolate
@@ -257,6 +266,23 @@ export default function Legend({
                 </FocusChip>
               </li>
             ))}
+            {stonesShown > 0 && (
+              <li>
+                <FocusChip
+                  active={isActive({ kind: "poneglyph" })}
+                  onClick={() => toggle({ kind: "poneglyph" })}
+                >
+                  <span
+                    className="block h-2 w-[7px] rounded-[1px]"
+                    style={{ background: PONEGLYPH_INK }}
+                  />
+                  <span className="text-[10px] text-muted">
+                    Poneglyphs{" "}
+                    <span className="tnum font-mono text-[9px] text-muted-2">{stonesShown}</span>
+                  </span>
+                </FocusChip>
+              </li>
+            )}
             {[...affiliationCounts].map(([name, count]) => (
               <li key={name}>
                 <FocusChip

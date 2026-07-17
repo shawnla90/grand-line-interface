@@ -41,6 +41,7 @@ import {
   type ResolvedFocus,
 } from "@/lib/lenses";
 import type { Focus, Lens, PresenceLens } from "@/lib/lenses";
+import { poneglyphSvg, PONEGLYPH_INK } from "./marks/poneglyph";
 import { altitudeT, columnOpacity, expandSkyWaypoints, transitBase } from "./skypiea";
 import type { HakiType } from "@/lib/canon";
 import { jollyRogerSvg } from "./marks/jolly-roger";
@@ -454,6 +455,49 @@ function makeWarlordElement(): {
 }
 
 /**
+ * Build (once, per stone) a poneglyph stele. Pooled exactly like the Warlord
+ * ring: created once, moved and re-labelled per frame, `display:none` when the
+ * stone is not in play. The label is the KIND, never the stone's name — "road"
+ * is a category, but "Road Poneglyph — the Whale Tree" beside an island is a
+ * sentence about the plot, so the name lives in the hover tooltip where the
+ * reader has to ask for it.
+ */
+function makePoneglyphElement(): {
+  el: HTMLDivElement;
+  stone: HTMLDivElement;
+  label: HTMLDivElement;
+} {
+  const el = document.createElement("div");
+  el.className = "poneglyphMarker";
+  el.style.display = "none";
+  el.style.pointerEvents = "none";
+  el.style.textAlign = "center";
+  const wrap = makeScaleWrap("50% 100%");
+
+  const stone = document.createElement("div");
+  stone.style.margin = "0 auto";
+  stone.style.width = "18px";
+  stone.style.height = "21px";
+  stone.style.filter = "drop-shadow(0 1px 3px rgba(0,0,0,0.8))";
+  stone.innerHTML = poneglyphSvg(18);
+
+  const label = document.createElement("div");
+  label.style.marginTop = "1px";
+  label.style.fontSize = "7px";
+  label.style.letterSpacing = "0.14em";
+  label.style.textTransform = "uppercase";
+  label.style.whiteSpace = "nowrap";
+  label.style.color = "rgba(95,125,156,0.95)";
+  label.style.fontFamily = "var(--font-geist-mono), monospace";
+  label.style.textShadow = "0 1px 3px rgba(0,0,0,0.9)";
+
+  wrap.appendChild(stone);
+  wrap.appendChild(label);
+  el.appendChild(wrap);
+  return { el, stone, label };
+}
+
+/**
  * Build (once, per crew member) a small portrait ring. Like the Warlord ring but
  * smaller and label-less — the flag above carries the crew name, and hovering the
  * orb underneath names the member. The empty `label` div only keeps hidePresence
@@ -713,6 +757,7 @@ export default function WorldMap({
   // One portrait ring per named crew member (Phase 6). Keyed by member slug
   // (unique across crews). Positions track the member-orb ring around the flag.
   const memberMarks = useRef<Map<string, PresenceHandle>>(new Map());
+  const poneglyphMarks = useRef<Map<string, PresenceHandle>>(new Map());
   // paint() runs on the chapter tween; it reads the live lens through this ref.
   const lensRef = useRef(lens);
   useEffect(() => {
@@ -815,6 +860,15 @@ export default function WorldMap({
       fruitType: string | null;
       hakiTypes: string | null;
     } | null;
+    /** A poneglyph stele. Only ever a stone the reader has been told about. */
+    stone?: {
+      name: string;
+      kind: string;
+      note: string | null;
+      label: string;
+      confidence: string;
+      verified: boolean;
+    } | null;
   } | null>(null);
 
   // MapLibre needs a WebGL context and there are real browsers that will not give
@@ -869,6 +923,10 @@ export default function WorldMap({
         // entities are ever in this source — spoiler safety is structural here,
         // not an opacity trick.
         presence: { type: "geojson", data: { type: "FeatureCollection", features: [] } },
+        // The stones. Same rule as presence: only the ones the reader has been
+        // told about are ever in the source, so a fogged stone has nothing to
+        // hover, nothing to query, and no pixels.
+        poneglyphs: { type: "geojson", data: { type: "FeatureCollection", features: [] } },
       },
       layers: [
         { id: "ocean", type: "background", paint: { "background-color": C.ocean } },
@@ -1135,6 +1193,31 @@ export default function WorldMap({
           layout: { visibility: lens !== "off" ? "visible" : "none" },
           paint: { "circle-radius": 11, "circle-color": "rgba(0,0,0,0)" },
         },
+
+        // THE GLINT. At orbit the steles themselves are too small to read, so
+        // each known stone leaves a single dot on the water — about ten pixels
+        // across the whole globe, which is the point: "there are secrets written
+        // into this world, and you have found some of them". It fades out as the
+        // stele resolves on approach so the two never draw at once.
+        {
+          id: "poneglyph-glint",
+          type: "circle",
+          source: "poneglyphs",
+          paint: {
+            "circle-radius": ["interpolate", ["linear"], ["zoom"], 0, 1.5, 3, 2.2],
+            "circle-color": PONEGLYPH_INK,
+            "circle-opacity": ["interpolate", ["linear"], ["zoom"], 2.2, 0.9, 3.4, 0],
+            "circle-stroke-color": C.parchment,
+            "circle-stroke-width": 0.5,
+            "circle-stroke-opacity": ["interpolate", ["linear"], ["zoom"], 2.2, 0.5, 3.4, 0],
+          },
+        },
+        {
+          id: "poneglyph-hit",
+          type: "circle",
+          source: "poneglyphs",
+          paint: { "circle-radius": 12, "circle-color": "rgba(0,0,0,0)" },
+        },
       ],
     };
 
@@ -1291,6 +1374,24 @@ export default function WorldMap({
       }
     }
 
+    // One stele per stone, built once, hidden and EMPTY — the same pooling as
+    // every other mark. A stone the reader has not been told about has no
+    // element populated, so its name is not in the DOM to be read out.
+    const poneglyphPool = poneglyphMarks.current;
+    for (const pg of world.poneglyphs) {
+      const p = makePoneglyphElement();
+      const marker = new maplibregl.Marker({ element: p.el, opacityWhenCovered: "0.1" })
+        .setLngLat([0, 0])
+        .addTo(m);
+      poneglyphPool.set(pg.slug, {
+        marker,
+        parts: { el: p.el, ring: p.stone, label: p.label },
+        shown: false,
+        paintKey: null,
+        populated: false,
+      });
+    }
+
     const onMove = (e: MapMouseEvent) => {
       // Presence first: a crew flag or Warlord sits ON an island pin at most
       // home bases, and the more specific mark should win the tooltip. The
@@ -1313,6 +1414,26 @@ export default function WorldMap({
             fruitName: (pf.properties?.fruitName as string) ?? null,
             fruitType: (pf.properties?.fruitType as string) ?? null,
             hakiTypes: (pf.properties?.hakiTypes as string) ?? null,
+          },
+        });
+        return;
+      }
+      // Then the stones. Ahead of islands for the same reason presence is: a
+      // stele stands ON an island pin, and the more specific mark should win.
+      const gf = m.queryRenderedFeatures(e.point, { layers: ["poneglyph-hit"] })[0];
+      if (gf) {
+        m.getCanvas().style.cursor = "pointer";
+        setHover({
+          x: e.point.x,
+          y: e.point.y,
+          island: null,
+          stone: {
+            name: gf.properties?.name as string,
+            kind: gf.properties?.kind as string,
+            note: (gf.properties?.note as string) || null,
+            label: gf.properties?.label as string,
+            confidence: gf.properties?.confidence as string,
+            verified: gf.properties?.verified === true || gf.properties?.verified === "true",
           },
         });
         return;
@@ -1376,6 +1497,7 @@ export default function WorldMap({
         crews: crewFlags.current,
         chars: warlordMarks.current,
         members: memberMarks.current,
+        poneglyphs: poneglyphMarks.current,
         lens: lensRef.current,
         focus: resolvedFocus(),
       }, art);
@@ -1409,6 +1531,7 @@ export default function WorldMap({
       crews: crewFlags.current,
       chars: warlordMarks.current,
       members: memberMarks.current,
+      poneglyphs: poneglyphMarks.current,
       lens: lensRef.current,
       focus: resolvedFocus(),
     }, art);
@@ -1427,6 +1550,7 @@ export default function WorldMap({
       crews: crewFlags.current,
       chars: warlordMarks.current,
       members: memberMarks.current,
+      poneglyphs: poneglyphMarks.current,
       lens: lensRef.current,
       focus: resolvedFocus(),
     }, art);
@@ -1475,6 +1599,7 @@ export default function WorldMap({
       crews: crewFlags.current,
       chars: warlordMarks.current,
       members: memberMarks.current,
+      poneglyphs: poneglyphMarks.current,
       lens,
       focus: resolvedFocus(),
     }, art);
@@ -1491,6 +1616,7 @@ export default function WorldMap({
       crews: crewFlags.current,
       chars: warlordMarks.current,
       members: memberMarks.current,
+      poneglyphs: poneglyphMarks.current,
       lens: lensRef.current,
       focus: resolvedFocus(),
     }, art);
@@ -1521,7 +1647,12 @@ export default function WorldMap({
 
   const hoveredIsland = hover?.island ?? null;
   const hoveredPresence = hover?.presence ?? null;
-  const hoveringFog = hover !== null && hover.island === null && !hoveredPresence;
+  const hoveredStone = hover?.stone ?? null;
+  // "fog" is the LAST case, not the default: it means the reader hovered an
+  // island they have not reached. A stone or a crew mark also carries no island,
+  // so both have to be excluded or hovering a stele reads as "uncharted waters".
+  const hoveringFog =
+    hover !== null && hover.island === null && !hoveredPresence && !hoveredStone;
 
   return (
     <div className="absolute inset-0">
@@ -1567,7 +1698,28 @@ export default function WorldMap({
           className="pointer-events-none absolute z-20 -translate-x-1/2 -translate-y-[calc(100%+14px)]"
           style={{ left: hover.x, top: hover.y }}
         >
-          {hoveredPresence ? (
+          {hoveredStone ? (
+            <div className="min-w-[168px] max-w-[210px] rounded-md border border-rope bg-ink/95 px-2.5 py-1.5 shadow-2xl backdrop-blur">
+              <div className="font-mono text-[8px] uppercase tracking-[0.2em]" style={{ color: PONEGLYPH_INK }}>
+                {hoveredStone.kind === "road"
+                  ? "Road Poneglyph"
+                  : hoveredStone.kind === "instructional"
+                    ? "Instructional Poneglyph"
+                    : "Poneglyph"}
+              </div>
+              <div className="mt-0.5 text-[12px] font-medium leading-snug text-parchment">
+                {hoveredStone.name}
+              </div>
+              <div className="mt-0.5 text-[10px] leading-snug text-muted">{hoveredStone.label}</div>
+              {hoveredStone.note && (
+                <div className="mt-0.5 font-mono text-[9px] text-gold-2">{hoveredStone.note}</div>
+              )}
+              <div className="mt-1 font-mono text-[9px] uppercase tracking-[0.16em] text-muted-2">
+                {hoveredStone.confidence === "canon" ? "read on the page" : "placement inferred"}
+                {!hoveredStone.verified && " · unverified"}
+              </div>
+            </div>
+          ) : hoveredPresence ? (
             <div className="min-w-[150px] rounded-md border border-rope bg-ink/95 px-2.5 py-1.5 shadow-2xl backdrop-blur">
               <div className="text-[12px] font-medium text-parchment">{hoveredPresence.name}</div>
               {hoveredPresence.crewName && (
@@ -1654,6 +1806,7 @@ type PresencePools = {
   chars: Map<string, PresenceHandle>;
   members: Map<string, PresenceHandle>;
   lens: PresenceLens;
+  poneglyphs: Map<string, PresenceHandle>;
   focus: ResolvedFocus | null;
 };
 
@@ -1936,5 +2089,63 @@ function paint(
         presenceOrbs(world, ch, layout, pools.lens, pools.focus),
       );
     }
+  }
+
+  /* ------------------------------------------------------------- poneglyphs */
+  // Outside the lens gate on purpose: the stones are not presence. Turning the
+  // presence layer off is "stop showing me people", and the reader who does that
+  // is exactly the one reading the map for its secrets.
+  {
+    const features: GeoJSON.Feature[] = [];
+    const dimStone = pools?.focus ? pools.focus.focus.kind !== "poneglyph" : false;
+    for (const pg of world.poneglyphs) {
+      const h = pools?.poneglyphs.get(pg.slug);
+      // revealedChapter AND an active custody window. Two gates, because they
+      // answer different questions: has the reader been told this stone exists,
+      // and is it anywhere right now.
+      const w = pg.revealedChapter <= ch ? presenceWindowAt(pg.custody, ch) : null;
+      if (!w) {
+        if (h) hidePresence(h);
+        continue;
+      }
+      features.push({
+        type: "Feature",
+        properties: {
+          slug: pg.slug,
+          name: pg.name,
+          kind: pg.kind,
+          note: pg.note ?? "",
+          label: w.label,
+          confidence: w.confidence,
+          verified: w.verified,
+        },
+        geometry: { type: "Point", coordinates: [w.lng, w.lat] },
+      });
+      if (!h) continue;
+      h.marker.setLngLat([w.lng, w.lat]);
+      // Focused on the stones: they hold their ink and everything else dims (the
+      // presence pools handle their own side). Focused on anything else: the
+      // stones dim like any other bystander.
+      h.parts.el.classList.toggle("gliDim", dimStone);
+      const key = `${w.order}|${pg.kind}`;
+      if (h.shown && h.paintKey === key) continue;
+      if (!h.populated) {
+        // Only the Road stones are labelled, and only "road": the four of them
+        // are a set the reader is actively counting, and the word is short
+        // enough to sit under a mark. "INSTRUCTIONAL" and "HISTORICAL" set in
+        // the same place are longer than the island they stand on and turn the
+        // sea into a glossary. Those stones are identified by their SHAPE, and
+        // named in the tooltip — where the reader has to ask.
+        h.parts.label.textContent = pg.kind === "road" ? "road" : "";
+        h.populated = true;
+      }
+      h.parts.el.style.display = "";
+      h.shown = true;
+      h.paintKey = key;
+    }
+    (m.getSource("poneglyphs") as GeoJSONSource | undefined)?.setData({
+      type: "FeatureCollection",
+      features,
+    });
   }
 }

@@ -228,6 +228,19 @@ export type WorldCharacterPresence = {
   haki: WorldHakiFact[];
 };
 
+export type PoneglyphKind = "road" | "instructional" | "historical" | "rio";
+
+export type WorldPoneglyph = {
+  slug: string;
+  name: string;
+  kind: PoneglyphKind;
+  note: string | null;
+  /** When the READER learns the stone exists. Never after its first custody window. */
+  revealedChapter: number;
+  /** Where it is, over time. Read through presenceWindowAt — stones move. */
+  custody: WorldPresenceWindow[];
+};
+
 export type StatusKind = "warlord" | "yonko" | "supernova";
 
 export type WorldStatusWindow = {
@@ -273,6 +286,8 @@ export type World = {
   presence: { crews: WorldCrewPresence[]; characters: WorldCharacterPresence[] };
   /** Warlord/Emperor/Supernova windows. Read through statusHoldersAt, never raw. */
   statuses: WorldStatus[];
+  /** The stones. Only ever drawn where presenceWindowAt(custody, ch) resolves. */
+  poneglyphs: WorldPoneglyph[];
   /** episodeToChapter[ep] -> manga chapter reached by the end of that episode. */
   episodeToChapter: number[];
   /** chapterToEpisode[ch] -> first episode that reaches that chapter, or null. */
@@ -661,6 +676,14 @@ export function buildWorld(canon: Canon): World {
     crews: canon.presence.crews.map(toCrewPresence),
     characters: canon.presence.characters.map(toCharacterPresence),
   };
+  const poneglyphs: WorldPoneglyph[] = canon.poneglyphs.map((p) => ({
+    slug: p.slug,
+    name: p.name,
+    kind: p.kind,
+    note: p.note,
+    revealedChapter: p.revealed_chapter,
+    custody: p.custody.map(toWindow).sort((a, b) => a.order - b.order),
+  }));
   const statuses: WorldStatus[] = canon.statuses.map((s) => ({
     slug: s.slug,
     entity: s.entity,
@@ -700,6 +723,7 @@ export function buildWorld(canon: Canon): World {
     vessels,
     presence,
     statuses,
+    poneglyphs,
     episodeToChapter,
     chapterToEpisode,
     counts: {

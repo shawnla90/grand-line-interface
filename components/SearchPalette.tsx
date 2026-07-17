@@ -29,7 +29,8 @@ export type SearchHit =
    */
   | { kind: "crew" | "warlord"; slug: string; label: string; sub: string; charted: boolean;
       affiliation?: string }
-  | { kind: "member"; slug: string; label: string; sub: string; crewSlug: string; charted: boolean };
+  | { kind: "member"; slug: string; label: string; sub: string; crewSlug: string; charted: boolean }
+  | { kind: "poneglyph"; slug: string; label: string; sub: string; lng: number; lat: number };
 
 type Props = {
   world: World;
@@ -46,6 +47,7 @@ const KIND_LABEL: Record<SearchHit["kind"], string> = {
   crew: "crew",
   warlord: "warlord",
   member: "pirate",
+  poneglyph: "poneglyph",
 };
 
 export default function SearchPalette({ world, shown, offCanon, open, onClose, onPick }: Props) {
@@ -87,6 +89,19 @@ export default function SearchPalette({ world, shown, offCanon, open, onClose, o
         kind: "warlord", slug: c.slug, label: c.name, charted: !!active,
         sub: active ? active.label : "not currently charted",
         affiliation: c.affiliation,
+      });
+    }
+    // The stones. Two gates, both at CONSTRUCTION: the reader must have been
+    // told the stone exists, and it must be somewhere right now. A search box
+    // that can complete "Road Poneglyph" for a chapter-100 reader is a spoiler
+    // with an input field, so the entry is never built rather than filtered.
+    for (const pg of world.poneglyphs) {
+      if (pg.revealedChapter > shown) continue;
+      const w = presenceWindowAt(pg.custody, shown);
+      if (!w) continue;
+      out.push({
+        kind: "poneglyph", slug: pg.slug, label: pg.name, sub: w.label,
+        lng: w.lng, lat: w.lat,
       });
     }
     return out;

@@ -103,7 +103,10 @@ export type Focus =
   | { kind: "fruit-all" }
   | { kind: "haki"; type: HakiType }
   | { kind: "status"; status: StatusKind }
-  | { kind: "affiliation"; name: string };
+  | { kind: "affiliation"; name: string }
+  /** The stones. Matches no PERSON — it isolates the poneglyph layer itself, so
+   *  every presence orb dims and the steles are what is left lit. */
+  | { kind: "poneglyph" };
 
 /** Stable string for URLs and React keys: focus=status:yonko, focus=crew:red-hair-pirates. */
 export function focusKey(f: Focus): string {
@@ -114,6 +117,7 @@ export function focusKey(f: Focus): string {
     case "haki": return `haki:${f.type}`;
     case "status": return `status:${f.status}`;
     case "affiliation": return `affiliation:${f.name}`;
+    case "poneglyph": return "poneglyph:*";
   }
 }
 
@@ -141,6 +145,7 @@ export function parseFocus(raw: string | null | undefined): Focus | null {
       : null;
   }
   if (kind === "affiliation") return { kind: "affiliation", name: val };
+  if (kind === "poneglyph") return { kind: "poneglyph" };
   return null;
 }
 
@@ -183,6 +188,9 @@ export function matchesFocus(
 ): boolean {
   const focus = "kind" in rf ? rf : rf.focus;
   const holders = "kind" in rf ? null : rf.holders;
+  // The stones are not people: focusing them dims every presence orb, which is
+  // the whole point — "show me the secrets, not the sailors".
+  if (focus.kind === "poneglyph") return false;
   if (focus.kind === "crew") return e.crewSlug === focus.slug || e.slug === focus.slug;
   if (focus.kind === "fruit") return revealedFruit(e, ch)?.type === focus.type;
   if (focus.kind === "fruit-all") return revealedFruit(e, ch) !== null;
