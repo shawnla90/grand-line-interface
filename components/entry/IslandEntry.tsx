@@ -15,6 +15,8 @@ import Link from "next/link";
 import type { IslandEntryData } from "@/lib/entry";
 import type { Art } from "@/lib/art";
 import { Confidence, Field, FieldGrid, Kicker, Panel, Receipts } from "@/components/ui/Panel";
+import { poneglyphInk } from "@/components/marks/poneglyph";
+import type { PoneglyphKind } from "@/lib/canon";
 import { BRAND } from "@/config/brand";
 
 export type IslandExtras = {
@@ -136,9 +138,26 @@ export default function IslandEntry({
           <Kicker>Written here</Kicker>
           <ul className="mt-3 space-y-2">
             {extras.poneglyphs.map((p) => (
-              <li key={p.slug}>
-                <div className="text-[13px] text-parchment">{p.name}</div>
-                <div className="text-[11px] text-muted-2">{p.label}</div>
+              <li key={p.slug} className="flex items-baseline gap-2">
+                <span
+                  className="mt-px block h-2.5 w-2 shrink-0 rounded-[1px]"
+                  style={{ background: poneglyphInk(p.kind as PoneglyphKind) }}
+                  aria-hidden
+                />
+                <div>
+                  <div className="text-[13px] text-parchment">
+                    {p.name}
+                    {p.kind === "road" && (
+                      <span
+                        className="ml-2 font-mono text-[9px] uppercase tracking-[0.18em]"
+                        style={{ color: poneglyphInk("road") }}
+                      >
+                        road
+                      </span>
+                    )}
+                  </div>
+                  <div className="text-[11px] text-muted-2">{p.label}</div>
+                </div>
               </li>
             ))}
           </ul>
