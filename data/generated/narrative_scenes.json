@@ -1,0 +1,3623 @@
+{
+  "_meta": {
+    "generated_at": "2026-07-17T05:18:09.149940+00:00",
+    "generator": "scripts/sync_scenes.py",
+    "source": "blender-assets/ (read-only; owned by the Blender asset track)",
+    "warnings": [
+      "EVIDENCE DRIFT: 11 contracts were built against canon/islands.coords.json at 9dce495d7b82; it is now f4c2b67c9e98. Their claims about their own scenes are unaffected, but any atlas_anchor derived from that file is stale. The asset track should re-run scripts/build_narrative_scene_contracts.py."
+    ],
+    "note": "Joined from the narrative-scene INDEX (never a glob — two other schema_version-2 contracts are not v2 narrative scenes). integration_ready is a queue property, joined here; it is never a field on a scene.",
+    "counts": {
+      "scenes": 11,
+      "with_blockout": 2,
+      "runtime_exportable": 0,
+      "integration_ready": 0,
+      "evidence_sha256_checked": 22
+    }
+  },
+  "scenes": [
+    {
+      "id": "conomi-arlong-park",
+      "label": "Conomi Islands and Arlong Park",
+      "entity_type": "nested_landmark_compound",
+      "contract_status": "ready_for_system_sketch",
+      "priority": 2,
+      "index_state": "ready_for_system_sketch",
+      "identity": {
+        "anchor": {
+          "slug": "conomi-islands",
+          "name": "Conomi Islands",
+          "japanese": "コノミ諸島",
+          "romaji": "Konomi Shotō",
+          "region": "East Blue",
+          "sea": null,
+          "island_type": null,
+          "debut_chapter": 69,
+          "debut_episode": 30,
+          "canon_status": "manga",
+          "canon_confidence": "canon",
+          "affiliation": null,
+          "wiki_url": "https://onepiece.fandom.com/wiki/Conomi_Islands",
+          "source_ref": "onepiece.fandom.com/wiki/Conomi_Islands#Island_Box",
+          "id": "conomi-islands",
+          "record_origin": "generated_wiki_record",
+          "atlas_anchor": {
+            "lng": -168,
+            "lat": -33,
+            "confidence": "derived",
+            "source_ref": "Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard.",
+            "usage": "scene_entry_anchor_only",
+            "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+          }
+        },
+        "components": [
+          {
+            "slug": "conomi-islands",
+            "name": "Conomi Islands",
+            "japanese": "コノミ諸島",
+            "romaji": "Konomi Shotō",
+            "region": "East Blue",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 69,
+            "debut_episode": 30,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Conomi_Islands",
+            "source_ref": "onepiece.fandom.com/wiki/Conomi_Islands#Island_Box",
+            "id": "conomi-islands",
+            "role": "island_group",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -168,
+              "lat": -33,
+              "confidence": "derived",
+              "source_ref": "Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard.",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "cocoyasi-village",
+            "name": "Cocoyasi Village",
+            "japanese": "ココヤシ村",
+            "romaji": "Kokoyashi-mura",
+            "region": "Conomi Islands",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 70,
+            "debut_episode": 32,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Cocoyasi_Village",
+            "source_ref": "onepiece.fandom.com/wiki/Cocoyasi_Village#Island_Box",
+            "id": "cocoyasi-village",
+            "role": "village",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -110.078,
+              "lat": -25.3729,
+              "confidence": "derived",
+              "source_ref": "derived: region='Conomi Islands' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "arlong-park",
+            "name": "Arlong Park",
+            "japanese": "アーロンパーク",
+            "romaji": "Āron Pāku",
+            "region": "Conomi Islands",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 69,
+            "debut_episode": 30,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": "Arlong Pirates",
+            "wiki_url": "https://onepiece.fandom.com/wiki/Arlong_Park",
+            "source_ref": "onepiece.fandom.com/wiki/Arlong_Park#Island_Box",
+            "id": "arlong-park",
+            "role": "fortified_headquarters",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -121.1536,
+              "lat": -39.3092,
+              "confidence": "derived",
+              "source_ref": "derived: region='Conomi Islands' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "id": "arlong-map-room",
+            "slug": null,
+            "name": "Arlong Park map room",
+            "role": "narrative_landmark",
+            "debut_chapter": 69,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Arlong_Park",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          }
+        ]
+      },
+      "relationships": [
+        {
+          "from": "arlong-park",
+          "type": "within",
+          "to": "conomi-islands",
+          "confidence": "canon"
+        },
+        {
+          "from": "cocoyasi-village",
+          "type": "within",
+          "to": "conomi-islands",
+          "confidence": "canon"
+        },
+        {
+          "from": "arlong-map-room",
+          "type": "inside",
+          "to": "arlong-park",
+          "confidence": "cited_summary"
+        }
+      ],
+      "chapter_logic": {
+        "base_reveal_chapter": 69,
+        "temporal_variants": [
+          {
+            "id": "arlong-park-intact",
+            "reveal_chapter": 69,
+            "state": "Headquarters and map room intact.",
+            "verification": "verified"
+          },
+          {
+            "id": "arlong-park-collapse",
+            "reveal_chapter": null,
+            "state": "Map room and headquarters collapse during the climax.",
+            "verification": "chapter_to_verify"
+          },
+          {
+            "id": "arlong-park-ruins",
+            "reveal_chapter": null,
+            "state": "Post-battle destroyed compound.",
+            "verification": "chapter_to_verify"
+          }
+        ],
+        "event_scenes": [
+          {
+            "id": "map-room-collapse",
+            "importance": 1,
+            "reveal_chapter": null,
+            "landmark": "arlong-map-room",
+            "state_delta": "Interior ruptures and the upper compound collapses.",
+            "verification": "chapter_to_verify",
+            "camera_cue": "Start inside the map room, then pull through the breaking facade to reveal Cocoyasi beyond.",
+            "fx": [
+              "dust",
+              "masonry fragments",
+              "paper maps"
+            ]
+          }
+        ],
+        "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+        "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+      },
+      "route_network": null,
+      "topology": {
+        "summary": "Treat Arlong Park as an eight-story headquarters compound in the wider Conomi Islands, not as the coastline of an entire island.",
+        "sources": [
+          "https://onepiece.fandom.com/wiki/Arlong_Park"
+        ],
+        "exact_distances": "unknown",
+        "exact_bearings": "partially_known_or_unknown",
+        "layout_mode": "relationship_graph_not_atlas_jitter"
+      },
+      "unresolved": [
+        "Exact shoreline relationship between Cocoyasi Village and Arlong Park.",
+        "Exact manga chapter for the collapse state transition."
+      ],
+      "visual_program": {
+        "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+        "must_show": [
+          "the pagoda-like multi-story headquarters",
+          "map room as an addressable interior landmark",
+          "Cocoyasi and Arlong Park as distinct places in one island group"
+        ],
+        "must_not_show": [
+          "Arlong Park as a generic island silhouette",
+          "the destroyed state before its chapter gate"
+        ],
+        "collection_pattern": [
+          "00_TOPOLOGY",
+          "10_LANDMARKS",
+          "20_EVENT_STATES",
+          "30_ATMOSPHERE_FX",
+          "40_RUNTIME_LOD"
+        ],
+        "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+      },
+      "evidence": [
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+          "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+          "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+          "ownership": "asset_workspace"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+          "ownership": "asset_workspace"
+        }
+      ],
+      "queue": {
+        "state": "visual_contract",
+        "kind": "nested_landmark_compound",
+        "next": "pagoda_headquarters_and_map_room_blockout",
+        "replaced_as_integration_unit_by": null
+      },
+      "blockout": {
+        "exists": false,
+        "runtime_export": false,
+        "maturity": null
+      },
+      "source_ref": "blender-assets/contracts/conomi-arlong-park.visual.json"
+    },
+    {
+      "id": "arabasta-kingdom",
+      "label": "Arabasta kingdom region system",
+      "entity_type": "kingdom_region_system",
+      "contract_status": "ready_for_system_sketch",
+      "priority": 2,
+      "index_state": "ready_for_system_sketch",
+      "identity": {
+        "anchor": {
+          "slug": "arabasta-kingdom",
+          "name": "Arabasta Kingdom",
+          "japanese": "アラバスタ王国",
+          "romaji": "Arabasuta Ōkoku",
+          "region": "Paradise",
+          "sea": null,
+          "island_type": "Summer Island",
+          "debut_chapter": 113,
+          "debut_episode": 78,
+          "canon_status": "manga",
+          "canon_confidence": "canon",
+          "affiliation": "World Government",
+          "wiki_url": "https://onepiece.fandom.com/wiki/Arabasta_Kingdom",
+          "source_ref": "onepiece.fandom.com/wiki/Arabasta_Kingdom#Island_Box",
+          "id": "arabasta-kingdom",
+          "record_origin": "generated_wiki_record",
+          "atlas_anchor": {
+            "lng": -125.4532,
+            "lat": -2.0675,
+            "confidence": "derived",
+            "source_ref": "derived: region='Paradise'; lng by voyage order 7 (whisky-peak, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+            "usage": "scene_entry_anchor_only",
+            "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+          }
+        },
+        "components": [
+          {
+            "slug": "arabasta-kingdom",
+            "name": "Arabasta Kingdom",
+            "japanese": "アラバスタ王国",
+            "romaji": "Arabasuta Ōkoku",
+            "region": "Paradise",
+            "sea": null,
+            "island_type": "Summer Island",
+            "debut_chapter": 113,
+            "debut_episode": 78,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": "World Government",
+            "wiki_url": "https://onepiece.fandom.com/wiki/Arabasta_Kingdom",
+            "source_ref": "onepiece.fandom.com/wiki/Arabasta_Kingdom#Island_Box",
+            "id": "arabasta-kingdom",
+            "role": "kingdom_landmass",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -125.4532,
+              "lat": -2.0675,
+              "confidence": "derived",
+              "source_ref": "derived: region='Paradise'; lng by voyage order 7 (whisky-peak, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "sandora-river",
+            "name": "Sandora River",
+            "japanese": "サンドラ川",
+            "romaji": "Sandora-gawa",
+            "region": "Arabasta Kingdom",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 161,
+            "debut_episode": 96,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Sandora_River",
+            "source_ref": "onepiece.fandom.com/wiki/Sandora_River#Island_Box",
+            "id": "sandora-river",
+            "role": "dividing_river",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -102.2394,
+              "lat": -0.8817,
+              "confidence": "derived",
+              "source_ref": "derived: region='Arabasta Kingdom'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "sandora-desert",
+            "name": "Sandora Desert",
+            "japanese": "サンドラ砂漠",
+            "romaji": "Sandora Sabaku",
+            "region": "Arabasta Kingdom",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 162,
+            "debut_episode": 97,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Sandora_Desert",
+            "source_ref": "onepiece.fandom.com/wiki/Sandora_Desert#Island_Box",
+            "id": "sandora-desert",
+            "role": "desert_region",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -100.9057,
+              "lat": 6.7642,
+              "confidence": "derived",
+              "source_ref": "derived: region='Arabasta Kingdom'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "nanohana",
+            "name": "Nanohana",
+            "japanese": "ナノハナ",
+            "romaji": "Nanohana",
+            "region": "Arabasta",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 155,
+            "debut_episode": 92,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Nanohana",
+            "source_ref": "onepiece.fandom.com/wiki/Nanohana#Island_Box",
+            "id": "nanohana",
+            "role": "port_city",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -102.8707,
+              "lat": 0.4813,
+              "confidence": "derived",
+              "source_ref": "derived: region='Arabasta'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "rainbase",
+            "name": "Rainbase",
+            "japanese": "レインベース",
+            "romaji": "Reinbēsu",
+            "region": "Arabasta",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 126,
+            "debut_episode": 76,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Rainbase",
+            "source_ref": "onepiece.fandom.com/wiki/Rainbase#Island_Box",
+            "id": "rainbase",
+            "role": "casino_city",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -116.2875,
+              "lat": 6.0506,
+              "confidence": "derived",
+              "source_ref": "derived: region='Arabasta'; lng by voyage order 8 (little-garden, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "erumalu",
+            "name": "Erumalu",
+            "japanese": "エルマル",
+            "romaji": "Erumaru",
+            "region": "Arabasta",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 161,
+            "debut_episode": 96,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Erumalu",
+            "source_ref": "onepiece.fandom.com/wiki/Erumalu#Island_Box",
+            "id": "erumalu",
+            "role": "ruined_city",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -105.667,
+              "lat": 3.6337,
+              "confidence": "derived",
+              "source_ref": "derived: region='Arabasta'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "yuba",
+            "name": "Yuba",
+            "japanese": "ユバ",
+            "romaji": null,
+            "region": "Arabasta",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 162,
+            "debut_episode": 103,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Yuba",
+            "source_ref": "onepiece.fandom.com/wiki/Yuba#Island_Box",
+            "id": "yuba",
+            "role": "oasis_town",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -103.3064,
+              "lat": 7.2403,
+              "confidence": "derived",
+              "source_ref": "derived: region='Arabasta'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "yuba-oasis",
+            "name": "Yuba Oasis",
+            "japanese": "・オアシス",
+            "romaji": "Yuba Oashisu",
+            "region": "Arabasta",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": null,
+            "debut_episode": null,
+            "canon_status": "non_canon",
+            "canon_confidence": "derived",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Yuba_Oasis",
+            "source_ref": "onepiece.fandom.com/wiki/Yuba_Oasis#Island_Box",
+            "id": "yuba-oasis",
+            "role": "oasis",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -157.7114,
+              "lat": 2.9063,
+              "confidence": "derived",
+              "source_ref": "derived: region='Arabasta' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "katorea",
+            "name": "Katorea",
+            "japanese": "カトレア",
+            "romaji": "Katorea",
+            "region": "Arabasta",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 164,
+            "debut_episode": 93,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Katorea",
+            "source_ref": "onepiece.fandom.com/wiki/Katorea#Island_Box",
+            "id": "katorea",
+            "role": "rebel_base",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -104.6587,
+              "lat": 8.0187,
+              "confidence": "derived",
+              "source_ref": "derived: region='Arabasta'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "alubarna",
+            "name": "Alubarna",
+            "japanese": "アルバーナ",
+            "romaji": "Arubāna",
+            "region": "Arabasta",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 129,
+            "debut_episode": 78,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Alubarna",
+            "source_ref": "onepiece.fandom.com/wiki/Alubarna#Island_Box",
+            "id": "alubarna",
+            "role": "capital_city",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -120.1992,
+              "lat": -0.7873,
+              "confidence": "derived",
+              "source_ref": "derived: region='Arabasta'; lng by voyage order 8 (little-garden, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "tomb-of-the-kings",
+            "name": "Tomb of the Kings",
+            "japanese": "王家の墓",
+            "romaji": "Ōke no Haka",
+            "region": "Arabasta Kingdom",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 202,
+            "debut_episode": 123,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Tomb_of_the_Kings",
+            "source_ref": "onepiece.fandom.com/wiki/Tomb_of_the_Kings#Island_Box",
+            "id": "tomb-of-the-kings",
+            "role": "subterranean_landmark",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -103.9584,
+              "lat": 2.39,
+              "confidence": "derived",
+              "source_ref": "derived: region='Arabasta Kingdom'; lng by voyage order 10 (arabasta, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "id": "alubarna-clock-tower",
+            "slug": null,
+            "name": "Alubarna clock tower",
+            "role": "event_landmark",
+            "debut_chapter": null,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Alubarna",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "alubarna-palace",
+            "slug": null,
+            "name": "Arabasta royal palace",
+            "role": "capital_landmark",
+            "debut_chapter": 129,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Alubarna",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          }
+        ]
+      },
+      "relationships": [
+        {
+          "from": "sandora-river",
+          "type": "divides",
+          "to": "arabasta-kingdom",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "alubarna",
+          "type": "capital_of",
+          "to": "arabasta-kingdom",
+          "confidence": "canon"
+        },
+        {
+          "from": "alubarna",
+          "type": "atop",
+          "to": "massive_rock_plateau",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "tomb-of-the-kings",
+          "type": "beneath",
+          "to": "alubarna",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "alubarna-clock-tower",
+          "type": "within",
+          "to": "alubarna",
+          "confidence": "cited_summary"
+        }
+      ],
+      "chapter_logic": {
+        "base_reveal_chapter": 113,
+        "temporal_variants": [
+          {
+            "id": "drought-and-rebellion",
+            "reveal_chapter": 113,
+            "state": "Dry kingdom, stressed oases, ruined Erumalu, and political conflict.",
+            "verification": "verified"
+          },
+          {
+            "id": "capital-climax",
+            "reveal_chapter": null,
+            "state": "Alubarna battle and clock-tower crisis.",
+            "verification": "chapter_to_verify"
+          },
+          {
+            "id": "rain-restored",
+            "reveal_chapter": null,
+            "state": "Rainfall and post-conflict recovery.",
+            "verification": "chapter_to_verify"
+          }
+        ],
+        "event_scenes": [
+          {
+            "id": "alubarna-clock-tower-crisis",
+            "importance": 1,
+            "reveal_chapter": null,
+            "landmark": "alubarna-clock-tower",
+            "state_delta": "The clock tower becomes the vertical focal point of the capital climax.",
+            "verification": "chapter_to_verify",
+            "camera_cue": "Climb from circular capital streets toward the clock face and rooftop.",
+            "fx": [
+              "dust haze",
+              "countdown cue",
+              "battle debris"
+            ]
+          }
+        ],
+        "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+        "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+      },
+      "route_network": null,
+      "topology": {
+        "summary": "Arabasta is a kingdom-scale landmass with a major dividing river, desert routes, differentiated cities and oases, and a raised circular capital—not one desert island plate.",
+        "sources": [
+          "https://onepiece.fandom.com/wiki/Arabasta_Kingdom",
+          "https://onepiece.fandom.com/wiki/Sandora_River",
+          "https://onepiece.fandom.com/wiki/Alubarna"
+        ],
+        "exact_distances": "unknown",
+        "exact_bearings": "partially_known_or_unknown",
+        "layout_mode": "relationship_graph_not_atlas_jitter"
+      },
+      "unresolved": [
+        "Exact relative bearings and travel distances among cities.",
+        "Exact chapter gates for the clock-tower climax and restored-rain state."
+      ],
+      "visual_program": {
+        "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+        "must_show": [
+          "Sandora River as kingdom-scale structure",
+          "distinct cities and oases",
+          "Alubarna elevated on a huge circular rock mass",
+          "palace, clock tower, and tomb as separate addressable landmarks"
+        ],
+        "must_not_show": [
+          "a single undifferentiated desert disc",
+          "all cities rendered as the same settlement kit",
+          "restored rain before its chapter gate"
+        ],
+        "collection_pattern": [
+          "00_TOPOLOGY",
+          "10_LANDMARKS",
+          "20_EVENT_STATES",
+          "30_ATMOSPHERE_FX",
+          "40_RUNTIME_LOD"
+        ],
+        "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+      },
+      "evidence": [
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+          "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+          "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+          "ownership": "asset_workspace"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+          "ownership": "asset_workspace"
+        }
+      ],
+      "queue": {
+        "state": "visual_contract",
+        "kind": "kingdom_region_system",
+        "next": "kingdom_route_board_then_alubarna_event_blockout",
+        "replaced_as_integration_unit_by": null
+      },
+      "blockout": {
+        "exists": false,
+        "runtime_export": false,
+        "maturity": null
+      },
+      "source_ref": "blender-assets/contracts/arabasta-kingdom.visual.json"
+    },
+    {
+      "id": "cactus-island-whisky-peak",
+      "label": "Cactus Island and Whisky Peak",
+      "entity_type": "island_town_system",
+      "contract_status": "ready_for_system_sketch",
+      "priority": 3,
+      "index_state": "ready_for_system_sketch",
+      "identity": {
+        "anchor": {
+          "slug": "cactus-island",
+          "name": "Cactus Island",
+          "japanese": "サボテン島",
+          "romaji": "Saboten-jima",
+          "region": "Paradise",
+          "sea": null,
+          "island_type": null,
+          "debut_chapter": 106,
+          "debut_episode": 64,
+          "canon_status": "manga",
+          "canon_confidence": "canon",
+          "affiliation": "Baroque Works",
+          "wiki_url": "https://onepiece.fandom.com/wiki/Cactus_Island",
+          "source_ref": "onepiece.fandom.com/wiki/Cactus_Island#Island_Box",
+          "id": "cactus-island",
+          "record_origin": "generated_wiki_record",
+          "atlas_anchor": {
+            "lng": -121.5765,
+            "lat": -5.8639,
+            "confidence": "derived",
+            "source_ref": "derived: region='Paradise'; lng by voyage order 7 (whisky-peak, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+            "usage": "scene_entry_anchor_only",
+            "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+          }
+        },
+        "components": [
+          {
+            "slug": "cactus-island",
+            "name": "Cactus Island",
+            "japanese": "サボテン島",
+            "romaji": "Saboten-jima",
+            "region": "Paradise",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 106,
+            "debut_episode": 64,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": "Baroque Works",
+            "wiki_url": "https://onepiece.fandom.com/wiki/Cactus_Island",
+            "source_ref": "onepiece.fandom.com/wiki/Cactus_Island#Island_Box",
+            "id": "cactus-island",
+            "role": "island",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -121.5765,
+              "lat": -5.8639,
+              "confidence": "derived",
+              "source_ref": "derived: region='Paradise'; lng by voyage order 7 (whisky-peak, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "whisky-peak",
+            "name": "Whisky Peak",
+            "japanese": "ウイスキーピーク",
+            "romaji": "Uisukī Pīku",
+            "region": "Cactus Island",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 106,
+            "debut_episode": 64,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Whisky_Peak",
+            "source_ref": "onepiece.fandom.com/wiki/Whisky_Peak#Island_Box",
+            "id": "whisky-peak",
+            "role": "only_town",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -121.3706,
+              "lat": 4.162,
+              "confidence": "derived",
+              "source_ref": "derived: region='Cactus Island'; lng by voyage order 7 (whisky-peak, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "sapoten-graveyard",
+            "name": "Sapoten Graveyard",
+            "japanese": "N/A",
+            "romaji": "N/A",
+            "region": "Cactus Island",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 107,
+            "debut_episode": 64,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Sapoten_Graveyard",
+            "source_ref": "onepiece.fandom.com/wiki/Sapoten_Graveyard#Island_Box",
+            "id": "sapoten-graveyard",
+            "role": "graveyard_mountains",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -126.0886,
+              "lat": 4.7063,
+              "confidence": "derived",
+              "source_ref": "derived: region='Cactus Island'; lng by voyage order 7 (whisky-peak, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "id": "whisky-peak-river-dock",
+            "slug": null,
+            "name": "Whisky Peak inland river dock",
+            "role": "arrival_route",
+            "debut_chapter": 106,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Cactus_Island",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          }
+        ]
+      },
+      "relationships": [
+        {
+          "from": "whisky-peak",
+          "type": "only_town_on",
+          "to": "cactus-island",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "sapoten-graveyard",
+          "type": "forms_cactus_like_mountains_around",
+          "to": "whisky-peak",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "whisky-peak-river-dock",
+          "type": "connects_coast_to",
+          "to": "whisky-peak",
+          "confidence": "cited_summary"
+        }
+      ],
+      "chapter_logic": {
+        "base_reveal_chapter": 106,
+        "temporal_variants": [
+          {
+            "id": "welcome-festival",
+            "reveal_chapter": 106,
+            "state": "Town presents a celebratory arrival state.",
+            "verification": "verified"
+          },
+          {
+            "id": "bounty-hunter-ambush",
+            "reveal_chapter": null,
+            "state": "Night ambush reveals the town's second function.",
+            "verification": "chapter_to_verify"
+          }
+        ],
+        "event_scenes": [
+          {
+            "id": "whisky-peak-night-ambush",
+            "importance": 2,
+            "reveal_chapter": null,
+            "landmark": "whisky-peak",
+            "state_delta": "Festival lighting gives way to a rooftop and street ambush.",
+            "verification": "chapter_to_verify",
+            "camera_cue": "Descend from cactus-shaped grave mountains into the night town.",
+            "fx": [
+              "lanterns",
+              "moonlight",
+              "dust"
+            ]
+          }
+        ],
+        "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+        "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+      },
+      "route_network": null,
+      "topology": {
+        "summary": "The town sits inland on Cactus Island; grave-covered rock mountains create the cactus silhouette and a river admits ships to the town dock.",
+        "sources": [
+          "https://onepiece.fandom.com/wiki/Cactus_Island",
+          "https://onepiece.fandom.com/wiki/Sapoten_Graveyard"
+        ],
+        "exact_distances": "unknown",
+        "exact_bearings": "partially_known_or_unknown",
+        "layout_mode": "relationship_graph_not_atlas_jitter"
+      },
+      "unresolved": [
+        "Exact number and spacing of the grave-covered peaks.",
+        "Exact chapter for the ambush state transition."
+      ],
+      "visual_program": {
+        "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+        "must_show": [
+          "cactus silhouette formed by rock mountains and graves",
+          "the inland river route and dock",
+          "Whisky Peak as the island's town rather than a second island"
+        ],
+        "must_not_show": [
+          "literal green cactus plants replacing the grave mountains",
+          "Whisky Peak as a separate floating island"
+        ],
+        "collection_pattern": [
+          "00_TOPOLOGY",
+          "10_LANDMARKS",
+          "20_EVENT_STATES",
+          "30_ATMOSPHERE_FX",
+          "40_RUNTIME_LOD"
+        ],
+        "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+      },
+      "evidence": [
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+          "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+          "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+          "ownership": "asset_workspace"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+          "ownership": "asset_workspace"
+        }
+      ],
+      "queue": {
+        "state": "visual_contract",
+        "kind": "island_town_system",
+        "next": "grave_mountain_silhouette_study",
+        "replaced_as_integration_unit_by": null
+      },
+      "blockout": {
+        "exists": false,
+        "runtime_export": false,
+        "maturity": null
+      },
+      "source_ref": "blender-assets/contracts/cactus-island-whisky-peak.visual.json"
+    },
+    {
+      "id": "dressrosa-green-bit",
+      "label": "Dressrosa, Green Bit, and King's Plateau",
+      "entity_type": "island_bridge_system",
+      "contract_status": "ready_for_system_sketch",
+      "priority": 1,
+      "index_state": "ready_for_system_sketch",
+      "identity": {
+        "anchor": {
+          "slug": "dressrosa",
+          "name": "Dressrosa",
+          "japanese": "ドレスローザ",
+          "romaji": "Doresurōza",
+          "region": "New World",
+          "sea": null,
+          "island_type": null,
+          "debut_chapter": 682,
+          "debut_episode": 608,
+          "canon_status": "manga",
+          "canon_confidence": "canon",
+          "affiliation": "World Government (Riku Family) Donquixote Pirates (Donquixote Family)",
+          "wiki_url": "https://onepiece.fandom.com/wiki/Dressrosa",
+          "source_ref": "onepiece.fandom.com/wiki/Dressrosa#Island_Box",
+          "id": "dressrosa",
+          "record_origin": "generated_wiki_record",
+          "atlas_anchor": {
+            "lng": 42.463,
+            "lat": 7.6766,
+            "confidence": "derived",
+            "source_ref": "derived: region='New World'; lng by voyage order 26 (dressrosa, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+            "usage": "scene_entry_anchor_only",
+            "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+          }
+        },
+        "components": [
+          {
+            "slug": "dressrosa",
+            "name": "Dressrosa",
+            "japanese": "ドレスローザ",
+            "romaji": "Doresurōza",
+            "region": "New World",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 682,
+            "debut_episode": 608,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": "World Government (Riku Family) Donquixote Pirates (Donquixote Family)",
+            "wiki_url": "https://onepiece.fandom.com/wiki/Dressrosa",
+            "source_ref": "onepiece.fandom.com/wiki/Dressrosa#Island_Box",
+            "id": "dressrosa",
+            "role": "main_island_kingdom",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": 42.463,
+              "lat": 7.6766,
+              "confidence": "derived",
+              "source_ref": "derived: region='New World'; lng by voyage order 26 (dressrosa, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "green-bit",
+            "name": "Green Bit",
+            "japanese": "グリーンビット",
+            "romaji": "Gurīn Bitto",
+            "region": "New World",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 710,
+            "debut_episode": 639,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Green_Bit",
+            "source_ref": "onepiece.fandom.com/wiki/Green_Bit#Island_Box",
+            "id": "green-bit",
+            "role": "northern_satellite_island",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": 33.445,
+              "lat": -6.0878,
+              "confidence": "derived",
+              "source_ref": "derived: region='New World'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "corrida-colosseum",
+            "name": "Corrida Colosseum",
+            "japanese": "コリーダコロシアム",
+            "romaji": "Korīda Koroshiamu",
+            "region": "Dressrosa",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 702,
+            "debut_episode": 631,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": "Donquixote Pirates",
+            "wiki_url": "https://onepiece.fandom.com/wiki/Corrida_Colosseum",
+            "source_ref": "onepiece.fandom.com/wiki/Corrida_Colosseum#Island_Box",
+            "id": "corrida-colosseum",
+            "role": "arena_landmark",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": 28.9164,
+              "lat": 6.6618,
+              "confidence": "derived",
+              "source_ref": "derived: region='Dressrosa'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "flower-hill",
+            "name": "Flower Hill",
+            "japanese": "花畑",
+            "romaji": "Hanabatake",
+            "region": "Dressrosa",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 701,
+            "debut_episode": 630,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Flower_Hill",
+            "source_ref": "onepiece.fandom.com/wiki/Flower_Hill#Island_Box",
+            "id": "flower-hill",
+            "role": "flower_field_landmark",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": 44.6171,
+              "lat": 0.3143,
+              "confidence": "derived",
+              "source_ref": "derived: region='Dressrosa'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "smile-factory",
+            "name": "SMILE Factory",
+            "japanese": "工場",
+            "romaji": "Sumairu Kōjō",
+            "region": "Dressrosa (Underground Trade Port)",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 738,
+            "debut_episode": 671,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": "Donquixote Pirates",
+            "wiki_url": "https://onepiece.fandom.com/wiki/SMILE_Factory",
+            "source_ref": "onepiece.fandom.com/wiki/SMILE_Factory#Island_Box",
+            "id": "smile-factory",
+            "role": "underground_industrial_landmark",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": 40.2226,
+              "lat": -0.8683,
+              "confidence": "derived",
+              "source_ref": "derived: region='Dressrosa (Underground Trade Port)'; lng by voyage order 26 (dressrosa, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "id": "green-bit-iron-bridge",
+            "slug": null,
+            "name": "Iron bridge to Green Bit",
+            "role": "bridge",
+            "debut_chapter": 710,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Dressrosa",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "kings-plateau",
+            "slug": null,
+            "name": "King's Plateau",
+            "role": "central_crown_plateau",
+            "debut_chapter": 682,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Dressrosa",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "dressrosa-royal-palace",
+            "slug": null,
+            "name": "Dressrosa royal palace",
+            "role": "palace",
+            "debut_chapter": 682,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Dressrosa",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          }
+        ]
+      },
+      "relationships": [
+        {
+          "from": "green-bit",
+          "type": "north_of",
+          "to": "dressrosa",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "green-bit-iron-bridge",
+          "type": "connects",
+          "to": "dressrosa",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "green-bit-iron-bridge",
+          "type": "connects",
+          "to": "green-bit",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "kings-plateau",
+          "type": "central_within",
+          "to": "dressrosa",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "dressrosa-royal-palace",
+          "type": "atop_pre_landscape_change",
+          "to": "kings-plateau",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "smile-factory",
+          "type": "underground_within",
+          "to": "dressrosa",
+          "confidence": "canon"
+        }
+      ],
+      "chapter_logic": {
+        "base_reveal_chapter": 682,
+        "temporal_variants": [
+          {
+            "id": "pre-pica-city",
+            "reveal_chapter": 682,
+            "state": "Crown-shaped King's Plateau is central and the royal palace sits atop it.",
+            "verification": "verified"
+          },
+          {
+            "id": "pica-remodeled-city",
+            "reveal_chapter": null,
+            "state": "Landscape is rearranged; the palace is relocated to a newly formed King's Plateau at Flower Hill.",
+            "verification": "chapter_to_verify"
+          },
+          {
+            "id": "birdcage-state",
+            "reveal_chapter": null,
+            "state": "Birdcage encloses the island as a temporary event volume.",
+            "verification": "chapter_to_verify"
+          }
+        ],
+        "event_scenes": [
+          {
+            "id": "dressrosa-landscape-remodel",
+            "importance": 1,
+            "reveal_chapter": null,
+            "landmark": "kings-plateau",
+            "state_delta": "Terrain and palace position transform into the later battle layout.",
+            "verification": "chapter_to_verify",
+            "camera_cue": "Lock camera above the city so the terrain displacement reads as a before/after transformation.",
+            "fx": [
+              "rising stone",
+              "dust rings",
+              "building displacement"
+            ]
+          },
+          {
+            "id": "birdcage-contraction",
+            "importance": 1,
+            "reveal_chapter": null,
+            "landmark": "dressrosa",
+            "state_delta": "A contracting cage volume overlays the kingdom.",
+            "verification": "chapter_to_verify",
+            "camera_cue": "Orbit outside the cage, then pass through to the palace/plateau axis.",
+            "fx": [
+              "thread cage",
+              "sparks",
+              "debris"
+            ]
+          }
+        ],
+        "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+        "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+      },
+      "route_network": null,
+      "topology": {
+        "summary": "Green Bit's northern iron bridge and Doflamingo's palace on the central King's Plateau are different structures. Pica later changes the landscape and palace placement, so both layouts require separate variants.",
+        "sources": [
+          "https://onepiece.fandom.com/wiki/Dressrosa",
+          "https://onepiece.fandom.com/wiki/Green_Bit"
+        ],
+        "exact_distances": "unknown",
+        "exact_bearings": "partially_known_or_unknown",
+        "layout_mode": "relationship_graph_not_atlas_jitter"
+      },
+      "unresolved": [
+        "Exact chapter of the Pica landscape transition.",
+        "Exact chapter at which the Birdcage becomes visible.",
+        "Exact local bearings for secondary landmarks not fixed by cited topology."
+      ],
+      "visual_program": {
+        "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+        "must_show": [
+          "Green Bit as a distinct northern island",
+          "iron bridge as its connector",
+          "central crown-shaped King's Plateau",
+          "palace location changing between variants",
+          "colosseum, Flower Hill, and underground factory as distinct landmarks"
+        ],
+        "must_not_show": [
+          "the Green Bit bridge leading directly to Doflamingo's palace",
+          "pre- and post-Pica layouts combined into one impossible map",
+          "Birdcage before its event gate"
+        ],
+        "collection_pattern": [
+          "00_TOPOLOGY",
+          "10_LANDMARKS",
+          "20_EVENT_STATES",
+          "30_ATMOSPHERE_FX",
+          "40_RUNTIME_LOD"
+        ],
+        "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+      },
+      "evidence": [
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+          "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+          "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+          "ownership": "asset_workspace"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+          "ownership": "asset_workspace"
+        }
+      ],
+      "queue": {
+        "state": "system_sketch",
+        "kind": "island_bridge_system",
+        "next": "pre_pica_and_post_pica_blender_blockouts",
+        "replaced_as_integration_unit_by": null
+      },
+      "blockout": {
+        "exists": false,
+        "runtime_export": false,
+        "maturity": null
+      },
+      "source_ref": "blender-assets/contracts/dressrosa-green-bit.visual.json"
+    },
+    {
+      "id": "zou-zunesha",
+      "label": "Zou carried by Zunesha",
+      "entity_type": "moving_world_entity",
+      "contract_status": "ready_for_system_sketch",
+      "priority": 1,
+      "index_state": "ready_for_system_sketch",
+      "identity": {
+        "anchor": {
+          "slug": "zou",
+          "name": "Zou",
+          "japanese": "ゾウ",
+          "romaji": "Zō",
+          "region": "New World",
+          "sea": null,
+          "island_type": null,
+          "debut_chapter": 795,
+          "debut_episode": 739,
+          "canon_status": "manga",
+          "canon_confidence": "canon",
+          "affiliation": null,
+          "wiki_url": "https://onepiece.fandom.com/wiki/Zou",
+          "source_ref": "onepiece.fandom.com/wiki/Zou#Island_Box",
+          "id": "zou",
+          "record_origin": "generated_wiki_record",
+          "atlas_anchor": {
+            "lng": 53.1494,
+            "lat": -4.3461,
+            "confidence": "derived",
+            "source_ref": "derived: region='New World'; lng by voyage order 27 (zou, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+            "usage": "scene_entry_anchor_only",
+            "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+          }
+        },
+        "components": [
+          {
+            "slug": "zou",
+            "name": "Zou",
+            "japanese": "ゾウ",
+            "romaji": "Zō",
+            "region": "New World",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 795,
+            "debut_episode": 739,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Zou",
+            "source_ref": "onepiece.fandom.com/wiki/Zou#Island_Box",
+            "id": "zou",
+            "role": "island_settlement",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": 53.1494,
+              "lat": -4.3461,
+              "confidence": "derived",
+              "source_ref": "derived: region='New World'; lng by voyage order 27 (zou, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "mokomo-dukedom",
+            "name": "Mokomo Dukedom",
+            "japanese": "モコモ公国",
+            "romaji": "Mokomo Kōkoku",
+            "region": "New World (Zou)",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 804,
+            "debut_episode": 753,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Mokomo_Dukedom",
+            "source_ref": "onepiece.fandom.com/wiki/Mokomo_Dukedom#Island_Box",
+            "id": "mokomo-dukedom",
+            "role": "nation_on_back",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": 54.1236,
+              "lat": 2.9703,
+              "confidence": "derived",
+              "source_ref": "derived: region='New World (Zou)'; lng by voyage order 27 (zou, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "id": "zunesha",
+            "slug": null,
+            "name": "Zunesha",
+            "role": "moving_elephant_world_entity",
+            "debut_chapter": 795,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://one-piece.com/story/zou/index.html",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "zunesha-legs",
+            "slug": null,
+            "name": "Zunesha's two-jointed legs",
+            "role": "seafloor_reaching_supports",
+            "debut_chapter": 795,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Zunesha",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "zunesha-trunk",
+            "slug": null,
+            "name": "Zunesha's trunk",
+            "role": "rain_and_event_emitter",
+            "debut_chapter": 795,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Zunesha",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          }
+        ]
+      },
+      "relationships": [
+        {
+          "from": "zou",
+          "type": "carried_on_back_of",
+          "to": "zunesha",
+          "confidence": "canon"
+        },
+        {
+          "from": "mokomo-dukedom",
+          "type": "on",
+          "to": "zou",
+          "confidence": "canon"
+        },
+        {
+          "from": "zunesha-legs",
+          "type": "reach",
+          "to": "seafloor",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "zunesha-trunk",
+          "type": "sprays_recurring_rain_over",
+          "to": "zou",
+          "confidence": "cited_summary"
+        }
+      ],
+      "chapter_logic": {
+        "base_reveal_chapter": 795,
+        "temporal_variants": [
+          {
+            "id": "walking-dry",
+            "reveal_chapter": 795,
+            "state": "Zunesha walking with Zou visible above the cloud/mist layer.",
+            "verification": "verified"
+          },
+          {
+            "id": "eruption-rain",
+            "reveal_chapter": 795,
+            "state": "Recurring trunk spray floods the city channels.",
+            "verification": "verified"
+          },
+          {
+            "id": "trunk-strike",
+            "reveal_chapter": null,
+            "state": "Story-specific attack pose and water/debris response.",
+            "verification": "chapter_to_verify"
+          }
+        ],
+        "event_scenes": [
+          {
+            "id": "zunesha-eruption-rain",
+            "importance": 1,
+            "reveal_chapter": 795,
+            "landmark": "zunesha-trunk",
+            "state_delta": "Trunk spray becomes a moving water volume across Zou.",
+            "verification": "verified",
+            "camera_cue": "Begin near sea level, rise along the legs through cloud to the city, then reveal the trunk arc.",
+            "fx": [
+              "ocean spray",
+              "cloud penetration",
+              "city runoff"
+            ]
+          },
+          {
+            "id": "zunesha-trunk-strike",
+            "importance": 1,
+            "reveal_chapter": null,
+            "landmark": "zunesha-trunk",
+            "state_delta": "Rig switches to attack pose with impact wake.",
+            "verification": "chapter_to_verify",
+            "camera_cue": "Wide side silhouette so the scale of the elephant and strike remains legible.",
+            "fx": [
+              "impact wake",
+              "mist blast",
+              "debris"
+            ]
+          }
+        ],
+        "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+        "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+      },
+      "route_network": null,
+      "topology": {
+        "summary": "Zou is not a stationary island coordinate: it is a nation carried on Zunesha's back. The runtime anchor must follow a moving entity path or use a chapter-local encounter position.",
+        "sources": [
+          "https://one-piece.com/story/zou/index.html",
+          "https://onepiece.fandom.com/wiki/Zunesha",
+          "https://onepiece.fandom.com/wiki/Mokomo_Dukedom"
+        ],
+        "exact_distances": "unknown",
+        "exact_bearings": "partially_known_or_unknown",
+        "layout_mode": "relationship_graph_not_atlas_jitter"
+      },
+      "unresolved": [
+        "Runtime path for an intentionally roaming world entity.",
+        "Exact chapter for the trunk-strike event.",
+        "Performance strategy for extreme vertical scale."
+      ],
+      "visual_program": {
+        "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+        "must_show": [
+          "full elephant silhouette",
+          "extremely long two-jointed legs descending through the sea",
+          "Zou and Mokomo Dukedom on the back",
+          "recurring eruption rain",
+          "moving-anchor behavior"
+        ],
+        "must_not_show": [
+          "Zou as a stationary ordinary island plate",
+          "short terrestrial elephant proportions",
+          "a single atlas point presented as Zunesha's permanent canon location"
+        ],
+        "collection_pattern": [
+          "00_TOPOLOGY",
+          "10_LANDMARKS",
+          "20_EVENT_STATES",
+          "30_ATMOSPHERE_FX",
+          "40_RUNTIME_LOD"
+        ],
+        "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+      },
+      "evidence": [
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+          "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+          "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+          "ownership": "asset_workspace"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+          "ownership": "asset_workspace"
+        }
+      ],
+      "queue": {
+        "state": "system_sketch",
+        "kind": "moving_world_entity",
+        "next": "rigged_scale_blockout_and_moving_anchor_test",
+        "replaced_as_integration_unit_by": null
+      },
+      "blockout": {
+        "exists": false,
+        "runtime_export": false,
+        "maturity": null
+      },
+      "source_ref": "blender-assets/contracts/zou-zunesha.visual.json"
+    },
+    {
+      "id": "amazon-lily",
+      "label": "Amazon Lily mountain city",
+      "entity_type": "mountain_city_system",
+      "contract_status": "ready_for_system_sketch",
+      "priority": 2,
+      "index_state": "ready_for_system_sketch",
+      "identity": {
+        "anchor": {
+          "slug": "amazon-lily",
+          "name": "Amazon Lily",
+          "japanese": "アマゾン・リリー",
+          "romaji": "Amazon Rirī",
+          "region": "Calm Belt",
+          "sea": null,
+          "island_type": null,
+          "debut_chapter": 514,
+          "debut_episode": 408,
+          "canon_status": "manga",
+          "canon_confidence": "canon",
+          "affiliation": "Kuja Kuja Pirates Monkey D. Luffy",
+          "wiki_url": "https://onepiece.fandom.com/wiki/Amazon_Lily",
+          "source_ref": "onepiece.fandom.com/wiki/Amazon_Lily#Island_Box",
+          "id": "amazon-lily",
+          "record_origin": "generated_wiki_record",
+          "atlas_anchor": {
+            "lng": 165.1452,
+            "lat": 12.0706,
+            "confidence": "derived",
+            "source_ref": "derived: region='Calm Belt' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+            "usage": "scene_entry_anchor_only",
+            "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+          }
+        },
+        "components": [
+          {
+            "slug": "amazon-lily",
+            "name": "Amazon Lily",
+            "japanese": "アマゾン・リリー",
+            "romaji": "Amazon Rirī",
+            "region": "Calm Belt",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 514,
+            "debut_episode": 408,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": "Kuja Kuja Pirates Monkey D. Luffy",
+            "wiki_url": "https://onepiece.fandom.com/wiki/Amazon_Lily",
+            "source_ref": "onepiece.fandom.com/wiki/Amazon_Lily#Island_Box",
+            "id": "amazon-lily",
+            "role": "calm_belt_island_nation",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": 165.1452,
+              "lat": 12.0706,
+              "confidence": "derived",
+              "source_ref": "derived: region='Calm Belt' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "id": "amazon-lily-mountain-bowl",
+            "slug": null,
+            "name": "Mountain-top hollow",
+            "role": "city_container",
+            "debut_chapter": 514,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Amazon_Lily_Arc",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "kuja-village",
+            "slug": null,
+            "name": "Kuja village",
+            "role": "city_inside_mountain",
+            "debut_chapter": 514,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Amazon_Lily_Arc",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "kuja-palace",
+            "slug": null,
+            "name": "Kuja palace",
+            "role": "royal_landmark",
+            "debut_chapter": 514,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Amazon_Lily",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          }
+        ]
+      },
+      "relationships": [
+        {
+          "from": "kuja-village",
+          "type": "inside",
+          "to": "amazon-lily-mountain-bowl",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "amazon-lily-mountain-bowl",
+          "type": "at_top_of",
+          "to": "amazon-lily",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "kuja-palace",
+          "type": "within",
+          "to": "kuja-village",
+          "confidence": "cited_summary"
+        }
+      ],
+      "chapter_logic": {
+        "base_reveal_chapter": 514,
+        "temporal_variants": [
+          {
+            "id": "mountain-city-default",
+            "reveal_chapter": 514,
+            "state": "Exterior mountain shell plus hidden city bowl.",
+            "verification": "verified"
+          }
+        ],
+        "event_scenes": [
+          {
+            "id": "mountain-bowl-reveal",
+            "importance": 2,
+            "reveal_chapter": 514,
+            "landmark": "amazon-lily-mountain-bowl",
+            "state_delta": "Camera crosses the rim and reveals the enclosed village below.",
+            "verification": "verified",
+            "camera_cue": "Approach as an apparently steep mountain, then crest the rim into the inhabited hollow.",
+            "fx": [
+              "Calm Belt haze",
+              "jungle canopy",
+              "rim mist"
+            ]
+          }
+        ],
+        "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+        "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+      },
+      "route_network": null,
+      "topology": {
+        "summary": "The central village sits inside a huge hollow at the top of the island's mountain. Serpents are a Kuja cultural and architectural motif; current evidence does not support making the entire island silhouette a serpent.",
+        "sources": [
+          "https://onepiece.fandom.com/wiki/Amazon_Lily",
+          "https://onepiece.fandom.com/wiki/Amazon_Lily_Arc"
+        ],
+        "exact_distances": "unknown",
+        "exact_bearings": "partially_known_or_unknown",
+        "layout_mode": "relationship_graph_not_atlas_jitter"
+      },
+      "unresolved": [
+        "Exact plan of village districts and palace within the mountain hollow.",
+        "Which serpent motifs belong in the earliest spoiler-safe state."
+      ],
+      "visual_program": {
+        "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+        "must_show": [
+          "mountain exterior and interior city bowl",
+          "dense jungle and Calm Belt isolation",
+          "serpent motifs in culture, ships, sculpture, and architecture"
+        ],
+        "must_not_show": [
+          "a whole-island serpent silhouette presented as canon",
+          "a flat exposed city visible from every approach"
+        ],
+        "collection_pattern": [
+          "00_TOPOLOGY",
+          "10_LANDMARKS",
+          "20_EVENT_STATES",
+          "30_ATMOSPHERE_FX",
+          "40_RUNTIME_LOD"
+        ],
+        "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+      },
+      "evidence": [
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+          "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+          "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+          "ownership": "asset_workspace"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+          "ownership": "asset_workspace"
+        }
+      ],
+      "queue": {
+        "state": "visual_contract",
+        "kind": "mountain_city_system",
+        "next": "mountain_exterior_to_city_bowl_reveal_sketch",
+        "replaced_as_integration_unit_by": null
+      },
+      "blockout": {
+        "exists": false,
+        "runtime_export": false,
+        "maturity": null
+      },
+      "source_ref": "blender-assets/contracts/amazon-lily.visual.json"
+    },
+    {
+      "id": "mary-geoise-red-line",
+      "label": "Mary Geoise atop the Red Line",
+      "entity_type": "vertical_political_world_structure",
+      "contract_status": "ready_for_system_sketch",
+      "priority": 2,
+      "index_state": "ready_for_system_sketch",
+      "identity": {
+        "anchor": {
+          "slug": "mary-geoise",
+          "name": "Mary Geoise",
+          "japanese": "マリージョア",
+          "romaji": "Marījoa",
+          "region": "Red Line",
+          "sea": null,
+          "island_type": null,
+          "debut_chapter": 142,
+          "debut_episode": 91,
+          "canon_status": "manga",
+          "canon_confidence": "canon",
+          "affiliation": "World Government",
+          "wiki_url": "https://onepiece.fandom.com/wiki/Mary_Geoise",
+          "source_ref": "onepiece.fandom.com/wiki/Mary_Geoise#Island_Box",
+          "id": "mary-geoise",
+          "record_origin": "generated_wiki_record",
+          "atlas_anchor": {
+            "lng": -2.7363,
+            "lat": -9.3782,
+            "confidence": "derived",
+            "source_ref": "derived: region='Red Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+            "usage": "scene_entry_anchor_only",
+            "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+          }
+        },
+        "components": [
+          {
+            "slug": "mary-geoise",
+            "name": "Mary Geoise",
+            "japanese": "マリージョア",
+            "romaji": "Marījoa",
+            "region": "Red Line",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 142,
+            "debut_episode": 91,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": "World Government",
+            "wiki_url": "https://onepiece.fandom.com/wiki/Mary_Geoise",
+            "source_ref": "onepiece.fandom.com/wiki/Mary_Geoise#Island_Box",
+            "id": "mary-geoise",
+            "role": "summit_city",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -2.7363,
+              "lat": -9.3782,
+              "confidence": "derived",
+              "source_ref": "derived: region='Red Line' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "pangaea-castle",
+            "name": "Pangaea Castle",
+            "japanese": "パンゲア城",
+            "romaji": "Pangea-jō",
+            "region": "Mary Geoise (Red Line)",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 142,
+            "debut_episode": 91,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": "World Government",
+            "wiki_url": "https://onepiece.fandom.com/wiki/Pangaea_Castle",
+            "source_ref": "onepiece.fandom.com/wiki/Pangaea_Castle#Island_Box",
+            "id": "pangaea-castle",
+            "role": "central_castle",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -0.739,
+              "lat": -70.1224,
+              "confidence": "derived",
+              "source_ref": "derived: region='Mary Geoise (Red Line)' | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "id": "red-line-summit",
+            "slug": null,
+            "name": "Red Line summit",
+            "role": "continental_wall",
+            "debut_chapter": 142,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Mary_Geoise",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "red-port-paradise",
+            "slug": null,
+            "name": "Red Port, Paradise side",
+            "role": "lower_port",
+            "debut_chapter": null,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Mary_Geoise",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "red-port-new-world",
+            "slug": null,
+            "name": "Red Port, New World side",
+            "role": "lower_port",
+            "debut_chapter": null,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Mary_Geoise",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "bondola-route",
+            "slug": null,
+            "name": "Bondola vertical route",
+            "role": "vertical_transit",
+            "debut_chapter": null,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Mary_Geoise",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          }
+        ]
+      },
+      "relationships": [
+        {
+          "from": "mary-geoise",
+          "type": "atop",
+          "to": "red-line-summit",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "pangaea-castle",
+          "type": "central_within",
+          "to": "mary-geoise",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "red-port-paradise",
+          "type": "below",
+          "to": "mary-geoise",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "red-port-new-world",
+          "type": "below_opposite_side",
+          "to": "mary-geoise",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "bondola-route",
+          "type": "connects_vertical",
+          "to": "mary-geoise",
+          "confidence": "cited_summary"
+        }
+      ],
+      "chapter_logic": {
+        "base_reveal_chapter": 142,
+        "temporal_variants": [
+          {
+            "id": "exterior-spoiler-safe",
+            "reveal_chapter": 142,
+            "state": "Red Line summit, city silhouette, and Pangaea Castle exterior only.",
+            "verification": "verified"
+          },
+          {
+            "id": "levely-state",
+            "reveal_chapter": null,
+            "state": "Delegation traffic and summit gathering state.",
+            "verification": "chapter_to_verify"
+          },
+          {
+            "id": "late-interior-reveals",
+            "reveal_chapter": null,
+            "state": "Spoiler-locked castle interiors and later political revelations.",
+            "verification": "chapter_to_verify"
+          }
+        ],
+        "event_scenes": [
+          {
+            "id": "red-line-summit-arrival",
+            "importance": 1,
+            "reveal_chapter": null,
+            "landmark": "bondola-route",
+            "state_delta": "The globe route becomes a vertical ascent from Red Port to the summit city.",
+            "verification": "chapter_to_verify",
+            "camera_cue": "Track from sea-level Red Port up the wall until Pangaea Castle clears the rim.",
+            "fx": [
+              "high-altitude cloud",
+              "vertical transit",
+              "sun glare"
+            ]
+          }
+        ],
+        "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+        "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+      },
+      "route_network": null,
+      "topology": {
+        "summary": "Mary Geoise is a summit city at the world-crossing Red Line, linked vertically to Red Ports on opposite sides; Pangaea Castle is a central landmark, not the whole city.",
+        "sources": [
+          "https://onepiece.fandom.com/wiki/Mary_Geoise",
+          "https://onepiece.fandom.com/wiki/Pangaea_Castle",
+          "https://onepiece.fandom.com/wiki/World_Government"
+        ],
+        "exact_distances": "unknown",
+        "exact_bearings": "partially_known_or_unknown",
+        "layout_mode": "relationship_graph_not_atlas_jitter"
+      },
+      "unresolved": [
+        "Exact chapter gates for both Red Ports and the Bondola route.",
+        "Spoiler-safe inventory of Pangaea Castle interiors.",
+        "Exact summit-city street topology."
+      ],
+      "visual_program": {
+        "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+        "must_show": [
+          "Red Line as overwhelming vertical world structure",
+          "ports on opposite lower sides",
+          "vertical ascent route",
+          "summit city distinct from Pangaea Castle"
+        ],
+        "must_not_show": [
+          "Mary Geoise floating at sea level",
+          "late castle interiors in the chapter-142 state",
+          "uncited spoiler reveals baked into the exterior"
+        ],
+        "collection_pattern": [
+          "00_TOPOLOGY",
+          "10_LANDMARKS",
+          "20_EVENT_STATES",
+          "30_ATMOSPHERE_FX",
+          "40_RUNTIME_LOD"
+        ],
+        "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+      },
+      "evidence": [
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+          "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+          "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+          "ownership": "asset_workspace"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+          "ownership": "asset_workspace"
+        }
+      ],
+      "queue": {
+        "state": "visual_contract",
+        "kind": "vertical_political_world_structure",
+        "next": "spoiler_safe_red_line_cross_section",
+        "replaced_as_integration_unit_by": null
+      },
+      "blockout": {
+        "exists": false,
+        "runtime_export": false,
+        "maturity": null
+      },
+      "source_ref": "blender-assets/contracts/mary-geoise-red-line.visual.json"
+    },
+    {
+      "id": "sabaody-grove-network",
+      "label": "Sabaody 79-grove mangrove network",
+      "entity_type": "mangrove_grove_network",
+      "contract_status": "ready_for_system_sketch",
+      "priority": 1,
+      "index_state": "ready_for_system_sketch",
+      "identity": {
+        "anchor": {
+          "slug": "sabaody-archipelago",
+          "name": "Sabaody Archipelago",
+          "japanese": "シャボンディ諸島",
+          "romaji": "Shabondi Shotō",
+          "region": "Paradise",
+          "sea": null,
+          "island_type": null,
+          "debut_chapter": 496,
+          "debut_episode": 390,
+          "canon_status": "manga",
+          "canon_confidence": "canon",
+          "affiliation": null,
+          "wiki_url": "https://onepiece.fandom.com/wiki/Sabaody_Archipelago",
+          "source_ref": "onepiece.fandom.com/wiki/Sabaody_Archipelago#Island_Box",
+          "id": "sabaody-archipelago",
+          "record_origin": "generated_wiki_record",
+          "atlas_anchor": {
+            "lng": -48.2843,
+            "lat": 3.7912,
+            "confidence": "derived",
+            "source_ref": "derived: region='Paradise'; lng by voyage order 18 (sabaody-archipelago, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+            "usage": "scene_entry_anchor_only",
+            "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+          }
+        },
+        "components": [
+          {
+            "slug": "sabaody-archipelago",
+            "name": "Sabaody Archipelago",
+            "japanese": "シャボンディ諸島",
+            "romaji": "Shabondi Shotō",
+            "region": "Paradise",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 496,
+            "debut_episode": 390,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Sabaody_Archipelago",
+            "source_ref": "onepiece.fandom.com/wiki/Sabaody_Archipelago#Island_Box",
+            "id": "sabaody-archipelago",
+            "role": "mangrove_root_archipelago",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -48.2843,
+              "lat": 3.7912,
+              "confidence": "derived",
+              "source_ref": "derived: region='Paradise'; lng by voyage order 18 (sabaody-archipelago, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "sabaody-park",
+            "name": "Sabaody Park",
+            "japanese": "シャボンディパーク",
+            "romaji": "Shabondi Pāku",
+            "region": "Paradise",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 499,
+            "debut_episode": 393,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Sabaody_Park",
+            "source_ref": "onepiece.fandom.com/wiki/Sabaody_Park#Island_Box",
+            "id": "sabaody-park",
+            "role": "amusement_landmark",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -47.1958,
+              "lat": 4.2902,
+              "confidence": "derived",
+              "source_ref": "derived: region='Paradise'; lng by voyage order 18 (sabaody-archipelago, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "human-auctioning-house",
+            "name": "Human Auctioning House",
+            "japanese": "オークション会場",
+            "romaji": "Hyūman Ōkushon Kaijō",
+            "region": "Paradise",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 501,
+            "debut_episode": 394,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Human_Auctioning_House",
+            "source_ref": "onepiece.fandom.com/wiki/Human_Auctioning_House#Island_Box",
+            "id": "human-auctioning-house",
+            "role": "event_landmark",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -51.2008,
+              "lat": 6.2035,
+              "confidence": "derived",
+              "source_ref": "derived: region='Paradise'; lng by voyage order 18 (sabaody-archipelago, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "id": "yarukiman-mangroves",
+            "slug": null,
+            "name": "79 Yarukiman Mangrove groves",
+            "role": "numbered_tree_root_nodes",
+            "debut_chapter": 496,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Sabaody_Archipelago",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "sabaody-root-bridges",
+            "slug": null,
+            "name": "Root bridges",
+            "role": "inter_grove_connections",
+            "debut_chapter": 496,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Sabaody_Archipelago",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "sabaody-bubble-layer",
+            "slug": null,
+            "name": "Resin bubble ecology",
+            "role": "transport_and_atmosphere_system",
+            "debut_chapter": 496,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Sabaody_Archipelago",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          }
+        ]
+      },
+      "relationships": [
+        {
+          "from": "yarukiman-mangroves",
+          "type": "forms",
+          "to": "sabaody-archipelago",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "sabaody-root-bridges",
+          "type": "connects",
+          "to": "yarukiman-mangroves",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "sabaody-bubble-layer",
+          "type": "generated_by_resin_of",
+          "to": "yarukiman-mangroves",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "sabaody-park",
+          "type": "within_grove_network",
+          "to": "sabaody-archipelago",
+          "confidence": "canon"
+        },
+        {
+          "from": "human-auctioning-house",
+          "type": "within_grove_network",
+          "to": "sabaody-archipelago",
+          "confidence": "canon"
+        }
+      ],
+      "chapter_logic": {
+        "base_reveal_chapter": 496,
+        "temporal_variants": [
+          {
+            "id": "arrival-network",
+            "reveal_chapter": 496,
+            "state": "Grove roots, bridges, bubbles, and numbered wayfinding visible.",
+            "verification": "verified"
+          },
+          {
+            "id": "auction-house-event",
+            "reveal_chapter": 501,
+            "state": "Auction house becomes an active narrative landmark.",
+            "verification": "verified"
+          },
+          {
+            "id": "post-timeskip-return",
+            "reveal_chapter": null,
+            "state": "Later return-state activity and character visibility.",
+            "verification": "chapter_to_verify"
+          }
+        ],
+        "event_scenes": [
+          {
+            "id": "sabaody-bubble-travel",
+            "importance": 1,
+            "reveal_chapter": 496,
+            "landmark": "sabaody-bubble-layer",
+            "state_delta": "Bubbles become moving transport, hotel, and helmet instances across the grove network.",
+            "verification": "verified",
+            "camera_cue": "Travel under colossal roots, then rise alongside bubbles to reveal the numbered canopy network.",
+            "fx": [
+              "iridescent bubbles",
+              "resin glints",
+              "root fog"
+            ]
+          },
+          {
+            "id": "auction-house-confrontation",
+            "importance": 1,
+            "reveal_chapter": null,
+            "landmark": "human-auctioning-house",
+            "state_delta": "Interior event state activates while the surrounding grove remains navigable.",
+            "verification": "chapter_to_verify",
+            "camera_cue": "Route from grove signage to the auction-house exterior, then switch to a gated interior set.",
+            "fx": [
+              "crowd silhouettes",
+              "interior dust",
+              "impact cue"
+            ]
+          }
+        ],
+        "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+        "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+      },
+      "route_network": null,
+      "topology": {
+        "summary": "Sabaody is a numbered network built from the roots of 79 enormous mangrove trees, not ordinary land islands. Bridges, resin bubbles, coated transport, and grove zoning are the core visual system.",
+        "sources": [
+          "https://onepiece.fandom.com/wiki/Sabaody_Archipelago"
+        ],
+        "exact_distances": "unknown",
+        "exact_bearings": "partially_known_or_unknown",
+        "layout_mode": "relationship_graph_not_atlas_jitter"
+      },
+      "unresolved": [
+        "Exact map positions for all 79 grove numbers and zone categories.",
+        "Exact chapter for the auction-house confrontation event.",
+        "Runtime LOD strategy for thousands of bubbles and root structures."
+      ],
+      "visual_program": {
+        "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+        "must_show": [
+          "79 numbered mangrove-root grove nodes",
+          "bridges among roots",
+          "bubble ecology and bubble transport",
+          "grove-scale zoning and signage",
+          "landmarks nested within the network"
+        ],
+        "must_not_show": [
+          "three generic island polygons",
+          "ordinary rock islands standing in for mangrove roots",
+          "auction event before its gate"
+        ],
+        "collection_pattern": [
+          "00_TOPOLOGY",
+          "10_LANDMARKS",
+          "20_EVENT_STATES",
+          "30_ATMOSPHERE_FX",
+          "40_RUNTIME_LOD"
+        ],
+        "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+      },
+      "evidence": [
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+          "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+          "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+          "ownership": "asset_workspace"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+          "ownership": "asset_workspace"
+        }
+      ],
+      "queue": {
+        "state": "system_sketch",
+        "kind": "mangrove_grove_network",
+        "next": "numbered_grove_graph_and_root_kit_blockout",
+        "replaced_as_integration_unit_by": null
+      },
+      "blockout": {
+        "exists": false,
+        "runtime_export": false,
+        "maturity": null
+      },
+      "source_ref": "blender-assets/contracts/sabaody-grove-network.visual.json"
+    },
+    {
+      "id": "skypiea-sky-system",
+      "label": "Skypiea sky-island system",
+      "entity_type": "sky_archipelago_system",
+      "contract_status": "ready_for_system_sketch",
+      "priority": 1,
+      "index_state": "ready_for_system_sketch",
+      "identity": {
+        "anchor": {
+          "slug": "skypiea",
+          "name": "Skypiea",
+          "japanese": "スカイピア",
+          "romaji": "Sukaipia",
+          "region": "Sky",
+          "sea": null,
+          "island_type": null,
+          "debut_chapter": 239,
+          "debut_episode": 154,
+          "canon_status": "manga",
+          "canon_confidence": "canon",
+          "affiliation": null,
+          "wiki_url": "https://onepiece.fandom.com/wiki/Skypiea",
+          "source_ref": "onepiece.fandom.com/wiki/Skypiea#Island_Box",
+          "id": "skypiea",
+          "record_origin": "generated_wiki_record",
+          "atlas_anchor": {
+            "lng": -91.1362,
+            "lat": 17.0745,
+            "confidence": "derived",
+            "source_ref": "derived: region='Sky'; lng by voyage order 12 (skypiea, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+            "usage": "scene_entry_anchor_only",
+            "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+          }
+        },
+        "components": [
+          {
+            "slug": "skypiea",
+            "name": "Skypiea",
+            "japanese": "スカイピア",
+            "romaji": "Sukaipia",
+            "region": "Sky",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 239,
+            "debut_episode": 154,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Skypiea",
+            "source_ref": "onepiece.fandom.com/wiki/Skypiea#Island_Box",
+            "id": "skypiea",
+            "role": "sky_region",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -91.1362,
+              "lat": 17.0745,
+              "confidence": "derived",
+              "source_ref": "derived: region='Sky'; lng by voyage order 12 (skypiea, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "shandora",
+            "name": "Shandora",
+            "japanese": "シャンドラ",
+            "romaji": "Shandora",
+            "region": "Sky; Paradise (former)",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 268,
+            "debut_episode": 174,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Shandora",
+            "source_ref": "onepiece.fandom.com/wiki/Shandora#Island_Box",
+            "id": "shandora",
+            "role": "ancient_city_ruins",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -89.9611,
+              "lat": 15.9676,
+              "confidence": "derived",
+              "source_ref": "derived: region='Sky; Paradise (former)'; lng by voyage order 12 (skypiea, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "id": "angel-island",
+            "slug": null,
+            "name": "Angel Island",
+            "role": "island_cloud_settlement",
+            "debut_chapter": 239,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Skypiea_Arc",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "upper-yard",
+            "slug": null,
+            "name": "Upper Yard",
+            "role": "solid_jaya_landmass",
+            "debut_chapter": 239,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Upper_Yard",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "giant-jack",
+            "slug": null,
+            "name": "Giant Jack",
+            "role": "vertical_vine_axis",
+            "debut_chapter": null,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Upper_Yard",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "golden-belfry-cloud",
+            "slug": null,
+            "name": "Golden Belfry island cloud",
+            "role": "high_altitude_landmark",
+            "debut_chapter": null,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Upper_Yard",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "white-white-sea",
+            "slug": null,
+            "name": "White-White Sea",
+            "role": "cloud_ocean",
+            "debut_chapter": 239,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Skypiea_Arc",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          }
+        ]
+      },
+      "relationships": [
+        {
+          "from": "angel-island",
+          "type": "made_of",
+          "to": "island_cloud",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "upper-yard",
+          "type": "solid_land_within",
+          "to": "skypiea",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "shandora",
+          "type": "within",
+          "to": "upper-yard",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "giant-jack",
+          "type": "passes_through",
+          "to": "upper-yard",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "golden-belfry-cloud",
+          "type": "above",
+          "to": "upper-yard",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "white-white-sea",
+          "type": "supports_cloud_islands_of",
+          "to": "skypiea",
+          "confidence": "cited_summary"
+        }
+      ],
+      "chapter_logic": {
+        "base_reveal_chapter": 239,
+        "temporal_variants": [
+          {
+            "id": "arrival-cloud-sea",
+            "reveal_chapter": 239,
+            "state": "White-White Sea and Angel Island become visible.",
+            "verification": "verified"
+          },
+          {
+            "id": "upper-yard-reveal",
+            "reveal_chapter": 239,
+            "state": "Solid Upper Yard is distinguished from cloud islands.",
+            "verification": "verified"
+          },
+          {
+            "id": "giant-jack-and-belfry",
+            "reveal_chapter": null,
+            "state": "Vertical vine and highest bell landmark become visible when revealed.",
+            "verification": "chapter_to_verify"
+          }
+        ],
+        "event_scenes": [
+          {
+            "id": "knock-up-stream-arrival",
+            "importance": 1,
+            "reveal_chapter": 239,
+            "landmark": "white-white-sea",
+            "state_delta": "Existing vertical stream route breaks through the cloud sea into the navigable sky system.",
+            "verification": "verified",
+            "camera_cue": "Continue the current upward camera through the cloud membrane, then level into the sky archipelago.",
+            "fx": [
+              "cloud breach",
+              "water plume",
+              "sun halo"
+            ]
+          },
+          {
+            "id": "golden-bell-ring",
+            "importance": 1,
+            "reveal_chapter": null,
+            "landmark": "golden-belfry-cloud",
+            "state_delta": "Bell animation and long-distance sound/light pulse activate.",
+            "verification": "chapter_to_verify",
+            "camera_cue": "Rise along Giant Jack to the Belfry, then send the sound pulse across Upper Yard and below the clouds.",
+            "fx": [
+              "gold resonance",
+              "cloud shockwave",
+              "sun shafts"
+            ]
+          }
+        ],
+        "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+        "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+      },
+      "route_network": null,
+      "topology": {
+        "summary": "The destination above the Knock-Up Stream is a layered sky system: cloud sea, Angel Island, the solid displaced Jaya landmass of Upper Yard, Shandora ruins, Giant Jack, and the higher Belfry cloud.",
+        "sources": [
+          "https://onepiece.fandom.com/wiki/Upper_Yard",
+          "https://onepiece.fandom.com/wiki/Skypiea_Arc"
+        ],
+        "exact_distances": "unknown",
+        "exact_bearings": "partially_known_or_unknown",
+        "layout_mode": "relationship_graph_not_atlas_jitter"
+      },
+      "unresolved": [
+        "Exact reveal chapters for Giant Jack and the Golden Belfry.",
+        "Exact relative placement of Angel Island and Upper Yard in a spoiler-safe local inset.",
+        "Transition LOD between globe stream and sky-system scene."
+      ],
+      "visual_program": {
+        "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+        "must_show": [
+          "actual cloud islands beyond the stream",
+          "Angel Island distinct from solid Upper Yard",
+          "Shandora embedded in Upper Yard",
+          "Giant Jack as a vertical axis",
+          "Belfry on a higher island cloud"
+        ],
+        "must_not_show": [
+          "the Knock-Up Stream as the entire Skypiea asset",
+          "Upper Yard rendered as another soft cloud",
+          "late landmarks before their reveal"
+        ],
+        "collection_pattern": [
+          "00_TOPOLOGY",
+          "10_LANDMARKS",
+          "20_EVENT_STATES",
+          "30_ATMOSPHERE_FX",
+          "40_RUNTIME_LOD"
+        ],
+        "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+      },
+      "evidence": [
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+          "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+          "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+          "ownership": "asset_workspace"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+          "ownership": "asset_workspace"
+        }
+      ],
+      "queue": {
+        "state": "system_sketch",
+        "kind": "sky_archipelago_system",
+        "next": "cloud_sea_upper_yard_and_giant_jack_blockout",
+        "replaced_as_integration_unit_by": null
+      },
+      "blockout": {
+        "exists": false,
+        "runtime_export": false,
+        "maturity": null
+      },
+      "source_ref": "blender-assets/contracts/skypiea-sky-system.visual.json"
+    },
+    {
+      "id": "loguetown-roger-execution",
+      "label": "Loguetown and Roger execution platform",
+      "entity_type": "city_landmark_event_system",
+      "contract_status": "ready_for_system_sketch",
+      "priority": 1,
+      "index_state": "ready_for_system_sketch",
+      "identity": {
+        "anchor": {
+          "slug": "loguetown",
+          "name": "Loguetown",
+          "japanese": "ローグタウン",
+          "romaji": "Rōgutaun",
+          "region": "East Blue",
+          "sea": null,
+          "island_type": null,
+          "debut_chapter": 1,
+          "debut_episode": null,
+          "canon_status": "manga",
+          "canon_confidence": "canon",
+          "affiliation": null,
+          "wiki_url": "https://onepiece.fandom.com/wiki/Loguetown",
+          "source_ref": "onepiece.fandom.com/wiki/Loguetown#Island_Box",
+          "id": "loguetown",
+          "record_origin": "generated_wiki_record",
+          "atlas_anchor": {
+            "lng": -174,
+            "lat": -20,
+            "confidence": "derived",
+            "source_ref": "Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard.",
+            "usage": "scene_entry_anchor_only",
+            "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+          }
+        },
+        "components": [
+          {
+            "slug": "loguetown",
+            "name": "Loguetown",
+            "japanese": "ローグタウン",
+            "romaji": "Rōgutaun",
+            "region": "East Blue",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 1,
+            "debut_episode": null,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Loguetown",
+            "source_ref": "onepiece.fandom.com/wiki/Loguetown#Island_Box",
+            "id": "loguetown",
+            "role": "east_blue_city",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -174,
+              "lat": -20,
+              "confidence": "derived",
+              "source_ref": "Hand-authored (Phase 3): placed to the belt model — East Blue is the lower-left quadrant (lng<0, lat<0); the Grand Line is the equator. Foosha is on Dawn Island (canon). NEEDS /admin/place refinement to fan standard.",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "id": "execution-platform",
+            "slug": null,
+            "name": "Execution Platform",
+            "role": "central_scaffold_tower",
+            "debut_chapter": 1,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Loguetown",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "loguetown-central-square",
+            "slug": null,
+            "name": "Loguetown central square",
+            "role": "event_space",
+            "debut_chapter": 1,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Loguetown",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          }
+        ]
+      },
+      "relationships": [
+        {
+          "from": "execution-platform",
+          "type": "at_heart_of",
+          "to": "loguetown",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "execution-platform",
+          "type": "within",
+          "to": "loguetown-central-square",
+          "confidence": "cited_summary"
+        }
+      ],
+      "chapter_logic": {
+        "base_reveal_chapter": 1,
+        "temporal_variants": [
+          {
+            "id": "roger-execution-history",
+            "reveal_chapter": 1,
+            "state": "Historical crowd and Roger execution tableau at the central platform.",
+            "verification": "verified"
+          },
+          {
+            "id": "present-day-landmark",
+            "reveal_chapter": 1,
+            "state": "Empty preserved scaffold within the active city.",
+            "verification": "verified"
+          },
+          {
+            "id": "luffy-near-execution-storm",
+            "reveal_chapter": null,
+            "state": "Later event state with storm, crowd, and lightning.",
+            "verification": "chapter_to_verify"
+          }
+        ],
+        "event_scenes": [
+          {
+            "id": "roger-execution",
+            "importance": 1,
+            "reveal_chapter": 1,
+            "landmark": "execution-platform",
+            "state_delta": "Historical crowd, scaffold occupancy, banners, and cinematic lighting activate.",
+            "verification": "verified",
+            "camera_cue": "Begin at city-street height, reveal the scaffold over the crowd, then isolate Roger against the sky.",
+            "fx": [
+              "crowd motion",
+              "sea wind",
+              "historical color grade"
+            ]
+          },
+          {
+            "id": "luffy-near-execution",
+            "importance": 1,
+            "reveal_chapter": null,
+            "landmark": "execution-platform",
+            "state_delta": "Mirrored execution staging switches to storm and lightning state.",
+            "verification": "chapter_to_verify",
+            "camera_cue": "Reuse the Roger composition with a different subject and violent weather to make the parallel legible.",
+            "fx": [
+              "thunderclouds",
+              "lightning strike",
+              "rain",
+              "crowd panic"
+            ]
+          }
+        ],
+        "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+        "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+      },
+      "route_network": null,
+      "topology": {
+        "summary": "Loguetown is a city landmark system whose central execution scaffold anchors both the chapter-one historical event and a later mirrored near-execution. The scaffold must remain individually addressable from the globe.",
+        "sources": [
+          "https://onepiece.fandom.com/wiki/Loguetown",
+          "https://onepiece.fandom.com/wiki/Gol_D._Roger"
+        ],
+        "exact_distances": "unknown",
+        "exact_bearings": "partially_known_or_unknown",
+        "layout_mode": "relationship_graph_not_atlas_jitter"
+      },
+      "unresolved": [
+        "Exact chapter for Luffy's near-execution and lightning state.",
+        "Manga-accurate scaffold dimensions and square sightlines.",
+        "How many crowd agents remain legible at globe and inset LODs."
+      ],
+      "visual_program": {
+        "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+        "must_show": [
+          "execution scaffold/tower as the city's central visual anchor",
+          "surrounding square and dense town fabric",
+          "separate historical, empty-landmark, and storm event variants",
+          "repeatable camera language connecting the two execution scenes"
+        ],
+        "must_not_show": [
+          "a generic town plate with no scaffold",
+          "Roger permanently present in free-roam mode",
+          "the later lightning event before its gate"
+        ],
+        "collection_pattern": [
+          "00_TOPOLOGY",
+          "10_LANDMARKS",
+          "20_EVENT_STATES",
+          "30_ATMOSPHERE_FX",
+          "40_RUNTIME_LOD"
+        ],
+        "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+      },
+      "evidence": [
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+          "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+          "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+          "ownership": "asset_workspace"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+          "ownership": "asset_workspace"
+        }
+      ],
+      "queue": {
+        "state": "scene_3d",
+        "kind": "city_landmark_event_system",
+        "next": "panel_accuracy_review_then_architecture_material_and_event_camera_pass",
+        "replaced_as_integration_unit_by": null
+      },
+      "blockout": {
+        "exists": true,
+        "runtime_export": false,
+        "maturity": "3d_blockout_not_final_art"
+      },
+      "source_ref": "blender-assets/contracts/loguetown-roger-execution.visual.json"
+    },
+    {
+      "id": "water-7-sea-train-network",
+      "label": "Water 7 Sea Train network",
+      "entity_type": "sea_train_route_network",
+      "contract_status": "ready_for_system_sketch",
+      "priority": 1,
+      "index_state": "ready_for_system_sketch",
+      "identity": {
+        "anchor": {
+          "slug": "water-7",
+          "name": "Water 7",
+          "japanese": "ウォーターセブン",
+          "romaji": "Wōtā Sebun",
+          "region": "Paradise",
+          "sea": null,
+          "island_type": null,
+          "debut_chapter": 323,
+          "debut_episode": 229,
+          "canon_status": "manga",
+          "canon_confidence": "canon",
+          "affiliation": null,
+          "wiki_url": "https://onepiece.fandom.com/wiki/Water_7",
+          "source_ref": "onepiece.fandom.com/wiki/Water_7#Island_Box",
+          "id": "water-7",
+          "record_origin": "generated_wiki_record",
+          "atlas_anchor": {
+            "lng": -73.7901,
+            "lat": 3.1588,
+            "confidence": "derived",
+            "source_ref": "derived: region='Paradise'; lng by voyage order 14 (water-7, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+            "usage": "scene_entry_anchor_only",
+            "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+          }
+        },
+        "components": [
+          {
+            "slug": "water-7",
+            "name": "Water 7",
+            "japanese": "ウォーターセブン",
+            "romaji": "Wōtā Sebun",
+            "region": "Paradise",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 323,
+            "debut_episode": 229,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Water_7",
+            "source_ref": "onepiece.fandom.com/wiki/Water_7#Island_Box",
+            "id": "water-7",
+            "role": "network_hub_city",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -73.7901,
+              "lat": 3.1588,
+              "confidence": "derived",
+              "source_ref": "derived: region='Paradise'; lng by voyage order 14 (water-7, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "enies-lobby",
+            "name": "Enies Lobby",
+            "japanese": "エニエスロビー",
+            "romaji": "Eniesu Robī",
+            "region": "Paradise",
+            "sea": null,
+            "island_type": "Afternoon/Never-night Island",
+            "debut_chapter": 358,
+            "debut_episode": 263,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": "World Government; Marines",
+            "wiki_url": "https://onepiece.fandom.com/wiki/Enies_Lobby",
+            "source_ref": "onepiece.fandom.com/wiki/Enies_Lobby#Island_Box",
+            "id": "enies-lobby",
+            "role": "government_terminus",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -68.3696,
+              "lat": -7.1283,
+              "confidence": "derived",
+              "source_ref": "derived: region='Paradise'; lng by voyage order 15 (enies-lobby, arc named after island) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "pucci",
+            "name": "Pucci",
+            "japanese": "プッチ",
+            "romaji": "Putchi",
+            "region": "Paradise",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 657,
+            "debut_episode": 227,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Pucci",
+            "source_ref": "onepiece.fandom.com/wiki/Pucci#Island_Box",
+            "id": "pucci",
+            "role": "connected_island",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -109.2305,
+              "lat": 7.2998,
+              "confidence": "derived",
+              "source_ref": "derived: region='Paradise'; debut arc punk-hazard is in New World but region says Paradise — region wins, lng not by voyage order | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "st-poplar",
+            "name": "St. Poplar",
+            "japanese": "セント・ポプラ",
+            "romaji": "Sento Popura",
+            "region": "Paradise",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 496,
+            "debut_episode": null,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/St._Poplar",
+            "source_ref": "onepiece.fandom.com/wiki/St._Poplar#Island_Box",
+            "id": "st-poplar",
+            "role": "connected_island",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -52.0394,
+              "lat": 1.7874,
+              "confidence": "derived",
+              "source_ref": "derived: region='Paradise'; lng by voyage order 18 (sabaody-archipelago, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "san-faldo",
+            "name": "San Faldo",
+            "japanese": "サン・ファルド",
+            "romaji": "San Farudo",
+            "region": "Paradise",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 322,
+            "debut_episode": 229,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/San_Faldo",
+            "source_ref": "onepiece.fandom.com/wiki/San_Faldo#Island_Box",
+            "id": "san-faldo",
+            "role": "connected_island",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -77.5522,
+              "lat": -2.4804,
+              "confidence": "derived",
+              "source_ref": "derived: region='Paradise'; lng by voyage order 14 (water-7, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "slug": "shift-station",
+            "name": "Shift Station",
+            "japanese": "シフト",
+            "romaji": "Shifuto Sutēshon",
+            "region": "Paradise",
+            "sea": null,
+            "island_type": null,
+            "debut_chapter": 322,
+            "debut_episode": 228,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "affiliation": null,
+            "wiki_url": "https://onepiece.fandom.com/wiki/Shift_Station",
+            "source_ref": "onepiece.fandom.com/wiki/Shift_Station#Island_Box",
+            "id": "shift-station",
+            "role": "intermediate_station_and_lighthouse",
+            "record_origin": "generated_wiki_record",
+            "atlas_anchor": {
+              "lng": -77.7092,
+              "lat": -5.9823,
+              "confidence": "derived",
+              "source_ref": "derived: region='Paradise'; lng by voyage order 14 (water-7, arc of debut chapter) | belt model: Grand Line=equator, Red Line=0/180 meridian; deterministic sha256(slug) jitter",
+              "usage": "scene_entry_anchor_only",
+              "warning": "Never infer local bearings, distances, or topology from this deterministic atlas point."
+            }
+          },
+          {
+            "id": "blue-station",
+            "slug": null,
+            "name": "Blue Station",
+            "role": "water_7_station",
+            "debut_chapter": 322,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Sea_Train",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "day-station",
+            "slug": null,
+            "name": "Day Station",
+            "role": "enies_lobby_station",
+            "debut_chapter": null,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Enies_Lobby",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "puffing-tom",
+            "slug": null,
+            "name": "Puffing Tom",
+            "role": "commercial_sea_train",
+            "debut_chapter": 322,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Sea_Train",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "rocketman",
+            "slug": null,
+            "name": "Rocketman",
+            "role": "uncontrollable_prototype_train",
+            "debut_chapter": null,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Sea_Train",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "puffing-ice",
+            "slug": null,
+            "name": "Puffing Ice",
+            "role": "post_timeskip_train",
+            "debut_chapter": 656,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Sea_Train",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "subsurface-sea-rails",
+            "slug": null,
+            "name": "Subsurface sea rails",
+            "role": "route_geometry",
+            "debut_chapter": 322,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Sea_Train",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          },
+          {
+            "id": "aqua-laguna",
+            "slug": null,
+            "name": "Aqua Laguna",
+            "role": "annual_route_hazard",
+            "debut_chapter": null,
+            "canon_status": "manga_or_official_summary",
+            "canon_confidence": "cited_summary",
+            "source_ref": "https://onepiece.fandom.com/wiki/Water_7_Arc",
+            "record_origin": "cited_manual_topology_node",
+            "atlas_anchor": null
+          }
+        ]
+      },
+      "relationships": [
+        {
+          "from": "blue-station",
+          "type": "station_at",
+          "to": "water-7",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "day-station",
+          "type": "station_at",
+          "to": "enies-lobby",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "subsurface-sea-rails",
+          "type": "connects",
+          "to": "water-7",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "subsurface-sea-rails",
+          "type": "connects",
+          "to": "enies-lobby",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "subsurface-sea-rails",
+          "type": "branches_to",
+          "to": "pucci",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "subsurface-sea-rails",
+          "type": "branches_to",
+          "to": "st-poplar",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "subsurface-sea-rails",
+          "type": "branches_to",
+          "to": "san-faldo",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "puffing-tom",
+          "type": "travels_on",
+          "to": "subsurface-sea-rails",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "rocketman",
+          "type": "travels_on",
+          "to": "subsurface-sea-rails",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "aqua-laguna",
+          "type": "disrupts",
+          "to": "water-7-sea-train-network",
+          "confidence": "cited_summary"
+        }
+      ],
+      "chapter_logic": {
+        "base_reveal_chapter": 323,
+        "temporal_variants": [
+          {
+            "id": "network-first-reveal",
+            "reveal_chapter": 322,
+            "state": "Sea rails, Puffing Tom, Shift Station, and the Water 7 connection become visible.",
+            "verification": "verified"
+          },
+          {
+            "id": "aqua-laguna-pursuit",
+            "reveal_chapter": null,
+            "state": "Storm overlay, damaged service state, and Rocketman pursuit to Enies Lobby.",
+            "verification": "chapter_to_verify"
+          },
+          {
+            "id": "puffing-ice-post-timeskip",
+            "reveal_chapter": 656,
+            "state": "Puffing Ice becomes an available later-era train variant.",
+            "verification": "verified"
+          }
+        ],
+        "event_scenes": [
+          {
+            "id": "puffing-tom-route-reveal",
+            "importance": 1,
+            "reveal_chapter": 322,
+            "landmark": "subsurface-sea-rails",
+            "state_delta": "Rails illuminate beneath the ocean surface and Puffing Tom traverses the visible route.",
+            "verification": "verified",
+            "camera_cue": "Start beside the rail at wave height, pull to globe scale while the route lights toward connected islands.",
+            "fx": [
+              "wheel spray",
+              "paddle wake",
+              "subsurface rail shimmer"
+            ]
+          },
+          {
+            "id": "rocketman-aqua-laguna-pursuit",
+            "importance": 1,
+            "reveal_chapter": null,
+            "landmark": "rocketman",
+            "state_delta": "Route changes to storm hazard state with Rocketman pursuing Puffing Tom toward Enies Lobby.",
+            "verification": "chapter_to_verify",
+            "camera_cue": "Race beside the prototype at water level, then reveal the storm wall and Enies Lobby terminus.",
+            "fx": [
+              "Aqua Laguna waves",
+              "rain",
+              "steam",
+              "sparks",
+              "wake"
+            ]
+          }
+        ],
+        "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+        "unknown_gate_rule": "Do not render a chapter_to_verify state until its exact gate is confirmed."
+      },
+      "route_network": {
+        "render_mode": "chapter_gated_maplibre_route_plus_animated_glb_vehicle",
+        "edge_geometry": "curved local great-circle approximations are integration scaffolds, not canon cartography",
+        "track_elevation": "just_below_ocean_surface",
+        "track_motion": "sways_with_tides",
+        "known_terminals": [
+          "water-7",
+          "enies-lobby",
+          "pucci",
+          "st-poplar",
+          "san-faldo"
+        ],
+        "known_stations": [
+          "blue-station",
+          "shift-station",
+          "day-station"
+        ],
+        "vehicle_states": [
+          "puffing-tom-commercial",
+          "rocketman-pursuit",
+          "puffing-ice-post-timeskip"
+        ],
+        "travel_interaction": "Selecting a revealed route can animate the train along the globe line, then open the destination inset."
+      },
+      "topology": {
+        "summary": "The Sea Train is a route network over rails just below the ocean surface. Water 7 connects to Enies Lobby and nearby Pucci, St. Poplar, and San Faldo; Shift Station is an intermediate lighthouse station. Exact bearings must remain schematic until panel-level route evidence is collected.",
+        "sources": [
+          "https://onepiece.fandom.com/wiki/Sea_Train",
+          "https://onepiece.fandom.com/wiki/Water_7",
+          "https://onepiece.fandom.com/wiki/Enies_Lobby"
+        ],
+        "exact_distances": "unknown",
+        "exact_bearings": "partially_known_or_unknown",
+        "layout_mode": "relationship_graph_not_atlas_jitter"
+      },
+      "unresolved": [
+        "Panel-verified branch ordering and bearings among the five connected islands.",
+        "Exact reveal chapter for Rocketman and Aqua Laguna pursuit.",
+        "Which connected-island stations are named versus only known to exist.",
+        "MapLibre representation for submerged rails when the globe is tilted."
+      ],
+      "visual_program": {
+        "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
+        "must_show": [
+          "Water 7 as hub rather than the only node",
+          "rail just below the ocean surface",
+          "Puffing Tom moving on the revealed line",
+          "branches to Enies Lobby, Pucci, St. Poplar, and San Faldo",
+          "Blue, Shift, and Day stations",
+          "Aqua Laguna as a route state"
+        ],
+        "must_not_show": [
+          "dry land railway embankments",
+          "exact bearings inferred from atlas jitter",
+          "Puffing Ice before chapter 656",
+          "Rocketman pursuit permanently active"
+        ],
+        "collection_pattern": [
+          "00_TOPOLOGY",
+          "10_LANDMARKS",
+          "20_EVENT_STATES",
+          "30_ATMOSPHERE_FX",
+          "40_RUNTIME_LOD"
+        ],
+        "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
+      },
+      "evidence": [
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+          "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/raw/locates.json",
+          "sha256": "85afaccf44fea29e0ef0d0a71ae46bb04c9c3ff7133d31658407aae3aeb65972",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/canon/islands.coords.json",
+          "sha256": "9dce495d7b829b5123f5f0098c7c1e8f45fc6067557820305d3e7114c048f1dc",
+          "ownership": "atlas_read_only"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/research/narrative-scene-overrides.json",
+          "sha256": "f22d970c2e91fa44baf2ae0c56cd2df4ee68058cfd09828f90005fae1b401ffc",
+          "ownership": "asset_workspace"
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+          "ownership": "asset_workspace"
+        }
+      ],
+      "queue": {
+        "state": "scene_3d",
+        "kind": "sea_train_route_network",
+        "next": "route_panel_verification_then_maplibre_line_proof_and_train_detail_pass",
+        "replaced_as_integration_unit_by": null
+      },
+      "blockout": {
+        "exists": true,
+        "runtime_export": false,
+        "maturity": "3d_blockout_not_final_art"
+      },
+      "source_ref": "blender-assets/contracts/water-7-sea-train-network.visual.json"
+    }
+  ]
+}
