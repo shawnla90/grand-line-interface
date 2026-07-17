@@ -248,6 +248,53 @@ export function visualFit(a: RuntimeAsset, footprintDeg: number): number | null 
 }
 
 /**
+ * The DIRECTORY view of the models — what a reader can be shown a list of and
+ * flown to. Computed from the same artifact and the same gate functions as the
+ * render table, but WITHOUT the map: it needs no silhouette (that is only for
+ * scale) and no projection (reachability is not rendering). One source of truth,
+ * the artifact; no second copy of the reveal logic.
+ */
+export type DirectoryEntry = {
+  id: string;
+  label: string;
+  reveal: number | null;
+  anchor: [number, number] | null;
+  status: "wired" | "gate_unverified" | "refused";
+};
+
+/** "fish-man-island — deep pilot" -> "Fish-Man Island". The suffix is asset-track shorthand. */
+function prettyLabel(a: RuntimeAsset): string {
+  const raw = (a.label ?? a.id).split("—")[0].split("--")[0].trim();
+  if (raw && raw !== a.id) return raw;
+  return a.id.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+export function runtimeDirectory(assets: RuntimeAsset[], refusedIds: string[]): DirectoryEntry[] {
+  const out: DirectoryEntry[] = [];
+  for (const a of assets) {
+    // The Knock-Up Stream is a vertical transition, not a place you dive into —
+    // it has no base_reveal/safe_full_scene, so gateChapter is null and it falls
+    // out here on its own. Only island-type models carry a reveal chapter.
+    const reveal = a.gate_unverified ? null : gateChapter(a, needsPerNode(a));
+    if (a.gate_unverified) {
+      out.push({ id: a.id, label: prettyLabel(a), reveal: null, anchor: a.anchor, status: "gate_unverified" });
+    } else if (reveal !== null) {
+      out.push({ id: a.id, label: prettyLabel(a), reveal, anchor: a.anchor, status: "wired" });
+    }
+  }
+  for (const id of refusedIds) {
+    out.push({
+      id,
+      label: id.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
+      reveal: null, anchor: null, status: "refused",
+    });
+  }
+  // Wired first, then held-back, each by reveal chapter / name.
+  const rank = { wired: 0, gate_unverified: 1, refused: 2 };
+  return out.sort((x, y) => rank[x.status] - rank[y.status] || (x.reveal ?? 1e9) - (y.reveal ?? 1e9) || x.label.localeCompare(y.label));
+}
+
+/**
  * Build the table. `footprintFor` returns an island's silhouette span in degrees
  * for a given anchor, or null when the anchor is not an island the atlas draws.
  */

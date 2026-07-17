@@ -36,6 +36,7 @@ import { focusKey, type Focus, type PresenceLens } from "@/lib/lenses";
 import type { BuildLog } from "@/lib/buildlog";
 import type { Art } from "@/lib/art";
 import WorldMap, { type Projection } from "./WorldMap";
+import { RuntimeIslandDirectory } from "./RuntimeIslandDirectory";
 import SearchPalette, { type SearchHit } from "./SearchPalette";
 import ChapterDock from "./ChapterDock";
 import HeroPrompt from "./HeroPrompt";
@@ -205,9 +206,20 @@ export default function Atlas({
   // The isolate filter + the search palette (Unit: identify & filter).
   const [focus, setFocusRaw] = useState<Focus | null>(initialFocus);
   const [searchOpen, setSearchOpen] = useState(false);
-  // Camera target for non-island search hits (crews have no selection slug).
-  const [flyTarget, setFlyTarget] = useState<{ lng: number; lat: number; key: number } | null>(null);
+  // Camera target for non-island search hits (crews have no selection slug) and
+  // for directory dives (which carry a deeper zoom/pitch to reach the 3D model).
+  const [flyTarget, setFlyTarget] = useState<
+    { lng: number; lat: number; key: number; zoom?: number; pitch?: number } | null
+  >(null);
   const flyKey = useRef(0);
+  // Dive into a 3D island from the directory: land past the model's zoom gate,
+  // tilted, so grab-and-spin is immediately available. Breaks follow like any
+  // deliberate camera takeover.
+  const diveTo = useCallback((anchor: [number, number]) => {
+    setFollow(false);
+    flyKey.current += 1;
+    setFlyTarget({ lng: anchor[0], lat: anchor[1], key: flyKey.current, zoom: 6.4, pitch: 45 });
+  }, []);
 
   const setSelected = useCallback((slug: string | null) => {
     setSelectedRaw(slug);
@@ -464,6 +476,13 @@ export default function Atlas({
                 ⌖ follow
               </button>
             </div>
+
+            {/* The 3D-island directory. Only when the runtime assets are on —
+                without them a "dive" would land on a flat island, so offering it
+                would be a lie. */}
+            {process.env.NEXT_PUBLIC_RUNTIME_3D_ASSETS === "1" && (
+              <RuntimeIslandDirectory chapter={at.chapter} onDive={diveTo} />
+            )}
 
             <button
               type="button"

@@ -101,7 +101,7 @@ type Props = {
   focus?: Focus | null;
   /** Camera target for non-island destinations (a search hit on a crew). The
       key forces re-fly when the same anchor is picked twice. */
-  flyTarget?: { lng: number; lat: number; key: number } | null;
+  flyTarget?: { lng: number; lat: number; key: number; zoom?: number; pitch?: number } | null;
   /**
    * Admin placement mode (the /admin/place tool). When both are set, a map click
    * reports its lng/lat instead of selecting an island — that's how a human
@@ -2204,10 +2204,14 @@ export default function WorldMap({
   useEffect(() => {
     const m = map.current;
     if (!m || !ready.current || !flyTarget) return;
+    // A search pick just brings the island on screen (zoom 3.2). A directory
+    // DIVE carries its own zoom/pitch to land you past GLB_MIN_ZOOM with the
+    // camera tilted, so the 3D model is actually there when you arrive.
     m.easeTo({
       center: [flyTarget.lng, flyTarget.lat],
-      zoom: Math.max(m.getZoom(), 3.2),
-      duration: 900,
+      zoom: flyTarget.zoom ?? Math.max(m.getZoom(), 3.2),
+      pitch: flyTarget.pitch ?? m.getPitch(),
+      duration: 1100,
     });
   }, [flyTarget]);
 
