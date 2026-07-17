@@ -52,7 +52,7 @@ function resolve(family: EntryFamily, slug: string, ctx: ChapterCtx): Card | nul
       : null;
   }
   if (family === "character") {
-    const e = characterEntry(canon, slug, ctx);
+    const e = characterEntry(canon, world, slug, ctx);
     if (e.state !== "charted") return null;
     const b = bountyAt(e.data.poster.bountyHistory, ctx.chapter);
     return {

@@ -16,6 +16,7 @@
 import Link from "next/link";
 import type { CharacterEntryData } from "@/lib/entry";
 import { Field, FieldGrid, Kicker, Panel, Receipts } from "@/components/ui/Panel";
+import { focusKey } from "@/lib/lenses";
 import { BRAND } from "@/config/brand";
 import WantedCard from "@/components/WantedCard";
 
@@ -77,6 +78,17 @@ export default function CharacterEntry({
               ))}
           </ul>
         </Panel>
+      )}
+
+      {/* Back to the chart, focused on what this page is about. focusKey is the
+          same encoder app/page.tsx already parses — the round trip is free. */}
+      {data.crewSlug && (
+        <Link
+          href={`/?ch=${chapter}&focus=${focusKey({ kind: "crew", slug: data.crewSlug })}`}
+          className="mt-7 inline-block rounded-sm border border-gold/60 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-gold transition-colors hover:bg-gold/10"
+        >
+          Show on the map ↗
+        </Link>
       )}
 
       <p className="font-document mt-8 text-[11px] leading-relaxed text-muted-2 italic">

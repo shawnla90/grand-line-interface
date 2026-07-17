@@ -175,6 +175,7 @@ type Props = {
   /** The presence lens from ?lens= — "crew" on a plain load. */
   initialLens: PresenceLens;
   initialFocus?: Focus | null;
+  initialIsland?: string | null;
   /** The shipwright's log — build provenance, rendered from the footer. */
   buildLog?: BuildLog;
 };
@@ -182,7 +183,8 @@ type Props = {
 const DEFAULT_CHAPTER = 1044;
 
 export default function Atlas({
-  world, art, initialChapter, initialAxis, initialLens, initialFocus = null, buildLog,
+  world, art, initialChapter, initialAxis, initialLens, initialFocus = null,
+  initialIsland = null, buildLog,
 }: Props) {
   const engine = useChapterEngine(world, initialChapter ?? DEFAULT_CHAPTER);
   const { chapter, swept, playing, speed } = engine;
@@ -194,7 +196,8 @@ export default function Atlas({
   // "fruit"/"haki" recolor the same chapter-gated entities by their revealed
   // powers; "off" hides the layer. At ch. 1 every lens shows exactly nothing.
   const [lens, setLens] = useState<PresenceLens>(initialLens);
-  const [selected, setSelectedRaw] = useState<string | null>(null);
+  // Seeded from ?island= (already fog-checked server-side in app/page.tsx).
+  const [selected, setSelectedRaw] = useState<string | null>(initialIsland);
   const [copied, setCopied] = useState(false);
   // Follow-cam: on by default — scrubbing or sailing keeps the ship in view.
   // Selecting an island or dragging the globe is the reader looking elsewhere.
@@ -393,7 +396,13 @@ export default function Atlas({
           <aside className="gutter dr-fade absolute top-[74px] bottom-4 left-4 z-10 w-[290px] overflow-y-auto rounded-md border border-rope/70 bg-ink/88 shadow-2xl backdrop-blur">
             <Readout at={at} world={world} />
             {island && (
-              <IslandDetail island={island} world={world} art={art} onClose={() => setSelected(null)} />
+              <IslandDetail
+                island={island}
+                world={world}
+                art={art}
+                chapter={at.chapter}
+                onClose={() => setSelected(null)}
+              />
             )}
             <CrewRoster at={at} world={world} art={art} />
 

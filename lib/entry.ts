@@ -251,6 +251,9 @@ export function islandEntry(world: World, slug: string, ctx: ChapterCtx): Entry<
 
 export type CharacterEntryData = {
   poster: PosterVM;
+  /** Their crew's slug IF a presence roster places them — never characters[].crew_id,
+   *  which says "Straw Hat Pirates" for a Jinbe 448 chapters early. */
+  crewSlug: string | null;
   origin: string | null;
   birthday: string | null;
   bloodType: string | null;
@@ -270,6 +273,7 @@ export type CharacterEntryData = {
  */
 export function characterEntry(
   canon: Canon,
+  world: World,
   slug: string,
   ctx: ChapterCtx,
 ): Entry<CharacterEntryData> {
@@ -277,8 +281,22 @@ export function characterEntry(
   if (matches.length === 0) return UNCHARTED;
   const c = matches.reduce((a, b) => (a.id <= b.id ? a : b));
   if (c.debut_chapter === null || c.debut_chapter > ctx.chapter) return UNCHARTED;
+  // The map link's focus. Derived from the AUTHORED presence rosters, so it can
+  // only ever say what the chart itself would show at this chapter.
+  let crewSlug: string | null = null;
+  for (const crew of world.presence.crews) {
+    if (crew.members.some((m) => m.slug === slug && m.fromChapter <= ctx.chapter)) {
+      crewSlug = crew.slug;
+      break;
+    }
+  }
+  if (!crewSlug && world.crew.some((m) => m.slug === slug && m.joinChapter <= ctx.chapter)) {
+    crewSlug = world.voyage.crewSlug;
+  }
+
   return charted({
     poster: posterFromCharacter(c, ctx),
+    crewSlug,
     origin: c.origin,
     birthday: c.birthday,
     bloodType: c.blood_type,

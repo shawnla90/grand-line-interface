@@ -235,6 +235,32 @@ def main() -> int:
               s_bad == 200 and hashlib.sha256(png_bad).hexdigest() == h_fog,
               f"status={s_bad}")
 
+        print("\n  the round trip")
+        present("the rail's door carries the chapter",
+                "/island/water-7?ch=400", "/island/water-7?ch=400")
+        present("a character page offers the map back, focused",
+                "/character/monkey-d-luffy?ch=400", "focus=crew:straw-hat-pirates")
+
+        # ?island= is the round trip home, gated by the SAME predicate the map
+        # uses, or the deep link becomes a brand new oracle.
+        #
+        # NOTE the assertion is about the SELECTION, not the name. The map page
+        # legitimately contains every island's name — the whole World ships so
+        # the slider can gate per-frame without a round trip, and the UI says so
+        # out loud. That is Phase 5's boundary and the entry pages invert it
+        # precisely because a PAGE is a link you send someone. Asserting "Water 7
+        # is absent" here would be asserting against the map's own design; what
+        # must be true is that a crafted link cannot SELECT what the map fogs.
+        _, deep = get("/?ch=400&island=water-7")
+        check("?island= at a chapter that has it: selected",
+              "initialIsland" in deep and "water-7" in deep.split("initialIsland")[1][:40])
+        _, early = get("/?ch=100&island=water-7")
+        after = early.split("initialIsland")[1][:40] if "initialIsland" in early else ""
+        check("?island= at a fogged chapter: dropped, nothing selected",
+              "water-7" not in after, f"payload said: {after[:32]!r}")
+        _, junk = get("/?ch=400&island=qwertyuiop")
+        check("?island= with garbage: the map just opens", "Grand Line" in junk)
+
     finally:
         if server:
             server.terminate()

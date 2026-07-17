@@ -16,6 +16,7 @@
  * fastest way for a reader who knows better to tell us we are wrong.
  */
 
+import Link from "next/link";
 import type { World, WorldIsland } from "@/lib/canon";
 import type { Art } from "@/lib/art";
 import { Confidence, Field, FieldGrid, Kicker, Receipts } from "./ui/Panel";
@@ -24,11 +25,14 @@ export default function IslandDetail({
   island,
   world,
   art,
+  chapter,
   onClose,
 }: {
   island: WorldIsland;
   world: World;
   art: Art;
+  /** The reader's chapter — travels into the entry link so the page opens where they are. */
+  chapter: number;
   onClose: () => void;
 }) {
   const arc = world.arcs.find((a) => a.slug === island.debutArc);
@@ -84,6 +88,15 @@ export default function IslandDetail({
 
       <Confidence level={island.confidence} className="mt-3" />
       <Receipts sourceRef={island.sourceRef} wikiUrl={island.wikiUrl} className="mt-2" />
+
+      {/* The door. The chapter rides along, so the page opens at the reader's
+          position rather than asking them again. */}
+      <Link
+        href={`/island/${island.slug}?ch=${chapter}`}
+        className="mt-3 inline-block font-mono text-[10px] uppercase tracking-[0.16em] text-gold/85 transition-colors hover:text-gold"
+      >
+        Open full chart entry →
+      </Link>
     </div>
   );
 }

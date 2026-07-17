@@ -12,7 +12,7 @@ import Link from "next/link";
 import type { CrewEntryData } from "@/lib/entry";
 import { Kicker, Panel, Receipts } from "@/components/ui/Panel";
 import { crewColor } from "@/lib/crews";
-import { FRUIT_TYPE_STYLE, HAKI_STYLE, STATUS_STYLE } from "@/lib/lenses";
+import { FRUIT_TYPE_STYLE, HAKI_STYLE, STATUS_STYLE, focusKey } from "@/lib/lenses";
 import type { HakiType, StatusKind } from "@/lib/canon";
 import { BRAND } from "@/config/brand";
 import JollyRoger from "@/components/marks/JollyRoger";
@@ -124,6 +124,13 @@ export default function CrewEntry({
           </ul>
         </Panel>
       )}
+
+      <Link
+        href={`/?ch=${chapter}&focus=${focusKey({ kind: "crew", slug: data.slug })}`}
+        className="mt-7 inline-block rounded-sm border border-gold/60 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-gold transition-colors hover:bg-gold/10"
+      >
+        Show on the map ↗
+      </Link>
 
       <p className="font-document mt-8 text-[11px] leading-relaxed text-muted-2 italic">
         Charted against chapter {chapter}. {BRAND.tagline}

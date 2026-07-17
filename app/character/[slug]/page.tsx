@@ -30,7 +30,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   const world = buildWorld(canon);
   const [{ slug }, sp] = await Promise.all([params, searchParams]);
   const ctx = readChapter(world, sp);
-  const entry = characterEntry(canon, slug, ctx);
+  const entry = characterEntry(canon, world, slug, ctx);
 
   if (entry.state === "uncharted") {
     return {
@@ -55,7 +55,7 @@ export default async function Page({ params, searchParams }: Props) {
   const world = buildWorld(canon);
   const [{ slug }, sp] = await Promise.all([params, searchParams]);
   const ctx = readChapter(world, sp);
-  const entry = characterEntry(canon, slug, ctx);
+  const entry = characterEntry(canon, world, slug, ctx);
 
   if (entry.state === "uncharted") {
     return <Uncharted chapter={ctx.chapter} chapterSet={ctx.chapterSet} />;
