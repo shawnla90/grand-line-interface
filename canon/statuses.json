@@ -1,0 +1,416 @@
+{
+  "_warning": "HAND-AUTHORED. A sync script that overwrites this file is a bug. No upstream source has this axis: the API stores 'is_yonko' as one present-day boolean and has no Warlord field at all, so a reader at chapter 300 would be told Luffy is an Emperor and Crocodile is not a Warlord. Both are backwards. Every row below is hand-typed.",
+  "_semantics": "from_chapter is when the READER LEARNS the fact, not when it becomes true in-world — the same rule as canon/fruit_reveals.json. Kaido has always been an Emperor; the reader is told around the end of Punk Hazard. A status with a to_chapter has ENDED by then (a title revoked, a system abolished, a death): the holder is not shown holding it after. Windows for one holder are ascending and disjoint — Blackbeard takes the Warlord title and quits it, and each is its own window.",
+  "_the_slug_namespace": "slug must name something that can RENDER: a presence crew, a presence character, a presence crew MEMBER, a crew_joins Straw Hat, or the voyage crew. That is why Blackbeard is 'marshall-d-teach' (a member of blackbeard-pirates) while the Emperor row beside him is the crew 'blackbeard-pirates' — the man carries the Warlord title, the crew carries the Emperor seat. normalize.py rejects a slug that resolves to neither; a status nobody can see is dead data.",
+  "_the_abolition": "Every Warlord window closes at 956 or earlier. The system is abolished on the page at ch. 956, so no reader past it should ever see a Warlord chip — that is a tripwire in check_canon, not a convention.",
+  "_confidence_semantics": "canon = the chapter is stated or shown on the page. derived = a reading of the arc (the title is in force, but no panel stamps the exact chapter the reader learns it). guess = flagged, and worth Shawn's verification pass before any content ships on it.",
+  "_before_any_content_ships": "Every row is verified:false. Shawn must confirm these chapters against the manga.",
+  "statuses": [
+    {
+      "slug": "dracule-mihawk",
+      "entity": "character",
+      "status": "warlord",
+      "windows": [
+        {
+          "from_chapter": 69,
+          "to_chapter": 956,
+          "source_ref": "Hand-authored. Mihawk is named as one of the Seven Warlords when Yosaku explains the system (~ch. 69), which is also the reader's first contact with the title at all. The exact chapter is a reading of the arc. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "crocodile",
+      "entity": "character",
+      "status": "warlord",
+      "windows": [
+        {
+          "from_chapter": 127,
+          "to_chapter": 211,
+          "source_ref": "Hand-authored. Sir Crocodile is introduced as a Warlord in the Alabasta arc (~ch. 127) and the title is revoked after his defeat, ch. 211. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "donquixote-doflamingo",
+      "entity": "character",
+      "status": "warlord",
+      "windows": [
+        {
+          "from_chapter": 233,
+          "to_chapter": 796,
+          "source_ref": "Hand-authored. Doflamingo is shown at the Warlord summons at Mary Geoise (~ch. 233); the title is stripped after Dressrosa (~ch. 796). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "bartholomew-kuma",
+      "entity": "character",
+      "status": "warlord",
+      "windows": [
+        {
+          "from_chapter": 233,
+          "to_chapter": 956,
+          "source_ref": "Hand-authored. Kuma is shown at the Warlord summons at Mary Geoise (~ch. 233). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "gecko-moria",
+      "entity": "character",
+      "status": "warlord",
+      "windows": [
+        {
+          "from_chapter": 449,
+          "to_chapter": 595,
+          "source_ref": "Hand-authored. Moria is named a Warlord in the Thriller Bark arc (~ch. 449) and is expelled from the Seven after the war. The reveal chapter is a reading of the arc. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "boa-hancock",
+      "entity": "character",
+      "status": "warlord",
+      "windows": [
+        {
+          "from_chapter": 516,
+          "to_chapter": 956,
+          "source_ref": "Hand-authored. Hancock is introduced as the Warlord of Amazon Lily (~ch. 516). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "marshall-d-teach",
+      "entity": "character",
+      "status": "warlord",
+      "windows": [
+        {
+          "from_chapter": 460,
+          "to_chapter": 544,
+          "source_ref": "Hand-authored. Blackbeard is granted a Warlord seat for delivering Ace (~ch. 460) and quits it during the war (~ch. 544). Both ends are readings of the arc. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "jinbe-warlord",
+      "entity": "character",
+      "status": "warlord",
+      "windows": [
+        {
+          "from_chapter": 528,
+          "to_chapter": 552,
+          "source_ref": "Hand-authored. Jinbe is a Warlord when he debuts in Impel Down (~ch. 528) and resigns the title over the war. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "trafalgar-law",
+      "entity": "character",
+      "status": "warlord",
+      "windows": [
+        {
+          "from_chapter": 659,
+          "to_chapter": 713,
+          "source_ref": "Hand-authored. The reader learns Law has taken a Warlord seat around his reappearance at Punk Hazard (~ch. 659); it is revoked during Dressrosa (~ch. 713). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "buggy",
+      "entity": "character",
+      "status": "warlord",
+      "windows": [
+        {
+          "from_chapter": 700,
+          "to_chapter": 956,
+          "source_ref": "Hand-authored. Buggy is a Warlord after the timeskip, by the accident of his own legend. The chapter the reader is told is a GUESS and is flagged as one — verify before any content ships on it. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "guess",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "edward-weevil",
+      "entity": "character",
+      "status": "warlord",
+      "windows": [
+        {
+          "from_chapter": 802,
+          "to_chapter": 956,
+          "source_ref": "Hand-authored. Weevil is introduced as a Warlord claiming Whitebeard's name (~ch. 802). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "whitebeard-pirates",
+      "entity": "crew",
+      "status": "yonko",
+      "windows": [
+        {
+          "from_chapter": 432,
+          "to_chapter": 576,
+          "source_ref": "Hand-authored. The Four Emperors are named as a concept around ch. 432, with Whitebeard among them; the seat ends with his death at Marineford (~ch. 576). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "red-hair-pirates",
+      "entity": "crew",
+      "status": "yonko",
+      "windows": [
+        {
+          "from_chapter": 432,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Shanks is named among the Four Emperors when the concept is introduced (~ch. 432) and holds the seat to the present. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "big-mom-pirates",
+      "entity": "crew",
+      "status": "yonko",
+      "windows": [
+        {
+          "from_chapter": 432,
+          "to_chapter": 1052,
+          "source_ref": "Hand-authored. Big Mom is one of the Emperors named when the concept is introduced (~ch. 432); the seat is held through ch. 1052 and is gone on the newspaper page at 1053, which is the same page that seats Luffy and Buggy. to_chapter is INCLUSIVE, so 1053 here would put six Emperors on the chart for exactly one chapter. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "beasts-pirates",
+      "entity": "crew",
+      "status": "yonko",
+      "windows": [
+        {
+          "from_chapter": 432,
+          "to_chapter": 1052,
+          "source_ref": "Hand-authored. Kaido is one of the Emperors named when the concept is introduced (~ch. 432); the seat is held through ch. 1052 and is gone on the newspaper page at 1053, which is the same page that seats Luffy and Buggy. to_chapter is INCLUSIVE, so 1053 here would put six Emperors on the chart for exactly one chapter. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "blackbeard-pirates",
+      "entity": "crew",
+      "status": "yonko",
+      "windows": [
+        {
+          "from_chapter": 650,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Blackbeard takes Whitebeard's seat after the war; the reader is told in the post-timeskip recap (~ch. 650). The exact chapter is a reading. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "straw-hat-pirates",
+      "entity": "crew",
+      "status": "yonko",
+      "windows": [
+        {
+          "from_chapter": 1053,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Luffy is declared one of the new Emperors on the newspaper page, ch. 1053. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "buggy-pirates",
+      "entity": "crew",
+      "status": "yonko",
+      "windows": [
+        {
+          "from_chapter": 1053,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Buggy is declared one of the new Emperors on the same page as Luffy, ch. 1053 — the joke the whole chart is waiting for. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "monkey-d-luffy",
+      "entity": "character",
+      "status": "supernova",
+      "windows": [
+        {
+          "from_chapter": 498,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. The eleven rookies with bounties over 100,000,000 gathered at Sabaody are named the Worst Generation, ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "roronoa-zoro",
+      "entity": "character",
+      "status": "supernova",
+      "windows": [
+        {
+          "from_chapter": 498,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. One of the eleven Supernovas at Sabaody, ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "trafalgar-law",
+      "entity": "character",
+      "status": "supernova",
+      "windows": [
+        {
+          "from_chapter": 498,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. One of the eleven Supernovas at Sabaody, ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "eustass-kid",
+      "entity": "character",
+      "status": "supernova",
+      "windows": [
+        {
+          "from_chapter": 498,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. One of the eleven Supernovas at Sabaody, ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "killer",
+      "entity": "character",
+      "status": "supernova",
+      "windows": [
+        {
+          "from_chapter": 498,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. One of the eleven Supernovas at Sabaody, ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "hawkins-pirates",
+      "entity": "crew",
+      "status": "supernova",
+      "windows": [
+        {
+          "from_chapter": 498,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Basil Hawkins is one of the eleven Supernovas at Sabaody, ch. 498. The crew carries the tag because the crew is what renders on the chart. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "on-air-pirates",
+      "entity": "crew",
+      "status": "supernova",
+      "windows": [
+        {
+          "from_chapter": 498,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Scratchmen Apoo is one of the eleven Supernovas at Sabaody, ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "fallen-monk-pirates",
+      "entity": "crew",
+      "status": "supernova",
+      "windows": [
+        {
+          "from_chapter": 498,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Urouge is one of the eleven Supernovas at Sabaody, ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "bonney-pirates",
+      "entity": "crew",
+      "status": "supernova",
+      "windows": [
+        {
+          "from_chapter": 498,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Jewelry Bonney is one of the eleven Supernovas at Sabaody, ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "fire-tank-pirates",
+      "entity": "crew",
+      "status": "supernova",
+      "windows": [
+        {
+          "from_chapter": 498,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. Capone Bege is one of the eleven Supernovas at Sabaody, ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "drake-pirates",
+      "entity": "crew",
+      "status": "supernova",
+      "windows": [
+        {
+          "from_chapter": 498,
+          "to_chapter": null,
+          "source_ref": "Hand-authored. X Drake is one of the eleven Supernovas at Sabaody, ch. 498. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    }
+  ]
+}

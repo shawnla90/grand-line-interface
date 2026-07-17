@@ -465,6 +465,40 @@ export const Presence = z.object({
 });
 export type Presence = z.infer<typeof Presence>;
 
+export const StatusKind = z.enum(["warlord", "yonko", "supernova"]);
+export type StatusKind = z.infer<typeof StatusKind>;
+
+export const StatusWindow = z.object({
+  /** When the READER learns it — the fruit_reveals rule, not in-world truth. */
+  from_chapter: z.number().int().positive(),
+  /** null = still held. A number means the title ENDED there (revoked, abolished, died). */
+  to_chapter: z.number().int().positive().nullable(),
+  source_ref: z.string().min(1),
+  canon_confidence: CanonConfidence,
+  verified: z.boolean(),
+});
+export type StatusWindow = z.infer<typeof StatusWindow>;
+
+/**
+ * Warlord / Emperor / Supernova on a time axis.
+ *
+ * A flat table rather than a field on Crew/Character because a status is
+ * many-per-entity, windowed, and cross-cuts both: "blackbeard-pirates" holds an
+ * Emperor's seat while "marshall-d-teach", the man, holds a Warlord's. The
+ * upstream API has one present-day `is_yonko` boolean and no Warlord field at
+ * all — which would tell a chapter-300 reader that Luffy is an Emperor and
+ * Crocodile is not a Warlord. Both backwards, which is why this is authored.
+ */
+export const Status = z.object({
+  /** Must name something that can render: a presence crew/character/member, a
+   *  Straw Hat, or the voyage crew. normalize.py enforces it. */
+  slug: z.string(),
+  entity: z.enum(["crew", "character"]),
+  status: StatusKind,
+  windows: z.array(StatusWindow).min(1),
+});
+export type Status = z.infer<typeof Status>;
+
 export const CanonMeta = z.object({
   generated_at: z.string(),
   generator: z.string(),
@@ -492,6 +526,7 @@ export const Canon = z.object({
   voyage: Voyage,
   vessels: z.array(Vessel),
   presence: Presence,
+  statuses: z.array(Status),
   boats: z.array(Boat),
   locations: z.array(CanonLocation),
   swords: z.array(Sword),

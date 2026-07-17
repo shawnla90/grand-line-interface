@@ -681,6 +681,93 @@ def wiki_debut_is_not_join(doc):
             f"— {join['join_chapter'] - jinbe['debut_chapter']} chapters apart, both intact")
 
 
+@check("statuses_gated")
+def statuses_gated(doc):
+    """Warlord/Emperor/Supernova windows: gated, disjoint, and pointed at things
+    that can render. Statuses are the map's most time-sensitive claim — 'Emperor'
+    on Luffy's flag is a 1053-chapter spoiler, and 'Warlord' on Crocodile at 1000
+    is simply false — so both ENDS matter, not just the start."""
+    kinds = {"warlord", "yonko", "supernova"}
+    statuses = doc["statuses"]
+    assert statuses, "no statuses reached the artifact — the chips would be empty"
+
+    # every slug must be something the chart can actually draw
+    render = {c["slug"] for c in doc["presence"]["crews"]}
+    render |= {m["slug"] for c in doc["presence"]["crews"] for m in c.get("members", [])}
+    render |= {c["slug"] for c in doc["presence"]["characters"]}
+    render |= {j["slug"] for j in doc["crew_joins"]}
+    render.add(doc["voyage"]["crew_slug"])
+
+    windows = 0
+    for s in statuses:
+        assert s["status"] in kinds, f"{s['slug']}: bad status {s['status']!r}"
+        assert s["slug"] in render, (
+            f"status {s['status']!r} names {s['slug']!r}, which nothing on the chart can render"
+        )
+        assert s["windows"], f"{s['slug']}: no windows"
+        prev_end = None
+        for w in s["windows"]:
+            windows += 1
+            assert w["from_chapter"] >= 1, f"{s['slug']}: from_chapter < 1"
+            if w["to_chapter"] is not None:
+                assert w["to_chapter"] >= w["from_chapter"], f"{s['slug']}: window ends before it starts"
+            if prev_end is not None:
+                assert w["from_chapter"] > prev_end, f"{s['slug']}: overlapping windows"
+            prev_end = w["to_chapter"]
+            assert w["canon_confidence"] in CONFIDENCE_ENUM, f"{s['slug']}: bad canon_confidence"
+
+    # Tripwire 1: the Warlord system is abolished on the page at ch. 956. No
+    # reader past it may ever see a Warlord chip, so no window may outlive it.
+    survivors = [s["slug"] for s in statuses if s["status"] == "warlord"
+                 and any(w["to_chapter"] is None or w["to_chapter"] > 956 for w in s["windows"])]
+    assert not survivors, (
+        f"Warlord windows survive the abolition of the system at ch. 956: {survivors}"
+    )
+
+    # Tripwire 2: Whitebeard's seat ENDS. An open-ended window here would mean
+    # the gate has lost its second half, and a chapter-1000 reader would be shown
+    # a dead man holding an Emperor's seat.
+    wb = next((s for s in statuses if s["slug"] == "whitebeard-pirates"
+               and s["status"] == "yonko"), None)
+    assert wb is not None, "Whitebeard has no Emperor window — the tripwire cannot fire"
+    assert all(w["to_chapter"] is not None for w in wb["windows"]), (
+        "Whitebeard's Emperor window is open-ended; he dies at Marineford and the seat ends"
+    )
+
+    # Tripwire 3: THERE ARE FOUR EMPERORS. Not five. The seats are a fixed number
+    # in the story, so sweeping every chapter and counting holders is a cheap,
+    # total test of both window ends at once — and it is the one that caught the
+    # off-by-one where Big Mom's and Kaido's seats ended at 1053 (inclusive) on
+    # the same chapter Luffy's and Buggy's began: six Emperors for one chapter.
+    # Fewer than four is legal and honest: between Whitebeard's death and the
+    # reader being told who replaced him, the chart should show three.
+    def holders_at(kind, ch):
+        return [s["slug"] for s in statuses if s["status"] == kind and any(
+            w["from_chapter"] <= ch and (w["to_chapter"] is None or ch <= w["to_chapter"])
+            for w in s["windows"])]
+
+    ch_max = max(a["chapter_start"] for a in doc["arcs"])
+    for ch in range(1, ch_max + 1):
+        held = holders_at("yonko", ch)
+        assert len(held) <= 4, (
+            f"ch {ch}: {len(held)} Emperors on the chart ({', '.join(sorted(held))}). "
+            f"There are four seats. Check where a window ends against where the next begins — "
+            f"to_chapter is INCLUSIVE."
+        )
+        wl = holders_at("warlord", ch)
+        assert len(wl) <= 7, (
+            f"ch {ch}: {len(wl)} Warlords on the chart ({', '.join(sorted(wl))}). There are seven."
+        )
+
+    by_kind = {k: sum(1 for s in statuses if s["status"] == k) for k in sorted(kinds)}
+    unverified = sum(1 for s in statuses for w in s["windows"] if not w["verified"])
+    peak_y = max(len(holders_at("yonko", ch)) for ch in range(1, ch_max + 1))
+    peak_w = max(len(holders_at("warlord", ch)) for ch in range(1, ch_max + 1))
+    return (f"{len(statuses)} statuses / {windows} windows {by_kind}, all gated, "
+            f"never more than {peak_y} Emperors or {peak_w} Warlords at once, "
+            f"{unverified} still verified:false")
+
+
 CHECKS = [
     jinbe_test, crew_joins_are_human, straw_hats_complete,
     islands_have_positions, islands_fog_key, no_mojibake,
@@ -689,7 +776,7 @@ CHECKS = [
     voyage_route_forward, vessels_chapter_gated,
     presence_windows_forward, presence_spoiler_and_roster,
     fruit_reveals_gated, haki_users_gated, biomes_valid,
-    bounty_history_gated, wiki_debut_is_not_join,
+    bounty_history_gated, wiki_debut_is_not_join, statuses_gated,
 ]
 
 

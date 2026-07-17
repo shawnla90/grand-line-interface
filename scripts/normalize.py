@@ -278,6 +278,7 @@ def main() -> int:
     fruit_reveals_doc = load(CANON_DIR / "fruit_reveals.json")
     haki_users_doc = load(CANON_DIR / "haki_users.json")
     bounties_doc = load(CANON_DIR / "bounties.json")
+    statuses_doc = load(CANON_DIR / "statuses.json")
 
     status_map = ov["character_status"]
     crew_status_map = ov["crew_status"]
@@ -1043,6 +1044,74 @@ def main() -> int:
     for e in presence_entities.values():
         e["haki"].sort(key=lambda f: f["from_chapter"])
 
+    # ------------------------------------------------------------- statuses
+    # Warlord / Emperor / Supernova, on a time axis. No upstream source has this:
+    # the API keeps ONE present-day is_yonko boolean and no Warlord field at all,
+    # which would tell a chapter-300 reader that Luffy is an Emperor and Crocodile
+    # is not a Warlord — both backwards. So it is authored, and it is a flat table
+    # rather than fields on crews/characters because a status is many-per-entity,
+    # windowed, and cross-cuts both: Blackbeard the man holds a Warlord seat while
+    # Blackbeard's crew holds an Emperor's.
+    STATUS_KINDS = {"warlord", "yonko", "supernova"}
+    render_surface = (
+        set(presence_entities)                                  # members + characters
+        | {c["slug"] for c in presence_crews}                   # crews
+        | {j["slug"] for j in crew_joins}                       # the Straw Hats
+        | {voyage_doc["crew_slug"]}                             # the crew we sail with
+    )
+    statuses = []
+    seen_status: set[tuple[str, str]] = set()
+    for row in statuses_doc["statuses"]:
+        slug, kind = row["slug"], row["status"]
+        if kind not in STATUS_KINDS:
+            raise die(f"status {kind!r} for {slug!r} is not one of {sorted(STATUS_KINDS)}", row)
+        if row["entity"] not in {"crew", "character"}:
+            raise die(f"status row for {slug!r} has entity {row['entity']!r}", row)
+        if (slug, kind) in seen_status:
+            raise die(f"duplicate status rows for {slug!r}/{kind!r} — merge their windows", row)
+        seen_status.add((slug, kind))
+        if slug not in render_surface:
+            raise die(
+                f"status {kind!r} names {slug!r}, which is not a presence crew, presence "
+                f"character, crew member, Straw Hat, or the voyage crew. A status nobody can see "
+                f"on the chart is dead data — check the slug against the presence namespace.",
+                row,
+            )
+        windows = []
+        last_to = None
+        for w in row["windows"]:
+            src = (w.get("source_ref") or "")
+            if not src.lower().lstrip().startswith("hand-authored"):
+                raise die(f"status window for {slug!r} must declare a hand-authored source_ref", w)
+            fr, to = w["from_chapter"], w.get("to_chapter")
+            if not isinstance(fr, int) or fr < 1:
+                raise die(f"status window for {slug!r} has from_chapter {fr!r} (< 1)", w)
+            if to is not None and (not isinstance(to, int) or to < fr):
+                raise die(f"status window for {slug!r} ends ({to}) before it starts ({fr})", w)
+            if last_to is None and windows:
+                raise die(f"status windows for {slug!r} are not disjoint — an open-ended window "
+                          "is followed by another.", w)
+            if last_to is not None and fr <= last_to:
+                raise die(f"status windows for {slug!r} overlap ({fr} <= previous end {last_to}). "
+                          "One holder cannot hold the same title twice at once.", w)
+            last_to = to
+            if w["canon_confidence"] not in {"canon", "derived", "guess"}:
+                raise die(f"status window for {slug!r} has bad canon_confidence", w)
+            windows.append({
+                "from_chapter": fr, "to_chapter": to, "source_ref": src,
+                "canon_confidence": w["canon_confidence"], "verified": bool(w["verified"]),
+            })
+        if not windows:
+            raise die(f"status {kind!r} for {slug!r} has no windows — it can never render", row)
+        statuses.append({"slug": slug, "entity": row["entity"], "status": kind,
+                         "windows": windows})
+
+    if any(not w["verified"] for s in statuses for w in s["windows"]):
+        warnings.append(
+            "statuses contains UNVERIFIED windows. Warlord/Emperor/Supernova reveal chapters "
+            "are not manga-confirmed. The UI must render them as unverified."
+        )
+
     if any(not r["verified"] for r in fruit_reveals):
         warnings.append(
             "fruit_reveals contains UNVERIFIED rows. Fruit reveal chapters are not "
@@ -1104,6 +1173,10 @@ def main() -> int:
                 "presence_characters": len(presence_characters),
                 "presence_windows": len(presence_windows),
                 "presence_windows_verified": sum(1 for w in presence_windows if w["verified"]),
+                "statuses": len(statuses),
+                "status_windows": sum(len(s["windows"]) for s in statuses),
+                "status_windows_verified": sum(1 for s in statuses for w in s["windows"]
+                                               if w["verified"]),
                 "fruit_reveals": len(fruit_reveals),
                 "fruit_reveals_verified": sum(1 for r in fruit_reveals if r["verified"]),
                 "haki_facts": len(haki_facts),
@@ -1128,6 +1201,9 @@ def main() -> int:
         "voyage": voyage,
         "vessels": vessels,
         "presence": presence,
+        # Warlord / Emperor / Supernova on a time axis — a flat table because a
+        # status is many-per-entity, windowed, and cross-cuts crews AND people.
+        "statuses": statuses,
         # Phase 7A — the arsenal. Small tables (~120KB total) that make entity
         # views possible: every crew's ship, canonical locations with sea/region
         # joins, the named blades, dials, and Luffy's whole move-list.

@@ -211,6 +211,22 @@ export type WorldCharacterPresence = {
   haki: WorldHakiFact[];
 };
 
+export type StatusKind = "warlord" | "yonko" | "supernova";
+
+export type WorldStatusWindow = {
+  fromChapter: number;
+  toChapter: number | null;
+  confidence: Confidence;
+  verified: boolean;
+};
+
+export type WorldStatus = {
+  slug: string;
+  entity: "crew" | "character";
+  status: StatusKind;
+  windows: WorldStatusWindow[];
+};
+
 export type World = {
   meta: {
     generatedAt: string;
@@ -238,6 +254,8 @@ export type World = {
   vessels: WorldVessel[];
   /** Who else sails these seas: crews and Warlords with authored, chapter-gated windows. */
   presence: { crews: WorldCrewPresence[]; characters: WorldCharacterPresence[] };
+  /** Warlord/Emperor/Supernova windows. Read through statusHoldersAt, never raw. */
+  statuses: WorldStatus[];
   /** episodeToChapter[ep] -> manga chapter reached by the end of that episode. */
   episodeToChapter: number[];
   /** chapterToEpisode[ch] -> first episode that reaches that chapter, or null. */
@@ -597,6 +615,19 @@ export function buildWorld(canon: Canon): World {
     crews: canon.presence.crews.map(toCrewPresence),
     characters: canon.presence.characters.map(toCharacterPresence),
   };
+  const statuses: WorldStatus[] = canon.statuses.map((s) => ({
+    slug: s.slug,
+    entity: s.entity,
+    status: s.status,
+    windows: s.windows
+      .map((w) => ({
+        fromChapter: w.from_chapter,
+        toChapter: w.to_chapter,
+        confidence: w.canon_confidence,
+        verified: w.verified,
+      }))
+      .sort((a, b) => a.fromChapter - b.fromChapter),
+  }));
 
   const mappable = islands.filter((i) => i.status === "manga" && i.debutChapter !== null);
   const positionConfidence: Record<Confidence, number> = { canon: 0, derived: 0, guess: 0 };
@@ -622,6 +653,7 @@ export function buildWorld(canon: Canon): World {
     voyage,
     vessels,
     presence,
+    statuses,
     episodeToChapter,
     chapterToEpisode,
     counts: {
@@ -747,6 +779,35 @@ export function presenceWindowAt(
   }
   if (cur && cur.toChapter !== null && chapter > cur.toChapter) return null;
   return cur;
+}
+
+/**
+ * Who holds a status AS OF a chapter — the ONE place this gate is written, the
+ * same way revealedFruit is the only fruit gate. Map, legend, chips and audits
+ * all come through here, so they cannot disagree about who is an Emperor.
+ *
+ * Held means: some window has opened (fromChapter <= ch) and has not closed
+ * (toChapter === null || ch <= toChapter). Both halves matter. Without the
+ * first, a chapter-300 reader is told Luffy is an Emperor; without the second,
+ * a chapter-1000 reader is told Crocodile is still a Warlord and Whitebeard is
+ * still alive and holding a seat.
+ */
+export function statusHoldersAt(
+  world: World,
+  status: StatusKind,
+  chapter: number,
+): Set<string> {
+  const held = new Set<string>();
+  for (const s of world.statuses) {
+    if (s.status !== status) continue;
+    for (const w of s.windows) {
+      if (w.fromChapter <= chapter && (w.toChapter === null || chapter <= w.toChapter)) {
+        held.add(s.slug);
+        break;
+      }
+    }
+  }
+  return held;
 }
 
 export function worldAtChapter(world: World, chapter: number): WorldAt {
