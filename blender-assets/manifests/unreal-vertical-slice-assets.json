@@ -1,0 +1,128 @@
+{
+  "assets": [
+    {
+      "anchors": [
+        "anchor_ship_approach",
+        "anchor_dock_arrival",
+        "anchor_encounter_center",
+        "anchor_zoro_start",
+        "anchor_mihawk_start",
+        "anchor_encounter_camera",
+        "anchor_return_to_ocean"
+      ],
+      "build": {
+        "blender": "4.5.3 LTS",
+        "glb_sha256": "cb027036be40619bf24081afe527d7923d36c6dd894f7a894cb3f1c7224b92b4",
+        "preview_sha256": "0f003b007b44a7e5079f09806fb78f1fc44e176a758c1809f38a8457e3ef75cf",
+        "source_sha256": "4d3a03c28eb1949fd0cd0a0aeab8894b2fc1f45b8c6d0c28cf96f107946bb6ea"
+      },
+      "coordinate_system": "glTF 2.0 Y-up converted from Blender Z-up",
+      "id": "baratie-encounter-deck",
+      "kind": "environment",
+      "label": "Baratie Encounter Deck",
+      "maturity": "unreal_vertical_slice_blockout_v1",
+      "place_id": "baratie",
+      "preview": "renders/unreal/baratie-encounter-deck.png",
+      "rights": {
+        "distribution_status": "internal_prototype_rights_review_required",
+        "exact_production_mesh_copy": false,
+        "franchise_logos_included": false,
+        "original_prototype_geometry": true
+      },
+      "runtime_glb": "runtime/unreal/baratie-encounter-deck.glb",
+      "scene_ids": [
+        "baratie-zoro-vs-mihawk",
+        "baratie-luffy-vs-krieg",
+        "sanji-leaves-baratie"
+      ],
+      "source_blend": "source/baratie-encounter-deck.blend",
+      "stats": {
+        "anchors": 7,
+        "bounds_blender_m": {
+          "max": [
+            11.644,
+            8.2,
+            8.925
+          ],
+          "min": [
+            -11.644,
+            -12.2,
+            -1.15
+          ]
+        },
+        "bytes": 170128,
+        "materials": 7,
+        "objects": 40,
+        "triangles_input": 2496,
+        "vertices_input": 1328
+      },
+      "units": "meters"
+    },
+    {
+      "anchors": [
+        "anchor_ship_root",
+        "anchor_camera_chase",
+        "anchor_camera_orbit",
+        "anchor_bow",
+        "anchor_wake",
+        "anchor_buoyancy_fore_port",
+        "anchor_buoyancy_fore_starboard",
+        "anchor_buoyancy_aft_port",
+        "anchor_buoyancy_aft_starboard",
+        "anchor_interaction"
+      ],
+      "build": {
+        "blender": "4.5.3 LTS",
+        "glb_sha256": "937c513346adf853015251e88f38b48540be56d0bf54fc91a85ef7e64fae34de",
+        "preview_sha256": "b5a49d99a29c99030e2e816359520602f546483a46164244c8e82b26a1abfc13",
+        "source_sha256": "736cdec88a8eb7e215dbfa9518e4d8fc9fb1b265655bb4c67b042728eaac09ea"
+      },
+      "coordinate_system": "glTF 2.0 Y-up converted from Blender Z-up",
+      "id": "east-blue-original-ship-proxy",
+      "kind": "vehicle",
+      "label": "East Blue Original Ship Proxy",
+      "maturity": "unreal_vertical_slice_blockout_v1",
+      "place_id": "ocean-local-sector",
+      "preview": "renders/unreal/east-blue-original-ship-proxy.png",
+      "rights": {
+        "distribution_status": "internal_prototype_rights_review_required",
+        "exact_production_mesh_copy": false,
+        "franchise_logos_included": false,
+        "original_prototype_geometry": true
+      },
+      "runtime_glb": "runtime/unreal/east-blue-original-ship-proxy.glb",
+      "scene_ids": [
+        "baratie-zoro-vs-mihawk"
+      ],
+      "source_blend": "source/east-blue-original-ship-proxy.blend",
+      "stats": {
+        "anchors": 10,
+        "bounds_blender_m": {
+          "max": [
+            3.0,
+            7.7,
+            9.1
+          ],
+          "min": [
+            -3.0,
+            -6.0,
+            -1.55
+          ]
+        },
+        "bytes": 56168,
+        "materials": 6,
+        "objects": 20,
+        "triangles_input": 616,
+        "vertices_input": 348
+      },
+      "units": "meters"
+    }
+  ],
+  "id": "grand-line-unreal-vertical-slice-assets-v1",
+  "ownership": {
+    "blender": "reusable geometry and anchors",
+    "unreal": "materials, collision, water, buoyancy, lighting, fx, and gameplay"
+  },
+  "representation": "original-stylized-runtime-blockouts-with-authored-anchors",
+  "schema_version": 1
+}

@@ -15,6 +15,8 @@ chat history.
 6. `handoffs/CLAUDE_CODE_RUNTIME_3D.md` — the next app integration batch.
 7. `handoffs/CLAUDE_CODE_NARRATIVE_SYSTEMS.md` — chapter/node/route safety rules.
 8. `provenance/sol-session-usage.json` — measured Codex Sol workload snapshot.
+9. `handoffs/UNREAL_EXPORT_BUNDLE.md` — deterministic Unreal SourceArt export
+   and the separate client-project boundary.
 
 ## Path translation
 
@@ -49,3 +51,18 @@ pilots plus fourteen scene systems. The old Whole Cake, Impel Down, and
 three-grove Sabaody files remain `study_only` and must never be loaded as final
 geography. MapLibre continues to own chapter gates, geographic anchors, route
 state, node visibility, and object lifetime.
+
+## Unreal SourceArt export
+
+The Unreal client never reads arbitrary files from this package. Build and
+verify its exact East Blue input with:
+
+```bash
+python3 blender-assets/scripts/build_unreal_export_bundle.py
+python3 blender-assets/scripts/verify_unreal_export_bundle.py
+```
+
+The generated bundle contains all 14 illustrated atlas packages, the 12
+runtime-ready story simulations, and the existing Loguetown runtime GLB. It
+excludes both `art_partial` scenes and fails on source hash drift or unverified
+chapter gates.

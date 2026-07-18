@@ -1,0 +1,1596 @@
+{
+  "$schema": "./east-blue-saga-simulation.schema.json",
+  "arcs": [
+    {
+      "chapters": [
+        1,
+        7
+      ],
+      "id": "romance-dawn",
+      "label": "Romance Dawn"
+    },
+    {
+      "chapters": [
+        8,
+        21
+      ],
+      "id": "orange-town",
+      "label": "Orange Town"
+    },
+    {
+      "chapters": [
+        22,
+        41
+      ],
+      "id": "syrup-village",
+      "label": "Syrup Village"
+    },
+    {
+      "chapters": [
+        42,
+        68
+      ],
+      "id": "baratie",
+      "label": "Baratie"
+    },
+    {
+      "chapters": [
+        69,
+        95
+      ],
+      "id": "arlong-park",
+      "label": "Arlong Park"
+    },
+    {
+      "chapters": [
+        96,
+        100
+      ],
+      "id": "loguetown",
+      "label": "Loguetown"
+    }
+  ],
+  "chapter_span": {
+    "end": 100,
+    "start": 1
+  },
+  "coordinate_space": {
+    "kind": "normalized-local-stage",
+    "numeric_interpolation": "linear unless ease is authored",
+    "pose": "step-selected atlas frame",
+    "scale": "multiplier over character map_height",
+    "x": "-1 left to +1 right",
+    "y": "0 ground plane; positive values rise"
+  },
+  "future_milestones": [
+    {
+      "chapter_gate": {
+        "end": null,
+        "start": null,
+        "verification": "chapter_to_verify"
+      },
+      "id": "arabasta-crocodile-encounter-series",
+      "note": "Reuse Luffy's movement vocabulary, but author separate desert, Rainbase, and Alubarna encounter outcomes before promotion.",
+      "required_capabilities": [
+        "sand-dissolve",
+        "sand-reform",
+        "terrain-impact",
+        "multi-round-outcome-states",
+        "arena-specific-costumes"
+      ],
+      "saga_id": "arabasta",
+      "status": "split-contracts-required"
+    },
+    {
+      "chapter_gate": {
+        "end": null,
+        "start": null,
+        "verification": "chapter_to_verify"
+      },
+      "id": "enies-lobby-robin-i-want-to-live",
+      "note": "A later emotional tableau, deliberately registered without preloading art into the East Blue pack.",
+      "required_capabilities": [
+        "robin-emotional-hold",
+        "straw-hat-lineup",
+        "world-government-flag-burn",
+        "crowd-tableau",
+        "facial-expression-swap"
+      ],
+      "saga_id": "water-7",
+      "status": "future-anchor"
+    },
+    {
+      "chapter_gate": {
+        "end": 513,
+        "start": 512,
+        "verification": "verified"
+      },
+      "id": "sabaody-kuma-separation",
+      "note": "Replace all current rigid proxy actors before runtime promotion.",
+      "required_capabilities": [
+        "multi-actor-cast",
+        "paw-impact",
+        "vanish",
+        "destination-spoiler-lock"
+      ],
+      "saga_id": "summit-war",
+      "status": "motion-study-exists"
+    }
+  ],
+  "id": "east-blue-saga-2d-unreal-v1",
+  "label": "East Blue Saga story simulation pack",
+  "representation": "camera-facing-2d-atlas-with-authored-movement-and-3d-fx",
+  "runtime_policy": {
+    "backward_scrub": "Reset scene time, actor transforms, pose selection, effects, and landmark state deterministically.",
+    "chapter_gate": "Never fetch a scene before a verified start chapter. research_hold scenes remain disabled.",
+    "lod0": "Existing portrait bubble or icon.",
+    "lod1": "Static atlas frame; at most three visible story beats.",
+    "lod2": "One active 2D atlas simulation plus local 3D or shader effects.",
+    "lod3": "Explicit inspect/replay using the same movement contract; optional sound later.",
+    "max_active_close_scenes": 1,
+    "max_distant_loops": 3,
+    "missing_art": "Do not substitute rigid mannequins. Show a disabled story marker with missing_assets metadata.",
+    "playback": "Play once on entering the active chapter window, hold the authored final frame, and allow explicit replay afterward.",
+    "reduced_motion": "Use the final safe pose and suppress camera shake, rain motion, and repeated effects."
+  },
+  "scenes": [
+    {
+      "actors": [
+        {
+          "asset_id": "gol-d-roger",
+          "id": "roger",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "chained-walk",
+              "rotation": 0,
+              "scale": 0.8,
+              "t": 0,
+              "x": -0.72,
+              "y": 0
+            },
+            {
+              "ease": "smooth",
+              "opacity": 1,
+              "pose": "standing-prisoner",
+              "rotation": 0,
+              "scale": 0.88,
+              "t": 2200,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "scaffold-kneel",
+              "rotation": 0,
+              "scale": 0.92,
+              "t": 4000,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "final-declaration",
+              "rotation": 0,
+              "scale": 1.02,
+              "t": 5600,
+              "x": 0,
+              "y": 0.02
+            },
+            {
+              "opacity": 1,
+              "pose": "execution-hold",
+              "rotation": 0,
+              "scale": 0.96,
+              "t": 7400,
+              "x": 0,
+              "y": 0
+            }
+          ],
+          "z": 20
+        }
+      ],
+      "arc_id": "romance-dawn",
+      "chapter_gate": {
+        "end": 1,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_1",
+        "start": 1,
+        "verification": "verified"
+      },
+      "duration_ms": 8000,
+      "events": [
+        {
+          "duration_ms": 8000,
+          "intensity": 0.7,
+          "t": 0,
+          "type": "crowd"
+        },
+        {
+          "duration_ms": 1800,
+          "intensity": 0.6,
+          "t": 5200,
+          "type": "wind"
+        },
+        {
+          "duration_ms": 1200,
+          "intensity": 1.0,
+          "t": 6500,
+          "type": "era-pulse"
+        }
+      ],
+      "id": "roger-execution-prologue",
+      "label": "Roger starts the Great Pirate Era",
+      "place": {
+        "arena": "loguetown-scaffold",
+        "id": "loguetown",
+        "landmark": "execution-platform"
+      },
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "type": "tableau"
+    },
+    {
+      "actors": [
+        {
+          "asset_id": "romance-dawn-origin-tableaux",
+          "id": "origin-tableau",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "fruit-discovery",
+              "rotation": 0,
+              "scale": 1.0,
+              "t": 0,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "fruit-bite",
+              "rotation": 0,
+              "scale": 1.0,
+              "t": 1600,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "crew-reaction",
+              "rotation": 0,
+              "scale": 1.0,
+              "t": 3000,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "sea-king-rescue",
+              "rotation": 0,
+              "scale": 1.06,
+              "t": 4400,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "sacrifice-aftermath",
+              "rotation": 0,
+              "scale": 1.0,
+              "t": 6000,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "hat-promise",
+              "rotation": 0,
+              "scale": 1.04,
+              "t": 7600,
+              "x": 0,
+              "y": 0
+            }
+          ],
+          "z": 20
+        }
+      ],
+      "arc_id": "romance-dawn",
+      "chapter_gate": {
+        "end": 1,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_1",
+        "start": 1,
+        "verification": "verified"
+      },
+      "duration_ms": 9000,
+      "events": [
+        {
+          "duration_ms": 1700,
+          "intensity": 0.9,
+          "t": 4300,
+          "type": "wave"
+        },
+        {
+          "duration_ms": 1400,
+          "intensity": 0.8,
+          "t": 7600,
+          "type": "promise-pulse"
+        }
+      ],
+      "id": "romance-dawn-fruit-and-promise",
+      "label": "The fruit, the sacrifice, and the straw-hat promise",
+      "place": {
+        "arena": "coastal-memory",
+        "id": "foosha-village",
+        "landmark": "party-bar-and-coast"
+      },
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "type": "tableau"
+    },
+    {
+      "actors": [
+        {
+          "asset_id": "monkey-d-luffy",
+          "id": "luffy",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "idle",
+              "rotation": 0,
+              "scale": 0.82,
+              "t": 0,
+              "x": -0.72,
+              "y": 0
+            },
+            {
+              "ease": "accelerate",
+              "opacity": 1,
+              "pose": "dash",
+              "rotation": -3,
+              "scale": 0.86,
+              "t": 2100,
+              "x": -0.35,
+              "y": 0.02
+            },
+            {
+              "opacity": 1,
+              "pose": "rubber-punch",
+              "rotation": 0,
+              "scale": 0.9,
+              "t": 3300,
+              "x": -0.04,
+              "y": 0.02
+            },
+            {
+              "opacity": 1,
+              "pose": "victory",
+              "rotation": 0,
+              "scale": 0.86,
+              "t": 5000,
+              "x": -0.1,
+              "y": 0
+            }
+          ],
+          "z": 20
+        },
+        {
+          "asset_id": "alvida",
+          "id": "alvida",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "idle",
+              "rotation": 0,
+              "scale": 0.92,
+              "t": 0,
+              "x": 0.62,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "mace-swing",
+              "rotation": 0,
+              "scale": 0.94,
+              "t": 1800,
+              "x": 0.45,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "rubber-punch-recoil",
+              "rotation": 7,
+              "scale": 0.98,
+              "t": 3350,
+              "x": 0.48,
+              "y": 0.05
+            },
+            {
+              "ease": "accelerate",
+              "opacity": 0.2,
+              "pose": "launched",
+              "rotation": 26,
+              "scale": 0.86,
+              "t": 4700,
+              "x": 1.12,
+              "y": 0.28
+            }
+          ],
+          "z": 18
+        }
+      ],
+      "arc_id": "romance-dawn",
+      "chapter_gate": {
+        "end": 2,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_2",
+        "start": 2,
+        "verification": "verified"
+      },
+      "duration_ms": 7000,
+      "events": [
+        {
+          "duration_ms": 900,
+          "intensity": 1.0,
+          "t": 3200,
+          "type": "rubber-stretch"
+        },
+        {
+          "duration_ms": 650,
+          "intensity": 1.0,
+          "t": 3400,
+          "type": "impact"
+        }
+      ],
+      "id": "luffy-punches-alvida",
+      "label": "Luffy proves the rubber power against Alvida",
+      "place": {
+        "arena": "ship-deck",
+        "id": "alvida-pirate-ship",
+        "landmark": "main-deck"
+      },
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "type": "encounter"
+    },
+    {
+      "actors": [
+        {
+          "asset_id": "monkey-d-luffy",
+          "id": "luffy",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "idle",
+              "rotation": 0,
+              "scale": 0.84,
+              "t": 0,
+              "x": -0.66,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "dash",
+              "rotation": 0,
+              "scale": 0.88,
+              "t": 2300,
+              "x": -0.28,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "rubber-punch",
+              "rotation": 0,
+              "scale": 0.9,
+              "t": 4300,
+              "x": -0.04,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "victory",
+              "rotation": 0,
+              "scale": 0.86,
+              "t": 6500,
+              "x": -0.1,
+              "y": 0
+            }
+          ],
+          "z": 20
+        },
+        {
+          "asset_id": "buggy",
+          "id": "buggy",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "knife-guard",
+              "rotation": 0,
+              "scale": 0.9,
+              "t": 0,
+              "x": 0.6,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "detach-attack",
+              "rotation": 0,
+              "scale": 0.92,
+              "t": 2200,
+              "x": 0.36,
+              "y": 0.08
+            },
+            {
+              "opacity": 1,
+              "pose": "split-evade",
+              "rotation": 0,
+              "scale": 0.9,
+              "t": 3500,
+              "x": 0.45,
+              "y": 0.02
+            },
+            {
+              "opacity": 1,
+              "pose": "recoil",
+              "rotation": 10,
+              "scale": 0.96,
+              "t": 4500,
+              "x": 0.48,
+              "y": 0.08
+            },
+            {
+              "ease": "accelerate",
+              "opacity": 0.1,
+              "pose": "recoil",
+              "rotation": 30,
+              "scale": 0.76,
+              "t": 6100,
+              "x": 1.15,
+              "y": 0.34
+            }
+          ],
+          "z": 19
+        }
+      ],
+      "arc_id": "orange-town",
+      "chapter_gate": {
+        "end": 20,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_20",
+        "start": 20,
+        "verification": "verified"
+      },
+      "duration_ms": 8000,
+      "events": [
+        {
+          "duration_ms": 1300,
+          "intensity": 0.8,
+          "t": 2100,
+          "type": "detach"
+        },
+        {
+          "duration_ms": 700,
+          "intensity": 1.0,
+          "t": 4400,
+          "type": "impact"
+        }
+      ],
+      "id": "orange-town-luffy-vs-buggy",
+      "label": "Luffy launches Buggy from Orange Town",
+      "place": {
+        "arena": "damaged-town-square",
+        "id": "orange-town",
+        "landmark": "town-square"
+      },
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "type": "encounter"
+    },
+    {
+      "actors": [
+        {
+          "asset_id": "monkey-d-luffy",
+          "id": "luffy",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "recover",
+              "rotation": 0,
+              "scale": 0.86,
+              "t": 0,
+              "x": -0.58,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "dash",
+              "rotation": 0,
+              "scale": 0.92,
+              "t": 3100,
+              "x": -0.1,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "rubber-punch",
+              "rotation": 0,
+              "scale": 0.94,
+              "t": 5200,
+              "x": 0.04,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "victory",
+              "rotation": 0,
+              "scale": 0.86,
+              "t": 6800,
+              "x": -0.08,
+              "y": 0
+            }
+          ],
+          "z": 20
+        },
+        {
+          "asset_id": "captain-kuro",
+          "id": "kuro",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "idle",
+              "rotation": 0,
+              "scale": 0.9,
+              "t": 0,
+              "x": 0.58,
+              "y": 0
+            },
+            {
+              "ease": "accelerate",
+              "opacity": 1,
+              "pose": "silent-step",
+              "rotation": -5,
+              "scale": 0.94,
+              "t": 1900,
+              "x": 0.12,
+              "y": 0.04
+            },
+            {
+              "opacity": 1,
+              "pose": "claw-slash",
+              "rotation": 0,
+              "scale": 0.95,
+              "t": 3300,
+              "x": -0.02,
+              "y": 0.02
+            },
+            {
+              "opacity": 1,
+              "pose": "recoil",
+              "rotation": 12,
+              "scale": 0.92,
+              "t": 5350,
+              "x": 0.25,
+              "y": 0.12
+            },
+            {
+              "opacity": 1,
+              "pose": "defeated",
+              "rotation": 0,
+              "scale": 0.84,
+              "t": 6600,
+              "x": 0.52,
+              "y": 0
+            }
+          ],
+          "z": 19
+        }
+      ],
+      "arc_id": "syrup-village",
+      "chapter_gate": {
+        "end": 40,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_40",
+        "start": 40,
+        "verification": "verified"
+      },
+      "duration_ms": 8000,
+      "events": [
+        {
+          "duration_ms": 1600,
+          "intensity": 0.9,
+          "t": 1900,
+          "type": "speed-lines"
+        },
+        {
+          "duration_ms": 700,
+          "intensity": 1.0,
+          "t": 3300,
+          "type": "slash"
+        },
+        {
+          "duration_ms": 650,
+          "intensity": 0.9,
+          "t": 5200,
+          "type": "impact"
+        }
+      ],
+      "id": "syrup-village-luffy-vs-kuro",
+      "label": "Luffy stops Kuro's plan",
+      "place": {
+        "arena": "grassy-slope",
+        "id": "syrup-village",
+        "landmark": "coastal-slope"
+      },
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "type": "encounter"
+    },
+    {
+      "actors": [
+        {
+          "asset_id": "roronoa-zoro",
+          "id": "zoro",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "guard",
+              "rotation": 0,
+              "scale": 0.88,
+              "t": 0,
+              "x": -0.56,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "dash",
+              "rotation": -3,
+              "scale": 0.92,
+              "t": 2200,
+              "x": -0.18,
+              "y": 0.02
+            },
+            {
+              "opacity": 1,
+              "pose": "three-sword-slash",
+              "rotation": 0,
+              "scale": 0.96,
+              "t": 3400,
+              "x": 0.02,
+              "y": 0.02
+            },
+            {
+              "opacity": 1,
+              "pose": "recoil",
+              "rotation": -9,
+              "scale": 0.92,
+              "t": 4850,
+              "x": -0.18,
+              "y": 0.08
+            },
+            {
+              "opacity": 1,
+              "pose": "defeated",
+              "rotation": 0,
+              "scale": 0.88,
+              "t": 6400,
+              "x": -0.42,
+              "y": 0
+            }
+          ],
+          "z": 20
+        },
+        {
+          "asset_id": "dracule-mihawk",
+          "id": "mihawk",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "idle",
+              "rotation": 0,
+              "scale": 0.96,
+              "t": 0,
+              "x": 0.5,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "guard",
+              "rotation": 0,
+              "scale": 0.98,
+              "t": 3000,
+              "x": 0.26,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "yoru-slash",
+              "rotation": 0,
+              "scale": 1.02,
+              "t": 4100,
+              "x": 0.12,
+              "y": 0.02
+            },
+            {
+              "opacity": 1,
+              "pose": "victory",
+              "rotation": 0,
+              "scale": 0.98,
+              "t": 6100,
+              "x": 0.36,
+              "y": 0
+            }
+          ],
+          "z": 19
+        }
+      ],
+      "arc_id": "baratie",
+      "chapter_gate": {
+        "end": 51,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_51",
+        "start": 51,
+        "verification": "verified"
+      },
+      "duration_ms": 8000,
+      "events": [
+        {
+          "duration_ms": 750,
+          "intensity": 0.9,
+          "t": 3400,
+          "type": "slash"
+        },
+        {
+          "duration_ms": 850,
+          "intensity": 1.0,
+          "t": 4100,
+          "type": "black-blade-slash"
+        },
+        {
+          "duration_ms": 700,
+          "intensity": 1.0,
+          "t": 4700,
+          "type": "impact"
+        }
+      ],
+      "id": "baratie-zoro-vs-mihawk",
+      "label": "Zoro challenges Mihawk",
+      "place": {
+        "arena": "baratie-deck",
+        "id": "baratie",
+        "landmark": "exterior-deck"
+      },
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "type": "encounter"
+    },
+    {
+      "actors": [
+        {
+          "asset_id": "monkey-d-luffy",
+          "id": "luffy",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "recover",
+              "rotation": 0,
+              "scale": 0.84,
+              "t": 0,
+              "x": -0.62,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "dash",
+              "rotation": -4,
+              "scale": 0.88,
+              "t": 2500,
+              "x": -0.22,
+              "y": 0.03
+            },
+            {
+              "opacity": 1,
+              "pose": "rubber-punch",
+              "rotation": 0,
+              "scale": 0.92,
+              "t": 4200,
+              "x": 0.02,
+              "y": 0.08
+            },
+            {
+              "opacity": 1,
+              "pose": "victory",
+              "rotation": 0,
+              "scale": 0.86,
+              "t": 6500,
+              "x": -0.12,
+              "y": 0
+            }
+          ],
+          "z": 20
+        },
+        {
+          "asset_id": "don-krieg",
+          "id": "krieg",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "guard",
+              "rotation": 0,
+              "scale": 0.92,
+              "t": 0,
+              "x": 0.58,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "battle-spear-strike",
+              "rotation": 0,
+              "scale": 0.96,
+              "t": 2100,
+              "x": 0.34,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "armor-break-recoil",
+              "rotation": 8,
+              "scale": 1.0,
+              "t": 4300,
+              "x": 0.4,
+              "y": 0.08
+            },
+            {
+              "opacity": 1,
+              "pose": "defeated",
+              "rotation": 0,
+              "scale": 0.88,
+              "t": 6300,
+              "x": 0.5,
+              "y": 0
+            }
+          ],
+          "z": 19
+        }
+      ],
+      "arc_id": "baratie",
+      "chapter_gate": {
+        "end": 66,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_66",
+        "start": 66,
+        "verification": "verified"
+      },
+      "duration_ms": 8000,
+      "events": [
+        {
+          "duration_ms": 900,
+          "intensity": 0.8,
+          "t": 2100,
+          "type": "explosion"
+        },
+        {
+          "duration_ms": 1200,
+          "intensity": 1.0,
+          "t": 4200,
+          "type": "armor-break"
+        },
+        {
+          "duration_ms": 700,
+          "intensity": 1.0,
+          "t": 4300,
+          "type": "impact"
+        }
+      ],
+      "id": "baratie-luffy-vs-krieg",
+      "label": "Luffy breaks Don Krieg's armor",
+      "place": {
+        "arena": "floating-wreckage",
+        "id": "baratie",
+        "landmark": "wreckage-field"
+      },
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "type": "encounter"
+    },
+    {
+      "actors": [
+        {
+          "asset_id": "sanji",
+          "id": "sanji",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "idle",
+              "rotation": 0,
+              "scale": 0.92,
+              "t": 0,
+              "x": 0.22,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "victory",
+              "rotation": 0,
+              "scale": 0.94,
+              "t": 3900,
+              "x": 0.08,
+              "y": 0
+            }
+          ],
+          "z": 21
+        },
+        {
+          "asset_id": "monkey-d-luffy",
+          "id": "luffy",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "idle",
+              "rotation": 0,
+              "scale": 0.82,
+              "t": 0,
+              "x": -0.42,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "victory",
+              "rotation": 0,
+              "scale": 0.84,
+              "t": 3900,
+              "x": -0.24,
+              "y": 0
+            }
+          ],
+          "z": 20
+        }
+      ],
+      "arc_id": "baratie",
+      "chapter_gate": {
+        "end": 68,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_68",
+        "start": 68,
+        "verification": "verified"
+      },
+      "duration_ms": 6500,
+      "events": [
+        {
+          "duration_ms": 1700,
+          "intensity": 0.7,
+          "t": 3800,
+          "type": "farewell-pulse"
+        }
+      ],
+      "id": "sanji-leaves-baratie",
+      "label": "Sanji says goodbye and joins the crew",
+      "place": {
+        "arena": "baratie-deck",
+        "id": "baratie",
+        "landmark": "front-deck"
+      },
+      "priority": "supporting",
+      "readiness": "runtime_ready",
+      "type": "tableau"
+    },
+    {
+      "actors": [
+        {
+          "asset_id": "nami",
+          "id": "nami",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "recoil",
+              "rotation": 0,
+              "scale": 0.94,
+              "t": 0,
+              "x": 0.16,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "map-idle",
+              "rotation": 0,
+              "scale": 0.86,
+              "t": 4200,
+              "x": 0.34,
+              "y": 0
+            }
+          ],
+          "z": 24
+        },
+        {
+          "asset_id": "monkey-d-luffy",
+          "id": "luffy",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "idle",
+              "rotation": 0,
+              "scale": 0.9,
+              "t": 0,
+              "x": -0.22,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "recover",
+              "rotation": 0,
+              "scale": 0.94,
+              "t": 4200,
+              "x": -0.18,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "dash",
+              "rotation": 0,
+              "scale": 0.86,
+              "t": 6100,
+              "x": -0.42,
+              "y": 0
+            }
+          ],
+          "z": 23
+        },
+        {
+          "asset_id": "roronoa-zoro",
+          "id": "zoro",
+          "keyframes": [
+            {
+              "opacity": 0,
+              "pose": "idle",
+              "rotation": 0,
+              "scale": 0.78,
+              "t": 5600,
+              "x": -0.1,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "guard",
+              "rotation": 0,
+              "scale": 0.78,
+              "t": 7000,
+              "x": -0.1,
+              "y": 0
+            }
+          ],
+          "z": 20
+        },
+        {
+          "asset_id": "usopp",
+          "id": "usopp",
+          "keyframes": [
+            {
+              "opacity": 0,
+              "pose": "idle",
+              "rotation": 0,
+              "scale": 0.75,
+              "t": 5600,
+              "x": 0.16,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "aim",
+              "rotation": 0,
+              "scale": 0.75,
+              "t": 7000,
+              "x": 0.16,
+              "y": 0
+            }
+          ],
+          "z": 19
+        },
+        {
+          "asset_id": "sanji",
+          "id": "sanji",
+          "keyframes": [
+            {
+              "opacity": 0,
+              "pose": "idle",
+              "rotation": 0,
+              "scale": 0.78,
+              "t": 5600,
+              "x": 0.42,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "guard",
+              "rotation": 0,
+              "scale": 0.78,
+              "t": 7000,
+              "x": 0.42,
+              "y": 0
+            }
+          ],
+          "z": 18
+        }
+      ],
+      "arc_id": "arlong-park",
+      "chapter_gate": {
+        "end": 81,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_81",
+        "start": 81,
+        "verification": "verified"
+      },
+      "duration_ms": 8500,
+      "events": [
+        {
+          "duration_ms": 1300,
+          "intensity": 0.9,
+          "t": 3900,
+          "type": "promise-pulse"
+        },
+        {
+          "duration_ms": 1600,
+          "intensity": 0.7,
+          "t": 6500,
+          "type": "walk-up-dust"
+        }
+      ],
+      "id": "nami-asks-for-help",
+      "label": "Nami asks Luffy for help",
+      "place": {
+        "arena": "village-road",
+        "id": "cocoyasi-village",
+        "landmark": "village-road"
+      },
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "type": "tableau"
+    },
+    {
+      "actors": [
+        {
+          "asset_id": "monkey-d-luffy",
+          "id": "luffy",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "recover",
+              "rotation": 0,
+              "scale": 0.86,
+              "t": 0,
+              "x": -0.62,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "dash",
+              "rotation": -4,
+              "scale": 0.9,
+              "t": 2500,
+              "x": -0.2,
+              "y": 0.04
+            },
+            {
+              "opacity": 1,
+              "pose": "rubber-punch",
+              "rotation": 0,
+              "scale": 0.94,
+              "t": 4500,
+              "x": 0.03,
+              "y": 0.12
+            },
+            {
+              "opacity": 1,
+              "pose": "victory",
+              "rotation": 0,
+              "scale": 0.9,
+              "t": 6800,
+              "x": -0.04,
+              "y": 0
+            }
+          ],
+          "z": 21
+        },
+        {
+          "asset_id": "arlong",
+          "id": "arlong",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "guard",
+              "rotation": 0,
+              "scale": 0.98,
+              "t": 0,
+              "x": 0.58,
+              "y": 0
+            },
+            {
+              "opacity": 1,
+              "pose": "kiribachi-slash",
+              "rotation": 0,
+              "scale": 1.02,
+              "t": 2100,
+              "x": 0.25,
+              "y": 0.02
+            },
+            {
+              "opacity": 1,
+              "pose": "recoil",
+              "rotation": 10,
+              "scale": 1.02,
+              "t": 4650,
+              "x": 0.38,
+              "y": 0.1
+            },
+            {
+              "opacity": 1,
+              "pose": "defeated",
+              "rotation": 0,
+              "scale": 0.92,
+              "t": 6500,
+              "x": 0.5,
+              "y": 0
+            }
+          ],
+          "z": 20
+        }
+      ],
+      "arc_id": "arlong-park",
+      "chapter_gate": {
+        "end": 93,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_93",
+        "start": 93,
+        "verification": "verified"
+      },
+      "duration_ms": 8500,
+      "events": [
+        {
+          "duration_ms": 800,
+          "intensity": 0.9,
+          "t": 2100,
+          "type": "slash"
+        },
+        {
+          "duration_ms": 700,
+          "intensity": 1.0,
+          "t": 4500,
+          "type": "impact"
+        },
+        {
+          "duration_ms": 2800,
+          "intensity": 1.0,
+          "t": 5000,
+          "type": "structure-collapse"
+        }
+      ],
+      "id": "arlong-park-final-clash",
+      "label": "Luffy defeats Arlong and frees Nami",
+      "place": {
+        "arena": "arlong-park-compound",
+        "id": "arlong-park",
+        "landmark": "map-room-and-headquarters"
+      },
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "type": "encounter"
+    },
+    {
+      "actors": [
+        {
+          "asset_id": "monkey-d-luffy",
+          "id": "luffy",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "recoil",
+              "rotation": 0,
+              "scale": 0.86,
+              "t": 0,
+              "x": 0,
+              "y": 0.02
+            },
+            {
+              "opacity": 1,
+              "pose": "victory",
+              "rotation": 0,
+              "scale": 0.9,
+              "t": 4800,
+              "x": 0,
+              "y": 0.02
+            },
+            {
+              "ease": "accelerate",
+              "opacity": 1,
+              "pose": "dash",
+              "rotation": -4,
+              "scale": 0.82,
+              "t": 6100,
+              "x": -0.52,
+              "y": 0.03
+            }
+          ],
+          "z": 20
+        },
+        {
+          "asset_id": "buggy",
+          "id": "buggy",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "scaffold-attack",
+              "rotation": 0,
+              "scale": 0.92,
+              "t": 0,
+              "x": 0.3,
+              "y": 0.08
+            },
+            {
+              "opacity": 1,
+              "pose": "recoil",
+              "rotation": 12,
+              "scale": 0.94,
+              "t": 4200,
+              "x": 0.28,
+              "y": 0.14
+            },
+            {
+              "opacity": 0.4,
+              "pose": "recoil",
+              "rotation": 18,
+              "scale": 0.78,
+              "t": 5800,
+              "x": 0.72,
+              "y": 0.04
+            }
+          ],
+          "z": 22
+        }
+      ],
+      "arc_id": "loguetown",
+      "chapter_gate": {
+        "end": 99,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_99",
+        "start": 99,
+        "verification": "verified"
+      },
+      "duration_ms": 8000,
+      "events": [
+        {
+          "duration_ms": 8000,
+          "intensity": 0.7,
+          "t": 0,
+          "type": "rain"
+        },
+        {
+          "duration_ms": 900,
+          "intensity": 1.0,
+          "t": 3900,
+          "type": "lightning"
+        },
+        {
+          "duration_ms": 1500,
+          "intensity": 1.0,
+          "t": 4100,
+          "type": "scaffold-break"
+        }
+      ],
+      "id": "luffy-near-execution",
+      "label": "Buggy nearly executes Luffy on Roger's scaffold",
+      "place": {
+        "arena": "loguetown-scaffold-storm",
+        "id": "loguetown",
+        "landmark": "execution-platform"
+      },
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "type": "tableau"
+    },
+    {
+      "actors": [
+        {
+          "asset_id": "monkey-d-luffy",
+          "id": "luffy",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "victory",
+              "rotation": 0,
+              "scale": 0.86,
+              "t": 0,
+              "x": 0,
+              "y": 0.06
+            }
+          ],
+          "z": 24
+        },
+        {
+          "asset_id": "roronoa-zoro",
+          "id": "zoro",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "idle",
+              "rotation": 0,
+              "scale": 0.74,
+              "t": 0,
+              "x": -0.42,
+              "y": 0
+            }
+          ],
+          "z": 22
+        },
+        {
+          "asset_id": "nami",
+          "id": "nami",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "victory",
+              "rotation": 0,
+              "scale": 0.72,
+              "t": 0,
+              "x": 0.42,
+              "y": 0
+            }
+          ],
+          "z": 21
+        },
+        {
+          "asset_id": "usopp",
+          "id": "usopp",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "victory",
+              "rotation": 0,
+              "scale": 0.68,
+              "t": 0,
+              "x": -0.72,
+              "y": 0
+            }
+          ],
+          "z": 20
+        },
+        {
+          "asset_id": "sanji",
+          "id": "sanji",
+          "keyframes": [
+            {
+              "opacity": 1,
+              "pose": "victory",
+              "rotation": 0,
+              "scale": 0.7,
+              "t": 0,
+              "x": 0.72,
+              "y": 0
+            }
+          ],
+          "z": 19
+        }
+      ],
+      "arc_id": "loguetown",
+      "chapter_gate": {
+        "end": 100,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_100",
+        "start": 100,
+        "verification": "verified"
+      },
+      "duration_ms": 8000,
+      "events": [
+        {
+          "duration_ms": 8000,
+          "intensity": 0.35,
+          "t": 0,
+          "type": "wind"
+        },
+        {
+          "duration_ms": 2200,
+          "intensity": 1.0,
+          "t": 5200,
+          "type": "route-pulse"
+        }
+      ],
+      "id": "east-blue-grand-line-vows",
+      "label": "The crew declares its dreams and enters the Grand Line",
+      "place": {
+        "arena": "open-sea",
+        "id": "reverse-mountain-approach",
+        "landmark": "going-merry-deck"
+      },
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "type": "tableau"
+    }
+  ],
+  "schema_version": 1,
+  "source_contract_id": "east-blue-saga-2d"
+}

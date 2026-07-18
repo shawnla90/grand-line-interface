@@ -1,0 +1,500 @@
+{
+  "characters": [
+    {
+      "atlas": "characters/romance-dawn-origin-tableaux/atlas.png",
+      "id": "romance-dawn-origin-tableaux",
+      "kind": "tableau",
+      "metadata": "characters/romance-dawn-origin-tableaux/character.json",
+      "pose_count": 6,
+      "source_maturity": "runtime_verified",
+      "unreal_import_status": "pending",
+      "variant": "chapter-1-origin"
+    },
+    {
+      "atlas": "characters/monkey-d-luffy/atlas.png",
+      "id": "monkey-d-luffy",
+      "kind": "character",
+      "metadata": "characters/monkey-d-luffy/character.json",
+      "pose_count": 6,
+      "source_maturity": "runtime_verified",
+      "unreal_import_status": "pending",
+      "variant": "east-blue"
+    },
+    {
+      "atlas": "characters/roronoa-zoro/atlas.png",
+      "id": "roronoa-zoro",
+      "kind": "character",
+      "metadata": "characters/roronoa-zoro/character.json",
+      "pose_count": 6,
+      "source_maturity": "runtime_verified",
+      "unreal_import_status": "pending",
+      "variant": "baratie-east-blue"
+    },
+    {
+      "atlas": "characters/nami/atlas.png",
+      "id": "nami",
+      "kind": "character",
+      "metadata": "characters/nami/character.json",
+      "pose_count": 6,
+      "source_maturity": "runtime_verified",
+      "unreal_import_status": "pending",
+      "variant": "east-blue"
+    },
+    {
+      "atlas": "characters/usopp/atlas.png",
+      "id": "usopp",
+      "kind": "character",
+      "metadata": "characters/usopp/character.json",
+      "pose_count": 6,
+      "source_maturity": "runtime_verified",
+      "unreal_import_status": "pending",
+      "variant": "east-blue"
+    },
+    {
+      "atlas": "characters/sanji/atlas.png",
+      "id": "sanji",
+      "kind": "character",
+      "metadata": "characters/sanji/character.json",
+      "pose_count": 6,
+      "source_maturity": "runtime_verified",
+      "unreal_import_status": "pending",
+      "variant": "baratie-east-blue"
+    },
+    {
+      "atlas": "characters/alvida/atlas.png",
+      "id": "alvida",
+      "kind": "character",
+      "metadata": "characters/alvida/character.json",
+      "pose_count": 6,
+      "source_maturity": "runtime_verified",
+      "unreal_import_status": "pending",
+      "variant": "romance-dawn-original"
+    },
+    {
+      "atlas": "characters/buggy/atlas.png",
+      "id": "buggy",
+      "kind": "character",
+      "metadata": "characters/buggy/character.json",
+      "pose_count": 6,
+      "source_maturity": "runtime_verified",
+      "unreal_import_status": "pending",
+      "variant": "orange-town-loguetown"
+    },
+    {
+      "atlas": "characters/captain-kuro/atlas.png",
+      "id": "captain-kuro",
+      "kind": "character",
+      "metadata": "characters/captain-kuro/character.json",
+      "pose_count": 6,
+      "source_maturity": "runtime_verified",
+      "unreal_import_status": "pending",
+      "variant": "syrup-village"
+    },
+    {
+      "atlas": "characters/dracule-mihawk/atlas.png",
+      "id": "dracule-mihawk",
+      "kind": "character",
+      "metadata": "characters/dracule-mihawk/character.json",
+      "pose_count": 6,
+      "source_maturity": "runtime_verified",
+      "unreal_import_status": "pending",
+      "variant": "baratie-east-blue"
+    },
+    {
+      "atlas": "characters/don-krieg/atlas.png",
+      "id": "don-krieg",
+      "kind": "character",
+      "metadata": "characters/don-krieg/character.json",
+      "pose_count": 6,
+      "source_maturity": "runtime_verified",
+      "unreal_import_status": "pending",
+      "variant": "baratie"
+    },
+    {
+      "atlas": "characters/arlong/atlas.png",
+      "id": "arlong",
+      "kind": "character",
+      "metadata": "characters/arlong/character.json",
+      "pose_count": 6,
+      "source_maturity": "runtime_verified",
+      "unreal_import_status": "pending",
+      "variant": "arlong-park"
+    },
+    {
+      "atlas": "characters/gol-d-roger/atlas.png",
+      "id": "gol-d-roger",
+      "kind": "character",
+      "metadata": "characters/gol-d-roger/character.json",
+      "pose_count": 6,
+      "source_maturity": "runtime_verified",
+      "unreal_import_status": "pending",
+      "variant": "loguetown-execution"
+    },
+    {
+      "atlas": "characters/smoker/atlas.png",
+      "id": "smoker",
+      "kind": "character",
+      "metadata": "characters/smoker/character.json",
+      "pose_count": 6,
+      "source_maturity": "runtime_verified",
+      "unreal_import_status": "pending",
+      "variant": "loguetown"
+    }
+  ],
+  "contract": {
+    "path": "contracts/east-blue-saga.simulation.json",
+    "schema": "contracts/east-blue-saga-simulation.schema.json",
+    "sha256": "ea2950871130104f2cc313e834833d22eca2f95b230ed2ee4753ca297176ca7a"
+  },
+  "environments": [
+    {
+      "bytes": 2716500,
+      "id": "loguetown-roger-execution",
+      "path": "environments/loguetown-roger-execution.glb",
+      "place_id": "loguetown",
+      "scene_ids": [
+        "roger-execution-prologue",
+        "luffy-near-execution"
+      ],
+      "sha256": "b58e95688bdcf7bf45c60b38e0a306349180ae0f762620c167908a61d121682c",
+      "source_maturity": "runtime_blockout_v1",
+      "unreal_import_status": "pending"
+    },
+    {
+      "anchors": [
+        "anchor_ship_approach",
+        "anchor_dock_arrival",
+        "anchor_encounter_center",
+        "anchor_zoro_start",
+        "anchor_mihawk_start",
+        "anchor_encounter_camera",
+        "anchor_return_to_ocean"
+      ],
+      "bytes": 170128,
+      "id": "baratie-encounter-deck",
+      "path": "environments/baratie-encounter-deck.glb",
+      "place_id": "baratie",
+      "scene_ids": [
+        "baratie-zoro-vs-mihawk",
+        "baratie-luffy-vs-krieg",
+        "sanji-leaves-baratie"
+      ],
+      "sha256": "cb027036be40619bf24081afe527d7923d36c6dd894f7a894cb3f1c7224b92b4",
+      "source_maturity": "unreal_vertical_slice_blockout_v1",
+      "unreal_import_status": "pending"
+    }
+  ],
+  "excluded_scenes": [
+    {
+      "id": "zoro-joins-at-shells-town",
+      "reason": "readiness:art_partial"
+    },
+    {
+      "id": "smoker-dragon-storm-escape",
+      "reason": "readiness:art_partial"
+    }
+  ],
+  "id": "grand-line-unreal-east-blue-v1",
+  "metrics": {
+    "characters": 14,
+    "environments": 2,
+    "excluded_scenes": 2,
+    "poses": 84,
+    "runnable_scenes": 12,
+    "vehicles": 1
+  },
+  "rules": {
+    "generated_assets_rebuildable": true,
+    "raw_source_sheets_included": false,
+    "relative_posix_paths_only": true,
+    "runtime_ready_scenes_only": true,
+    "verified_chapter_gates_only": true
+  },
+  "scenes": [
+    {
+      "actor_asset_ids": [
+        "gol-d-roger"
+      ],
+      "arc_id": "romance-dawn",
+      "arena": "loguetown-scaffold",
+      "chapter_gate": {
+        "end": 1,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_1",
+        "start": 1,
+        "verification": "verified"
+      },
+      "duration_ms": 8000,
+      "id": "roger-execution-prologue",
+      "place_id": "loguetown",
+      "source_maturity": "runtime_ready",
+      "type": "tableau",
+      "unreal_import_status": "pending"
+    },
+    {
+      "actor_asset_ids": [
+        "romance-dawn-origin-tableaux"
+      ],
+      "arc_id": "romance-dawn",
+      "arena": "coastal-memory",
+      "chapter_gate": {
+        "end": 1,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_1",
+        "start": 1,
+        "verification": "verified"
+      },
+      "duration_ms": 9000,
+      "id": "romance-dawn-fruit-and-promise",
+      "place_id": "foosha-village",
+      "source_maturity": "runtime_ready",
+      "type": "tableau",
+      "unreal_import_status": "pending"
+    },
+    {
+      "actor_asset_ids": [
+        "monkey-d-luffy",
+        "alvida"
+      ],
+      "arc_id": "romance-dawn",
+      "arena": "ship-deck",
+      "chapter_gate": {
+        "end": 2,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_2",
+        "start": 2,
+        "verification": "verified"
+      },
+      "duration_ms": 7000,
+      "id": "luffy-punches-alvida",
+      "place_id": "alvida-pirate-ship",
+      "source_maturity": "runtime_ready",
+      "type": "encounter",
+      "unreal_import_status": "pending"
+    },
+    {
+      "actor_asset_ids": [
+        "monkey-d-luffy",
+        "buggy"
+      ],
+      "arc_id": "orange-town",
+      "arena": "damaged-town-square",
+      "chapter_gate": {
+        "end": 20,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_20",
+        "start": 20,
+        "verification": "verified"
+      },
+      "duration_ms": 8000,
+      "id": "orange-town-luffy-vs-buggy",
+      "place_id": "orange-town",
+      "source_maturity": "runtime_ready",
+      "type": "encounter",
+      "unreal_import_status": "pending"
+    },
+    {
+      "actor_asset_ids": [
+        "monkey-d-luffy",
+        "captain-kuro"
+      ],
+      "arc_id": "syrup-village",
+      "arena": "grassy-slope",
+      "chapter_gate": {
+        "end": 40,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_40",
+        "start": 40,
+        "verification": "verified"
+      },
+      "duration_ms": 8000,
+      "id": "syrup-village-luffy-vs-kuro",
+      "place_id": "syrup-village",
+      "source_maturity": "runtime_ready",
+      "type": "encounter",
+      "unreal_import_status": "pending"
+    },
+    {
+      "actor_asset_ids": [
+        "roronoa-zoro",
+        "dracule-mihawk"
+      ],
+      "arc_id": "baratie",
+      "arena": "baratie-deck",
+      "chapter_gate": {
+        "end": 51,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_51",
+        "start": 51,
+        "verification": "verified"
+      },
+      "duration_ms": 8000,
+      "id": "baratie-zoro-vs-mihawk",
+      "place_id": "baratie",
+      "source_maturity": "runtime_ready",
+      "type": "encounter",
+      "unreal_import_status": "pending"
+    },
+    {
+      "actor_asset_ids": [
+        "monkey-d-luffy",
+        "don-krieg"
+      ],
+      "arc_id": "baratie",
+      "arena": "floating-wreckage",
+      "chapter_gate": {
+        "end": 66,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_66",
+        "start": 66,
+        "verification": "verified"
+      },
+      "duration_ms": 8000,
+      "id": "baratie-luffy-vs-krieg",
+      "place_id": "baratie",
+      "source_maturity": "runtime_ready",
+      "type": "encounter",
+      "unreal_import_status": "pending"
+    },
+    {
+      "actor_asset_ids": [
+        "sanji",
+        "monkey-d-luffy"
+      ],
+      "arc_id": "baratie",
+      "arena": "baratie-deck",
+      "chapter_gate": {
+        "end": 68,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_68",
+        "start": 68,
+        "verification": "verified"
+      },
+      "duration_ms": 6500,
+      "id": "sanji-leaves-baratie",
+      "place_id": "baratie",
+      "source_maturity": "runtime_ready",
+      "type": "tableau",
+      "unreal_import_status": "pending"
+    },
+    {
+      "actor_asset_ids": [
+        "nami",
+        "monkey-d-luffy",
+        "roronoa-zoro",
+        "usopp",
+        "sanji"
+      ],
+      "arc_id": "arlong-park",
+      "arena": "village-road",
+      "chapter_gate": {
+        "end": 81,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_81",
+        "start": 81,
+        "verification": "verified"
+      },
+      "duration_ms": 8500,
+      "id": "nami-asks-for-help",
+      "place_id": "cocoyasi-village",
+      "source_maturity": "runtime_ready",
+      "type": "tableau",
+      "unreal_import_status": "pending"
+    },
+    {
+      "actor_asset_ids": [
+        "monkey-d-luffy",
+        "arlong"
+      ],
+      "arc_id": "arlong-park",
+      "arena": "arlong-park-compound",
+      "chapter_gate": {
+        "end": 93,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_93",
+        "start": 93,
+        "verification": "verified"
+      },
+      "duration_ms": 8500,
+      "id": "arlong-park-final-clash",
+      "place_id": "arlong-park",
+      "source_maturity": "runtime_ready",
+      "type": "encounter",
+      "unreal_import_status": "pending"
+    },
+    {
+      "actor_asset_ids": [
+        "monkey-d-luffy",
+        "buggy"
+      ],
+      "arc_id": "loguetown",
+      "arena": "loguetown-scaffold-storm",
+      "chapter_gate": {
+        "end": 99,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_99",
+        "start": 99,
+        "verification": "verified"
+      },
+      "duration_ms": 8000,
+      "id": "luffy-near-execution",
+      "place_id": "loguetown",
+      "source_maturity": "runtime_ready",
+      "type": "tableau",
+      "unreal_import_status": "pending"
+    },
+    {
+      "actor_asset_ids": [
+        "monkey-d-luffy",
+        "roronoa-zoro",
+        "nami",
+        "usopp",
+        "sanji"
+      ],
+      "arc_id": "loguetown",
+      "arena": "open-sea",
+      "chapter_gate": {
+        "end": 100,
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_100",
+        "start": 100,
+        "verification": "verified"
+      },
+      "duration_ms": 8000,
+      "id": "east-blue-grand-line-vows",
+      "place_id": "reverse-mountain-approach",
+      "source_maturity": "runtime_ready",
+      "type": "tableau",
+      "unreal_import_status": "pending"
+    }
+  ],
+  "schema_version": 1,
+  "source": {
+    "asset_factory": "dead-reckoning/blender-assets",
+    "contract": "contracts/east-blue-saga.simulation.json",
+    "contract_sha256": "bff504974733b6da5cee56a19fef4b179c517c4168da2e702a890ffc2c7b24b6",
+    "manifest": "manifests/east-blue-2d.json",
+    "manifest_sha256": "0abbd6ff4c36d4e485feb177dc4ebbff47ddf0a2b8078ac84bfed124c2440be0",
+    "vertical_slice_manifest": "manifests/unreal-vertical-slice-assets.json"
+  },
+  "vehicles": [
+    {
+      "anchors": [
+        "anchor_ship_root",
+        "anchor_camera_chase",
+        "anchor_camera_orbit",
+        "anchor_bow",
+        "anchor_wake",
+        "anchor_buoyancy_fore_port",
+        "anchor_buoyancy_fore_starboard",
+        "anchor_buoyancy_aft_port",
+        "anchor_buoyancy_aft_starboard",
+        "anchor_interaction"
+      ],
+      "bytes": 56168,
+      "id": "east-blue-original-ship-proxy",
+      "path": "vehicles/east-blue-original-ship-proxy.glb",
+      "place_id": "ocean-local-sector",
+      "scene_ids": [
+        "baratie-zoro-vs-mihawk"
+      ],
+      "sha256": "937c513346adf853015251e88f38b48540be56d0bf54fc91a85ef7e64fae34de",
+      "source_maturity": "unreal_vertical_slice_blockout_v1",
+      "unreal_import_status": "pending"
+    }
+  ],
+  "vertical_slice": {
+    "baratie_environment_status": "source_art_exported",
+    "interactive_scene_id": "baratie-zoro-vs-mihawk",
+    "smoke_test_scene_id": "roger-execution-prologue",
+    "temporary_ship_proxy_status": "source_art_exported"
+  }
+}

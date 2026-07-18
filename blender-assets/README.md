@@ -37,6 +37,21 @@ python3 blender-assets/scripts/verify_runtime_3d.py
 python3 blender-assets/scripts/verify_priority_narrative_blockouts.py
 ```
 
+## Unreal export bundle
+
+Unreal is a separate renderer, not a replacement for the web atlas or this
+asset factory. Build its deterministic East Blue SourceArt bundle with:
+
+```bash
+python3 blender-assets/scripts/build_unreal_export_bundle.py
+python3 blender-assets/scripts/verify_unreal_export_bundle.py
+```
+
+The exporter copies only manifest-approved runtime derivatives into
+`exports/unreal/east-blue-v1/`. It fails on missing or drifted hashes, duplicate
+IDs, unverified chapter gates, and unfinished scenes. Raw character-generation
+sheets are never exported.
+
 ## Pilot
 
 `fish-man-island` is a top-down RGBA plate built around the atlas's exact
