@@ -21,13 +21,15 @@ Current contract:
 - 84 stepped pose frames;
 - 12 verified, runtime-ready East Blue simulations;
 - the existing Loguetown/Roger runtime-blockout GLB;
+- the original Baratie encounter-deck GLB and seven authored anchors;
+- the original ship-proxy GLB and ten camera/buoyancy/gameplay anchors;
 - two unfinished scenes listed as excluded rather than runnable;
 - stable relative paths and SHA-256 receipts for every file.
 
-`baratie-zoro-vs-mihawk` is already runnable as illustrated actor tracks. Its
-original encounter-deck environment and temporary original ship proxy remain
-explicit vertical-slice blockers; they must enter the asset factory and bundle
-through the same manifest/hash gate.
+`baratie-zoro-vs-mihawk` is runnable as illustrated actor tracks, and its two
+supporting prototype GLBs now pass the same manifest/hash/anchor gate. Unreal
+import, native Water/buoyancy/collision, and visual tuning remain engine-side
+work.
 
 ## Consumer sync
 

@@ -63,6 +63,7 @@ python3 blender-assets/scripts/verify_unreal_export_bundle.py
 ```
 
 The generated bundle contains all 14 illustrated atlas packages, the 12
-runtime-ready story simulations, and the existing Loguetown runtime GLB. It
-excludes both `art_partial` scenes and fails on source hash drift or unverified
-chapter gates.
+runtime-ready story simulations, the existing Loguetown runtime GLB, the
+original Baratie encounter-deck blockout, and the original ship proxy. It
+excludes both `art_partial` scenes and fails on source hash drift, missing
+anchors, or unverified chapter gates.
