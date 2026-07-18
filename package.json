@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "audit:epic-audio": "node scripts/audit_epic_audio.mjs"
   },
   "dependencies": {
     "maplibre-gl": "^5.24.0",

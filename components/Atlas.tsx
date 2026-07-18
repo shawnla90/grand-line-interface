@@ -37,6 +37,13 @@ import type { BuildLog } from "@/lib/buildlog";
 import type { Art } from "@/lib/art";
 import { buildJourney, type CamTarget } from "@/lib/journey";
 import { buildJourneyStops, STORY_JOURNEY_ON } from "@/config/journey-stops";
+import {
+  ACTIVE_EPIC_AUDIO_CUES,
+  EPIC_CUE_GAP_MS,
+  EPIC_TRAVEL_BUDGET_MS,
+} from "@/config/epic-audio-cues";
+import { buildEpicJourneyTimeline } from "@/lib/epic-journey";
+import { EpicAudioPlayer } from "@/lib/epic-audio-player";
 import WorldMap, { type Projection } from "./WorldMap";
 import { RuntimeIslandDirectory } from "./RuntimeIslandDirectory";
 import SearchPalette, { type SearchHit } from "./SearchPalette";
@@ -80,6 +87,21 @@ function useChapterEngine(world: World, initial: number) {
   const pos = useRef(initial); // the float truth both loops write
   const raf = useRef<number | null>(null);
   const playingRef = useRef(false);
+
+  // Journey state must be declared before the sail-mode effect below: that
+  // effect borrows the same camera channel for story dwells.
+  const [journey, setJourney] = useState(false);
+  const [journeyLabel, setJourneyLabel] = useState("");
+  const [journeyFact, setJourneyFact] = useState("");
+  const [epicJourney, setEpicJourney] = useState(false);
+  const [epicElapsedMs, setEpicElapsedMs] = useState(0);
+  const [epicDurationMs, setEpicDurationMs] = useState(0);
+  const [epicCueLabel, setEpicCueLabel] = useState("");
+  const [epicMuted, setEpicMuted] = useState(false);
+  const [epicAudioError, setEpicAudioError] = useState<string | null>(null);
+  const journeyCam = useRef<(CamTarget & { focus: [number, number] | null }) | null>(null);
+  const journeyRaf = useRef<number | null>(null);
+  const epicAudio = useRef<EpicAudioPlayer | null>(null);
 
   // tween toward a manually-set target (skipped while playback owns the float)
   useEffect(() => {
@@ -238,11 +260,6 @@ function useChapterEngine(world: World, initial: number) {
   // (the 4x speed cap tops out at ~148s, so the sweep speeds cannot reach it).
   // It drives `swept` directly, sets a target `journeyZoom` the map damps toward,
   // and names the current leg for the recording caption.
-  const [journey, setJourney] = useState(false);
-  const [journeyLabel, setJourneyLabel] = useState("");
-  // The canon fact captioning a story dwell. Facts come from world.events,
-  // whose occurred_chapter <= the dwell chapter by construction — no leaks.
-  const [journeyFact, setJourneyFact] = useState("");
   /**
    * THE PER-FRAME CAMERA CHANNEL IS A REF, NOT STATE — measured lesson. The
    * first cut pushed zoom/focus through setState every rAF; with ~6 setters a
@@ -250,22 +267,27 @@ function useChapterEngine(world: World, initial: number) {
    * The map's chase already reads refs per frame; only the CAPTION (a string
    * that changes a handful of times a run) deserves a re-render.
    */
-  const journeyCam = useRef<(CamTarget & { focus: [number, number] | null }) | null>(null);
-  const journeyRaf = useRef<number | null>(null);
-
   const stopJourney = useCallback(() => {
     if (journeyRaf.current !== null) cancelAnimationFrame(journeyRaf.current);
     journeyRaf.current = null;
     playingRef.current = false;
+    epicAudio.current?.stop();
     journeyCam.current = null;
     setJourney(false);
+    setEpicJourney(false);
+    setEpicElapsedMs(0);
+    setEpicCueLabel("");
     setJourneyLabel("");
     setJourneyFact("");
   }, []);
 
   const startJourney = useCallback(() => {
     if (raf.current !== null) cancelAnimationFrame(raf.current);
+    if (journeyRaf.current !== null) cancelAnimationFrame(journeyRaf.current);
+    epicAudio.current?.stop();
     setPlaying(false);
+    setEpicJourney(false);
+    setEpicAudioError(null);
     // playingRef true makes the tween effect yield the float to us, exactly as
     // the sail loop does — we own `pos.current`/`swept` for the duration.
     playingRef.current = true;
@@ -320,6 +342,104 @@ function useChapterEngine(world: World, initial: number) {
     journeyRaf.current = requestAnimationFrame(step);
   }, [world, stopJourney]);
 
+  const startEpicJourney = useCallback(() => {
+    if (raf.current !== null) cancelAnimationFrame(raf.current);
+    if (journeyRaf.current !== null) cancelAnimationFrame(journeyRaf.current);
+    epicAudio.current?.stop();
+    setPlaying(false);
+    playingRef.current = true;
+    setEpicAudioError(null);
+
+    const visual = buildJourney(
+      world.voyage.waypoints.map((w) => ({ chapter: w.chapter, slug: w.slug, label: w.label })),
+      world.chapterMax,
+      undefined,
+      {},
+      buildJourneyStops(world),
+    );
+    const timeline = buildEpicJourneyTimeline(
+      visual,
+      ACTIVE_EPIC_AUDIO_CUES,
+      EPIC_TRAVEL_BUDGET_MS,
+      EPIC_CUE_GAP_MS,
+    );
+
+    const audio = new EpicAudioPlayer((message) => setEpicAudioError(message));
+    audio.setMuted(epicMuted);
+    epicAudio.current = audio;
+
+    pos.current = world.chapterMin;
+    setSwept(world.chapterMin);
+    setChapterState(world.chapterMin);
+    setJourney(true);
+    setEpicJourney(true);
+    setEpicElapsedMs(0);
+    setEpicDurationMs(timeline.durationMs);
+
+    // The first cue begins synchronously inside the click event, which is the
+    // browser's required user gesture for audible playback.
+    const first = timeline.sampleAt(0);
+    audio.sync(first.cue, first.cueElapsedMs);
+    setEpicCueLabel(first.cue?.label ?? "Sailing the Grand Line");
+    setJourneyLabel(first.cue?.label ?? visual.labelAt(first.progress));
+    setJourneyFact(first.cue?.caption ?? "");
+
+    const t0 = performance.now();
+    const auditRate = process.env.NODE_ENV !== "production"
+      ? Math.max(1, Number((window as Window & { __epicJourneyRate?: number }).__epicJourneyRate ?? 1))
+      : 1;
+    let lastPush = 0;
+    let lastUiPush = 0;
+    const step = (now: number) => {
+      const elapsedMs = Math.min(timeline.durationMs, (now - t0) * auditRate);
+      const sample = timeline.sampleAt(elapsedMs);
+      const ch = visual.chapterAt(sample.progress);
+      pos.current = ch;
+
+      if (now - lastPush >= 33 || sample.done) {
+        lastPush = now;
+        setSwept(ch);
+        const fl = Math.max(world.chapterMin, Math.floor(ch));
+        setChapterState((current) => (current === fl ? current : fl));
+      }
+
+      const moment = visual.momentAt(sample.progress);
+      journeyCam.current = { ...visual.camAt(sample.progress), focus: moment?.focus ?? null };
+      audio.sync(sample.cue, sample.cueElapsedMs);
+
+      const label = sample.cue?.label ?? visual.labelAt(sample.progress);
+      const fact = sample.cue?.caption ?? moment?.fact ?? "";
+      setJourneyLabel((current) => (current === label ? current : label));
+      setJourneyFact((current) => (current === fact ? current : fact));
+      const cueLabel = sample.cue?.label ?? "Sailing the Grand Line";
+      setEpicCueLabel((current) => (current === cueLabel ? current : cueLabel));
+      if (now - lastUiPush >= 250 || sample.done) {
+        lastUiPush = now;
+        setEpicElapsedMs(elapsedMs);
+      }
+
+      if (sample.done) {
+        stopJourney();
+        return;
+      }
+      journeyRaf.current = requestAnimationFrame(step);
+    };
+    journeyRaf.current = requestAnimationFrame(step);
+  }, [epicMuted, stopJourney, world]);
+
+  const toggleEpicMuted = useCallback(() => {
+    setEpicMuted((current) => {
+      const next = !current;
+      epicAudio.current?.setMuted(next);
+      return next;
+    });
+  }, []);
+
+  useEffect(() => () => {
+    if (journeyRaf.current !== null) cancelAnimationFrame(journeyRaf.current);
+    epicAudio.current?.stop();
+  }, []);
+
   // A manual set (or the sail play) cancels the journey — the reader took the helm.
   const setChapterJ = useCallback(
     (ch: number) => {
@@ -332,6 +452,8 @@ function useChapterEngine(world: World, initial: number) {
   return {
     chapter, swept, setChapter: setChapterJ, playing, speed, setSpeed, play, pause,
     journey, journeyCam, journeyLabel, journeyFact, startJourney, stopJourney,
+    epicJourney, epicElapsedMs, epicDurationMs, epicCueLabel, epicMuted,
+    epicAudioError, startEpicJourney, toggleEpicMuted,
     storyStops, setStoryStops,
   };
 }
@@ -471,11 +593,16 @@ export default function Atlas({
     [world, engine],
   );
 
-  // while sailing, the episode thumb follows the story (chapter is the truth)
+  // During either automated run, the episode thumb follows the story. Schedule
+  // the mirror update on the next frame so this effect only synchronizes the
+  // chapter truth; it never cascades a state write during effect setup.
   useEffect(() => {
-    if (!playing) return;
-    setEpisodeRaw(episodeForChapter(world, chapter) ?? world.episodeMax);
-  }, [playing, chapter, world]);
+    if (!playing && !engine.journey) return;
+    const frame = requestAnimationFrame(() => {
+      setEpisodeRaw(episodeForChapter(world, chapter) ?? world.episodeMax);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [playing, engine.journey, chapter, world]);
 
   /* ------------------------------------------------------------------ url */
   useEffect(() => {
@@ -509,9 +636,15 @@ export default function Atlas({
       if (e.key === "ArrowLeft") setChapter(chapter - (e.shiftKey ? 25 : 1));
       else if (e.key === "ArrowRight") setChapter(chapter + (e.shiftKey ? 25 : 1));
       // a focused button owns Space (native activation) — don't double-fire
-      else if (e.key === " " && !(el instanceof HTMLButtonElement)) (playing ? engine.pause : engine.play)();
+      else if (e.key === " " && !(el instanceof HTMLButtonElement)) {
+        engine.stopJourney();
+        (playing ? engine.pause : engine.play)();
+      }
       // Esc unwinds in order: filter first, then the selection
-      else if (e.key === "Escape") (focus ? setFocus(null) : setSelected(null));
+      else if (e.key === "Escape") {
+        if (focus) setFocus(null);
+        else setSelected(null);
+      }
       else if (e.key === "/") setSearchOpen(true);
       else if (e.key.toLowerCase() === "g") setProjection((p) => (p === "globe" ? "mercator" : "globe"));
       else if (e.key.toLowerCase() === "f") setFollow((v) => !v);
@@ -800,12 +933,20 @@ export default function Atlas({
           speed={speed}
           onPlayPause={() => {
             engine.stopJourney(); // sailing takes the helm from the cinematic run
-            playing ? engine.pause() : engine.play();
+            if (playing) engine.pause();
+            else engine.play();
           }}
           onSpeed={engine.setSpeed}
-          journey={engine.journey}
-          journeyLabel={engine.journeyLabel}
+          journey={engine.journey && !engine.epicJourney}
           onJourney={() => (engine.journey ? engine.stopJourney() : engine.startJourney())}
+          epicJourney={engine.epicJourney}
+          epicElapsedMs={engine.epicElapsedMs}
+          epicDurationMs={engine.epicDurationMs}
+          epicCueLabel={engine.epicCueLabel}
+          epicMuted={engine.epicMuted}
+          epicAudioError={engine.epicAudioError}
+          onEpicJourney={() => (engine.epicJourney ? engine.stopJourney() : engine.startEpicJourney())}
+          onEpicMuted={engine.toggleEpicMuted}
           recordArmed={recordArmed}
           recording={recording}
           onRecord={() => void startRecordedJourney()}

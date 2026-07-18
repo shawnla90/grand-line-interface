@@ -1,0 +1,556 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "originalName": "boa-hancock-mero.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/boa-hancock-mero.mp3",
+      "sourceSha256": "e5b4b0e1c5da1e0b426d8fc3b06cd31c3c227bf4432aafe36eafa6d452f7a9ea",
+      "publicPath": "/audio/epic-journey/boa-hancock-mero.mp3",
+      "publicSha256": "ee77cf22a16f27e8a4732fe5decd64502709e4b77518c4fe9c79fb302175bd90",
+      "durationMs": 28684,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 44100,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "Brook-Laughter.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/Brook-Laughter.mp3",
+      "sourceSha256": "e877bb0eceac59535d5498eac0e5a087d0d274ff98e3a78d503ab038d34c3406",
+      "publicPath": "/audio/epic-journey/brook-laughter.mp3",
+      "publicSha256": "2592f214d4bc1ab2970d63f07b5b68f1f71799ab077c88c8d0a01f576f5a6054",
+      "durationMs": 3005,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 44100,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "gear-second-monkey-d.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/gear-second-monkey-d.mp3",
+      "sourceSha256": "3d24f0710ad2d1e9634f4b197a0cd8344e8a0aa470cbccc81a042176fe49a717",
+      "publicPath": "/audio/epic-journey/gear-second-monkey-d.mp3",
+      "publicSha256": "4543fc9e24f3ba6b80001abd953f88b72d103fe7e169cde1d76c121bb01d1879",
+      "durationMs": 1845,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 48000,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "Gomu-Gomu-no.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/Gomu-Gomu-no.mp3",
+      "sourceSha256": "40d124ddb2ec8bb839aab8c07e4cdd940b7fded4a2bff88589648119e98d4974",
+      "publicPath": "/audio/epic-journey/gomu-gomu-no.mp3",
+      "publicSha256": "9cd6ae15259977eab98a5999fb2516dbbf65cda592068fded67cb1795769a4ca",
+      "durationMs": 1870,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 22050,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "i-want-to-live.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/i-want-to-live.mp3",
+      "sourceSha256": "fa17a7c79d316a099365e319d366a0c4c2bc03c5deab0917986ee435a7f7a04c",
+      "publicPath": "/audio/epic-journey/i-want-to-live.mp3",
+      "publicSha256": "4290c9eb129313b2c4c9cb42968748bb289de295742c32240c11868aa0be890a",
+      "durationMs": 6900,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 44100,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "Kaido-Laugh-One-Piece.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/Kaido-Laugh-One-Piece.mp3",
+      "sourceSha256": "12bb37f9cdb95e886ba4864bf3232ee1a53480eb4eafb709326796b3b54ee1d6",
+      "publicPath": "/audio/epic-journey/kaido-laugh-one-piece.mp3",
+      "publicSha256": "ab592dd9b6aab90e3cb0babe8a168002cbf38e7f43d182a7648ce618c21366bd",
+      "durationMs": 2904,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 48000,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "Laugh-Charlotte-Linlin-Big-Mom-One-Piece.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/Laugh-Charlotte-Linlin-Big-Mom-One-Piece.mp3",
+      "sourceSha256": "ff3f277e70d331abfd098cae2ec73130a5cf6e1a73d36f52f8b57be77e880bc1",
+      "publicPath": "/audio/epic-journey/laugh-charlotte-linlin-big-mom-one-piece.mp3",
+      "publicSha256": "5938c177d739f70b6a6d02ede3fae69fbfadb1f6398d0a0364e7628eb1f87ca0",
+      "durationMs": 4911,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 44100,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "lets-battle.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/lets-battle.mp3",
+      "sourceSha256": "745f61d6ac0b2eda6cf8ea3e68edcf0589c6550844fc39050d8dcd56aff9248d",
+      "publicPath": "/audio/epic-journey/lets-battle.mp3",
+      "publicSha256": "fc41533cfb802574034f25da200f233c47416d5b8ab1a2bc9ce992d63e18436f",
+      "durationMs": 26359,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 44100,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "Luffy-Pirate-King.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/Luffy-Pirate-King.mp3",
+      "sourceSha256": "05fc5b141eca2c808bf442f6b70909c9e7fba925d6f98c2d2cfc4bdeacfe9828",
+      "publicPath": "/audio/epic-journey/luffy-pirate-king.mp3",
+      "publicSha256": "c0b6d7da85f0f2150fa5036bb6578150f00101e6c2e916a73cd1c7436feae100",
+      "durationMs": 43080,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 48000,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "monkey-d-luffy-hey.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/monkey-d-luffy-hey.mp3",
+      "sourceSha256": "9f8d96cbf174b359b3893a53b8f667cf6a47f937ebfc009185eab9fe2073211a",
+      "publicPath": "/audio/epic-journey/monkey-d-luffy-hey.mp3",
+      "publicSha256": "82f781a0cc1c2ad493d994e7a99d089f41d533763850ea8e62c1523aea3502a2",
+      "durationMs": 2938,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 44100,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "nami-asks-luffy-for-help.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/nami-asks-luffy-for-help.mp3",
+      "sourceSha256": "fe2c86e4398bf19333b3cb659c13ded6bdaaefa556b32080f63cbfdbdc81536a",
+      "publicPath": "/audio/epic-journey/nami-asks-luffy-for-help.mp3",
+      "publicSha256": "8cc8e681b34573a2212f052d7995863b0c69b77e1dbf751fd60fe627ac4e70ab",
+      "durationMs": 7541,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 48000,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "of-course-i-will-luffy.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/of-course-i-will-luffy.mp3",
+      "sourceSha256": "ab892ed2f561e0b8b4005e08f323484b592574c790f27de9556962c3bfd5a8ab",
+      "publicPath": "/audio/epic-journey/of-course-i-will-luffy.mp3",
+      "publicSha256": "2938025e6caf4fc0ad0738834e6273932a13fe7e05458363de2c9902a8d8f89b",
+      "durationMs": 4544,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 48000,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "one-piece-kuma-wack.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/one-piece-kuma-wack.mp3",
+      "sourceSha256": "bfd3008f508590b22bcf1f1c549575130562ffeda98376f784cdbd061fa65003",
+      "publicPath": "/audio/epic-journey/one-piece-kuma-wack.mp3",
+      "publicSha256": "9e88b7608780771184011f4d7fab2993864c2b617eab59be23917584a93ed733",
+      "durationMs": 2670,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 44100,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "one-piece-laugh.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/one-piece-laugh.mp3",
+      "sourceSha256": "84c0bb7653177a79935355c0f3295e61107a9b974ef05f05a96b731d658ebbbf",
+      "publicPath": "/audio/epic-journey/one-piece-laugh.mp3",
+      "publicSha256": "451a345a3d2961945f0d150cdef6dfc9118954a7ec1da2de43f090bda2b81b6d",
+      "durationMs": 7002,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 44100,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "one-piece-overtaken-ost.mp3",
+      "kind": "music",
+      "source": "assets/audio/epic-journey/music/one-piece-overtaken-ost.mp3",
+      "sourceSha256": "f4fa30406f616ce7fa69dd3a10633459fe5af00af6ae59b0f4d92f47d505cb83",
+      "publicPath": "/audio/epic-journey/one-piece-overtaken-ost.mp3",
+      "publicSha256": "344af245bd201e57f14a34978e0bbc80f31bf66cf7932a258c30bd546c92f0ad",
+      "durationMs": 10144,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 48000,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -18,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "one-piece-overtaken.mp3",
+      "kind": "music",
+      "source": "assets/audio/epic-journey/music/one-piece-overtaken.mp3",
+      "sourceSha256": "3ebc649704b84adc657d6b515fc157f11a4558b9bcd6a7563ec62c716722ab9e",
+      "publicPath": "/audio/epic-journey/one-piece-overtaken.mp3",
+      "publicSha256": "8d31335c0589da1c7f3411bc188f0a7751f7374b43cc1ca7fa6332786d85f527",
+      "durationMs": 30016,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 44100,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -18,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "One-Piece-Sanji-Diable.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/One-Piece-Sanji-Diable.mp3",
+      "sourceSha256": "598cea62385ee65f8c4eb38b1ff2dbedd18f87679a4aee5f4f362975999908a7",
+      "publicPath": "/audio/epic-journey/one-piece-sanji-diable.mp3",
+      "publicSha256": "1655da621e9806144bdbb55f5a6f4cb38da66576351c3ebb97aadbbd3e6f1484",
+      "durationMs": 10176,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 48000,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "One-Piece-Wano-Theme.mp3",
+      "kind": "music",
+      "source": "assets/audio/epic-journey/music/One-Piece-Wano-Theme.mp3",
+      "sourceSha256": "8d8666537c418133bc4b9a4bae0a1e6fb43c587cab81bb72bf21f6f5379408a9",
+      "publicPath": "/audio/epic-journey/one-piece-wano-theme.mp3",
+      "publicSha256": "0cd28ba497a01e089e31b183abd537059245a2f0b917805e8283a2804792f7f6",
+      "durationMs": 5016,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 44100,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -18,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "RORONOA-ZORO-SAYING-HIS-NAME.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/RORONOA-ZORO-SAYING-HIS-NAME.mp3",
+      "sourceSha256": "524e4eebad2667d74d418ed14af9f21834f3c373ba7568b52e1c9be9132ffe41",
+      "publicPath": "/audio/epic-journey/roronoa-zoro-saying-his-name.mp3",
+      "publicSha256": "0f749f7d6cd2e9d837bdb924450ce4f04efed4e7fa2ac49771d14555c3b9a757",
+      "durationMs": 3120,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 48000,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "sanji.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/sanji.mp3",
+      "sourceSha256": "4c8befd8ba19e97dce854a9cfe463d2596b3577c3280d43698f91ce057e4f5fe",
+      "publicPath": "/audio/epic-journey/sanji.mp3",
+      "publicSha256": "cae7094da8c3f79d00d69a95946b5cd74ddf2129111ad47dffab8243ff8ac4b0",
+      "durationMs": 3580,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 44100,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "shanks-gives-luffy-his-hat.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/shanks-gives-luffy-his-hat.mp3",
+      "sourceSha256": "441a116a8153bce6aa65580b90d19344e1355dd53646e859611b69d657b841c7",
+      "publicPath": "/audio/epic-journey/shanks-gives-luffy-his-hat.mp3",
+      "publicSha256": "0d6800eb593f457d364df8cb25ce9beba2d8933b2b8f59a39c08ccb2fa880c0b",
+      "durationMs": 10144,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 48000,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "the-city-of-gold-is-in-the-sky-luffy.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/the-city-of-gold-is-in-the-sky-luffy.mp3",
+      "sourceSha256": "f571b490d8873afcb460621c46ea2de15a3f1744eb5e812d6cca1ef10bc78413",
+      "publicPath": "/audio/epic-journey/the-city-of-gold-is-in-the-sky-luffy.mp3",
+      "publicSha256": "542ec6f452254c60266c701afcba288a73729011205cbd9ce493899b94c42065",
+      "durationMs": 10144,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 48000,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "tony-tony-chopper.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/tony-tony-chopper.mp3",
+      "sourceSha256": "218f838c2cd08423e864d5abeea5344fb2629d102d4a787bf0251c10913cb7f4",
+      "publicPath": "/audio/epic-journey/tony-tony-chopper.mp3",
+      "publicSha256": "7ed05455118af02f0fe12052e64a5d05feaca6e38d92462c57700fbccd956ef4",
+      "durationMs": 2246,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 44100,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "Trafalgar-Law-Room.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/Trafalgar-Law-Room.mp3",
+      "sourceSha256": "6ce3eedbe94df9028f4c2f3976092e172316246a27b3fe333a81d4ffe5fe3a45",
+      "publicPath": "/audio/epic-journey/trafalgar-law-room.mp3",
+      "publicSha256": "74a81993e8ce2450e039869c6acfa73c5c402b1bef40a86e1a13af55e98ec92d",
+      "durationMs": 2534,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 44100,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "wendys-mansion.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/wendys-mansion.mp3",
+      "sourceSha256": "4bbde83a94552c4a07f6037438b4da8bba3fe236878476b02eefc31510073e4b",
+      "publicPath": "/audio/epic-journey/wendys-mansion.mp3",
+      "publicSha256": "ace91e00a60c1acfc4f5d299fc847ecb73575de15319fe5676237f4dc3940688",
+      "durationMs": 1623,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 44100,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "ZEHAHAHA-Edward-Teach-laugh-2.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/ZEHAHAHA-Edward-Teach-laugh-2.mp3",
+      "sourceSha256": "e3583788097c5024a6d36c081eb502eef648c399570ac3d77d829534519a5138",
+      "publicPath": "/audio/epic-journey/zehahaha-edward-teach-laugh-2.mp3",
+      "publicSha256": "1e35ec08dc4b5183dc4bb09065c0a852b741a286ea066135ff71a19dd7ec75ff",
+      "durationMs": 4938,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 44100,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "zehahaha-edward-teach-laugh.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/zehahaha-edward-teach-laugh.mp3",
+      "sourceSha256": "c3fa8761f280058b6bcf1b6372e92feb1c6e86751b0e964aef6c8905a6c1091e",
+      "publicPath": "/audio/epic-journey/zehahaha-edward-teach-laugh.mp3",
+      "publicSha256": "aeb3f6940aad73ce16806de83b8752a55a035b18db3d59313d02c33c34e1b223",
+      "durationMs": 4981,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 48000,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "zoro-onigiri.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/zoro-onigiri.mp3",
+      "sourceSha256": "b773b0f40a492610a7c4abf8d1a97a487be76ab1262de11a893dbae8cd8f40ca",
+      "publicPath": "/audio/epic-journey/zoro-onigiri.mp3",
+      "publicSha256": "284fdbaad7ef527f24b8a555c41b7bf2c575ebf1eb714af043243e239f34021f",
+      "durationMs": 2137,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 44100,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "Zoro-Santoryu.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/Zoro-Santoryu.mp3",
+      "sourceSha256": "3cd083a704bfc63154157d8dbf64abc5cc9fb0ebe66c216424cf76c17fc0203f",
+      "publicPath": "/audio/epic-journey/zoro-santoryu.mp3",
+      "publicSha256": "c8414f46b906f060a5c9e83cad7d5e5740184073e588943caaf0a134ec5536a2",
+      "durationMs": 2736,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 48000,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    }
+  ]
+}
