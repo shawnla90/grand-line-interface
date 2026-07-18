@@ -47,6 +47,7 @@ type LiveVoice = {
   ownerId: string;
   family: string;
   startedAt: number;
+  loop: boolean;
 };
 
 const BUSES: AudioBus[] = ["score", "voice", "ambience", "sfx"];
@@ -240,7 +241,7 @@ export class AudioDirector {
     source.connect(gain);
     gain.connect(pan);
     pan.connect(bus);
-    const voice: LiveVoice = { source, gain, ownerId: opts.ownerId, family: opts.family, startedAt: this.ctx.currentTime };
+    const voice: LiveVoice = { source, gain, ownerId: opts.ownerId, family: opts.family, startedAt: this.ctx.currentTime, loop: Boolean(opts.loop) };
     this.voices.add(voice);
     source.onended = () => {
       this.voices.delete(voice);
@@ -255,10 +256,15 @@ export class AudioDirector {
     source.start();
   }
 
-  /** Fade out and release every voice a scene owns (unmount, scrub, teardown). */
-  stopOwner(ownerId: string, fadeMs: number): void {
+  /** Fade out and release voices a scene owns (unmount, scrub, teardown).
+   * `onlyLoops` is the tableau case: ambience/fire loops stop with the
+   * animation, but a one-shot mid-tail (a voice line, a collapse) finishes —
+   * cutting a sentence at the final frame is worse than a short overhang. */
+  stopOwner(ownerId: string, fadeMs: number, opts?: { onlyLoops?: boolean }): void {
     for (const voice of [...this.voices]) {
-      if (voice.ownerId === ownerId) this.release(voice, Math.max(0.005, fadeMs / 1000));
+      if (voice.ownerId !== ownerId) continue;
+      if (opts?.onlyLoops && !voice.loop) continue;
+      this.release(voice, Math.max(0.005, fadeMs / 1000));
     }
     if (![...this.voices].some((v) => v.ownerId !== ownerId)) this.duckScore(1, fadeMs);
   }

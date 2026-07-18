@@ -82,10 +82,10 @@ export class SimulationAudioPlayer {
     if (!state) return;
 
     if (tMs === null) {
-      // Held tableau: loops off, tails may finish, nothing ever fires.
+      // Held tableau: loops off, one-shot tails finish, nothing ever fires.
       if (!state.tableau) {
         state.tableau = true;
-        this.director.stopOwner(sceneId, TABLEAU_FADE_MS);
+        this.director.stopOwner(sceneId, TABLEAU_FADE_MS, { onlyLoops: true });
         this.settleDuck();
       }
       return;
