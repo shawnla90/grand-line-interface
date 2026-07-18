@@ -1,0 +1,317 @@
+{
+  "_meta": {
+    "generator": "scripts/compile_scene_playback.py",
+    "schema_version": 1,
+    "counts": {
+      "scenes": 16,
+      "journey_enabled": 14,
+      "audio_bindings": 0
+    }
+  },
+  "scenes": [
+    {
+      "scene_id": "roger-execution-prologue",
+      "pack_id": "east-blue-saga-2d",
+      "event": "rogers-execution",
+      "label_override": null,
+      "chapter": 1,
+      "duration_ms": 8000,
+      "anchor": {
+        "lng": -174,
+        "lat": -20
+      },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": []
+    },
+    {
+      "scene_id": "romance-dawn-fruit-and-promise",
+      "pack_id": "east-blue-saga-2d",
+      "event": "the-straw-hat-promise",
+      "label_override": null,
+      "chapter": 1,
+      "duration_ms": 9000,
+      "anchor": {
+        "lng": -130,
+        "lat": -60
+      },
+      "journey": {
+        "enabled": false,
+        "hold_ms": 10400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": []
+    },
+    {
+      "scene_id": "luffy-punches-alvida",
+      "pack_id": "east-blue-saga-2d",
+      "event": "alvida-falls",
+      "label_override": null,
+      "chapter": 2,
+      "duration_ms": 7000,
+      "anchor": {
+        "lng": -136.0,
+        "lat": -56.0
+      },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 8400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": []
+    },
+    {
+      "scene_id": "orange-town-luffy-vs-buggy",
+      "pack_id": "east-blue-saga-2d",
+      "event": "buggy-blasted-away",
+      "label_override": null,
+      "chapter": 20,
+      "duration_ms": 8000,
+      "anchor": {
+        "lng": -152,
+        "lat": -45
+      },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": []
+    },
+    {
+      "scene_id": "syrup-village-luffy-vs-kuro",
+      "pack_id": "east-blue-saga-2d",
+      "event": "kuro-of-a-hundred-plans-falls",
+      "label_override": null,
+      "chapter": 40,
+      "duration_ms": 8000,
+      "anchor": {
+        "lng": -160,
+        "lat": -52
+      },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": []
+    },
+    {
+      "scene_id": "baratie-zoro-vs-mihawk",
+      "pack_id": "east-blue-saga-2d",
+      "event": "zoro-vs-mihawk-baratie",
+      "label_override": null,
+      "chapter": 51,
+      "duration_ms": 8000,
+      "anchor": {
+        "lng": -165.0,
+        "lat": -40.0
+      },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": []
+    },
+    {
+      "scene_id": "baratie-luffy-vs-krieg",
+      "pack_id": "east-blue-saga-2d",
+      "event": "don-krieg-defeated",
+      "label_override": null,
+      "chapter": 66,
+      "duration_ms": 8000,
+      "anchor": {
+        "lng": -165.0,
+        "lat": -40.0
+      },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": []
+    },
+    {
+      "scene_id": "sanji-leaves-baratie",
+      "pack_id": "east-blue-saga-2d",
+      "event": null,
+      "label_override": null,
+      "chapter": 68,
+      "duration_ms": 6500,
+      "anchor": {
+        "lng": -165.0,
+        "lat": -40.0
+      },
+      "journey": {
+        "enabled": false,
+        "hold_ms": 7900,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": []
+    },
+    {
+      "scene_id": "nami-asks-for-help",
+      "pack_id": "east-blue-saga-2d",
+      "event": "nami-asks-for-help",
+      "label_override": null,
+      "chapter": 81,
+      "duration_ms": 8500,
+      "anchor": {
+        "lng": -167.6,
+        "lat": -32.4
+      },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9900,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": []
+    },
+    {
+      "scene_id": "arlong-park-final-clash",
+      "pack_id": "east-blue-saga-2d",
+      "event": "arlong-park-falls",
+      "label_override": null,
+      "chapter": 93,
+      "duration_ms": 8500,
+      "anchor": {
+        "lng": -168.0,
+        "lat": -33.2
+      },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9900,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": []
+    },
+    {
+      "scene_id": "luffy-near-execution",
+      "pack_id": "east-blue-saga-2d",
+      "event": "the-loguetown-escape",
+      "label_override": "Luffy on the Scaffold",
+      "chapter": 99,
+      "duration_ms": 8000,
+      "anchor": {
+        "lng": -174,
+        "lat": -20
+      },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": []
+    },
+    {
+      "scene_id": "east-blue-grand-line-vows",
+      "pack_id": "east-blue-saga-2d",
+      "event": "the-loguetown-escape",
+      "label_override": "Into the Grand Line — the vows",
+      "chapter": 100,
+      "duration_ms": 8000,
+      "anchor": {
+        "lng": -177.0,
+        "lat": -12.0
+      },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": []
+    },
+    {
+      "scene_id": "whisky-peak-zoro-vs-bounty-hunters",
+      "pack_id": "arabasta-saga-2d-v1",
+      "event": "zoro-vs-the-bounty-hunters",
+      "label_override": null,
+      "chapter": 107,
+      "duration_ms": 9000,
+      "anchor": {
+        "lng": -121.3706,
+        "lat": 4.162
+      },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 10400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": []
+    },
+    {
+      "scene_id": "robin-miss-all-sunday-arrival",
+      "pack_id": "arabasta-saga-2d-v1",
+      "event": "miss-all-sunday-appears",
+      "label_override": null,
+      "chapter": 114,
+      "duration_ms": 7600,
+      "anchor": {
+        "lng": -121.3706,
+        "lat": 4.162
+      },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9000,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": []
+    },
+    {
+      "scene_id": "ace-blocks-smoker-at-nanohana",
+      "pack_id": "arabasta-saga-2d-v1",
+      "event": "ace-blocks-smoker",
+      "label_override": null,
+      "chapter": 158,
+      "duration_ms": 8200,
+      "anchor": {
+        "lng": -102.8707,
+        "lat": 0.4813
+      },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9600,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": []
+    },
+    {
+      "scene_id": "ace-fire-fist-destroys-billions-fleet",
+      "pack_id": "arabasta-saga-2d-v1",
+      "event": "ace-fire-fist-nanohana",
+      "label_override": null,
+      "chapter": 159,
+      "duration_ms": 9000,
+      "anchor": {
+        "lng": -102.8707,
+        "lat": 0.4813
+      },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 10400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": []
+    }
+  ]
+}
