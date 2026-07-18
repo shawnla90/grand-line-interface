@@ -3,9 +3,9 @@
     "generator": "scripts/compile_scene_playback.py",
     "schema_version": 1,
     "counts": {
-      "scenes": 16,
-      "journey_enabled": 14,
-      "audio_bindings": 6
+      "scenes": 22,
+      "journey_enabled": 20,
+      "audio_bindings": 22
     }
   },
   "scenes": [
@@ -40,12 +40,21 @@
         "lat": -60
       },
       "journey": {
-        "enabled": false,
-        "hold_ms": 10400,
+        "enabled": true,
+        "hold_ms": 11600,
         "zoom": 5.8,
         "pitch": 55
       },
-      "audio": []
+      "audio": [
+        {
+          "id": "shanks-hat-line",
+          "cue_id": "op-shanks-hat",
+          "at_ms": 0,
+          "gain": 0.95,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "luffy-punches-alvida",
@@ -64,7 +73,16 @@
         "zoom": 5.8,
         "pitch": 55
       },
-      "audio": []
+      "audio": [
+        {
+          "id": "gomu-shout",
+          "cue_id": "op-gomu-gomu",
+          "at_ms": 1800,
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "orange-town-luffy-vs-buggy",
@@ -83,7 +101,16 @@
         "zoom": 5.8,
         "pitch": 55
       },
-      "audio": []
+      "audio": [
+        {
+          "id": "luffy-attack-call",
+          "cue_id": "op-luffy-attack",
+          "at_ms": 1800,
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "syrup-village-luffy-vs-kuro",
@@ -102,7 +129,16 @@
         "zoom": 5.8,
         "pitch": 55
       },
-      "audio": []
+      "audio": [
+        {
+          "id": "luffy-battle-shout",
+          "cue_id": "op-luffy-shout",
+          "at_ms": 1700,
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "baratie-zoro-vs-mihawk",
@@ -121,7 +157,24 @@
         "zoom": 5.8,
         "pitch": 55
       },
-      "audio": []
+      "audio": [
+        {
+          "id": "santoryu-announce",
+          "cue_id": "op-zoro-santoryu",
+          "at_ms": 500,
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "onigiri-call",
+          "cue_id": "op-zoro-onigiri",
+          "at_ms": 2100,
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "baratie-luffy-vs-krieg",
@@ -140,7 +193,16 @@
         "zoom": 5.8,
         "pitch": 55
       },
-      "audio": []
+      "audio": [
+        {
+          "id": "gatling-call",
+          "cue_id": "op-luffy-gatling",
+          "at_ms": 800,
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "sanji-leaves-baratie",
@@ -159,7 +221,16 @@
         "zoom": 5.8,
         "pitch": 55
       },
-      "audio": []
+      "audio": [
+        {
+          "id": "sanji-farewell",
+          "cue_id": "op-sanji",
+          "at_ms": 2000,
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "nami-asks-for-help",
@@ -178,7 +249,24 @@
         "zoom": 5.8,
         "pitch": 55
       },
-      "audio": []
+      "audio": [
+        {
+          "id": "nami-plea",
+          "cue_id": "op-nami-help",
+          "at_ms": 0,
+          "gain": 0.95,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "luffy-answer",
+          "cue_id": "op-luffy-of-course",
+          "at_ms": 6100,
+          "gain": 0.95,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "arlong-park-final-clash",
@@ -254,7 +342,16 @@
         "zoom": 5.8,
         "pitch": 55
       },
-      "audio": []
+      "audio": [
+        {
+          "id": "zoro-introduces-himself",
+          "cue_id": "op-zoro-name",
+          "at_ms": 400,
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "robin-miss-all-sunday-arrival",
@@ -358,6 +455,164 @@
           "at_ms": 6870,
           "gain": 0.6,
           "pan": 0.1,
+          "playback_rate": 1
+        }
+      ]
+    },
+    {
+      "scene_id": "arabasta-luffy-vs-crocodile-round-one",
+      "pack_id": "arabasta-saga-2d-v1",
+      "event": "luffy-vs-crocodile-round-one",
+      "label_override": null,
+      "chapter": 176,
+      "duration_ms": 10000,
+      "anchor": {
+        "lng": -116.2875,
+        "lat": 6.0506
+      },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 11600,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": [
+        {
+          "id": "crocodile-taunt",
+          "cue_id": "op-crocodile-mugiwara",
+          "at_ms": 400,
+          "gain": 0.95,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
+    },
+    {
+      "scene_id": "arabasta-sanji-vs-bon-clay",
+      "pack_id": "arabasta-saga-2d-v1",
+      "event": "sanji-vs-bon-clay",
+      "label_override": null,
+      "chapter": 187,
+      "duration_ms": 9000,
+      "anchor": {
+        "lng": -120.1992,
+        "lat": -0.7873
+      },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 10400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": [
+        {
+          "id": "sanji-announce",
+          "cue_id": "op-sanji",
+          "at_ms": 150,
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
+    },
+    {
+      "scene_id": "arabasta-zoro-vs-mr-one",
+      "pack_id": "arabasta-saga-2d-v1",
+      "event": "zoro-vs-mr-one",
+      "label_override": null,
+      "chapter": 194,
+      "duration_ms": 9500,
+      "anchor": {
+        "lng": -120.1992,
+        "lat": -0.7873
+      },
+      "journey": {
+        "enabled": false,
+        "hold_ms": 10900,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": [
+        {
+          "id": "zoro-battle-cry",
+          "cue_id": "op-zoro-shout",
+          "at_ms": 150,
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "santoryu-before-the-cut",
+          "cue_id": "op-zoro-santoryu",
+          "at_ms": 4100,
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
+    },
+    {
+      "scene_id": "arabasta-nami-vs-miss-doublefinger",
+      "pack_id": "arabasta-saga-2d-v1",
+      "event": "nami-vs-miss-doublefinger",
+      "label_override": null,
+      "chapter": 190,
+      "duration_ms": 10000,
+      "anchor": {
+        "lng": -120.1992,
+        "lat": -0.7873
+      },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 12000,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": []
+    },
+    {
+      "scene_id": "arabasta-luffy-vs-crocodile-round-two",
+      "pack_id": "arabasta-saga-2d-v1",
+      "event": "luffy-vs-crocodile-round-two",
+      "label_override": null,
+      "chapter": 198,
+      "duration_ms": 11000,
+      "anchor": {
+        "lng": -120.1992,
+        "lat": -0.7873
+      },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 12400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": []
+    },
+    {
+      "scene_id": "arabasta-luffy-vs-crocodile-final",
+      "pack_id": "arabasta-saga-2d-v1",
+      "event": "luffy-vs-crocodile-final",
+      "label_override": null,
+      "chapter": 203,
+      "duration_ms": 11500,
+      "anchor": {
+        "lng": -120.1992,
+        "lat": -0.7873
+      },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 12900,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": [
+        {
+          "id": "gomu-storm-call",
+          "cue_id": "op-gomu-gomu",
+          "at_ms": 5900,
+          "gain": 0.95,
+          "pan": 0.0,
           "playback_rate": 1
         }
       ]

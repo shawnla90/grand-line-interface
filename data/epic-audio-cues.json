@@ -1,35 +1,9 @@
 {
   "version": 1,
   "rights_status": "local_prototype_only",
-  "travel_budget_ms": 190000,
+  "travel_budget_ms": 220000,
   "cue_crossfade_ms": 120,
   "cues": [
-    {
-      "id": "shanks-hat-promise",
-      "source_file": "shanks-gives-luffy-his-hat.mp3",
-      "src": "/audio/epic-journey/shanks-gives-luffy-his-hat.mp3",
-      "kind": "voice",
-      "chapter": 1,
-      "order": 10,
-      "duration_ms": 10144,
-      "label": "The promise beneath the straw hat",
-      "caption": "Shanks entrusts Luffy with the hat that begins the voyage.",
-      "gain": 1,
-      "verification": "chapter_source"
-    },
-    {
-      "id": "luffy-opening-call",
-      "source_file": "monkey-d-luffy-hey.mp3",
-      "src": "/audio/epic-journey/monkey-d-luffy-hey.mp3",
-      "kind": "voice",
-      "chapter": 1,
-      "order": 20,
-      "duration_ms": 2938,
-      "label": "Monkey D. Luffy",
-      "caption": "The future captain takes the helm.",
-      "gain": 1,
-      "verification": "character_gate"
-    },
     {
       "id": "luffy-pirate-king",
       "source_file": "Luffy-Pirate-King.mp3",
@@ -46,98 +20,6 @@
       "verification": "chapter_source"
     },
     {
-      "id": "gomu-gomu",
-      "source_file": "Gomu-Gomu-no.mp3",
-      "src": "/audio/epic-journey/gomu-gomu-no.mp3",
-      "kind": "voice",
-      "chapter": 2,
-      "chapter_end": 3,
-      "order": 10,
-      "duration_ms": 1870,
-      "label": "Gomu Gomu no…",
-      "caption": "Luffy's first battle at sea.",
-      "gain": 1,
-      "verification": "chapter_source"
-    },
-    {
-      "id": "zoro-name",
-      "source_file": "RORONOA-ZORO-SAYING-HIS-NAME.mp3",
-      "src": "/audio/epic-journey/roronoa-zoro-saying-his-name.mp3",
-      "kind": "voice",
-      "chapter": 3,
-      "order": 10,
-      "duration_ms": 3120,
-      "label": "Roronoa Zoro",
-      "caption": "The pirate hunter enters the voyage.",
-      "gain": 1,
-      "verification": "character_gate"
-    },
-    {
-      "id": "zoro-santoryu",
-      "source_file": "Zoro-Santoryu.mp3",
-      "src": "/audio/epic-journey/zoro-santoryu.mp3",
-      "kind": "voice",
-      "chapter": 51,
-      "order": 10,
-      "duration_ms": 2736,
-      "label": "Santoryu — Zoro challenges Mihawk",
-      "caption": "Three swords meet the world's strongest blade at the Baratie.",
-      "gain": 1,
-      "verification": "conservative_gate"
-    },
-    {
-      "id": "zoro-onigiri",
-      "source_file": "zoro-onigiri.mp3",
-      "src": "/audio/epic-journey/zoro-onigiri.mp3",
-      "kind": "voice",
-      "chapter": 51,
-      "order": 20,
-      "duration_ms": 2137,
-      "label": "Onigiri — the Mihawk duel",
-      "caption": "Zoro's cut lands inside the chapter-51 Mihawk scene.",
-      "gain": 1,
-      "verification": "conservative_gate"
-    },
-    {
-      "id": "sanji-arrives",
-      "source_file": "sanji.mp3",
-      "src": "/audio/epic-journey/sanji.mp3",
-      "kind": "voice",
-      "chapter": 43,
-      "order": 10,
-      "duration_ms": 3580,
-      "label": "Black Leg Sanji",
-      "caption": "The cook of the Baratie enters the story.",
-      "gain": 1,
-      "verification": "character_gate"
-    },
-    {
-      "id": "nami-help",
-      "source_file": "nami-asks-luffy-for-help.mp3",
-      "src": "/audio/epic-journey/nami-asks-luffy-for-help.mp3",
-      "kind": "voice",
-      "chapter": 81,
-      "order": 10,
-      "duration_ms": 7541,
-      "label": "Luffy… help me",
-      "caption": "At last, Nami asks her captain for help.",
-      "gain": 1,
-      "verification": "chapter_source"
-    },
-    {
-      "id": "luffy-of-course",
-      "source_file": "of-course-i-will-luffy.mp3",
-      "src": "/audio/epic-journey/of-course-i-will-luffy.mp3",
-      "kind": "voice",
-      "chapter": 81,
-      "order": 20,
-      "duration_ms": 4544,
-      "label": "Of course I will",
-      "caption": "The crew stands up for Arlong Park.",
-      "gain": 1,
-      "verification": "chapter_source"
-    },
-    {
       "id": "overtaken-rise",
       "source_file": "one-piece-overtaken-ost.mp3",
       "src": "/audio/epic-journey/one-piece-overtaken-ost.mp3",
@@ -148,7 +30,9 @@
       "label": "The walk to Arlong Park",
       "caption": "The crew moves as one.",
       "gain": 0.86,
-      "verification": "chapter_source"
+      "verification": "chapter_source",
+      "lane": "bed",
+      "lead_ms": 0
     },
     {
       "id": "overtaken-arlong",
@@ -162,7 +46,9 @@
       "label": "Arlong Park falls",
       "caption": "East Blue opens toward the Grand Line.",
       "gain": 0.86,
-      "verification": "chapter_source"
+      "verification": "chapter_source",
+      "lane": "bed",
+      "lead_ms": 0
     },
     {
       "id": "chopper-name",

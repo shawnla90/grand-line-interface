@@ -318,6 +318,120 @@
       "source_ref": "Hand-authored. Chapter 159: Ace destroys the Billions convoy with Hiken during the departure from Nanohana. NEEDS HUMAN VERIFICATION against the manga.",
       "canon_confidence": "canon",
       "verified": false
+    },
+    {
+      "slug": "luffy-vs-crocodile-round-one",
+      "name": "Luffy vs. Crocodile — Round One",
+      "kind": "battle",
+      "occurred_chapter": 176,
+      "through_chapter": 179,
+      "island_slug": "rainbase",
+      "lng": null,
+      "lat": null,
+      "participants": [
+        { "slug": "crocodile", "name": "Crocodile", "role": "victor" },
+        { "slug": "monkey-d-luffy", "name": "Monkey D. Luffy", "role": "defeated" }
+      ],
+      "outcome": "In the desert outside Rainbase, rubber meets sand and loses. Crocodile takes Luffy apart without effort, hooks him, and leaves him to the quicksand — the first opponent the Grand Line sends that Luffy simply cannot hit.",
+      "significance": 2,
+      "source_ref": "Hand-authored. Chapters 176-179: the first Luffy-Crocodile fight in the desert near Rainbase, ending in Luffy's defeat. Charted at ch. 176 where the fight begins. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "sanji-vs-bon-clay",
+      "name": "Sanji vs. Bon Clay",
+      "kind": "battle",
+      "occurred_chapter": 187,
+      "through_chapter": 189,
+      "island_slug": "alubarna",
+      "lng": null,
+      "lat": null,
+      "participants": [
+        { "slug": "sanji", "name": "Sanji", "role": "victor" },
+        { "slug": "bentham", "name": "Bentham (Mr. 2 Bon Clay)", "role": "defeated" }
+      ],
+      "outcome": "Ballet kenpo against the Black Leg on the Alubarna plateau: Bon Clay's copied faces meet a fighter who never needed to see the face at all. Sanji wins the duel and the crew's path into the capital stays open.",
+      "significance": 1,
+      "source_ref": "Hand-authored. Chapters 187-189: Sanji defeats Mr. 2 Bon Clay outside Alubarna. Charted at ch. 187 where the duel begins. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "zoro-vs-mr-one",
+      "name": "Zoro vs. Mr. 1",
+      "kind": "duel",
+      "occurred_chapter": 190,
+      "through_chapter": 195,
+      "island_slug": "alubarna",
+      "lng": null,
+      "lat": null,
+      "participants": [
+        { "slug": "roronoa-zoro", "name": "Roronoa Zoro", "role": "victor" },
+        { "slug": "das-bones", "name": "Das Bones (Mr. 1)", "role": "defeated" }
+      ],
+      "outcome": "A swordsman who cannot be cut against blades that cut everything. In the streets of Alubarna, Zoro learns to hear the breath of steel and cuts the steel man — the duel that turns a promise to Kuina into a technique.",
+      "significance": 2,
+      "source_ref": "Hand-authored. Chapters 190-195: Zoro defeats Mr. 1 (Das Bones) in Alubarna, learning to cut steel. Charted at ch. 190 where the duel begins. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "nami-vs-miss-doublefinger",
+      "name": "Nami vs. Miss Doublefinger",
+      "kind": "battle",
+      "occurred_chapter": 190,
+      "through_chapter": 193,
+      "island_slug": "alubarna",
+      "lng": null,
+      "lat": null,
+      "participants": [
+        { "slug": "nami", "name": "Nami", "role": "victor" },
+        { "slug": "zala", "name": "Zala (Miss Doublefinger)", "role": "defeated" }
+      ],
+      "outcome": "The navigator who always ran finally stands her ground. With a weapon she barely understands and weather she understands completely, Nami builds heat and cold into a tornado over Alubarna and wins her first real fight alone.",
+      "significance": 2,
+      "source_ref": "Hand-authored. Chapters 190-193: Nami defeats Miss Doublefinger with the Clima-Tact in Alubarna. Charted at ch. 190 where the fight begins. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "luffy-vs-crocodile-round-two",
+      "name": "Luffy vs. Crocodile — Round Two",
+      "kind": "battle",
+      "occurred_chapter": 198,
+      "through_chapter": 201,
+      "island_slug": "alubarna",
+      "lng": null,
+      "lat": null,
+      "participants": [
+        { "slug": "crocodile", "name": "Crocodile", "role": "victor" },
+        { "slug": "monkey-d-luffy", "name": "Monkey D. Luffy", "role": "defeated" }
+      ],
+      "outcome": "Luffy comes back carrying water — the one answer sand cannot ignore. Wet fists finally land, and for the first time Crocodile bleeds; then the poison hook ends the round. Losing twice is the lesson; the third fight is the answer.",
+      "significance": 1,
+      "source_ref": "Hand-authored. Chapters 198-201: the second Luffy-Crocodile fight; water-armed Luffy wounds Crocodile but falls to the poison hook. Charted at ch. 198 where the rematch begins. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "luffy-vs-crocodile-final",
+      "name": "Luffy vs. Crocodile — the Final Round",
+      "kind": "battle",
+      "occurred_chapter": 203,
+      "through_chapter": 210,
+      "island_slug": "alubarna",
+      "lng": null,
+      "lat": null,
+      "participants": [
+        { "slug": "monkey-d-luffy", "name": "Monkey D. Luffy", "role": "victor" },
+        { "slug": "crocodile", "name": "Crocodile", "role": "defeated" }
+      ],
+      "outcome": "Poisoned, bleeding, and past every limit, Luffy beats the sand with his own blood on his fists. The Gum-Gum Storm drives Crocodile up through the bedrock into the sky over Alubarna — and the rain returns to Arabasta.",
+      "significance": 2,
+      "source_ref": "Hand-authored. Chapters 203-210: the final Luffy-Crocodile battle beneath and above Alubarna, ending the war and the drought. Charted at ch. 203 where the last round begins. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
     }
   ]
 }

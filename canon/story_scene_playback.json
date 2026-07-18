@@ -7,70 +7,238 @@
       "scene_id": "roger-execution-prologue",
       "pack_id": "east-blue-saga-2d",
       "event": "rogers-execution",
-      "journey": { "enabled": true, "hold_ms": 9400, "zoom": 5.8, "pitch": 55 },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
       "audio": []
     },
     {
       "scene_id": "romance-dawn-fruit-and-promise",
       "pack_id": "east-blue-saga-2d",
       "event": "the-straw-hat-promise",
-      "journey": { "enabled": false, "hold_ms": 10400, "zoom": 5.8, "pitch": 55 },
-      "audio": []
+      "journey": {
+        "enabled": true,
+        "hold_ms": 11600,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": [
+        {
+          "id": "shanks-hat-line",
+          "cue_id": "op-shanks-hat",
+          "at": {
+            "ms": 0
+          },
+          "gain": 0.95,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "luffy-punches-alvida",
       "pack_id": "east-blue-saga-2d",
       "event": "alvida-falls",
-      "journey": { "enabled": true, "hold_ms": 8400, "zoom": 5.8, "pitch": 55 },
-      "audio": []
+      "journey": {
+        "enabled": true,
+        "hold_ms": 8400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": [
+        {
+          "id": "gomu-shout",
+          "cue_id": "op-gomu-gomu",
+          "at": {
+            "type": "rubber-stretch",
+            "occurrence": 0,
+            "offset_ms": -1400
+          },
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "orange-town-luffy-vs-buggy",
       "pack_id": "east-blue-saga-2d",
       "event": "buggy-blasted-away",
-      "journey": { "enabled": true, "hold_ms": 9400, "zoom": 5.8, "pitch": 55 },
-      "audio": []
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": [
+        {
+          "id": "luffy-attack-call",
+          "cue_id": "op-luffy-attack",
+          "at": {
+            "ms": 1800
+          },
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "syrup-village-luffy-vs-kuro",
       "pack_id": "east-blue-saga-2d",
       "event": "kuro-of-a-hundred-plans-falls",
-      "journey": { "enabled": true, "hold_ms": 9400, "zoom": 5.8, "pitch": 55 },
-      "audio": []
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": [
+        {
+          "id": "luffy-battle-shout",
+          "cue_id": "op-luffy-shout",
+          "at": {
+            "type": "speed-lines",
+            "occurrence": 0,
+            "offset_ms": -200
+          },
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "baratie-zoro-vs-mihawk",
       "pack_id": "east-blue-saga-2d",
       "event": "zoro-vs-mihawk-baratie",
-      "journey": { "enabled": true, "hold_ms": 9400, "zoom": 5.8, "pitch": 55 },
-      "audio": []
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": [
+        {
+          "id": "santoryu-announce",
+          "cue_id": "op-zoro-santoryu",
+          "at": {
+            "ms": 500
+          },
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "onigiri-call",
+          "cue_id": "op-zoro-onigiri",
+          "at": {
+            "type": "black-blade-slash",
+            "occurrence": 0,
+            "offset_ms": -2000
+          },
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "baratie-luffy-vs-krieg",
       "pack_id": "east-blue-saga-2d",
       "event": "don-krieg-defeated",
-      "journey": { "enabled": true, "hold_ms": 9400, "zoom": 5.8, "pitch": 55 },
-      "audio": []
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": [
+        {
+          "id": "gatling-call",
+          "cue_id": "op-luffy-gatling",
+          "at": {
+            "ms": 800
+          },
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "sanji-leaves-baratie",
       "pack_id": "east-blue-saga-2d",
       "event": null,
-      "journey": { "enabled": false, "hold_ms": 7900, "zoom": 5.8, "pitch": 55 },
-      "audio": []
+      "journey": {
+        "enabled": false,
+        "hold_ms": 7900,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": [
+        {
+          "id": "sanji-farewell",
+          "cue_id": "op-sanji",
+          "at": {
+            "type": "farewell-pulse",
+            "occurrence": 0,
+            "offset_ms": -1800
+          },
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "nami-asks-for-help",
       "pack_id": "east-blue-saga-2d",
       "event": "nami-asks-for-help",
-      "journey": { "enabled": true, "hold_ms": 9900, "zoom": 5.8, "pitch": 55 },
-      "audio": []
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9900,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": [
+        {
+          "id": "nami-plea",
+          "cue_id": "op-nami-help",
+          "at": {
+            "ms": 0
+          },
+          "gain": 0.95,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "luffy-answer",
+          "cue_id": "op-luffy-of-course",
+          "at": {
+            "type": "walk-up-dust",
+            "occurrence": 0,
+            "offset_ms": -400
+          },
+          "gain": 0.95,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "arlong-park-final-clash",
       "pack_id": "east-blue-saga-2d",
       "event": "arlong-park-falls",
-      "journey": { "enabled": true, "hold_ms": 9900, "zoom": 5.8, "pitch": 55 },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9900,
+        "zoom": 5.8,
+        "pitch": 55
+      },
       "audio": []
     },
     {
@@ -78,7 +246,12 @@
       "pack_id": "east-blue-saga-2d",
       "event": "the-loguetown-escape",
       "label_override": "Luffy on the Scaffold",
-      "journey": { "enabled": true, "hold_ms": 9400, "zoom": 5.8, "pitch": 55 },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
       "audio": []
     },
     {
@@ -86,42 +259,278 @@
       "pack_id": "east-blue-saga-2d",
       "event": "the-loguetown-escape",
       "label_override": "Into the Grand Line — the vows",
-      "journey": { "enabled": true, "hold_ms": 9400, "zoom": 5.8, "pitch": 55 },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
       "audio": []
     },
     {
       "scene_id": "whisky-peak-zoro-vs-bounty-hunters",
       "pack_id": "arabasta-saga-2d-v1",
       "event": "zoro-vs-the-bounty-hunters",
-      "journey": { "enabled": true, "hold_ms": 10400, "zoom": 5.8, "pitch": 55 },
-      "audio": []
+      "journey": {
+        "enabled": true,
+        "hold_ms": 10400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": [
+        {
+          "id": "zoro-introduces-himself",
+          "cue_id": "op-zoro-name",
+          "at": {
+            "ms": 400
+          },
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "robin-miss-all-sunday-arrival",
       "pack_id": "arabasta-saga-2d-v1",
       "event": "miss-all-sunday-appears",
-      "journey": { "enabled": true, "hold_ms": 9000, "zoom": 5.8, "pitch": 55 },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9000,
+        "zoom": 5.8,
+        "pitch": 55
+      },
       "audio": []
     },
     {
       "scene_id": "ace-blocks-smoker-at-nanohana",
       "pack_id": "arabasta-saga-2d-v1",
       "event": "ace-blocks-smoker",
-      "journey": { "enabled": true, "hold_ms": 9600, "zoom": 5.8, "pitch": 55 },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 9600,
+        "zoom": 5.8,
+        "pitch": 55
+      },
       "audio": []
     },
     {
       "scene_id": "ace-fire-fist-destroys-billions-fleet",
       "pack_id": "arabasta-saga-2d-v1",
       "event": "ace-fire-fist-nanohana",
-      "journey": { "enabled": true, "hold_ms": 10400, "zoom": 5.8, "pitch": 55 },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 10400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
       "audio": [
-        { "id": "ace-charge",    "cue_id": "fire-charge-01",        "at": { "type": "speed-lines",        "occurrence": 0, "offset_ms": -150 }, "gain": 0.68, "pan": -0.18, "playback_rate": 1 },
-        { "id": "fist-whoosh",   "cue_id": "fire-fist-whoosh-01",   "at": { "type": "fire-fist-wave",     "occurrence": 0, "offset_ms": 0 },    "gain": 0.85, "pan": -0.1,  "playback_rate": 1 },
-        { "id": "fleet-hit",     "cue_id": "heavy-fleet-impact-01", "at": { "type": "impact",             "occurrence": 0, "offset_ms": -40 },  "gain": 0.9,  "pan": 0.2,   "playback_rate": 1 },
-        { "id": "fire-bloom",    "cue_id": "fire-crackle-01",       "at": { "type": "fire-burst",         "occurrence": 0, "offset_ms": 0 },    "gain": 0.75, "pan": 0.15,  "playback_rate": 1 },
-        { "id": "timber-break",  "cue_id": "timber-collapse-01",    "at": { "type": "structure-collapse", "occurrence": 0, "offset_ms": 0 },    "gain": 0.85, "pan": 0.25,  "playback_rate": 1 },
-        { "id": "smoke-splash",  "cue_id": "debris-splash-01",      "at": { "type": "smoke",              "occurrence": 0, "offset_ms": 120 },  "gain": 0.6,  "pan": 0.1,   "playback_rate": 1 }
+        {
+          "id": "ace-charge",
+          "cue_id": "fire-charge-01",
+          "at": {
+            "type": "speed-lines",
+            "occurrence": 0,
+            "offset_ms": -150
+          },
+          "gain": 0.68,
+          "pan": -0.18,
+          "playback_rate": 1
+        },
+        {
+          "id": "fist-whoosh",
+          "cue_id": "fire-fist-whoosh-01",
+          "at": {
+            "type": "fire-fist-wave",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.85,
+          "pan": -0.1,
+          "playback_rate": 1
+        },
+        {
+          "id": "fleet-hit",
+          "cue_id": "heavy-fleet-impact-01",
+          "at": {
+            "type": "impact",
+            "occurrence": 0,
+            "offset_ms": -40
+          },
+          "gain": 0.9,
+          "pan": 0.2,
+          "playback_rate": 1
+        },
+        {
+          "id": "fire-bloom",
+          "cue_id": "fire-crackle-01",
+          "at": {
+            "type": "fire-burst",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.75,
+          "pan": 0.15,
+          "playback_rate": 1
+        },
+        {
+          "id": "timber-break",
+          "cue_id": "timber-collapse-01",
+          "at": {
+            "type": "structure-collapse",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.85,
+          "pan": 0.25,
+          "playback_rate": 1
+        },
+        {
+          "id": "smoke-splash",
+          "cue_id": "debris-splash-01",
+          "at": {
+            "type": "smoke",
+            "occurrence": 0,
+            "offset_ms": 120
+          },
+          "gain": 0.6,
+          "pan": 0.1,
+          "playback_rate": 1
+        }
+      ]
+    },
+    {
+      "scene_id": "arabasta-luffy-vs-crocodile-round-one",
+      "pack_id": "arabasta-saga-2d-v1",
+      "event": "luffy-vs-crocodile-round-one",
+      "journey": {
+        "enabled": true,
+        "hold_ms": 11600,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": [
+        {
+          "id": "crocodile-taunt",
+          "cue_id": "op-crocodile-mugiwara",
+          "at": {
+            "ms": 400
+          },
+          "gain": 0.95,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
+    },
+    {
+      "scene_id": "arabasta-sanji-vs-bon-clay",
+      "pack_id": "arabasta-saga-2d-v1",
+      "event": "sanji-vs-bon-clay",
+      "journey": {
+        "enabled": true,
+        "hold_ms": 10400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": [
+        {
+          "id": "sanji-announce",
+          "cue_id": "op-sanji",
+          "at": {
+            "type": "kick-trail",
+            "occurrence": 0,
+            "offset_ms": -1300
+          },
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
+    },
+    {
+      "scene_id": "arabasta-zoro-vs-mr-one",
+      "pack_id": "arabasta-saga-2d-v1",
+      "event": "zoro-vs-mr-one",
+      "journey": {
+        "enabled": false,
+        "hold_ms": 10900,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": [
+        {
+          "id": "zoro-battle-cry",
+          "cue_id": "op-zoro-shout",
+          "at": {
+            "type": "steel-sparks",
+            "occurrence": 0,
+            "offset_ms": -1400
+          },
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "santoryu-before-the-cut",
+          "cue_id": "op-zoro-santoryu",
+          "at": {
+            "type": "slash",
+            "occurrence": 0,
+            "offset_ms": -2700
+          },
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
+    },
+    {
+      "scene_id": "arabasta-nami-vs-miss-doublefinger",
+      "pack_id": "arabasta-saga-2d-v1",
+      "event": "nami-vs-miss-doublefinger",
+      "journey": {
+        "enabled": true,
+        "hold_ms": 12000,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": []
+    },
+    {
+      "scene_id": "arabasta-luffy-vs-crocodile-round-two",
+      "pack_id": "arabasta-saga-2d-v1",
+      "event": "luffy-vs-crocodile-round-two",
+      "journey": {
+        "enabled": true,
+        "hold_ms": 12400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": []
+    },
+    {
+      "scene_id": "arabasta-luffy-vs-crocodile-final",
+      "pack_id": "arabasta-saga-2d-v1",
+      "event": "luffy-vs-crocodile-final",
+      "journey": {
+        "enabled": true,
+        "hold_ms": 12900,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": [
+        {
+          "id": "gomu-storm-call",
+          "cue_id": "op-gomu-gomu",
+          "at": {
+            "type": "gum-gum-storm",
+            "occurrence": 0,
+            "offset_ms": -1900
+          },
+          "gain": 0.95,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
       ]
     }
   ]
