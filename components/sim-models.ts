@@ -40,7 +40,7 @@
  * flag-off bundle, same pattern as WorldMap's runtime_assets.json import.
  */
 
-import type { Map as MlMap } from "maplibre-gl";
+import maplibregl, { type Map as MlMap, type Marker } from "maplibre-gl";
 import {
   loadSimulations, sceneEligible, sceneInActiveWindow,
   type EastBlueSimulations, type SimScene,
@@ -61,10 +61,17 @@ type HostState = {
   sims: EastBlueSimulations;
   layers: Map<string, SimLayer>;
   clocks: Map<string, SceneClock>;
+  /** Wide-zoom story beacons — "a story just happened here, click to see it". */
+  beacons: Map<string, { marker: Marker; el: HTMLDivElement }>;
   chapter: number;
   reducedMotion: boolean;
   listenersOn: boolean;
 };
+
+/** How long after a scene's window a beacon keeps pulsing on the wide map.
+ * The frozen tableau stays discoverable forever by zooming; the BEACON is a
+ * nudge about recent story, so it fades from the chart after ~an arc. */
+const BEACON_AFTERGLOW_CH = 15;
 
 let host: HostState | null = null;
 
@@ -122,7 +129,65 @@ function nearestRunningId(state: HostState): string | null {
   return best;
 }
 
+function makeBeaconElement(label: string): HTMLDivElement {
+  const el = document.createElement("div");
+  el.className = "simBeacon";
+  el.title = `${label} — click to watch`;
+  el.style.cssText = "width:18px;height:18px;cursor:pointer;position:relative;";
+  el.innerHTML = `
+    <span style="position:absolute;inset:0;border-radius:50%;border:2px solid rgba(245,199,106,0.9);
+      animation:gliBeacon 1.6s ease-out infinite;"></span>
+    <span style="position:absolute;inset:5px;border-radius:50%;background:rgba(245,199,106,0.95);
+      box-shadow:0 0 6px rgba(245,199,106,0.8);"></span>`;
+  if (!document.getElementById("gli-beacon-style")) {
+    const style = document.createElement("style");
+    style.id = "gli-beacon-style";
+    style.textContent = "@keyframes gliBeacon{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.4);opacity:0}}";
+    document.head.appendChild(style);
+  }
+  return el;
+}
+
+/** Scenes worth a wide-map nudge at this chapter: recently played (window →
+ * afterglow), regardless of zoom — the beacon only SHOWS when zoomed out. */
+function beaconScenes(sims: EastBlueSimulations, chapter: number): SimScene[] {
+  return sims.scenes.filter(
+    (s) => chapter >= s.chapter_gate.start && chapter <= s.chapter_gate.end + BEACON_AFTERGLOW_CH,
+  );
+}
+
+function syncBeacons(state: HostState): void {
+  const zoom = state.map.getZoom();
+  const wanted = zoom < SIM_MIN_ZOOM ? beaconScenes(state.sims, state.chapter) : [];
+  const wantedIds = new Set(wanted.map((s) => s.id));
+  for (const [id, b] of state.beacons) {
+    if (!wantedIds.has(id)) {
+      b.marker.remove();
+      state.beacons.delete(id);
+    }
+  }
+  for (const scene of wanted) {
+    if (state.beacons.has(scene.id)) continue;
+    const el = makeBeaconElement(scene.label);
+    // The click is the manual reader's dive: the directory camera, on the
+    // stage. The scene then mounts and plays through the ordinary gates.
+    el.addEventListener("click", () => {
+      state.map.easeTo({
+        center: [scene.anchor.lng, scene.anchor.lat],
+        zoom: 6.4,
+        pitch: 48,
+        duration: 1300,
+      });
+    });
+    const marker = new maplibregl.Marker({ element: el })
+      .setLngLat([scene.anchor.lng, scene.anchor.lat])
+      .addTo(state.map);
+    state.beacons.set(scene.id, { marker, el });
+  }
+}
+
 function applySync(state: HostState): void {
+  syncBeacons(state);
   const zoom = state.map.getZoom();
   const bounds = state.map.getBounds();
   const wanted = visibleScenes(state.sims, state.chapter, zoom, (lng, lat) =>
@@ -213,6 +278,7 @@ export async function syncSimulations(map: MlMap, chapter: number, force = false
       sims,
       layers: new Map(),
       clocks: new Map(),
+      beacons: new Map(),
       chapter,
       reducedMotion:
         typeof window !== "undefined" &&

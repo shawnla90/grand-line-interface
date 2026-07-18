@@ -119,17 +119,81 @@ function useChapterEngine(world: World, initial: number) {
     };
   }, [chapter]);
 
-  // playback loop
+  // Sail-mode story stops: pause-and-dive at each story beat while playing.
+  // Declared above the playback effect that lists it as a dependency.
+  const [storyStops, setStoryStops] = useState(STORY_JOURNEY_ON);
+
+  // playback loop — with STORY STOPS. Sailing past a story chapter shouldn't
+  // fly over the story: when the sweep crosses a stop (a 2.5D scene or a 3D
+  // spotlight from the same table the cinematic uses), the sail pauses, the
+  // camera dives with the journey's own program, the beat plays, and the sail
+  // resumes. Default on with the layers; the dock chip turns it off.
   useEffect(() => {
     playingRef.current = playing;
     if (!playing) return;
     if (raf.current !== null) cancelAnimationFrame(raf.current);
 
+    const stops = storyStops ? buildJourneyStops(world) : [];
+    let dwellUntil: number | null = null;
+    let recoverUntil: number | null = null;
+    let dwelling = false;
+
+    const endDwell = () => {
+      dwelling = false;
+      dwellUntil = null;
+      recoverUntil = null;
+      journeyCam.current = null;
+      setJourney(false);
+      setJourneyLabel("");
+      setJourneyFact("");
+    };
+
     let last = performance.now();
     const step = (now: number) => {
       const dt = Math.min(0.1, (now - last) / 1000); // clamp tab-switch gaps
       last = now;
-      const next = Math.min(world.chapterMax, pos.current + speed * BASE_CPS * dt);
+      if (dwellUntil !== null) {
+        // Holding at a story stop: the chapter stands, the chase (running in
+        // journey mode) frames the stage, the scene plays itself.
+        if (now < dwellUntil) {
+          raf.current = requestAnimationFrame(step);
+          return;
+        }
+        // RECOVERY: don't drop journey mode yet — hand the chase a flat
+        // cruising target first, and sail on while it lays the camera back
+        // down. (A one-shot easeTo dies under the chase's next jumpTo —
+        // measured: the camera stayed pitched 54° into the next sea leg.)
+        dwellUntil = null;
+        recoverUntil = now + 1600;
+        journeyCam.current = { zoom: 3.4, pitch: 0, orbitDegPerSec: 0, focus: null };
+        setJourneyLabel("");
+        setJourneyFact("");
+      }
+      if (recoverUntil !== null && now >= recoverUntil) endDwell();
+      const prev = pos.current;
+      const next = Math.min(world.chapterMax, prev + speed * BASE_CPS * dt);
+      const stop = stops.find((s) => prev < s.chapter && s.chapter <= next);
+      if (stop) {
+        pos.current = stop.chapter;
+        setSwept(stop.chapter);
+        setChapterState((c) => (c === stop.chapter ? c : stop.chapter));
+        dwelling = true;
+        dwellUntil = now + (stop.kind === "model" ? 5500 : 8000);
+        journeyCam.current = {
+          zoom: stop.kind === "model" ? 6.4 : 5.8,
+          pitch: stop.kind === "model" ? 48 : 55,
+          orbitDegPerSec: stop.kind === "model" ? 5 : 0,
+          focus: stop.focus ?? null,
+        };
+        // journey=true borrows the whole cinematic apparatus for the dwell:
+        // helm lock, hero trail, the damped chase. The sail keeps ownership
+        // of playingRef, so resuming is just this rAF continuing.
+        setJourney(true);
+        setJourneyLabel(stop.label);
+        setJourneyFact(stop.fact ?? "");
+        raf.current = requestAnimationFrame(step);
+        return;
+      }
       pos.current = next;
       setSwept(next);
       const fl = Math.max(world.chapterMin, Math.floor(next));
@@ -143,8 +207,10 @@ function useChapterEngine(world: World, initial: number) {
     raf.current = requestAnimationFrame(step);
     return () => {
       if (raf.current !== null) cancelAnimationFrame(raf.current);
+      // Pausing (or a speed change) mid-dwell must hand the helm back.
+      if (dwelling) endDwell();
     };
-  }, [playing, speed, world.chapterMax, world.chapterMin]);
+  }, [playing, speed, storyStops, world]);
 
   const setChapter = useCallback(
     (ch: number) => {
@@ -255,6 +321,7 @@ function useChapterEngine(world: World, initial: number) {
   return {
     chapter, swept, setChapter: setChapterJ, playing, speed, setSpeed, play, pause,
     journey, journeyCam, journeyLabel, journeyFact, startJourney, stopJourney,
+    storyStops, setStoryStops,
   };
 }
 
@@ -731,6 +798,8 @@ export default function Atlas({
           recordArmed={recordArmed}
           recording={recording}
           onRecord={() => void startRecordedJourney()}
+          storyStops={STORY_JOURNEY_ON ? engine.storyStops : undefined}
+          onStoryStops={engine.setStoryStops}
         />
       )}
 

@@ -42,12 +42,16 @@ type Props = {
   recordArmed?: boolean;
   recording?: boolean;
   onRecord?: () => void;
+  /** Sail-mode story stops (undefined = the story layers are off entirely). */
+  storyStops?: boolean;
+  onStoryStops?: (on: boolean) => void;
 };
 
 export default function ChapterDock({
   world, at, axis, onAxis, onChapter, episode, onEpisode,
   playing, speed, onPlayPause, onSpeed, journey, journeyLabel, onJourney,
   recordArmed = false, recording = false, onRecord,
+  storyStops, onStoryStops,
 }: Props) {
   const byChapter = axis === "chapter";
 
@@ -135,6 +139,23 @@ export default function ChapterDock({
             <div className="font-mono text-[8px] uppercase tracking-[0.18em] text-muted-2">
               {playing ? "sailing" : "sail"}
             </div>
+            {/* story stops: sailing pauses and dives at each story beat.
+                Rendered only when the story layers exist at all. */}
+            {storyStops !== undefined && onStoryStops && (
+              <button
+                type="button"
+                onClick={() => onStoryStops(!storyStops)}
+                title={storyStops ? "Sailing stops for story beats — click to sail straight through" : "Sail straight through — click to stop for story beats"}
+                className={[
+                  "rounded-sm border px-1 py-0.5 font-mono text-[8px] uppercase tracking-[0.14em] transition-colors",
+                  storyStops
+                    ? "border-gold/60 text-gold"
+                    : "border-transparent text-muted-2 hover:text-muted",
+                ].join(" ")}
+              >
+                ⚑ stops
+              </button>
+            )}
           </div>
         </div>
 
