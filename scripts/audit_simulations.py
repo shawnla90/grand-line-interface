@@ -106,6 +106,19 @@ def main() -> int:
             check("main map at ch51: zero east-blue-2d requests", not atlas_requests(requests),
                   ", ".join(atlas_requests(requests)))
 
+            # ---- 1b. the real map hosts the sim runtime. Zooming the ACTUAL
+            # WorldMap to the Baratie anchor at ch51 must mount the duel through
+            # the same syncSims wiring the reader hits — the dev harness proves
+            # the host in isolation; this proves WorldMap actually calls it.
+            requests.clear()
+            page.evaluate("() => window.__map.jumpTo({ center: [-165.0, -40.0], zoom: 5.2 })")
+            page.wait_for_function(f"() => (window.__simScenes || {{}})['{DUEL}']", timeout=15000)
+            check("main map at ch51 + Baratie zoom: duel mounts through the WorldMap host", True)
+            fetched_main = atlas_requests(requests)
+            check("main map: the duel cast demand-loads on the real route",
+                  "roronoa-zoro" in fetched_main and "dracule-mihawk" in fetched_main,
+                  ", ".join(fetched_main))
+
             # ---- 2. harness at ch49: the DUEL's gate holds. The rule is per
             # scene ("never fetch a scene before ITS verified chapter start") —
             # Orange Town (gate ch20) is legitimately in this wide viewport and
