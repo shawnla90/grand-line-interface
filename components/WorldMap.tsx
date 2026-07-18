@@ -1093,7 +1093,10 @@ function syncModels(m: MLMap, ch: number) {
           }
         },
       });
-      m.addLayer(layer, "voyage-glow");
+      // Guard the add like the removal below guards the remove: a re-entrant
+      // sync (paint + moveend racing during dense dwell chains) can land here
+      // with the layer already on the map, and maplibre logs that as an error.
+      if (!m.getLayer(`glb-${model.id}`)) m.addLayer(layer, "voyage-glow");
       modelLayers.set(model.id, layer);
     } else if (!open && live) {
       if (m.getLayer(`glb-${model.id}`)) m.removeLayer(`glb-${model.id}`);
@@ -1129,7 +1132,8 @@ function syncKnockUpGlb(m: MLMap, ch: number) {
         }
       },
     });
-    m.addLayer(knockUpLayer, "voyage-glow"); // under the route: the ship rides UP it
+    // Same re-entrancy guard as the island models above.
+    if (!m.getLayer(KNOCK_UP_GLB_ID)) m.addLayer(knockUpLayer, "voyage-glow"); // under the route: the ship rides UP it
   } else if (!open && present) {
     m.removeLayer(KNOCK_UP_GLB_ID);
     knockUpLayer = null;

@@ -332,6 +332,22 @@ function useChapterEngine(world: World, initial: number) {
       JOURNEY_MS,
       ...plan.momentSpans().map((s) => (s.moment.holdMs ?? 0) / Math.max(s.t1 - s.t0, 1e-6)),
     );
+    if (process.env.NODE_ENV !== "production") {
+      // Dev-only, beside window.__simScenes: the built dwell schedule is
+      // otherwise unobservable from a test, and the journey audit would have
+      // to infer skipped dwells from camera samples instead of asserting.
+      (window as Window & { __journeySpans?: unknown }).__journeySpans = {
+        journeyMs,
+        spans: plan.momentSpans().map((s) => ({
+          label: s.moment.label,
+          chapter: s.moment.chapter,
+          holdMs: s.moment.holdMs ?? null,
+          t0: s.t0,
+          t1: s.t1,
+          wallMs: Math.round((s.t1 - s.t0) * journeyMs),
+        })),
+      };
+    }
 
     pos.current = world.chapterMin;
     setSwept(world.chapterMin);

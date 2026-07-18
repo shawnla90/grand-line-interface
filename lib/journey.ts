@@ -164,9 +164,13 @@ export const VOYAGE_TRANSITS: JourneyTransit[] = [
   // ascent — roughly a quarter-second. These authored phases give the boat a
   // readable approach, climb, time aloft, and descent while preserving the
   // canonical chapter functions in components/skypiea.ts.
-  { fromCh: 233, toCh: 235, label: "Approaching the Knock-Up Stream", pitch: 48, zoom: 4.8, weight: 35 },
-  { fromCh: 235, toCh: 237, label: "Riding the Knock-Up Stream", pitch: 60, zoom: 5.4, weight: 170 },
-  { fromCh: 237, toCh: 300, label: "Skypiea — above the White Sea", pitch: 48, zoom: 5.6, weight: 90 },
+  // Weights re-tuned when the moment roster grew from 5 to 21 stops: the
+  // transit shares are relative, and the original numbers (tuned against a
+  // ~1900 total) had compressed the climb to a blink. The ride is a hero
+  // beat; it scales with the show.
+  { fromCh: 233, toCh: 235, label: "Approaching the Knock-Up Stream", pitch: 48, zoom: 4.8, weight: 70 },
+  { fromCh: 235, toCh: 237, label: "Riding the Knock-Up Stream", pitch: 60, zoom: 5.4, weight: 340 },
+  { fromCh: 237, toCh: 300, label: "Skypiea — above the White Sea", pitch: 48, zoom: 5.6, weight: 120 },
   { fromCh: 300, toCh: 304, label: "Descending from the White Sea", pitch: 55, zoom: 5.2, weight: 75 },
   { fromCh: 304, toCh: 305, label: "Splash-down from Skypiea", pitch: 25, zoom: 4.4, weight: 25 },
   { fromCh: 601, toCh: 607, label: "Diving beneath the Red Line", pitch: 55, zoom: 5.4, weight: 110 },

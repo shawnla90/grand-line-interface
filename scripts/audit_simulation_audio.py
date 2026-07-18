@@ -182,6 +182,23 @@ def main() -> int:
             check("backward scrub + return replays each cue exactly once",
                   len(replay) == 6 and len(set(replay_ids)) == 6, ", ".join(replay_ids))
 
+            # ---- 4b. the Mihawk duel speaks on its own clock (the pin that
+            # replaced the epic-chain ch51 gate): pack-switch to East Blue,
+            # play ch51, and both Zoro voice bindings fire at compiled times.
+            page.click("[data-testid=go-49]")
+            page.wait_for_timeout(1500)
+            page.click("[data-testid=go-51]")
+            page.wait_for_function(
+                "() => (window.__simScenes || {})['sim-baratie-zoro-vs-mihawk']", timeout=15000)
+            page.wait_for_timeout(6000)
+            duel_fired = [f for f in fired(page) if f["sceneId"] == "baratie-zoro-vs-mihawk"]
+            duel_ids = sorted(f["bindingId"] for f in duel_fired)
+            check("ch51: both Zoro voice lines fire once",
+                  duel_ids == ["onigiri-call", "santoryu-announce"], ", ".join(duel_ids))
+            duel_timing = all(abs(f["firedAtT"] - f["atMs"]) < 250 for f in duel_fired)
+            check("ch51: voice lines land on their compiled times", duel_timing,
+                  "; ".join(f"{f['bindingId']}@{f['firedAtT']:.0f}(want {f['atMs']})" for f in duel_fired))
+
             # ---- 6. reduced motion: silence, structurally
             rm_requests: list[str] = []
             rm = browser.new_page(viewport={"width": 1440, "height": 900}, reduced_motion="reduce")
