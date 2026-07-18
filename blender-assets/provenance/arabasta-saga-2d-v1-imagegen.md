@@ -18,6 +18,7 @@ only signed transparent runtime derivatives may enter the web app.
 | `baroque-works-whisky-peak-crowd` | `exec-4a60fcc2-bb81-4f35-9643-08fe7a118758.png` | magenta | pass: six readable economical crowd tableaux |
 | `portgas-d-ace-arabasta` | `exec-bee82786-2faa-44bf-b3ed-1a50ca7c01f4.png` | green | pass: recognizable Ace, compact readable fire states |
 | `smoker-arabasta` | `exec-a3a60db4-f1f0-480a-bdc2-2f2fafbdc4ab.png` | magenta | pass after re-key without despill to preserve skin color |
+| `baroque-works-ship-convoy` | `exec-10afad65-8940-4ccc-ae91-2c169465bea0.png` | green | pass: consistent five-ship convoy, six clear destruction states, crisp keyed fire and opaque smoke |
 
 ## Prompt contract
 
@@ -26,6 +27,13 @@ consistent early-story identity and costume, generous cell padding, a perfectly
 flat removable key, and no text, logo, watermark, gore, environment, or copied
 production frame. Character recognition at map scale is the visual acceptance
 gate.
+
+The Batch A+ ship prompt used the approved Ace sheet and Arabasta scene board
+as rendering/readability references. It requested the same five-ship convoy in
+six cells: approach, closing formation, Fire Fist impact, engulfed fleet, hull
+breakup, and burning wreckage. The prompt explicitly excluded people, Marines,
+naval insignia, official logos, water/sky backgrounds, translucent smoke, and
+elements crossing cell boundaries.
 
 Before public or commercial distribution, obtain a separate rights review.
 Technical readiness is not a claim of franchise permission.

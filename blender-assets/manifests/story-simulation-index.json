@@ -10,7 +10,7 @@
       "state": "runtime_verified",
       "integration_ready": true,
       "manifest": "manifests/story-simulations/arabasta-saga-2d-v1.json",
-      "manifest_sha256": "775323cfe0724a5a5aad427ba4d28f9942298c3a75f9735701e10fe91ad17281"
+      "manifest_sha256": "3917bbf535a0037292ea4088e9dcc8b406d372c3f560775c9ef41274c2a0482c"
     }
   ]
 }

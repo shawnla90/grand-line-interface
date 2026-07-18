@@ -55,8 +55,9 @@ sheets are never exported.
 ## Arabasta story-simulation Batch A
 
 The first generic saga pack is signed and web proven. `arabasta-saga-2d-v1`
-contains 5 source-free runtime atlases, 30 poses, and 3 verified scenes for
-Whisky Peak, Miss All Sunday's arrival, and Ace's Nanohana intervention. It is
+contains 6 source-free runtime atlases, 36 poses, and 4 verified scenes for
+Whisky Peak, Miss All Sunday's arrival, Ace's Nanohana intervention, and his
+chapter-159 destruction of the Billions' five-ship convoy. It is
 technically integration-ready but disabled unless the app build explicitly
 allowlists it with `NEXT_PUBLIC_STORY_SIMULATION_PACKS`.
 

@@ -19,8 +19,9 @@ chat history.
    and the separate client-project boundary.
 10. `handoffs/CLAUDE_CODE_ARABASTA_BATCH_A.md` — promoted generic story pack,
     web proof, opt-in flag, and Batch B continuation.
-11. `manifests/story-simulations/arabasta-saga-2d-v1.json` — signed five-actor
-    Arabasta manifest with its web-proof receipt.
+11. `manifests/story-simulations/arabasta-saga-2d-v1.json` — signed six-actor
+    Arabasta manifest with its web-proof receipt, including the chapter-159
+    Fire Fist convoy scene.
 
 ## Path translation
 

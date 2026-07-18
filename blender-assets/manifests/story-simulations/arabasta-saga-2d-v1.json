@@ -10,35 +10,35 @@
   "representation": "camera-facing-2d-atlas-with-authored-movement-and-3d-fx",
   "contract": {
     "path": "contracts/story-simulations/arabasta-saga-2d-v1.simulation.json",
-    "bytes": 10382,
-    "sha256": "f7daf9c849a804b314dab348d7b09b70d9a0858853c0dd9d84a09fae9d5654c0"
+    "bytes": 13160,
+    "sha256": "fc75137a010181841d4b3cd89abab776d5e61c37188de723386bf83133e34353"
   },
   "character_index": {
     "path": "runtime/story-simulations/arabasta-saga-2d-v1/character-index.json",
-    "bytes": 3415,
-    "sha256": "dc9e8f00f7bcfc50f3b5448464ace715f6738598fbce99b294d27a9a78493e78"
+    "bytes": 4077,
+    "sha256": "342c2600844392906081c794e60cdd6e4c370e1f1287950d602d5032fc34373e"
   },
   "canon_intake": {
     "path": "research/story-scenes/arabasta-batch-a.json",
-    "bytes": 3329,
-    "sha256": "f8a5bf76f1c3bcb53ea4030e282a68107b6267d6b9ca02961573bb01afedd848"
+    "bytes": 4565,
+    "sha256": "779df5cdb67a1fd3ab85ec1d991ae532028956f2990350d1e632ad5175ca76d1"
   },
   "provenance": {
     "path": "art/arabasta/IMAGEGEN_PROVENANCE.md",
-    "bytes": 1982,
-    "sha256": "6e2dcef9ef5defb09a2e97391fba6d27dc9726171dcf2b4331a40551e9020627"
+    "bytes": 2602,
+    "sha256": "1dfe59ad5157e2739a9d6fe2224dd2b28d75659356bb1ba2c4a3882376036073"
   },
   "metrics": {
-    "character_packages": 5,
-    "pose_frames": 30,
-    "atlas_bytes": 3340561,
-    "scenes": 3,
-    "runtime_ready_scenes": 3,
+    "character_packages": 6,
+    "pose_frames": 36,
+    "atlas_bytes": 4064886,
+    "scenes": 4,
+    "runtime_ready_scenes": 4,
     "non_ready_scenes": 0,
-    "actor_tracks": 6,
-    "movement_keyframes": 35,
-    "fx_events": 15,
-    "review_video_seconds": 6.0
+    "actor_tracks": 8,
+    "movement_keyframes": 46,
+    "fx_events": 21,
+    "review_video_seconds": 8.0
   },
   "characters": [
     {
@@ -170,18 +170,44 @@
         "sha256": "3f46fc5251184649ccb377888f26ac0ae3c01fab86154e18d6965b8542e065b4"
       },
       "pose_count": 6
+    },
+    {
+      "id": "baroque-works-ship-convoy",
+      "kind": "tableau",
+      "variant": "five-ship-convoy-chapter-159",
+      "source": {
+        "path": "art/arabasta/source-sheets/baroque-works-ship-convoy-pose-sheet-v1.png",
+        "bytes": 2031293,
+        "sha256": "12d90fe7640be0521d6383d265f2465a4146fea01549c6350b4b185c8a70185f"
+      },
+      "keyed_source": {
+        "path": "art/arabasta/keyed-sheets/baroque-works-ship-convoy-pose-sheet-v1.png",
+        "bytes": 1252535,
+        "sha256": "2a3d3ed82c6c0964f1c425ead6380f7ceb45d52e02fa86843f353bc1bc5645c8"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/baroque-works-ship-convoy/atlas.png",
+        "bytes": 724325,
+        "sha256": "fb6a73c184eafd4f629b3106214245fcfa4723b557ab42daf829cc6309367f6b"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/baroque-works-ship-convoy/character.json",
+        "bytes": 3184,
+        "sha256": "4ddecc19c3af8e637c13c72bc59a0b9514ebfe0882f7d5b2e7010673b53b0555"
+      },
+      "pose_count": 6
     }
   ],
   "reviews": [
     {
       "path": "renders/story-simulations/arabasta-saga-2d-v1/character-atlas-catalog.png",
-      "bytes": 394705,
-      "sha256": "3a9367e19cc94dc9fe70312fd0a2460679732506b769020367fa908c9e749b49"
+      "bytes": 469622,
+      "sha256": "1a30ac0f736a19c81fa92a10ee461d5c9dc2f74cc6050a663c2c196a51ef3473"
     },
     {
       "path": "renders/story-simulations/arabasta-saga-2d-v1/scene-board.png",
-      "bytes": 273713,
-      "sha256": "edeb443bdc1a8b09be84101912d41c99e0871985e67732eb4f2a154b9ded5332"
+      "bytes": 413290,
+      "sha256": "1bb29a4e31490abffaff3020735347134bdd09ad02b23803fdfe32ba98db712e"
     },
     {
       "path": "renders/story-simulations/arabasta-saga-2d-v1/sampler-poster.png",
@@ -190,14 +216,14 @@
     },
     {
       "path": "renders/story-simulations/arabasta-saga-2d-v1/sampler.mp4",
-      "bytes": 822074,
-      "sha256": "e76a6aa3e7b3e6087eedba68db8a0b997eeab579c107aaa259e940e3b1567fe7"
+      "bytes": 1165992,
+      "sha256": "804c67856ecc2c2aa45278f45b633aeb5e8c16080cf16a390df66d0b656f3c41"
     }
   ],
   "web_proof": {
     "path": "proofs/arabasta-saga-2d-v1-web-proof.json",
-    "bytes": 1350,
-    "sha256": "bdc9e36b0f5e6036566b44548304aa538870cb53c82efc251cfcc9c851c23705"
+    "bytes": 1459,
+    "sha256": "ce92a752d0f13aa34ab07eee5626476973ce958c085a49c1ccffca743da80b7d"
   },
   "blockers": [
     "Batch B and the three Crocodile rounds remain separately gated future work."

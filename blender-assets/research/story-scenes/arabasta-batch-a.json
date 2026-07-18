@@ -61,6 +61,27 @@
       "visual_variant_notes": ["protective interruption, not an invented extended duel", "compact fire-versus-smoke contact only"],
       "unknowns": [],
       "integration_note": "Scene label deliberately avoids 'Ace versus Smoker'."
+    },
+    {
+      "id": "ace-fire-fist-destroys-billions-fleet",
+      "status": "chapter_verified",
+      "arc_id": "arabasta",
+      "chapter_gate": {
+        "start": 159,
+        "end": 159,
+        "verification": "verified",
+        "source_urls": [
+          "https://shonenjumpplus.com/episode/3269754496377056547",
+          "https://onepiece.fandom.com/wiki/Chapter_159",
+          "https://onepiece.fandom.com/wiki/Baroque_Works"
+        ]
+      },
+      "place": {"id": "nanohana-departure-waters", "landmark": "river-route-from-nanohana", "arena": "arabasta-coastal-waters", "anchor_status": "resolved_near_existing_nanohana"},
+      "cast": ["portgas-d-ace-arabasta", "baroque-works-ship-convoy"],
+      "outcome_claim": "After leaving the Going Merry, Ace destroys five ships carrying Baroque Works Billions with a single Fire Fist attack.",
+      "visual_variant_notes": ["the targets are Baroque Works ships, not Marine ships", "five ships are grouped into one reusable convoy tableau", "existing Arabasta Ace atlas remains valid"],
+      "unknowns": [],
+      "integration_note": "At chapter 159 this becomes the newest story state at the Nanohana theatre anchor and supersedes the chapter-158 intervention tableau."
     }
   ]
 }

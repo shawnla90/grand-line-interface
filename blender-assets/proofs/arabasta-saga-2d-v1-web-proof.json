@@ -2,15 +2,16 @@
   "schema_version": 1,
   "pack_id": "arabasta-saga-2d-v1",
   "status": "passed",
-  "verified_at": "2026-07-18T06:01:53Z",
+  "verified_at": "2026-07-18T06:36:12Z",
   "web_repository": "/Users/shawnos.ai/dead-reckoning",
-  "base_commit": "54a1c7dc03c5462e2d514537682eaf6f0691484a",
+  "base_commit": "5acb24a2a35ad801c131fe4ed78ffb5353749094",
+  "runtime_scenes": 4,
   "feature_gate": "NEXT_PUBLIC_STORY_SIMULATION_PACKS",
   "default_gate_state": "off",
   "artifact_checks": {
     "command": "python3 scripts/check_story_simulations.py --pack arabasta-saga-2d-v1",
-    "passed": 12,
-    "total": 12
+    "passed": 14,
+    "total": 14
   },
   "east_blue_data_regression": {
     "command": "python3 scripts/check_simulations.py",
@@ -19,8 +20,8 @@
   },
   "arabasta_browser_audit": {
     "command": "python3 scripts/audit_story_simulations.py",
-    "passed": 12,
-    "total": 12
+    "passed": 16,
+    "total": 16
   },
   "east_blue_regression_audit": {
     "command": "python3 scripts/audit_simulations.py",
@@ -35,6 +36,7 @@
     "backward-scrub disposal and restart",
     "newest scene at a shared anchor",
     "Ace and Smoker Nanohana tableau",
+    "chapter-159 Fire Fist impact, convoy-only lazy load, and burning-wreckage hold",
     "reduced-motion static safe state",
     "East Blue compatibility"
   ],

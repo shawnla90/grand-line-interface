@@ -2,7 +2,7 @@
   "schema_version": 1,
   "pack_id": "arabasta-saga-2d-v1",
   "representation": "camera-facing-2d-atlas",
-  "character_count": 5,
+  "character_count": 6,
   "characters": [
     {
       "id": "roronoa-zoro-whisky-peak",
@@ -88,6 +88,23 @@
         "frustrated-hold"
       ],
       "map_height": 1.16
+    },
+    {
+      "id": "baroque-works-ship-convoy",
+      "kind": "tableau",
+      "variant": "five-ship-convoy-chapter-159",
+      "metadata": "runtime/story-simulations/arabasta-saga-2d-v1/characters/baroque-works-ship-convoy/character.json",
+      "atlas": "runtime/story-simulations/arabasta-saga-2d-v1/characters/baroque-works-ship-convoy/atlas.png",
+      "atlas_sha256": "fb6a73c184eafd4f629b3106214245fcfa4723b557ab42daf829cc6309367f6b",
+      "poses": [
+        "convoy-approach",
+        "closing-formation",
+        "fire-fist-impact",
+        "fleet-engulfed",
+        "hulls-breaking",
+        "burning-wreckage"
+      ],
+      "map_height": 1.42
     }
   ]
 }

@@ -20,6 +20,7 @@ fight.
 | chapters 107–108 | `whisky-peak-zoro-vs-bounty-hunters` | Zoro plus reusable left/right instances of the Baroque Works crowd atlas |
 | chapter 114 | `robin-miss-all-sunday-arrival` | Miss All Sunday / Nico Robin |
 | chapter 158 | `ace-blocks-smoker-at-nanohana` | Ace and Smoker; this is an intervention tableau, not an invented prolonged duel |
+| chapter 159 | `ace-fire-fist-destroys-billions-fleet` | Ace plus a reusable five-ship Baroque Works convoy destruction tableau |
 
 Actor packages:
 
@@ -28,8 +29,9 @@ Actor packages:
 - `nico-robin-miss-all-sunday`
 - `portgas-d-ace-arabasta`
 - `smoker-arabasta`
+- `baroque-works-ship-convoy`
 
-The pack contains 5 atlases, 30 poses, 3 scenes, 6 actor tracks, and 15 timed FX
+The pack contains 6 atlases, 36 poses, 4 scenes, 8 actor tracks, and 21 timed FX
 events. Source generation used the built-in image generation tool with the
 approved East Blue sheets as style/identity references. Full prompt summaries,
 source hashes, alpha notes, and reviewer notes live in
@@ -41,6 +43,8 @@ isolated asset workspace.
 - Whisky Peak: chapters 107–108, Zoro against the bounty hunters.
 - Miss All Sunday: chapter 114, a calm arrival/power demonstration and exit.
 - Nanohana: chapter 158, Ace intervenes while Smoker is pursuing Luffy.
+- Nanohana departure waters: chapter 159, Ace destroys five ships carrying
+  Baroque Works Billions with Fire Fist. They are not Marine ships.
 
 The machine-readable evidence and truthful outcome wording live in
 `research/story-scenes/arabasta-batch-a.json`. Do not relabel the Nanohana
@@ -75,7 +79,7 @@ python3 scripts/verify_story_simulation_pack.py \
   --web-proof proofs/arabasta-saga-2d-v1-web-proof.json
 ```
 
-Expected verifier result: 5 actors, 30 poses, 3/3 ready scenes, 3,340,561 atlas
+Expected verifier result: 6 actors, 36 poses, 4/4 ready scenes, 4,064,886 atlas
 bytes.
 
 ## Web integration
@@ -113,7 +117,7 @@ Sync and prove:
 ```bash
 cd /Users/shawnos.ai/dead-reckoning
 python3 scripts/sync_story_simulation_pack.py --pack arabasta-saga-2d-v1
-python3 scripts/check_story_simulations.py --pack arabasta-saga-2d-v1
+python3 scripts/check_story_simulations.py --pack arabasta-saga-2d-v1 --require-promoted
 python3 scripts/check_simulations.py
 npm run build
 python3 scripts/audit_story_simulations.py
@@ -122,15 +126,16 @@ python3 scripts/audit_simulations.py
 
 Expected results:
 
-- Arabasta pack checks: 14/14;
+- Arabasta promoted pack checks: 15/15;
 - East Blue deterministic checks: 9/9;
-- Arabasta browser audit: 12/12;
+- Arabasta browser audit: 16/16;
 - East Blue browser regression: 12/12;
 - Next production build: pass.
 
 The browser proof covers pre-gate zero-byte behavior, per-scene atlas loading,
 authored pose changes, final holds, backward-scrub disposal/restart,
-newest-scene replacement at Whisky Peak, Ace/Smoker at Nanohana, and reduced
+newest-scene replacement at Whisky Peak and Nanohana, Ace/Smoker, the
+chapter-159 Fire Fist convoy destruction, convoy-only lazy loading, and reduced
 motion.
 
 ## Worktree safety

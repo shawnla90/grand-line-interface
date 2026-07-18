@@ -157,6 +157,52 @@
         {"t": 5000, "type": "smoke-fire-clash", "duration_ms": 900, "intensity": 1.0},
         {"t": 5900, "type": "fire-burst", "duration_ms": 1200, "intensity": 0.9}
       ]
+    },
+    {
+      "id": "ace-fire-fist-destroys-billions-fleet",
+      "label": "Ace's Fire Fist destroys the Billions' five-ship convoy",
+      "arc_id": "arabasta",
+      "type": "encounter",
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "chapter_gate": {"start": 159, "end": 159, "verification": "verified", "source_url": "https://shonenjumpplus.com/episode/3269754496377056547"},
+      "place": {"id": "nanohana-departure-waters", "landmark": "river-route-from-nanohana", "arena": "arabasta-coastal-waters"},
+      "duration_ms": 9000,
+      "actors": [
+        {
+          "id": "billions-convoy",
+          "asset_id": "baroque-works-ship-convoy",
+          "z": 17,
+          "keyframes": [
+            {"t": 0, "x": 0.42, "y": 0.03, "scale": 0.76, "rotation": 0, "opacity": 0.88, "pose": "convoy-approach"},
+            {"t": 1500, "x": 0.28, "y": 0.02, "scale": 0.84, "rotation": 0, "opacity": 1, "pose": "closing-formation", "ease": "decelerate"},
+            {"t": 3300, "x": 0.18, "y": 0.02, "scale": 0.9, "rotation": -2, "opacity": 1, "pose": "fire-fist-impact"},
+            {"t": 4500, "x": 0.24, "y": 0.04, "scale": 0.94, "rotation": 2, "opacity": 1, "pose": "fleet-engulfed"},
+            {"t": 5900, "x": 0.32, "y": 0.06, "scale": 0.96, "rotation": 4, "opacity": 1, "pose": "hulls-breaking"},
+            {"t": 7350, "x": 0.4, "y": 0, "scale": 0.9, "rotation": 0, "opacity": 1, "pose": "burning-wreckage"}
+          ]
+        },
+        {
+          "id": "ace",
+          "asset_id": "portgas-d-ace-arabasta",
+          "z": 25,
+          "keyframes": [
+            {"t": 0, "x": -0.68, "y": 0, "scale": 0.7, "rotation": 0, "opacity": 1, "pose": "relaxed-idle"},
+            {"t": 1550, "x": -0.58, "y": 0.02, "scale": 0.76, "rotation": 0, "opacity": 1, "pose": "focused-fire-ready", "ease": "smooth"},
+            {"t": 3050, "x": -0.42, "y": 0.03, "scale": 0.82, "rotation": -3, "opacity": 1, "pose": "wide-flame-burst", "ease": "accelerate"},
+            {"t": 4700, "x": -0.46, "y": 0.02, "scale": 0.78, "rotation": 0, "opacity": 1, "pose": "low-fire-wall"},
+            {"t": 6900, "x": -0.62, "y": 0, "scale": 0.72, "rotation": 0, "opacity": 1, "pose": "confident-departure"}
+          ]
+        }
+      ],
+      "events": [
+        {"t": 1450, "type": "speed-lines", "duration_ms": 1100, "intensity": 0.65},
+        {"t": 3000, "type": "fire-fist-wave", "duration_ms": 1700, "intensity": 1.0},
+        {"t": 3450, "type": "impact", "duration_ms": 900, "intensity": 1.0},
+        {"t": 4250, "type": "fire-burst", "duration_ms": 1500, "intensity": 1.0},
+        {"t": 5650, "type": "structure-collapse", "duration_ms": 1900, "intensity": 0.95},
+        {"t": 6750, "type": "smoke", "duration_ms": 2200, "intensity": 0.8}
+      ]
     }
   ],
   "runtime_policy": {

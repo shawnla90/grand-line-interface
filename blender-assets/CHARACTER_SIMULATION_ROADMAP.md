@@ -202,9 +202,11 @@ Batch A is complete and web proven:
 | 107–108 | Zoro defeats the Whisky Peak bounty hunters | integrated behind allowlist |
 | 114 | Miss All Sunday appears and demonstrates her power | integrated behind allowlist |
 | 158 | Ace intervenes between Smoker and Luffy | integrated behind allowlist |
+| 159 | Ace destroys the Baroque Works Billions' five-ship convoy with Fire Fist | integrated behind allowlist |
 
 The generalized pack loader, signed manifest pipeline, reusable FX mappings,
-dev proof selector, backward-scrub behavior, lazy atlas fetches, and East Blue
+dev proof selector, backward-scrub behavior, lazy atlas fetches, the reusable
+ship-destruction tableau, and East Blue
 compatibility all pass their browser audits. The pack is technically promoted
 but remains off by default.
 
