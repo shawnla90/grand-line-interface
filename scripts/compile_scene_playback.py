@@ -22,16 +22,13 @@ import json
 import sys
 from pathlib import Path
 
+import story_pack_registry
+
 ROOT = Path(__file__).resolve().parent.parent
 PLAYBACK = ROOT / "canon/story_scene_playback.json"
 CANON_JSON = ROOT / "data/canon.json"
 CUES_JSON = ROOT / "data/simulation-audio-cues.json"
 OUT = ROOT / "data/generated/story_scene_playback.json"
-
-PACK_ARTIFACTS = {
-    "east-blue-saga-2d": ROOT / "data/generated/east_blue_simulations.json",
-    "arabasta-saga-2d-v1": ROOT / "data/generated/story_simulations/arabasta-saga-2d-v1.json",
-}
 
 # The dwell camera must clear the scene-mount zoom gate or the journey would
 # stop for a stage that never appears. Mirrors SIM_MIN_ZOOM (east-blue config).
@@ -84,8 +81,11 @@ def main() -> int:
     if playback.get("version") != 1:
         raise DataError(f"playback manifest version {playback.get('version')!r}, expected 1")
 
+    # Every synced pack artifact on disk participates — a new pack reaches the
+    # compiler without an edit here (discovery is shared with the registry
+    # emitter, so the app and the compiler can never disagree on the roster).
     scenes_by_pack: dict[str, dict[str, dict]] = {}
-    for pack_id, artifact in PACK_ARTIFACTS.items():
+    for pack_id, artifact in story_pack_registry.discover_artifacts().items():
         doc = load(artifact)
         if doc["_meta"]["pack_id"] != pack_id:
             raise DataError(f"{artifact.name}: _meta.pack_id {doc['_meta']['pack_id']!r} != {pack_id!r}")

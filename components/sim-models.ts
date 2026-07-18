@@ -48,6 +48,7 @@ import {
 import { createSimLayer, type SimLayer } from "@/components/sim-layer";
 import { SIM_FADE_IN_MS, SIM_MIN_ZOOM, STAGE_SPAN_M } from "@/config/east-blue-simulations";
 import { selectStoryPack, type StoryPackId } from "@/config/story-simulations";
+import { GENERATED_PACKS } from "@/config/story-packs.generated";
 import { getSimAudioSink } from "@/lib/sim-audio-bridge";
 
 type SceneClock = {
@@ -279,13 +280,11 @@ function onVisibility(): void {
  * flag stays off. Nothing reader-facing may pass it — the flag is the law.
  */
 async function loadStoryPack(packId: StoryPackId): Promise<StorySimulationPack> {
-  // Keep imports explicit so Next emits one optional chunk per signed pack.
-  switch (packId) {
-    case "east-blue-saga-2d":
-      return loadSimulations((await import("@/data/generated/east_blue_simulations.json")).default);
-    case "arabasta-saga-2d-v1":
-      return loadSimulations((await import("@/data/generated/story_simulations/arabasta-saga-2d-v1.json")).default);
-  }
+  // The literal import() thunks live in the generated registry, so Next still
+  // emits one optional chunk per signed pack — and a new pack needs no edit here.
+  const pack = GENERATED_PACKS.find((entry) => entry.id === packId);
+  if (!pack) throw new Error(`unknown story pack ${packId}`);
+  return loadSimulations((await pack.load()).default);
 }
 
 function clearRenderedState(state: HostState): void {

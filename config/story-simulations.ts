@@ -4,18 +4,23 @@
  * East Blue keeps its original one-bit flag. New packs use the comma-separated
  * NEXT_PUBLIC_STORY_SIMULATION_PACKS allowlist. Both are build-time values in
  * Next, and an empty allowlist means the generic runtime stays out of the app.
+ *
+ * The pack roster itself is GENERATED: config/story-packs.generated.ts is
+ * emitted by sync_story_simulation_pack.py from the synced artifacts, so a new
+ * signed pack reaches this module (ids, aliases, chapter gates, import thunks)
+ * with zero hand-written code — the intake is data + env only.
  */
 
 import { EAST_BLUE_2D_ON } from "@/config/east-blue-simulations";
+import { GENERATED_PACKS, type GeneratedPackId } from "@/config/story-packs.generated";
 
-export type StoryPackId = "east-blue-saga-2d" | "arabasta-saga-2d-v1";
+export type StoryPackId = GeneratedPackId;
 
-const PACK_ALIASES: Record<string, StoryPackId> = {
-  "east-blue": "east-blue-saga-2d",
-  "east-blue-saga-2d": "east-blue-saga-2d",
-  arabasta: "arabasta-saga-2d-v1",
-  "arabasta-saga-2d-v1": "arabasta-saga-2d-v1",
-};
+const PACK_ALIASES: Record<string, StoryPackId> = {};
+for (const pack of GENERATED_PACKS) {
+  PACK_ALIASES[pack.id] = pack.id;
+  for (const alias of pack.aliases) PACK_ALIASES[alias] = pack.id;
+}
 
 // Direct property access is intentional: Next can inline this public variable.
 const RAW_PACKS = process.env.NEXT_PUBLIC_STORY_SIMULATION_PACKS ?? "";
@@ -38,12 +43,10 @@ export function storyPackFromAlias(value: string | null | undefined): StoryPackI
 /** The newest enabled saga owns the globe once its first verified scene opens. */
 export function selectStoryPack(chapter: number, forced?: StoryPackId): StoryPackId | null {
   if (forced) return forced;
-  if (ENABLED_STORY_PACKS.has("arabasta-saga-2d-v1") && chapter >= 107) {
-    return "arabasta-saga-2d-v1";
-  }
-  if (ENABLED_STORY_PACKS.has("east-blue-saga-2d")) return "east-blue-saga-2d";
-  // If Arabasta is the only enabled pack, load it early but render nothing
-  // until the chapter-107 gate. This keeps pack selection deterministic.
-  if (ENABLED_STORY_PACKS.has("arabasta-saga-2d-v1")) return "arabasta-saga-2d-v1";
-  return null;
+  const enabled = GENERATED_PACKS.filter((pack) => ENABLED_STORY_PACKS.has(pack.id));
+  const open = enabled.find((pack) => pack.firstSceneChapter <= chapter);
+  if (open) return open.id;
+  // Before any enabled pack's first scene, load the newest anyway and render
+  // nothing until its gate. This keeps pack selection deterministic.
+  return enabled[0]?.id ?? null;
 }

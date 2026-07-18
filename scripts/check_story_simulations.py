@@ -11,6 +11,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import story_pack_registry
+
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -64,12 +66,24 @@ def main() -> int:
         "robin-miss-all-sunday-arrival",
         "ace-blocks-smoker-at-nanohana",
         "ace-fire-fist-destroys-billions-fleet",
+        "arabasta-luffy-vs-crocodile-round-one",
+        "arabasta-sanji-vs-bon-clay",
+        "arabasta-nami-vs-miss-doublefinger",
+        "arabasta-zoro-vs-mr-one",
+        "arabasta-luffy-vs-crocodile-round-two",
+        "arabasta-luffy-vs-crocodile-final",
     }, ", ".join(sorted(ids)))
     expected_gates = {
         "whisky-peak-zoro-vs-bounty-hunters": (107, 108),
         "robin-miss-all-sunday-arrival": (114, 114),
         "ace-blocks-smoker-at-nanohana": (158, 158),
         "ace-fire-fist-destroys-billions-fleet": (159, 159),
+        "arabasta-luffy-vs-crocodile-round-one": (176, 179),
+        "arabasta-sanji-vs-bon-clay": (187, 189),
+        "arabasta-nami-vs-miss-doublefinger": (190, 193),
+        "arabasta-zoro-vs-mr-one": (194, 195),
+        "arabasta-luffy-vs-crocodile-round-two": (198, 201),
+        "arabasta-luffy-vs-crocodile-final": (203, 210),
     }
     gates_ok = all(
         (scene["chapter_gate"]["start"], scene["chapter_gate"]["end"]) == expected_gates[scene["id"]]
@@ -83,6 +97,44 @@ def main() -> int:
     check(
         "fire_fist_targets_are_truthful",
         "billions" in fleet["label"].lower() and "marine" not in fleet["label"].lower(),
+    )
+    crocodile = next(scene for scene in scenes if scene["id"] == "arabasta-luffy-vs-crocodile-round-one")
+    check(
+        "crocodile_round_one_supersedes_faceless_blockout",
+        "arabasta-luffy-crocodile-sand-study" in artifact.get("supersedes_visible_art", [])
+        and {actor["asset_id"] for actor in crocodile["actors"]}
+        == {"crocodile-arabasta-sand", "monkey-d-luffy-crocodile-round-one"},
+    )
+    sanji = next(scene for scene in scenes if scene["id"] == "arabasta-sanji-vs-bon-clay")
+    check(
+        "arabasta_sanji_has_no_diable_jambe_leak",
+        all("diable" not in frame["pose"].lower() for actor in sanji["actors"] for frame in actor["keyframes"]),
+    )
+    nami = next(scene for scene in scenes if scene["id"] == "arabasta-nami-vs-miss-doublefinger")
+    check(
+        "arabasta_nami_uses_first_clima_tact_only",
+        all(
+            forbidden not in frame["pose"].lower()
+            for actor in nami["actors"]
+            for frame in actor["keyframes"]
+            for forbidden in ("perfect", "zeus")
+        ),
+    )
+    trilogy = [
+        next(scene for scene in scenes if scene["id"] == scene_id)
+        for scene_id in (
+            "arabasta-luffy-vs-crocodile-round-one",
+            "arabasta-luffy-vs-crocodile-round-two",
+            "arabasta-luffy-vs-crocodile-final",
+        )
+    ]
+    trilogy_casts = [{actor["asset_id"] for actor in scene["actors"]} for scene in trilogy]
+    check("crocodile_trilogy_has_distinct_actor_variants", len({frozenset(cast) for cast in trilogy_casts}) == 3)
+    check(
+        "crocodile_countermeasure_progression_is_separate",
+        any("water" in pose for actor in trilogy[1]["actors"] for pose in (frame["pose"] for frame in actor["keyframes"]))
+        and not any("water" in pose for actor in trilogy[2]["actors"] for pose in (frame["pose"] for frame in actor["keyframes"]))
+        and any("blood" in pose for actor in trilogy[2]["actors"] for pose in (frame["pose"] for frame in actor["keyframes"])),
     )
 
     assets = artifact["assets"]
@@ -112,6 +164,7 @@ def main() -> int:
     check("anchors_are_resolved", anchors_ok)
 
     before = artifact_path.read_bytes()
+    registry_before = story_pack_registry.REGISTRY_TS.read_bytes()
     result = subprocess.run(
         [sys.executable, "scripts/sync_story_simulation_pack.py", "--pack", pack_id],
         cwd=ROOT,
@@ -120,6 +173,15 @@ def main() -> int:
     )
     check("sync_rerun_succeeds", result.returncode == 0, result.stderr.strip())
     check("sync_is_deterministic", before == artifact_path.read_bytes())
+    # The generated TS registry (pack ids, aliases, chapter gates, import
+    # thunks) must be exactly what the artifacts on disk derive — the
+    # geo_artifacts_fresh posture applied to the pack socket.
+    check(
+        "registry_matches_artifacts",
+        story_pack_registry.render_ts(story_pack_registry.derive_rows())
+        == story_pack_registry.REGISTRY_TS.read_text(),
+    )
+    check("registry_is_deterministic", registry_before == story_pack_registry.REGISTRY_TS.read_bytes())
 
     print(f"\n{passes}/{passes + failures} checks pass")
     return 1 if failures else 0

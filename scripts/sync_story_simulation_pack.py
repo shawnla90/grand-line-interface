@@ -11,6 +11,8 @@ import struct
 import sys
 from pathlib import Path
 
+import story_pack_registry
+
 
 ROOT = Path(__file__).resolve().parent.parent
 ASSETS = ROOT / "blender-assets"
@@ -210,6 +212,8 @@ def main() -> int:
         gate = scene["chapter_gate"]
         print(f"  scene {scene['id']:42} ch {gate['start']:>3}-{gate['end']:<3} {len(scene['actors'])} actors {len(scene['events'])} fx")
     print(f"\n{len(scenes)} scenes, {len(refused)} refused, {len(assets)} atlases -> {output_json.relative_to(ROOT)}")
+    if story_pack_registry.emit():
+        print(f"registry re-emitted -> {story_pack_registry.REGISTRY_TS.relative_to(ROOT)}")
     if not manifest.get("integration_ready"):
         print("pack is runtime_verified but disabled by default pending the real-map browser proof")
     return 0
