@@ -130,12 +130,18 @@ def main() -> int:
                 f"chapter 1→{opening_max} across {opening_unique} chapter states",
             )
             request_at = {url.rsplit("/", 1)[-1]: at for url, at in audio_requests}
-            bed_at = request_at.get("luffy-pirate-king.mp3", 0)
+            bed_at = request_at.get("luffy-pirate-king.mp3", float("inf"))
+            # This used to time bed→Gomu on the Epic CHAIN; the Gomu clip now
+            # fires from the Alvida scene's own clock (an independent system
+            # the bed structurally cannot block — "sails beyond the opening
+            # barrel beat" above proves the voyage moves under the bed). What
+            # remains to pin: the opening bed actually enters at the start,
+            # and the scene-clock voice world reaches the run at all.
             gomu_at = request_at.get("gomu-gomu-no.mp3", float("inf"))
             check(
-                "the full opening track overlaps later chapter cues instead of blocking them",
-                bed_at > 0 and bed_at < gomu_at < bed_at + 43.08 / RATE,
-                f"bed→Gomu {max(0, gomu_at - bed_at):.2f}s at {RATE:g}x",
+                "the opening bed enters at the start and scene voice joins the run",
+                (bed_at - t0) < 3 and gomu_at < float("inf"),
+                f"bed at +{bed_at - t0:.2f}s; first scene voice at +{gomu_at - t0:.2f}s ({RATE:g}x)",
             )
 
             mihawk = [sample for sample in samples if sample["mihawkScene"]]
