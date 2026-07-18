@@ -2625,6 +2625,11 @@ function paint(
   // Skypiea's virtual waypoints are in here — the ascent IS this same lerp.
   const { path, ship: pos } = voyageGeometryAt(expandedWaypoints(world.voyage.waypoints), ch);
   (m.getSource("voyage") as GeoJSONSource | undefined)?.setData(voyageLine(path));
+  if (process.env.NODE_ENV !== "production") {
+    // For audit_journey.py: the traveled trail's size, to prove it only grows
+    // during a forward run (v5 keeps source data private, so we say it here).
+    (window as unknown as { __voyageCoordCount?: number }).__voyageCoordCount = path.length;
+  }
   if (ship) {
     const vessel = vesselAtChapter(world.vessels, ch);
     if (pos && vessel) {

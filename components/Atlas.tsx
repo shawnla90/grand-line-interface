@@ -286,13 +286,24 @@ function useChapterEngine(world: World, initial: number) {
     setJourney(true);
 
     const t0 = performance.now();
+    let lastPush = 0;
     const step = (now: number) => {
       const t = Math.min(1, (now - t0) / JOURNEY_MS);
       const ch = plan.chapterAt(t);
       pos.current = ch;
-      setSwept(ch);
-      const fl = Math.max(world.chapterMin, Math.floor(ch));
-      setChapterState((c) => (c === fl ? c : fl));
+      // React pushes at ~30Hz, not per frame. The CAMERA is full-rate (the
+      // chase runs on its own rAF off journeyCam); React only re-renders for
+      // the trail/ship/fog, where 30Hz is indistinguishable — and on the
+      // late-story legs (every layer revealed, paint at its heaviest) the
+      // per-frame double-setState burst is exactly where React's dev runtime
+      // still tripped "Maximum update depth exceeded" (measured: 4 times,
+      // all during the Egghead leg).
+      if (now - lastPush >= 33 || t >= 1) {
+        lastPush = now;
+        setSwept(ch);
+        const fl = Math.max(world.chapterMin, Math.floor(ch));
+        setChapterState((c) => (c === fl ? c : fl));
+      }
       const moment = plan.momentAt(t);
       journeyCam.current = { ...plan.camAt(t), focus: moment?.focus ?? null };
       // Strings only re-render when they actually CHANGE (see journeyCam note).
