@@ -6,6 +6,11 @@ import { resolve } from "node:path";
 const root = resolve(import.meta.dirname, "..");
 const registry = JSON.parse(readFileSync(resolve(root, "data/epic-audio-cues.json"), "utf8"));
 const manifest = JSON.parse(readFileSync(resolve(root, "public/audio/epic-journey/manifest.json"), "utf8"));
+// The frozen OP library serves TWO consumers now: the Epic timeline (this
+// registry) and the scene-clock voice bindings (data/simulation-audio-cues.json).
+// A normalized file is "registered" if either side claims it.
+const simRegistry = JSON.parse(readFileSync(resolve(root, "data/simulation-audio-cues.json"), "utf8"));
+const simSourceFiles = new Set(simRegistry.cues.map((cue) => cue.source_file));
 const failures = [];
 const ids = new Set();
 const sourceFiles = new Set();
@@ -42,12 +47,17 @@ const cueById = new Map(registry.cues.map((cue) => [cue.id, cue]));
 if (cueById.get("luffy-pirate-king")?.lane !== "bed") {
   failures.push("the long opening track must overlap the moving visual master as a bed");
 }
-for (const id of ["zoro-santoryu", "zoro-onigiri"]) {
-  if (cueById.get(id)?.chapter !== 51) failures.push(`${id}: must land on the Mihawk duel at chapter 51`);
+// The Mihawk-duel voice pins moved to the scene-clock side: character clips
+// are scene bindings now (audit_simulation_audio.mjs pins ch51 there), and a
+// foreground voice row here for a scene chapter would drift by construction.
+for (const id of ["zoro-santoryu", "zoro-onigiri", "shanks-hat-promise", "gomu-gomu", "nami-help"]) {
+  if (cueById.has(id)) failures.push(`${id}: character clips live on the scene clocks now, not the Epic chain`);
 }
 
 for (const asset of manifest.files) {
-  if (!sourceFiles.has(asset.originalName)) failures.push(`normalized file not registered: ${asset.originalName}`);
+  if (!sourceFiles.has(asset.originalName) && !simSourceFiles.has(asset.originalName)) {
+    failures.push(`normalized file not registered (epic or simulation registry): ${asset.originalName}`);
+  }
   if (asset.outputSampleRate !== 48000 || asset.channels !== 2) {
     failures.push(`${asset.originalName}: browser format is not 48kHz stereo`);
   }

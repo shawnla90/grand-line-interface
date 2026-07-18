@@ -19,10 +19,16 @@ export const AudioBusName = z.enum(["score", "voice", "ambience", "sfx"]);
 
 export const SimulationAudioCue = z.object({
   id: z.string().min(1),
-  /** Master filename under assets/audio/simulations/ (provenance join key). */
+  /** Master filename — the provenance join key into the owning manifest
+   * (simulations masters, or the frozen epic-journey OP library). */
   source_file: z.string().min(1),
-  /** Browser derivative under public/. */
-  src: z.string().startsWith("/audio/simulations/"),
+  /** Browser derivative under public/. Two legal homes: cues prepared by
+   * this pipeline, or the frozen epic-journey derivatives (the OP voice
+   * library serves both the Epic beds and the scene clocks). */
+  src: z.string().refine(
+    (value) => value.startsWith("/audio/simulations/") || value.startsWith("/audio/epic-journey/"),
+    { message: "src must live under /audio/simulations/ or /audio/epic-journey/" },
+  ),
   kind: z.enum(["sfx", "music", "voice", "ambience"]),
   bus: AudioBusName,
   /** Concurrency family — caps simultaneous voices of a texture. */
