@@ -1,4 +1,5 @@
 import type { EpicCuePlayback } from "@/lib/epic-journey";
+import { AudioDirector } from "@/lib/audio-director";
 
 type LiveTrack = {
   audio: HTMLAudioElement;
@@ -81,9 +82,13 @@ export class EpicAudioPlayer {
       // Ramp the bed under and back out of dialogue; an instantaneous 1→.28
       // volume jump is itself another audible cut.
       live.duckGain += (targetDuckGain - live.duckGain) * 0.18;
+      // ONE duck state across both audio worlds: a scene's Web Audio SFX
+      // burst ducks the director's score bus, and the element-based beds
+      // follow the same level so the OST makes room for the fight too.
+      const sceneDuck = cue.lane === "bed" ? AudioDirector.get().scoreDuckLevel : 1;
       live.audio.volume = Math.max(
         0,
-        Math.min(1, cue.gain * live.duckGain * envelope(cueElapsedMs, cue.durationMs)),
+        Math.min(1, cue.gain * live.duckGain * sceneDuck * envelope(cueElapsedMs, cue.durationMs)),
       );
     }
   }

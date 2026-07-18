@@ -52,6 +52,10 @@ type Props = {
   /** Sail-mode story stops (undefined = the story layers are off entirely). */
   storyStops?: boolean;
   onStoryStops?: (on: boolean) => void;
+  /** Scene sound opt-in (undefined = no simulations, no chip). The click is
+   * the audio-unlock gesture; cold load is always silent. */
+  sceneSound?: boolean;
+  onSceneSound?: () => void;
 };
 
 export default function ChapterDock({
@@ -61,6 +65,7 @@ export default function ChapterDock({
   epicAudioError, onEpicJourney, onEpicMuted,
   recordArmed = false, recording = false, onRecord,
   storyStops, onStoryStops,
+  sceneSound, onSceneSound,
 }: Props) {
   const byChapter = axis === "chapter";
 
@@ -196,6 +201,24 @@ export default function ChapterDock({
                 ].join(" ")}
               >
                 ⚑ stops
+              </button>
+            )}
+            {/* scene sound: the opt-in gesture that unlocks the audio
+                director. Rendered only when simulations exist at all. */}
+            {sceneSound !== undefined && onSceneSound && (
+              <button
+                type="button"
+                onClick={onSceneSound}
+                aria-pressed={sceneSound}
+                title={sceneSound ? "Scene sound is on — click to silence the stages" : "Turn on scene sound — fights and story beats play their sound design"}
+                className={[
+                  "rounded-sm border px-1 py-0.5 font-mono text-[8px] uppercase tracking-[0.14em] transition-colors",
+                  sceneSound
+                    ? "border-gold/60 text-gold"
+                    : "border-transparent text-muted-2 hover:text-muted",
+                ].join(" ")}
+              >
+                {sceneSound ? "🔊 sound" : "🔈 sound"}
               </button>
             )}
           </div>

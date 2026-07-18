@@ -44,6 +44,8 @@ import {
 } from "@/config/epic-audio-cues";
 import { buildEpicJourneyTimeline } from "@/lib/epic-journey";
 import { EpicAudioPlayer } from "@/lib/epic-audio-player";
+import { AudioDirector } from "@/lib/audio-director";
+import { ANY_STORY_SIMULATIONS_ON } from "@/config/story-simulations";
 import WorldMap, { type Projection } from "./WorldMap";
 import { RuntimeIslandDirectory } from "./RuntimeIslandDirectory";
 import SearchPalette, { type SearchHit } from "./SearchPalette";
@@ -145,6 +147,24 @@ function useChapterEngine(world: World, initial: number) {
   // Declared above the playback effect that lists it as a dependency.
   const [storyStops, setStoryStops] = useState(STORY_JOURNEY_ON);
 
+  // Scene sound: reader opt-in, cold load ALWAYS silent. The toggle click IS
+  // the unlock gesture — the AudioDirector's context is created inside it;
+  // scenes that already played stay silent history (no retro-fire).
+  const [sceneSound, setSceneSound] = useState(false);
+  const toggleSceneSound = useCallback(() => {
+    setSceneSound((current) => {
+      const next = !current;
+      const director = AudioDirector.get();
+      if (next) {
+        director.unlock();
+        director.setMuted(false);
+      } else {
+        director.setMuted(true);
+      }
+      return next;
+    });
+  }, []);
+
   // playback loop — with STORY STOPS. Sailing past a story chapter shouldn't
   // fly over the story: when the sweep crosses a stop (a 2.5D scene or a 3D
   // spotlight from the same table the cinematic uses), the sail pauses, the
@@ -200,10 +220,12 @@ function useChapterEngine(world: World, initial: number) {
         setSwept(stop.chapter);
         setChapterState((c) => (c === stop.chapter ? c : stop.chapter));
         dwelling = true;
-        dwellUntil = now + (stop.kind === "model" ? 5500 : 8000);
+        // Scene stops dwell for their AUTHORED hold (playback manifest) — the
+        // old flat 8000 cut the 8500/9000ms scenes off mid-play.
+        dwellUntil = now + (stop.kind === "model" ? 5500 : (stop.holdMs ?? 8000));
         journeyCam.current = {
-          zoom: stop.kind === "model" ? 6.4 : 5.8,
-          pitch: stop.kind === "model" ? 48 : 55,
+          zoom: stop.kind === "model" ? 6.4 : (stop.zoom ?? 5.8),
+          pitch: stop.kind === "model" ? 48 : (stop.pitch ?? 55),
           orbitDegPerSec: stop.kind === "model" ? 5 : 0,
           focus: stop.focus ?? null,
         };
@@ -302,6 +324,15 @@ function useChapterEngine(world: World, initial: number) {
       buildJourneyStops(world),
     );
 
+    // Weights are relative, so an authored holdMs only becomes a wall-clock
+    // guarantee once the run is long enough: each moment window must span at
+    // least its holdMs. Today's content still fits inside the 150s floor; a
+    // future long scene stretches the run instead of silently cutting itself.
+    const journeyMs = Math.max(
+      JOURNEY_MS,
+      ...plan.momentSpans().map((s) => (s.moment.holdMs ?? 0) / Math.max(s.t1 - s.t0, 1e-6)),
+    );
+
     pos.current = world.chapterMin;
     setSwept(world.chapterMin);
     setChapterState(world.chapterMin);
@@ -310,7 +341,7 @@ function useChapterEngine(world: World, initial: number) {
     const t0 = performance.now();
     let lastPush = 0;
     const step = (now: number) => {
-      const t = Math.min(1, (now - t0) / JOURNEY_MS);
+      const t = Math.min(1, (now - t0) / journeyMs);
       const ch = plan.chapterAt(t);
       pos.current = ch;
       // React pushes at ~30Hz, not per frame. The CAMERA is full-rate (the
@@ -349,6 +380,9 @@ function useChapterEngine(world: World, initial: number) {
     setPlaying(false);
     playingRef.current = true;
     setEpicAudioError(null);
+    // The ♫ click is a user gesture — unlock the director here so scene SFX
+    // can fire during Epic dwells without a second opt-in.
+    AudioDirector.get().unlock();
 
     const visual = buildJourney(
       world.voyage.waypoints.map((w) => ({ chapter: w.chapter, slug: w.slug, label: w.label })),
@@ -431,6 +465,8 @@ function useChapterEngine(world: World, initial: number) {
     setEpicMuted((current) => {
       const next = !current;
       epicAudio.current?.setMuted(next);
+      // One mute truth: Epic's mute silences the scene SFX world too.
+      AudioDirector.get().setMuted(next);
       return next;
     });
   }, []);
@@ -455,6 +491,7 @@ function useChapterEngine(world: World, initial: number) {
     epicJourney, epicElapsedMs, epicDurationMs, epicCueLabel, epicMuted,
     epicAudioError, startEpicJourney, toggleEpicMuted,
     storyStops, setStoryStops,
+    sceneSound, toggleSceneSound,
   };
 }
 
@@ -952,6 +989,8 @@ export default function Atlas({
           onRecord={() => void startRecordedJourney()}
           storyStops={STORY_JOURNEY_ON ? engine.storyStops : undefined}
           onStoryStops={engine.setStoryStops}
+          sceneSound={ANY_STORY_SIMULATIONS_ON ? engine.sceneSound : undefined}
+          onSceneSound={engine.toggleSceneSound}
         />
       )}
 

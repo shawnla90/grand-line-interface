@@ -48,6 +48,7 @@ import {
 import { createSimLayer, type SimLayer } from "@/components/sim-layer";
 import { SIM_FADE_IN_MS, SIM_MIN_ZOOM, STAGE_SPAN_M } from "@/config/east-blue-simulations";
 import { selectStoryPack, type StoryPackId } from "@/config/story-simulations";
+import { getSimAudioSink } from "@/lib/sim-audio-bridge";
 
 type SceneClock = {
   /** performance.now() at t=0, shifted forward across hidden-tab pauses. */
@@ -209,6 +210,7 @@ function applySync(state: HostState): void {
     if (state.map.getLayer(layerId)) state.map.removeLayer(layerId);
     state.layers.delete(sceneId);
     state.clocks.delete(sceneId);
+    getSimAudioSink()?.onSceneEnd(sceneId);
   }
 
   for (const scene of wanted) {
@@ -218,6 +220,7 @@ function applySync(state: HostState): void {
     // The single-active rule: a scene mounting while another is mid-fight
     // waits at t=0 (its startedAt keeps sliding until it is the nearest).
     state.clocks.set(scene.id, clock);
+    getSimAudioSink()?.onSceneMount(scene.id, scene, { reducedMotion: state.reducedMotion });
     const layer = createSimLayer({
       id,
       lngLat: [scene.anchor.lng, scene.anchor.lat],
@@ -226,18 +229,25 @@ function applySync(state: HostState): void {
       stageSpanMeters: STAGE_SPAN_M,
       reducedMotion: state.reducedMotion,
       opacity: () => Math.min(1, (now() - clock.mountedAt) / SIM_FADE_IN_MS),
+      // The audio sink samples the EXACT value the renderer receives, on the
+      // same frame — one clock, two cursors (see lib/sim-audio-bridge.ts).
       getTimeMs: () => {
         const t = sceneTimeMs(state, scene);
-        if (t === null) return null;
+        if (t === null) {
+          getSimAudioSink()?.onSceneTime(scene.id, null);
+          return null;
+        }
         // Not the nearest running scene -> hold at 0 and keep the clock
         // pinned so it plays fresh when its turn comes.
         if (t < scene.duration_ms) {
           const active = nearestRunningId(state);
           if (active !== null && active !== scene.id) {
             clock.startedAt = (clock.pausedAt ?? now());
+            getSimAudioSink()?.onSceneTime(scene.id, 0);
             return 0;
           }
         }
+        getSimAudioSink()?.onSceneTime(scene.id, t);
         return t;
       },
     });
@@ -282,6 +292,7 @@ function clearRenderedState(state: HostState): void {
   for (const [sceneId] of state.layers) {
     const layerId = `sim-${sceneId}`;
     if (state.map.getLayer(layerId)) state.map.removeLayer(layerId);
+    getSimAudioSink()?.onSceneEnd(sceneId);
   }
   state.layers.clear();
   state.clocks.clear();
@@ -302,6 +313,11 @@ export async function syncSimulations(
     force ? (requestedPack ?? "east-blue-saga-2d") : undefined,
   );
   if (!packId) return;
+
+  // Scene sound rides the same dynamic-import chain as the host itself:
+  // flags off, neither the player nor its registries reach the bundle. The
+  // installer is idempotent and cheap after the first call.
+  void import("@/lib/simulation-audio-player").then((m) => m.installSimulationAudio());
 
   if (!host || host.map !== map || host.packId !== packId) {
     const serial = ++loadSerial;
