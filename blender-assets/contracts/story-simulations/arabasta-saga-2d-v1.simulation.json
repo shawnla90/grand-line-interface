@@ -1,0 +1,185 @@
+{
+  "$schema": "./story-simulation.schema.json",
+  "schema_version": 1,
+  "id": "arabasta-saga-2d-v1",
+  "label": "Arabasta Saga story simulation pack",
+  "chapter_span": {"start": 101, "end": 217},
+  "representation": "camera-facing-2d-atlas-with-authored-movement-and-3d-fx",
+  "arcs": [
+    {"id": "reverse-mountain", "label": "Reverse Mountain", "chapters": [101, 105]},
+    {"id": "whisky-peak", "label": "Whisky Peak", "chapters": [106, 114]},
+    {"id": "little-garden", "label": "Little Garden", "chapters": [115, 129]},
+    {"id": "drum-island", "label": "Drum Island", "chapters": [130, 154]},
+    {"id": "arabasta", "label": "Arabasta", "chapters": [155, 217]}
+  ],
+  "coordinate_space": {
+    "kind": "normalized-local-stage",
+    "x": "-1 left to +1 right",
+    "y": "0 ground plane; positive values rise",
+    "scale": "multiplier over character map_height",
+    "pose": "step-selected atlas frame",
+    "numeric_interpolation": "linear unless ease is authored"
+  },
+  "scenes": [
+    {
+      "id": "whisky-peak-zoro-vs-bounty-hunters",
+      "label": "Zoro exposes Whisky Peak's hundred-bounty-hunter trap",
+      "arc_id": "whisky-peak",
+      "type": "encounter",
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "chapter_gate": {"start": 107, "end": 108, "verification": "verified", "source_url": "https://onepiece.fandom.com/wiki/Whisky_Peak_Arc"},
+      "place": {"id": "whisky-peak", "landmark": "night-town-rooftops-and-streets", "arena": "whisky-peak-night-town"},
+      "duration_ms": 9000,
+      "actors": [
+        {
+          "id": "crowd-left",
+          "asset_id": "baroque-works-whisky-peak-crowd",
+          "z": 12,
+          "keyframes": [
+            {"t": 0, "x": -0.64, "y": 0, "scale": 0.7, "rotation": 0, "opacity": 1, "pose": "disguised-watch"},
+            {"t": 1500, "x": -0.52, "y": 0, "scale": 0.76, "rotation": 0, "opacity": 1, "pose": "weapons-drawn"},
+            {"t": 3300, "x": -0.22, "y": 0.02, "scale": 0.78, "rotation": -3, "opacity": 1, "pose": "crowd-charge", "ease": "accelerate"},
+            {"t": 5000, "x": -0.44, "y": 0.1, "scale": 0.72, "rotation": -10, "opacity": 1, "pose": "shockwave-recoil"},
+            {"t": 6900, "x": -0.64, "y": 0, "scale": 0.68, "rotation": 0, "opacity": 1, "pose": "defeated-left"}
+          ]
+        },
+        {
+          "id": "crowd-right",
+          "asset_id": "baroque-works-whisky-peak-crowd",
+          "z": 13,
+          "keyframes": [
+            {"t": 0, "x": 0.7, "y": 0, "scale": 0.68, "rotation": 0, "opacity": 1, "pose": "disguised-watch"},
+            {"t": 1900, "x": 0.56, "y": 0, "scale": 0.74, "rotation": 0, "opacity": 1, "pose": "weapons-drawn"},
+            {"t": 3900, "x": 0.2, "y": 0.02, "scale": 0.78, "rotation": 3, "opacity": 1, "pose": "crowd-charge", "ease": "accelerate"},
+            {"t": 5650, "x": 0.42, "y": 0.12, "scale": 0.72, "rotation": 12, "opacity": 1, "pose": "shockwave-recoil"},
+            {"t": 7200, "x": 0.66, "y": 0, "scale": 0.67, "rotation": 0, "opacity": 1, "pose": "defeated-right"}
+          ]
+        },
+        {
+          "id": "zoro",
+          "asset_id": "roronoa-zoro-whisky-peak",
+          "z": 24,
+          "keyframes": [
+            {"t": 0, "x": 0, "y": 0.18, "scale": 0.8, "rotation": 0, "opacity": 1, "pose": "rooftop-idle"},
+            {"t": 1700, "x": 0, "y": 0.05, "scale": 0.88, "rotation": 0, "opacity": 1, "pose": "sword-guard", "ease": "smooth"},
+            {"t": 3200, "x": -0.1, "y": 0.03, "scale": 0.9, "rotation": -4, "opacity": 1, "pose": "vanish-dash", "ease": "accelerate"},
+            {"t": 4700, "x": 0.02, "y": 0.02, "scale": 0.98, "rotation": 0, "opacity": 1, "pose": "three-sword-swarm-slash"},
+            {"t": 6100, "x": 0.12, "y": 0.01, "scale": 0.92, "rotation": 0, "opacity": 1, "pose": "recoil"},
+            {"t": 7500, "x": 0, "y": 0, "scale": 0.9, "rotation": 0, "opacity": 1, "pose": "calm-victory"}
+          ]
+        }
+      ],
+      "events": [
+        {"t": 0, "type": "crowd", "duration_ms": 3200, "intensity": 0.55},
+        {"t": 3100, "type": "speed-lines", "duration_ms": 1350, "intensity": 0.9},
+        {"t": 4550, "type": "slash", "duration_ms": 900, "intensity": 1.0},
+        {"t": 5000, "type": "impact", "duration_ms": 750, "intensity": 0.9},
+        {"t": 5450, "type": "slash", "duration_ms": 800, "intensity": 0.8},
+        {"t": 6800, "type": "dust", "duration_ms": 1400, "intensity": 0.7}
+      ]
+    },
+    {
+      "id": "robin-miss-all-sunday-arrival",
+      "label": "Miss All Sunday reveals her power and offers another course",
+      "arc_id": "whisky-peak",
+      "type": "tableau",
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "chapter_gate": {"start": 114, "end": 114, "verification": "verified", "source_url": "https://onepiece.fandom.com/wiki/Chapter_114"},
+      "place": {"id": "going-merry", "landmark": "deck-off-whisky-peak", "arena": "going-merry-deck"},
+      "duration_ms": 7600,
+      "actors": [
+        {
+          "id": "robin",
+          "asset_id": "nico-robin-miss-all-sunday",
+          "z": 22,
+          "keyframes": [
+            {"t": 0, "x": 0.38, "y": 0.02, "scale": 0.86, "rotation": 0, "opacity": 0, "pose": "mysterious-idle"},
+            {"t": 900, "x": 0.28, "y": 0.02, "scale": 0.9, "rotation": 0, "opacity": 1, "pose": "mysterious-idle", "ease": "smooth"},
+            {"t": 2200, "x": 0.16, "y": 0.02, "scale": 0.92, "rotation": 0, "opacity": 1, "pose": "composed-crossed-arms"},
+            {"t": 3300, "x": 0.1, "y": 0.03, "scale": 0.98, "rotation": 0, "opacity": 1, "pose": "hana-hana-disarm"},
+            {"t": 4400, "x": 0.1, "y": 0.02, "scale": 0.92, "rotation": 0, "opacity": 1, "pose": "straw-hat-lift"},
+            {"t": 5450, "x": 0.04, "y": 0.02, "scale": 0.94, "rotation": 0, "opacity": 1, "pose": "eternal-pose-offer"},
+            {"t": 6700, "x": 0.62, "y": 0.08, "scale": 0.87, "rotation": 1, "opacity": 0.8, "pose": "calm-departure", "ease": "smooth"}
+          ]
+        }
+      ],
+      "events": [
+        {"t": 700, "type": "smoke", "duration_ms": 1200, "intensity": 0.45},
+        {"t": 3200, "type": "hana-hana-bloom", "duration_ms": 1100, "intensity": 0.9},
+        {"t": 5400, "type": "route-pulse", "duration_ms": 1200, "intensity": 0.7},
+        {"t": 6500, "type": "wind", "duration_ms": 1200, "intensity": 0.55}
+      ]
+    },
+    {
+      "id": "ace-blocks-smoker-at-nanohana",
+      "label": "Ace intervenes as Smoker closes on Luffy in Nanohana",
+      "arc_id": "arabasta",
+      "type": "encounter",
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "chapter_gate": {"start": 158, "end": 158, "verification": "verified", "source_url": "https://www.viz.com/shonenjump/one-piece-chapter-158/chapter/11279"},
+      "place": {"id": "nanohana", "landmark": "restaurant-street-pursuit", "arena": "nanohana-port-street"},
+      "duration_ms": 8200,
+      "actors": [
+        {
+          "id": "smoker",
+          "asset_id": "smoker-arabasta",
+          "z": 19,
+          "keyframes": [
+            {"t": 0, "x": 0.62, "y": 0, "scale": 0.88, "rotation": 0, "opacity": 1, "pose": "cigar-idle"},
+            {"t": 1200, "x": 0.48, "y": 0, "scale": 0.92, "rotation": 0, "opacity": 1, "pose": "jitte-guard"},
+            {"t": 2600, "x": 0.18, "y": 0.05, "scale": 0.95, "rotation": -5, "opacity": 1, "pose": "smoke-lunge", "ease": "accelerate"},
+            {"t": 3800, "x": 0.04, "y": 0.02, "scale": 0.96, "rotation": 0, "opacity": 1, "pose": "capture-reach"},
+            {"t": 4900, "x": 0.24, "y": 0.03, "scale": 0.96, "rotation": 4, "opacity": 1, "pose": "smoke-meets-fire"},
+            {"t": 6500, "x": 0.5, "y": 0, "scale": 0.9, "rotation": 0, "opacity": 1, "pose": "frustrated-hold"}
+          ]
+        },
+        {
+          "id": "ace",
+          "asset_id": "portgas-d-ace-arabasta",
+          "z": 23,
+          "keyframes": [
+            {"t": 0, "x": -0.72, "y": 0, "scale": 0.84, "rotation": 0, "opacity": 0, "pose": "relaxed-idle"},
+            {"t": 3100, "x": -0.5, "y": 0.02, "scale": 0.9, "rotation": 0, "opacity": 0, "pose": "focused-fire-ready"},
+            {"t": 3900, "x": -0.12, "y": 0.03, "scale": 0.96, "rotation": 0, "opacity": 1, "pose": "protective-intercept", "ease": "accelerate"},
+            {"t": 4850, "x": -0.04, "y": 0.02, "scale": 1.0, "rotation": 0, "opacity": 1, "pose": "low-fire-wall"},
+            {"t": 5850, "x": -0.18, "y": 0.02, "scale": 0.98, "rotation": 0, "opacity": 1, "pose": "wide-flame-burst"},
+            {"t": 7100, "x": -0.48, "y": 0, "scale": 0.9, "rotation": 0, "opacity": 1, "pose": "confident-departure"}
+          ]
+        }
+      ],
+      "events": [
+        {"t": 2450, "type": "smoke", "duration_ms": 2200, "intensity": 0.9},
+        {"t": 3850, "type": "speed-lines", "duration_ms": 850, "intensity": 0.7},
+        {"t": 4750, "type": "fire-wall", "duration_ms": 1500, "intensity": 1.0},
+        {"t": 5000, "type": "smoke-fire-clash", "duration_ms": 900, "intensity": 1.0},
+        {"t": 5900, "type": "fire-burst", "duration_ms": 1200, "intensity": 0.9}
+      ]
+    }
+  ],
+  "runtime_policy": {
+    "chapter_gate": "Never fetch a scene before a verified start chapter. research_hold scenes remain disabled.",
+    "playback": "Play once on entering close range, then hold the authored final frame.",
+    "backward_scrub": "Reset scene time, actors, pose selection, and effects deterministically.",
+    "max_active_close_scenes": 1,
+    "max_distant_loops": 3,
+    "reduced_motion": "Use the final safe pose and suppress autoplay and effects.",
+    "cross_pack_rule": "One animated scene globally; newest verified story state wins when anchors overlap."
+  },
+  "future_milestones": [
+    {
+      "id": "arabasta-straw-hat-showcases",
+      "status": "chapter_to_verify",
+      "scenes": ["arabasta-zoro-vs-mr-one", "arabasta-nami-vs-miss-doublefinger", "arabasta-sanji-vs-bon-clay"],
+      "note": "Batch B. Keep Sanji's Arabasta choreography free of the later Diable Jambe technique."
+    },
+    {
+      "id": "arabasta-crocodile-trilogy",
+      "status": "split-contracts-required",
+      "scenes": ["arabasta-luffy-vs-crocodile-round-one", "arabasta-luffy-vs-crocodile-round-two", "arabasta-luffy-vs-crocodile-final"],
+      "note": "Batch C requires three separately verified arenas, damage states, countermeasures, outcomes, and map anchors."
+    }
+  ]
+}

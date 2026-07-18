@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "pack_id": "arabasta-saga-2d-v1",
+  "status": "passed",
+  "verified_at": "2026-07-18T06:01:53Z",
+  "web_repository": "/Users/shawnos.ai/dead-reckoning",
+  "base_commit": "54a1c7dc03c5462e2d514537682eaf6f0691484a",
+  "feature_gate": "NEXT_PUBLIC_STORY_SIMULATION_PACKS",
+  "default_gate_state": "off",
+  "artifact_checks": {
+    "command": "python3 scripts/check_story_simulations.py --pack arabasta-saga-2d-v1",
+    "passed": 12,
+    "total": 12
+  },
+  "east_blue_data_regression": {
+    "command": "python3 scripts/check_simulations.py",
+    "passed": 9,
+    "total": 9
+  },
+  "arabasta_browser_audit": {
+    "command": "python3 scripts/audit_story_simulations.py",
+    "passed": 12,
+    "total": 12
+  },
+  "east_blue_regression_audit": {
+    "command": "python3 scripts/audit_simulations.py",
+    "passed": 12,
+    "total": 12
+  },
+  "production_build": "passed",
+  "proof_scope": [
+    "pre-gate zero-atlas fetch",
+    "scene-specific lazy atlas loading",
+    "authored pose progression and final hold",
+    "backward-scrub disposal and restart",
+    "newest scene at a shared anchor",
+    "Ace and Smoker Nanohana tableau",
+    "reduced-motion static safe state",
+    "East Blue compatibility"
+  ],
+  "note": "Technical integration proof only. The pack remains invisible unless explicitly allowlisted at build time."
+}

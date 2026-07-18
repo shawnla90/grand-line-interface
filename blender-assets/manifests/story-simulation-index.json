@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "packs": [
+    {
+      "id": "arabasta-saga-2d-v1",
+      "chapter_span": {
+        "start": 101,
+        "end": 217
+      },
+      "state": "runtime_verified",
+      "integration_ready": true,
+      "manifest": "manifests/story-simulations/arabasta-saga-2d-v1.json",
+      "manifest_sha256": "775323cfe0724a5a5aad427ba4d28f9942298c3a75f9735701e10fe91ad17281"
+    }
+  ]
+}

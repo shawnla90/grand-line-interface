@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "pack_id": "arabasta-saga-2d-v1",
+  "researched_at": "2026-07-18",
+  "policy": "Only the verified facts in these rows may enter runnable contracts. Off-screen or anime-expanded action must not be promoted as manga canon.",
+  "scenes": [
+    {
+      "id": "whisky-peak-zoro-vs-bounty-hunters",
+      "status": "chapter_verified",
+      "arc_id": "whisky-peak",
+      "chapter_gate": {
+        "start": 107,
+        "end": 108,
+        "verification": "verified",
+        "source_urls": [
+          "https://onepiece.fandom.com/wiki/Chapter_107",
+          "https://onepiece.fandom.com/wiki/Chapter_108",
+          "https://onepiece.fandom.com/wiki/Whisky_Peak_Arc"
+        ]
+      },
+      "place": {"id": "whisky-peak", "landmark": "night-town-rooftops-and-streets", "arena": "whisky-peak-night-town", "anchor_status": "resolved_to_existing_island"},
+      "cast": ["roronoa-zoro-whisky-peak", "baroque-works-whisky-peak-crowd"],
+      "outcome_claim": "Zoro exposes the trap and defeats the hundred Baroque Works bounty hunters across chapters 107 and 108.",
+      "visual_variant_notes": ["early Grand Line outfit", "both eyes open", "anonymous agents remain tableaux rather than named fighters"],
+      "unknowns": [],
+      "integration_note": "Use the existing Whisky Peak island point only as the local theatre anchor; do not infer town topology from atlas jitter."
+    },
+    {
+      "id": "robin-miss-all-sunday-arrival",
+      "status": "chapter_verified",
+      "arc_id": "whisky-peak",
+      "chapter_gate": {
+        "start": 114,
+        "end": 114,
+        "verification": "verified",
+        "source_urls": ["https://onepiece.fandom.com/wiki/Chapter_114"]
+      },
+      "place": {"id": "going-merry", "landmark": "deck-off-whisky-peak", "arena": "going-merry-deck", "anchor_status": "resolved_near_existing_whisky_peak"},
+      "cast": ["nico-robin-miss-all-sunday"],
+      "outcome_claim": "Miss All Sunday appears aboard the Going Merry, flips Sanji and Usopp with her power, offers an Eternal Pose, and departs after Luffy rejects it.",
+      "visual_variant_notes": ["first-appearance Miss All Sunday costume", "Hana-Hana arms only in the authored power pose"],
+      "unknowns": [],
+      "integration_note": "A single-character introduction tableau avoids fabricating a prolonged fight."
+    },
+    {
+      "id": "ace-blocks-smoker-at-nanohana",
+      "status": "chapter_verified",
+      "arc_id": "arabasta",
+      "chapter_gate": {
+        "start": 158,
+        "end": 158,
+        "verification": "verified",
+        "source_urls": [
+          "https://www.viz.com/shonenjump/one-piece-chapter-158/chapter/11279",
+          "https://onepiece.fandom.com/wiki/Chapter_158"
+        ]
+      },
+      "place": {"id": "nanohana", "landmark": "restaurant-street-pursuit", "arena": "nanohana-port-street", "anchor_status": "resolved_to_existing_island"},
+      "cast": ["portgas-d-ace-arabasta", "smoker-arabasta"],
+      "outcome_claim": "As Smoker is about to catch Luffy in Nanohana, Ace intervenes so Luffy and the crew can escape.",
+      "visual_variant_notes": ["protective interruption, not an invented extended duel", "compact fire-versus-smoke contact only"],
+      "unknowns": [],
+      "integration_note": "Scene label deliberately avoids 'Ace versus Smoker'."
+    }
+  ]
+}

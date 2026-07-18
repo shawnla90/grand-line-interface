@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "pack_id": "arabasta-saga-2d-v1",
+  "representation": "camera-facing-2d-atlas",
+  "character_count": 5,
+  "characters": [
+    {
+      "id": "roronoa-zoro-whisky-peak",
+      "kind": "character",
+      "variant": "whisky-peak-chapters-107-108",
+      "metadata": "runtime/story-simulations/arabasta-saga-2d-v1/characters/roronoa-zoro-whisky-peak/character.json",
+      "atlas": "runtime/story-simulations/arabasta-saga-2d-v1/characters/roronoa-zoro-whisky-peak/atlas.png",
+      "atlas_sha256": "94e1dff60c3547b8f2f510971ef0283768f9c75701a30cab8fecbd10cbb21e6e",
+      "poses": [
+        "rooftop-idle",
+        "sword-guard",
+        "vanish-dash",
+        "three-sword-swarm-slash",
+        "recoil",
+        "calm-victory"
+      ],
+      "map_height": 1.03
+    },
+    {
+      "id": "nico-robin-miss-all-sunday",
+      "kind": "character",
+      "variant": "whisky-peak-first-appearance-chapter-114",
+      "metadata": "runtime/story-simulations/arabasta-saga-2d-v1/characters/nico-robin-miss-all-sunday/character.json",
+      "atlas": "runtime/story-simulations/arabasta-saga-2d-v1/characters/nico-robin-miss-all-sunday/atlas.png",
+      "atlas_sha256": "945f35c4333a8558d723c4b6e51e43130bcf166f5081bb417346fa0c2a30dc6e",
+      "poses": [
+        "mysterious-idle",
+        "composed-crossed-arms",
+        "hana-hana-disarm",
+        "straw-hat-lift",
+        "eternal-pose-offer",
+        "calm-departure"
+      ],
+      "map_height": 1.08
+    },
+    {
+      "id": "baroque-works-whisky-peak-crowd",
+      "kind": "tableau",
+      "variant": "anonymous-baroque-works-crowd",
+      "metadata": "runtime/story-simulations/arabasta-saga-2d-v1/characters/baroque-works-whisky-peak-crowd/character.json",
+      "atlas": "runtime/story-simulations/arabasta-saga-2d-v1/characters/baroque-works-whisky-peak-crowd/atlas.png",
+      "atlas_sha256": "f6cc311553c64045eca4b7298ae4123a298332e54c28425b3d462a6f19bef9d9",
+      "poses": [
+        "disguised-watch",
+        "weapons-drawn",
+        "crowd-charge",
+        "shockwave-recoil",
+        "defeated-left",
+        "defeated-right"
+      ],
+      "map_height": 1.28
+    },
+    {
+      "id": "portgas-d-ace-arabasta",
+      "kind": "character",
+      "variant": "nanohana-introduction",
+      "metadata": "runtime/story-simulations/arabasta-saga-2d-v1/characters/portgas-d-ace-arabasta/character.json",
+      "atlas": "runtime/story-simulations/arabasta-saga-2d-v1/characters/portgas-d-ace-arabasta/atlas.png",
+      "atlas_sha256": "c00f39882a6ea82add70a721448c85d86639ad10985b352d34def5b3e2461b84",
+      "poses": [
+        "relaxed-idle",
+        "focused-fire-ready",
+        "protective-intercept",
+        "low-fire-wall",
+        "wide-flame-burst",
+        "confident-departure"
+      ],
+      "map_height": 1.06
+    },
+    {
+      "id": "smoker-arabasta",
+      "kind": "character",
+      "variant": "nanohana-pursuit",
+      "metadata": "runtime/story-simulations/arabasta-saga-2d-v1/characters/smoker-arabasta/character.json",
+      "atlas": "runtime/story-simulations/arabasta-saga-2d-v1/characters/smoker-arabasta/atlas.png",
+      "atlas_sha256": "16a0096e95522192a869185097003c2246aa812ed6ebbc2e2c3b6f07945bbc31",
+      "poses": [
+        "cigar-idle",
+        "jitte-guard",
+        "smoke-lunge",
+        "capture-reach",
+        "smoke-meets-fire",
+        "frustrated-hold"
+      ],
+      "map_height": 1.16
+    }
+  ]
+}

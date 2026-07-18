@@ -17,6 +17,10 @@ chat history.
 8. `provenance/sol-session-usage.json` — measured Codex Sol workload snapshot.
 9. `handoffs/UNREAL_EXPORT_BUNDLE.md` — deterministic Unreal SourceArt export
    and the separate client-project boundary.
+10. `handoffs/CLAUDE_CODE_ARABASTA_BATCH_A.md` — promoted generic story pack,
+    web proof, opt-in flag, and Batch B continuation.
+11. `manifests/story-simulations/arabasta-saga-2d-v1.json` — signed five-actor
+    Arabasta manifest with its web-proof receipt.
 
 ## Path translation
 
@@ -67,3 +71,12 @@ runtime-ready story simulations, the existing Loguetown runtime GLB, the
 original Baratie encounter-deck blockout, and the original ship proxy. It
 excludes both `art_partial` scenes and fails on source hash drift, missing
 anchors, or unverified chapter gates.
+
+## Generic saga packs
+
+The app can now consume source-free packs under
+`runtime/story-simulations/<pack-id>/` through one shared loader. Arabasta
+Batch A is the first promoted pack. It remains off by default; the technical
+promotion receipt proves readiness, while the web build allowlist controls
+actual exposure. Continue with Arabasta Batch B through JSON, illustrated
+atlases, and reusable FX rather than scene-specific React components.

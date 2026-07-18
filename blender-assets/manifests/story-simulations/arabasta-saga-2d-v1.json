@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "id": "arabasta-saga-2d-v1",
+  "state": "runtime_verified",
+  "integration_ready": true,
+  "chapter_span": {
+    "start": 101,
+    "end": 217
+  },
+  "representation": "camera-facing-2d-atlas-with-authored-movement-and-3d-fx",
+  "contract": {
+    "path": "contracts/story-simulations/arabasta-saga-2d-v1.simulation.json",
+    "bytes": 10382,
+    "sha256": "f7daf9c849a804b314dab348d7b09b70d9a0858853c0dd9d84a09fae9d5654c0"
+  },
+  "character_index": {
+    "path": "runtime/story-simulations/arabasta-saga-2d-v1/character-index.json",
+    "bytes": 3415,
+    "sha256": "dc9e8f00f7bcfc50f3b5448464ace715f6738598fbce99b294d27a9a78493e78"
+  },
+  "canon_intake": {
+    "path": "research/story-scenes/arabasta-batch-a.json",
+    "bytes": 3329,
+    "sha256": "f8a5bf76f1c3bcb53ea4030e282a68107b6267d6b9ca02961573bb01afedd848"
+  },
+  "provenance": {
+    "path": "art/arabasta/IMAGEGEN_PROVENANCE.md",
+    "bytes": 1982,
+    "sha256": "6e2dcef9ef5defb09a2e97391fba6d27dc9726171dcf2b4331a40551e9020627"
+  },
+  "metrics": {
+    "character_packages": 5,
+    "pose_frames": 30,
+    "atlas_bytes": 3340561,
+    "scenes": 3,
+    "runtime_ready_scenes": 3,
+    "non_ready_scenes": 0,
+    "actor_tracks": 6,
+    "movement_keyframes": 35,
+    "fx_events": 15,
+    "review_video_seconds": 6.0
+  },
+  "characters": [
+    {
+      "id": "roronoa-zoro-whisky-peak",
+      "kind": "character",
+      "variant": "whisky-peak-chapters-107-108",
+      "source": {
+        "path": "art/arabasta/source-sheets/roronoa-zoro-whisky-peak-pose-sheet-v1.png",
+        "bytes": 1692344,
+        "sha256": "65b914748fdb18ecc3029a29f6d3cda957d28d52f822d0a1b7fdded1a5da1454"
+      },
+      "keyed_source": {
+        "path": "art/arabasta/keyed-sheets/roronoa-zoro-whisky-peak-pose-sheet-v1.png",
+        "bytes": 753158,
+        "sha256": "36328b4bd828c4ae02375920ff403c81230eb3519efb1414130df54efb216953"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/roronoa-zoro-whisky-peak/atlas.png",
+        "bytes": 525020,
+        "sha256": "94e1dff60c3547b8f2f510971ef0283768f9c75701a30cab8fecbd10cbb21e6e"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/roronoa-zoro-whisky-peak/character.json",
+        "bytes": 3140,
+        "sha256": "7d5bd3cc93136fd59fae66966ab70c71ffa285a21a0e81d0a614276177008878"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "nico-robin-miss-all-sunday",
+      "kind": "character",
+      "variant": "whisky-peak-first-appearance-chapter-114",
+      "source": {
+        "path": "art/arabasta/source-sheets/nico-robin-miss-all-sunday-pose-sheet-v1.png",
+        "bytes": 1649682,
+        "sha256": "f08d8a9faca00a827228d2bc197c700c20a76e6a578b0cda5464d77fbbf72539"
+      },
+      "keyed_source": {
+        "path": "art/arabasta/keyed-sheets/nico-robin-miss-all-sunday-pose-sheet-v1.png",
+        "bytes": 774315,
+        "sha256": "c85d0a400e20e40fa0a6c1737db4385afe9cbaecd5ddbf7eaf0016d39016da08"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/nico-robin-miss-all-sunday/atlas.png",
+        "bytes": 502746,
+        "sha256": "945f35c4333a8558d723c4b6e51e43130bcf166f5081bb417346fa0c2a30dc6e"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/nico-robin-miss-all-sunday/character.json",
+        "bytes": 3199,
+        "sha256": "9982994d05d3a05e7acc539cba1a9da7f7f421d494a9b279c3cfb9bb9f3e3e14"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "baroque-works-whisky-peak-crowd",
+      "kind": "tableau",
+      "variant": "anonymous-baroque-works-crowd",
+      "source": {
+        "path": "art/arabasta/source-sheets/baroque-works-whisky-peak-crowd-tableaux-v1.png",
+        "bytes": 1978284,
+        "sha256": "96cdfa44870c8e7166fa794ed5451818eca99dc93699185d7a862adb31ae2f2f"
+      },
+      "keyed_source": {
+        "path": "art/arabasta/keyed-sheets/baroque-works-whisky-peak-crowd-tableaux-v1.png",
+        "bytes": 1220728,
+        "sha256": "04c5ae2d1fb6306acfd3f247948c50397fafe5d6f76472367f54838994b0c172"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/baroque-works-whisky-peak-crowd/atlas.png",
+        "bytes": 768857,
+        "sha256": "f6cc311553c64045eca4b7298ae4123a298332e54c28425b3d462a6f19bef9d9"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/baroque-works-whisky-peak-crowd/character.json",
+        "bytes": 3182,
+        "sha256": "88ecffc939873c8394dcc71b9f62eff45db8b5c0ddda186c7265a65d23a1a250"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "portgas-d-ace-arabasta",
+      "kind": "character",
+      "variant": "nanohana-introduction",
+      "source": {
+        "path": "art/arabasta/source-sheets/portgas-d-ace-arabasta-pose-sheet-v1.png",
+        "bytes": 1827110,
+        "sha256": "73efc89829b666b2745ebc1ca8791eabe6c712eaecc402a8c5166fac3bdd979e"
+      },
+      "keyed_source": {
+        "path": "art/arabasta/keyed-sheets/portgas-d-ace-arabasta-pose-sheet-v1.png",
+        "bytes": 1031996,
+        "sha256": "5632ed428ee8f13ce48c0eb9b745c385060ccd5014eb3f45ef89927bc845412b"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/portgas-d-ace-arabasta/atlas.png",
+        "bytes": 694709,
+        "sha256": "c00f39882a6ea82add70a721448c85d86639ad10985b352d34def5b3e2461b84"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/portgas-d-ace-arabasta/character.json",
+        "bytes": 3159,
+        "sha256": "6dc475ece8390f0631280c47c26d5ecb15e44fc643214459f8fe1e5f040e7bbf"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "smoker-arabasta",
+      "kind": "character",
+      "variant": "nanohana-pursuit",
+      "source": {
+        "path": "art/arabasta/source-sheets/smoker-arabasta-pose-sheet-v1.png",
+        "bytes": 2012448,
+        "sha256": "0c9d5ff45c116dd6d7918566cc1ad414b7462684acd8f2cd4afe6cd999a6fa65"
+      },
+      "keyed_source": {
+        "path": "art/arabasta/keyed-sheets/smoker-arabasta-pose-sheet-v1.png",
+        "bytes": 1292067,
+        "sha256": "e74a591840eb04c465dfb4471f6a80af421d34ab51c942830dc89eda228dc7aa"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/smoker-arabasta/atlas.png",
+        "bytes": 849229,
+        "sha256": "16a0096e95522192a869185097003c2246aa812ed6ebbc2e2c3b6f07945bbc31"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/smoker-arabasta/character.json",
+        "bytes": 3099,
+        "sha256": "3f46fc5251184649ccb377888f26ac0ae3c01fab86154e18d6965b8542e065b4"
+      },
+      "pose_count": 6
+    }
+  ],
+  "reviews": [
+    {
+      "path": "renders/story-simulations/arabasta-saga-2d-v1/character-atlas-catalog.png",
+      "bytes": 394705,
+      "sha256": "3a9367e19cc94dc9fe70312fd0a2460679732506b769020367fa908c9e749b49"
+    },
+    {
+      "path": "renders/story-simulations/arabasta-saga-2d-v1/scene-board.png",
+      "bytes": 273713,
+      "sha256": "edeb443bdc1a8b09be84101912d41c99e0871985e67732eb4f2a154b9ded5332"
+    },
+    {
+      "path": "renders/story-simulations/arabasta-saga-2d-v1/sampler-poster.png",
+      "bytes": 374010,
+      "sha256": "a861ce1e9dd3779393e71c78220ccada17da7773df2b6d33e0514fa308c3c904"
+    },
+    {
+      "path": "renders/story-simulations/arabasta-saga-2d-v1/sampler.mp4",
+      "bytes": 822074,
+      "sha256": "e76a6aa3e7b3e6087eedba68db8a0b997eeab579c107aaa259e940e3b1567fe7"
+    }
+  ],
+  "web_proof": {
+    "path": "proofs/arabasta-saga-2d-v1-web-proof.json",
+    "bytes": 1350,
+    "sha256": "bdc9e36b0f5e6036566b44548304aa538870cb53c82efc251cfcc9c851c23705"
+  },
+  "blockers": [
+    "Batch B and the three Crocodile rounds remain separately gated future work."
+  ]
+}

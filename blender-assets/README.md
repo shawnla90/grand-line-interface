@@ -52,6 +52,25 @@ The exporter copies only manifest-approved runtime derivatives into
 IDs, unverified chapter gates, and unfinished scenes. Raw character-generation
 sheets are never exported.
 
+## Arabasta story-simulation Batch A
+
+The first generic saga pack is signed and web proven. `arabasta-saga-2d-v1`
+contains 5 source-free runtime atlases, 30 poses, and 3 verified scenes for
+Whisky Peak, Miss All Sunday's arrival, and Ace's Nanohana intervention. It is
+technically integration-ready but disabled unless the app build explicitly
+allowlists it with `NEXT_PUBLIC_STORY_SIMULATION_PACKS`.
+
+Start with:
+
+- `handoffs/CLAUDE_CODE_ARABASTA_BATCH_A.md`
+- `manifests/story-simulations/arabasta-saga-2d-v1.json`
+- `contracts/story-simulations/arabasta-saga-2d-v1.simulation.json`
+- `proofs/arabasta-saga-2d-v1-web-proof.json`
+- `renders/story-simulations/arabasta-saga-2d-v1/scene-board.png`
+
+Raw source sheets and editable alpha intermediates remain in the isolated asset
+factory and are intentionally absent from this source-free package.
+
 ## Pilot
 
 `fish-man-island` is a top-down RGBA plate built around the atlas's exact
