@@ -24,6 +24,7 @@ PACK_PATH = "/art/story-simulations/arabasta-saga-2d-v1/"
 ZORO_SCENE = "sim-whisky-peak-zoro-vs-bounty-hunters"
 ROBIN_SCENE = "sim-robin-miss-all-sunday-arrival"
 ACE_SCENE = "sim-ace-blocks-smoker-at-nanohana"
+FLEET_SCENE = "sim-ace-fire-fist-destroys-billions-fleet"
 
 PASS = 0
 FAIL = 0
@@ -151,6 +152,40 @@ def main() -> int:
                 "ch158: only Ace and Smoker atlases demand-load",
                 atlas_requests(requests) == ["portgas-d-ace-arabasta", "smoker-arabasta"],
                 ", ".join(atlas_requests(requests)),
+            )
+
+            requests.clear()
+            page.click("[data-testid=go-159]")
+            page.wait_for_function(f"() => (window.__simScenes || {{}})['{FLEET_SCENE}']", timeout=10000)
+            ids = scene_ids(page)
+            check(
+                "ch159: Fire Fist convoy scene replaces the Smoker intervention",
+                FLEET_SCENE in ids and ACE_SCENE not in ids,
+                ", ".join(ids),
+            )
+            check(
+                "ch159: only the new convoy atlas demand-loads",
+                atlas_requests(requests) == ["baroque-works-ship-convoy"],
+                ", ".join(atlas_requests(requests)),
+            )
+            saw_impact = False
+            deadline = time.time() + 7
+            while time.time() < deadline:
+                if actor_pose(page, FLEET_SCENE, "billions-convoy") == "fire-fist-impact":
+                    saw_impact = True
+                    break
+                page.wait_for_timeout(70)
+            check("ch159: convoy reaches the Fire Fist impact pose", saw_impact)
+            page.wait_for_function(
+                f"() => (window.__simScenes || {{}})['{FLEET_SCENE}']?.timeMs >= 9000",
+                timeout=14000,
+            )
+            final_convoy = actor_pose(page, FLEET_SCENE, "billions-convoy")
+            final_ace = actor_pose(page, FLEET_SCENE, "ace")
+            check(
+                "ch159: burning wreckage and Ace departure hold",
+                (final_convoy, final_ace) == ("burning-wreckage", "confident-departure"),
+                f"convoy={final_convoy}, ace={final_ace}",
             )
 
             reduced = browser.new_page(viewport={"width": 1440, "height": 900}, reduced_motion="reduce")

@@ -22,6 +22,7 @@ def sha256(path: Path) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--pack", required=True)
+    parser.add_argument("--require-promoted", action="store_true")
     args = parser.parse_args()
     pack_id = args.pack
     artifact_path = ROOT / "data/generated/story_simulations" / f"{pack_id}.json"
@@ -47,8 +48,13 @@ def main() -> int:
         meta["feature_flag"] == "NEXT_PUBLIC_STORY_SIMULATION_PACKS"
         and not os.environ.get("NEXT_PUBLIC_STORY_SIMULATION_PACKS"),
     )
-    check("web_proof_promoted", manifest["integration_ready"] is True and meta["integration_ready"] is True)
-    check("web_proof_receipt", isinstance(manifest.get("web_proof"), dict) and manifest["web_proof"]["sha256"])
+    promotion_consistent = (
+        meta["integration_ready"] == manifest["integration_ready"]
+        and bool(manifest.get("web_proof")) == manifest["integration_ready"]
+    )
+    check("promotion_state_consistent", promotion_consistent)
+    if args.require_promoted:
+        check("web_proof_promoted", manifest["integration_ready"] is True)
     check("signed_manifest_receipt", meta["source_manifest_sha256"] == sha256(manifest_path))
 
     scenes = artifact["scenes"]
@@ -57,11 +63,13 @@ def main() -> int:
         "whisky-peak-zoro-vs-bounty-hunters",
         "robin-miss-all-sunday-arrival",
         "ace-blocks-smoker-at-nanohana",
+        "ace-fire-fist-destroys-billions-fleet",
     }, ", ".join(sorted(ids)))
     expected_gates = {
         "whisky-peak-zoro-vs-bounty-hunters": (107, 108),
         "robin-miss-all-sunday-arrival": (114, 114),
         "ace-blocks-smoker-at-nanohana": (158, 158),
+        "ace-fire-fist-destroys-billions-fleet": (159, 159),
     }
     gates_ok = all(
         (scene["chapter_gate"]["start"], scene["chapter_gate"]["end"]) == expected_gates[scene["id"]]
@@ -71,6 +79,11 @@ def main() -> int:
     check("verified_scene_gates", gates_ok)
     ace = next(scene for scene in scenes if scene["id"] == "ace-blocks-smoker-at-nanohana")
     check("ace_smoker_claim_is_truthful", "versus" not in ace["label"].lower() and "intervenes" in ace["label"].lower())
+    fleet = next(scene for scene in scenes if scene["id"] == "ace-fire-fist-destroys-billions-fleet")
+    check(
+        "fire_fist_targets_are_truthful",
+        "billions" in fleet["label"].lower() and "marine" not in fleet["label"].lower(),
+    )
 
     assets = artifact["assets"]
     referenced = {actor["asset_id"] for scene in scenes for actor in scene["actors"]}

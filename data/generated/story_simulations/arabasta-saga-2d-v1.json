@@ -7,14 +7,14 @@
       "start": 101,
       "end": 217
     },
-    "source_manifest_sha256": "775323cfe0724a5a5aad427ba4d28f9942298c3a75f9735701e10fe91ad17281",
+    "source_manifest_sha256": "3917bbf535a0037292ea4088e9dcc8b406d372c3f560775c9ef41274c2a0482c",
     "integration_ready": true,
     "feature_flag": "NEXT_PUBLIC_STORY_SIMULATION_PACKS",
     "note": "Only runtime-ready scenes with verified chapter gates ship; the new pack remains disabled unless explicitly allowlisted.",
     "counts": {
-      "scenes": 3,
+      "scenes": 4,
       "refused": 0,
-      "assets": 5
+      "assets": 6
     }
   },
   "arcs": [
@@ -613,6 +613,188 @@
         "lat": 0.4813,
         "note": "Nanohana restaurant-street pursuit anchored to the existing port-city point."
       }
+    },
+    {
+      "id": "ace-fire-fist-destroys-billions-fleet",
+      "label": "Ace's Fire Fist destroys the Billions' five-ship convoy",
+      "arc_id": "arabasta",
+      "type": "encounter",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 159,
+        "end": 159,
+        "verification": "verified",
+        "source_url": "https://shonenjumpplus.com/episode/3269754496377056547"
+      },
+      "place": {
+        "id": "nanohana-departure-waters",
+        "landmark": "river-route-from-nanohana",
+        "arena": "arabasta-coastal-waters"
+      },
+      "duration_ms": 9000,
+      "actors": [
+        {
+          "id": "billions-convoy",
+          "asset_id": "baroque-works-ship-convoy",
+          "z": 17,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.42,
+              "y": 0.03,
+              "scale": 0.76,
+              "rotation": 0,
+              "opacity": 0.88,
+              "pose": "convoy-approach"
+            },
+            {
+              "t": 1500,
+              "x": 0.28,
+              "y": 0.02,
+              "scale": 0.84,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "closing-formation",
+              "ease": "decelerate"
+            },
+            {
+              "t": 3300,
+              "x": 0.18,
+              "y": 0.02,
+              "scale": 0.9,
+              "rotation": -2,
+              "opacity": 1,
+              "pose": "fire-fist-impact"
+            },
+            {
+              "t": 4500,
+              "x": 0.24,
+              "y": 0.04,
+              "scale": 0.94,
+              "rotation": 2,
+              "opacity": 1,
+              "pose": "fleet-engulfed"
+            },
+            {
+              "t": 5900,
+              "x": 0.32,
+              "y": 0.06,
+              "scale": 0.96,
+              "rotation": 4,
+              "opacity": 1,
+              "pose": "hulls-breaking"
+            },
+            {
+              "t": 7350,
+              "x": 0.4,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "burning-wreckage"
+            }
+          ]
+        },
+        {
+          "id": "ace",
+          "asset_id": "portgas-d-ace-arabasta",
+          "z": 25,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.68,
+              "y": 0,
+              "scale": 0.7,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "relaxed-idle"
+            },
+            {
+              "t": 1550,
+              "x": -0.58,
+              "y": 0.02,
+              "scale": 0.76,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "focused-fire-ready",
+              "ease": "smooth"
+            },
+            {
+              "t": 3050,
+              "x": -0.42,
+              "y": 0.03,
+              "scale": 0.82,
+              "rotation": -3,
+              "opacity": 1,
+              "pose": "wide-flame-burst",
+              "ease": "accelerate"
+            },
+            {
+              "t": 4700,
+              "x": -0.46,
+              "y": 0.02,
+              "scale": 0.78,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "low-fire-wall"
+            },
+            {
+              "t": 6900,
+              "x": -0.62,
+              "y": 0,
+              "scale": 0.72,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "confident-departure"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 1450,
+          "type": "speed-lines",
+          "duration_ms": 1100,
+          "intensity": 0.65
+        },
+        {
+          "t": 3000,
+          "type": "fire-fist-wave",
+          "duration_ms": 1700,
+          "intensity": 1.0
+        },
+        {
+          "t": 3450,
+          "type": "impact",
+          "duration_ms": 900,
+          "intensity": 1.0
+        },
+        {
+          "t": 4250,
+          "type": "fire-burst",
+          "duration_ms": 1500,
+          "intensity": 1.0
+        },
+        {
+          "t": 5650,
+          "type": "structure-collapse",
+          "duration_ms": 1900,
+          "intensity": 0.95
+        },
+        {
+          "t": 6750,
+          "type": "smoke",
+          "duration_ms": 2200,
+          "intensity": 0.8
+        }
+      ],
+      "anchor": {
+        "kind": "island",
+        "ref": "nanohana",
+        "lng": -102.8707,
+        "lat": 0.4813,
+        "note": "The chapter-159 convoy clash occurs after leaving Nanohana; the existing port-city point is a local theatre anchor, not a measured river coordinate."
+      }
     }
   ],
   "refused": [],
@@ -960,6 +1142,75 @@
         "depth_write": false,
         "alpha_test": 0.05,
         "reduced_motion": "frustrated-hold"
+      }
+    },
+    "baroque-works-ship-convoy": {
+      "url": "/art/story-simulations/arabasta-saga-2d-v1/baroque-works-ship-convoy/atlas.png",
+      "sha256": "fb6a73c184eafd4f629b3106214245fcfa4723b557ab42daf829cc6309367f6b",
+      "kind": "tableau",
+      "variant": "five-ship-convoy-chapter-159",
+      "map_height": 1.42,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "convoy-approach": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "closing-formation": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "fire-fist-impact": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "fleet-engulfed": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "hulls-breaking": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "burning-wreckage": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "burning-wreckage"
       }
     }
   },

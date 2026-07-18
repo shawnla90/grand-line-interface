@@ -46,7 +46,9 @@ export default function SimProof({
         sources: {},
         layers: [{ id: "bg", type: "background", paint: { "background-color": "#0b1d33" } }],
       },
-      center: initialPack === "arabasta-saga-2d-v1" ? WHISKY_PEAK : BARATIE,
+      center: initialPack === "arabasta-saga-2d-v1"
+        ? (initialChapter >= 158 ? NANOHANA : WHISKY_PEAK)
+        : BARATIE,
       zoom: 5.2,
       // The 2.5D cards are VERTICAL billboards ("camera-facing around local
       // up, do not flatten onto the map" — the contract). A pitch-0 top-down
@@ -61,7 +63,7 @@ export default function SimProof({
       map.remove();
       mapRef.current = null;
     };
-  }, [initialPack]);
+  }, [initialChapter, initialPack]);
 
   useEffect(() => {
     if (!loaded || !mapRef.current) return;
@@ -104,6 +106,7 @@ export default function SimProof({
           <button onClick={() => jump(WHISKY_PEAK, 107, "arabasta-saga-2d-v1")} data-testid="go-107">Zoro ch107</button>
           <button onClick={() => jump(WHISKY_PEAK, 114, "arabasta-saga-2d-v1")} data-testid="go-114">Robin ch114</button>
           <button onClick={() => jump(NANOHANA, 158, "arabasta-saga-2d-v1")} data-testid="go-158">Ace ch158</button>
+          <button onClick={() => jump(NANOHANA, 159, "arabasta-saga-2d-v1")} data-testid="go-159">Fire Fist ch159</button>
         </div>
         <div style={{ marginTop: 6, opacity: 0.7 }}>
           the real syncSimulations host on a bare map — window.__simScenes has the clocks

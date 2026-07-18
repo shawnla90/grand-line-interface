@@ -70,6 +70,7 @@ const FX_TABLE: Record<string, FxSpec> = {
   "lightning": { kind: "flash", color: 0xfffbe6 },
   "hana-hana-bloom": { kind: "particles", color: 0xc58aff, motion: "rise", size: 1.25 },
   "fire-wall": { kind: "arc", color: 0xff7a2f, tilt: 0, size: 2.0 },
+  "fire-fist-wave": { kind: "arc", color: 0xff6a1f, tilt: 0, size: 3.0 },
   "smoke-fire-clash": { kind: "pulse", color: 0xffa45d, size: 1.8 },
   "fire-burst": { kind: "burst", color: 0xff6a24, size: 1.5 },
 };
