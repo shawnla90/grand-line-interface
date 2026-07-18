@@ -61,3 +61,14 @@ export const ACTIVE_EPIC_AUDIO_CUES = EPIC_AUDIO_CUES.filter(
 export const EPIC_TRAVEL_BUDGET_MS = registry.travel_budget_ms;
 export const EPIC_CROSSFADE_MS = registry.cue_crossfade_ms;
 export const EPIC_AUDIO_RIGHTS_STATUS = registry.rights_status;
+
+/**
+ * Whether the Epic Journey may be OFFERED to this build's readers. The whole
+ * registry carries one rights_status; while it is local_prototype_only the ♫
+ * entry point exists in dev only — a production build folds this literal to
+ * false and the button (and any path to fetching the tracks) strips out.
+ * Flipping the registry to "cleared" (with receipts) is what ships epic audio;
+ * there is deliberately no env override.
+ */
+export const EPIC_AUDIO_SHIPPABLE =
+  EPIC_AUDIO_RIGHTS_STATUS === "cleared" || process.env.NODE_ENV !== "production";

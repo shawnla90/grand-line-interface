@@ -18,6 +18,7 @@
  */
 
 import type { World, WorldAt, Axis } from "@/lib/canon";
+import { EPIC_AUDIO_SHIPPABLE } from "@/config/epic-audio-cues";
 import { SPEEDS, type Speed } from "./Atlas";
 import NumberField from "./NumberField";
 import AxisToggle from "./AxisToggle";
@@ -117,20 +118,22 @@ export default function ChapterDock({
           >
             {journey ? "◼ journey" : "⛵ journey"}
           </button>
-          <button
-            type="button"
-            onClick={onEpicJourney}
-            title={epicJourney ? "Stop the Epic Journey" : "Play the full audio-led Epic Journey"}
-            aria-label={epicJourney ? "Stop Epic Journey" : "Play Epic Journey with audio"}
-            className={[
-              "grid h-9 shrink-0 place-items-center rounded-sm border px-2.5 font-mono text-[10px] uppercase tracking-[0.14em] transition-colors",
-              epicJourney
-                ? "border-gold/70 bg-gold/10 text-gold shadow-[0_0_18px_rgba(212,175,55,0.16)]"
-                : "border-rope bg-ink/90 text-muted-2 hover:border-gold/60 hover:text-gold",
-            ].join(" ")}
-          >
-            {epicJourney ? "◼ epic" : "♫ epic"}
-          </button>
+          {EPIC_AUDIO_SHIPPABLE && (
+            <button
+              type="button"
+              onClick={onEpicJourney}
+              title={epicJourney ? "Stop the Epic Journey" : "Play the full audio-led Epic Journey"}
+              aria-label={epicJourney ? "Stop Epic Journey" : "Play Epic Journey with audio"}
+              className={[
+                "grid h-9 shrink-0 place-items-center rounded-sm border px-2.5 font-mono text-[10px] uppercase tracking-[0.14em] transition-colors",
+                epicJourney
+                  ? "border-gold/70 bg-gold/10 text-gold shadow-[0_0_18px_rgba(212,175,55,0.16)]"
+                  : "border-rope bg-ink/90 text-muted-2 hover:border-gold/60 hover:text-gold",
+              ].join(" ")}
+            >
+              {epicJourney ? "◼ epic" : "♫ epic"}
+            </button>
+          )}
           {epicJourney && (
             <button
               type="button"
