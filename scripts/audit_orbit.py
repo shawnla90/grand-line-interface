@@ -1,32 +1,31 @@
 #!/usr/bin/env python3
-"""audit_orbit.py — prove grab-and-spin does the right thing at both zooms.
+"""audit_orbit.py — prove the hold-to-orbit rotation, and that nothing else spins.
 
-The one rule that matters and is easy to break: a left-drag ORBITS a dived-into
-model, and PANS everywhere else. If orbit mode leaks out to the zoomed-out world,
-the map stops being a map. If it fails to engage on a model, the feature does not
-exist. So the audit drives a real left-drag in both states and reads the camera.
+The rule the whole rework exists for: a plain drag ALWAYS pans (navigate freely,
+the globe never turns on its own), and rotation happens ONLY when you press and
+HOLD to lock a target island, then drag to orbit around it. So the audit drives
+both gestures and reads the camera:
 
-Two bugs this locked in after they were found the hard way:
-  - modelPresent() must NOT scan getStyle().layers — a custom (three.js) layer
-    never appears there, only getLayer() sees it, so the scan always concluded
-    "no model" and orbit never engaged.
-  - the model layer must be added when its DATA lands, not only on the next camera
-    move — a reader who finished diving before the async load returned would sit
-    on an island with no model, and orbit would have nothing to engage on.
+  1. QUICK DRAG over the globe -> center moves, bearing unchanged (the old
+     built-in dragRotate "circular" spin is gone).
+  2. PRESS-AND-HOLD on an island, then drag -> bearing/pitch change while the
+     centre stays locked on that island (orbit), and a "orbiting <name>" caption
+     shows. Release -> dragPan is back on.
+  3. Works on MERCATOR too (setBearing/setPitch are projection-agnostic).
+  4. During the cinematic journey the hold does nothing — the journey owns the helm.
 
 Run: python3 scripts/audit_orbit.py [--base http://localhost:3000]
-Needs a DEV server with NEXT_PUBLIC_RUNTIME_3D_ASSETS=1 (window.__map is dev-only).
+Needs a DEV server (window.__map is dev-only).
 """
 
 from __future__ import annotations
 
 import argparse
+import math
 import sys
 
 from playwright.sync_api import sync_playwright
 
-# Whole Cake Island — a model that is present at ch 655, both projections.
-TOTTO = [72.2778, -2.819]
 results: list[tuple[bool, str]] = []
 
 
@@ -46,72 +45,91 @@ def main() -> int:
 
         def st():
             return page.evaluate(
-                """() => { const m = window.__map; return {
-                    bearing: m.getBearing(), pitch: m.getPitch(),
-                    center: m.getCenter().toArray(), zoom: m.getZoom(),
-                    dragPan: m.dragPan.isEnabled(),
-                    model: !!m.getLayer('glb-totto-land'),
-                }; }"""
+                """() => ({ bearing: window.__map.getBearing(), pitch: window.__map.getPitch(),
+                    center: window.__map.getCenter().toArray(), dragPan: window.__map.dragPan.isEnabled(),
+                    proj: window.__map.getProjection().type }); """
             )
 
-        def drag(x0, y0, dx, dy):
+        def load(ch=1044, proj="globe"):
+            page.goto(f"{args.base}/?ch={ch}", wait_until="networkidle")
+            page.wait_for_timeout(2600)
+            page.evaluate("(pr) => window.__map.setProjection({type: pr})", proj)
+            page.wait_for_timeout(1800)
+
+        def center_xy():
             box = page.locator("canvas").first.bounding_box()
-            cx, cy = box["x"] + box["width"] / 2, box["y"] + box["height"] / 2
-            page.mouse.move(cx + x0, cy + y0)
+            return box["x"] + box["width"] / 2, box["y"] + box["height"] / 2
+
+        def quick_drag(cx, cy, dx, dy=0):
+            page.mouse.move(cx, cy)
             page.mouse.down()
-            for i in range(1, 11):
-                page.mouse.move(cx + x0 + dx * i / 10, cy + y0 + dy * i / 10)
-                page.wait_for_timeout(20)
+            for i in range(1, 10):
+                page.mouse.move(cx + dx * i / 10, cy + dy * i / 10)
+                page.wait_for_timeout(15)
             page.mouse.up()
-            page.wait_for_timeout(400)
+            page.wait_for_timeout(350)
 
-        def dive(proj):
-            page.goto(f"{args.base}/?ch=655", wait_until="networkidle")
-            page.wait_for_timeout(2000)
-            page.evaluate(
-                "([c, proj]) => { window.__map.setProjection({type: proj}); "
-                "window.__map.jumpTo({center: c, zoom: 6.2, pitch: 40, bearing: 0}); }",
-                [TOTTO, proj],
+        def hold_drag(cx, cy, dx, dy):
+            page.mouse.move(cx, cy)
+            page.mouse.down()
+            page.wait_for_timeout(340)  # HOLD past the 260ms lock threshold
+            cap = page.evaluate(
+                "() => { const e=[...document.querySelectorAll('div')].find(d=>/orbiting/i.test(d.textContent||'')&&(d.textContent||'').length<40); return e?e.textContent.trim():null }"
             )
-            page.wait_for_timeout(9000)  # the model loads async; orbit engages on idle
+            for i in range(1, 10):
+                page.mouse.move(cx + dx * i / 10, cy + dy * i / 10)
+                page.wait_for_timeout(15)
+            mid = st()
+            page.mouse.up()
+            page.wait_for_timeout(350)
+            return mid, cap
 
-        for proj in ("globe", "mercator"):
-            print(f"\ndived into Whole Cake — {proj.upper()}:")
-            dive(proj)
-            s0 = st()
-            check(s0["model"], f"{proj}: the model layer is present after diving")
-            check(not s0["dragPan"], f"{proj}: orbit engaged (dragPan is OFF)")
+        # ── 1. quick drag pans, no spin ────────────────────────────────────
+        print("\nquick drag over the globe:")
+        load()
+        cx, cy = center_xy()
+        a = st()
+        quick_drag(cx, cy, 360)
+        b = st()
+        moved = abs(b["center"][0] - a["center"][0]) > 2
+        check(moved and b["bearing"] == a["bearing"], "quick drag PANS and the bearing never changes (no free spin)")
 
-            b0 = st()
-            drag(-250, 0, 500, 0)  # horizontal left-drag
-            b1 = st()
-            moved_bearing = abs(b1["bearing"] - b0["bearing"]) > 5
-            held_center = abs(b1["center"][0] - b0["center"][0]) + abs(b1["center"][1] - b0["center"][1]) < 0.5
-            check(moved_bearing and held_center,
-                  f"{proj}: horizontal drag ORBITS (bearing moved, center held)")
+        # ── 2. hold to orbit a locked island ───────────────────────────────
+        print("\npress-and-hold on an island, then drag:")
+        load()
+        cx, cy = center_xy()
+        a = st()
+        mid, cap = hold_drag(cx, cy, 280, 150)
+        turned = abs(mid["bearing"] - a["bearing"]) > 5
+        held = abs(mid["center"][0] - a["center"][0]) < 6
+        check(turned and held, "hold+drag ORBITS: bearing/pitch change, centre locked on the island")
+        check(bool(cap and "orbiting" in cap.lower()), "the 'orbiting <island>' caption shows while holding")
+        check(st()["dragPan"], "releasing restores free pan (dragPan back on)")
 
-            p0 = st()
-            drag(0, -150, 0, 240)  # vertical drag
-            p1 = st()
-            check(abs(p1["pitch"] - p0["pitch"]) > 3, f"{proj}: vertical drag TILTS (pitch changed)")
+        # ── 3. mercator too ────────────────────────────────────────────────
+        print("\nmercator:")
+        load(proj="mercator")
+        cx, cy = center_xy()
+        a = st()
+        mid, _ = hold_drag(cx, cy, 280, 60)
+        check(abs(mid["bearing"] - a["bearing"]) > 5, "hold-orbit works on mercator (bearing changes)")
 
-        print("\n'level view' resets the camera:")
-        page.evaluate("() => window.__map.jumpTo({center: [72.2778,-2.819], zoom: 6.2, pitch: 60, bearing: 120})")
+        # ── 4. journey owns the helm ───────────────────────────────────────
+        print("\nduring the cinematic journey:")
+        page.goto(f"{args.base}/?ch=1", wait_until="networkidle")
+        page.wait_for_timeout(2200)
+        page.get_by_role("button", name="Play cinematic journey").click()
         page.wait_for_timeout(3000)
-        page.get_by_text("level view").first.click()
-        page.wait_for_timeout(900)
-        s = st()
-        check(abs(s["pitch"]) < 2 and abs(((s["bearing"] + 180) % 360) - 180) < 2,
-              "level view returns pitch and bearing to 0")
-
-        print("\nzoomed OUT over open sea:")
-        page.evaluate("() => window.__map.jumpTo({center: [0, 6], zoom: 2.5, pitch: 0, bearing: 0})")
-        page.wait_for_timeout(3000)
-        c0 = st()
-        check(c0["dragPan"], "orbit released (dragPan is back ON)")
-        drag(0, 0, 360, 0)
-        c1 = st()
-        check(abs(c1["center"][0] - c0["center"][0]) > 1, "left-drag PANS the world again")
+        cx, cy = center_xy()
+        page.mouse.move(cx, cy)
+        page.mouse.down()
+        page.wait_for_timeout(340)
+        for i in range(1, 6):
+            page.mouse.move(cx + i * 40, cy)
+            page.wait_for_timeout(15)
+        locked = not st()["dragPan"]
+        page.mouse.up()
+        check(locked, "the hold gesture does nothing mid-journey (journey owns the helm)")
 
         browser.close()
 

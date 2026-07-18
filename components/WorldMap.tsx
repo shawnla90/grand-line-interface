@@ -1386,7 +1386,8 @@ export default function WorldMap({
       chase(); // begin tracking immediately, without waiting for the first frame
     } else {
       m.dragPan.enable();
-      if (m.getProjection()?.type === "globe") m.dragRotate.enable();
+      // dragRotate stays OFF — the globe never free-spins now; rotation is only
+      // the deliberate hold-to-lock-a-target gesture (see below).
       // A run stopped mid-dwell leaves the camera pitched; lay it back down.
       if (m.getPitch() > 0.5) m.easeTo({ pitch: 0, duration: 600 });
       // Restore the resting voyage style.
@@ -1437,9 +1438,11 @@ export default function WorldMap({
   // axis, the roster and the scrubber all die with the canvas. They shouldn't: the
   // panels are plain data and render fine on their own. So the map degrades alone.
   const [glFailed, setGlFailed] = useState(false);
-  // True while a left-drag orbits a dived-into model (grab-and-spin). Drives the
-  // "level view" control; the machinery lives in the map-init effect.
-  const [orbiting, setOrbiting] = useState(false);
+  // The island currently locked as the orbit pivot (non-null only while you hold
+  // to rotate), and whether the camera is tilted/turned at all. Both drive the
+  // OrbitControls chrome; the machinery lives in the map-init effect.
+  const [orbitTarget, setOrbitTarget] = useState<string | null>(null);
+  const [tilted, setTilted] = useState(false);
 
   const bySlug = useMemo(() => new Map(world.islands.map((i) => [i.slug, i])), [world.islands]);
   const features = useMemo(() => islandFeatures(world.islands), [world.islands]);
@@ -1846,7 +1849,11 @@ export default function WorldMap({
         attributionControl: false,
         // One world, not an infinite tiling strip. This is a chart of a planet.
         renderWorldCopies: false,
-        dragRotate: projection === "globe",
+        // OFF, always. The built-in dragRotate spun the globe on right/ctrl-drag,
+        // which felt like the world "turning circular" while just navigating.
+        // Rotation is now only the deliberate hold-to-lock-a-target gesture below,
+        // so a plain drag ALWAYS pans, freely, at any zoom on any projection.
+        dragRotate: false,
         // Arrow keys belong to the chapter scrub (Atlas), not the camera —
         // MapLibre's KeyboardHandler would otherwise pan/rotate whenever the
         // canvas has focus, fighting the chapter hotkeys.
@@ -1887,78 +1894,95 @@ export default function WorldMap({
       m.on("moveend", syncGlb);
       m.on("projectiontransition", syncGlb);
 
-      // ─── GRAB-AND-SPIN ─────────────────────────────────────────────────
-      // When you have dived into a 3D island, a left-drag ORBITS it instead of
-      // panning the world: dx -> bearing, dy -> pitch. Everywhere else, left-drag
-      // still pans. The whole point is that it engages ONLY on a model at close
-      // zoom, so the world map never stops being draggable.
+      // ─── HOLD TO ORBIT A LOCKED ISLAND ─────────────────────────────────
+      // A plain drag ALWAYS pans — navigate freely, any zoom, any projection, and
+      // the globe never spins on its own (dragRotate is off). To ROTATE, press and
+      // HOLD: after a short beat the nearest island locks as the pivot, the world
+      // centres on it, and dragging orbits AROUND it (left/right = spin, up/down =
+      // tilt). Release returns to free pan. A quick drag is never a rotate — the
+      // hold has to resolve first — which is exactly what "won't let me move"
+      // needed: nothing auto-disables the pan anymore.
       //
-      // Custom pointer handling, not MapLibre's dragRotate: that handler is bound
-      // to the right button / ctrl and cannot be remapped to plain left-drag, and
-      // setBearing/setPitch work on BOTH projections (dragRotate is globe-only) —
-      // which is the whole reason the flat mercator close-up could not spin before.
-      // A CUSTOM layer (createGlbLayer) does NOT appear in getStyle().layers —
-      // only getLayer() sees it. So presence is read from the maps syncModels
-      // already keeps, not from a style scan (which would only ever find the
-      // raster knockup3d and conclude, wrongly, that no model is present).
-      const modelPresent = () => modelLayers.size > 0 || !!knockUpLayer;
-      const orbit = { active: false, dragging: false, x: 0, y: 0, bearing: 0, pitch: 0 };
+      // Custom pointer handling because setBearing/setPitch work on BOTH
+      // projections, unlike the built-in dragRotate (globe-only), and because the
+      // pivot must be a chosen island, not the screen centre.
       const canvas = m.getCanvas();
+      const HOLD_MS = 260; // press this long, holding still, to lock and orbit
+      const MOVE_CANCEL = 6; // px of travel that turns a would-be hold into a pan
+      const orbit = { active: false, downX: 0, downY: 0, bearing: 0, pitch: 0, ptr: -1 };
+      let holdTimer: ReturnType<typeof setTimeout> | null = null;
 
-      const onDown = (e: PointerEvent) => {
-        if (e.button !== 0 || !orbit.active) return;
-        orbit.dragging = true;
-        orbit.x = e.clientX;
-        orbit.y = e.clientY;
+      const nearestRevealedIsland = (clientX: number, clientY: number): WorldIsland | null => {
+        const r = canvas.getBoundingClientRect();
+        const ll = m.unproject([clientX - r.left, clientY - r.top]);
+        let best: WorldIsland | null = null;
+        let bd = 30; // degrees — generous; a press near an island locks it
+        for (const isl of world.islands) {
+          if (isl.lng == null || isl.lat == null) continue;
+          if (isIslandFogged(isl, chapterRef.current)) continue; // never lock a fogged island
+          const d = Math.hypot(isl.lng - ll.lng, isl.lat - ll.lat);
+          if (d < bd) { bd = d; best = isl; }
+        }
+        return best;
+      };
+
+      const engage = (clientX: number, clientY: number, ptrId: number) => {
+        const target = nearestRevealedIsland(clientX, clientY);
+        if (!target) return; // nothing to lock onto — stay in free pan
+        orbit.active = true;
+        orbit.downX = clientX;
+        orbit.downY = clientY;
         orbit.bearing = m.getBearing();
         orbit.pitch = m.getPitch();
-        breakRef.current?.(); // taking the wheel yields the follow-chase, same as a pan
-        canvas.setPointerCapture(e.pointerId);
-      };
-      const onMove = (e: PointerEvent) => {
-        if (!orbit.dragging) return;
-        // 0.4°/px horizontal reads as a natural spin; 0.35°/px vertical, clamped
-        // to the raised maxPitch so you can lie the camera down beside the model
-        // without flipping under the sea.
-        m.setBearing(orbit.bearing - (e.clientX - orbit.x) * 0.4);
-        m.setPitch(Math.max(0, Math.min(75, orbit.pitch + (e.clientY - orbit.y) * 0.35)));
-      };
-      const onUp = (e: PointerEvent) => {
-        orbit.dragging = false;
-        if (canvas.hasPointerCapture(e.pointerId)) canvas.releasePointerCapture(e.pointerId);
+        orbit.ptr = ptrId;
+        m.dragPan.disable(); // now the drag orbits, not pans
+        breakRef.current?.(); // taking the wheel yields the follow-chase
+        m.jumpTo({ center: [target.lng, target.lat] }); // orbit pivots on the target
+        try { canvas.setPointerCapture(ptrId); } catch {}
+        canvas.style.cursor = "grabbing";
+        setOrbitTarget(target.name);
       };
 
-      const updateOrbit = () => {
-        // Stand down entirely while the cinematic journey flies the camera — it
-        // dives past GLB_MIN_ZOOM at every 3D stop, which would otherwise latch
-        // orbit on and fight the journey for dragPan. The journey owns the helm.
-        const should = !journeyRef.current && m.getZoom() >= GLB_MIN_ZOOM && modelPresent();
-        if (should && !orbit.active) {
-          orbit.active = true;
-          m.dragPan.disable(); // left-drag now orbits; the world stops panning
-          canvas.addEventListener("pointerdown", onDown);
-          canvas.addEventListener("pointermove", onMove);
-          canvas.addEventListener("pointerup", onUp);
-          canvas.style.cursor = "grab";
-          setOrbiting(true);
-        } else if (!should && orbit.active) {
-          orbit.active = false;
-          orbit.dragging = false;
-          m.dragPan.enable(); // back out over open sea — pan returns
-          canvas.removeEventListener("pointerdown", onDown);
-          canvas.removeEventListener("pointermove", onMove);
-          canvas.removeEventListener("pointerup", onUp);
-          canvas.style.cursor = "";
-          setOrbiting(false);
+      const disengage = () => {
+        if (holdTimer) { clearTimeout(holdTimer); holdTimer = null; }
+        if (!orbit.active) return;
+        orbit.active = false;
+        m.dragPan.enable(); // free pan returns
+        try { if (canvas.hasPointerCapture(orbit.ptr)) canvas.releasePointerCapture(orbit.ptr); } catch {}
+        canvas.style.cursor = "";
+        setOrbitTarget(null);
+      };
+
+      const onDown = (e: PointerEvent) => {
+        if (e.button !== 0 || journeyRef.current) return; // the journey owns the helm
+        orbit.downX = e.clientX;
+        orbit.downY = e.clientY;
+        if (holdTimer) clearTimeout(holdTimer);
+        holdTimer = setTimeout(() => { holdTimer = null; engage(e.clientX, e.clientY, e.pointerId); }, HOLD_MS);
+      };
+      const onMove = (e: PointerEvent) => {
+        if (orbit.active) {
+          m.setBearing(orbit.bearing - (e.clientX - orbit.downX) * 0.4);
+          m.setPitch(Math.max(0, Math.min(75, orbit.pitch + (e.clientY - orbit.downY) * 0.35)));
+          return;
+        }
+        // Moved before the hold resolved -> it's a pan; abandon the would-be lock.
+        if (holdTimer && Math.hypot(e.clientX - orbit.downX, e.clientY - orbit.downY) > MOVE_CANCEL) {
+          clearTimeout(holdTimer);
+          holdTimer = null;
         }
       };
-      m.on("zoom", updateOrbit);
-      m.on("moveend", updateOrbit);
-      // Models load async: a reader can finish diving BEFORE the layer exists, so
-      // the moveend that ended the dive saw no model and left orbit off. `idle`
-      // fires once the map settles after the layer is finally added, catching
-      // exactly that gap. Cheap — a layer scan and a compare.
-      m.on("idle", updateOrbit);
+      canvas.addEventListener("pointerdown", onDown);
+      canvas.addEventListener("pointermove", onMove);
+      canvas.addEventListener("pointerup", disengage);
+      canvas.addEventListener("pointercancel", disengage);
+
+      // Keep the "level view" affordance honest: it shows whenever the camera is
+      // tilted or turned, so you can straighten up after a hold-orbit.
+      const syncTilt = () => setTilted(m.getPitch() > 1 || Math.abs(m.getBearing()) > 1);
+      m.on("pitch", syncTilt);
+      m.on("rotate", syncTilt);
+      m.on("moveend", syncTilt);
     }
 
     // A drag or a user rotate is the reader taking the wheel — follow yields.
@@ -2268,9 +2292,9 @@ export default function WorldMap({
     m.setProjection({ type: projection });
 
     // A zoom that frames a sphere leaves a flat map cropped, and vice versa. The
-    // toggle has to reframe or half the world falls off the edge.
+    // toggle has to reframe or half the world falls off the edge. dragRotate stays
+    // OFF on both projections — rotation is the hold-to-lock gesture, not a spin.
     if (projection === "globe") {
-      m.dragRotate.enable();
       m.easeTo({ center: [-20, 6], zoom: 1.9, duration: 700 });
     } else {
       m.dragRotate.disable();
@@ -2386,7 +2410,8 @@ export default function WorldMap({
             <CompassRose size={72} />
           </div>
           <OrbitControls
-            orbiting={orbiting}
+            orbitTarget={orbitTarget}
+            tilted={tilted}
             onLevel={() => map.current?.easeTo({ pitch: 0, bearing: 0, duration: 500 })}
           />
         </>
