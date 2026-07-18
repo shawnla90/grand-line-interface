@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * components/dev/SimProof.tsx — the sandbox stage for the East Blue 2.5D proof.
+ * components/dev/SimProof.tsx — the sandbox stage for signed 2.5D story packs.
  *
  * A bare MapLibre map (blank style, no canon, no voyage, no WorldMap) that
  * calls the REAL host — syncSimulations, the same single entry point WorldMap
@@ -18,13 +18,23 @@ import { useEffect, useRef, useState } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { syncSimulations } from "@/components/sim-models";
+import type { StoryPackId } from "@/config/story-simulations";
 
 const BARATIE: [number, number] = [-165, -40];
+const WHISKY_PEAK: [number, number] = [-121.3706, 4.162];
+const NANOHANA: [number, number] = [-102.8707, 0.4813];
 
-export default function SimProof({ initialChapter }: { initialChapter: number }) {
+export default function SimProof({
+  initialChapter,
+  initialPack,
+}: {
+  initialChapter: number;
+  initialPack: StoryPackId;
+}) {
   const div = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const [chapter, setChapter] = useState(initialChapter);
+  const [pack, setPack] = useState<StoryPackId>(initialPack);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -36,7 +46,7 @@ export default function SimProof({ initialChapter }: { initialChapter: number })
         sources: {},
         layers: [{ id: "bg", type: "background", paint: { "background-color": "#0b1d33" } }],
       },
-      center: BARATIE,
+      center: initialPack === "arabasta-saga-2d-v1" ? WHISKY_PEAK : BARATIE,
       zoom: 5.2,
       // The 2.5D cards are VERTICAL billboards ("camera-facing around local
       // up, do not flatten onto the map" — the contract). A pitch-0 top-down
@@ -51,15 +61,16 @@ export default function SimProof({ initialChapter }: { initialChapter: number })
       map.remove();
       mapRef.current = null;
     };
-  }, []);
+  }, [initialPack]);
 
   useEffect(() => {
     if (!loaded || !mapRef.current) return;
-    void syncSimulations(mapRef.current, chapter, true);
-  }, [loaded, chapter]);
+    void syncSimulations(mapRef.current, chapter, true, pack);
+  }, [loaded, chapter, pack]);
 
-  const jump = (lngLat: [number, number], ch: number) => {
+  const jump = (lngLat: [number, number], ch: number, nextPack: StoryPackId = pack) => {
     mapRef.current?.jumpTo({ center: lngLat, zoom: 5.2, pitch: 58 });
+    setPack(nextPack);
     setChapter(ch);
   };
 
@@ -73,7 +84,7 @@ export default function SimProof({ initialChapter }: { initialChapter: number })
           font: "13px/1.5 var(--font-geist-sans, sans-serif)", maxWidth: 340,
         }}
       >
-        <strong>sim-proof</strong> · chapter{" "}
+        <strong>sim-proof</strong> · {pack} · chapter{" "}
         <input
           type="number"
           value={chapter}
@@ -84,11 +95,15 @@ export default function SimProof({ initialChapter }: { initialChapter: number })
           data-testid="chapter-input"
         />
         <div style={{ marginTop: 8, display: "flex", flexWrap: "wrap", gap: 6 }}>
-          <button onClick={() => jump(BARATIE, 49)} data-testid="go-49">Baratie ch49</button>
-          <button onClick={() => jump(BARATIE, 51)} data-testid="go-51">duel ch51</button>
-          <button onClick={() => jump([-121.15, -39.31], 93)} data-testid="go-93">Arlong ch93</button>
-          <button onClick={() => jump([-174, -20], 99)} data-testid="go-99">scaffold ch99</button>
-          <button onClick={() => jump([-177, -12], 100)} data-testid="go-100">vows ch100</button>
+          <button onClick={() => jump(BARATIE, 49, "east-blue-saga-2d")} data-testid="go-49">Baratie ch49</button>
+          <button onClick={() => jump(BARATIE, 51, "east-blue-saga-2d")} data-testid="go-51">duel ch51</button>
+          <button onClick={() => jump([-121.15, -39.31], 93, "east-blue-saga-2d")} data-testid="go-93">Arlong ch93</button>
+          <button onClick={() => jump([-174, -20], 99, "east-blue-saga-2d")} data-testid="go-99">scaffold ch99</button>
+          <button onClick={() => jump([-177, -12], 100, "east-blue-saga-2d")} data-testid="go-100">vows ch100</button>
+          <button onClick={() => jump(WHISKY_PEAK, 106, "arabasta-saga-2d-v1")} data-testid="go-106">Whisky ch106</button>
+          <button onClick={() => jump(WHISKY_PEAK, 107, "arabasta-saga-2d-v1")} data-testid="go-107">Zoro ch107</button>
+          <button onClick={() => jump(WHISKY_PEAK, 114, "arabasta-saga-2d-v1")} data-testid="go-114">Robin ch114</button>
+          <button onClick={() => jump(NANOHANA, 158, "arabasta-saga-2d-v1")} data-testid="go-158">Ace ch158</button>
         </div>
         <div style={{ marginTop: 6, opacity: 0.7 }}>
           the real syncSimulations host on a bare map — window.__simScenes has the clocks

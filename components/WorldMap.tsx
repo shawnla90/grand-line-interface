@@ -921,12 +921,14 @@ const GLB_FULL_ZOOM = 5.4;
  * proof it was right is that this block was about to be copied eleven times.
  */
 const RUNTIME_ASSETS_ON = process.env.NEXT_PUBLIC_RUNTIME_3D_ASSETS === "1";
-// The East Blue 2.5D story layer (sim-models owns every gate; the dynamic
-// import keeps zod + the artifact out of flag-off bundles). Its host
-// self-registers zoomend/moveend listeners on first call.
+// Signed 2.5D story packs (sim-models owns every gate; the dynamic import keeps
+// zod + artifacts out of flag-off bundles). The host self-registers its own
+// zoomend/moveend listeners on first call.
 const EAST_BLUE_2D_ON = process.env.NEXT_PUBLIC_EAST_BLUE_2D_SIMULATIONS === "1";
+const STORY_SIMULATION_PACKS = process.env.NEXT_PUBLIC_STORY_SIMULATION_PACKS ?? "";
+const STORY_SIMULATIONS_ON = EAST_BLUE_2D_ON || STORY_SIMULATION_PACKS.trim().length > 0;
 function syncSims(m: MLMap, ch: number) {
-  if (!EAST_BLUE_2D_ON) return;
+  if (!STORY_SIMULATIONS_ON) return;
   void import("@/components/sim-models").then((s) => s.syncSimulations(m, ch));
 }
 
@@ -1913,7 +1915,7 @@ export default function WorldMap({
     // The model's gate is half chapter and half ZOOM, and paint() only runs on
     // the chapter tween — so without this, diving toward an erupting stream would
     // never add the layer. Cheap: a getLayer check and an early return.
-    if (RUNTIME_3D_ON || RUNTIME_ASSETS_ON || EAST_BLUE_2D_ON) {
+    if (RUNTIME_3D_ON || RUNTIME_ASSETS_ON || STORY_SIMULATIONS_ON) {
       const syncGlb = () => {
         if (RUNTIME_3D_ON) syncKnockUpGlb(m!, chapterRef.current);
         // Fish-Man Island also gates on PROJECTION, and setProjection fires

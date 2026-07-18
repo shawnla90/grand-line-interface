@@ -1,0 +1,967 @@
+{
+  "_meta": {
+    "generator": "scripts/sync_story_simulation_pack.py",
+    "schema_version": 1,
+    "pack_id": "arabasta-saga-2d-v1",
+    "chapter_span": {
+      "start": 101,
+      "end": 217
+    },
+    "source_manifest_sha256": "775323cfe0724a5a5aad427ba4d28f9942298c3a75f9735701e10fe91ad17281",
+    "integration_ready": true,
+    "feature_flag": "NEXT_PUBLIC_STORY_SIMULATION_PACKS",
+    "note": "Only runtime-ready scenes with verified chapter gates ship; the new pack remains disabled unless explicitly allowlisted.",
+    "counts": {
+      "scenes": 3,
+      "refused": 0,
+      "assets": 5
+    }
+  },
+  "arcs": [
+    {
+      "id": "reverse-mountain",
+      "label": "Reverse Mountain",
+      "chapters": [
+        101,
+        105
+      ]
+    },
+    {
+      "id": "whisky-peak",
+      "label": "Whisky Peak",
+      "chapters": [
+        106,
+        114
+      ]
+    },
+    {
+      "id": "little-garden",
+      "label": "Little Garden",
+      "chapters": [
+        115,
+        129
+      ]
+    },
+    {
+      "id": "drum-island",
+      "label": "Drum Island",
+      "chapters": [
+        130,
+        154
+      ]
+    },
+    {
+      "id": "arabasta",
+      "label": "Arabasta",
+      "chapters": [
+        155,
+        217
+      ]
+    }
+  ],
+  "runtime_policy": {
+    "chapter_gate": "Never fetch a scene before a verified start chapter. research_hold scenes remain disabled.",
+    "playback": "Play once on entering close range, then hold the authored final frame.",
+    "backward_scrub": "Reset scene time, actors, pose selection, and effects deterministically.",
+    "max_active_close_scenes": 1,
+    "max_distant_loops": 3,
+    "reduced_motion": "Use the final safe pose and suppress autoplay and effects.",
+    "cross_pack_rule": "One animated scene globally; newest verified story state wins when anchors overlap."
+  },
+  "scenes": [
+    {
+      "id": "whisky-peak-zoro-vs-bounty-hunters",
+      "label": "Zoro exposes Whisky Peak's hundred-bounty-hunter trap",
+      "arc_id": "whisky-peak",
+      "type": "encounter",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 107,
+        "end": 108,
+        "verification": "verified",
+        "source_url": "https://onepiece.fandom.com/wiki/Whisky_Peak_Arc"
+      },
+      "place": {
+        "id": "whisky-peak",
+        "landmark": "night-town-rooftops-and-streets",
+        "arena": "whisky-peak-night-town"
+      },
+      "duration_ms": 9000,
+      "actors": [
+        {
+          "id": "crowd-left",
+          "asset_id": "baroque-works-whisky-peak-crowd",
+          "z": 12,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.64,
+              "y": 0,
+              "scale": 0.7,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "disguised-watch"
+            },
+            {
+              "t": 1500,
+              "x": -0.52,
+              "y": 0,
+              "scale": 0.76,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "weapons-drawn"
+            },
+            {
+              "t": 3300,
+              "x": -0.22,
+              "y": 0.02,
+              "scale": 0.78,
+              "rotation": -3,
+              "opacity": 1,
+              "pose": "crowd-charge",
+              "ease": "accelerate"
+            },
+            {
+              "t": 5000,
+              "x": -0.44,
+              "y": 0.1,
+              "scale": 0.72,
+              "rotation": -10,
+              "opacity": 1,
+              "pose": "shockwave-recoil"
+            },
+            {
+              "t": 6900,
+              "x": -0.64,
+              "y": 0,
+              "scale": 0.68,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "defeated-left"
+            }
+          ]
+        },
+        {
+          "id": "crowd-right",
+          "asset_id": "baroque-works-whisky-peak-crowd",
+          "z": 13,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.7,
+              "y": 0,
+              "scale": 0.68,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "disguised-watch"
+            },
+            {
+              "t": 1900,
+              "x": 0.56,
+              "y": 0,
+              "scale": 0.74,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "weapons-drawn"
+            },
+            {
+              "t": 3900,
+              "x": 0.2,
+              "y": 0.02,
+              "scale": 0.78,
+              "rotation": 3,
+              "opacity": 1,
+              "pose": "crowd-charge",
+              "ease": "accelerate"
+            },
+            {
+              "t": 5650,
+              "x": 0.42,
+              "y": 0.12,
+              "scale": 0.72,
+              "rotation": 12,
+              "opacity": 1,
+              "pose": "shockwave-recoil"
+            },
+            {
+              "t": 7200,
+              "x": 0.66,
+              "y": 0,
+              "scale": 0.67,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "defeated-right"
+            }
+          ]
+        },
+        {
+          "id": "zoro",
+          "asset_id": "roronoa-zoro-whisky-peak",
+          "z": 24,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0,
+              "y": 0.18,
+              "scale": 0.8,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "rooftop-idle"
+            },
+            {
+              "t": 1700,
+              "x": 0,
+              "y": 0.05,
+              "scale": 0.88,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "sword-guard",
+              "ease": "smooth"
+            },
+            {
+              "t": 3200,
+              "x": -0.1,
+              "y": 0.03,
+              "scale": 0.9,
+              "rotation": -4,
+              "opacity": 1,
+              "pose": "vanish-dash",
+              "ease": "accelerate"
+            },
+            {
+              "t": 4700,
+              "x": 0.02,
+              "y": 0.02,
+              "scale": 0.98,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "three-sword-swarm-slash"
+            },
+            {
+              "t": 6100,
+              "x": 0.12,
+              "y": 0.01,
+              "scale": 0.92,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "recoil"
+            },
+            {
+              "t": 7500,
+              "x": 0,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "calm-victory"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 0,
+          "type": "crowd",
+          "duration_ms": 3200,
+          "intensity": 0.55
+        },
+        {
+          "t": 3100,
+          "type": "speed-lines",
+          "duration_ms": 1350,
+          "intensity": 0.9
+        },
+        {
+          "t": 4550,
+          "type": "slash",
+          "duration_ms": 900,
+          "intensity": 1.0
+        },
+        {
+          "t": 5000,
+          "type": "impact",
+          "duration_ms": 750,
+          "intensity": 0.9
+        },
+        {
+          "t": 5450,
+          "type": "slash",
+          "duration_ms": 800,
+          "intensity": 0.8
+        },
+        {
+          "t": 6800,
+          "type": "dust",
+          "duration_ms": 1400,
+          "intensity": 0.7
+        }
+      ],
+      "anchor": {
+        "kind": "island",
+        "ref": "whisky-peak",
+        "lng": -121.3706,
+        "lat": 4.162,
+        "note": "Local night-town theatre anchored to the existing Whisky Peak point."
+      }
+    },
+    {
+      "id": "robin-miss-all-sunday-arrival",
+      "label": "Miss All Sunday reveals her power and offers another course",
+      "arc_id": "whisky-peak",
+      "type": "tableau",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 114,
+        "end": 114,
+        "verification": "verified",
+        "source_url": "https://onepiece.fandom.com/wiki/Chapter_114"
+      },
+      "place": {
+        "id": "going-merry",
+        "landmark": "deck-off-whisky-peak",
+        "arena": "going-merry-deck"
+      },
+      "duration_ms": 7600,
+      "actors": [
+        {
+          "id": "robin",
+          "asset_id": "nico-robin-miss-all-sunday",
+          "z": 22,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.38,
+              "y": 0.02,
+              "scale": 0.86,
+              "rotation": 0,
+              "opacity": 0,
+              "pose": "mysterious-idle"
+            },
+            {
+              "t": 900,
+              "x": 0.28,
+              "y": 0.02,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "mysterious-idle",
+              "ease": "smooth"
+            },
+            {
+              "t": 2200,
+              "x": 0.16,
+              "y": 0.02,
+              "scale": 0.92,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "composed-crossed-arms"
+            },
+            {
+              "t": 3300,
+              "x": 0.1,
+              "y": 0.03,
+              "scale": 0.98,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "hana-hana-disarm"
+            },
+            {
+              "t": 4400,
+              "x": 0.1,
+              "y": 0.02,
+              "scale": 0.92,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "straw-hat-lift"
+            },
+            {
+              "t": 5450,
+              "x": 0.04,
+              "y": 0.02,
+              "scale": 0.94,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "eternal-pose-offer"
+            },
+            {
+              "t": 6700,
+              "x": 0.62,
+              "y": 0.08,
+              "scale": 0.87,
+              "rotation": 1,
+              "opacity": 0.8,
+              "pose": "calm-departure",
+              "ease": "smooth"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 700,
+          "type": "smoke",
+          "duration_ms": 1200,
+          "intensity": 0.45
+        },
+        {
+          "t": 3200,
+          "type": "hana-hana-bloom",
+          "duration_ms": 1100,
+          "intensity": 0.9
+        },
+        {
+          "t": 5400,
+          "type": "route-pulse",
+          "duration_ms": 1200,
+          "intensity": 0.7
+        },
+        {
+          "t": 6500,
+          "type": "wind",
+          "duration_ms": 1200,
+          "intensity": 0.55
+        }
+      ],
+      "anchor": {
+        "kind": "island",
+        "ref": "whisky-peak",
+        "lng": -121.3706,
+        "lat": 4.162,
+        "note": "The Going Merry deck just after departing Whisky Peak; the atlas point is only a local theatre anchor."
+      }
+    },
+    {
+      "id": "ace-blocks-smoker-at-nanohana",
+      "label": "Ace intervenes as Smoker closes on Luffy in Nanohana",
+      "arc_id": "arabasta",
+      "type": "encounter",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 158,
+        "end": 158,
+        "verification": "verified",
+        "source_url": "https://www.viz.com/shonenjump/one-piece-chapter-158/chapter/11279"
+      },
+      "place": {
+        "id": "nanohana",
+        "landmark": "restaurant-street-pursuit",
+        "arena": "nanohana-port-street"
+      },
+      "duration_ms": 8200,
+      "actors": [
+        {
+          "id": "smoker",
+          "asset_id": "smoker-arabasta",
+          "z": 19,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.62,
+              "y": 0,
+              "scale": 0.88,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "cigar-idle"
+            },
+            {
+              "t": 1200,
+              "x": 0.48,
+              "y": 0,
+              "scale": 0.92,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "jitte-guard"
+            },
+            {
+              "t": 2600,
+              "x": 0.18,
+              "y": 0.05,
+              "scale": 0.95,
+              "rotation": -5,
+              "opacity": 1,
+              "pose": "smoke-lunge",
+              "ease": "accelerate"
+            },
+            {
+              "t": 3800,
+              "x": 0.04,
+              "y": 0.02,
+              "scale": 0.96,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "capture-reach"
+            },
+            {
+              "t": 4900,
+              "x": 0.24,
+              "y": 0.03,
+              "scale": 0.96,
+              "rotation": 4,
+              "opacity": 1,
+              "pose": "smoke-meets-fire"
+            },
+            {
+              "t": 6500,
+              "x": 0.5,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "frustrated-hold"
+            }
+          ]
+        },
+        {
+          "id": "ace",
+          "asset_id": "portgas-d-ace-arabasta",
+          "z": 23,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.72,
+              "y": 0,
+              "scale": 0.84,
+              "rotation": 0,
+              "opacity": 0,
+              "pose": "relaxed-idle"
+            },
+            {
+              "t": 3100,
+              "x": -0.5,
+              "y": 0.02,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 0,
+              "pose": "focused-fire-ready"
+            },
+            {
+              "t": 3900,
+              "x": -0.12,
+              "y": 0.03,
+              "scale": 0.96,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "protective-intercept",
+              "ease": "accelerate"
+            },
+            {
+              "t": 4850,
+              "x": -0.04,
+              "y": 0.02,
+              "scale": 1.0,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "low-fire-wall"
+            },
+            {
+              "t": 5850,
+              "x": -0.18,
+              "y": 0.02,
+              "scale": 0.98,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "wide-flame-burst"
+            },
+            {
+              "t": 7100,
+              "x": -0.48,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "confident-departure"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 2450,
+          "type": "smoke",
+          "duration_ms": 2200,
+          "intensity": 0.9
+        },
+        {
+          "t": 3850,
+          "type": "speed-lines",
+          "duration_ms": 850,
+          "intensity": 0.7
+        },
+        {
+          "t": 4750,
+          "type": "fire-wall",
+          "duration_ms": 1500,
+          "intensity": 1.0
+        },
+        {
+          "t": 5000,
+          "type": "smoke-fire-clash",
+          "duration_ms": 900,
+          "intensity": 1.0
+        },
+        {
+          "t": 5900,
+          "type": "fire-burst",
+          "duration_ms": 1200,
+          "intensity": 0.9
+        }
+      ],
+      "anchor": {
+        "kind": "island",
+        "ref": "nanohana",
+        "lng": -102.8707,
+        "lat": 0.4813,
+        "note": "Nanohana restaurant-street pursuit anchored to the existing port-city point."
+      }
+    }
+  ],
+  "refused": [],
+  "assets": {
+    "roronoa-zoro-whisky-peak": {
+      "url": "/art/story-simulations/arabasta-saga-2d-v1/roronoa-zoro-whisky-peak/atlas.png",
+      "sha256": "94e1dff60c3547b8f2f510971ef0283768f9c75701a30cab8fecbd10cbb21e6e",
+      "kind": "character",
+      "variant": "whisky-peak-chapters-107-108",
+      "map_height": 1.03,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "rooftop-idle": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "sword-guard": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "vanish-dash": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "three-sword-swarm-slash": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "recoil": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "calm-victory": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "calm-victory"
+      }
+    },
+    "nico-robin-miss-all-sunday": {
+      "url": "/art/story-simulations/arabasta-saga-2d-v1/nico-robin-miss-all-sunday/atlas.png",
+      "sha256": "945f35c4333a8558d723c4b6e51e43130bcf166f5081bb417346fa0c2a30dc6e",
+      "kind": "character",
+      "variant": "whisky-peak-first-appearance-chapter-114",
+      "map_height": 1.08,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "mysterious-idle": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "composed-crossed-arms": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "hana-hana-disarm": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "straw-hat-lift": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "eternal-pose-offer": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "calm-departure": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "calm-departure"
+      }
+    },
+    "baroque-works-whisky-peak-crowd": {
+      "url": "/art/story-simulations/arabasta-saga-2d-v1/baroque-works-whisky-peak-crowd/atlas.png",
+      "sha256": "f6cc311553c64045eca4b7298ae4123a298332e54c28425b3d462a6f19bef9d9",
+      "kind": "tableau",
+      "variant": "anonymous-baroque-works-crowd",
+      "map_height": 1.28,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "disguised-watch": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "weapons-drawn": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "crowd-charge": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "shockwave-recoil": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "defeated-left": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "defeated-right": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "defeated-right"
+      }
+    },
+    "portgas-d-ace-arabasta": {
+      "url": "/art/story-simulations/arabasta-saga-2d-v1/portgas-d-ace-arabasta/atlas.png",
+      "sha256": "c00f39882a6ea82add70a721448c85d86639ad10985b352d34def5b3e2461b84",
+      "kind": "character",
+      "variant": "nanohana-introduction",
+      "map_height": 1.06,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "relaxed-idle": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "focused-fire-ready": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "protective-intercept": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "low-fire-wall": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "wide-flame-burst": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "confident-departure": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "confident-departure"
+      }
+    },
+    "smoker-arabasta": {
+      "url": "/art/story-simulations/arabasta-saga-2d-v1/smoker-arabasta/atlas.png",
+      "sha256": "16a0096e95522192a869185097003c2246aa812ed6ebbc2e2c3b6f07945bbc31",
+      "kind": "character",
+      "variant": "nanohana-pursuit",
+      "map_height": 1.16,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "cigar-idle": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "jitte-guard": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "smoke-lunge": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "capture-reach": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "smoke-meets-fire": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "frustrated-hold": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "frustrated-hold"
+      }
+    }
+  },
+  "supersedes_visible_art": []
+}

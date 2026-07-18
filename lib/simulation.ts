@@ -1,6 +1,6 @@
 /**
- * lib/simulation.ts — the deterministic evaluator for the East Blue 2.5D pack,
- * and the only sanctioned way to read data/generated/east_blue_simulations.json.
+ * lib/simulation.ts — the deterministic evaluator for signed 2.5D story packs,
+ * and the only sanctioned way to read data/generated story simulations.
  *
  * Pure module: no React, no three.js, no map, no chapter logic. It takes a
  * scene and a local time in milliseconds and answers "where is every actor,
@@ -98,7 +98,10 @@ export const SimFrame = z.object({
 });
 
 export const SimAsset = z.object({
-  url: z.string().startsWith("/art/east-blue-2d/"),
+  url: z.string().refine(
+    (url) => url.startsWith("/art/east-blue-2d/") || url.startsWith("/art/story-simulations/"),
+    "simulation atlases must live under a signed public art prefix",
+  ),
   sha256: z.string().length(64),
   kind: z.enum(["character", "tableau"]),
   variant: z.string(),
@@ -108,7 +111,7 @@ export const SimAsset = z.object({
   runtime_rules: z.record(z.string(), z.unknown()),
 });
 
-export const EastBlueSimulations = z.object({
+export const StorySimulationPack = z.object({
   _meta: z.object({
     generator: z.string(),
     schema_version: z.literal(1),
@@ -135,6 +138,9 @@ export const EastBlueSimulations = z.object({
   supersedes_visible_art: z.array(z.string()),
 });
 
+/** Backward-compatible value alias for existing East Blue imports. */
+export const EastBlueSimulations = StorySimulationPack;
+
 export type SimEase = z.infer<typeof SimEase>;
 export type SimAnchor = z.infer<typeof SimAnchor>;
 export type SimKeyframe = z.infer<typeof SimKeyframe>;
@@ -143,12 +149,13 @@ export type SimFxEvent = z.infer<typeof SimFxEvent>;
 export type SimScene = z.infer<typeof SimScene>;
 export type SimFrame = z.infer<typeof SimFrame>;
 export type SimAsset = z.infer<typeof SimAsset>;
-export type EastBlueSimulations = z.infer<typeof EastBlueSimulations>;
+export type StorySimulationPack = z.infer<typeof StorySimulationPack>;
+export type EastBlueSimulations = StorySimulationPack;
 
 /** Parse-or-throw, the lib/schema.ts posture. Callers dynamic-import the JSON
  * and hand it here; the throw happens before anything reaches a GPU. */
-export function loadSimulations(raw: unknown): EastBlueSimulations {
-  return EastBlueSimulations.parse(raw);
+export function loadSimulations(raw: unknown): StorySimulationPack {
+  return StorySimulationPack.parse(raw);
 }
 
 /* ── easing ──────────────────────────────────────────────────────────────────

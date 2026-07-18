@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "pack_id": "arabasta-saga-2d-v1",
+  "anchors": {
+    "whisky-peak-zoro-vs-bounty-hunters": {
+      "island": "whisky-peak",
+      "note": "Local night-town theatre anchored to the existing Whisky Peak point."
+    },
+    "robin-miss-all-sunday-arrival": {
+      "island": "whisky-peak",
+      "note": "The Going Merry deck just after departing Whisky Peak; the atlas point is only a local theatre anchor."
+    },
+    "ace-blocks-smoker-at-nanohana": {
+      "island": "nanohana",
+      "note": "Nanohana restaurant-street pursuit anchored to the existing port-city point."
+    }
+  }
+}

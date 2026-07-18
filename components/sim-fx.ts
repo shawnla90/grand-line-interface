@@ -68,6 +68,10 @@ const FX_TABLE: Record<string, FxSpec> = {
   "speed-lines": { kind: "streaks", color: 0xe8f1ff, size: 1.5 },
   "wave": { kind: "pulse", color: 0x6fb3d8, size: 2.0 },
   "lightning": { kind: "flash", color: 0xfffbe6 },
+  "hana-hana-bloom": { kind: "particles", color: 0xc58aff, motion: "rise", size: 1.25 },
+  "fire-wall": { kind: "arc", color: 0xff7a2f, tilt: 0, size: 2.0 },
+  "smoke-fire-clash": { kind: "pulse", color: 0xffa45d, size: 1.8 },
+  "fire-burst": { kind: "burst", color: 0xff6a24, size: 1.5 },
 };
 
 /** Deterministic scatter. Same seed → same field, which is the whole point. */

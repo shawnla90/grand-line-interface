@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import SimProof from "@/components/dev/SimProof";
+import { storyPackFromAlias } from "@/config/story-simulations";
 
 /**
  * /dev/sim-proof — the East Blue 2.5D proof stage. DEV ONLY: this route 404s
@@ -11,10 +12,11 @@ export default async function SimProofPage({
   searchParams,
 }: {
   // Next 16: searchParams is a Promise (see node_modules/next/dist/docs/).
-  searchParams: Promise<{ ch?: string }>;
+  searchParams: Promise<{ ch?: string; pack?: string }>;
 }) {
   if (process.env.NODE_ENV === "production") notFound();
   const params = await searchParams;
   const ch = Math.max(1, Number.parseInt(params.ch ?? "51", 10) || 51);
-  return <SimProof initialChapter={ch} />;
+  const pack = storyPackFromAlias(params.pack) ?? "east-blue-saga-2d";
+  return <SimProof initialChapter={ch} initialPack={pack} />;
 }

@@ -1,5 +1,5 @@
 /**
- * components/sim-models.ts — the registry + host for East Blue 2.5D scenes.
+ * components/sim-models.ts — the shared registry + host for 2.5D story packs.
  *
  * The runtime-models.ts posture applied to simulations: one pure table built
  * from the sync artifact, one host that owns every gate, and a renderer
@@ -43,10 +43,11 @@
 import maplibregl, { type Map as MlMap, type Marker } from "maplibre-gl";
 import {
   loadSimulations, sceneEligible, sceneInActiveWindow,
-  type EastBlueSimulations, type SimScene,
+  type StorySimulationPack, type SimScene,
 } from "@/lib/simulation";
 import { createSimLayer, type SimLayer } from "@/components/sim-layer";
-import { EAST_BLUE_2D_ON, SIM_FADE_IN_MS, SIM_MIN_ZOOM, STAGE_SPAN_M } from "@/config/east-blue-simulations";
+import { SIM_FADE_IN_MS, SIM_MIN_ZOOM, STAGE_SPAN_M } from "@/config/east-blue-simulations";
+import { selectStoryPack, type StoryPackId } from "@/config/story-simulations";
 
 type SceneClock = {
   /** performance.now() at t=0, shifted forward across hidden-tab pauses. */
@@ -58,7 +59,8 @@ type SceneClock = {
 
 type HostState = {
   map: MlMap;
-  sims: EastBlueSimulations;
+  packId: StoryPackId;
+  sims: StorySimulationPack;
   layers: Map<string, SimLayer>;
   clocks: Map<string, SceneClock>;
   /** Wide-zoom story beacons — "a story just happened here, click to see it". */
@@ -77,7 +79,7 @@ let host: HostState | null = null;
 
 /** The pure part: which scenes should be MOUNTED at (chapter, zoom, bounds). */
 export function visibleScenes(
-  sims: EastBlueSimulations,
+  sims: StorySimulationPack,
   chapter: number,
   zoom: number,
   inView: (lng: number, lat: number) => boolean,
@@ -150,7 +152,7 @@ function makeBeaconElement(label: string): HTMLDivElement {
 
 /** Scenes worth a wide-map nudge at this chapter: recently played (window →
  * afterglow), regardless of zoom — the beacon only SHOWS when zoomed out. */
-function beaconScenes(sims: EastBlueSimulations, chapter: number): SimScene[] {
+function beaconScenes(sims: StorySimulationPack, chapter: number): SimScene[] {
   return sims.scenes.filter(
     (s) => chapter >= s.chapter_gate.start && chapter <= s.chapter_gate.end + BEACON_AFTERGLOW_CH,
   );
@@ -266,36 +268,80 @@ function onVisibility(): void {
  * which must exercise this real host on a sandbox map while the production
  * flag stays off. Nothing reader-facing may pass it — the flag is the law.
  */
-export async function syncSimulations(map: MlMap, chapter: number, force = false): Promise<void> {
-  if (!EAST_BLUE_2D_ON && !force) return;
-  if (!host || host.map !== map) {
-    // The artifact enters the bundle HERE, behind the flag and the dynamic
-    // import of this module — flag off ships zero of these bytes.
-    const raw = (await import("@/data/generated/east_blue_simulations.json")).default;
-    const sims = loadSimulations(raw);
-    host = {
-      map,
-      sims,
-      layers: new Map(),
-      clocks: new Map(),
-      beacons: new Map(),
-      chapter,
-      reducedMotion:
-        typeof window !== "undefined" &&
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-      listenersOn: false,
-    };
+async function loadStoryPack(packId: StoryPackId): Promise<StorySimulationPack> {
+  // Keep imports explicit so Next emits one optional chunk per signed pack.
+  switch (packId) {
+    case "east-blue-saga-2d":
+      return loadSimulations((await import("@/data/generated/east_blue_simulations.json")).default);
+    case "arabasta-saga-2d-v1":
+      return loadSimulations((await import("@/data/generated/story_simulations/arabasta-saga-2d-v1.json")).default);
+  }
+}
+
+function clearRenderedState(state: HostState): void {
+  for (const [sceneId] of state.layers) {
+    const layerId = `sim-${sceneId}`;
+    if (state.map.getLayer(layerId)) state.map.removeLayer(layerId);
+  }
+  state.layers.clear();
+  state.clocks.clear();
+  for (const [, beacon] of state.beacons) beacon.marker.remove();
+  state.beacons.clear();
+}
+
+let loadSerial = 0;
+
+export async function syncSimulations(
+  map: MlMap,
+  chapter: number,
+  force = false,
+  requestedPack?: StoryPackId,
+): Promise<void> {
+  const packId = selectStoryPack(
+    chapter,
+    force ? (requestedPack ?? "east-blue-saga-2d") : undefined,
+  );
+  if (!packId) return;
+
+  if (!host || host.map !== map || host.packId !== packId) {
+    const serial = ++loadSerial;
+    const sims = await loadStoryPack(packId);
+    if (serial !== loadSerial) return;
+
+    if (host?.map === map) {
+      clearRenderedState(host);
+      host.packId = packId;
+      host.sims = sims;
+      host.chapter = chapter;
+    } else {
+      host = {
+        map,
+        packId,
+        sims,
+        layers: new Map(),
+        clocks: new Map(),
+        beacons: new Map(),
+        chapter,
+        reducedMotion:
+          typeof window !== "undefined" &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+        listenersOn: false,
+      };
+    }
   }
   host.chapter = chapter;
   if (!host.listenersOn) {
     host.listenersOn = true;
-    const resync = () => host && applySync(host);
+    const ownedMap = host.map;
+    const resync = () => {
+      if (host?.map === ownedMap) applySync(host);
+    };
     host.map.on("zoomend", resync);
     host.map.on("moveend", resync);
     document.addEventListener("visibilitychange", onVisibility);
     host.map.on("remove", () => {
       document.removeEventListener("visibilitychange", onVisibility);
-      host = null;
+      if (host?.map === ownedMap) host = null;
     });
   }
   applySync(host);
