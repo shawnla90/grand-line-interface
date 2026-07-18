@@ -23,6 +23,18 @@ export type JourneyRecorder = {
   stop: () => Promise<void>;
 };
 
+/**
+ * The one DOM marker that DOES reach the export: the ship. WorldMap's paint
+ * writes the ship's screen position + current vessel art here every frame
+ * (two field writes; module-level so no prop plumbing), and the compositor
+ * draws it into the video. A route with no boat on it read as "the line
+ * doesn't follow the journey" — the boat is the protagonist of the shot.
+ */
+export const recorderBridge: {
+  shipScreen: { x: number; y: number } | null;
+  shipArt: string | null;
+} = { shipScreen: null, shipArt: null };
+
 export type RecorderOptions = {
   /** The map's WebGL canvas (`.maplibregl-canvas`). */
   canvas: HTMLCanvasElement;
@@ -53,12 +65,46 @@ export function startJourneyRecorder(opts: RecorderOptions): JourneyRecorder | n
 
   let raf: number | null = null;
   const dpr = Math.max(1, comp.width / Math.max(1, src.clientWidth));
+  // The vessel art, loaded once per source URL; a gold hull-dot stands in
+  // until it decodes (and for the early boats that have no render).
+  const shipImgs = new Map<string, HTMLImageElement>();
+  const shipImage = (srcUrl: string | null): HTMLImageElement | null => {
+    if (!srcUrl) return null;
+    let img = shipImgs.get(srcUrl);
+    if (!img) {
+      img = new Image();
+      img.src = srcUrl;
+      shipImgs.set(srcUrl, img);
+    }
+    return img.complete && img.naturalWidth > 0 ? img : null;
+  };
   const draw = () => {
     // The source canvas can resize mid-run (dock collapse, rotation); the
     // compositor keeps its founding size and letterboxes the difference.
     ctx.fillStyle = "#0b1d33";
     ctx.fillRect(0, 0, comp.width, comp.height);
     ctx.drawImage(src, 0, 0, comp.width, comp.height);
+
+    // The boat, drawn INTO the frame at its projected position.
+    const ship = recorderBridge.shipScreen;
+    if (ship) {
+      const sx = ship.x * dpr;
+      const sy = ship.y * dpr;
+      const img = shipImage(recorderBridge.shipArt);
+      if (img) {
+        const w = 52 * dpr;
+        const h = (img.naturalHeight / img.naturalWidth) * w;
+        ctx.drawImage(img, sx - w / 2, sy - h + 4 * dpr, w, h);
+      } else {
+        ctx.beginPath();
+        ctx.arc(sx, sy, 5 * dpr, 0, Math.PI * 2);
+        ctx.fillStyle = "#f5c76a";
+        ctx.fill();
+        ctx.lineWidth = 1.5 * dpr;
+        ctx.strokeStyle = "#2a1d12";
+        ctx.stroke();
+      }
+    }
 
     const { label, fact } = opts.getCaption();
     if (label) {

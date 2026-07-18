@@ -50,6 +50,7 @@ import { OrbitControls } from "./OrbitControls";
 import { buildModels, type RuntimeAsset, type RuntimeModel } from "./runtime-models";
 import { altitudeT, columnOpacity, expandSkyWaypoints, SKY_BASE, SKY_BODY, transitBase } from "./skypiea";
 import { makeWanoElement, WANO_ANCHOR, wanoOpacity } from "./wano";
+import { recorderBridge } from "./recorder";
 import {
   depthT, expandDiveWaypoints, shimmerOpacity, transitBase as diveBase,
 } from "./fishman";
@@ -2631,6 +2632,10 @@ function paint(
       // The Going Merry and Thousand Sunny have real renders; the barrel and the
       // nameless first boat do not, and keep their original SVG.
       const shipArt = art?.ships[vessel.slug];
+      // The recorder's boat: DOM markers don't reach a canvas capture, so the
+      // ship's screen position + art ride this bridge into the export.
+      recorderBridge.shipScreen = m.project(pos as [number, number]);
+      recorderBridge.shipArt = shipArt ?? null;
       ship.glyph.innerHTML = shipArt ? artImg(shipArt, 52) : vesselGlyph(vessel.slug);
       ship.label.textContent = vessel.name;
       ship.marker.getElement().style.display = "";
@@ -2685,6 +2690,7 @@ function paint(
     } else {
       ship.marker.getElement().style.display = "none";
       ship.shadowEl.style.display = "none";
+      recorderBridge.shipScreen = null;
     }
   }
 
