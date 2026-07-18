@@ -18,6 +18,7 @@ import { useEffect, useRef, useState } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { syncSimulations } from "@/components/sim-models";
+import { AudioDirector } from "@/lib/audio-director";
 import type { StoryPackId } from "@/config/story-simulations";
 
 const BARATIE: [number, number] = [-165, -40];
@@ -36,6 +37,10 @@ export default function SimProof({
   const [chapter, setChapter] = useState(initialChapter);
   const [pack, setPack] = useState<StoryPackId>(initialPack);
   const [loaded, setLoaded] = useState(false);
+  // The harness's audio-unlock gesture: the same director the app uses, so
+  // the browser audit exercises real gesture-gated playback (window.__simAudio
+  // reports fired cues, voices, and unlock state).
+  const [sound, setSound] = useState(false);
 
   useEffect(() => {
     if (!div.current || mapRef.current) return;
@@ -107,6 +112,23 @@ export default function SimProof({
           <button onClick={() => jump(WHISKY_PEAK, 114, "arabasta-saga-2d-v1")} data-testid="go-114">Robin ch114</button>
           <button onClick={() => jump(NANOHANA, 158, "arabasta-saga-2d-v1")} data-testid="go-158">Ace ch158</button>
           <button onClick={() => jump(NANOHANA, 159, "arabasta-saga-2d-v1")} data-testid="go-159">Fire Fist ch159</button>
+          <button
+            onClick={() => {
+              const director = AudioDirector.get();
+              const next = !sound;
+              if (next) {
+                director.unlock();
+                director.setMuted(false);
+              } else {
+                director.setMuted(true);
+              }
+              setSound(next);
+            }}
+            data-testid="sound-unlock"
+            aria-pressed={sound}
+          >
+            {sound ? "🔊 sound on" : "🔈 sound"}
+          </button>
         </div>
         <div style={{ marginTop: 6, opacity: 0.7 }}>
           the real syncSimulations host on a bare map — window.__simScenes has the clocks

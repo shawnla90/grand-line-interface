@@ -1,0 +1,11 @@
+{
+  "provider": "placeholder-owned",
+  "generated_at": "2026-07-18",
+  "build_script": "scripts/build_placeholder_cues.sh",
+  "method": "ffmpeg-synthesized (broadband whoosh + low rumble)",
+  "sources": [],
+  "license": "cc0-and-original-synthesis",
+  "rights_note": "Kenney layers are CC0; synthesis is original output of the checked-in build script. Fully cleared for commercial use, attribution not required. Planned upgrade: regenerate this id via ElevenLabs (briefs/ace-fire-fist-ch159.json) once account billing clears.",
+  "master": "assets/audio/simulations/masters/fire-fist-whoosh-01.wav",
+  "master_sha256": "cfe8c0d478e0e3c23cc3328affe6448e4837f16c66648eaf48588cc5f15878a2"
+}

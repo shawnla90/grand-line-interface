@@ -5,7 +5,7 @@
     "counts": {
       "scenes": 16,
       "journey_enabled": 14,
-      "audio_bindings": 0
+      "audio_bindings": 6
     }
   },
   "scenes": [
@@ -311,7 +311,56 @@
         "zoom": 5.8,
         "pitch": 55
       },
-      "audio": []
+      "audio": [
+        {
+          "id": "ace-charge",
+          "cue_id": "fire-charge-01",
+          "at_ms": 1300,
+          "gain": 0.68,
+          "pan": -0.18,
+          "playback_rate": 1
+        },
+        {
+          "id": "fist-whoosh",
+          "cue_id": "fire-fist-whoosh-01",
+          "at_ms": 3000,
+          "gain": 0.85,
+          "pan": -0.1,
+          "playback_rate": 1
+        },
+        {
+          "id": "fleet-hit",
+          "cue_id": "heavy-fleet-impact-01",
+          "at_ms": 3410,
+          "gain": 0.9,
+          "pan": 0.2,
+          "playback_rate": 1
+        },
+        {
+          "id": "fire-bloom",
+          "cue_id": "fire-crackle-01",
+          "at_ms": 4250,
+          "gain": 0.75,
+          "pan": 0.15,
+          "playback_rate": 1
+        },
+        {
+          "id": "timber-break",
+          "cue_id": "timber-collapse-01",
+          "at_ms": 5650,
+          "gain": 0.85,
+          "pan": 0.25,
+          "playback_rate": 1
+        },
+        {
+          "id": "smoke-splash",
+          "cue_id": "debris-splash-01",
+          "at_ms": 6870,
+          "gain": 0.6,
+          "pan": 0.1,
+          "playback_rate": 1
+        }
+      ]
     }
   ]
 }

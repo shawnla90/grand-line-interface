@@ -1,0 +1,11 @@
+{
+  "provider": "placeholder-owned",
+  "generated_at": "2026-07-18",
+  "build_script": "scripts/build_placeholder_cues.sh",
+  "method": "ffmpeg-synthesized (pink noise swell + sine riser)",
+  "sources": [],
+  "license": "cc0-and-original-synthesis",
+  "rights_note": "Kenney layers are CC0; synthesis is original output of the checked-in build script. Fully cleared for commercial use, attribution not required. Planned upgrade: regenerate this id via ElevenLabs (briefs/ace-fire-fist-ch159.json) once account billing clears.",
+  "master": "assets/audio/simulations/masters/fire-charge-01.wav",
+  "master_sha256": "dfaf5071db03fd79610e6bb141b4834309487cdfaaaf080687690c9bb2e071ae"
+}

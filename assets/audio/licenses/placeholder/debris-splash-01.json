@@ -1,0 +1,11 @@
+{
+  "provider": "placeholder-owned",
+  "generated_at": "2026-07-18",
+  "build_script": "scripts/build_placeholder_cues.sh",
+  "method": "ffmpeg-synthesized (staggered filtered noise splashes)",
+  "sources": [],
+  "license": "cc0-and-original-synthesis",
+  "rights_note": "Kenney layers are CC0; synthesis is original output of the checked-in build script. Fully cleared for commercial use, attribution not required. Planned upgrade: regenerate this id via ElevenLabs (briefs/ace-fire-fist-ch159.json) once account billing clears.",
+  "master": "assets/audio/simulations/masters/debris-splash-01.wav",
+  "master_sha256": "ede9a8d59bff7a97629156f73db84f11f686e9bf8b04fd6afa21002cc1668a0c"
+}

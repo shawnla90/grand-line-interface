@@ -1,0 +1,38 @@
+[
+  {
+    "id": "fire-charge-01",
+    "prompt": "A large flame igniting and building up power, a deep fiery energy charge swelling in intensity, whooshing flame gathering, dry, close, cinematic, no music, no voices",
+    "duration_s": 1.8,
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "fire-fist-whoosh-01",
+    "prompt": "A massive fireball launching forward with a huge fiery whoosh, fast projectile of roaring flame crossing open water, powerful low-end rush, cinematic, dry, no music, no voices",
+    "duration_s": 2.0,
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "heavy-fleet-impact-01",
+    "prompt": "A huge explosive impact against a large wooden ship hull, deep boom with cracking timbers, heavy and dry, close perspective, cinematic, no music, no voices",
+    "duration_s": 1.6,
+    "prompt_influence": 0.65
+  },
+  {
+    "id": "timber-collapse-01",
+    "prompt": "A large wooden ship structure collapsing, heavy beams breaking and falling planks, groaning splitting wood crashing down, cinematic, dry, no music, no voices",
+    "duration_s": 2.2,
+    "prompt_influence": 0.6
+  },
+  {
+    "id": "fire-crackle-01",
+    "prompt": "A large raging fire burning wreckage on water, steady roaring flames with crackling embers and occasional pops, cinematic ambience, no music, no voices",
+    "duration_s": 3.0,
+    "prompt_influence": 0.5
+  },
+  {
+    "id": "debris-splash-01",
+    "prompt": "Heavy wooden debris falling into the sea, several large water splashes with scattered smaller drops, close, cinematic, no music, no voices",
+    "duration_s": 2.0,
+    "prompt_influence": 0.6
+  }
+]

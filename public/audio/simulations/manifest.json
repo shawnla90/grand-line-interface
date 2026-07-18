@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "id": "fire-charge-01",
+      "sourceFile": "fire-charge-01.wav",
+      "sourceSha256": "dfaf5071db03fd79610e6bb141b4834309487cdfaaaf080687690c9bb2e071ae",
+      "publicPath": "/audio/simulations/ace-fire-fist/fire-charge-01.mp3",
+      "publicSha256": "0b67258ae4067dc27dfc478db11e40cb503261b77de82ab373e6ad3431bd4162",
+      "durationMs": 1800,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=11.20dB",
+      "rightsStatus": "cleared",
+      "receipt": "assets/audio/licenses/placeholder/fire-charge-01.json"
+    },
+    {
+      "id": "fire-fist-whoosh-01",
+      "sourceFile": "fire-fist-whoosh-01.wav",
+      "sourceSha256": "cfe8c0d478e0e3c23cc3328affe6448e4837f16c66648eaf48588cc5f15878a2",
+      "publicPath": "/audio/simulations/ace-fire-fist/fire-fist-whoosh-01.mp3",
+      "publicSha256": "fc31608f375b30c7b54d76ba9e43f41bcee9d8260d43d4dceaa1683b2da3bbb1",
+      "durationMs": 2000,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=3.20dB",
+      "rightsStatus": "cleared",
+      "receipt": "assets/audio/licenses/placeholder/fire-fist-whoosh-01.json"
+    },
+    {
+      "id": "heavy-fleet-impact-01",
+      "sourceFile": "heavy-fleet-impact-01.wav",
+      "sourceSha256": "3590feee01b7086b0c5cb48182c23786b0b801731c83051393211095a9b87aed",
+      "publicPath": "/audio/simulations/ace-fire-fist/heavy-fleet-impact-01.mp3",
+      "publicSha256": "3e4e21824eef5029022e8d9e880c709a9d5e64018c9da70525196221dc4d7b47",
+      "durationMs": 1600,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=-1.00dB",
+      "rightsStatus": "cleared",
+      "receipt": "assets/audio/licenses/placeholder/heavy-fleet-impact-01.json"
+    },
+    {
+      "id": "timber-collapse-01",
+      "sourceFile": "timber-collapse-01.wav",
+      "sourceSha256": "2bdfdf3ac3be7a53b9eb501efd50123935ad6416c1a4df10737a55bc5e1ee65d",
+      "publicPath": "/audio/simulations/ace-fire-fist/timber-collapse-01.mp3",
+      "publicSha256": "286f1264b43ad7519b0ea08831acebfd33e5cc900a7f1be29b696e866895629b",
+      "durationMs": 2200,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=12.70dB",
+      "rightsStatus": "cleared",
+      "receipt": "assets/audio/licenses/placeholder/timber-collapse-01.json"
+    },
+    {
+      "id": "fire-crackle-01",
+      "sourceFile": "fire-crackle-01.wav",
+      "sourceSha256": "68e1852b041e3781b73f1a677fa9e2737a095b93e5aac3d295c7cd4c75e78c17",
+      "publicPath": "/audio/simulations/ace-fire-fist/fire-crackle-01.mp3",
+      "publicSha256": "4d39b893f9f8be143c0f823a6756bb1495c64b0cfc447c23ee540d38407f3739",
+      "durationMs": 3000,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=6.30dB",
+      "rightsStatus": "cleared",
+      "receipt": "assets/audio/licenses/placeholder/fire-crackle-01.json"
+    },
+    {
+      "id": "debris-splash-01",
+      "sourceFile": "debris-splash-01.wav",
+      "sourceSha256": "ede9a8d59bff7a97629156f73db84f11f686e9bf8b04fd6afa21002cc1668a0c",
+      "publicPath": "/audio/simulations/ace-fire-fist/debris-splash-01.mp3",
+      "publicSha256": "dad9822714e403709ad4372605716e95f5ef0faaa58e03e3557cb82a43125e74",
+      "durationMs": 2950,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=7.60dB",
+      "rightsStatus": "cleared",
+      "receipt": "assets/audio/licenses/placeholder/debris-splash-01.json"
+    }
+  ]
+}

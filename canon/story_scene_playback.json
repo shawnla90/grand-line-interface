@@ -115,7 +115,14 @@
       "pack_id": "arabasta-saga-2d-v1",
       "event": "ace-fire-fist-nanohana",
       "journey": { "enabled": true, "hold_ms": 10400, "zoom": 5.8, "pitch": 55 },
-      "audio": []
+      "audio": [
+        { "id": "ace-charge",    "cue_id": "fire-charge-01",        "at": { "type": "speed-lines",        "occurrence": 0, "offset_ms": -150 }, "gain": 0.68, "pan": -0.18, "playback_rate": 1 },
+        { "id": "fist-whoosh",   "cue_id": "fire-fist-whoosh-01",   "at": { "type": "fire-fist-wave",     "occurrence": 0, "offset_ms": 0 },    "gain": 0.85, "pan": -0.1,  "playback_rate": 1 },
+        { "id": "fleet-hit",     "cue_id": "heavy-fleet-impact-01", "at": { "type": "impact",             "occurrence": 0, "offset_ms": -40 },  "gain": 0.9,  "pan": 0.2,   "playback_rate": 1 },
+        { "id": "fire-bloom",    "cue_id": "fire-crackle-01",       "at": { "type": "fire-burst",         "occurrence": 0, "offset_ms": 0 },    "gain": 0.75, "pan": 0.15,  "playback_rate": 1 },
+        { "id": "timber-break",  "cue_id": "timber-collapse-01",    "at": { "type": "structure-collapse", "occurrence": 0, "offset_ms": 0 },    "gain": 0.85, "pan": 0.25,  "playback_rate": 1 },
+        { "id": "smoke-splash",  "cue_id": "debris-splash-01",      "at": { "type": "smoke",              "occurrence": 0, "offset_ms": 120 },  "gain": 0.6,  "pan": 0.1,   "playback_rate": 1 }
+      ]
     }
   ]
 }

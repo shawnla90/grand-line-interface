@@ -1,0 +1,26 @@
+{
+  "provider": "placeholder-owned",
+  "generated_at": "2026-07-18",
+  "build_script": "scripts/build_placeholder_cues.sh",
+  "method": "layered: five staggered Kenney plank/wood hits + echo tail",
+  "sources": [
+    {
+      "pack": "Kenney Impact Sounds 1.0",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "zip_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+      "license": "CC0 1.0 (http://creativecommons.org/publicdomain/zero/1.0/)",
+      "downloaded_at": "2026-07-18",
+      "files": [
+        "impactPlank_medium_000.ogg",
+        "impactPlank_medium_002.ogg",
+        "impactWood_heavy_001.ogg",
+        "impactPlank_medium_004.ogg",
+        "impactWood_medium_003.ogg"
+      ]
+    }
+  ],
+  "license": "cc0-and-original-synthesis",
+  "rights_note": "Kenney layers are CC0; synthesis is original output of the checked-in build script. Fully cleared for commercial use, attribution not required. Planned upgrade: regenerate this id via ElevenLabs (briefs/ace-fire-fist-ch159.json) once account billing clears.",
+  "master": "assets/audio/simulations/masters/timber-collapse-01.wav",
+  "master_sha256": "2bdfdf3ac3be7a53b9eb501efd50123935ad6416c1a4df10737a55bc5e1ee65d"
+}
