@@ -146,7 +146,16 @@ export const DEEP_VOYAGE_SLUGS = new Set<string>([
  * the sweep starts just before so the eruption/dive is seen, and hands back
  * to a travel leg (or dwell) at the far side. */
 export const VOYAGE_TRANSITS: JourneyTransit[] = [
-  { fromCh: 233, toCh: 305, label: "Riding the Knock-Up Stream", pitch: 60, zoom: 5.2, weight: 210 },
+  // Skypiea cannot be one linear 72-chapter sweep: the actual climb is only
+  // 235→237, so the old schedule spent 2/72 of a nine-second shot on the
+  // ascent — roughly a quarter-second. These authored phases give the boat a
+  // readable approach, climb, time aloft, and descent while preserving the
+  // canonical chapter functions in components/skypiea.ts.
+  { fromCh: 233, toCh: 235, label: "Approaching the Knock-Up Stream", pitch: 48, zoom: 4.8, weight: 35 },
+  { fromCh: 235, toCh: 237, label: "Riding the Knock-Up Stream", pitch: 60, zoom: 5.4, weight: 170 },
+  { fromCh: 237, toCh: 300, label: "Skypiea — above the White Sea", pitch: 48, zoom: 5.6, weight: 90 },
+  { fromCh: 300, toCh: 304, label: "Descending from the White Sea", pitch: 55, zoom: 5.2, weight: 75 },
+  { fromCh: 304, toCh: 305, label: "Splash-down from Skypiea", pitch: 25, zoom: 4.4, weight: 25 },
   { fromCh: 601, toCh: 607, label: "Diving beneath the Red Line", pitch: 55, zoom: 5.4, weight: 110 },
 ];
 

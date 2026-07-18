@@ -1,6 +1,7 @@
 import registry from "@/data/epic-audio-cues.json";
 
 export type EpicAudioCueKind = "voice" | "music" | "sfx";
+export type EpicAudioLane = "foreground" | "bed";
 export type EpicAudioVerification =
   | "chapter_source"
   | "chapter_title"
@@ -20,6 +21,9 @@ export type EpicAudioCue = {
   label: string;
   caption: string;
   gain: number;
+  lane: EpicAudioLane;
+  /** Bed-only headroom before the next foreground cue enters. */
+  leadMs: number;
   verification: EpicAudioVerification;
   enabled: boolean;
 };
@@ -39,6 +43,8 @@ function normalizeCue(cue: RegistryCue): EpicAudioCue {
     label: cue.label,
     caption: cue.caption,
     gain: cue.gain,
+    lane: ("lane" in cue ? cue.lane : "foreground") as EpicAudioLane,
+    leadMs: "lead_ms" in cue && typeof cue.lead_ms === "number" ? cue.lead_ms : 0,
     verification: cue.verification as EpicAudioVerification,
     enabled: cue.enabled !== false,
   };
@@ -53,5 +59,5 @@ export const ACTIVE_EPIC_AUDIO_CUES = EPIC_AUDIO_CUES.filter(
 ).sort((a, b) => a.chapter - b.chapter || a.order - b.order);
 
 export const EPIC_TRAVEL_BUDGET_MS = registry.travel_budget_ms;
-export const EPIC_CUE_GAP_MS = registry.cue_gap_ms;
+export const EPIC_CROSSFADE_MS = registry.cue_crossfade_ms;
 export const EPIC_AUDIO_RIGHTS_STATUS = registry.rights_status;

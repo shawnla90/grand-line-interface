@@ -11,6 +11,10 @@ const ids = new Set();
 const sourceFiles = new Set();
 const manifestBySource = new Map(manifest.files.map((file) => [file.originalName, file]));
 
+if (!Number.isFinite(registry.cue_crossfade_ms) || registry.cue_crossfade_ms < 60 || registry.cue_crossfade_ms > 250) {
+  failures.push("cue_crossfade_ms must be a short, audible-boundary smoothing window");
+}
+
 for (const cue of registry.cues) {
   if (ids.has(cue.id)) failures.push(`duplicate cue id: ${cue.id}`);
   ids.add(cue.id);
@@ -29,6 +33,17 @@ for (const cue of registry.cues) {
   if (cue.enabled === false && cue.verification !== "needs_identification") {
     failures.push(`${cue.id}: disabled cue lacks identification reason`);
   }
+  if (cue.lane === "bed" && (!Number.isFinite(cue.lead_ms) || cue.lead_ms < 0)) {
+    failures.push(`${cue.id}: bed cue needs non-negative lead_ms`);
+  }
+}
+
+const cueById = new Map(registry.cues.map((cue) => [cue.id, cue]));
+if (cueById.get("luffy-pirate-king")?.lane !== "bed") {
+  failures.push("the long opening track must overlap the moving visual master as a bed");
+}
+for (const id of ["zoro-santoryu", "zoro-onigiri"]) {
+  if (cueById.get(id)?.chapter !== 51) failures.push(`${id}: must land on the Mihawk duel at chapter 51`);
 }
 
 for (const asset of manifest.files) {

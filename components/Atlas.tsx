@@ -39,7 +39,7 @@ import { buildJourney, type CamTarget } from "@/lib/journey";
 import { buildJourneyStops, STORY_JOURNEY_ON } from "@/config/journey-stops";
 import {
   ACTIVE_EPIC_AUDIO_CUES,
-  EPIC_CUE_GAP_MS,
+  EPIC_CROSSFADE_MS,
   EPIC_TRAVEL_BUDGET_MS,
 } from "@/config/epic-audio-cues";
 import { buildEpicJourneyTimeline } from "@/lib/epic-journey";
@@ -361,7 +361,7 @@ function useChapterEngine(world: World, initial: number) {
       visual,
       ACTIVE_EPIC_AUDIO_CUES,
       EPIC_TRAVEL_BUDGET_MS,
-      EPIC_CUE_GAP_MS,
+      EPIC_CROSSFADE_MS,
     );
 
     const audio = new EpicAudioPlayer((message) => setEpicAudioError(message));
@@ -379,7 +379,7 @@ function useChapterEngine(world: World, initial: number) {
     // The first cue begins synchronously inside the click event, which is the
     // browser's required user gesture for audible playback.
     const first = timeline.sampleAt(0);
-    audio.sync(first.cue, first.cueElapsedMs);
+    audio.sync(first.audio);
     setEpicCueLabel(first.cue?.label ?? "Sailing the Grand Line");
     setJourneyLabel(first.cue?.label ?? visual.labelAt(first.progress));
     setJourneyFact(first.cue?.caption ?? "");
@@ -405,7 +405,7 @@ function useChapterEngine(world: World, initial: number) {
 
       const moment = visual.momentAt(sample.progress);
       journeyCam.current = { ...visual.camAt(sample.progress), focus: moment?.focus ?? null };
-      audio.sync(sample.cue, sample.cueElapsedMs);
+      audio.sync(sample.audio);
 
       const label = sample.cue?.label ?? visual.labelAt(sample.progress);
       const fact = sample.cue?.caption ?? moment?.fact ?? "";

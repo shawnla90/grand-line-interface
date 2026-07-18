@@ -1,9 +1,27 @@
-import type { EpicAudioCue } from "@/config/epic-audio-cues";
+import type { EpicCuePlayback } from "@/lib/epic-journey";
 
-/** One streaming element, switched only when the pure epic timeline changes cue. */
+type LiveTrack = {
+  audio: HTMLAudioElement;
+  generation: number;
+  duckGain: number;
+};
+
+const FADE_IN_MS = 70;
+const FADE_OUT_MS = 160;
+
+function envelope(elapsedMs: number, durationMs: number): number {
+  const fadeIn = Math.min(1, Math.max(0, elapsedMs / FADE_IN_MS));
+  const fadeOut = Math.min(1, Math.max(0, (durationMs - elapsedMs) / FADE_OUT_MS));
+  return Math.min(fadeIn, fadeOut);
+}
+
+/**
+ * Keeps every active Epic audio lane synchronized to the pure timeline.
+ * Tracks fade at their real media boundaries and are released only after the
+ * replacement lane has entered, avoiding the old pause/remove/load hard cut.
+ */
 export class EpicAudioPlayer {
-  private audio: HTMLAudioElement | null = null;
-  private cueId: string | null = null;
+  private readonly tracks = new Map<string, LiveTrack>();
   private muted = false;
   private generation = 0;
 
@@ -11,65 +29,74 @@ export class EpicAudioPlayer {
 
   setMuted(muted: boolean) {
     this.muted = muted;
-    if (this.audio) this.audio.muted = muted;
+    for (const { audio } of this.tracks.values()) audio.muted = muted;
   }
 
-  sync(cue: EpicAudioCue | null, cueElapsedMs: number) {
-    if (!cue) {
-      this.release();
-      return;
+  sync(playbacks: EpicCuePlayback[]) {
+    const activeIds = new Set(playbacks.map(({ cue }) => cue.id));
+    const hasForeground = playbacks.some(({ cue }) => cue.lane !== "bed");
+    for (const [cueId, track] of this.tracks) {
+      if (activeIds.has(cueId)) continue;
+      this.release(cueId, track);
     }
 
-    const targetSeconds = Math.max(0, cueElapsedMs / 1000);
-    if (cue.id === this.cueId && this.audio) {
-      if (
-        targetSeconds < cue.durationMs / 1000 &&
-        this.audio.readyState >= HTMLMediaElement.HAVE_METADATA &&
-        Math.abs(this.audio.currentTime - targetSeconds) > 0.45
-      ) {
-        this.audio.currentTime = targetSeconds;
+    for (const playback of playbacks) {
+      const { cue, cueElapsedMs } = playback;
+      let live = this.tracks.get(cue.id);
+      if (!live) {
+        const generation = ++this.generation;
+        const audio = new Audio(cue.src);
+        audio.preload = "auto";
+        audio.muted = this.muted;
+        live = { audio, generation, duckGain: cue.lane === "bed" && hasForeground ? 0.28 : 1 };
+        this.tracks.set(cue.id, live);
+
+        const targetSeconds = Math.max(0, cueElapsedMs / 1000);
+        const seekToTimeline = () => {
+          const current = this.tracks.get(cue.id);
+          if (current?.generation !== generation || current.audio !== audio) return;
+          if (targetSeconds < audio.duration) audio.currentTime = targetSeconds;
+        };
+        if (audio.readyState >= HTMLMediaElement.HAVE_METADATA) seekToTimeline();
+        else audio.addEventListener("loadedmetadata", seekToTimeline, { once: true });
+
+        void audio.play().catch((error: unknown) => {
+          if (error instanceof DOMException && error.name === "AbortError") return;
+          const message = error instanceof Error ? error.message : "The browser blocked audio playback.";
+          this.onError?.(message);
+        });
       }
-      return;
+
+      const targetSeconds = Math.max(0, cueElapsedMs / 1000);
+      if (
+        targetSeconds < cue.durationMs / 1000
+        && live.audio.readyState >= HTMLMediaElement.HAVE_METADATA
+        && Math.abs(live.audio.currentTime - targetSeconds) > 0.45
+      ) {
+        live.audio.currentTime = targetSeconds;
+      }
+      // Keep the long score audible, but make room for chapter dialogue and
+      // attacks instead of stacking two full-volume files on top of each other.
+      const targetDuckGain = cue.lane === "bed" && hasForeground ? 0.28 : 1;
+      // Ramp the bed under and back out of dialogue; an instantaneous 1→.28
+      // volume jump is itself another audible cut.
+      live.duckGain += (targetDuckGain - live.duckGain) * 0.18;
+      live.audio.volume = Math.max(
+        0,
+        Math.min(1, cue.gain * live.duckGain * envelope(cueElapsedMs, cue.durationMs)),
+      );
     }
-
-    this.release();
-    this.cueId = cue.id;
-    const generation = ++this.generation;
-    const audio = new Audio(cue.src);
-    audio.preload = "auto";
-    audio.volume = Math.max(0, Math.min(1, cue.gain));
-    audio.muted = this.muted;
-    this.audio = audio;
-
-    const seekToTimeline = () => {
-      if (generation !== this.generation || this.audio !== audio) return;
-      if (targetSeconds < audio.duration) audio.currentTime = targetSeconds;
-    };
-
-    if (audio.readyState >= HTMLMediaElement.HAVE_METADATA) seekToTimeline();
-    else audio.addEventListener("loadedmetadata", seekToTimeline, { once: true });
-
-    // Call play immediately. For the first cue this method runs inside the
-    // user's click handler, satisfying browser autoplay policy even if media
-    // metadata arrives on a later task.
-    void audio.play().catch((error: unknown) => {
-      if (error instanceof DOMException && error.name === "AbortError") return;
-      const message = error instanceof Error ? error.message : "The browser blocked audio playback.";
-      this.onError?.(message);
-    });
   }
 
   stop() {
     this.generation += 1;
-    this.release();
+    for (const [cueId, track] of this.tracks) this.release(cueId, track);
   }
 
-  private release() {
-    this.cueId = null;
-    if (!this.audio) return;
-    this.audio.pause();
-    this.audio.removeAttribute("src");
-    this.audio.load();
-    this.audio = null;
+  private release(cueId: string, track: LiveTrack) {
+    track.audio.pause();
+    track.audio.removeAttribute("src");
+    track.audio.load();
+    this.tracks.delete(cueId);
   }
 }
