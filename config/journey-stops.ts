@@ -2,8 +2,12 @@
  * config/journey-stops.ts — everything the cinematic journey stops for.
  *
  * Two families, one mechanism (the JourneyMoment dwell):
- *   - SCENE stops: 2.5D story simulations (built from world.events by
- *     config/east-blue-simulations.ts; ride the EAST_BLUE_2D flag).
+ *   - SCENE stops: 2.5D story simulations. Which scenes are stops, how long
+ *     each dwell holds, and its camera live in the compiled playback artifact
+ *     (canon/story_scene_playback.json → data/generated/story_scene_playback.json)
+ *     — data, not code. A scene enters the journey only when its pack is
+ *     allowlisted AND its row says journey.enabled. Labels and facts still
+ *     resolve from live canon events at build time, never from the manifest.
  *   - MODEL spotlights: 3D models whose anchors the voyage line never
  *     touches, so the waypoint-keyed deep list structurally cannot visit
  *     them — Marineford has existed on this chart since the world-government
@@ -18,12 +22,14 @@
  */
 
 import type { JourneyMoment } from "@/lib/journey";
-import { EAST_BLUE_2D_ON, buildEastBlueMoments } from "@/config/east-blue-simulations";
+import { ANY_STORY_SIMULATIONS_ON, ENABLED_STORY_PACKS, type StoryPackId } from "@/config/story-simulations";
+import { loadScenePlayback } from "@/lib/scene-playback";
+import playbackRaw from "@/data/generated/story_scene_playback.json";
 
 const RUNTIME_3D_ON = process.env.NEXT_PUBLIC_RUNTIME_3D_ASSETS === "1";
 
 /** True when the journey carries story/model stops at all — the 150s cut. */
-export const STORY_JOURNEY_ON = EAST_BLUE_2D_ON || RUNTIME_3D_ON;
+export const STORY_JOURNEY_ON = ANY_STORY_SIMULATIONS_ON || RUNTIME_3D_ON;
 
 /** Anchors come from data/generated/runtime_assets.json (the models' own
  * declared positions) — hand-carried here because this file must stay tiny
@@ -37,10 +43,52 @@ const MODEL_SPOTLIGHTS: JourneyMoment[] = [
   { chapter: 911, kind: "model", label: "Wano — the country behind the waterfall", fact: "The closed land of the samurai, reached by climbing a waterfall.", focus: [118.3801, 5.3077] },
 ];
 
+/** The events shape the stops builder reads — duck-typed on the fields it
+ * touches so this stays importable without lib/canon (the old
+ * buildEastBlueMoments posture, kept). */
+type WorldEvents = {
+  events: { slug: string; name: string; outcome: string; lng: number; lat: number; occurredChapter: number }[];
+};
+
+/** The compiled treatment, parsed once at module load. The artifact is a few
+ * KB of scene ids and dwell numbers — the same spoiler surface as the
+ * spotlight table above; the packs' atlases stay behind their dynamic import. */
+const PLAYBACK = loadScenePlayback(playbackRaw);
+
+/** Scene moments from the playback manifest, in the world the reader has. */
+function buildStoryMoments(world: WorldEvents): JourneyMoment[] {
+  const bySlug = new Map(world.events.map((e) => [e.slug, e]));
+  const moments: JourneyMoment[] = [];
+  for (const row of PLAYBACK.scenes) {
+    if (!row.journey.enabled) continue;
+    if (!ENABLED_STORY_PACKS.has(row.pack_id as StoryPackId)) continue;
+    const ev = row.event ? bySlug.get(row.event) : undefined;
+    // A missing event row means the canon layer changed under us — skip the
+    // moment rather than caption with nothing; the journey still runs. An
+    // event AFTER the scene's chapter would caption a spoiler; same skip
+    // (the compiler hard-fails this, the runtime guard is defense in depth).
+    if (!ev || ev.occurredChapter > row.chapter) continue;
+    moments.push({
+      chapter: row.chapter,
+      kind: "scene",
+      label: row.label_override ?? ev.name,
+      fact: ev.outcome,
+      // The stage is where the dwell looks — the signed pack's own anchor,
+      // not the event's coordinate (the Conomi/vows receipts, generalized).
+      focus: [row.anchor.lng, row.anchor.lat],
+      simId: row.scene_id,
+      holdMs: row.journey.hold_ms,
+      zoom: row.journey.zoom,
+      pitch: row.journey.pitch,
+    });
+  }
+  return moments;
+}
+
 /** All the stops the journey should make, in the world the reader has. */
-export function buildJourneyStops(world: Parameters<typeof buildEastBlueMoments>[0]): JourneyMoment[] {
+export function buildJourneyStops(world: WorldEvents): JourneyMoment[] {
   const stops: JourneyMoment[] = [];
-  if (EAST_BLUE_2D_ON) stops.push(...buildEastBlueMoments(world).map((m) => ({ ...m, kind: "scene" as const })));
+  if (ANY_STORY_SIMULATIONS_ON) stops.push(...buildStoryMoments(world));
   if (RUNTIME_3D_ON) stops.push(...MODEL_SPOTLIGHTS);
   return stops.sort((a, b) => a.chapter - b.chapter);
 }

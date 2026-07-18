@@ -84,8 +84,10 @@ def main() -> int:
 
             samples = []
             t0 = time.time()
-            # The flag-on run is ~150s; sample to 160 or until the button rests.
-            while time.time() - t0 < 160:
+            # The run stretches past the 150s floor when the enabled moment
+            # holds demand it (Atlas sizes journeyMs from momentSpans); sample
+            # until the button rests, with a generous ceiling.
+            while time.time() - t0 < 420:
                 s = page.evaluate(
                     """() => ({
                       z: +window.__map.getZoom().toFixed(2),
@@ -145,6 +147,36 @@ def main() -> int:
             # 7. it ends
             check("the journey ends on its own", samples[-1]["running"] is False,
                   f"last sample t={samples[-1]['t']}s")
+
+            # 8. authored holds are wall-clock real: every scene observed
+            # mounted during the run must stay mounted for at least its
+            # duration (the playback manifest's hold covers duration + ramp;
+            # the 2s sampling grain eats the ramp allowance). This is the
+            # check that catches a dwell window shorter than its scene.
+            import json as _json
+            playback = _json.loads((ROOT / "data/generated/story_scene_playback.json").read_text())
+            by_sim = {f"sim-{r['scene_id']}": r for r in playback["scenes"]}
+            spans: dict[str, list[float]] = {}
+            for s in samples:
+                for sim in s["sims"]:
+                    spans.setdefault(sim, [s["t"], s["t"]])[1] = s["t"]
+            held_ok, held_detail = True, []
+            for sim, (a, b) in spans.items():
+                row = by_sim.get(sim)
+                if row is None or not row["journey"]["enabled"]:
+                    continue
+                need = row["duration_ms"] / 1000 - 2.5  # sampling grain slack
+                if (b - a) < need:
+                    held_ok = False
+                    held_detail.append(f"{sim} held {b - a:.1f}s < {need:.1f}s")
+            check("every journey scene holds for its full duration", held_ok,
+                  "; ".join(held_detail) or f"{len(spans)} scenes measured")
+
+            # 9. the compiled treatment itself is sound (compiler re-run guard:
+            # enabled holds must cover duration + camera ramp).
+            bad = [r["scene_id"] for r in playback["scenes"]
+                   if r["journey"]["enabled"] and r["journey"]["hold_ms"] < r["duration_ms"] + 1200]
+            check("playback holds cover duration + ramp", not bad, ", ".join(bad))
 
             browser.close()
     finally:

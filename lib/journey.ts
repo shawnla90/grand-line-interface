@@ -48,6 +48,15 @@ export type JourneyMoment = {
   fact?: string;
   focus?: [number, number];
   simId?: string;
+  /** Authored dwell length in ms (scene moments; from the playback manifest).
+   * The dwell's relative weight derives from it, so a 9s scene holds longer
+   * than a 6.5s beat; absent = the classic momentWeight dwell. */
+  holdMs?: number;
+  /** Explicit relative-weight override; wins over holdMs derivation. */
+  weight?: number;
+  /** Per-moment camera overrides (scene moments; from the playback manifest). */
+  zoom?: number;
+  pitch?: number;
 };
 
 /** A slow chapter sweep with a pitched camera — the vertical rides. */
@@ -85,6 +94,10 @@ export type Journey = {
   labelAt: (t: number) => string;
   /** The moment being dwelt on at t, or null over open sea / plain stops. */
   momentAt: (t: number) => JourneyMoment | null;
+  /** Every moment dwell window as [t0, t1] fractions of the run — the caller
+   * that owns wall-clock (Atlas) uses these to size the run so an authored
+   * holdMs is guaranteed inside its window. */
+  momentSpans: () => { t0: number; t1: number; moment: JourneyMoment }[];
 };
 
 export type JourneyOpts = {
@@ -216,7 +229,17 @@ export function buildJourney(
       raw.push({ kind: "dwell", w: o.dwellWeight, chapter: b.ch, label: b.stop.label });
       cursorCh = b.ch;
     } else if (b.kind === "moment") {
-      const w = b.moment.kind === "model" ? o.dwellWeight : o.momentWeight;
+      // A moment with an authored holdMs scales its weight off the 8000ms
+      // baseline momentWeight was tuned against (see DEFAULTS) — a 9s scene
+      // holds proportionally longer than a 6.5s beat, and relative pacing
+      // against travel legs is preserved. `weight` is the explicit override.
+      const w =
+        b.moment.weight ??
+        (b.moment.holdMs != null
+          ? o.momentWeight * (b.moment.holdMs / 8000)
+          : b.moment.kind === "model"
+            ? o.dwellWeight
+            : o.momentWeight);
       raw.push({ kind: "dwell", w, chapter: b.ch, label: b.moment.label, moment: b.moment });
       cursorCh = b.ch;
     } else {
@@ -267,8 +290,8 @@ export function buildJourney(
       const isScene = r.moment?.kind !== "model" && !!r.moment;
       camWindows.push({
         t0, t1,
-        zoom: isScene ? o.deepZoom : o.diveZoom,
-        pitch: isScene ? o.momentPitch : o.divePitch,
+        zoom: isScene ? (r.moment?.zoom ?? o.deepZoom) : o.diveZoom,
+        pitch: isScene ? (r.moment?.pitch ?? o.momentPitch) : o.divePitch,
         orbit: isScene ? 0 : o.orbitDegPerSec,
         moment: r.moment,
       });
@@ -333,5 +356,7 @@ export function buildJourney(
     return null;
   };
 
-  return { stops: marked, chapterAt, camAt, zoomAt, labelAt, momentAt };
+  const momentSpans = () => momentWindows.map(([t0, t1, moment]) => ({ t0, t1, moment }));
+
+  return { stops: marked, chapterAt, camAt, zoomAt, labelAt, momentAt, momentSpans };
 }
