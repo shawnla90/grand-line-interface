@@ -40,6 +40,25 @@
       "rightsStatus": "local_prototype_only"
     },
     {
+      "originalName": "Crocodile-mugiwara.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/Crocodile-mugiwara.mp3",
+      "sourceSha256": "49b51f9e1bd8a348b4c1ffd3b63e5848cf3ccf592df2038b9ea1322c9fe3678f",
+      "publicPath": "/audio/epic-journey/crocodile-mugiwara.mp3",
+      "publicSha256": "c0a0d86c0ef2a28ad7820b8716377264c8232d9af4b9f74ef708baaac2891940",
+      "durationMs": 8307,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 44100,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
       "originalName": "gear-second-monkey-d.mp3",
       "kind": "voice",
       "source": "assets/audio/epic-journey/voice/gear-second-monkey-d.mp3",
@@ -154,6 +173,44 @@
       "rightsStatus": "local_prototype_only"
     },
     {
+      "originalName": "luffy-attack.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/luffy-attack.mp3",
+      "sourceSha256": "abf1e6a6baa7750bfc4eb849eddaeb7651405b71e179537092d61fc003ee30c0",
+      "publicPath": "/audio/epic-journey/luffy-attack.mp3",
+      "publicSha256": "1969fb9bf081c9b61f56075a64603073df2c1ba7251949aa6b57dfabd396178e",
+      "durationMs": 5232,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 48000,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "Luffy-Gatling.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/Luffy-Gatling.mp3",
+      "sourceSha256": "3a980f15b3aa8185dc10cd955170d7482a15b5248eff88b45be0db9e6182d64a",
+      "publicPath": "/audio/epic-journey/luffy-gatling.mp3",
+      "publicSha256": "73d89b690607ce0a90502233f2a342aa80d63b61a035b6497735f8d983a8a901",
+      "durationMs": 7564,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 44100,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
       "originalName": "Luffy-Pirate-King.mp3",
       "kind": "voice",
       "source": "assets/audio/epic-journey/voice/Luffy-Pirate-King.mp3",
@@ -163,6 +220,25 @@
       "durationMs": 43080,
       "sourceCodec": "mp3",
       "sourceSampleRate": 48000,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "Luffy.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/Luffy.mp3",
+      "sourceSha256": "00c87df4de73b06de9202b4568eac80b6162682ab27f0733d7a2f84793222447",
+      "publicPath": "/audio/epic-journey/luffy.mp3",
+      "publicSha256": "b592a1073343a73cf18f96755e8b583e0a354bd009db04595c2ed2a70a05c87e",
+      "durationMs": 4232,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 44100,
       "outputSampleRate": 48000,
       "channels": 2,
       "normalization": {
@@ -477,6 +553,25 @@
       "rightsStatus": "local_prototype_only"
     },
     {
+      "originalName": "Whitebeard-last-word.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/Whitebeard-last-word.mp3",
+      "sourceSha256": "cf8c6e828910d5674092cc2153685f40b8ce99c6355ee658456abe9bba1ab6e6",
+      "publicPath": "/audio/epic-journey/whitebeard-last-word.mp3",
+      "publicSha256": "92f4b685ab4f92b88c70834f1fb869368e829312c376fdc56977023f3dd9f90a",
+      "durationMs": 10417,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 48000,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
       "originalName": "ZEHAHAHA-Edward-Teach-laugh-2.mp3",
       "kind": "voice",
       "source": "assets/audio/epic-journey/voice/ZEHAHAHA-Edward-Teach-laugh-2.mp3",
@@ -541,6 +636,25 @@
       "publicPath": "/audio/epic-journey/zoro-santoryu.mp3",
       "publicSha256": "c8414f46b906f060a5c9e83cad7d5e5740184073e588943caaf0a134ec5536a2",
       "durationMs": 2736,
+      "sourceCodec": "mp3",
+      "sourceSampleRate": 48000,
+      "outputSampleRate": 48000,
+      "channels": 2,
+      "normalization": {
+        "integratedLufs": -16,
+        "truePeakDb": -1.5,
+        "loudnessRange": 11
+      },
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "originalName": "Zoro.mp3",
+      "kind": "voice",
+      "source": "assets/audio/epic-journey/voice/Zoro.mp3",
+      "sourceSha256": "4740ed18b975794d72d80edd41c95b1d1d80bd234065d86c218144501efb3948",
+      "publicPath": "/audio/epic-journey/zoro.mp3",
+      "publicSha256": "0f749f7d6cd2e9d837bdb924450ce4f04efed4e7fa2ac49771d14555c3b9a757",
+      "durationMs": 3120,
       "sourceCodec": "mp3",
       "sourceSampleRate": 48000,
       "outputSampleRate": 48000,
