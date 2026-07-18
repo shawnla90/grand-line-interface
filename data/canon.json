@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-17T21:27:16.206285+00:00",
+    "generated_at": "2026-07-18T07:44:17.809594+00:00",
     "generator": "scripts/normalize.py",
     "source_manifest_sha": "be7af436b558b373ae1e6f28cc5007ef89153529fb274cb7efd1a47b4f1ef25a",
     "sources": {
@@ -23,7 +23,7 @@
       "crew_presence contains UNVERIFIED windows. Who-is-where chapter stamps are not manga-confirmed. The UI must render presence as unverified.",
       "statuses contains UNVERIFIED windows. Warlord/Emperor/Supernova reveal chapters are not manga-confirmed. The UI must render them as unverified.",
       "poneglyphs contains UNVERIFIED custody windows (7 stones, 3 of them Road Poneglyphs). Reveal chapters are not manga-confirmed. The UI must render them as unverified.",
-      "events contains UNVERIFIED rows (10 events). Occurrence chapters are not manga-confirmed. The UI must render events as unverified.",
+      "events contains UNVERIFIED rows (16 events). Occurrence chapters are not manga-confirmed. The UI must render events as unverified.",
       "fruit_reveals contains UNVERIFIED rows. Fruit reveal chapters are not manga-confirmed. The UI must render fruit facts as unverified.",
       "haki_users contains UNVERIFIED rows. Haki reveal chapters are not manga-confirmed. The UI must render haki facts as unverified.",
       "124 bounty rows were dropped for carrying no reveal chapter (databook, Vivre Card and magazine figures the wiki never ties to a chapter). An ungated bounty cannot be fogged, so it is dropped rather than shown from chapter 1. To restore one, give it a chapter in canon/bounties.json."
@@ -56,7 +56,7 @@
       "statuses": 29,
       "poneglyphs": 7,
       "poneglyphs_road": 3,
-      "events": 10,
+      "events": 16,
       "events_verified": 0,
       "status_windows": 29,
       "status_windows_verified": 0,
@@ -54405,6 +54405,33 @@
       "verified": false
     },
     {
+      "slug": "alvida-falls",
+      "name": "Luffy Punches Alvida",
+      "kind": "battle",
+      "occurred_chapter": 2,
+      "through_chapter": null,
+      "island_slug": null,
+      "lng": -136.0,
+      "lat": -56.0,
+      "participants": [
+        {
+          "slug": "monkey-d-luffy",
+          "name": "Monkey D. Luffy",
+          "role": "victor"
+        },
+        {
+          "slug": "alvida",
+          "name": "Alvida",
+          "role": "defeated"
+        }
+      ],
+      "outcome": "One rubber punch ends Alvida's rule of her own deck, and Coby is free to chase the Marines. The story's first fight: a nobody with a straw hat knocks a pirate captain off her ship with one blow.",
+      "significance": 1,
+      "source_ref": "Hand-authored. Chapter 2: Luffy defeats Alvida with a single Gomu Gomu no Pistol aboard her ship; the deck fight has no canon coordinate, so the position is the hand-authored ship-at-sea anchor shared with the scene pack. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
       "slug": "morgan-falls",
       "name": "The Fall of Axe-Hand Morgan",
       "kind": "battle",
@@ -54560,6 +54587,33 @@
       "verified": false
     },
     {
+      "slug": "nami-asks-for-help",
+      "name": "Nami Asks for Help",
+      "kind": "declaration",
+      "occurred_chapter": 81,
+      "through_chapter": null,
+      "island_slug": "cocoyasi-village",
+      "lng": -110.078,
+      "lat": -25.3729,
+      "participants": [
+        {
+          "slug": "nami",
+          "name": "Nami",
+          "role": "asks"
+        },
+        {
+          "slug": "monkey-d-luffy",
+          "name": "Monkey D. Luffy",
+          "role": "answers"
+        }
+      ],
+      "outcome": "Nami stabs the tattoo that owns her and finally says the words: help me. Luffy puts his hat on her head and walks toward Arlong Park. The sentence that turns a navigator into a crewmate.",
+      "significance": 2,
+      "source_ref": "Hand-authored. Chapter 81 'Tears': Nami's plea on the Cocoyasi village road and Luffy's answer. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
       "slug": "arlong-park-falls",
       "name": "The Fall of Arlong Park",
       "kind": "battle",
@@ -54662,6 +54716,114 @@
       "outcome": "The barrel oath in the storm, and the Going Merry rides Reverse Mountain up and over — East Blue ends, the Grand Line begins.",
       "significance": 2,
       "source_ref": "Hand-authored. Reverse Mountain (~ch. 100–101): the crew's declarations over the barrel and the ascent into the Grand Line. Charted at ch. 101 with the island's debut. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "zoro-vs-the-bounty-hunters",
+      "name": "Zoro vs. a Hundred Bounty Hunters",
+      "kind": "battle",
+      "occurred_chapter": 107,
+      "through_chapter": 108,
+      "island_slug": "whisky-peak",
+      "lng": -121.3706,
+      "lat": 4.162,
+      "participants": [
+        {
+          "slug": "roronoa-zoro",
+          "name": "Roronoa Zoro",
+          "role": "victor"
+        }
+      ],
+      "outcome": "The welcoming town drops its mask at midnight and a hundred Baroque Works bounty hunters draw on one swordsman. Zoro cuts through the whole roster across the rooftops of Whisky Peak — the Grand Line's first lesson that the crew's monsters are real.",
+      "significance": 1,
+      "source_ref": "Hand-authored. Chapters 107-108: Zoro against the Baroque Works agents of Whisky Peak at night. Charted at ch. 107 where the fight begins. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "miss-all-sunday-appears",
+      "name": "Miss All Sunday Appears",
+      "kind": "declaration",
+      "occurred_chapter": 114,
+      "through_chapter": null,
+      "island_slug": "whisky-peak",
+      "lng": -121.3706,
+      "lat": 4.162,
+      "participants": [
+        {
+          "slug": "nico-robin",
+          "name": "Nico Robin",
+          "role": "reveals herself"
+        },
+        {
+          "slug": "nefertari-vivi",
+          "name": "Nefertari Vivi",
+          "role": "confronted"
+        },
+        {
+          "slug": "monkey-d-luffy",
+          "name": "Monkey D. Luffy",
+          "role": "refuses her gift"
+        }
+      ],
+      "outcome": "The partner of Baroque Works' boss materializes on the Going Merry's deck, names the crew's danger, and offers an easy way out. Luffy throws her Eternal Pose overboard. The future is standing on their ship and nobody knows it yet.",
+      "significance": 2,
+      "source_ref": "Hand-authored. Chapter 114: Miss All Sunday's appearance aboard the Going Merry off Whisky Peak. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "ace-blocks-smoker",
+      "name": "Ace Blocks Smoker at Nanohana",
+      "kind": "escape",
+      "occurred_chapter": 158,
+      "through_chapter": null,
+      "island_slug": "nanohana",
+      "lng": -102.8707,
+      "lat": 0.4813,
+      "participants": [
+        {
+          "slug": "portgas-d-ace",
+          "name": "Portgas D. Ace",
+          "role": "holds the line"
+        },
+        {
+          "slug": "smoker",
+          "name": "Smoker",
+          "role": "stopped"
+        },
+        {
+          "slug": "monkey-d-luffy",
+          "name": "Monkey D. Luffy",
+          "role": "escapes"
+        }
+      ],
+      "outcome": "Smoke meets fire in a Nanohana street: Ace stands between Smoker and his little brother, two Logias cancelling each other while the Straw Hats run for the harbor. The getaway that introduces the brother Luffy sails the Grand Line beside.",
+      "significance": 1,
+      "source_ref": "Hand-authored. Chapter 158: Ace intercepts Smoker in Nanohana so the crew can escape to the Going Merry. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "ace-fire-fist-nanohana",
+      "name": "Fire Fist Burns the Billions Fleet",
+      "kind": "battle",
+      "occurred_chapter": 159,
+      "through_chapter": null,
+      "island_slug": "nanohana",
+      "lng": -102.8707,
+      "lat": 0.4813,
+      "participants": [
+        {
+          "slug": "portgas-d-ace",
+          "name": "Portgas D. Ace",
+          "role": "victor"
+        }
+      ],
+      "outcome": "Five Baroque Works ships move on the Going Merry off Nanohana, and Ace answers with one attack. The Hiken crosses the water, the fleet becomes burning timber, and the name Fire Fist explains itself.",
+      "significance": 1,
+      "source_ref": "Hand-authored. Chapter 159: Ace destroys the Billions convoy with Hiken during the departure from Nanohana. NEEDS HUMAN VERIFICATION against the manga.",
       "canon_confidence": "canon",
       "verified": false
     }

@@ -204,6 +204,120 @@
       "source_ref": "Hand-authored. Reverse Mountain (~ch. 100–101): the crew's declarations over the barrel and the ascent into the Grand Line. Charted at ch. 101 with the island's debut. NEEDS HUMAN VERIFICATION against the manga.",
       "canon_confidence": "canon",
       "verified": false
+    },
+    {
+      "slug": "alvida-falls",
+      "name": "Luffy Punches Alvida",
+      "kind": "battle",
+      "occurred_chapter": 2,
+      "through_chapter": null,
+      "island_slug": null,
+      "lng": -136.0,
+      "lat": -56.0,
+      "participants": [
+        { "slug": "monkey-d-luffy", "name": "Monkey D. Luffy", "role": "victor" },
+        { "slug": "alvida", "name": "Alvida", "role": "defeated" }
+      ],
+      "outcome": "One rubber punch ends Alvida's rule of her own deck, and Coby is free to chase the Marines. The story's first fight: a nobody with a straw hat knocks a pirate captain off her ship with one blow.",
+      "significance": 1,
+      "source_ref": "Hand-authored. Chapter 2: Luffy defeats Alvida with a single Gomu Gomu no Pistol aboard her ship; the deck fight has no canon coordinate, so the position is the hand-authored ship-at-sea anchor shared with the scene pack. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "nami-asks-for-help",
+      "name": "Nami Asks for Help",
+      "kind": "declaration",
+      "occurred_chapter": 81,
+      "through_chapter": null,
+      "island_slug": "cocoyasi-village",
+      "lng": null,
+      "lat": null,
+      "participants": [
+        { "slug": "nami", "name": "Nami", "role": "asks" },
+        { "slug": "monkey-d-luffy", "name": "Monkey D. Luffy", "role": "answers" }
+      ],
+      "outcome": "Nami stabs the tattoo that owns her and finally says the words: help me. Luffy puts his hat on her head and walks toward Arlong Park. The sentence that turns a navigator into a crewmate.",
+      "significance": 2,
+      "source_ref": "Hand-authored. Chapter 81 'Tears': Nami's plea on the Cocoyasi village road and Luffy's answer. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "zoro-vs-the-bounty-hunters",
+      "name": "Zoro vs. a Hundred Bounty Hunters",
+      "kind": "battle",
+      "occurred_chapter": 107,
+      "through_chapter": 108,
+      "island_slug": "whisky-peak",
+      "lng": null,
+      "lat": null,
+      "participants": [
+        { "slug": "roronoa-zoro", "name": "Roronoa Zoro", "role": "victor" }
+      ],
+      "outcome": "The welcoming town drops its mask at midnight and a hundred Baroque Works bounty hunters draw on one swordsman. Zoro cuts through the whole roster across the rooftops of Whisky Peak — the Grand Line's first lesson that the crew's monsters are real.",
+      "significance": 1,
+      "source_ref": "Hand-authored. Chapters 107-108: Zoro against the Baroque Works agents of Whisky Peak at night. Charted at ch. 107 where the fight begins. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "miss-all-sunday-appears",
+      "name": "Miss All Sunday Appears",
+      "kind": "declaration",
+      "occurred_chapter": 114,
+      "through_chapter": null,
+      "island_slug": "whisky-peak",
+      "lng": null,
+      "lat": null,
+      "participants": [
+        { "slug": "nico-robin", "name": "Nico Robin", "role": "reveals herself" },
+        { "slug": "nefertari-vivi", "name": "Nefertari Vivi", "role": "confronted" },
+        { "slug": "monkey-d-luffy", "name": "Monkey D. Luffy", "role": "refuses her gift" }
+      ],
+      "outcome": "The partner of Baroque Works' boss materializes on the Going Merry's deck, names the crew's danger, and offers an easy way out. Luffy throws her Eternal Pose overboard. The future is standing on their ship and nobody knows it yet.",
+      "significance": 2,
+      "source_ref": "Hand-authored. Chapter 114: Miss All Sunday's appearance aboard the Going Merry off Whisky Peak. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "ace-blocks-smoker",
+      "name": "Ace Blocks Smoker at Nanohana",
+      "kind": "escape",
+      "occurred_chapter": 158,
+      "through_chapter": null,
+      "island_slug": "nanohana",
+      "lng": null,
+      "lat": null,
+      "participants": [
+        { "slug": "portgas-d-ace", "name": "Portgas D. Ace", "role": "holds the line" },
+        { "slug": "smoker", "name": "Smoker", "role": "stopped" },
+        { "slug": "monkey-d-luffy", "name": "Monkey D. Luffy", "role": "escapes" }
+      ],
+      "outcome": "Smoke meets fire in a Nanohana street: Ace stands between Smoker and his little brother, two Logias cancelling each other while the Straw Hats run for the harbor. The getaway that introduces the brother Luffy sails the Grand Line beside.",
+      "significance": 1,
+      "source_ref": "Hand-authored. Chapter 158: Ace intercepts Smoker in Nanohana so the crew can escape to the Going Merry. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "ace-fire-fist-nanohana",
+      "name": "Fire Fist Burns the Billions Fleet",
+      "kind": "battle",
+      "occurred_chapter": 159,
+      "through_chapter": null,
+      "island_slug": "nanohana",
+      "lng": null,
+      "lat": null,
+      "participants": [
+        { "slug": "portgas-d-ace", "name": "Portgas D. Ace", "role": "victor" }
+      ],
+      "outcome": "Five Baroque Works ships move on the Going Merry off Nanohana, and Ace answers with one attack. The Hiken crosses the water, the fleet becomes burning timber, and the name Fire Fist explains itself.",
+      "significance": 1,
+      "source_ref": "Hand-authored. Chapter 159: Ace destroys the Billions convoy with Hiken during the departure from Nanohana. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
     }
   ]
 }
