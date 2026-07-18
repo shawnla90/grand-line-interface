@@ -49,6 +49,7 @@ import { createGlbLayer, type GlbLayer } from "./glb-layer";
 import { OrbitControls } from "./OrbitControls";
 import { buildModels, type RuntimeAsset, type RuntimeModel } from "./runtime-models";
 import { altitudeT, columnOpacity, expandSkyWaypoints, SKY_BASE, SKY_BODY, transitBase } from "./skypiea";
+import { makeWanoElement, WANO_ANCHOR, wanoOpacity } from "./wano";
 import {
   depthT, expandDiveWaypoints, shimmerOpacity, transitBase as diveBase,
 } from "./fishman";
@@ -1229,6 +1230,7 @@ export default function WorldMap({
   const memberMarks = useRef<Map<string, PresenceHandle>>(new Map());
   const poneglyphMarks = useRef<Map<string, PresenceHandle>>(new Map());
   const baratie = useRef<{ marker: MLMarker; el: HTMLDivElement; wrap: HTMLDivElement } | null>(null);
+  const wano = useRef<{ marker: MLMarker; el: HTMLDivElement; img: HTMLImageElement } | null>(null);
   // paint() runs on the chapter tween; it reads the live lens through this ref.
   const lensRef = useRef(lens);
   useEffect(() => {
@@ -2136,6 +2138,17 @@ export default function WorldMap({
       baratie.current = { marker, el: parts.el, wrap: parts.wrap };
     }
 
+    // Wano — the marker-style country (see components/wano.ts for why it is a
+    // sprite and why it stands still). Created hidden; paint() reveals it at
+    // its verified arrival chapter.
+    {
+      const parts = makeWanoElement();
+      const marker = new maplibregl.Marker({ element: parts.el, opacityWhenCovered: "0.1" })
+        .setLngLat(WANO_ANCHOR)
+        .addTo(m);
+      wano.current = { marker, el: parts.el, img: parts.img };
+    }
+
     const poneglyphPool = poneglyphMarks.current;
     for (const pg of world.poneglyphs) {
       const p = makePoneglyphElement(pg.kind);
@@ -2252,6 +2265,7 @@ export default function WorldMap({
         members: memberMarks.current,
         poneglyphs: poneglyphMarks.current,
         baratie: baratie.current,
+        wano: wano.current,
         lens: lensRef.current,
         focus: resolvedFocus(),
       }, art);
@@ -2287,6 +2301,7 @@ export default function WorldMap({
       members: memberMarks.current,
       poneglyphs: poneglyphMarks.current,
       baratie: baratie.current,
+        wano: wano.current,
       lens: lensRef.current,
       focus: resolvedFocus(),
     }, art);
@@ -2307,6 +2322,7 @@ export default function WorldMap({
       members: memberMarks.current,
       poneglyphs: poneglyphMarks.current,
       baratie: baratie.current,
+        wano: wano.current,
       lens: lensRef.current,
       focus: resolvedFocus(),
     }, art);
@@ -2357,6 +2373,7 @@ export default function WorldMap({
       members: memberMarks.current,
       poneglyphs: poneglyphMarks.current,
       baratie: baratie.current,
+        wano: wano.current,
       lens,
       focus: resolvedFocus(),
     }, art);
@@ -2375,6 +2392,7 @@ export default function WorldMap({
       members: memberMarks.current,
       poneglyphs: poneglyphMarks.current,
       baratie: baratie.current,
+        wano: wano.current,
       lens: lensRef.current,
       focus: resolvedFocus(),
     }, art);
@@ -2575,6 +2593,7 @@ type PresencePools = {
   lens: PresenceLens;
   poneglyphs: Map<string, PresenceHandle>;
   baratie: { marker: MLMarker; el: HTMLDivElement; wrap: HTMLDivElement } | null;
+  wano: { marker: MLMarker; el: HTMLDivElement; img: HTMLImageElement } | null;
   focus: ResolvedFocus | null;
 };
 
@@ -2971,6 +2990,21 @@ function paint(
       pools.baratie.wrap.style.opacity = ch > 68 ? "0.5" : "1";
     } else {
       pools.baratie.el.style.display = "none";
+    }
+  }
+
+  /* ------------------------------------------------------------------- Wano */
+  // Same two-beat shape as the Baratie: arrives (ch 909, the one VERIFIED
+  // beat), stands. The climb animation waits for human-verified chapters —
+  // the sprite renderer withholds rather than invents (wano.ts header).
+  if (pools?.wano) {
+    const o = wanoOpacity(ch);
+    if (o > 0) {
+      pools.wano.el.style.display = "";
+      pools.wano.img.style.opacity = String(o);
+    } else {
+      pools.wano.el.style.display = "none";
+      pools.wano.img.style.opacity = "0";
     }
   }
 

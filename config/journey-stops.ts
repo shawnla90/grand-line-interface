@@ -34,6 +34,7 @@ const MODEL_SPOTLIGHTS: JourneyMoment[] = [
   { chapter: 490, kind: "model", label: "Mary Geoise — the Red Line's summit", fact: "The holy land above the world, where the Celestial Dragons rule.", focus: [-2.7363, -9.3782] },
   { chapter: 516, kind: "model", label: "Amazon Lily", fact: "Kuja island — the empress's home sea.", focus: [165.1452, 12.0706] },
   { chapter: 552, kind: "model", label: "Marineford", fact: "The Navy's fortress, where the war for the era was fought.", focus: [-92.4053, 11.8445] },
+  { chapter: 911, kind: "model", label: "Wano — the country behind the waterfall", fact: "The closed land of the samurai, reached by climbing a waterfall.", focus: [118.3801, 5.3077] },
 ];
 
 /** All the stops the journey should make, in the world the reader has. */
