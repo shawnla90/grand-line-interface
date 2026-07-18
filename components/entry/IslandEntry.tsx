@@ -15,6 +15,7 @@ import Link from "next/link";
 import type { IslandEntryData } from "@/lib/entry";
 import type { Art } from "@/lib/art";
 import { Confidence, Field, FieldGrid, Kicker, Panel, Receipts } from "@/components/ui/Panel";
+import PositionChart from "@/components/entry/PositionChart";
 import { poneglyphInk } from "@/components/marks/poneglyph";
 import type { PoneglyphKind } from "@/lib/canon";
 import { BRAND } from "@/config/brand";
@@ -81,6 +82,13 @@ export default function IslandEntry({
         </FieldGrid>
         <Confidence level={island.confidence} className="mt-4" />
         <Receipts sourceRef={island.sourceRef} wikiUrl={island.wikiUrl} className="mt-3" />
+      </Panel>
+
+      <Panel className="mt-4 px-6 py-5">
+        <Kicker>Bearing</Kicker>
+        <div className="mt-3">
+          <PositionChart lng={island.lng} lat={island.lat} name={island.name} />
+        </div>
       </Panel>
 
       {extras.voyageCall && (
