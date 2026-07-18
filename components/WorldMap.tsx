@@ -104,15 +104,21 @@ type Props = {
   flyTarget?: { lng: number; lat: number; key: number; zoom?: number; pitch?: number } | null;
   /** The cinematic journey is running — the map flies the voyage itself. */
   journey?: boolean;
-  /** Target zoom for the journey camera to damp toward (out over sea, deep at a 3D stop). */
-  journeyZoom?: number | null;
   /**
-   * A story-moment stage to frame instead of the ship (the Baratie sits off
-   * the raw voyage line). Non-null ALSO pitches the camera (~55°) for the
-   * dwell: the 2.5D story cards are vertical billboards, and a top-down
-   * camera sees them exactly edge-on — i.e. not at all.
+   * The journey's per-frame camera program, as a REF the schedule mutates —
+   * zoom/pitch/orbit targets plus an optional stage focus to frame instead of
+   * the ship (the Baratie sits off the raw voyage line). A ref, not state:
+   * these change every frame and must never re-render React (the setState
+   * version threw "Maximum update depth exceeded" mid-run — measured). The
+   * chase damps toward whatever is in here; pitch is what makes both the 3D
+   * models and the vertical 2.5D story cards actually visible.
    */
-  journeyFocus?: [number, number] | null;
+  journeyCam?: React.RefObject<{
+    zoom: number;
+    pitch: number;
+    orbitDegPerSec: number;
+    focus: [number, number] | null;
+  } | null>;
   /** ?record=1 only: init WebGL with preserveDrawingBuffer so the in-browser
    * recorder can composite the canvas. Never on by default (perf). */
   preserveBuffer?: boolean;
@@ -1204,8 +1210,7 @@ export default function WorldMap({
   focus = null,
   flyTarget = null,
   journey = false,
-  journeyZoom = null,
-  journeyFocus = null,
+  journeyCam,
   preserveBuffer = false,
   placingSlug = null,
   onPlaceAt,
@@ -1291,14 +1296,12 @@ export default function WorldMap({
   // frame-synced to the ship — which is exactly why manual scrubbing tracks the
   // line and the old journey did not.
   const journeyRef = useRef(journey);
-  const journeyZoomRef = useRef(journeyZoom);
-  const journeyFocusRef = useRef(journeyFocus);
-  useEffect(() => {
-    journeyZoomRef.current = journeyZoom;
-  }, [journeyZoom]);
-  useEffect(() => {
-    journeyFocusRef.current = journeyFocus;
-  }, [journeyFocus]);
+  // The camera program ref comes straight from the engine (stable identity);
+  // reading .current per chase step needs no effects and no re-renders.
+  const journeyCamRef = useRef(journeyCam ?? null);
+  journeyCamRef.current = journeyCam ?? null;
+  /** Timestamp of the previous chase step, for orbit deg/sec integration. */
+  const chasePrevT = useRef<number | null>(null);
 
   const chase = useCallback(function chaseStep() {
     chaseRaf.current = null;
@@ -1308,9 +1311,11 @@ export default function WorldMap({
     if (!followRef.current && !journeying) return;
     const { ship: pos } = voyageGeometryAt(expandedWaypoints(world.voyage.waypoints), chapterRef.current);
     if (!pos) return;
-    // A story-moment dwell frames the STAGE, not the ship — the Baratie's
-    // scene anchor sits off the raw voyage line. Null = the ship, as ever.
-    const focus = journeying ? journeyFocusRef.current : null;
+    // The schedule's camera program for this instant (zoom/pitch/orbit/focus).
+    // A dwell frames the STAGE, not the ship — the Baratie's scene anchor and
+    // Marineford's model both sit off the raw voyage line. Null = the ship.
+    const cam = journeying ? journeyCamRef.current?.current ?? null : null;
+    const focus = cam?.focus ?? null;
     const target = focus ?? pos;
     const c = m.getCenter();
     const dLng = ((((target[0] - c.lng) % 360) + 540) % 360) - 180; // shortest way round
@@ -1319,35 +1324,56 @@ export default function WorldMap({
     // line — a much tighter pull than the follow chase, which leads the ship a
     // little while you scrub. Zoom eases separately toward the schedule's target.
     const k = journeying ? 0.5 : 0.18;
-    const upd: { center: [number, number]; zoom?: number; pitch?: number } = {
+    const upd: { center: [number, number]; zoom?: number; pitch?: number; bearing?: number } = {
       center: [c.lng + dLng * k, c.lat + dLat * k],
     };
-    let settledZoom = true;
-    if (journeying && journeyZoomRef.current != null) {
+    let settled = true;
+    const nowT = performance.now();
+    const dt = chasePrevT.current !== null ? Math.min(0.1, (nowT - chasePrevT.current) / 1000) : 0;
+    chasePrevT.current = nowT;
+    if (cam) {
       const z = m.getZoom();
-      const dz = journeyZoomRef.current - z;
+      const dz = cam.zoom - z;
       if (Math.abs(dz) > 0.008) {
         upd.zoom = z + dz * 0.12;
-        settledZoom = false;
+        settled = false;
       }
-    }
-    // Pitch rides the dwell: up to ~55° while a stage is framed (vertical
-    // story cards are invisible top-down), back flat for the sea legs.
-    if (journeying) {
-      const wantPitch = focus ? 55 : 0;
+      // Pitch rides the schedule — up for dives, transits and story stages
+      // (vertical cards and Blender models are invisible top-down), back flat
+      // for the sea legs.
       const p = m.getPitch();
-      const dp = wantPitch - p;
+      const dp = cam.pitch - p;
       if (Math.abs(dp) > 0.2) {
         upd.pitch = p + dp * 0.09;
-        settledZoom = false;
+        settled = false;
       }
+      // The orbit drift — the walk-around-the-model shot. Integrated in
+      // deg/sec so frame rate doesn't change the speed; when the drift ends
+      // the bearing damps home to north.
+      const b = m.getBearing();
+      if (cam.orbitDegPerSec !== 0) {
+        upd.bearing = b + cam.orbitDegPerSec * dt;
+        settled = false;
+      } else if (Math.abs(b) > 0.3) {
+        upd.bearing = b * 0.94;
+        settled = false;
+      }
+    } else if (journeying) {
+      // No program yet (first frames): keep today's flat glue.
+      settled = Math.abs(m.getPitch()) < 0.2;
+      if (!settled) upd.pitch = m.getPitch() * 0.91;
     }
-    if (Math.hypot(dLng, dLat) < 0.02 && settledZoom) return; // fully settled
+    if (Math.hypot(dLng, dLat) < 0.02 && settled) return; // fully settled
     m.jumpTo(upd);
-    // During the journey the paint effect drives a step every swept frame, so
-    // self-scheduling here would double the rate; only the follow-settle case
-    // (no swept change) needs the self-scheduled tail.
-    if (!journeying) chaseRaf.current = requestAnimationFrame(chaseStep);
+    // Keep stepping ourselves whenever unfinished business remains. The paint
+    // effect drives a step per swept frame during travel — but a DWELL holds
+    // the chapter, paint stops, and without this tail the camera froze mid-
+    // flight to the stage and the orbit never turned (measured: 1.4° of drift
+    // across a 6s dwell). chaseStep nulls chaseRaf on entry, so a paint-driven
+    // step and this tail never stack.
+    if (!journeying || chaseRaf.current === null) {
+      chaseRaf.current = requestAnimationFrame(chaseStep);
+    }
   }, [world]);
 
   useEffect(() => {
@@ -1388,8 +1414,10 @@ export default function WorldMap({
       m.dragPan.enable();
       // dragRotate stays OFF — the globe never free-spins now; rotation is only
       // the deliberate hold-to-lock-a-target gesture (see below).
-      // A run stopped mid-dwell leaves the camera pitched; lay it back down.
-      if (m.getPitch() > 0.5) m.easeTo({ pitch: 0, duration: 600 });
+      // A run stopped mid-dwell leaves the camera pitched/turned; lay it back.
+      if (m.getPitch() > 0.5 || Math.abs(m.getBearing()) > 0.5) {
+        m.easeTo({ pitch: 0, bearing: 0, duration: 600 });
+      }
       // Restore the resting voyage style.
       m.setPaintProperty("voyage-glow", "line-width", 6);
       m.setPaintProperty("voyage-glow", "line-blur", 7);

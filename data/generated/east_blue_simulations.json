@@ -1222,10 +1222,11 @@
         }
       ],
       "anchor": {
-        "kind": "island",
-        "ref": "cocoyasi-village",
-        "lng": -110.078,
-        "lat": -25.3729
+        "kind": "literal",
+        "ref": null,
+        "lng": -167.6,
+        "lat": -32.4,
+        "note": "Hand-authored: Cocoyasi Village beside the Conomi 3D model. The island rows for the Conomi cluster carry DERIVED positions (~-110 lng) that disagree with the voyage's conomi-islands waypoint and the runtime model (~-168) — the model is where the reader sees Arlong Park, so the scenes stand with it. NEEDS HUMAN VERIFICATION against the manga."
       }
     },
     {
@@ -1355,10 +1356,11 @@
         }
       ],
       "anchor": {
-        "kind": "event",
-        "ref": "arlong-park-falls",
-        "lng": -121.1536,
-        "lat": -39.3092
+        "kind": "literal",
+        "ref": null,
+        "lng": -168.0,
+        "lat": -33.2,
+        "note": "Hand-authored: Arlong Park at the conomi-arlong-park 3D model's anchor. The arlong-park island row's derived position (-121, -39) sits 47 degrees from the voyage waypoint and the model — anchoring the fight there put it in an empty sea (measured: the scene never entered the dwell viewport). Same discrepancy noted for the events layer in the verification queue. NEEDS HUMAN VERIFICATION against the manga."
       }
     },
     {

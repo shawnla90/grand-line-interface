@@ -48,16 +48,24 @@ type MomentDef = {
   /** canon event slug — label + fact + (usually) focus come from this row. */
   event: string;
   /** Only where the scene anchor is NOT the event's coordinate (the vows play
-   * on the Reverse Mountain approach, not at Loguetown where the fact lives). */
+   * on the Reverse Mountain approach, not at Loguetown where the fact lives;
+   * the Conomi scenes stand with the 3D model, not the derived island row —
+   * see canon/east_blue_scene_anchors.json for the receipts). */
   focusOverride?: [number, number];
+  /** Only where two moments share an event (escape + vows both read
+   * the-loguetown-escape) and the event's name would caption them identically. */
+  labelOverride?: string;
 };
 
 const EAST_BLUE_MOMENT_DEFS: MomentDef[] = [
   { chapter: 20, simId: "orange-town-luffy-vs-buggy", event: "buggy-blasted-away" },
   { chapter: 40, simId: "syrup-village-luffy-vs-kuro", event: "kuro-of-a-hundred-plans-falls" },
   { chapter: 51, simId: "baratie-zoro-vs-mihawk", event: "zoro-vs-mihawk-baratie" },
-  { chapter: 93, simId: "arlong-park-final-clash", event: "arlong-park-falls" },
-  { chapter: 100, simId: "east-blue-grand-line-vows", event: "the-loguetown-escape", focusOverride: [-177, -12] },
+  { chapter: 93, simId: "arlong-park-final-clash", event: "arlong-park-falls", focusOverride: [-168, -33.2] },
+  {
+    chapter: 100, simId: "east-blue-grand-line-vows", event: "the-loguetown-escape",
+    focusOverride: [-177, -12], labelOverride: "Into the Grand Line — the vows",
+  },
 ];
 
 /** Build the journey's moment list from live canon. Duck-typed on the two
@@ -74,7 +82,7 @@ export function buildEastBlueMoments(world: {
     if (!ev || ev.occurredChapter > def.chapter) continue;
     moments.push({
       chapter: def.chapter,
-      label: ev.name,
+      label: def.labelOverride ?? ev.name,
       fact: ev.outcome,
       focus: def.focusOverride ?? [ev.lng, ev.lat],
       simId: def.simId,

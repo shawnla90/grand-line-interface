@@ -14,8 +14,16 @@
     "baratie-zoro-vs-mihawk": { "event": "zoro-vs-mihawk-baratie" },
     "baratie-luffy-vs-krieg": { "event": "don-krieg-defeated" },
     "sanji-leaves-baratie": { "event": "don-krieg-defeated" },
-    "nami-asks-for-help": { "island": "cocoyasi-village" },
-    "arlong-park-final-clash": { "event": "arlong-park-falls" },
+    "nami-asks-for-help": {
+      "lng": -167.6,
+      "lat": -32.4,
+      "note": "Hand-authored: Cocoyasi Village beside the Conomi 3D model. The island rows for the Conomi cluster carry DERIVED positions (~-110 lng) that disagree with the voyage's conomi-islands waypoint and the runtime model (~-168) — the model is where the reader sees Arlong Park, so the scenes stand with it. NEEDS HUMAN VERIFICATION against the manga."
+    },
+    "arlong-park-final-clash": {
+      "lng": -168.0,
+      "lat": -33.2,
+      "note": "Hand-authored: Arlong Park at the conomi-arlong-park 3D model's anchor. The arlong-park island row's derived position (-121, -39) sits 47 degrees from the voyage waypoint and the model — anchoring the fight there put it in an empty sea (measured: the scene never entered the dwell viewport). Same discrepancy noted for the events layer in the verification queue. NEEDS HUMAN VERIFICATION against the manga."
+    },
     "luffy-near-execution": { "event": "the-loguetown-escape" },
     "east-blue-grand-line-vows": {
       "lng": -177.0,

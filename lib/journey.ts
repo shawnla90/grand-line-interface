@@ -1,34 +1,72 @@
 /**
  * lib/journey.ts — the cinematic-journey timeline. PURE, no React, no map.
  *
- * Turns the 26 chapter-stamped voyage stops into a ~90s screen-recordable flight:
- * given progress t ∈ [0,1] it returns the fractional chapter to sweep to and the
- * zoom the camera should be at. The engine drives the chapter (fog + ship), the
- * map drives the camera; both read this one schedule so they never disagree.
+ * Turns the 26 chapter-stamped voyage stops into a screen-recordable flight:
+ * given progress t ∈ [0,1] it returns the fractional chapter to sweep to AND
+ * the full camera program — zoom, pitch, orbit drift — for that instant. The
+ * engine drives the chapter (fog + ship), the map damps toward the schedule's
+ * camera; both read this one timeline so they never disagree.
  *
- * The shape Shawn asked for: stay zoomed OUT over open sea so the curved voyage
- * line reads on the globe, and DWELL with a deep zoom-in at each island we built
- * in 3D so the Blender models are the hero beats. So time is not linear in
- * chapters — long ocean crossings are capped (they'd otherwise eat the whole
- * run), and the 3D stops get a held slice where the chapter barely advances.
+ * THE SHOT LIST, which is the whole point of this file. Measured live before
+ * this existed: pitch was 0 for the entire run and the "dwells" were 3-second
+ * zoom spikes — every 3D island the app can render was flown over flat,
+ * top-down, unseen. So the timeline now owns four kinds of slice, each with a
+ * camera program:
+ *
+ *   travel   — OUT over open sea (zoom ~3, flat): the curved gold route on the
+ *              globe is the shot.
+ *   dwell    — a 3D island on the route: the DIRECTORY-DIVE camera (zoom 6.4,
+ *              pitch 48 — the numbers the ◈ panel already uses, because they
+ *              are the ones that make a Blender model read as a place) plus a
+ *              slow orbit drift, the walk-around-the-model shot.
+ *   moment   — a story beat: 2.5D scene moments frame the stage at pitch 55
+ *              with NO orbit (the actors are billboards; orbiting them reveals
+ *              the cards), while model spotlights (Marineford, the Gates,
+ *              Whisky Peak…) use the dive program at an off-route anchor.
+ *   transit  — a VERTICAL experience: the chapter sweeps slowly (not held)
+ *              while the camera pitches up and rides along — Skypiea's
+ *              Knock-Up Stream climb, Fish-Man Island's dive. The altitude
+ *              visuals are already pure functions of chapter; sweeping slowly
+ *              through their beats at pitch IS the experience.
  */
 
 export type JourneyStop = { chapter: number; slug: string | null; label: string; deep: boolean };
 
 /**
- * A MOMENT: a story beat the journey stops FOR, not just at — a 2.5D
- * simulation playing at its anchor, with a canon fact for the caption. Dwelling
- * holds `chapterAt` AT the moment's chapter, so the scene's spoiler gate opens
- * exactly during the dwell and never a frame before. `focus` pulls the camera
- * to the stage (the Baratie sits off the raw voyage line); `fact` is read from
- * world.events at build time, never copied into this file.
+ * A MOMENT: a beat the journey stops FOR, not just at. `kind: "scene"` is a
+ * 2.5D simulation playing at its anchor (dwelling holds `chapterAt` AT the
+ * moment's chapter, so the scene's spoiler gate opens exactly during the dwell
+ * and never a frame before). `kind: "model"` is a 3D-model spotlight at an
+ * anchor the voyage line never touches — Marineford exists on this chart and
+ * deserves its shot even though no waypoint slug points at it. `fact` is read
+ * from world.events at build time, never copied into this file.
  */
 export type JourneyMoment = {
   chapter: number;
   label: string;
+  kind?: "scene" | "model";
   fact?: string;
   focus?: [number, number];
   simId?: string;
+};
+
+/** A slow chapter sweep with a pitched camera — the vertical rides. */
+export type JourneyTransit = {
+  fromCh: number;
+  toCh: number;
+  label: string;
+  pitch: number;
+  zoom: number;
+  /** relative time weight (like dwellWeight, but for a sweep). */
+  weight: number;
+};
+
+/** What the camera should be doing at an instant of the run. */
+export type CamTarget = {
+  zoom: number;
+  pitch: number;
+  /** deg/sec of bearing drift while fully inside a dwell window; 0 = none. */
+  orbitDegPerSec: number;
 };
 
 type Slice =
@@ -39,7 +77,9 @@ export type Journey = {
   stops: JourneyStop[];
   /** Fractional chapter at progress t∈[0,1]. */
   chapterAt: (t: number) => number;
-  /** Camera zoom at progress t∈[0,1]: OUT over sea, DEEP at a 3D stop. */
+  /** Full camera program at t. The map DAMPS toward these, it never snaps. */
+  camAt: (t: number) => CamTarget;
+  /** Camera zoom at t — camAt(t).zoom, kept for existing callers. */
   zoomAt: (t: number) => number;
   /** The current leg's label, for the on-screen caption. */
   labelAt: (t: number) => string;
@@ -49,19 +89,32 @@ export type Journey = {
 
 export type JourneyOpts = {
   outZoom?: number; // sea travel
-  deepZoom?: number; // at a 3D stop
+  deepZoom?: number; // scene moments — the 2.5D stage framing
+  diveZoom?: number; // 3D dwells/spotlights — the directory-dive framing
+  divePitch?: number; // 3D dwells/spotlights
+  momentPitch?: number; // 2.5D scene moments
+  orbitDegPerSec?: number; // bearing drift inside a 3D dwell
   travelCapCh?: number; // no single ocean crossing dominates the clock
   dwellWeight?: number; // relative time held at a 3D stop
-  momentWeight?: number; // relative time held at a story moment (the 8s scenes need ~3.4x a deep dwell)
-  rampFrac?: number; // fraction of a neighbouring travel slice the zoom eases over
+  momentWeight?: number; // relative time held at a story moment
+  rampFrac?: number; // fraction of a dwell window the camera eases over
 };
 
 const DEFAULTS: Required<JourneyOpts> = {
   outZoom: 3.0,
   deepZoom: 5.8,
+  // The ◈ directory's dive numbers (Atlas.diveTo): the camera that makes a
+  // model read as a place. The journey borrows them rather than inventing.
+  diveZoom: 6.4,
+  divePitch: 48,
+  momentPitch: 55,
+  orbitDegPerSec: 5,
   travelCapCh: 120,
-  dwellWeight: 44,
-  momentWeight: 150,
+  // Weights are relative; with the standard route (~1050 travel weight,
+  // 8-10 dwells, 5 scene moments, 2 transits) and a 150s run these land at
+  // roughly: dwell ≈ 6s, scene moment ≈ 8s, Skypiea ride ≈ 9s.
+  dwellWeight: 135,
+  momentWeight: 180,
   rampFrac: 0.42,
 };
 
@@ -71,24 +124,31 @@ function smooth(x: number): number {
 }
 
 /**
- * The voyage stops we linger on — the islands we built in 3D that sit on the
- * route. These are the hero beats: the camera dives to show the Blender model.
- * A curated list, not a derived one, on purpose — it is art direction (which
- * stops deserve a spotlight), and hardcoding it keeps the 60KB runtime-assets
- * artifact out of the main bundle. If a model is added to the voyage, add it here.
- * (Skypiea's knock-up stream and whisky-peak have models too but their anchors
- * sit off the raw waypoint — candidates to add once the footage is judged.)
+ * The on-route 3D stops the camera dives into. Curated, not derived — art
+ * direction. Skypiea is NOT here anymore: its experience is the Knock-Up
+ * Stream TRANSIT (a dwell at the top was a flat anticlimax); any deep stop
+ * whose chapter falls inside a transit's sweep is skipped automatically.
+ * Off-route models (Marineford, the Gates, Whisky Peak, Amazon Lily, Mary
+ * Geoise) ride the MOMENT mechanism instead — see config/journey stops.
  */
 export const DEEP_VOYAGE_SLUGS = new Set<string>([
   "conomi-islands", // Arlong Park
   "loguetown",
-  "skypiea", // the Knock-Up Stream — the ship rides the water column up; the hero beat
   "sabaody-archipelago",
   "fish-man-island",
   "dressrosa",
   "zou",
   "whole-cake-island", // Totto Land
 ]);
+
+/** The vertical rides. Chapter ranges come from the transition modules'
+ * own beat tables (skypiea.ts ASCENT 235-304, fishman.ts DESCENT 602-653);
+ * the sweep starts just before so the eruption/dive is seen, and hands back
+ * to a travel leg (or dwell) at the far side. */
+export const VOYAGE_TRANSITS: JourneyTransit[] = [
+  { fromCh: 233, toCh: 305, label: "Riding the Knock-Up Stream", pitch: 60, zoom: 5.2, weight: 210 },
+  { fromCh: 601, toCh: 607, label: "Diving beneath the Red Line", pitch: 55, zoom: 5.4, weight: 110 },
+];
 
 /**
  * Build the timeline. `stops` are the voyage waypoints (ascending chapter);
@@ -101,6 +161,7 @@ export function buildJourney(
   deepSlugs: Set<string> = DEEP_VOYAGE_SLUGS,
   opts: JourneyOpts = {},
   moments: JourneyMoment[] = [],
+  transits: JourneyTransit[] = VOYAGE_TRANSITS,
 ): Journey {
   const o = { ...DEFAULTS, ...opts };
 
@@ -111,48 +172,81 @@ export function buildJourney(
     deep: s.slug != null && deepSlugs.has(s.slug),
   }));
 
-  // Stops and moments interleave into one chapter-ordered beat list. A moment
-  // sorts AFTER a stop at the same chapter (arrive, then the scene plays).
-  type Beat =
-    | { kind: "stop"; stop: JourneyStop }
-    | { kind: "moment"; moment: JourneyMoment };
-  const beats: Beat[] = [
-    ...marked.map((stop): Beat => ({ kind: "stop", stop })),
-    ...[...moments].sort((a, b) => a.chapter - b.chapter).map((moment): Beat => ({ kind: "moment", moment })),
-  ].sort((a, b) => {
-    const ca = a.kind === "stop" ? a.stop.chapter : a.moment.chapter;
-    const cb = b.kind === "stop" ? b.stop.chapter : b.moment.chapter;
-    return ca - cb || (a.kind === "moment" ? 1 : -1) - (b.kind === "moment" ? 1 : -1);
-  });
+  const inTransit = (ch: number) => transits.some((tr) => ch >= tr.fromCh && ch <= tr.toCh);
 
-  // Weighted slices: a dwell AT each 3D stop, a HELD dwell at each moment (the
-  // simulation's runtime), a travel BETWEEN beats, and a final travel from the
-  // last beat to chapterMax so the story finishes charting.
+  // Stops, moments and transit-starts interleave into one chapter-ordered beat
+  // list. A moment sorts AFTER a stop at the same chapter (arrive, then the
+  // scene plays). A deep stop swallowed by a transit's sweep loses its dwell —
+  // the ride IS that stop's experience.
+  type Beat =
+    | { kind: "stop"; ch: number; stop: JourneyStop }
+    | { kind: "moment"; ch: number; moment: JourneyMoment }
+    | { kind: "transit"; ch: number; transit: JourneyTransit };
+  const beats: Beat[] = [
+    ...marked.map((stop): Beat => ({ kind: "stop", ch: stop.chapter, stop })),
+    ...moments.map((moment): Beat => ({ kind: "moment", ch: moment.chapter, moment })),
+    ...transits.map((transit): Beat => ({ kind: "transit", ch: transit.fromCh, transit })),
+  ].sort((a, b) => a.ch - b.ch || (a.kind === "stop" ? -1 : 1) - (b.kind === "stop" ? -1 : 1));
+
   type Raw =
     | { kind: "dwell"; w: number; chapter: number; label: string; moment?: JourneyMoment }
-    | { kind: "travel"; w: number; fromCh: number; toCh: number; label: string };
+    | { kind: "travel"; w: number; fromCh: number; toCh: number; label: string; transit?: JourneyTransit };
   const raw: Raw[] = [];
+  let cursorCh = marked.length ? marked[0].chapter : 1;
+
   for (let i = 0; i < beats.length; i++) {
     const b = beats[i];
-    const ch = b.kind === "stop" ? b.stop.chapter : b.moment.chapter;
-    if (b.kind === "stop" && b.stop.deep) {
-      raw.push({ kind: "dwell", w: o.dwellWeight, chapter: ch, label: b.stop.label });
+    // A beat inside an already-consumed transit sweep contributes nothing.
+    if (b.ch < cursorCh) continue;
+
+    if (b.kind === "transit") {
+      const tr = b.transit;
+      raw.push({ kind: "travel", w: tr.weight, fromCh: tr.fromCh, toCh: tr.toCh, label: tr.label, transit: tr });
+      cursorCh = tr.toCh;
+    } else if (b.kind === "stop" && b.stop.deep && !inTransit(b.ch)) {
+      raw.push({ kind: "dwell", w: o.dwellWeight, chapter: b.ch, label: b.stop.label });
+      cursorCh = b.ch;
     } else if (b.kind === "moment") {
-      raw.push({ kind: "dwell", w: o.momentWeight, chapter: ch, label: b.moment.label, moment: b.moment });
+      const w = b.moment.kind === "model" ? o.dwellWeight : o.momentWeight;
+      raw.push({ kind: "dwell", w, chapter: b.ch, label: b.moment.label, moment: b.moment });
+      cursorCh = b.ch;
+    } else {
+      cursorCh = Math.max(cursorCh, b.ch);
     }
-    const next = beats[i + 1];
-    const nextCh = next ? (next.kind === "stop" ? next.stop.chapter : next.moment.chapter) : chapterMax;
-    const gap = nextCh - ch;
+
+    // Travel to the next un-consumed beat (or the end of the story).
+    let nextCh = chapterMax;
+    let nextLabel = raw.length ? raw[raw.length - 1].label : "";
+    for (let j = i + 1; j < beats.length; j++) {
+      if (beats[j].ch >= cursorCh) {
+        nextCh = beats[j].ch;
+        const nb = beats[j];
+        nextLabel = nb.kind === "stop" ? nb.stop.label : nb.kind === "moment" ? nb.moment.label : nb.transit.label;
+        break;
+      }
+    }
+    const gap = nextCh - cursorCh;
     if (gap > 0) {
-      const nextLabel = next ? (next.kind === "stop" ? next.stop.label : next.moment.label)
-        : (b.kind === "stop" ? b.stop.label : b.moment.label);
-      raw.push({ kind: "travel", w: Math.min(gap, o.travelCapCh), fromCh: ch, toCh: nextCh, label: nextLabel });
+      raw.push({ kind: "travel", w: Math.min(gap, o.travelCapCh), fromCh: cursorCh, toCh: nextCh, label: nextLabel });
+      cursorCh = nextCh;
     }
+  }
+  // Close out to chapterMax if the last beat stopped short.
+  if (cursorCh < chapterMax) {
+    raw.push({
+      kind: "travel",
+      w: Math.min(chapterMax - cursorCh, o.travelCapCh),
+      fromCh: cursorCh,
+      toCh: chapterMax,
+      label: raw.length ? raw[raw.length - 1].label : "",
+    });
   }
 
   const total = raw.reduce((a, r) => a + r.w, 0) || 1;
-  const slices: (Slice & { label: string; moment?: JourneyMoment })[] = [];
-  const deepWindows: [number, number][] = [];
+  const slices: (Slice & { label: string; moment?: JourneyMoment; transit?: JourneyTransit })[] = [];
+  // Every window the camera departs from sea level for, with its targets.
+  type CamWindow = { t0: number; t1: number; zoom: number; pitch: number; orbit: number; moment?: JourneyMoment };
+  const camWindows: CamWindow[] = [];
   const momentWindows: [number, number, JourneyMoment][] = [];
   let acc = 0;
   for (const r of raw) {
@@ -161,10 +255,20 @@ export function buildJourney(
     const t1 = acc / total;
     if (r.kind === "dwell") {
       slices.push({ kind: "dwell", t0, t1, chapter: r.chapter, label: r.label, moment: r.moment });
-      deepWindows.push([t0, t1]);
+      const isScene = r.moment?.kind !== "model" && !!r.moment;
+      camWindows.push({
+        t0, t1,
+        zoom: isScene ? o.deepZoom : o.diveZoom,
+        pitch: isScene ? o.momentPitch : o.divePitch,
+        orbit: isScene ? 0 : o.orbitDegPerSec,
+        moment: r.moment,
+      });
       if (r.moment) momentWindows.push([t0, t1, r.moment]);
     } else {
-      slices.push({ kind: "travel", t0, t1, fromCh: r.fromCh, toCh: r.toCh, label: r.label });
+      slices.push({ kind: "travel", t0, t1, fromCh: r.fromCh, toCh: r.toCh, label: r.label, transit: r.transit });
+      if (r.transit) {
+        camWindows.push({ t0, t1, zoom: r.transit.zoom, pitch: r.transit.pitch, orbit: 0 });
+      }
     }
   }
 
@@ -181,20 +285,36 @@ export function buildJourney(
     return s.fromCh + (s.toCh - s.fromCh) * u;
   };
 
-  const zoomAt = (t: number): number => {
-    // 1 inside a deep dwell, ramping from 0 over rampFrac of the adjacent travel
-    // slices, so the camera eases in on approach and out on departure.
-    let pulse = 0;
-    for (const [d0, d1] of deepWindows) {
-      const w = (d1 - d0) * o.rampFrac || 0.02;
-      let p: number;
-      if (t < d0) p = smooth((t - (d0 - w)) / w);
-      else if (t > d1) p = smooth(1 - (t - d1) / w);
-      else p = 1;
-      pulse = Math.max(pulse, p);
-    }
-    return o.outZoom + (o.deepZoom - o.outZoom) * pulse;
+  /** Pulse 0→1→0 for a window, ramping over rampFrac of the window's own
+   * width on both sides — the camera eases in on approach, out on departure. */
+  const pulse = (t: number, w: CamWindow): number => {
+    const ramp = (w.t1 - w.t0) * o.rampFrac || 0.02;
+    if (t < w.t0) return smooth((t - (w.t0 - ramp)) / ramp);
+    if (t > w.t1) return smooth(1 - (t - w.t1) / ramp);
+    return 1;
   };
+
+  const camAt = (t: number): CamTarget => {
+    let best: CamWindow | null = null;
+    let bestP = 0;
+    for (const w of camWindows) {
+      const p = pulse(t, w);
+      if (p > bestP) {
+        bestP = p;
+        best = w;
+      }
+    }
+    if (!best || bestP <= 0) return { zoom: o.outZoom, pitch: 0, orbitDegPerSec: 0 };
+    return {
+      zoom: o.outZoom + (best.zoom - o.outZoom) * bestP,
+      pitch: best.pitch * bestP,
+      // Orbit only once settled — a drifting bearing during the zoom ramp
+      // reads as a wobble, not a reveal.
+      orbitDegPerSec: bestP >= 0.98 ? best.orbit : 0,
+    };
+  };
+
+  const zoomAt = (t: number): number => camAt(t).zoom;
 
   const labelAt = (t: number): string => findSlice(t).label;
 
@@ -204,5 +324,5 @@ export function buildJourney(
     return null;
   };
 
-  return { stops: marked, chapterAt, zoomAt, labelAt, momentAt };
+  return { stops: marked, chapterAt, camAt, zoomAt, labelAt, momentAt };
 }

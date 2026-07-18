@@ -35,8 +35,8 @@ import { BRAND } from "@/config/brand";
 import { focusKey, type Focus, type PresenceLens } from "@/lib/lenses";
 import type { BuildLog } from "@/lib/buildlog";
 import type { Art } from "@/lib/art";
-import { buildJourney } from "@/lib/journey";
-import { EAST_BLUE_2D_ON, buildEastBlueMoments } from "@/config/east-blue-simulations";
+import { buildJourney, type CamTarget } from "@/lib/journey";
+import { buildJourneyStops, STORY_JOURNEY_ON } from "@/config/journey-stops";
 import WorldMap, { type Projection } from "./WorldMap";
 import { RuntimeIslandDirectory } from "./RuntimeIslandDirectory";
 import SearchPalette, { type SearchHit } from "./SearchPalette";
@@ -56,10 +56,10 @@ export const SPEEDS = [0.5, 1, 2, 4] as const;
 export type Speed = (typeof SPEEDS)[number];
 /** Chapters per second at 1x. 2 ch/s sails the whole story in ~10 minutes. */
 const BASE_CPS = 2;
-/** The cinematic journey's total run — ~90s, Shawn's ideal for a TikTok
- * capture. With the East Blue story moments on (five ~8s simulation dwells),
- * the run stretches to 120s so the sea legs keep today's pacing. */
-const JOURNEY_MS = EAST_BLUE_2D_ON ? 120_000 : 90_000;
+/** The cinematic journey's total run. ~90s flag-off (the original TikTok
+ * cut); with the story layers on the run carries ~10 story/model dwells and
+ * two vertical rides, so it stretches to 150s to keep the sea legs pacing. */
+const JOURNEY_MS = STORY_JOURNEY_ON ? 150_000 : 90_000;
 
 /**
  * One float position (`swept`) eased or sailed toward/through chapters.
@@ -173,23 +173,27 @@ function useChapterEngine(world: World, initial: number) {
   // It drives `swept` directly, sets a target `journeyZoom` the map damps toward,
   // and names the current leg for the recording caption.
   const [journey, setJourney] = useState(false);
-  const [journeyZoom, setJourneyZoom] = useState<number | null>(null);
   const [journeyLabel, setJourneyLabel] = useState("");
-  // During a story-moment dwell: the stage to frame and the canon fact to
-  // caption. Both null over open sea. Facts come from world.events, whose
-  // occurred_chapter <= the dwell chapter by construction — no caption leaks.
-  const [journeyFocus, setJourneyFocus] = useState<[number, number] | null>(null);
+  // The canon fact captioning a story dwell. Facts come from world.events,
+  // whose occurred_chapter <= the dwell chapter by construction — no leaks.
   const [journeyFact, setJourneyFact] = useState("");
+  /**
+   * THE PER-FRAME CAMERA CHANNEL IS A REF, NOT STATE — measured lesson. The
+   * first cut pushed zoom/focus through setState every rAF; with ~6 setters a
+   * frame React's dev runtime threw "Maximum update depth exceeded" mid-run.
+   * The map's chase already reads refs per frame; only the CAPTION (a string
+   * that changes a handful of times a run) deserves a re-render.
+   */
+  const journeyCam = useRef<(CamTarget & { focus: [number, number] | null }) | null>(null);
   const journeyRaf = useRef<number | null>(null);
 
   const stopJourney = useCallback(() => {
     if (journeyRaf.current !== null) cancelAnimationFrame(journeyRaf.current);
     journeyRaf.current = null;
     playingRef.current = false;
+    journeyCam.current = null;
     setJourney(false);
-    setJourneyZoom(null);
     setJourneyLabel("");
-    setJourneyFocus(null);
     setJourneyFact("");
   }, []);
 
@@ -205,9 +209,9 @@ function useChapterEngine(world: World, initial: number) {
       world.chapterMax,
       undefined,
       {},
-      // The East Blue story moments ride the same flag as the layer that plays
-      // them; flag off = today's 90s run, byte for byte.
-      EAST_BLUE_2D_ON ? buildEastBlueMoments(world) : [],
+      // Scene moments + model spotlights ride their own flags; both off =
+      // today's 90s run, byte for byte.
+      buildJourneyStops(world),
     );
 
     pos.current = world.chapterMin;
@@ -223,11 +227,13 @@ function useChapterEngine(world: World, initial: number) {
       setSwept(ch);
       const fl = Math.max(world.chapterMin, Math.floor(ch));
       setChapterState((c) => (c === fl ? c : fl));
-      setJourneyZoom(plan.zoomAt(t));
-      setJourneyLabel(plan.labelAt(t));
       const moment = plan.momentAt(t);
-      setJourneyFocus(moment?.focus ?? null);
-      setJourneyFact(moment?.fact ?? "");
+      journeyCam.current = { ...plan.camAt(t), focus: moment?.focus ?? null };
+      // Strings only re-render when they actually CHANGE (see journeyCam note).
+      const label = plan.labelAt(t);
+      setJourneyLabel((prev) => (prev === label ? prev : label));
+      const fact = moment?.fact ?? "";
+      setJourneyFact((prev) => (prev === fact ? prev : fact));
       if (t >= 1) {
         stopJourney();
         return;
@@ -248,7 +254,7 @@ function useChapterEngine(world: World, initial: number) {
 
   return {
     chapter, swept, setChapter: setChapterJ, playing, speed, setSpeed, play, pause,
-    journey, journeyZoom, journeyLabel, journeyFocus, journeyFact, startJourney, stopJourney,
+    journey, journeyCam, journeyLabel, journeyFact, startJourney, stopJourney,
   };
 }
 
@@ -502,8 +508,7 @@ export default function Atlas({
           focus={focus}
           flyTarget={flyTarget}
           journey={engine.journey}
-          journeyZoom={engine.journeyZoom}
-          journeyFocus={engine.journeyFocus}
+          journeyCam={engine.journeyCam}
           preserveBuffer={recordArmed}
         />
 
