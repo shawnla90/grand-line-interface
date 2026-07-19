@@ -44,7 +44,14 @@ const MODEL_SPOTLIGHTS: JourneyMoment[] = [
   { chapter: 490, kind: "model", label: "Mary Geoise — the Red Line's summit", fact: "The holy land above the world, where the Celestial Dragons rule.", focus: [-2.7363, -9.3782] },
   { chapter: 516, kind: "model", label: "Amazon Lily", fact: "Kuja island — the empress's home sea.", focus: [165.1452, 12.0706] },
   { chapter: 552, kind: "model", label: "Marineford", fact: "The Navy's fortress, where the war for the era was fought.", focus: [-92.4053, 11.8445] },
-  { chapter: 911, kind: "model", label: "Wano — the country behind the waterfall", fact: "The closed land of the samurai, reached by climbing a waterfall.", focus: [118.3801, 5.3077] },
+  // Endgame geography uses the complete replacement systems, not Wano's old
+  // waterfall-card study. These anchors and safe chapters are the signed
+  // runtime contracts; holding here makes the new islands part of Journey and
+  // ordinary Play instead of discoverable only through the asset directory.
+  { chapter: 978, kind: "model", label: "Wano & Onigashima — the skull fortress", fact: "The raid reaches the fortress island off Wano's coast.", focus: [118.2306, 7.5751] },
+  { chapter: 997, kind: "model", label: "Onigashima takes flight", fact: "The fortress island rises and begins moving toward the Flower Capital.", focus: [118.2306, 7.5751] },
+  { chapter: 1066, kind: "model", label: "Egghead — island of the future", fact: "The voyage reaches Vegapunk's vertically layered research island.", focus: [149.0991, -0.4304] },
+  { chapter: 1125, kind: "model", label: "Elbaph — beneath Treasure Tree Adam", fact: "The voyage reaches the land of the giants beneath the world tree.", focus: [154.2701, -7.171] },
 ];
 
 /** The events shape the stops builder reads — duck-typed on the fields it

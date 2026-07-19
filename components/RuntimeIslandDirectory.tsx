@@ -19,17 +19,28 @@ import { runtimeDirectory, type DirectoryEntry, type RuntimeAsset } from "./runt
  */
 export function RuntimeIslandDirectory({
   chapter,
+  arcSlug,
   onDive,
 }: {
   chapter: number;
+  arcSlug: string | null;
   onDive: (anchor: [number, number]) => void;
 }) {
   const [open, setOpen] = useState(false);
 
   const { wired, held } = useMemo(() => {
+    // The original waterfall card is still retained as provenance/fallback, but
+    // the complete Wano + Onigashima system supersedes it in the live browser.
+    // Listing both made the shipped Wano look unfinished even while the full
+    // system was wired directly above it.
+    const superseded = new Set(["wano-waterfall-ascent"]);
     const d = runtimeDirectory(
-      (runtimeAssets as { assets: unknown[] }).assets as unknown as RuntimeAsset[],
-      ((runtimeAssets as { refused?: { id: string }[] }).refused ?? []).map((r) => r.id),
+      ((runtimeAssets as { assets: unknown[] }).assets as unknown as RuntimeAsset[]).filter(
+        (asset) => !superseded.has(asset.id),
+      ),
+      ((runtimeAssets as { refused?: { id: string }[] }).refused ?? [])
+        .map((r) => r.id)
+        .filter((id) => !superseded.has(id)),
     );
     return {
       wired: d.filter((e) => e.status === "wired"),
@@ -38,9 +49,27 @@ export function RuntimeIslandDirectory({
   }, []);
 
   const reachable = wired.filter((e) => e.reveal !== null && chapter >= e.reveal).length;
+  const currentId = arcSlug ? CURRENT_ARC_MODEL[arcSlug] : undefined;
+  const current = currentId ? wired.find((entry) => entry.id === currentId) : undefined;
+  const currentReady = !!current?.anchor && current.reveal !== null && chapter >= current.reveal;
 
   return (
     <div className="pointer-events-auto">
+      {currentReady && current && (
+        <button
+          type="button"
+          data-testid="current-arc-3d-dive"
+          onClick={() => onDive(current.anchor!)}
+          className="mb-1.5 flex w-full items-center justify-between gap-2 rounded-md border border-gold/70 bg-ink/92 px-3 py-2 text-left text-gold shadow-xl backdrop-blur transition-colors hover:border-gold hover:bg-gold/10"
+        >
+          <span className="font-mono text-[9px] uppercase tracking-[0.16em]">◈ enter</span>
+          <span className="min-w-0 flex-1 truncate text-[11px] text-parchment">
+            {CURRENT_ARC_LABEL[arcSlug!] ?? current.label}
+          </span>
+          <span className="shrink-0 font-mono text-[9px] uppercase tracking-[0.12em]">3D ↘</span>
+        </button>
+      )}
+
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -76,6 +105,62 @@ export function RuntimeIslandDirectory({
     </div>
   );
 }
+
+/**
+ * The chapter readout already knows the current arc. This table joins that
+ * story truth to the runtime model representing the same place, so a reader at
+ * Wano or Egghead gets an immediate, named entrance instead of needing to know
+ * that a collapsed asset inventory is secretly the way into the island.
+ */
+const CURRENT_ARC_MODEL: Record<string, string> = {
+  "arlong-park": "conomi-arlong-park",
+  loguetown: "loguetown-roger-execution",
+  "reverse-mountain": "reverse-mountain-twin-cape-voyage",
+  "whisky-peak": "cactus-island-whisky-peak",
+  arabasta: "arabasta-kingdom",
+  skypiea: "skypiea-sky-system",
+  "water-7": "water-7-sea-train-network",
+  "enies-lobby": "water-7-sea-train-network",
+  "sabaody-archipelago": "sabaody-grove-network",
+  "return-to-sabaody": "fish-man-red-line-descent",
+  "fish-man-island": "fish-man-island",
+  "punk-hazard": "punk-hazard-geographic-system",
+  "amazon-lily": "amazon-lily",
+  "impel-down": "world-government-tarai-system",
+  marineford: "world-government-tarai-system",
+  levely: "mary-geoise-red-line",
+  dressrosa: "dressrosa-green-bit",
+  zou: "zou-zunesha",
+  "whole-cake-island": "totto-land-food-geography",
+  "wano-country": "wano-onigashima-country-system",
+  egghead: "egghead-future-island-system",
+  elbaph: "elbaph-adam-world-system",
+};
+
+const CURRENT_ARC_LABEL: Record<string, string> = {
+  "arlong-park": "Arlong Park",
+  loguetown: "Loguetown",
+  "reverse-mountain": "Reverse Mountain",
+  "whisky-peak": "Whisky Peak",
+  arabasta: "Arabasta",
+  skypiea: "Skypiea",
+  "water-7": "Water 7",
+  "enies-lobby": "Water 7 & Enies Lobby",
+  "sabaody-archipelago": "Sabaody",
+  "return-to-sabaody": "the Fish-Man descent",
+  "fish-man-island": "Fish-Man Island",
+  "punk-hazard": "Punk Hazard",
+  "amazon-lily": "Amazon Lily",
+  "impel-down": "the Tarai Current",
+  marineford: "the World Government triangle",
+  levely: "Mary Geoise",
+  dressrosa: "Dressrosa",
+  zou: "Zou",
+  "whole-cake-island": "Totto Land",
+  "wano-country": "Wano & Onigashima",
+  egghead: "Egghead",
+  elbaph: "Elbaph",
+};
 
 function Row({
   entry,

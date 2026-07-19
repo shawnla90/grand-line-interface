@@ -955,7 +955,7 @@ export default function Atlas({
                 without them a "dive" would land on a flat island, so offering it
                 would be a lie. */}
             {process.env.NEXT_PUBLIC_RUNTIME_3D_ASSETS === "1" && (
-              <RuntimeIslandDirectory chapter={at.chapter} onDive={diveTo} />
+              <RuntimeIslandDirectory chapter={at.chapter} arcSlug={at.arc?.slug ?? null} onDive={diveTo} />
             )}
 
             <button

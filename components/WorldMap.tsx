@@ -3060,13 +3060,22 @@ function paint(
   // beat), stands. The climb animation waits for human-verified chapters —
   // the sprite renderer withholds rather than invents (wano.ts header).
   if (pools?.wano) {
-    const o = wanoOpacity(ch);
-    if (o > 0) {
-      pools.wano.el.style.display = "";
-      pools.wano.img.style.opacity = String(o);
-    } else {
+    // The signed Wano + Onigashima GLB supersedes the old waterfall-card study
+    // whenever the runtime asset track is enabled. Keeping both visible made
+    // the real model look like it had never shipped and left a bare duplicate
+    // several degrees south of the canonical voyage anchor.
+    if (RUNTIME_ASSETS_ON) {
       pools.wano.el.style.display = "none";
       pools.wano.img.style.opacity = "0";
+    } else {
+      const o = wanoOpacity(ch);
+      if (o > 0) {
+        pools.wano.el.style.display = "";
+        pools.wano.img.style.opacity = String(o);
+      } else {
+        pools.wano.el.style.display = "none";
+        pools.wano.img.style.opacity = "0";
+      }
     }
   }
 
