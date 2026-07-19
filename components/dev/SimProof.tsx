@@ -24,6 +24,10 @@ import type { StoryPackId } from "@/config/story-simulations";
 const BARATIE: [number, number] = [-165, -40];
 const WHISKY_PEAK: [number, number] = [-121.3706, 4.162];
 const NANOHANA: [number, number] = [-102.8707, 0.4813];
+const RAINBASE: [number, number] = [-116.2875, 6.0506];
+const ALUBARNA: [number, number] = [-120.1992, -0.7873];
+const SKYPIEA: [number, number] = [-91.1362, 17.0745];
+const ENIES_LOBBY: [number, number] = [-68.3696, -7.1283];
 
 export default function SimProof({
   initialChapter,
@@ -51,9 +55,13 @@ export default function SimProof({
         sources: {},
         layers: [{ id: "bg", type: "background", paint: { "background-color": "#0b1d33" } }],
       },
-      center: initialPack === "arabasta-saga-2d-v1"
-        ? (initialChapter >= 158 ? NANOHANA : WHISKY_PEAK)
-        : BARATIE,
+      center: initialPack === "enies-lobby-saga-2d-v1"
+        ? ENIES_LOBBY
+        : initialPack === "skypiea-saga-2d-v1"
+          ? SKYPIEA
+          : initialPack === "arabasta-saga-2d-v1"
+            ? (initialChapter >= 158 ? NANOHANA : WHISKY_PEAK)
+            : BARATIE,
       zoom: 5.2,
       // The 2.5D cards are VERTICAL billboards ("camera-facing around local
       // up, do not flatten onto the map" — the contract). A pitch-0 top-down
@@ -112,6 +120,21 @@ export default function SimProof({
           <button onClick={() => jump(WHISKY_PEAK, 114, "arabasta-saga-2d-v1")} data-testid="go-114">Robin ch114</button>
           <button onClick={() => jump(NANOHANA, 158, "arabasta-saga-2d-v1")} data-testid="go-158">Ace ch158</button>
           <button onClick={() => jump(NANOHANA, 159, "arabasta-saga-2d-v1")} data-testid="go-159">Fire Fist ch159</button>
+          <button onClick={() => jump(RAINBASE, 176, "arabasta-saga-2d-v1")} data-testid="go-176">Crocodile ch176</button>
+          <button onClick={() => jump(ALUBARNA, 187, "arabasta-saga-2d-v1")} data-testid="go-187">Sanji ch187</button>
+          <button onClick={() => jump(ALUBARNA, 190, "arabasta-saga-2d-v1")} data-testid="go-190">Nami ch190</button>
+          <button onClick={() => jump(ALUBARNA, 194, "arabasta-saga-2d-v1")} data-testid="go-194">Zoro ch194</button>
+          <button onClick={() => jump(ALUBARNA, 198, "arabasta-saga-2d-v1")} data-testid="go-198">Aqua Luffy ch198</button>
+          <button onClick={() => jump(ALUBARNA, 203, "arabasta-saga-2d-v1")} data-testid="go-203">Crocodile final ch203</button>
+          <button onClick={() => jump(SKYPIEA, 278, "skypiea-saga-2d-v1")} data-testid="go-278">Enel pre-gate ch278</button>
+          <button onClick={() => jump(SKYPIEA, 279, "skypiea-saga-2d-v1")} data-testid="go-279">Enel ch279</button>
+          <button onClick={() => jump(ENIES_LOBBY, 386, "enies-lobby-saga-2d-v1")} data-testid="go-386">Gear Second pre-gate ch386</button>
+          <button onClick={() => jump(ENIES_LOBBY, 387, "enies-lobby-saga-2d-v1")} data-testid="go-387">Blueno ch387</button>
+          <button onClick={() => jump(ENIES_LOBBY, 414, "enies-lobby-saga-2d-v1")} data-testid="go-414">Diable pre-gate ch414</button>
+          <button onClick={() => jump(ENIES_LOBBY, 415, "enies-lobby-saga-2d-v1")} data-testid="go-415">Jabra ch415</button>
+          <button onClick={() => jump(ENIES_LOBBY, 416, "enies-lobby-saga-2d-v1")} data-testid="go-416">Kaku ch416</button>
+          <button onClick={() => jump(ENIES_LOBBY, 417, "enies-lobby-saga-2d-v1")} data-testid="go-417">Asura ch417</button>
+          <button onClick={() => jump(ENIES_LOBBY, 418, "enies-lobby-saga-2d-v1")} data-testid="go-418">Lucci ch418</button>
           <button
             onClick={() => {
               const director = AudioDirector.get();

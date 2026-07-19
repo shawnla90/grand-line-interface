@@ -18,7 +18,8 @@
       "Schematic rail Water7 to StPoplar -0.13",
       "Schematic rail Water7 to StPoplar +0.13",
       "Schematic rail Water7 to SanFaldo -0.13",
-      "Schematic rail Water7 to SanFaldo +0.13"
+      "Schematic rail Water7 to SanFaldo +0.13",
+      "Aqua Laguna wave wall"
     ],
     "excluded_objects": [
       "Review Camera",
@@ -30,15 +31,14 @@
       "Pucci label",
       "St. Poplar label",
       "San Faldo label",
-      "Shift Station label",
-      "Aqua Laguna wave wall"
+      "Shift Station label"
     ]
   },
   "stats": {
-    "objects": 87,
-    "vertices_input": 5248,
-    "triangles_input": 10024,
-    "materials": 10,
+    "objects": 96,
+    "vertices_input": 5842,
+    "triangles_input": 11160,
+    "materials": 12,
     "bounds_blender": {
       "min": [
         -18.0,
@@ -48,18 +48,18 @@
       "max": [
         18.0,
         12.0,
-        4.95
+        6.6437
       ]
     },
-    "bytes": 482576
+    "bytes": 530224
   },
   "build": {
     "blender": "4.5.3 LTS",
-    "glb_sha256": "2379c74b093c8ca3d668baf4b5459bf4effb779f5d2fde08b057c8e2311e2eee",
+    "glb_sha256": "01049271111d0e2cadcae347114f3f1f5762bbe5b9983b38a73e3968632d634c",
     "glb_header": {
       "magic": "glTF",
       "version": 2,
-      "declared_length": 482576
+      "declared_length": 530224
     }
   }
 }

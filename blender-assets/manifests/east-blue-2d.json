@@ -6,8 +6,8 @@
   "representation": "camera-facing-2d-atlas-with-authored-movement-and-3d-fx",
   "contract": {
     "path": "contracts/east-blue-saga.simulation.json",
-    "bytes": 27229,
-    "sha256": "bff504974733b6da5cee56a19fef4b179c517c4168da2e702a890ffc2c7b24b6"
+    "bytes": 30796,
+    "sha256": "cc82de3bc76b28424ee1d0e4ddbf2a6208a048ae38929742e57fda652cd444b4"
   },
   "character_index": {
     "path": "runtime/east-blue-2d/character-index.json",
@@ -22,7 +22,7 @@
     "runtime_ready_scenes": 12,
     "art_partial_scenes": 2,
     "actor_tracks": 32,
-    "movement_keyframes": 101,
+    "movement_keyframes": 128,
     "fx_events": 33,
     "review_video_seconds": 28.0
   },

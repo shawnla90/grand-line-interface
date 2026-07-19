@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-18T21:46:18.070861+00:00",
+    "generated_at": "2026-07-19T00:03:09.223376+00:00",
     "generator": "scripts/normalize.py",
     "source_manifest_sha": "be7af436b558b373ae1e6f28cc5007ef89153529fb274cb7efd1a47b4f1ef25a",
     "sources": {
@@ -23,7 +23,7 @@
       "crew_presence contains UNVERIFIED windows. Who-is-where chapter stamps are not manga-confirmed. The UI must render presence as unverified.",
       "statuses contains UNVERIFIED windows. Warlord/Emperor/Supernova reveal chapters are not manga-confirmed. The UI must render them as unverified.",
       "poneglyphs contains UNVERIFIED custody windows (7 stones, 3 of them Road Poneglyphs). Reveal chapters are not manga-confirmed. The UI must render them as unverified.",
-      "events contains UNVERIFIED rows (22 events). Occurrence chapters are not manga-confirmed. The UI must render events as unverified.",
+      "events contains UNVERIFIED rows (27 events). Occurrence chapters are not manga-confirmed. The UI must render events as unverified.",
       "fruit_reveals contains UNVERIFIED rows. Fruit reveal chapters are not manga-confirmed. The UI must render fruit facts as unverified.",
       "haki_users contains UNVERIFIED rows. Haki reveal chapters are not manga-confirmed. The UI must render haki facts as unverified.",
       "124 bounty rows were dropped for carrying no reveal chapter (databook, Vivre Card and magazine figures the wiki never ties to a chapter). An ungated bounty cannot be fogged, so it is dropped rather than shown from chapter 1. To restore one, give it a chapter in canon/bounties.json."
@@ -56,7 +56,7 @@
       "statuses": 29,
       "poneglyphs": 7,
       "poneglyphs_road": 3,
-      "events": 22,
+      "events": 27,
       "events_verified": 0,
       "status_windows": 29,
       "status_windows_verified": 0,
@@ -54912,7 +54912,7 @@
       "slug": "zoro-vs-mr-one",
       "name": "Zoro vs. Mr. 1",
       "kind": "duel",
-      "occurred_chapter": 190,
+      "occurred_chapter": 194,
       "through_chapter": 195,
       "island_slug": "alubarna",
       "lng": -120.1992,
@@ -54931,7 +54931,7 @@
       ],
       "outcome": "A swordsman who cannot be cut against blades that cut everything. In the streets of Alubarna, Zoro learns to hear the breath of steel and cuts the steel man — the duel that turns a promise to Kuina into a technique.",
       "significance": 2,
-      "source_ref": "Hand-authored. Chapters 190-195: Zoro defeats Mr. 1 (Das Bones) in Alubarna, learning to cut steel. Charted at ch. 190 where the duel begins. NEEDS HUMAN VERIFICATION against the manga.",
+      "source_ref": "Hand-authored. Chapters 194-195: Zoro defeats Mr. 1 (Das Bones) in Alubarna, learning to cut steel. Charted at ch. 194 where the focused duel opens. NEEDS HUMAN VERIFICATION against the manga.",
       "canon_confidence": "canon",
       "verified": false
     },
@@ -54986,6 +54986,141 @@
       "outcome": "Poisoned, bleeding, and past every limit, Luffy beats the sand with his own blood on his fists. The Gum-Gum Storm drives Crocodile up through the bedrock into the sky over Alubarna — and the rain returns to Arabasta.",
       "significance": 2,
       "source_ref": "Hand-authored. Chapters 203-210: the final Luffy-Crocodile battle beneath and above Alubarna, ending the war and the drought. Charted at ch. 203 where the last round begins. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "luffy-vs-enel",
+      "name": "Luffy vs. Enel — the Golden Bell",
+      "kind": "battle",
+      "occurred_chapter": 279,
+      "through_chapter": 302,
+      "island_slug": "skypiea",
+      "lng": -91.1362,
+      "lat": 17.0745,
+      "participants": [
+        {
+          "slug": "monkey-d-luffy",
+          "name": "Monkey D. Luffy",
+          "role": "victor"
+        },
+        {
+          "slug": "ener",
+          "name": "Ener",
+          "role": "defeated"
+        }
+      ],
+      "outcome": "Lightning meets the one body it cannot rule. Luffy carries the golden weight back up Giant Jack, defeats Enel with the final golden strike, and rings Shandora's bell across the sky.",
+      "significance": 2,
+      "source_ref": "Hand-authored from official VIZ chapter 279 and volume 30 receipts; the fight begins at chapter 279 and reaches its bell resolution by chapter 302. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "luffy-vs-blueno",
+      "name": "Luffy vs. Blueno — Gear Second",
+      "kind": "duel",
+      "occurred_chapter": 387,
+      "through_chapter": 388,
+      "island_slug": "enies-lobby",
+      "lng": -68.3696,
+      "lat": -7.1283,
+      "participants": [
+        {
+          "slug": "monkey-d-luffy",
+          "name": "Monkey D. Luffy",
+          "role": "victor"
+        },
+        {
+          "slug": "blueno",
+          "name": "Blueno",
+          "role": "defeated"
+        }
+      ],
+      "outcome": "On the courthouse roof, Luffy unveils Gear Second. Blueno's Door-Door evasions and Iron Body cannot contain the new speed, and the first Jet-series barrage opens the road deeper into Enies Lobby.",
+      "significance": 2,
+      "source_ref": "Hand-authored from official VIZ chapter 387 and the official ONE PIECE.com Blueno profile; the fight resolves through chapter 388. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "sanji-vs-jabra",
+      "name": "Sanji vs. Jabra — First Diable Jambe",
+      "kind": "duel",
+      "occurred_chapter": 415,
+      "through_chapter": 415,
+      "island_slug": "enies-lobby",
+      "lng": -68.3696,
+      "lat": -7.1283,
+      "participants": [
+        {
+          "slug": "sanji",
+          "name": "Sanji",
+          "role": "victor"
+        },
+        {
+          "slug": "jabura",
+          "name": "Jabra",
+          "role": "defeated"
+        }
+      ],
+      "outcome": "Jabra's wolf-form Iron Body meets a kick hot enough to break through it. Sanji ignites Diable Jambe for the first time and finishes the CP9 fighter with the flaming combination.",
+      "significance": 2,
+      "source_ref": "Hand-authored from official VIZ chapter 415 and the official ONE PIECE.com Jabra profile. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "zoro-vs-kaku",
+      "name": "Zoro vs. Kaku — Asura",
+      "kind": "duel",
+      "occurred_chapter": 416,
+      "through_chapter": 417,
+      "island_slug": "enies-lobby",
+      "lng": -68.3696,
+      "lat": -7.1283,
+      "participants": [
+        {
+          "slug": "roronoa-zoro",
+          "name": "Roronoa Zoro",
+          "role": "victor"
+        },
+        {
+          "slug": "kaku",
+          "name": "Kaku",
+          "role": "defeated"
+        }
+      ],
+      "outcome": "Kaku's giraffe-hybrid Four-Sword Style fills the tower with Tempest Kicks. Zoro answers by manifesting Asura and ending the duel with the nine-sword strike.",
+      "significance": 2,
+      "source_ref": "Hand-authored from official VIZ chapters 416-417 and the official ONE PIECE.com Kaku profile. NEEDS HUMAN VERIFICATION against the manga.",
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "luffy-vs-rob-lucci",
+      "name": "Luffy vs. Rob Lucci — Jet Gatling",
+      "kind": "duel",
+      "occurred_chapter": 418,
+      "through_chapter": 427,
+      "island_slug": "enies-lobby",
+      "lng": -68.3696,
+      "lat": -7.1283,
+      "participants": [
+        {
+          "slug": "monkey-d-luffy",
+          "name": "Monkey D. Luffy",
+          "role": "victor"
+        },
+        {
+          "slug": "rob-lucci",
+          "name": "Rob Lucci",
+          "role": "defeated"
+        }
+      ],
+      "outcome": "Luffy burns through Gear Second and Gear Third to keep Lucci away from Robin and the crew. The last Jet Gatling breaks CP9's strongest fighter and leaves Luffy standing only because his crew is waiting.",
+      "significance": 2,
+      "source_ref": "Hand-authored from official VIZ chapter 418 and volume 43 receipts; the duel begins at chapter 418 and ends with the chapter-427 escape beat. NEEDS HUMAN VERIFICATION against the manga.",
       "canon_confidence": "canon",
       "verified": false
     }

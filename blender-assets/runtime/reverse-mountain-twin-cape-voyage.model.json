@@ -1,0 +1,211 @@
+{
+  "schema_version": 2,
+  "id": "reverse-mountain-twin-cape-voyage",
+  "source_blend": "/Users/shawnos.ai/dead-reckoning/blender-assets/source/reverse-mountain-twin-cape-voyage.blend",
+  "runtime_glb": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/reverse-mountain-twin-cape-voyage.glb",
+  "contract": "contracts/reverse-mountain-twin-cape-voyage.visual.json",
+  "model_units": "authored local-theatre units; visual fit, not canon metres",
+  "coordinate_system": "glTF 2.0 Y-up; Blender source Z-up",
+  "export": {
+    "exporter": "Blender built-in glTF 2.0 exporter",
+    "animations": true,
+    "animation_mode": "ACTIONS",
+    "named_clips": [
+      {
+        "name": "twin_cape_swell_loop",
+        "duration_seconds": 2.0333
+      },
+      {
+        "name": "current_crest_surge",
+        "duration_seconds": 2.0333
+      },
+      {
+        "name": "current_ascent_flow_loop",
+        "duration_seconds": 2.0333
+      },
+      {
+        "name": "current_descent_flow_loop",
+        "duration_seconds": 2.0333
+      },
+      {
+        "name": "merry_ascent_climb",
+        "duration_seconds": 3.0
+      },
+      {
+        "name": "merry_descent_run",
+        "duration_seconds": 2.6667
+      },
+      {
+        "name": "merry_idle_bob_loop",
+        "duration_seconds": 2.0333
+      },
+      {
+        "name": "merry_summit_crest",
+        "duration_seconds": 2.3333
+      },
+      {
+        "name": "merry_swallowed_transition",
+        "duration_seconds": 2.3333
+      },
+      {
+        "name": "merry_twin_cape_departure",
+        "duration_seconds": 3.3333
+      },
+      {
+        "name": "merry_wake_loop",
+        "duration_seconds": 2.0333
+      },
+      {
+        "name": "laboon_first_contact_breach",
+        "duration_seconds": 2.6
+      },
+      {
+        "name": "laboon_promise_response",
+        "duration_seconds": 2.8667
+      },
+      {
+        "name": "laboon_surface_idle_loop",
+        "duration_seconds": 3.0
+      },
+      {
+        "name": "laboon_breath_mist",
+        "duration_seconds": 2.3333
+      },
+      {
+        "name": "laboon_contact_displacement",
+        "duration_seconds": 2.0333
+      },
+      {
+        "name": "laboon_mouth_open_swallow",
+        "duration_seconds": 3.3333
+      },
+      {
+        "name": "crocus_explain_laboon",
+        "duration_seconds": 2.6667
+      },
+      {
+        "name": "crocus_idle_watch",
+        "duration_seconds": 4.0
+      },
+      {
+        "name": "crocus_present_log_pose",
+        "duration_seconds": 2.8333
+      },
+      {
+        "name": "whirlpool_loop_default_hidden",
+        "duration_seconds": 2.0333
+      }
+    ],
+    "extras": true,
+    "textures_embedded": false
+  },
+  "lod": {
+    "built": "LOD1_LOCAL_THEATRE",
+    "triangle_budget": {
+      "environment": 70000,
+      "going_merry": 35000,
+      "laboon": 45000
+    },
+    "remaining": [
+      "LOD0_CLOSE_INSET",
+      "LOD2_GLOBE",
+      "LOD3_FALLBACK_COMPONENTS"
+    ]
+  },
+  "fx_masks": [
+    {
+      "id": "rm-current-flow-rgba",
+      "path": "runtime/reverse-mountain-twin-cape-voyage/masks/rm-current-flow-rgba.png",
+      "bytes": 1826,
+      "sha256": "df7d2fbf9c8c0923b8de3373c8f5e5d1bb30589bf9eec253a230ae1e43119dec",
+      "pixel_size": [
+        256,
+        256
+      ],
+      "default_hidden": false
+    },
+    {
+      "id": "rm-foam-spray-rgba",
+      "path": "runtime/reverse-mountain-twin-cape-voyage/masks/rm-foam-spray-rgba.png",
+      "bytes": 17848,
+      "sha256": "673fe641935af6aa3ae6469e0647e1f4d83727d28971047b6945ff359de0a92a",
+      "pixel_size": [
+        256,
+        256
+      ],
+      "default_hidden": false
+    },
+    {
+      "id": "merry-hull-contact-rgba",
+      "path": "runtime/reverse-mountain-twin-cape-voyage/masks/merry-hull-contact-rgba.png",
+      "bytes": 38042,
+      "sha256": "278a64f4515d8cab22e62f43e459a4fc786d299dfd6c5673b9f73c5925ead717",
+      "pixel_size": [
+        256,
+        256
+      ],
+      "default_hidden": false
+    },
+    {
+      "id": "laboon-water-contact-rgba",
+      "path": "runtime/reverse-mountain-twin-cape-voyage/masks/laboon-water-contact-rgba.png",
+      "bytes": 55071,
+      "sha256": "6ee75cd5ad0fbbd79bf9d719787af62bdc8d7eaa5747210a4c3ee81dd181229e",
+      "pixel_size": [
+        256,
+        256
+      ],
+      "default_hidden": false
+    },
+    {
+      "id": "whirlpool-control-rgba",
+      "path": "runtime/reverse-mountain-twin-cape-voyage/masks/whirlpool-control-rgba.png",
+      "bytes": 50498,
+      "sha256": "3a7a76c14e0959450b29dc6c3926486302c3e120bd57f492b255983faae9e478",
+      "pixel_size": [
+        256,
+        256
+      ],
+      "default_hidden": true
+    }
+  ],
+  "stats": {
+    "objects": 50,
+    "vertices_input": 9584,
+    "triangles_input": 18996,
+    "materials": 16,
+    "bounds_blender": {
+      "min": [
+        -18.0,
+        -18.0,
+        -2.35
+      ],
+      "max": [
+        18.0,
+        21.976843,
+        10.793863
+      ]
+    },
+    "bytes": 1307736
+  },
+  "fallback": {
+    "path": "renders/runtime/reverse-mountain-twin-cape-voyage.png",
+    "bytes": 882178,
+    "sha256": "3812b62df328525e6c7340f9b28f11ca3fbb00cb4ac682c307f58b4722e90134",
+    "pixel_size": [
+      1200,
+      900
+    ],
+    "alpha": true,
+    "tableau": "chapter-102 exterior; label remains Unidentified giant whale in app state"
+  },
+  "build": {
+    "blender": "4.5.3 LTS",
+    "glb_sha256": "2accbf7f105a76f6c9b35a6d62c508d1730de9634c0018b8f7052df6a2e60d29",
+    "glb_header": {
+      "magic": "glTF",
+      "version": 2,
+      "declared_length": 1307736
+    }
+  }
+}

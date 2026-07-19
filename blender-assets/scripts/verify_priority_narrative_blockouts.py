@@ -44,9 +44,14 @@ def main() -> int:
         assert item["contract_sha256"] == sha(contract)
         assert item["glb_sha256"] == sha(glb)
         assert item["model_sha256"] == sha(model)
-        assert item["maturity"] == "runtime_blockout_v1"
+        expected_maturity = (
+            "runtime_animated_graybox_v1"
+            if item["id"] == "reverse-mountain-twin-cape-voyage"
+            else "runtime_blockout_v1"
+        )
+        assert item["maturity"] == expected_maturity
         assert item["runtime_export"] is True
-        assert item["frame_end"] == 120
+        assert item["frame_end"] == (180 if item["id"] == "reverse-mountain-twin-cape-voyage" else 120)
 
     queue = json.loads((ROOT / "queue/asset-requests.json").read_text(encoding="utf-8"))
     queued = {item["id"]: item for item in queue["assets"]}
@@ -59,7 +64,7 @@ def main() -> int:
     assert water7["route_network"]["track_elevation"] == "just_below_ocean_surface"
     assert water7["chapter_logic"]["temporal_variants"][0]["reveal_chapter"] == 322
     assert water7["chapter_logic"]["temporal_variants"][2]["reveal_chapter"] == 656
-    print("11 loader-ready narrative Blender scenes verified")
+    print("12 loader-ready narrative Blender scenes verified")
     return 0
 
 

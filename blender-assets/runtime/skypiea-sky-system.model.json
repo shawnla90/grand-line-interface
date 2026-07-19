@@ -10,28 +10,21 @@
     "compression": "none; optional gltfpack binary is not installed",
     "animations": false,
     "preview_proxy_excluded": true,
-    "curves_converted_to_mesh": [],
+    "curves_converted_to_mesh": [
+      "Giant Jack"
+    ],
     "excluded_objects": [
       "Runtime Camera",
       "Key",
       "Fill",
-      "Rim",
-      "Giant Jack",
-      "Belfry cloud 1",
-      "Belfry cloud 2",
-      "Belfry cloud 3",
-      "Belfry cloud 4",
-      "Belfry cloud 5",
-      "Belfry cloud 6",
-      "Belfry cloud 7",
-      "Golden Belfry"
+      "Rim"
     ]
   },
   "stats": {
-    "objects": 84,
-    "vertices_input": 4094,
-    "triangles_input": 7852,
-    "materials": 6,
+    "objects": 93,
+    "vertices_input": 5098,
+    "triangles_input": 9812,
+    "materials": 7,
     "bounds_blender": {
       "min": [
         -12.65,
@@ -41,18 +34,18 @@
       "max": [
         12.65,
         8.58,
-        2.6
+        13.9
       ]
     },
-    "bytes": 611656
+    "bytes": 729952
   },
   "build": {
     "blender": "4.5.3 LTS",
-    "glb_sha256": "786cc12b042bbbbadbd06f7dc0c1daae05a5d074f0fc988041cc664af76fc404",
+    "glb_sha256": "26228fbcffa465dfcaa1dad88957673560111d29921b77afb7dadce355547974",
     "glb_header": {
       "magic": "glTF",
       "version": 2,
-      "declared_length": 611656
+      "declared_length": 729952
     }
   }
 }

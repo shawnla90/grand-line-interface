@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-18",
+  "purpose": "Resolve the asset-workspace split without silently overwriting either package.",
+  "roots": {
+    "app_checkout": "/Users/shawnos.ai/dead-reckoning",
+    "embedded_assets": "/Users/shawnos.ai/dead-reckoning/blender-assets",
+    "story_art_factory": "/Users/shawnos.ai/dead-reckoning-blender-assets"
+  },
+  "domains": [
+    {
+      "id": "runtime-3d",
+      "authoritative_root": "embedded_assets",
+      "paths": [
+        "contracts/*.visual.json",
+        "source/*.blend",
+        "runtime/*.glb",
+        "runtime/*.model.json",
+        "manifests/runtime-3d.json",
+        "manifests/runtime-scene-builds.json"
+      ],
+      "consumer": "app_checkout",
+      "rule": "Build and verify here; never replace this registry from the standalone two-transition snapshot."
+    },
+    {
+      "id": "story-art-factory",
+      "authoritative_root": "story_art_factory",
+      "paths": [
+        "art/*/character-sheets.json",
+        "art/*/characters/**",
+        "runtime/story-simulations/**",
+        "renders/story-simulations/**",
+        "scripts/build_story_simulation_pack.py",
+        "scripts/render_story_simulation_pack.py",
+        "scripts/verify_story_simulation_pack.py"
+      ],
+      "consumer": "embedded_assets",
+      "rule": "Generate and sign original pose art here, then promote it through the app sync scripts."
+    },
+    {
+      "id": "app-story-integration",
+      "authoritative_root": "embedded_assets",
+      "paths": [
+        "contracts/east-blue-saga.simulation.json",
+        "contracts/story-simulations/*.simulation.json",
+        "manifests/story-simulations/*.json",
+        "manifests/story-simulation-index.json"
+      ],
+      "consumer": "app_checkout",
+      "rule": "Runtime choreography and app-facing signed manifests live with the app; generated data/public copies come only from sync scripts."
+    },
+    {
+      "id": "app-runtime",
+      "authoritative_root": "app_checkout",
+      "paths": [
+        "components/**",
+        "lib/**",
+        "canon/**",
+        "data/generated/**",
+        "public/art/**"
+      ],
+      "consumer": "web_app",
+      "rule": "MapLibre, Three.js, chapter, camera, audio, and lifecycle ownership stays in the Git checkout."
+    }
+  ],
+  "generated_file_policy": "Agents do not hand-edit generated registries or public copies. One integration owner runs sync and verification after source review.",
+  "mirror_policy": "The two asset roots are complementary packages, not byte-for-byte mirrors. A copy operation must name its domain and direction explicitly."
+}

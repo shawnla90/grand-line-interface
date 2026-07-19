@@ -33,8 +33,9 @@ def main() -> int:
         "skypiea-sky-system",
         "loguetown-roger-execution",
         "water-7-sea-train-network",
+        "reverse-mountain-twin-cape-voyage",
     }
-    assert index["contract_count"] == 11
+    assert index["contract_count"] == 12
     assert {item["id"] for item in index["contracts"]} == expected
 
     contracts = {contract_id: read(contract_id) for contract_id in expected}
@@ -66,7 +67,13 @@ def main() -> int:
     assert train["route_network"]["track_elevation"] == "just_below_ocean_surface"
     assert {"puffing-tom", "rocketman", "puffing-ice", "subsurface-sea-rails"} <= component_ids(train)
 
-    print("11 narrative scene contracts verified")
+    reverse_mountain = contracts["reverse-mountain-twin-cape-voyage"]
+    assert {"going-merry", "laboon-unidentified", "laboon", "crocus"} <= component_ids(reverse_mountain)
+    whirlpool = next(item for item in reverse_mountain["identity"]["components"] if item["id"] == "local-whirlpool-emitter")
+    assert whirlpool["verification"] == "chapter_to_verify"
+    assert whirlpool["default_hidden"] is True
+
+    print("12 narrative scene contracts verified")
     return 0
 
 

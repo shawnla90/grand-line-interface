@@ -146,11 +146,12 @@
         "sandora-desert",
         "sandora-river",
         "tomb-of-the-kings",
-        "yuba"
+        "yuba",
+        "yuba-oasis"
       ],
-      "objects": 97,
-      "blend_sha256": "d9723ef3f7eff2e9a1634679ce9f77ec6dda2f0e67bba2dd35911b47a05457da",
-      "render_sha256": "ebdc7ee906c62f6c05103462d6027b21af091e8f2aba03b48c73926a9ed08202",
+      "objects": 98,
+      "blend_sha256": "9c3206307a6ca1ccaecc7211755e69a4f0b0d29e776c1f1857c380d801f3a242",
+      "render_sha256": "e272f50ffaf83d28ef741b67fc6c3ead9ef82df02e912cbc362951788b06d335",
       "contract_sha256": "21293fc764e346892f8156371e768517474ef8b1274ea8ccf34fcea71e0f03df"
     },
     {
@@ -348,8 +349,8 @@
         "white-white-sea"
       ],
       "objects": 97,
-      "blend_sha256": "f56416e307fada28e6212b4f0b8ad24de88f5662b741372d7cf02c6dc0316740",
-      "render_sha256": "b27e69b1aa5dbaa4c7863b5f10a05be4bd08a1af54d5e83aa0462533669f1d23",
+      "blend_sha256": "ae2b57efab59c139b027cad5251739573ab1ddec4c23bc5cec62f057aef451db",
+      "render_sha256": "55d2e1aa14f57513c065ddbeb4edbe18d583ce34c363f531128e1883e5d3a4bf",
       "contract_sha256": "eb59c400e1a51e8e630dd94039d7f02b0c53db3f67719c7cd1656a2b00ac82a2"
     }
   ]

@@ -93,9 +93,10 @@ than this roadmap.
 - the deterministic playback clock, reduced motion, replay, and sound policy;
 - final geographic alignment with island and landmark contracts.
 
-No app file is edited by this asset build. The saga manifest remains
-`integration_ready: false` until the app proves the renderer behind a feature
-flag.
+The isolated factory remains the editable art source. Promotion mirrors only
+signed, source-free derivatives into the app repository. A saga remains off
+until the app proves it behind the shared feature flag; the current Arabasta
+pack has passed that proof and is `integration_ready: true`.
 
 ## Runtime representation by distance
 
@@ -193,7 +194,7 @@ Next East Blue asset batch:
 3. Zeff and a Baratie farewell tableau if the close replay needs more emotion.
 4. Genzo/Nojiko only if the Arlong Park story layer needs village context.
 
-### Phase 2 — Baroque Works and Arabasta
+### Phase 2 — Baroque Works and Arabasta (ten scenes promoted)
 
 Batch A is complete and web proven:
 
@@ -203,6 +204,12 @@ Batch A is complete and web proven:
 | 114 | Miss All Sunday appears and demonstrates her power | integrated behind allowlist |
 | 158 | Ace intervenes between Smoker and Luffy | integrated behind allowlist |
 | 159 | Ace destroys the Baroque Works Billions' five-ship convoy with Fire Fist | integrated behind allowlist |
+| 176–179 | Crocodile defeats Luffy in their first desert encounter | integrated behind allowlist |
+| 187–189 | Sanji defeats Bon Clay with his Arabasta-era kick set | integrated behind allowlist |
+| 190–193 | Nami defeats Miss Doublefinger with the first Clima-Tact weather sequence | integrated behind allowlist |
+| 194–195 | Zoro defeats Mr. One with the breath-of-steel/Lion Song sequence | integrated behind allowlist |
+| 198–201 | Luffy counters Crocodile with water in their palace-rooftop rematch | integrated behind allowlist |
+| 203–210 | Luffy defeats Crocodile with the final underground Gum-Gum Storm sequence | integrated behind allowlist |
 
 The generalized pack loader, signed manifest pipeline, reusable FX mappings,
 dev proof selector, backward-scrub behavior, lazy atlas fetches, the reusable
@@ -210,24 +217,54 @@ ship-destruction tableau, and East Blue
 compatibility all pass their browser audits. The pack is technically promoted
 but remains off by default.
 
-Continue shared actor libraries and scenes in these batches:
+The promoted pack now contains 18 actor/tableau atlases, 108 poses, 20 actor
+tracks, 118 movement keyframes, and 63 timed FX events. The browser proof passes
+44/44 assertions and the signed app artifact passes 22/22 checks. The complete
+three-fight Crocodile spine explicitly supersedes the old faceless rigid
+blockout.
 
-1. Batch B: Zoro/Mr. 1, Nami/Miss Doublefinger, and Sanji/Bon Clay.
-2. Add Vivi and the required Alubarna environment/crowd language.
-3. Little Garden scale study.
-4. Batch C: three separate Crocodile encounters with distinct arenas, knowledge state,
-   water/blood countermeasure state, and sand FX progression.
-5. Alubarna climax pack sharing smoke, debris, crowd, and palace assets.
+Continue shared actor libraries and scenes in this order:
+
+1. Optionally add Vivi plus reusable Alubarna crowd, smoke, debris, and palace
+   language without blocking the completed fight spine.
+2. Finish East Blue cast holes: Koby/Morgan, Dragon/Tashigi, Usopp, and a Zeff
+   farewell tableau. Sanji now has a signed Arabasta actor variant.
+3. Enies Lobby's four-fight CP9 spine is complete. Continue there with Robin's
+   declaration, Franky, Usopp support, and the remaining crew beats without
+   rebuilding Blueno, Jabra, Kaku, or Lucci.
+4. Add a Little Garden scale study only after the character fights above.
 
 Do not collapse the Crocodile story into one fight contract.
 
-### Phase 3 — later emotional and world-scale anchors
+### Phase 3 — Skypiea through Marineford animation spine
 
-- Robin's Enies Lobby declaration as a dedicated tableau with chapter gate to
-  verify before production;
-- Kuma's Sabaody separation using crew instances, paw-shock FX, disappearance
-  states, and destination metadata that stays spoiler-locked;
-- Impel Down and Marineford only after the multi-actor renderer is measured.
+1. Skypiea is promoted: Luffy versus Enel at chapters 279–302 now includes
+   rubber immunity, lightning, gold-ball burden, Golden Rifle, final bell
+   impact, two signed atlases, 12 poses, and a 26/26 cross-pack browser proof.
+2. Enies Lobby now has a promoted four-fight CP9 spine: Luffy versus Blueno at
+   chapters 387–388 with first Gear Second and Jet Bazooka; Sanji versus Jabra
+   at chapter 415 with first Diable Jambe and Flambage Shot; Zoro versus Kaku
+   at chapters 416–417 with Four-Sword Style and Asura; and Luffy versus Rob
+   Lucci at chapters 418–427 with Gear Second/Third, Rokuogan, and Jet Gatling.
+   The pack contains eight atlases, 48 poses, four scenes, 48 movement
+   keyframes, and 33 FX events. Its 47/47 shared browser receipt proves exact
+   lazy loading, same-anchor replacement, backward reset, and the four matched
+   voice calls. Continue with Robin's declaration plus Franky and Usopp core
+   libraries; do not rebuild the proven fight spine.
+3. Thousand Sunny: research the exact chapter/audio alignment for Coup de
+   Burst before authoring Franky, Sunny, exhaust-cloud, and ship-trajectory
+   tracks.
+4. Sabaody: Kizaru's arrival and captain clash (chapters 507–509), then Kuma's
+   crew separation around chapters 512–513 using paw-shock, disappearance,
+   and spoiler-locked destination metadata.
+5. Marineford: Garp/admiral cast library, Akainu magma-fist barrage, Luffy's
+   approach to the three admirals, Newgate/Akainu impacts, and the Oars/Oz
+   battlefield route. Keep Aokiji versus Akainu as a later Punk Hazard history
+   tableau, not an East Blue or Marineford event.
+
+The spoken request "Orum" is not a confirmed canon identifier. It may refer to
+Oars/Oz, Ohm, or a local audio slug; do not generate that scene until the term
+is mapped to the intended chapter and character.
 
 ## Art and rights posture
 

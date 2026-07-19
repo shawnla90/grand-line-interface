@@ -59,6 +59,17 @@ def move(obj: bpy.types.Object, target: bpy.types.Collection) -> bpy.types.Objec
     return obj
 
 
+def tag_runtime(obj: bpy.types.Object, component_id: str, reveal_chapter: int | None = None,
+                *, confidence: str = "verified", default_hidden: bool = False) -> bpy.types.Object:
+    """Attach the node extras consumed by the MapLibre runtime gate."""
+    obj["component_id"] = component_id
+    obj["gate_confidence"] = confidence
+    obj["default_hidden"] = default_hidden
+    if reveal_chapter is not None:
+        obj["reveal_chapter"] = reveal_chapter
+    return obj
+
+
 def mat(name: str, hex_value: str, roughness: float = .6, metallic: float = 0.0,
         emission: str | None = None, emission_strength: float = 0.0) -> bpy.types.Material:
     value = bpy.data.materials.new(name)
@@ -319,6 +330,7 @@ def build_water7(resolution_x: int, resolution_y: int) -> dict:
     wheel = mat("M_Wheel", "8d4e2d", .4, metallic=.25)
     label_mat = mat("M_Labels", "e7f9f5", .42, emission="b6ffff", emission_strength=.7)
     storm = mat("M_Storm", "8fa9c8", .32, emission="a4d1ff", emission_strength=2.2)
+    rocket_red = mat("M_Rocketman_Red", "b53e32", .46, metallic=.16)
 
     cube("Ocean surface", (0, 0, -.55), (18, 12, .5), sea, topology)
     nodes = {
@@ -369,7 +381,10 @@ def build_water7(resolution_x: int, resolution_y: int) -> dict:
     move(ring, landmarks)
     cube("Enies court platform", (ex, ey, .85), (1.45, 1.15, .32), government, landmarks)
     cube("Enies courthouse", (ex, ey + .2, 2.0), (.75, .7, .9), government, landmarks)
-    cube("Day Station", (ex - 2.55, ey - 1.4, .48), (.65, .42, .42), station_mat, landmarks)
+    tag_runtime(
+        cube("Day Station", (ex - 2.55, ey - 1.4, .48), (.65, .42, .42), station_mat, landmarks),
+        "day-station", confidence="chapter_to_verify", default_hidden=True,
+    )
     label("Enies label", "ENIES LOBBY", (ex, ey - 3.35, .45), .4, label_mat, landmarks)
 
     colors = (island, stone, roof)
@@ -404,7 +419,31 @@ def build_water7(resolution_x: int, resolution_y: int) -> dict:
     bpy.context.scene.frame_set(70)
 
     # Gated variants are stored but not shown in the default chapter-322 blockout.
-    curve("Aqua Laguna wave wall", [(-14, 9, 2), (-4, 8, 5.5), (6, 9, 3.5), (15, 8, 6)], .7, storm, storm_state)
+    # They remain in the GLB with explicit default-hidden node extras.
+    rocket_origin = (-7.4, -1.45, .58)
+    rocket_parts = [
+        cube("Rocketman engine", rocket_origin, (.88, .52, .54), rocket_red, storm_state),
+        cube("Rocketman cab", (-7.72, -1.45, 1.08), (.42, .44, .48), train_dark, storm_state),
+        cylinder("Rocketman stack", (-7.03, -1.45, 1.28), .16, .72, train_dark, storm_state, vertices=20),
+        cube("Rocketman trim", (-7.4, -1.98, .55), (.92, .04, .08), train_gold, storm_state),
+    ]
+    for side in (-.56, .56):
+        for offset in (-.48, .42):
+            wheel_obj = cylinder(
+                f"Rocketman wheel {side} {offset}",
+                (rocket_origin[0] + offset, rocket_origin[1] + side, .2),
+                .28, .14, wheel, storm_state, vertices=20,
+            )
+            wheel_obj.rotation_euler[0] = math.pi / 2
+            rocket_parts.append(wheel_obj)
+    for obj in rocket_parts:
+        tag_runtime(obj, "rocketman", confidence="chapter_to_verify", default_hidden=True)
+
+    tag_runtime(
+        curve("Aqua Laguna wave wall", [(-14, 9, 2), (-4, 8, 5.5), (6, 9, 3.5), (15, 8, 6)],
+              .7, storm, storm_state),
+        "aqua-laguna", confidence="chapter_to_verify", default_hidden=True,
+    )
     storm_state.hide_render = True
     storm_state.hide_viewport = True
     post_state.hide_render = True
@@ -423,7 +462,15 @@ def build_water7(resolution_x: int, resolution_y: int) -> dict:
     bpy.context.scene["coordinate_status"] = "route_bearings_schematic_not_canon"
     bpy.context.scene["animation"] = "Puffing Tom frame 1-120"
     bpy.ops.wm.save_as_mainfile(filepath=str(blend))
+    fallback_hidden = [
+        obj for obj in bpy.context.scene.objects
+        if bool(obj.get("default_hidden", False))
+    ]
+    for obj in fallback_hidden:
+        obj.hide_render = True
     bpy.ops.render.render(write_still=True)
+    for obj in fallback_hidden:
+        obj.hide_render = False
     return {"id": "water-7-sea-train-network", "blend": blend, "render": output, "frame_end": 120,
             "collections": [topology.name, landmarks.name, states.name, atmosphere.name, lod.name]}
 

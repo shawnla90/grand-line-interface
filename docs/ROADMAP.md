@@ -11,7 +11,7 @@ forward-looking where that one is backward-looking._
 | Track | Builder | Lane | Live state |
 |---|---|---|---|
 | **Camera & scale** | Claude Code session | `components/runtime-models.ts`, `components/WorldMap.tsx`, orbit/directory components | Un-crushing archipelago `visual_fit` (Totto Land, Sabaody); next: dive-to island directory, grab-and-spin orbit |
-| **Assets & simulation** | Codex (Sol) | `../dead-reckoning-blender-assets/` — contracts, GLBs, character art | 2.5D character pilot: Baratie-era Zoro + Mihawk illustrated sprites replacing the rigid-part mannequins |
+| **Assets & simulation** | Codex (Sol) | `../dead-reckoning-blender-assets/` — contracts, GLBs, character art | 27 runtime-ready 2.5D scenes and 42 signed atlases through the four-fight Enies Lobby CP9 spine; next: Robin, Franky, Usopp support |
 | **Canon & lore** | Claude Code session (this track) | `canon/`, `lib/schema.ts`, `lib/canon.ts`, `scripts/`, entry pages | Events layer, verification queue, red Road Poneglyphs, presence backfill |
 
 **Cross-track rules.** The asset workspace is read-only to the app tracks —
@@ -33,6 +33,18 @@ page. `scripts/check_canon.py`, `check_scenes.py`, `check_buildlog.py` and
 
 ## In flight
 
+- **Story simulation + audio integration:** the 12-scene East Blue pack,
+  10-scene Arabasta pack, Luffy/Enel climax, and four-fight Enies Lobby CP9
+  pack are runtime-ready behind `NEXT_PUBLIC_STORY_SIMULATION_PACKS`. That is
+  27 scenes and 42 signed actor/tableau atlases. Enies Lobby now runs from
+  Luffy/Blueno's first Gear Second through Sanji/Jabra's first Diable Jambe,
+  Zoro/Kaku's Asura finish, and Luffy/Lucci's Jet Gatling. The four matching
+  prototype voice clips fire on the authored visual events. The app-side plan
+  for generic journey stops, chapter-local SFX, a cleared audio registry, the
+  developer soundboard, and the chapter-159 Ace Fire Fist vertical slice is in
+  `docs/STORY_SIMULATION_AUDIO_INTEGRATION_PLAN.md`. The current animation
+  receipt and ordered Robin/Franky/Usopp → Sabaody → Marineford queue is
+  in `blender-assets/handoffs/CLAUDE_CODE_GRAND_LINE_ANIMATION_NEXT.md`.
 - **Camera & scale:** the ~90s journey cinematic shipped (`aa02516`) but Shawn reports it doesn't track the voyage line and glitches at Skypiea — that session is FIXING it now and owns `lib/journey.ts`/`Atlas.tsx`/`WorldMap.tsx`/`ChapterDock.tsx` until the fix lands. NOTE for that fix: 2.5D story cards are vertical billboards — the journey camera must PITCH (~50–60°) during close dwells or they render edge-on (invisible).
 - **Assets:** Codex superseded the rigid pilot with the full **East Blue 2.5D pack** (14 illustrated atlases, 12 runtime-ready scenes) — now INTEGRATED app-side (`d94eaf3`): signed sync pipeline, deterministic evaluator, sim-layer/sim-models hosts, 9-check + 12-audit battery, ch-51 proof PASSED on the real host. Codex may set `integration_ready: true` (see `data/review/east-blue-2d-integration-report.md`). Flag `NEXT_PUBLIC_EAST_BLUE_2D_SIMULATIONS` default OFF; dev proof stage at `/dev/sim-proof`.
 - **Deferred on the journey fix** (specs in `data/review/east-blue-2d-integration-report.md`): the ~3-line WorldMap `syncSimulations` wiring; journey MOMENT stops (120s run, 5 East Blue beats with facts from `world.events`); `journeyFocus` camera damping; the `?record=1` MediaRecorder button (user-approved; map-only capture caveat — DOM markers incl. the ship don't reach canvas).

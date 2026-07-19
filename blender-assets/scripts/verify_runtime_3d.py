@@ -18,6 +18,7 @@ EXPECTED = {
     "zou-zunesha", "amazon-lily", "mary-geoise-red-line",
     "sabaody-grove-network", "skypiea-sky-system",
     "loguetown-roger-execution", "water-7-sea-train-network",
+    "reverse-mountain-twin-cape-voyage",
 }
 STUDIES = {"whole-cake-island", "impel-down", "sabaody-archipelago"}
 
@@ -54,7 +55,7 @@ def main() -> int:
     by_id = {model["id"]: model for model in registry["models"]}
     assert set(by_id) == EXPECTED
     assert registry["schema_version"] == 2
-    assert registry["counts"] == {"models": 16, "transitions": 2, "runtime_scenes": 14}
+    assert registry["counts"] == {"models": 17, "transitions": 2, "runtime_scenes": 15}
 
     gltf_docs = {}
     for model_id in sorted(EXPECTED):
@@ -79,6 +80,7 @@ def main() -> int:
         "arabasta-kingdom", "cactus-island-whisky-peak", "dressrosa-green-bit",
         "zou-zunesha", "amazon-lily", "mary-geoise-red-line",
         "sabaody-grove-network", "skypiea-sky-system",
+        "reverse-mountain-twin-cape-voyage",
     }:
         assert any((node.get("extras") or {}).get("component_id")
                    for node in gltf_docs[model_id].get("nodes", [])), model_id
@@ -97,7 +99,7 @@ def main() -> int:
         assert queued[model_id]["state"] == "integration_ready"
     for study in STUDIES:
         assert queued[study]["state"] == "study_only"
-    print("16 runtime GLBs and fallbacks verified")
+    print("17 runtime GLBs and fallbacks verified")
     return 0
 
 

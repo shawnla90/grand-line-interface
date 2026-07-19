@@ -8,9 +8,9 @@
   },
   "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_TRANSITIONS",
   "counts": {
-    "models": 16,
+    "models": 17,
     "transitions": 2,
-    "runtime_scenes": 14
+    "runtime_scenes": 15
   },
   "models": [
     {
@@ -1113,7 +1113,7 @@
       "fallback": {
         "path": "renders/runtime/arabasta-kingdom.png",
         "bytes": 759062,
-        "sha256": "ebdc7ee906c62f6c05103462d6027b21af091e8f2aba03b48c73926a9ed08202",
+        "sha256": "e272f50ffaf83d28ef741b67fc6c3ead9ef82df02e912cbc362951788b06d335",
         "pixel_size": [
           1200,
           900
@@ -1257,9 +1257,9 @@
         "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, and default_hidden from glTF node extras"
       },
       "stats": {
-        "objects": 93,
-        "vertices_input": 2272,
-        "triangles_input": 4160,
+        "objects": 94,
+        "vertices_input": 2336,
+        "triangles_input": 4284,
         "materials": 7,
         "bounds_blender": {
           "min": [
@@ -1273,15 +1273,15 @@
             4.45
           ]
         },
-        "bytes": 284188
+        "bytes": 292084
       },
       "build": {
         "blender": "4.5.3 LTS",
-        "glb_sha256": "c48a3846bac61028ce0fb55fc2479b1cf950d4028ac7177754a4fd94c70dac2d",
+        "glb_sha256": "38f62c3a6e4486720c345a5321c97a91cad341be808bcfc6fd43a1a57971d2b5",
         "glb_header": {
           "magic": "glTF",
           "version": 2,
-          "declared_length": 284188
+          "declared_length": 292084
         }
       }
     },
@@ -2060,7 +2060,7 @@
       "fallback": {
         "path": "renders/runtime/skypiea-sky-system.png",
         "bytes": 1113179,
-        "sha256": "b27e69b1aa5dbaa4c7863b5f10a05be4bd08a1af54d5e83aa0462533669f1d23",
+        "sha256": "55d2e1aa14f57513c065ddbeb4edbe18d583ce34c363f531128e1883e5d3a4bf",
         "pixel_size": [
           1200,
           900
@@ -2161,10 +2161,10 @@
         "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, and default_hidden from glTF node extras"
       },
       "stats": {
-        "objects": 84,
-        "vertices_input": 4094,
-        "triangles_input": 7852,
-        "materials": 6,
+        "objects": 93,
+        "vertices_input": 5098,
+        "triangles_input": 9812,
+        "materials": 7,
         "bounds_blender": {
           "min": [
             -12.65,
@@ -2174,18 +2174,18 @@
           "max": [
             12.65,
             8.58,
-            2.6
+            13.9
           ]
         },
-        "bytes": 611656
+        "bytes": 729952
       },
       "build": {
         "blender": "4.5.3 LTS",
-        "glb_sha256": "786cc12b042bbbbadbd06f7dc0c1daae05a5d074f0fc988041cc664af76fc404",
+        "glb_sha256": "26228fbcffa465dfcaa1dad88957673560111d29921b77afb7dadce355547974",
         "glb_header": {
           "magic": "glTF",
           "version": 2,
-          "declared_length": 611656
+          "declared_length": 729952
         }
       }
     },
@@ -2307,8 +2307,8 @@
       "fallback_raster": "renders/runtime/water-7-sea-train-network.png",
       "fallback": {
         "path": "renders/runtime/water-7-sea-train-network.png",
-        "bytes": 885041,
-        "sha256": "24065186106fdacee738ddd6bdd461998451950e35414faeed2cd6c4bfead8e5",
+        "bytes": 884802,
+        "sha256": "3a490c1fe5c04425e42c2cd9d309d68fe46f1dbe43fbf72156a6811a8bcab43f",
         "pixel_size": [
           1200,
           900
@@ -2452,10 +2452,10 @@
         "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, and default_hidden from glTF node extras"
       },
       "stats": {
-        "objects": 87,
-        "vertices_input": 5248,
-        "triangles_input": 10024,
-        "materials": 10,
+        "objects": 96,
+        "vertices_input": 5842,
+        "triangles_input": 11160,
+        "materials": 12,
         "bounds_blender": {
           "min": [
             -18.0,
@@ -2465,19 +2465,163 @@
           "max": [
             18.0,
             12.0,
-            4.95
+            6.6437
           ]
         },
-        "bytes": 482576
+        "bytes": 530224
       },
       "build": {
         "blender": "4.5.3 LTS",
-        "glb_sha256": "2379c74b093c8ca3d668baf4b5459bf4effb779f5d2fde08b057c8e2311e2eee",
+        "glb_sha256": "01049271111d0e2cadcae347114f3f1f5762bbe5b9983b38a73e3968632d634c",
         "glb_header": {
           "magic": "glTF",
           "version": 2,
-          "declared_length": 482576
+          "declared_length": 530224
         }
+      }
+    },
+    {
+      "id": "reverse-mountain-twin-cape-voyage",
+      "label": "Reverse Mountain and Twin Cape — moving voyage graybox",
+      "maturity": "runtime_animated_graybox_v1",
+      "glb": "runtime/reverse-mountain-twin-cape-voyage.glb",
+      "fallback_raster": "renders/runtime/reverse-mountain-twin-cape-voyage.png",
+      "fallback": {
+        "path": "renders/runtime/reverse-mountain-twin-cape-voyage.png",
+        "bytes": 882178,
+        "sha256": "3812b62df328525e6c7340f9b28f11ca3fbb00cb4ac682c307f58b4722e90134",
+        "pixel_size": [1200, 900],
+        "alpha": true,
+        "tableau": "chapter-102 exterior; the app label remains Unidentified giant whale"
+      },
+      "source_blend": "source/reverse-mountain-twin-cape-voyage.blend",
+      "contract": "contracts/reverse-mountain-twin-cape-voyage.visual.json",
+      "integration": {
+        "mode": "maplibre_custom_3d_layer",
+        "fallback_mode": "maplibre_image_source_or_inset",
+        "anchor": [-179.0, -2.0],
+        "anchor_confidence": "hand_authored_belt_model",
+        "anchor_usage": "scene_entry_anchor_only",
+        "anchor_warning": "Never infer local canals, bearings, distances, or Twin Cape placement from this atlas point.",
+        "chapter_beats": {
+          "base_reveal": 101,
+          "safe_full_scene": 102
+        },
+        "component_gates": [
+          {"id": "reverse-mountain-massif", "role": "red_line_crossing_environment", "reveal_chapter": 101, "verification": "verified", "default_hidden": false},
+          {"id": "east-blue-ascent-current", "role": "going_merry_uphill_route", "reveal_chapter": 101, "verification": "verified_for_uphill_motion_only", "default_hidden": false},
+          {"id": "reverse-mountain-crest", "role": "voyage_transition_peak", "reveal_chapter": 101, "verification": "inferred_transition_landmark", "default_hidden": false},
+          {"id": "grand-line-descent-current", "role": "summit_to_grand_line_exit_route", "reveal_chapter": 102, "verification": "inferred_route_between_verified_states", "default_hidden": false},
+          {"id": "twin-cape", "role": "grand_line_entry_cape", "reveal_chapter": 102, "verification": "verified", "default_hidden": false},
+          {"id": "twin-cape-lighthouse", "role": "crocus_home_landmark", "reveal_chapter": 103, "verification": "derived_from_crocus_lighthouse_keeper_record", "default_hidden": false},
+          {"id": "going-merry", "role": "voyage_vehicle", "reveal_chapter": 100, "verification": "known_present_in_window", "default_hidden": false},
+          {"id": "laboon-unidentified", "role": "first_contact_spoiler_safe_state", "reveal_chapter": 102, "verification": "verified", "default_hidden": false},
+          {"id": "laboon", "role": "identity_label_gate", "reveal_chapter": 103, "verification": "verified", "default_hidden": false},
+          {"id": "laboon-interior-theatre", "role": "chapter_103_story_inset", "reveal_chapter": 103, "verification": "verified_state_window", "default_hidden": true, "active_through_chapter": 103.999},
+          {"id": "crocus", "role": "signed_2_5d_actor_anchor", "reveal_chapter": 103, "verification": "verified", "default_hidden": false},
+          {"id": "local-whirlpool-emitter", "role": "reusable_ocean_hazard_control", "reveal_chapter": null, "verification": "chapter_to_verify", "default_hidden": true}
+        ],
+        "withheld_variants": ["local-whirlpool-emitter"],
+        "label_gates": [
+          {"id": "laboon", "from_chapter": 102, "through_chapter": 102, "label": "Unidentified giant whale"},
+          {"id": "laboon", "from_chapter": 103, "label": "Laboon"}
+        ],
+        "animation_plan": {
+          "clock": "chapter_entry_elapsed_ms",
+          "reduced_motion": "sample_each_clip_at_its_final_safe_frame_and_stop_repainting",
+          "chapter_states": [
+            {
+              "chapter": 101,
+              "duration_ms": 7800,
+              "clips": [
+                {"channel": "current", "name": "current_ascent_flow_loop", "start_ms": 0, "duration_ms": 7800, "loop": true},
+                {"channel": "merry", "name": "merry_ascent_climb", "start_ms": 0, "duration_ms": 4500, "loop": false},
+                {"channel": "crest_fx", "name": "current_crest_surge", "start_ms": 3900, "duration_ms": 1800, "loop": false},
+                {"channel": "merry", "name": "merry_summit_crest", "start_ms": 4500, "duration_ms": 3300, "loop": false}
+              ]
+            },
+            {
+              "chapter": 102,
+              "duration_ms": 7600,
+              "clips": [
+                {"channel": "current", "name": "current_descent_flow_loop", "start_ms": 0, "duration_ms": 7600, "loop": true},
+                {"channel": "merry", "name": "merry_descent_run", "start_ms": 0, "duration_ms": 3300, "loop": false},
+                {"channel": "laboon", "name": "laboon_first_contact_breach", "start_ms": 0, "duration_ms": 3300, "loop": false},
+                {"channel": "contact_fx", "name": "laboon_contact_displacement", "start_ms": 2200, "duration_ms": 2100, "loop": false},
+                {"channel": "laboon_mouth", "name": "laboon_mouth_open_swallow", "start_ms": 3300, "duration_ms": 4300, "loop": false},
+                {"channel": "merry", "name": "merry_swallowed_transition", "start_ms": 3300, "duration_ms": 4300, "loop": false}
+              ]
+            },
+            {
+              "chapter": 103,
+              "duration_ms": 7000,
+              "clips": [
+                {"channel": "laboon", "name": "laboon_surface_idle_loop", "start_ms": 0, "duration_ms": 7000, "loop": true},
+                {"channel": "crocus", "name": "crocus_explain_laboon", "start_ms": 700, "duration_ms": 5600, "loop": false}
+              ]
+            },
+            {
+              "chapter": 104,
+              "duration_ms": 6800,
+              "clips": [
+                {"channel": "swell", "name": "twin_cape_swell_loop", "start_ms": 0, "duration_ms": 6800, "loop": true},
+                {"channel": "merry", "name": "merry_idle_bob_loop", "start_ms": 0, "duration_ms": 6800, "loop": true},
+                {"channel": "wake", "name": "merry_wake_loop", "start_ms": 0, "duration_ms": 6800, "loop": true},
+                {"channel": "laboon", "name": "laboon_promise_response", "start_ms": 900, "duration_ms": 5000, "loop": false}
+              ]
+            },
+            {
+              "chapter": 105,
+              "duration_ms": 7200,
+              "clips": [
+                {"channel": "swell", "name": "twin_cape_swell_loop", "start_ms": 0, "duration_ms": 7200, "loop": true},
+                {"channel": "merry", "name": "merry_twin_cape_departure", "start_ms": 0, "duration_ms": 7200, "loop": false},
+                {"channel": "crocus", "name": "crocus_present_log_pose", "start_ms": 0, "duration_ms": 4200, "loop": false},
+                {"channel": "laboon_fx", "name": "laboon_breath_mist", "start_ms": 700, "duration_ms": 3500, "loop": false}
+              ]
+            }
+          ]
+        },
+        "named_clips": [
+          "merry_idle_bob_loop", "merry_ascent_climb", "merry_summit_crest", "merry_descent_run", "merry_swallowed_transition", "merry_twin_cape_departure",
+          "laboon_surface_idle_loop", "laboon_first_contact_breach", "laboon_mouth_open_swallow", "laboon_breath_mist", "laboon_promise_response",
+          "crocus_idle_watch", "crocus_explain_laboon", "crocus_present_log_pose",
+          "current_ascent_flow_loop", "current_crest_surge", "current_descent_flow_loop", "twin_cape_swell_loop", "merry_wake_loop", "laboon_contact_displacement", "whirlpool_loop_default_hidden"
+        ],
+        "fx_masks": [
+          {"id": "rm-current-flow-rgba", "path": "runtime/reverse-mountain-twin-cape-voyage/masks/rm-current-flow-rgba.png", "sha256": "df7d2fbf9c8c0923b8de3373c8f5e5d1bb30589bf9eec253a230ae1e43119dec", "channels": {"r": "flow_direction_u", "g": "flow_direction_v", "b": "flow_speed", "a": "chapter_safe_effect_enable"}},
+          {"id": "rm-foam-spray-rgba", "path": "runtime/reverse-mountain-twin-cape-voyage/masks/rm-foam-spray-rgba.png", "sha256": "673fe641935af6aa3ae6469e0647e1f4d83727d28971047b6945ff359de0a92a", "channels": {"r": "bank_foam", "g": "crest_foam", "b": "spray_emission", "a": "water_occlusion"}},
+          {"id": "merry-hull-contact-rgba", "path": "runtime/reverse-mountain-twin-cape-voyage/masks/merry-hull-contact-rgba.png", "sha256": "278a64f4515d8cab22e62f43e459a4fc786d299dfd6c5673b9f73c5925ead717", "channels": {"r": "bow_wake", "g": "stern_wake", "b": "hull_wetness", "a": "spray_occlusion"}},
+          {"id": "laboon-water-contact-rgba", "path": "runtime/reverse-mountain-twin-cape-voyage/masks/laboon-water-contact-rgba.png", "sha256": "6ee75cd5ad0fbbd79bf9d719787af62bdc8d7eaa5747210a4c3ee81dd181229e", "channels": {"r": "surface_displacement", "g": "contact_foam", "b": "breath_mist_emission", "a": "skin_wetness"}},
+          {"id": "whirlpool-control-rgba", "path": "runtime/reverse-mountain-twin-cape-voyage/masks/whirlpool-control-rgba.png", "sha256": "3a7a76c14e0959450b29dc6c3926486302c3e120bd57f492b255983faae9e478", "channels": {"r": "vortex_strength", "g": "foam_ring", "b": "spray_orbit", "a": "enable_mask"}, "default_hidden": true}
+        ],
+        "layout_status": "ordered_route_graph_not_atlas_geometry",
+        "projection_support": ["mercator_closeup"],
+        "scale_policy": {"mode": "visual_fit_not_canon_scale", "use_model_bounds": true},
+        "route_policy": "local normalized theatre only; MapLibre owns world route and no local bearing is canon"
+      },
+      "runtime_policy": {
+        "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
+        "default": "fallback_raster",
+        "enable_glb_when": "feature flag on, close zoom, supported projection, and chapter gate open",
+        "unload_when_hidden": true,
+        "dispose_on_remove": ["geometries", "materials", "textures", "animation_mixer"],
+        "globe_policy": "use only after photographed globe proof; otherwise retain transparent fallback",
+        "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, default_hidden, and verified state windows from glTF extras",
+        "animation_policy": "sample named clips from chapter-entry elapsed time; MapLibre/app state owns the clock and reduced-motion freeze"
+      },
+      "stats": {
+        "objects": 50,
+        "vertices_input": 9584,
+        "triangles_input": 18996,
+        "materials": 16,
+        "bounds_blender": {"min": [-18.0, -18.0, -2.35], "max": [18.0, 21.976843, 10.793863]},
+        "bytes": 1307736
+      },
+      "build": {
+        "blender": "4.5.3 LTS",
+        "glb_sha256": "2accbf7f105a76f6c9b35a6d62c508d1730de9634c0018b8f7052df6a2e60d29",
+        "glb_header": {"magic": "glTF", "version": 2, "declared_length": 1307736}
       }
     }
   ]

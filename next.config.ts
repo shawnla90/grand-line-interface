@@ -13,6 +13,9 @@ import { dirname } from "node:path";
  * performance problem and a correctness hazard.
  */
 const nextConfig: NextConfig = {
+  // Allows verification jobs to use an isolated build/dev directory without
+  // touching a reader's already-running localhost session.
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   turbopack: {
     root: dirname(fileURLToPath(import.meta.url)),
   },

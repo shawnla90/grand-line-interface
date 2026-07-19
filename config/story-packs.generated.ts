@@ -11,6 +11,18 @@
 
 export const GENERATED_PACKS = [
   {
+    id: "enies-lobby-saga-2d-v1",
+    aliases: ["enies-lobby"],
+    firstSceneChapter: 387,
+    load: () => import("@/data/generated/story_simulations/enies-lobby-saga-2d-v1.json"),
+  },
+  {
+    id: "skypiea-saga-2d-v1",
+    aliases: ["skypiea"],
+    firstSceneChapter: 279,
+    load: () => import("@/data/generated/story_simulations/skypiea-saga-2d-v1.json"),
+  },
+  {
     id: "arabasta-saga-2d-v1",
     aliases: ["arabasta"],
     firstSceneChapter: 107,

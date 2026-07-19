@@ -1,15 +1,15 @@
 {
   "_meta": {
-    "generated_at": "2026-07-17T07:21:53.546258+00:00",
+    "generated_at": "2026-07-19T03:03:38.980933+00:00",
     "generator": "scripts/sync_scenes.py",
     "source": "blender-assets/ (read-only; owned by the Blender asset track)",
     "warnings": [],
     "note": "Joined from the narrative-scene INDEX (never a glob — two other schema_version-2 contracts are not v2 narrative scenes). integration_ready is a queue property, joined here; it is never a field on a scene.",
     "counts": {
-      "scenes": 11,
-      "with_blockout": 11,
-      "runtime_exportable": 11,
-      "integration_ready": 11,
+      "scenes": 12,
+      "with_blockout": 12,
+      "runtime_exportable": 12,
+      "integration_ready": 12,
       "evidence_sha256_checked": 55
     }
   },
@@ -3616,6 +3616,522 @@
         "maturity": "runtime_blockout_v1"
       },
       "source_ref": "blender-assets/contracts/water-7-sea-train-network.visual.json"
+    },
+    {
+      "id": "reverse-mountain-twin-cape-voyage",
+      "label": "Reverse Mountain and Twin Cape voyage system",
+      "entity_type": "island_bridge_system",
+      "contract_status": "ready_for_system_sketch",
+      "priority": 1,
+      "index_state": "ready_for_system_sketch",
+      "identity": {
+        "anchor": {
+          "id": "reverse-mountain",
+          "slug": "reverse-mountain",
+          "name": "Reverse Mountain",
+          "japanese": "リヴァース・マウンテン",
+          "romaji": "Rivāsu Maunten",
+          "region": "Red Line",
+          "sea": "Grand Line",
+          "debut_chapter": 101,
+          "debut_episode": 61,
+          "canon_status": "manga",
+          "canon_confidence": "derived",
+          "source_ref": "/Users/shawnos.ai/dead-reckoning/data/canon.json#islands/reverse-mountain",
+          "atlas_anchor": {
+            "lng": -179,
+            "lat": -2,
+            "confidence": "hand_authored_belt_model",
+            "usage": "scene_entry_anchor_only",
+            "warning": "Never infer local canals, bearings, distances, or Twin Cape placement from this atlas point."
+          }
+        },
+        "components": [
+          {
+            "id": "reverse-mountain-massif",
+            "category": "environment",
+            "name": "Reverse Mountain massif",
+            "role": "red_line_crossing_environment",
+            "reveal_chapter": 101,
+            "verification": "verified",
+            "source_ref": "/Users/shawnos.ai/dead-reckoning/data/raw/chapters.json#chapter-101",
+            "default_hidden": false
+          },
+          {
+            "id": "east-blue-ascent-current",
+            "category": "route",
+            "name": "East Blue ascent current",
+            "role": "going_merry_uphill_route",
+            "reveal_chapter": 101,
+            "verification": "verified_for_uphill_motion_only",
+            "source_ref": "/Users/shawnos.ai/dead-reckoning/data/raw/chapters.json#chapter-101",
+            "default_hidden": false,
+            "geometry_warning": "The source verifies travel up Reverse Mountain, not exact channel width, bends, banks, or bearings."
+          },
+          {
+            "id": "reverse-mountain-crest",
+            "category": "landmark",
+            "name": "Reverse Mountain crest",
+            "role": "voyage_transition_peak",
+            "reveal_chapter": 101,
+            "verification": "inferred_transition_landmark",
+            "source_ref": "/Users/shawnos.ai/dead-reckoning/data/raw/chapters.json#chapters-101-102",
+            "default_hidden": false
+          },
+          {
+            "id": "grand-line-descent-current",
+            "category": "route",
+            "name": "Grand Line descent current",
+            "role": "summit_to_grand_line_exit_route",
+            "reveal_chapter": 102,
+            "verification": "inferred_route_between_verified_states",
+            "source_ref": "/Users/shawnos.ai/dead-reckoning/data/raw/chapters.json#chapters-101-102",
+            "default_hidden": false,
+            "geometry_warning": "Exact descent shape and local bearing require panel verification."
+          },
+          {
+            "id": "twin-cape",
+            "slug": "twin-cape",
+            "category": "environment",
+            "name": "Twin Cape",
+            "japanese": "双子岬",
+            "romaji": "Futago Misaki",
+            "role": "grand_line_entry_cape",
+            "region": "Red Line",
+            "debut_chapter": 102,
+            "reveal_chapter": 102,
+            "verification": "verified",
+            "source_ref": "/Users/shawnos.ai/dead-reckoning/data/canon.json#islands/twin-cape",
+            "default_hidden": false,
+            "atlas_anchor": {
+              "lng": -2.2686,
+              "lat": -57.6758,
+              "confidence": "derived",
+              "usage": "lookup_only_not_local_layout",
+              "warning": "The deterministic atlas coordinate must not set its local position relative to Reverse Mountain."
+            }
+          },
+          {
+            "id": "twin-cape-lighthouse",
+            "category": "landmark",
+            "name": "Twin Cape lighthouse",
+            "role": "crocus_home_landmark",
+            "reveal_chapter": 103,
+            "verification": "derived_from_crocus_lighthouse_keeper_record",
+            "source_ref": "/Users/shawnos.ai/dead-reckoning/data/canon.json#characters/crocus",
+            "default_hidden": false,
+            "geometry_warning": "Dimensions, facade, and exact cape placement require visual reference review."
+          },
+          {
+            "id": "going-merry",
+            "slug": "going-merry",
+            "category": "vehicle",
+            "name": "Going Merry",
+            "role": "voyage_vehicle",
+            "reveal_chapter": 100,
+            "verification": "known_present_in_window_acquisition_gate_unverified",
+            "source_ref": "/Users/shawnos.ai/dead-reckoning/canon/vessels.json#going-merry",
+            "default_hidden": false,
+            "gate_warning": "Do not reuse the approximate acquisition chapter from vessels.json as a verified canon gate. This contract only requires the ship to be present in chapters 100-105."
+          },
+          {
+            "id": "laboon-unidentified",
+            "category": "creature_state",
+            "name": "Unidentified giant whale",
+            "role": "first_contact_spoiler_safe_state",
+            "reveal_chapter": 102,
+            "verification": "verified",
+            "source_ref": "/Users/shawnos.ai/dead-reckoning/data/raw/chapters.json#chapter-102",
+            "default_hidden": false,
+            "label_policy": "Do not display the name Laboon at chapter 102."
+          },
+          {
+            "id": "laboon",
+            "slug": "laboon",
+            "category": "creature",
+            "name": "Laboon",
+            "role": "twin_cape_resident_and_story_character",
+            "debut_chapter": 102,
+            "identity_reveal_chapter": 103,
+            "verification": "verified",
+            "source_ref": "/Users/shawnos.ai/dead-reckoning/data/canon.json#characters/laboon and /Users/shawnos.ai/dead-reckoning/data/raw/chapters.json#chapter-103",
+            "default_hidden": false
+          },
+          {
+            "id": "laboon-interior-theatre",
+            "category": "environment",
+            "name": "Laboon interior theatre",
+            "role": "chapter_103_story_inset",
+            "reveal_chapter": 103,
+            "verification": "verified_for_inside_location_only",
+            "source_ref": "/Users/shawnos.ai/dead-reckoning/data/raw/chapters.json#chapter-103",
+            "default_hidden": true,
+            "geometry_warning": "Use an authored inset; do not claim anatomical scale or internal topology without reference verification."
+          },
+          {
+            "id": "crocus",
+            "slug": "crocus",
+            "category": "actor",
+            "name": "Crocus",
+            "role": "lighthouse_keeper_and_guide",
+            "debut_chapter": 102,
+            "performance_reveal_chapter": 103,
+            "verification": "verified",
+            "source_ref": "/Users/shawnos.ai/dead-reckoning/data/canon.json#characters/crocus and /Users/shawnos.ai/dead-reckoning/data/raw/chapters.json#chapter-103",
+            "default_hidden": false
+          },
+          {
+            "id": "local-whirlpool-emitter",
+            "category": "fx_control",
+            "name": "Local whirlpool emitter",
+            "role": "reusable_ocean_hazard_control",
+            "reveal_chapter": null,
+            "verification": "chapter_to_verify",
+            "source_ref": null,
+            "default_hidden": true,
+            "gate_warning": "The local chapter summaries do not establish a whirlpool in chapters 100-105. Build the reusable control, but never enable it in this voyage until panel-level evidence establishes a gate."
+          }
+        ]
+      },
+      "relationships": [
+        {
+          "from": "going-merry",
+          "type": "travels_up",
+          "to": "east-blue-ascent-current",
+          "confidence": "canon"
+        },
+        {
+          "from": "east-blue-ascent-current",
+          "type": "crosses",
+          "to": "reverse-mountain-massif",
+          "confidence": "canon"
+        },
+        {
+          "from": "reverse-mountain-crest",
+          "type": "transitions_to",
+          "to": "grand-line-descent-current",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "grand-line-descent-current",
+          "type": "leads_toward",
+          "to": "twin-cape",
+          "confidence": "unresolved"
+        },
+        {
+          "from": "twin-cape-lighthouse",
+          "type": "located_at",
+          "to": "twin-cape",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "crocus",
+          "type": "keeps_lighthouse_at",
+          "to": "twin-cape-lighthouse",
+          "confidence": "cited_summary"
+        },
+        {
+          "from": "laboon",
+          "type": "resident_at",
+          "to": "twin-cape",
+          "confidence": "canon"
+        },
+        {
+          "from": "going-merry",
+          "type": "is_swallowed_by",
+          "to": "laboon-unidentified",
+          "confidence": "canon"
+        },
+        {
+          "from": "laboon-interior-theatre",
+          "type": "inside",
+          "to": "laboon",
+          "confidence": "canon"
+        },
+        {
+          "from": "local-whirlpool-emitter",
+          "type": "optional_effect_for",
+          "to": "reverse-mountain-twin-cape-voyage",
+          "confidence": "unresolved"
+        }
+      ],
+      "chapter_logic": {
+        "base_reveal_chapter": 101,
+        "pre_reveal_guard": {
+          "through_chapter": 100,
+          "rule": "The Reverse Mountain environment, Twin Cape, Laboon, and Crocus remain hidden. Chapter 100 may show only the Going Merry on open sea heading toward the Grand Line."
+        },
+        "temporal_variants": [
+          {
+            "id": "reverse-mountain-ascent",
+            "reveal_chapter": 101,
+            "state": "Reverse Mountain and its uphill voyage route reveal while the Going Merry ascends toward the Grand Line.",
+            "verification": "verified"
+          },
+          {
+            "id": "grand-line-first-contact",
+            "reveal_chapter": 102,
+            "state": "Twin Cape becomes available and an unidentified giant whale swallows the Going Merry. Laboon's name and Crocus remain hidden.",
+            "verification": "verified"
+          },
+          {
+            "id": "laboon-and-crocus-reveal",
+            "reveal_chapter": 103,
+            "state": "The whale is identified as Laboon, Crocus appears, and the interior theatre can be entered.",
+            "verification": "verified"
+          },
+          {
+            "id": "laboon-promise",
+            "reveal_chapter": 104,
+            "state": "The exterior Twin Cape theatre returns and Luffy's promise to Laboon becomes the active story beat.",
+            "verification": "verified"
+          },
+          {
+            "id": "log-pose-departure",
+            "reveal_chapter": 105,
+            "state": "Crocus gives the crew a Log Pose and the Going Merry departs with Mr. 9 and Miss Wednesday toward Whisky Peak.",
+            "verification": "verified"
+          }
+        ],
+        "event_scenes": [
+          {
+            "id": "going-merry-reverse-mountain-ascent",
+            "importance": 1,
+            "reveal_chapter": 101,
+            "landmark": "east-blue-ascent-current",
+            "state_delta": "The world view hands off to a moving voyage inset as the Going Merry climbs the current and crests the Red Line.",
+            "verification": "verified",
+            "camera_cue": "Begin just above wave height behind the Merry, bank with the route, widen at the summit, and avoid revealing Twin Cape before the chapter-102 cut.",
+            "fx": [
+              "uphill current flow",
+              "hull wake",
+              "bow spray",
+              "crest mist",
+              "wind streaks"
+            ]
+          },
+          {
+            "id": "laboon-first-contact-and-swallow",
+            "importance": 1,
+            "reveal_chapter": 102,
+            "landmark": "laboon-unidentified",
+            "state_delta": "The Merry reaches the Grand Line, encounters an unidentified giant whale, and transitions into the whale interior.",
+            "verification": "verified",
+            "camera_cue": "Level from the descent route, let the whale silhouette overwhelm the frame, then use mouth occlusion for a clean interior transition.",
+            "fx": [
+              "scale fog",
+              "surface displacement",
+              "contact wake",
+              "mouth occlusion",
+              "interior moisture haze"
+            ]
+          },
+          {
+            "id": "crocus-identifies-laboon",
+            "importance": 2,
+            "reveal_chapter": 103,
+            "landmark": "laboon-interior-theatre",
+            "state_delta": "Crocus and Laboon's identity become readable without changing the world-scale creature into a permanent open interior model.",
+            "verification": "verified",
+            "camera_cue": "Cut to a contained interior inset for the explanation, then return to the exterior Twin Cape scale shot.",
+            "fx": [
+              "interior haze",
+              "soft reflected caustics",
+              "drip particles"
+            ]
+          },
+          {
+            "id": "luffy-promises-laboon",
+            "importance": 1,
+            "reveal_chapter": 104,
+            "landmark": "twin-cape",
+            "state_delta": "The promise becomes a persistent chapter-safe relationship state between Luffy and Laboon.",
+            "verification": "verified",
+            "camera_cue": "Hold Luffy and the Merry as readable foreground scale against Laboon, then end on Laboon's response rather than inventing extra combat.",
+            "fx": [
+              "gentle swell",
+              "Laboon breath mist",
+              "Merry idle wake"
+            ]
+          },
+          {
+            "id": "log-pose-whisky-peak-departure",
+            "importance": 2,
+            "reveal_chapter": 105,
+            "landmark": "twin-cape-lighthouse",
+            "state_delta": "The Log Pose and two passengers establish the next voyage, then the Merry exits the local inset toward Whisky Peak.",
+            "verification": "verified",
+            "camera_cue": "Use Crocus and the Log Pose as the close insert, then pull behind the departing Merry and hand back to the globe route.",
+            "fx": [
+              "calm current flow",
+              "departure wake",
+              "lighthouse atmosphere"
+            ]
+          }
+        ],
+        "default_rule": "Render the latest verified state whose reveal chapter is less than or equal to the reader chapter.",
+        "unknown_gate_rule": "A null reveal_chapter or chapter_to_verify element stays default-hidden and cannot enter runtime promotion."
+      },
+      "route_network": {
+        "render_mode": "maplibre_world_route_plus_threejs_local_spline_and_animated_entities",
+        "route_ownership": "MapLibre owns voyage state and chapter gates. The local renderer samples normalized route progress against an authored inset spline.",
+        "edges": [
+          {
+            "id": "east-blue-approach",
+            "from": "open-sea-after-loguetown",
+            "to": "reverse-mountain-entry",
+            "reveal_chapter": 100,
+            "verification": "verified_destination_only",
+            "runtime_visibility": "route_hint_only_no_mountain_geometry"
+          },
+          {
+            "id": "reverse-mountain-ascent",
+            "from": "reverse-mountain-entry",
+            "to": "reverse-mountain-crest",
+            "reveal_chapter": 101,
+            "verification": "verified",
+            "runtime_visibility": "animated_local_spline"
+          },
+          {
+            "id": "grand-line-descent",
+            "from": "reverse-mountain-crest",
+            "to": "twin-cape-theatre",
+            "reveal_chapter": 102,
+            "verification": "inferred_between_verified_states",
+            "runtime_visibility": "animated_local_spline"
+          },
+          {
+            "id": "twin-cape-to-whisky-peak",
+            "from": "twin-cape-theatre",
+            "to": "whisky-peak-world-route",
+            "reveal_chapter": 105,
+            "verification": "verified_destination_only",
+            "runtime_visibility": "handoff_to_existing_world_route"
+          }
+        ],
+        "progress_parameter": "route_t_0_to_1",
+        "spline_policy": "Spline shape is cinematic scaffolding and must never be presented as panel-accurate cartography.",
+        "travel_interaction": "Scrubbing chapters 101-105 selects the event state; replay animates the Merry but never advances canon state by itself."
+      },
+      "topology": {
+        "summary": "A chapter-gated passage from the East Blue approach, up Reverse Mountain, across a crest transition, down into the Grand Line, and into the Twin Cape/Laboon theatre. Only the sequence is established here; local bearings and distances remain schematic.",
+        "sources": [
+          "/Users/shawnos.ai/dead-reckoning/data/raw/chapters.json#chapters-101-105",
+          "/Users/shawnos.ai/dead-reckoning/data/canon.json#islands/reverse-mountain",
+          "/Users/shawnos.ai/dead-reckoning/data/canon.json#islands/twin-cape"
+        ],
+        "exact_distances": "unknown",
+        "exact_bearings": "unknown",
+        "layout_mode": "ordered_route_graph_not_atlas_jitter",
+        "scale_policy": "Use experiential readability and relative staging until panel-level proportions are approved; do not present authored meters as canon."
+      },
+      "unresolved": [
+        "Panel-verified shape, count, width, and bearings of Reverse Mountain's visible waterways.",
+        "Panel-verified dimensions and placement of the crest, Twin Cape shoreline, and lighthouse.",
+        "Panel-verified Laboon proportions, color blocking, eye/mouth rig range, and exterior marks for the chapter-102 through chapter-104 window.",
+        "Panel-verified interior Laboon layout and transition framing.",
+        "Whether any whirlpool is visible in chapters 100-105; keep the emitter disabled until verified.",
+        "Exact panel timing and choreography within each chapter; chapter summaries establish beats but not shot order.",
+        "Going Merry acquisition gate in vessels.json remains marked verified:false and is outside this W1 chapter-window contract.",
+        "Licensed/original audio cue selection for current roar, hull strain, Laboon breath, swallow transition, and lighthouse ambience."
+      ],
+      "visual_program": {
+        "master_scene": "One Blender source package with linked, separately exportable environment, route, vehicle, creature, event-state, FX-control, and LOD collections.",
+        "must_show": [
+          "Going Merry as a moving vehicle rather than a baked part of the mountain",
+          "a readable uphill current and crest transition at chapter 101",
+          "Laboon's overwhelming scale at chapter 102 without displaying the name early",
+          "a separate interior inset and Crocus performance at chapter 103",
+          "the Luffy/Laboon promise as the chapter-104 emotional endpoint",
+          "the Log Pose and departure handoff at chapter 105",
+          "independent current, wake, spray, mist, creature, and vehicle controls",
+          "separate LODs and signed fallbacks for web and Unreal reuse"
+        ],
+        "must_not_show": [
+          "Reverse Mountain, Twin Cape, Laboon, or Crocus before their chapter gates",
+          "the name Laboon during the chapter-102 unidentified-whale state",
+          "a permanently active whirlpool unsupported by local chapter evidence",
+          "local bearings or distances inferred from atlas coordinates",
+          "a full detailed whale interior attached to every exterior Laboon LOD",
+          "Crocus or Straw Hat likenesses replaced with generic low-quality polygon people",
+          "later Straw Hat vessels or post-timeskip costumes",
+          "copyrighted anime music or dialogue bundled into the asset"
+        ],
+        "collection_pattern": [
+          "00_ENVIRONMENT",
+          "10_LANDMARKS",
+          "20_ROUTES",
+          "30_VEHICLE",
+          "40_CREATURE",
+          "50_EVENT_STATES",
+          "60_FX_CONTROLS",
+          "70_RUNTIME_LOD",
+          "80_EXPORT_HELPERS"
+        ],
+        "runtime_handoff": "Export each asset family separately. App state controls anchor, chapter gate, route progress, active event, camera cue, and disposal."
+      },
+      "evidence": [
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/canon.json",
+          "sha256": "1e814fb2fc1315344f697c61f5343ea5ec87cf39187413740a5bcbcc0ccc3e40",
+          "ownership": "app_read_only",
+          "used_for": [
+            "Reverse Mountain",
+            "Twin Cape",
+            "Laboon",
+            "Crocus",
+            "into-the-grand-line event status"
+          ]
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/data/raw/chapters.json",
+          "sha256": "f985248057f00310bfb0a09ad5feba5db0a96a7baaa6fa5e8006d1ca23baa9a2",
+          "ownership": "app_read_only",
+          "used_for": [
+            "chapter 100-105 titles",
+            "chapter 100-105 outcome summaries",
+            "spoiler-safe reveal order"
+          ]
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/canon/vessels.json",
+          "sha256": "9bbd9e57f6a0556f862eb27d2877ebb15b67736bd5e365623767fd4a728602c5",
+          "ownership": "app_read_only",
+          "used_for": [
+            "Going Merry vessel identity",
+            "unverified acquisition warning"
+          ]
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning/canon/voyage_legs.json",
+          "sha256": "a5b4f99f51f211db3270997607b1b337e725b985cfd17538efd5c7509ea08b2f",
+          "ownership": "app_read_only",
+          "used_for": [
+            "Reverse Mountain to Whisky Peak journey ordering",
+            "unverified waypoint warning"
+          ]
+        },
+        {
+          "path": "/Users/shawnos.ai/dead-reckoning-blender-assets/contracts/narrative-scene.schema.json",
+          "sha256": "739fae9f266313368e1ad579f0d2b71172b89335c201af61add958705c0e87e4",
+          "ownership": "asset_workspace",
+          "used_for": [
+            "schema version 2 contract validation"
+          ]
+        }
+      ],
+      "queue": {
+        "state": "integration_ready",
+        "kind": "moving_voyage_environment_vehicle_creature_system",
+        "next": "app_runtime_chapter_animation_and_globe_proof",
+        "replaced_as_integration_unit_by": null
+      },
+      "blockout": {
+        "exists": true,
+        "runtime_export": true,
+        "maturity": "runtime_animated_graybox_v1"
+      },
+      "source_ref": "blender-assets/contracts/reverse-mountain-twin-cape-voyage.visual.json"
     }
   ]
 }

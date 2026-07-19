@@ -10,7 +10,29 @@
       "state": "runtime_verified",
       "integration_ready": true,
       "manifest": "manifests/story-simulations/arabasta-saga-2d-v1.json",
-      "manifest_sha256": "3917bbf535a0037292ea4088e9dcc8b406d372c3f560775c9ef41274c2a0482c"
+      "manifest_sha256": "da22e66c1973589539e7a4e520a30874085e8aa84fc4cdcd34392edafe236ea9"
+    },
+    {
+      "id": "skypiea-saga-2d-v1",
+      "chapter_span": {
+        "start": 218,
+        "end": 305
+      },
+      "state": "runtime_verified",
+      "integration_ready": true,
+      "manifest": "manifests/story-simulations/skypiea-saga-2d-v1.json",
+      "manifest_sha256": "99ccd05e00f9386b3657c46990e877088423c97e0dba749cf8dd602caf094fb4"
+    },
+    {
+      "id": "enies-lobby-saga-2d-v1",
+      "chapter_span": {
+        "start": 375,
+        "end": 441
+      },
+      "state": "runtime_verified",
+      "integration_ready": true,
+      "manifest": "manifests/story-simulations/enies-lobby-saga-2d-v1.json",
+      "manifest_sha256": "91ae8ed87780a361adf002e0b600c053f6a6584b78f6a269a9520f7454998141"
     }
   ]
 }

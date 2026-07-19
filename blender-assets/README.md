@@ -17,60 +17,71 @@ topology overlay without writing to the app repository.
 editable SVG system sketches plus PNG previews. These are topology briefs for
 Blender, not runtime map art.
 
-The v2 narrative batch contains eleven chapter-aware, loader-ready runtime
-blockouts, including Loguetown, Dressrosa/Green Bit, Zou/Zunesha, Sabaody's
-79-grove network, the full Skypiea sky system, and the Water 7 Sea Train
-network. Every scene has an editable `.blend`, transparent fallback, GLB,
-sidecar, contract, and queue entry. They are deliberately described as runtime
-blockouts rather than final cinematic art.
+The v2 narrative batch adds eleven chapter-aware systems, including Loguetown,
+Dressrosa/Green Bit, Zou/Zunesha, Sabaody's 79-grove network, the full Skypiea
+sky system, and the Water 7 Sea Train network. Six priority system boards live
+in `sketches/intake/`. Loguetown and Water 7 also have editable Blender
+blockouts in `source/` and review renders in `renders/blockouts/`; they are not
+runtime exports yet.
 
-`manifests/runtime-3d.json` is the complete integration boundary: 16 models,
-covering Claude's two transition pilots and the fourteen remaining scene
-systems. Rebuild/verify the new batch with:
+## Character and encounter simulations
 
-```bash
-/Users/shawnos.ai/Applications/Blender-4.5.3.app/Contents/MacOS/Blender \
-  --background --python blender-assets/scripts/build_runtime_scene_batch.py
-python3 blender-assets/scripts/build_runtime_registry.py
-python3 blender-assets/scripts/finalize_runtime_scene_batch.py
-python3 blender-assets/scripts/verify_runtime_3d.py
-python3 blender-assets/scripts/verify_priority_narrative_blockouts.py
-```
+`CHARACTER_SIMULATION_ROADMAP.md` defines the approved character direction:
+recognizable illustrated 2.5D actors on camera-facing planes, deterministic
+movement tracks, and lightweight local 3D effects. The earlier rigid-part GLBs
+are preserved as motion studies only; their mannequin art is superseded and no
+longer approved for app integration.
 
-## Unreal export bundle
+The East Blue v1 asset pack contains 14 actor/tableau atlases, 84 reusable
+poses, and 14 chapter-gated scenes spanning chapters 1–100. Twelve scenes are
+runtime-ready; Shells Town and the Loguetown storm escape remain disabled until
+their missing supporting characters are drawn.
 
-Unreal is a separate renderer, not a replacement for the web atlas or this
-asset factory. Build its deterministic East Blue SourceArt bundle with:
+Build, preview, and verify the 2.5D package with:
 
 ```bash
-python3 blender-assets/scripts/build_unreal_export_bundle.py
-python3 blender-assets/scripts/verify_unreal_export_bundle.py
+python3 /Users/shawnos.ai/dead-reckoning-blender-assets/scripts/build_east_blue_2d.py
+python3 /Users/shawnos.ai/dead-reckoning-blender-assets/scripts/render_east_blue_2d_preview.py
+python3 /Users/shawnos.ai/dead-reckoning-blender-assets/scripts/verify_east_blue_2d.py
 ```
 
-The exporter copies only manifest-approved runtime derivatives into
-`exports/unreal/east-blue-v1/`. It fails on missing or drifted hashes, duplicate
-IDs, unverified chapter gates, and unfinished scenes. Raw character-generation
-sheets are never exported.
+Start with `manifests/east-blue-2d.json` and
+`contracts/east-blue-saga.simulation.json`. App instructions live in
+`handoffs/CLAUDE_CODE_EAST_BLUE_2D.md`; visual review files live in
+`renders/east-blue-2d/`. A source-free injection bundle is available at
+`dist/east-blue-2d-runtime-v1.zip`.
 
-## Arabasta story-simulation Batch A
+The first generalized saga pack, `arabasta-saga-2d-v1`, is also built and web
+proven. It contains 18 actor packages, 108 poses, and 10 verified scenes: the
+original Whisky Peak, Robin, Ace/Smoker, and Fire Fist beats plus Sanji/Bon
+Clay, Nami/Miss Doublefinger, Zoro/Mr. One, and all three distinct
+Luffy/Crocodile encounters. The signed pack is marked `integration_ready:
+true`, but remains invisible unless the web build explicitly allowlists it.
 
-The first generic saga pack is signed and web proven. `arabasta-saga-2d-v1`
-contains 6 source-free runtime atlases, 36 poses, and 4 verified scenes for
-Whisky Peak, Miss All Sunday's arrival, Ace's Nanohana intervention, and his
-chapter-159 destruction of the Billions' five-ship convoy. It is
-technically integration-ready but disabled unless the app build explicitly
-allowlists it with `NEXT_PUBLIC_STORY_SIMULATION_PACKS`.
+Two later saga packs are now promoted through the same generic pipeline:
+`skypiea-saga-2d-v1` (Luffy/Enel, chapters 279–302) and
+`enies-lobby-saga-2d-v1` (four CP9 fights across chapters 387–427). Together
+they add 10 signed atlases, 60 poses, five scenes, and 41 timed FX events.
+Enies Lobby now progresses from Luffy/Blueno's first Gear Second through
+Sanji/Jabra's first Diable Jambe, Zoro/Kaku's Asura finish, and Luffy/Lucci's
+Jet Gatling. The matching local-prototype Gear Second, Diable Jambe, Santoryu,
+and Gatling clips are bound to their authored visual events.
 
-Start with:
+```bash
+python3 scripts/build_story_simulation_pack.py --config art/arabasta/character-sheets.json
+python3 scripts/render_story_simulation_pack.py \
+  --config art/arabasta/character-sheets.json \
+  --contract contracts/story-simulations/arabasta-saga-2d-v1.simulation.json
+python3 scripts/verify_story_simulation_pack.py \
+  --config art/arabasta/character-sheets.json \
+  --contract contracts/story-simulations/arabasta-saga-2d-v1.simulation.json \
+  --canon-intake research/story-scenes/arabasta-batch-a.json \
+  --provenance art/arabasta/IMAGEGEN_PROVENANCE.md \
+  --web-proof proofs/arabasta-saga-2d-v1-web-proof.json
+```
 
-- `handoffs/CLAUDE_CODE_ARABASTA_BATCH_A.md`
-- `manifests/story-simulations/arabasta-saga-2d-v1.json`
-- `contracts/story-simulations/arabasta-saga-2d-v1.simulation.json`
-- `proofs/arabasta-saga-2d-v1-web-proof.json`
-- `renders/story-simulations/arabasta-saga-2d-v1/scene-board.png`
-
-Raw source sheets and editable alpha intermediates remain in the isolated asset
-factory and are intentionally absent from this source-free package.
+Open `handoffs/CLAUDE_CODE_GRAND_LINE_ANIMATION_NEXT.md` for the current proof
+matrix, feature flag, and ordered continuation queue.
 
 ## Pilot
 

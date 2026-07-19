@@ -54,11 +54,27 @@ def main() -> int:
     output.parent.mkdir(parents=True, exist_ok=True)
     metadata.parent.mkdir(parents=True, exist_ok=True)
 
+    # Chapter-gated objects are commonly stored in hidden edit collections so
+    # they stay out of review renders.  The GLB still needs those objects: their
+    # custom properties become glTF node extras and let the runtime keep them
+    # hidden until the gate is resolved.  This headless process is disposable,
+    # so temporarily reveal only those collections before selecting/exporting.
+    gated_objects = [
+        obj for obj in bpy.context.scene.objects
+        if bool(obj.get("default_hidden", False))
+    ]
+    for obj in gated_objects:
+        obj.hide_viewport = False
+        obj.hide_set(False)
+        for owner in obj.users_collection:
+            owner.hide_viewport = False
+
     excluded = []
     candidates = []
     for obj in list(bpy.context.scene.objects):
         preview_only = bool(obj.get("preview_only", False)) or "proxy" in obj.name.lower()
-        if obj.type not in {"MESH", "CURVE"} or preview_only or not obj.visible_get():
+        gated = bool(obj.get("default_hidden", False))
+        if obj.type not in {"MESH", "CURVE"} or preview_only or (not obj.visible_get() and not gated):
             excluded.append(obj.name)
             continue
         candidates.append(obj)
@@ -78,7 +94,8 @@ def main() -> int:
 
     export_objects = [obj for obj in bpy.context.scene.objects
                       if obj.type == "MESH" and not bool(obj.get("preview_only", False))
-                      and "proxy" not in obj.name.lower() and obj.visible_get()]
+                      and "proxy" not in obj.name.lower()
+                      and (obj.visible_get() or bool(obj.get("default_hidden", False)))]
     if not export_objects:
         raise RuntimeError("No renderable mesh objects found")
     bpy.ops.object.select_all(action="DESELECT")

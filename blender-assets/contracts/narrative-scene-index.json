@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "generator": "scripts/build_narrative_scene_contracts.py",
-  "contract_count": 11,
+  "contract_count": 12,
   "contracts": [
     {
       "id": "conomi-arlong-park",
@@ -90,6 +90,14 @@
       "priority": 1,
       "state": "ready_for_system_sketch",
       "path": "contracts/water-7-sea-train-network.visual.json"
+    },
+    {
+      "id": "reverse-mountain-twin-cape-voyage",
+      "label": "Reverse Mountain and Twin Cape voyage system",
+      "entity_type": "island_bridge_system",
+      "priority": 1,
+      "state": "ready_for_system_sketch",
+      "path": "contracts/reverse-mountain-twin-cape-voyage.visual.json"
     }
   ]
 }

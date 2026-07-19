@@ -48,10 +48,10 @@
       "runtime_export": true,
       "safe_full_scene_chapter": 202,
       "layout_status": "contract_relationship_graph",
-      "blend_sha256": "d9723ef3f7eff2e9a1634679ce9f77ec6dda2f0e67bba2dd35911b47a05457da",
-      "render_sha256": "ebdc7ee906c62f6c05103462d6027b21af091e8f2aba03b48c73926a9ed08202",
-      "glb_sha256": "c48a3846bac61028ce0fb55fc2479b1cf950d4028ac7177754a4fd94c70dac2d",
-      "model_sha256": "dac69d64c6ee0e418b4483b1b0c7d9fc1206339b6642d72ebff0e14fbbca7fb5"
+      "blend_sha256": "9c3206307a6ca1ccaecc7211755e69a4f0b0d29e776c1f1857c380d801f3a242",
+      "render_sha256": "e272f50ffaf83d28ef741b67fc6c3ead9ef82df02e912cbc362951788b06d335",
+      "glb_sha256": "38f62c3a6e4486720c345a5321c97a91cad341be808bcfc6fd43a1a57971d2b5",
+      "model_sha256": "68e068cfb2caaa50f0e08ec013c9916cfc9a6e7bd684fa2ea854e2efb69988b2"
     },
     {
       "id": "cactus-island-whisky-peak",
@@ -223,10 +223,10 @@
       "runtime_export": true,
       "safe_full_scene_chapter": 268,
       "layout_status": "layered_sky_local_scene",
-      "blend_sha256": "f56416e307fada28e6212b4f0b8ad24de88f5662b741372d7cf02c6dc0316740",
-      "render_sha256": "b27e69b1aa5dbaa4c7863b5f10a05be4bd08a1af54d5e83aa0462533669f1d23",
-      "glb_sha256": "786cc12b042bbbbadbd06f7dc0c1daae05a5d074f0fc988041cc664af76fc404",
-      "model_sha256": "e6c00ead4fc456e3999a24c9494e2902a3d4ca58707759cb76cf043f08a391dc"
+      "blend_sha256": "ae2b57efab59c139b027cad5251739573ab1ddec4c23bc5cec62f057aef451db",
+      "render_sha256": "55d2e1aa14f57513c065ddbeb4edbe18d583ce34c363f531128e1883e5d3a4bf",
+      "glb_sha256": "26228fbcffa465dfcaa1dad88957673560111d29921b77afb7dadce355547974",
+      "model_sha256": "f29c1b15e20db3f76cd0bdd032d93bca31c8cc9692b402a015a808b7fc6e0dd8"
     },
     {
       "id": "loguetown-roger-execution",
@@ -273,10 +273,39 @@
       "runtime_export": true,
       "safe_full_scene_chapter": 657,
       "layout_status": "contract_relationship_graph",
-      "blend_sha256": "4db9c6b1dbc15b6637076e17139497194431da9a376c285a705266843d747295",
-      "render_sha256": "24065186106fdacee738ddd6bdd461998451950e35414faeed2cd6c4bfead8e5",
-      "glb_sha256": "2379c74b093c8ca3d668baf4b5459bf4effb779f5d2fde08b057c8e2311e2eee",
-      "model_sha256": "c9b4b7b41e8b412e760ba23bcc5abd8118e04a709706300c7c6bdd8b688e369b"
+      "blend_sha256": "4c460a3995dba62d3eea1dd51f53b8cba36b86be57e4c6d592ca86a8050309ec",
+      "render_sha256": "3a490c1fe5c04425e42c2cd9d309d68fe46f1dbe43fbf72156a6811a8bcab43f",
+      "glb_sha256": "01049271111d0e2cadcae347114f3f1f5762bbe5b9983b38a73e3968632d634c",
+      "model_sha256": "1f387bc5ff774421cf25d4810c19cc543acfd32d02cd7a39f6cbef9554ea7342"
+    },
+    {
+      "id": "reverse-mountain-twin-cape-voyage",
+      "blend": "source/reverse-mountain-twin-cape-voyage.blend",
+      "render": "renders/runtime/reverse-mountain-twin-cape-voyage.png",
+      "runtime_glb": "runtime/reverse-mountain-twin-cape-voyage.glb",
+      "runtime_model": "runtime/reverse-mountain-twin-cape-voyage.model.json",
+      "frame_end": 180,
+      "collections": [
+        "00_ENVIRONMENT",
+        "10_LANDMARKS",
+        "20_ROUTES",
+        "30_VEHICLE",
+        "40_CREATURE",
+        "50_EVENT_STATES",
+        "60_FX_CONTROLS",
+        "70_RUNTIME_LOD",
+        "80_EXPORT_HELPERS"
+      ],
+      "contract": "contracts/reverse-mountain-twin-cape-voyage.visual.json",
+      "contract_sha256": "c3da3514d261fdabfc6540333f2587436190839a603eea9673c7419810512135",
+      "maturity": "runtime_animated_graybox_v1",
+      "runtime_export": true,
+      "safe_full_scene_chapter": 102,
+      "layout_status": "ordered_route_graph_not_atlas_geometry",
+      "blend_sha256": "652df5de68234a0c1e994c91420dd5caafeb05e03051a4c78f9a72ef78ed5204",
+      "render_sha256": "3812b62df328525e6c7340f9b28f11ca3fbb00cb4ac682c307f58b4722e90134",
+      "glb_sha256": "2accbf7f105a76f6c9b35a6d62c508d1730de9634c0018b8f7052df6a2e60d29",
+      "model_sha256": "085c07baf04c3619f07f0bacadc3a3ad5ae5415d2c316625cbd59764da5d54e1"
     }
   ]
 }

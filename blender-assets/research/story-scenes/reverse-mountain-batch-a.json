@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "pack_id": "reverse-mountain-voyage-w1",
+  "researched_at": "2026-07-18",
+  "chapter_window": [100, 105],
+  "contract_id": "reverse-mountain-twin-cape-voyage",
+  "policy": "This is a planned beat ledger, not a runnable story pack. Local chapter descriptions establish the six chapter outcomes. Panel composition, exact choreography, and unsupported topology remain open research. The runtime must preserve the chapter-102 unidentified-whale state before revealing the name Laboon in chapter 103.",
+  "source_policy": {
+    "primary_local_source": "/Users/shawnos.ai/dead-reckoning/data/raw/chapters.json",
+    "identity_source": "/Users/shawnos.ai/dead-reckoning/data/canon.json",
+    "vessel_source": "/Users/shawnos.ai/dead-reckoning/canon/vessels.json",
+    "warning": "The local vessel and voyage-leg files explicitly mark their hand-authored chapter stamps verified:false. They can supply identity and ordering context, not a newly asserted exact gate."
+  },
+  "scenes": [
+    {
+      "id": "loguetown-to-grand-line-approach",
+      "status": "chapter_verified_existing_coverage",
+      "chapter_gate": {
+        "start": 100,
+        "end": 100,
+        "verification": "verified_from_local_chapter_summary",
+        "source_ref": "/Users/shawnos.ai/dead-reckoning/data/raw/chapters.json#chapter-100",
+        "local_title": "And so began the legend",
+        "local_description_sha256": "c380826fddb800ef310666323d5879c2dde32826008b8175684b27d4a0842c93"
+      },
+      "place": {
+        "id": "open-sea-after-loguetown",
+        "arena": "going-merry-open-sea",
+        "anchor_status": "must_not_anchor_to_reverse_mountain_before_chapter_101"
+      },
+      "cast": ["straw-hat-crew-chapter-100", "going-merry"],
+      "outcome_claim": "The crew leaves Loguetown and heads for the Grand Line after Dragon stops Smoker amid the storm.",
+      "coverage_action": "Reuse the existing East Blue chapter-100 finale/approach coverage as the opening handoff; do not build a duplicate combat scene in this W1 lane.",
+      "production_lane": "world_route_handoff",
+      "required_assets": ["vehicle-going-merry-pre-timeskip", "signed-chapter-100-story-tableau"],
+      "required_clips": ["merry_idle_bob_loop"],
+      "camera_plan": "End the East Blue scene over open sea and point toward the Grand Line route without rendering the mountain.",
+      "fx_plan": ["storm tail", "open-sea wake"],
+      "audio_categories": ["original storm tail", "ship creak", "open-sea wake"],
+      "do_not_infer": ["Reverse Mountain silhouette at chapter 100", "Twin Cape", "Laboon", "Crocus"]
+    },
+    {
+      "id": "going-merry-reverse-mountain-ascent",
+      "status": "chapter_verified_plan_ready",
+      "chapter_gate": {
+        "start": 101,
+        "end": 101,
+        "verification": "verified_from_local_chapter_summary",
+        "source_ref": "/Users/shawnos.ai/dead-reckoning/data/raw/chapters.json#chapter-101",
+        "local_title": "Reverse Mountain",
+        "local_description_sha256": "5d5cb3809aa7b8700006be53a525c23392074908cc15b489ec66f69d8dc132ad"
+      },
+      "place": {
+        "id": "reverse-mountain",
+        "landmark": "east-blue-ascent-current",
+        "arena": "reverse-mountain-local-voyage-inset",
+        "anchor_status": "resolved_to_existing_island_for_scene_entry_only"
+      },
+      "cast": ["straw-hat-crew-chapter-101", "going-merry"],
+      "outcome_claim": "After accidentally reaching the Calm Belt, the crew returns to the intended route and heads up Reverse Mountain into the Grand Line.",
+      "coverage_action": "Build as the first moving 3D voyage proof, with the signed 2.5D crew visible only in close cockpit/deck inserts.",
+      "production_lane": "3d_environment_route_vehicle_plus_2_5d_character_insert",
+      "required_assets": ["env-reverse-mountain-massif", "route-reverse-mountain-ascent", "vehicle-going-merry-pre-timeskip", "fx-reverse-mountain-current"],
+      "required_clips": ["merry_ascent_climb", "merry_summit_crest", "current_ascent_flow_loop", "current_crest_surge"],
+      "camera_plan": "Follow low behind the Merry, bank with the ascent spline, then widen at the crest. Cut before any chapter-102 whale or Twin Cape reveal.",
+      "fx_plan": ["uphill flow field", "bow spray", "hull wake", "crest mist", "wind streaks"],
+      "audio_categories": ["original current roar", "wood strain", "sail snap", "crest wind"],
+      "do_not_infer": ["exact canal geometry", "exact summit bearing", "Twin Cape position", "whirlpool"]
+    },
+    {
+      "id": "laboon-first-contact-and-swallow",
+      "status": "chapter_verified_plan_ready",
+      "chapter_gate": {
+        "start": 102,
+        "end": 102,
+        "verification": "verified_from_local_chapter_summary",
+        "source_ref": "/Users/shawnos.ai/dead-reckoning/data/raw/chapters.json#chapter-102",
+        "local_title": "Heading for Grand Line",
+        "local_description_sha256": "cac07375b3ef0e4972822b3ceb3492ef2478526f23d09c548ebde90e42a9acae"
+      },
+      "place": {
+        "id": "twin-cape-entry-waters",
+        "landmark": "laboon-unidentified",
+        "arena": "grand-line-first-contact-inset",
+        "anchor_status": "resolved_to_twin_cape_debut_without_using_atlas_bearing"
+      },
+      "cast": ["straw-hat-crew-chapter-102", "going-merry", "unidentified-giant-whale"],
+      "outcome_claim": "The crew arrives in the Grand Line and the Going Merry is swallowed by a giant whale.",
+      "coverage_action": "Build the world-scale Laboon silhouette and swallow transition, but suppress the character name until chapter 103.",
+      "production_lane": "3d_environment_vehicle_creature_transition",
+      "required_assets": ["env-twin-cape", "vehicle-going-merry-pre-timeskip", "creature-laboon", "env-laboon-interior-inset"],
+      "required_clips": ["merry_descent_run", "laboon_first_contact_breach", "laboon_mouth_open_swallow", "merry_swallowed_transition", "laboon_contact_displacement"],
+      "camera_plan": "Exit the descent at water level, let the whale silhouette take over the frame, then hide the transition inside mouth occlusion and moisture haze.",
+      "fx_plan": ["scale fog", "surface displacement", "contact foam", "Merry brake wake", "mouth occlusion", "interior haze"],
+      "audio_categories": ["original current release", "whale breath", "large water displacement", "muffled interior transition"],
+      "do_not_infer": ["name Laboon in UI or narration", "Crocus", "exact whale anatomy", "combat with the whale", "whirlpool"]
+    },
+    {
+      "id": "inside-laboon-crocus-reveal",
+      "status": "chapter_verified_plan_ready",
+      "chapter_gate": {
+        "start": 103,
+        "end": 103,
+        "verification": "verified_from_local_chapter_summary",
+        "source_ref": "/Users/shawnos.ai/dead-reckoning/data/raw/chapters.json#chapter-103",
+        "local_title": "Funny whale",
+        "local_description_sha256": "ac0d8512ded9ad44e8dda02bbcb08bcfd1ba3940bb12fe6b4d9ba240560fc4f5"
+      },
+      "place": {
+        "id": "laboon-interior-theatre",
+        "landmark": "contained-interior-story-stage",
+        "arena": "laboon-interior-inset",
+        "anchor_status": "nested_under_laboon_not_world_geography"
+      },
+      "cast": ["straw-hat-crew-chapter-103", "crocus", "laboon", "unnamed-man-and-woman"],
+      "outcome_claim": "Inside the whale, the crew meets Crocus, learns the whale is named Laboon, and also encounters a strange man and woman.",
+      "coverage_action": "Use a contained 3D inset for scale and atmosphere with signed 2.5D character performances. Preserve the two agents as unnamed chapter-safe silhouettes.",
+      "production_lane": "3d_interior_inset_plus_2_5d_story_performance",
+      "required_assets": ["env-laboon-interior-inset", "actor-crocus-reverse-mountain", "actors-straw-hats-reverse-mountain", "unnamed-agent-silhouettes"],
+      "required_clips": ["crocus_idle_watch", "crocus_explain_laboon"],
+      "camera_plan": "Open wide enough to establish the impossible interior setting, then settle into a compact Crocus explanation tableau before returning outside.",
+      "fx_plan": ["interior moisture haze", "soft caustics", "drips"],
+      "audio_categories": ["original interior resonance", "water drips", "low whale body ambience"],
+      "do_not_infer": ["exact internal anatomy", "agent identities beyond the local summary", "extended fight", "new rooms or tunnels"]
+    },
+    {
+      "id": "luffy-promises-laboon",
+      "status": "chapter_verified_plan_ready",
+      "chapter_gate": {
+        "start": 104,
+        "end": 104,
+        "verification": "verified_from_local_chapter_summary",
+        "source_ref": "/Users/shawnos.ai/dead-reckoning/data/raw/chapters.json#chapter-104",
+        "local_title": "A course of promise",
+        "local_description_sha256": "ff37f8ce324b85d5287e28e256e782840d8dd605520aa1e1260c726c8501d117"
+      },
+      "place": {
+        "id": "twin-cape",
+        "landmark": "laboon-exterior-theatre",
+        "arena": "twin-cape-promise-inset",
+        "anchor_status": "resolved_to_twin_cape_for_scene_entry_only"
+      },
+      "cast": ["monkey-d-luffy-chapter-104", "straw-hat-crew-chapter-104", "going-merry", "laboon", "crocus"],
+      "outcome_claim": "After the crew emerges, Luffy promises Laboon that he will return after conquering the Grand Line.",
+      "coverage_action": "Treat this as the emotional payoff: large 3D world/creature staging plus a signed Luffy promise performance, not as an invented extended fight.",
+      "production_lane": "3d_environment_vehicle_creature_plus_2_5d_character_performance",
+      "required_assets": ["env-twin-cape", "vehicle-going-merry-pre-timeskip", "creature-laboon", "actors-straw-hats-reverse-mountain", "actor-crocus-reverse-mountain"],
+      "required_clips": ["laboon_surface_idle_loop", "laboon_breath_mist", "laboon_promise_response", "merry_idle_bob_loop"],
+      "camera_plan": "Compose the Merry and Luffy as small foreground scale against Laboon, then finish on Laboon's response and the open Grand Line horizon.",
+      "fx_plan": ["gentle swell", "Laboon breath mist", "Merry idle wake"],
+      "audio_categories": ["original quiet swell", "whale breath", "ship creak", "original promise motif without copyrighted melody"],
+      "do_not_infer": ["extra attacks", "graphic injury", "later Brook connection", "future Laboon state"]
+    },
+    {
+      "id": "crocus-log-pose-whisky-peak-departure",
+      "status": "chapter_verified_plan_ready",
+      "chapter_gate": {
+        "start": 105,
+        "end": 105,
+        "verification": "verified_from_local_chapter_summary",
+        "source_ref": "/Users/shawnos.ai/dead-reckoning/data/raw/chapters.json#chapter-105",
+        "local_title": "Log Pose",
+        "local_description_sha256": "d80ee972b4a11b1e029d05fe7a1bf036ec69ed0517f5ba0c4c67ca4efed64454"
+      },
+      "place": {
+        "id": "twin-cape",
+        "landmark": "twin-cape-lighthouse",
+        "arena": "twin-cape-departure-inset",
+        "anchor_status": "handoff_to_existing_whisky_peak_world_route"
+      },
+      "cast": ["straw-hat-crew-chapter-105", "crocus", "mr-9", "miss-wednesday", "going-merry", "laboon"],
+      "outcome_claim": "Crocus gives the crew a Log Pose, and the Straw Hats agree to take Mr. 9 and Miss Wednesday to Whisky Peak.",
+      "coverage_action": "Use the Log Pose as the close story insert, then animate the Merry out of the local theatre and hand route ownership back to the globe.",
+      "production_lane": "2_5d_story_insert_plus_3d_vehicle_route_handoff",
+      "required_assets": ["actor-crocus-reverse-mountain", "log-pose-prop", "mr-9-reverse-mountain", "miss-wednesday-reverse-mountain", "vehicle-going-merry-pre-timeskip", "env-twin-cape"],
+      "required_clips": ["crocus_present_log_pose", "merry_twin_cape_departure", "merry_wake_loop"],
+      "camera_plan": "Start close on the Log Pose exchange, pull to reveal the two passengers on the Merry, then follow the departure until the globe route takes over.",
+      "fx_plan": ["calm current flow", "departure wake", "lighthouse haze"],
+      "audio_categories": ["original lighthouse ambience", "Log Pose UI cue", "sail and wake departure"],
+      "do_not_infer": ["exact local bearing to Whisky Peak", "events of chapter 106", "later Vivi identity context beyond the chapter-105 names"]
+    }
+  ],
+  "batch_acceptance": [
+    "Every chapter from 100 through 105 appears exactly once.",
+    "Every chapter row remains pinned to the current local title and description hash.",
+    "Chapter 100 has no Reverse Mountain environment leak.",
+    "Chapter 102 labels the creature only as an unidentified giant whale.",
+    "Chapter 103 is the first scene allowed to display Laboon and Crocus by name.",
+    "Chapter 104 stays a promise scene and does not invent an extended battle.",
+    "Chapter 105 exits through the existing world-route system rather than creating a second map authority.",
+    "All audio categories are placeholders for original or licensed material; no anime soundtrack or dialogue is bundled.",
+    "All panel-dependent geometry and choreography remains explicitly unresolved until a separate reference pass."
+  ]
+}

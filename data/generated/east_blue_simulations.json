@@ -7,7 +7,7 @@
       "start": 1,
       "end": 100
     },
-    "source_manifest_sha256": "0abbd6ff4c36d4e485feb177dc4ebbff47ddf0a2b8078ac84bfed124c2440be0",
+    "source_manifest_sha256": "beab0b642283e0ecfc4a757e411887ea84bf8cb8a7d33e49ac2dd4cd3549809d",
     "integration_ready": false,
     "feature_flag": "NEXT_PUBLIC_EAST_BLUE_2D_SIMULATIONS",
     "note": "Only runtime_ready scenes with verified chapter gates ship. The refused list is load-bearing: check_simulations.py pins it so an art_partial scene cannot be re-enabled without new signed art.",
@@ -727,31 +727,174 @@
               "pose": "guard"
             },
             {
-              "t": 2200,
-              "x": -0.18,
-              "y": 0.02,
-              "scale": 0.92,
-              "rotation": -3,
+              "t": 800,
+              "x": -0.55,
+              "y": 0.01,
+              "scale": 0.885,
+              "rotation": -0.5,
               "opacity": 1,
-              "pose": "dash"
+              "pose": "guard",
+              "ease": "smooth"
+            },
+            {
+              "t": 1600,
+              "x": -0.58,
+              "y": 0,
+              "scale": 0.87,
+              "rotation": 2,
+              "opacity": 1,
+              "pose": "guard",
+              "ease": "smooth"
+            },
+            {
+              "t": 2000,
+              "x": -0.62,
+              "y": -0.01,
+              "scale": 0.86,
+              "rotation": 4,
+              "opacity": 1,
+              "pose": "guard",
+              "ease": "accelerate"
+            },
+            {
+              "t": 2200,
+              "x": -0.5,
+              "y": 0.015,
+              "scale": 0.9,
+              "rotation": -2,
+              "opacity": 1,
+              "pose": "dash",
+              "ease": "accelerate"
+            },
+            {
+              "t": 2600,
+              "x": -0.3,
+              "y": 0.025,
+              "scale": 0.93,
+              "rotation": -4,
+              "opacity": 1,
+              "pose": "dash",
+              "ease": "accelerate"
+            },
+            {
+              "t": 3100,
+              "x": -0.12,
+              "y": 0.015,
+              "scale": 0.95,
+              "rotation": -6,
+              "opacity": 1,
+              "pose": "dash",
+              "ease": "decelerate"
+            },
+            {
+              "t": 3320,
+              "x": -0.02,
+              "y": 0.03,
+              "scale": 0.98,
+              "rotation": 3,
+              "opacity": 1,
+              "pose": "three-sword-slash",
+              "ease": "accelerate"
             },
             {
               "t": 3400,
               "x": 0.02,
-              "y": 0.02,
-              "scale": 0.96,
-              "rotation": 0,
+              "y": 0.035,
+              "scale": 1,
+              "rotation": 5,
               "opacity": 1,
-              "pose": "three-sword-slash"
+              "pose": "three-sword-slash",
+              "ease": "linear"
             },
             {
-              "t": 4850,
-              "x": -0.18,
-              "y": 0.08,
-              "scale": 0.92,
-              "rotation": -9,
+              "t": 3480,
+              "x": 0.02,
+              "y": 0.035,
+              "scale": 1,
+              "rotation": 5,
               "opacity": 1,
-              "pose": "recoil"
+              "pose": "three-sword-slash",
+              "ease": "linear"
+            },
+            {
+              "t": 3720,
+              "x": 0.08,
+              "y": 0.025,
+              "scale": 0.97,
+              "rotation": 8,
+              "opacity": 1,
+              "pose": "three-sword-slash",
+              "ease": "decelerate"
+            },
+            {
+              "t": 4050,
+              "x": -0.02,
+              "y": 0.02,
+              "scale": 0.94,
+              "rotation": -1,
+              "opacity": 1,
+              "pose": "guard",
+              "ease": "smooth"
+            },
+            {
+              "t": 4100,
+              "x": -0.08,
+              "y": 0.04,
+              "scale": 0.93,
+              "rotation": -7,
+              "opacity": 1,
+              "pose": "recoil",
+              "ease": "accelerate"
+            },
+            {
+              "t": 4180,
+              "x": -0.08,
+              "y": 0.04,
+              "scale": 0.93,
+              "rotation": -7,
+              "opacity": 1,
+              "pose": "recoil",
+              "ease": "linear"
+            },
+            {
+              "t": 4700,
+              "x": -0.24,
+              "y": 0.1,
+              "scale": 0.9,
+              "rotation": -13,
+              "opacity": 1,
+              "pose": "recoil",
+              "ease": "accelerate"
+            },
+            {
+              "t": 4780,
+              "x": -0.24,
+              "y": 0.1,
+              "scale": 0.9,
+              "rotation": -13,
+              "opacity": 1,
+              "pose": "recoil",
+              "ease": "linear"
+            },
+            {
+              "t": 5300,
+              "x": -0.4,
+              "y": 0.03,
+              "scale": 0.88,
+              "rotation": -6,
+              "opacity": 1,
+              "pose": "recoil",
+              "ease": "decelerate"
+            },
+            {
+              "t": 6000,
+              "x": -0.42,
+              "y": 0,
+              "scale": 0.88,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "defeated",
+              "ease": "decelerate"
             },
             {
               "t": 6400,
@@ -779,22 +922,154 @@
               "pose": "idle"
             },
             {
-              "t": 3000,
-              "x": 0.26,
-              "y": 0,
-              "scale": 0.98,
+              "t": 800,
+              "x": 0.5,
+              "y": 0.005,
+              "scale": 0.962,
               "rotation": 0,
               "opacity": 1,
-              "pose": "guard"
+              "pose": "idle",
+              "ease": "smooth"
+            },
+            {
+              "t": 1600,
+              "x": 0.49,
+              "y": 0,
+              "scale": 0.96,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "idle",
+              "ease": "smooth"
+            },
+            {
+              "t": 2400,
+              "x": 0.47,
+              "y": 0,
+              "scale": 0.965,
+              "rotation": -0.5,
+              "opacity": 1,
+              "pose": "idle",
+              "ease": "smooth"
+            },
+            {
+              "t": 2850,
+              "x": 0.36,
+              "y": 0,
+              "scale": 0.98,
+              "rotation": -1,
+              "opacity": 1,
+              "pose": "guard",
+              "ease": "decelerate"
+            },
+            {
+              "t": 3200,
+              "x": 0.28,
+              "y": 0,
+              "scale": 0.99,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "guard",
+              "ease": "smooth"
+            },
+            {
+              "t": 3400,
+              "x": 0.26,
+              "y": 0,
+              "scale": 0.99,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "guard",
+              "ease": "linear"
+            },
+            {
+              "t": 3480,
+              "x": 0.26,
+              "y": 0,
+              "scale": 0.99,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "guard",
+              "ease": "linear"
+            },
+            {
+              "t": 3900,
+              "x": 0.24,
+              "y": 0,
+              "scale": 0.985,
+              "rotation": 3,
+              "opacity": 1,
+              "pose": "guard",
+              "ease": "accelerate"
+            },
+            {
+              "t": 4020,
+              "x": 0.17,
+              "y": 0.02,
+              "scale": 1.015,
+              "rotation": -5,
+              "opacity": 1,
+              "pose": "yoru-slash",
+              "ease": "accelerate"
             },
             {
               "t": 4100,
               "x": 0.12,
+              "y": 0.025,
+              "scale": 1.03,
+              "rotation": -8,
+              "opacity": 1,
+              "pose": "yoru-slash",
+              "ease": "linear"
+            },
+            {
+              "t": 4180,
+              "x": 0.12,
+              "y": 0.025,
+              "scale": 1.03,
+              "rotation": -8,
+              "opacity": 1,
+              "pose": "yoru-slash",
+              "ease": "linear"
+            },
+            {
+              "t": 4450,
+              "x": 0.08,
               "y": 0.02,
               "scale": 1.02,
+              "rotation": -11,
+              "opacity": 1,
+              "pose": "yoru-slash",
+              "ease": "decelerate"
+            },
+            {
+              "t": 4700,
+              "x": 0.1,
+              "y": 0.015,
+              "scale": 1.01,
+              "rotation": -7,
+              "opacity": 1,
+              "pose": "yoru-slash",
+              "ease": "linear"
+            },
+            {
+              "t": 4780,
+              "x": 0.1,
+              "y": 0.015,
+              "scale": 1.01,
+              "rotation": -7,
+              "opacity": 1,
+              "pose": "yoru-slash",
+              "ease": "linear"
+            },
+            {
+              "t": 5300,
+              "x": 0.27,
+              "y": 0,
+              "scale": 0.99,
               "rotation": 0,
               "opacity": 1,
-              "pose": "yoru-slash"
+              "pose": "guard",
+              "ease": "decelerate"
             },
             {
               "t": 6100,

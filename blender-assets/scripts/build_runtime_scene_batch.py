@@ -430,6 +430,12 @@ def build_arabasta(contract: dict, rx: int, ry: int) -> dict:
         for j in range(4 if kind!="ruin" else 2):
             house(f"{cid} {j+1}", (x+math.cos(j*1.7)*.55,y+math.sin(j*1.7)*.45,.82),
                   .34, stone, roof, c.landmarks, component=cid, reveal=ch)
+    # The contract distinguishes Yuba the town from its oasis, but the oasis
+    # chapter is unresolved. Keep the water modeled and addressable in the GLB
+    # while default-hidden so the runtime can enforce that distinction.
+    cylinder("Yuba oasis pool", (-4.4,.2,.855), .42, .07, river, c.states, 32,
+             scale_xy=(1.0,.72), component="yuba-oasis",
+             confidence="chapter_to_verify", default_hidden=True)
     return finish("arabasta-kingdom", contract, c, rx, ry, (17,-23,19), (0,0,1.1),
                   safe_full_chapter=202)
 

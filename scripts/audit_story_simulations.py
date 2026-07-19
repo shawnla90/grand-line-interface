@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Headless runtime proof for the disabled-by-default Arabasta Batch A pack.
+"""Headless runtime proof for the disabled-by-default Arabasta story pack.
 
 Drives the real shared syncSimulations host through /dev/sim-proof and checks
 chapter gating, signed atlas demand-loading, pose progression, newest-scene
 replacement, backward-scrub reset, the Ace/Smoker tableau, and reduced motion.
+The extended proof also covers Crocodile round one, Sanji/Bon Clay, and
+Zoro/Mr. One with exact lazy-load and final-pose assertions.
 """
 
 from __future__ import annotations
@@ -25,6 +27,12 @@ ZORO_SCENE = "sim-whisky-peak-zoro-vs-bounty-hunters"
 ROBIN_SCENE = "sim-robin-miss-all-sunday-arrival"
 ACE_SCENE = "sim-ace-blocks-smoker-at-nanohana"
 FLEET_SCENE = "sim-ace-fire-fist-destroys-billions-fleet"
+CROCODILE_SCENE = "sim-arabasta-luffy-vs-crocodile-round-one"
+SANJI_SCENE = "sim-arabasta-sanji-vs-bon-clay"
+MR_ONE_SCENE = "sim-arabasta-zoro-vs-mr-one"
+NAMI_SCENE = "sim-arabasta-nami-vs-miss-doublefinger"
+CROCODILE_TWO_SCENE = "sim-arabasta-luffy-vs-crocodile-round-two"
+CROCODILE_FINAL_SCENE = "sim-arabasta-luffy-vs-crocodile-final"
 
 PASS = 0
 FAIL = 0
@@ -186,6 +194,219 @@ def main() -> int:
                 "ch159: burning wreckage and Ace departure hold",
                 (final_convoy, final_ace) == ("burning-wreckage", "confident-departure"),
                 f"convoy={final_convoy}, ace={final_ace}",
+            )
+
+            requests.clear()
+            page.click("[data-testid=go-176]")
+            page.wait_for_function(f"() => (window.__simScenes || {{}})['{CROCODILE_SCENE}']", timeout=10000)
+            check("ch176: Crocodile round one mounts at Rainbase", CROCODILE_SCENE in scene_ids(page), ", ".join(scene_ids(page)))
+            check(
+                "ch176: only Luffy and Crocodile atlases demand-load",
+                atlas_requests(requests) == ["crocodile-arabasta-sand", "monkey-d-luffy-crocodile-round-one"],
+                ", ".join(atlas_requests(requests)),
+            )
+            saw_stretch = False
+            deadline = time.time() + 7
+            while time.time() < deadline:
+                if actor_pose(page, CROCODILE_SCENE, "luffy") == "rubber-pistol-stretch":
+                    saw_stretch = True
+                    break
+                page.wait_for_timeout(70)
+            check("ch176: Luffy reaches the rubber-pistol stretch", saw_stretch)
+            page.wait_for_function(
+                f"() => (window.__simScenes || {{}})['{CROCODILE_SCENE}']?.timeMs >= 10000",
+                timeout=15000,
+            )
+            final_crocodile = actor_pose(page, CROCODILE_SCENE, "crocodile")
+            final_luffy = actor_pose(page, CROCODILE_SCENE, "luffy")
+            check(
+                "ch176: Crocodile victory and quicksand aftermath hold",
+                (final_crocodile, final_luffy) == ("victorious-aftermath", "quicksand-aftermath"),
+                f"crocodile={final_crocodile}, luffy={final_luffy}",
+            )
+
+            page.fill("[data-testid=chapter-input]", "175")
+            page.wait_for_function(f"() => !(window.__simScenes || {{}})['{CROCODILE_SCENE}']", timeout=8000)
+            check("backward scrub: Crocodile scene unmounted and disposed", True)
+            page.fill("[data-testid=chapter-input]", "176")
+            page.wait_for_function(f"() => (window.__simScenes || {{}})['{CROCODILE_SCENE}']", timeout=8000)
+            restarted = page.evaluate(f"() => (window.__simScenes || {{}})['{CROCODILE_SCENE}'].timeMs")
+            check("return to ch176: Crocodile clock restarts near zero", isinstance(restarted, (int, float)) and restarted < 2500, f"t={restarted}")
+
+            requests.clear()
+            page.click("[data-testid=go-187]")
+            page.wait_for_function(f"() => (window.__simScenes || {{}})['{SANJI_SCENE}']", timeout=10000)
+            check("ch187: Sanji and Bon Clay mount at Alubarna", SANJI_SCENE in scene_ids(page), ", ".join(scene_ids(page)))
+            check(
+                "ch187: only Sanji and Bon Clay atlases demand-load",
+                atlas_requests(requests) == ["bon-clay-mr-two", "sanji-arabasta-bon-clay"],
+                ", ".join(atlas_requests(requests)),
+            )
+            saw_anti_manner = False
+            deadline = time.time() + 9
+            while time.time() < deadline:
+                if actor_pose(page, SANJI_SCENE, "sanji") == "anti-manner-kick-course":
+                    saw_anti_manner = True
+                    break
+                page.wait_for_timeout(70)
+            check("ch187: Sanji reaches Anti-Manner Kick Course", saw_anti_manner)
+            page.wait_for_function(
+                f"() => (window.__simScenes || {{}})['{SANJI_SCENE}']?.timeMs >= 9000",
+                timeout=14000,
+            )
+            final_bon_clay = actor_pose(page, SANJI_SCENE, "bon-clay")
+            final_sanji = actor_pose(page, SANJI_SCENE, "sanji")
+            check(
+                "ch187: Bon Clay defeat and Sanji victory hold",
+                (final_bon_clay, final_sanji) == ("defeated-hold", "battered-victory"),
+                f"bon-clay={final_bon_clay}, sanji={final_sanji}",
+            )
+
+            requests.clear()
+            page.click("[data-testid=go-190]")
+            page.wait_for_function(f"() => (window.__simScenes || {{}})['{NAMI_SCENE}']", timeout=10000)
+            ids = scene_ids(page)
+            check(
+                "ch190: Nami/Miss Doublefinger replaces Sanji/Bon Clay at Alubarna",
+                NAMI_SCENE in ids and SANJI_SCENE not in ids and MR_ONE_SCENE not in ids,
+                ", ".join(ids),
+            )
+            check(
+                "ch190: only Nami and Miss Doublefinger atlases demand-load",
+                atlas_requests(requests) == ["miss-doublefinger-arabasta", "nami-arabasta-doublefinger"],
+                ", ".join(atlas_requests(requests)),
+            )
+            saw_tornado = False
+            deadline = time.time() + 9
+            while time.time() < deadline:
+                if actor_pose(page, NAMI_SCENE, "nami") == "tornado-tempo":
+                    saw_tornado = True
+                    break
+                page.wait_for_timeout(70)
+            check("ch190: Nami reaches Tornado Tempo", saw_tornado)
+            page.wait_for_function(
+                f"() => (window.__simScenes || {{}})['{NAMI_SCENE}']?.timeMs >= 10000",
+                timeout=15000,
+            )
+            final_doublefinger = actor_pose(page, NAMI_SCENE, "miss-doublefinger")
+            final_nami = actor_pose(page, NAMI_SCENE, "nami")
+            check(
+                "ch190: Miss Doublefinger defeat and Nami victory hold",
+                (final_doublefinger, final_nami) == ("defeated-hold", "battered-victory"),
+                f"miss-doublefinger={final_doublefinger}, nami={final_nami}",
+            )
+
+            requests.clear()
+            page.click("[data-testid=go-194]")
+            page.wait_for_function(f"() => (window.__simScenes || {{}})['{MR_ONE_SCENE}']", timeout=10000)
+            ids = scene_ids(page)
+            check(
+                "ch194: Zoro/Mr. One replaces Nami/Miss Doublefinger at Alubarna",
+                MR_ONE_SCENE in ids and NAMI_SCENE not in ids,
+                ", ".join(ids),
+            )
+            check(
+                "ch194: only Zoro and Mr. One atlases demand-load",
+                atlas_requests(requests) == ["daz-bones-mr-one", "roronoa-zoro-arabasta-mr-one"],
+                ", ".join(atlas_requests(requests)),
+            )
+            saw_lion_song = False
+            deadline = time.time() + 9
+            while time.time() < deadline:
+                if actor_pose(page, MR_ONE_SCENE, "zoro") == "lion-song-pass":
+                    saw_lion_song = True
+                    break
+                page.wait_for_timeout(70)
+            check("ch194: Zoro reaches Lion Song", saw_lion_song)
+            page.wait_for_function(
+                f"() => (window.__simScenes || {{}})['{MR_ONE_SCENE}']?.timeMs >= 9500",
+                timeout=14500,
+            )
+            final_mr_one = actor_pose(page, MR_ONE_SCENE, "mr-one")
+            final_zoro_mr_one = actor_pose(page, MR_ONE_SCENE, "zoro")
+            check(
+                "ch194: Mr. One defeat and Zoro's collapsed victory hold",
+                (final_mr_one, final_zoro_mr_one) == ("defeated-hold", "collapsed-victory"),
+                f"mr-one={final_mr_one}, zoro={final_zoro_mr_one}",
+            )
+
+            requests.clear()
+            page.click("[data-testid=go-198]")
+            page.wait_for_function(f"() => (window.__simScenes || {{}})['{CROCODILE_TWO_SCENE}']", timeout=10000)
+            ids = scene_ids(page)
+            check(
+                "ch198: Crocodile round two replaces Zoro/Mr. One at Alubarna",
+                CROCODILE_TWO_SCENE in ids and MR_ONE_SCENE not in ids,
+                ", ".join(ids),
+            )
+            check(
+                "ch198: only round-two Luffy and Crocodile atlases demand-load",
+                atlas_requests(requests) == ["crocodile-arabasta-round-two", "monkey-d-luffy-crocodile-round-two"],
+                ", ".join(atlas_requests(requests)),
+            )
+            saw_aqua_luffy = False
+            saw_wet_punch = False
+            deadline = time.time() + 10
+            while time.time() < deadline:
+                pose = actor_pose(page, CROCODILE_TWO_SCENE, "luffy")
+                saw_aqua_luffy = saw_aqua_luffy or pose == "aqua-luffy"
+                saw_wet_punch = saw_wet_punch or pose == "wet-fist-rubber-punch"
+                if saw_aqua_luffy and saw_wet_punch:
+                    break
+                page.wait_for_timeout(70)
+            check("ch198: Luffy reaches Aqua Luffy and the wet-fist punch", saw_aqua_luffy and saw_wet_punch)
+            page.wait_for_function(
+                f"() => (window.__simScenes || {{}})['{CROCODILE_TWO_SCENE}']?.timeMs >= 11000",
+                timeout=16000,
+            )
+            final_crocodile_two = actor_pose(page, CROCODILE_TWO_SCENE, "crocodile")
+            final_luffy_two = actor_pose(page, CROCODILE_TWO_SCENE, "luffy")
+            check(
+                "ch198: tomb departure and falling-water revival hold",
+                (final_crocodile_two, final_luffy_two) == ("tomb-departure", "falling-water-revival"),
+                f"crocodile={final_crocodile_two}, luffy={final_luffy_two}",
+            )
+
+            page.fill("[data-testid=chapter-input]", "197")
+            page.wait_for_function(f"() => !(window.__simScenes || {{}})['{CROCODILE_TWO_SCENE}']", timeout=8000)
+            check("backward scrub: Crocodile round two unmounted and disposed", True)
+            page.fill("[data-testid=chapter-input]", "198")
+            page.wait_for_function(f"() => (window.__simScenes || {{}})['{CROCODILE_TWO_SCENE}']", timeout=8000)
+            restarted = page.evaluate(f"() => (window.__simScenes || {{}})['{CROCODILE_TWO_SCENE}'].timeMs")
+            check("return to ch198: round-two clock restarts near zero", isinstance(restarted, (int, float)) and restarted < 2500, f"t={restarted}")
+
+            requests.clear()
+            page.click("[data-testid=go-203]")
+            page.wait_for_function(f"() => (window.__simScenes || {{}})['{CROCODILE_FINAL_SCENE}']", timeout=10000)
+            ids = scene_ids(page)
+            check(
+                "ch203: royal-tomb final replaces Crocodile round two",
+                CROCODILE_FINAL_SCENE in ids and CROCODILE_TWO_SCENE not in ids,
+                ", ".join(ids),
+            )
+            check(
+                "ch203: only final-round Luffy and Crocodile atlases demand-load",
+                atlas_requests(requests) == ["crocodile-arabasta-final", "monkey-d-luffy-crocodile-final"],
+                ", ".join(atlas_requests(requests)),
+            )
+            saw_storm = False
+            deadline = time.time() + 11
+            while time.time() < deadline:
+                if actor_pose(page, CROCODILE_FINAL_SCENE, "luffy") == "gum-gum-storm":
+                    saw_storm = True
+                    break
+                page.wait_for_timeout(70)
+            check("ch203: Luffy reaches Gum-Gum Storm", saw_storm)
+            page.wait_for_function(
+                f"() => (window.__simScenes || {{}})['{CROCODILE_FINAL_SCENE}']?.timeMs >= 11500",
+                timeout=16500,
+            )
+            final_crocodile_tomb = actor_pose(page, CROCODILE_FINAL_SCENE, "crocodile")
+            final_luffy_tomb = actor_pose(page, CROCODILE_FINAL_SCENE, "luffy")
+            check(
+                "ch203: Crocodile defeat and exhausted Luffy victory hold",
+                (final_crocodile_tomb, final_luffy_tomb) == ("unconscious-aftermath", "exhausted-victory"),
+                f"crocodile={final_crocodile_tomb}, luffy={final_luffy_tomb}",
             )
 
             reduced = browser.new_page(viewport={"width": 1440, "height": 900}, reduced_motion="reduce")

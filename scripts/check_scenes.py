@@ -81,7 +81,7 @@ def visibility(scene: dict, chapter: int) -> dict:
 @check("registry_shape")
 def registry_shape(doc):
     scenes = doc["scenes"]
-    assert len(scenes) == 11, f"{len(scenes)} scenes; the index declares 11"
+    assert len(scenes) == 12, f"{len(scenes)} scenes; the index declares 12"
     for s in scenes:
         assert s["entity_type"] in ENTITY_TYPES, f"{s['id']}: entity_type {s['entity_type']!r}"
         assert "index_state" in s, f"{s['id']}: the index's key is `state` -> index_state"
@@ -93,7 +93,7 @@ def registry_shape(doc):
                 f"Either the asset track added it (update this list deliberately) or we "
                 f"invented it (do not)."
             )
-    return f"11 scenes, every entity_type known, no invented field names"
+    return f"12 scenes, every entity_type known, no invented field names"
 
 
 @check("both_locks_agree")

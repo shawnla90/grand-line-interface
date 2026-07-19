@@ -214,6 +214,28 @@
       "runtime_glb": "runtime/water-7-sea-train-network.glb",
       "fallback": "renders/runtime/water-7-sea-train-network.png",
       "runtime_manifest": "manifests/runtime-3d.json"
+    },
+    {
+      "id": "reverse-mountain-twin-cape-voyage",
+      "kind": "moving_voyage_environment_vehicle_creature_system",
+      "priority": 1,
+      "state": "integration_ready",
+      "maturity": "runtime_animated_graybox_v1",
+      "contract": "contracts/reverse-mountain-twin-cape-voyage.visual.json",
+      "canon_intake": "research/story-scenes/reverse-mountain-batch-a.json",
+      "blend": "source/reverse-mountain-twin-cape-voyage.blend",
+      "review_render": "renders/runtime/reverse-mountain-twin-cape-voyage.png",
+      "runtime_glb": "runtime/reverse-mountain-twin-cape-voyage.glb",
+      "fallback": "renders/runtime/reverse-mountain-twin-cape-voyage.png",
+      "runtime_sidecar": "runtime/reverse-mountain-twin-cape-voyage.model.json",
+      "runtime_manifest": "manifests/runtime-3d.json",
+      "next": "app_runtime_chapter_animation_and_globe_proof",
+      "blockers": [
+        "Going Merry and Laboon are recognizable LOD1 grayboxes, not final identity art or production rigs.",
+        "LOD0 close, LOD2 globe, and componentized LOD3 fallbacks remain to be generated.",
+        "Exact local bearings, canal geometry, and scale require panel-level visual review.",
+        "The reusable whirlpool emitter remains chapter_to_verify and default-hidden."
+      ]
     }
   ]
 }
