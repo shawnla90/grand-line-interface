@@ -1,0 +1,271 @@
+{
+  "schema_version": 1,
+  "id": "enies-lobby-saga-2d-v1",
+  "chapter_span": {"start": 375, "end": 441},
+  "arcs": [{"id": "enies-lobby", "label": "Enies Lobby", "chapters": [375, 441]}],
+  "representation": "camera-facing-2d-atlas",
+  "supersedes_visible_art": [],
+  "runtime_policy": {
+    "chapter_gate": "Never fetch a scene before a verified start chapter.",
+    "playback": "Play once on entering close range, then hold the authored final frame.",
+    "backward_scrub": "Reset scene time, actors, pose selection, effects, and audio deterministically.",
+    "max_active_close_scenes": 1,
+    "max_distant_loops": 3,
+    "reduced_motion": "Use the final safe pose and suppress autoplay and effects.",
+    "cross_pack_rule": "One animated scene globally; newest verified saga pack owns the globe."
+  },
+  "scenes": [
+    {
+      "id": "enies-lobby-luffy-vs-blueno",
+      "label": "Luffy unveils Gear Second against Blueno",
+      "arc_id": "enies-lobby",
+      "type": "encounter",
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "missing_assets": null,
+      "chapter_gate": {
+        "start": 387,
+        "end": 388,
+        "verification": "verified",
+        "source_url": "https://www.viz.com/shonenjump/one-piece-chapter-387/chapter/11521"
+      },
+      "place": {"id": "enies-lobby", "landmark": "Courthouse-rooftop", "arena": "enies-lobby-courthouse-rooftop"},
+      "duration_ms": 10200,
+      "actors": [
+        {
+          "id": "luffy",
+          "asset_id": "monkey-d-luffy-enies-lobby-blueno",
+          "z": 24,
+          "keyframes": [
+            {"t": 0, "x": -0.56, "y": 0, "scale": 0.86, "rotation": 0, "opacity": 1, "pose": "rooftop-fighting-guard"},
+            {"t": 1600, "x": -0.46, "y": 0.01, "scale": 0.92, "rotation": 0, "opacity": 1, "pose": "gear-second-activation"},
+            {"t": 3300, "x": -0.06, "y": 0.08, "scale": 0.96, "rotation": -3, "opacity": 1, "pose": "jet-pistol-rush", "ease": "accelerate"},
+            {"t": 5200, "x": 0.02, "y": 0.02, "scale": 1.02, "rotation": 1, "opacity": 1, "pose": "jet-bazooka-impact", "ease": "accelerate"},
+            {"t": 6900, "x": -0.12, "y": 0.02, "scale": 0.96, "rotation": 0, "opacity": 1, "pose": "steam-overdrive"},
+            {"t": 8800, "x": -0.04, "y": 0, "scale": 0.9, "rotation": 0, "opacity": 1, "pose": "victory-stance"}
+          ]
+        },
+        {
+          "id": "blueno",
+          "asset_id": "blueno-enies-lobby",
+          "z": 21,
+          "keyframes": [
+            {"t": 0, "x": 0.56, "y": 0, "scale": 0.91, "rotation": 0, "opacity": 1, "pose": "iron-body-guard"},
+            {"t": 900, "x": 0.42, "y": 0.04, "scale": 0.92, "rotation": 0, "opacity": 1, "pose": "door-door-evasion"},
+            {"t": 2500, "x": 0.18, "y": 0.08, "scale": 0.94, "rotation": -2, "opacity": 1, "pose": "air-door-ambush", "ease": "accelerate"},
+            {"t": 4400, "x": 0.26, "y": 0.02, "scale": 0.97, "rotation": 4, "opacity": 1, "pose": "iron-body-impact"},
+            {"t": 5200, "x": 0.68, "y": 0.14, "scale": 0.94, "rotation": 13, "opacity": 1, "pose": "jet-bazooka-defeat"},
+            {"t": 8000, "x": 0.52, "y": 0, "scale": 0.86, "rotation": 0, "opacity": 1, "pose": "collapsed-defeat"}
+          ]
+        }
+      ],
+      "events": [
+        {"t": 800, "type": "door-door-ripple", "duration_ms": 1150, "intensity": 0.75},
+        {"t": 1600, "type": "gear-second-steam", "duration_ms": 3700, "intensity": 1.0},
+        {"t": 2500, "type": "air-door-ambush", "duration_ms": 1000, "intensity": 0.8},
+        {"t": 3300, "type": "jet-strike", "duration_ms": 900, "intensity": 0.9},
+        {"t": 4350, "type": "iron-body-impact", "duration_ms": 900, "intensity": 0.85},
+        {"t": 5200, "type": "jet-bazooka-impact", "duration_ms": 1550, "intensity": 1.0},
+        {"t": 7350, "type": "defeat-impact", "duration_ms": 1100, "intensity": 0.8},
+        {"t": 8800, "type": "victory-pulse", "duration_ms": 1300, "intensity": 0.75}
+      ]
+    },
+    {
+      "id": "enies-lobby-sanji-vs-jabra",
+      "label": "Sanji ignites Diable Jambe against Jabra",
+      "arc_id": "enies-lobby",
+      "type": "encounter",
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "missing_assets": null,
+      "chapter_gate": {
+        "start": 415,
+        "end": 415,
+        "verification": "verified",
+        "source_url": "https://www.viz.com/shonenjump/one-piece-chapter-415/chapter/11549"
+      },
+      "place": {"id": "enies-lobby", "landmark": "Tower-of-Justice-hallway", "arena": "enies-lobby-tower-hallway"},
+      "duration_ms": 10400,
+      "actors": [
+        {
+          "id": "sanji",
+          "asset_id": "sanji-enies-lobby-jabra",
+          "z": 24,
+          "keyframes": [
+            {"t": 0, "x": -0.56, "y": 0, "scale": 0.86, "rotation": 0, "opacity": 1, "pose": "cp9-fighting-guard"},
+            {"t": 1500, "x": -0.18, "y": 0.08, "scale": 0.94, "rotation": -5, "opacity": 1, "pose": "collier-kick", "ease": "accelerate"},
+            {"t": 3000, "x": -0.02, "y": 0.12, "scale": 0.97, "rotation": 6, "opacity": 1, "pose": "spinning-kick-counter"},
+            {"t": 5000, "x": -0.24, "y": 0.02, "scale": 0.96, "rotation": 0, "opacity": 1, "pose": "diable-jambe-ignite"},
+            {"t": 6800, "x": 0.08, "y": 0.13, "scale": 1.03, "rotation": -8, "opacity": 1, "pose": "flambage-shot", "ease": "accelerate"},
+            {"t": 9000, "x": -0.04, "y": 0, "scale": 0.9, "rotation": 0, "opacity": 1, "pose": "smoking-victory"}
+          ]
+        },
+        {
+          "id": "jabra",
+          "asset_id": "jabra-enies-lobby",
+          "z": 21,
+          "keyframes": [
+            {"t": 0, "x": 0.56, "y": 0, "scale": 0.91, "rotation": 0, "opacity": 1, "pose": "wolf-hybrid-guard"},
+            {"t": 1200, "x": 0.12, "y": 0.08, "scale": 0.98, "rotation": -4, "opacity": 1, "pose": "wolf-fang-rush", "ease": "accelerate"},
+            {"t": 2700, "x": 0.22, "y": 0.02, "scale": 0.98, "rotation": 0, "opacity": 1, "pose": "iron-body-kenpo"},
+            {"t": 4100, "x": 0.04, "y": 0.1, "scale": 1.0, "rotation": 5, "opacity": 1, "pose": "claw-counter"},
+            {"t": 6800, "x": 0.62, "y": 0.17, "scale": 0.94, "rotation": 14, "opacity": 1, "pose": "diable-jambe-impact"},
+            {"t": 8600, "x": 0.52, "y": 0, "scale": 0.86, "rotation": 0, "opacity": 1, "pose": "defeated-hold"}
+          ]
+        }
+      ],
+      "events": [
+        {"t": 1150, "type": "wolf-fang-rush", "duration_ms": 1000, "intensity": 0.8},
+        {"t": 1450, "type": "kick-impact", "duration_ms": 850, "intensity": 0.8},
+        {"t": 2700, "type": "iron-body-impact", "duration_ms": 900, "intensity": 0.75},
+        {"t": 4100, "type": "claw-slash", "duration_ms": 900, "intensity": 0.8},
+        {"t": 5000, "type": "diable-jambe-ignite", "duration_ms": 2600, "intensity": 1.0},
+        {"t": 6800, "type": "flambage-impact", "duration_ms": 1700, "intensity": 1.0},
+        {"t": 8350, "type": "defeat-impact", "duration_ms": 1000, "intensity": 0.85},
+        {"t": 9000, "type": "victory-pulse", "duration_ms": 1300, "intensity": 0.75}
+      ]
+    },
+    {
+      "id": "enies-lobby-zoro-vs-kaku",
+      "label": "Zoro manifests Asura against Kaku",
+      "arc_id": "enies-lobby",
+      "type": "encounter",
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "missing_assets": null,
+      "chapter_gate": {
+        "start": 416,
+        "end": 417,
+        "verification": "verified",
+        "source_url": "https://www.viz.com/shonenjump/one-piece-chapter-416/chapter/11550"
+      },
+      "place": {"id": "enies-lobby", "landmark": "Tower-of-Justice-chamber", "arena": "enies-lobby-tower-chamber"},
+      "duration_ms": 10800,
+      "actors": [
+        {
+          "id": "zoro",
+          "asset_id": "roronoa-zoro-enies-lobby-kaku",
+          "z": 24,
+          "keyframes": [
+            {"t": 0, "x": -0.56, "y": 0, "scale": 0.87, "rotation": 0, "opacity": 1, "pose": "three-sword-guard"},
+            {"t": 1600, "x": -0.3, "y": 0.04, "scale": 0.94, "rotation": -3, "opacity": 1, "pose": "tempest-kick-counter"},
+            {"t": 3200, "x": -0.04, "y": 0.08, "scale": 0.98, "rotation": 4, "opacity": 1, "pose": "tower-clash"},
+            {"t": 5300, "x": -0.22, "y": 0.02, "scale": 1.02, "rotation": 0, "opacity": 1, "pose": "asura-manifestation"},
+            {"t": 7100, "x": 0.08, "y": 0.12, "scale": 1.06, "rotation": -5, "opacity": 1, "pose": "nine-sword-asura-strike", "ease": "accelerate"},
+            {"t": 9300, "x": -0.04, "y": 0, "scale": 0.9, "rotation": 0, "opacity": 1, "pose": "sheathed-victory"}
+          ]
+        },
+        {
+          "id": "kaku",
+          "asset_id": "kaku-enies-lobby",
+          "z": 21,
+          "keyframes": [
+            {"t": 0, "x": 0.56, "y": 0, "scale": 0.9, "rotation": 0, "opacity": 1, "pose": "giraffe-hybrid-guard"},
+            {"t": 1000, "x": 0.16, "y": 0.1, "scale": 0.98, "rotation": -5, "opacity": 1, "pose": "four-sword-style", "ease": "accelerate"},
+            {"t": 2600, "x": 0.24, "y": 0.13, "scale": 1.0, "rotation": 5, "opacity": 1, "pose": "giraffe-tempest-kick"},
+            {"t": 4300, "x": 0.08, "y": 0.02, "scale": 1.02, "rotation": 0, "opacity": 1, "pose": "pasta-machine-charge"},
+            {"t": 7100, "x": 0.64, "y": 0.2, "scale": 0.95, "rotation": 15, "opacity": 1, "pose": "asura-impact"},
+            {"t": 8800, "x": 0.52, "y": 0, "scale": 0.86, "rotation": 0, "opacity": 1, "pose": "collapsed-defeat"}
+          ]
+        }
+      ],
+      "events": [
+        {"t": 0, "type": "giraffe-transformation", "duration_ms": 1200, "intensity": 0.65},
+        {"t": 950, "type": "four-sword-rush", "duration_ms": 1200, "intensity": 0.85},
+        {"t": 2550, "type": "tempest-kick", "duration_ms": 1150, "intensity": 0.9},
+        {"t": 3150, "type": "sword-clash", "duration_ms": 1200, "intensity": 0.9},
+        {"t": 5300, "type": "asura-aura", "duration_ms": 2500, "intensity": 1.0},
+        {"t": 7100, "type": "nine-sword-impact", "duration_ms": 1750, "intensity": 1.0},
+        {"t": 8600, "type": "defeat-impact", "duration_ms": 1050, "intensity": 0.85},
+        {"t": 9300, "type": "victory-pulse", "duration_ms": 1300, "intensity": 0.75}
+      ]
+    },
+    {
+      "id": "enies-lobby-luffy-vs-rob-lucci",
+      "label": "Luffy overwhelms Rob Lucci with Jet Gatling",
+      "arc_id": "enies-lobby",
+      "type": "encounter",
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "missing_assets": null,
+      "chapter_gate": {
+        "start": 418,
+        "end": 427,
+        "verification": "verified",
+        "source_url": "https://www.viz.com/shonenjump/one-piece-chapter-418/chapter/11552"
+      },
+      "place": {"id": "enies-lobby", "landmark": "Tower-of-Justice-undersea-passage", "arena": "enies-lobby-undersea-tunnel"},
+      "duration_ms": 12800,
+      "actors": [
+        {
+          "id": "luffy",
+          "asset_id": "monkey-d-luffy-enies-lobby-lucci",
+          "z": 24,
+          "keyframes": [
+            {"t": 0, "x": -0.58, "y": 0, "scale": 0.84, "rotation": 0, "opacity": 1, "pose": "gear-second-guard"},
+            {"t": 1500, "x": -0.62, "y": -0.01, "scale": 0.82, "rotation": 3, "opacity": 1, "pose": "gear-second-guard", "ease": "accelerate"},
+            {"t": 1870, "x": -0.42, "y": 0.03, "scale": 0.89, "rotation": -2, "opacity": 1, "pose": "jet-pistol", "ease": "accelerate"},
+            {"t": 1950, "x": -0.24, "y": 0.06, "scale": 0.94, "rotation": -4, "opacity": 1, "pose": "jet-pistol", "ease": "linear"},
+            {"t": 2030, "x": -0.24, "y": 0.06, "scale": 0.94, "rotation": -4, "opacity": 1, "pose": "jet-pistol", "ease": "linear"},
+            {"t": 2700, "x": -0.45, "y": 0.01, "scale": 0.87, "rotation": 1, "opacity": 1, "pose": "gear-second-guard", "ease": "decelerate"},
+            {"t": 3200, "x": -0.18, "y": 0.1, "scale": 0.93, "rotation": 6, "opacity": 1, "pose": "jet-whip", "ease": "accelerate"},
+            {"t": 3700, "x": -0.06, "y": 0.13, "scale": 0.96, "rotation": 9, "opacity": 1, "pose": "jet-whip", "ease": "linear"},
+            {"t": 3800, "x": -0.06, "y": 0.13, "scale": 0.96, "rotation": 9, "opacity": 1, "pose": "jet-whip", "ease": "linear"},
+            {"t": 4500, "x": -0.32, "y": 0.02, "scale": 0.9, "rotation": -1, "opacity": 1, "pose": "gear-second-guard", "ease": "decelerate"},
+            {"t": 5200, "x": -0.3, "y": 0, "scale": 0.94, "rotation": 4, "opacity": 1, "pose": "gear-third-giant-arm", "ease": "accelerate"},
+            {"t": 5300, "x": -0.12, "y": 0.035, "scale": 1.03, "rotation": -5, "opacity": 1, "pose": "gear-third-giant-arm", "ease": "linear"},
+            {"t": 5380, "x": -0.12, "y": 0.035, "scale": 1.03, "rotation": -5, "opacity": 1, "pose": "gear-third-giant-arm", "ease": "linear"},
+            {"t": 6000, "x": -0.36, "y": 0.02, "scale": 0.9, "rotation": -3, "opacity": 1, "pose": "gear-second-guard", "ease": "decelerate"},
+            {"t": 6200, "x": -0.39, "y": 0.015, "scale": 0.87, "rotation": -5, "opacity": 1, "pose": "gear-second-guard", "ease": "linear"},
+            {"t": 7000, "x": -0.34, "y": 0.01, "scale": 0.91, "rotation": 2, "opacity": 1, "pose": "gear-second-guard", "ease": "decelerate"},
+            {"t": 7280, "x": -0.18, "y": 0.02, "scale": 0.98, "rotation": -3, "opacity": 1, "pose": "gear-second-guard", "ease": "accelerate"},
+            {"t": 7350, "x": 0.0, "y": 0.03, "scale": 1.02, "rotation": 0, "opacity": 1, "pose": "jet-gatling-barrage", "ease": "linear"},
+            {"t": 10100, "x": 0.1, "y": 0.04, "scale": 1.06, "rotation": 4, "opacity": 1, "pose": "jet-gatling-barrage", "ease": "decelerate"},
+            {"t": 11000, "x": -0.06, "y": 0, "scale": 0.9, "rotation": 0, "opacity": 1, "pose": "exhausted-victory"}
+          ]
+        },
+        {
+          "id": "lucci",
+          "asset_id": "rob-lucci-enies-lobby",
+          "z": 21,
+          "keyframes": [
+            {"t": 0, "x": 0.58, "y": 0, "scale": 0.9, "rotation": 0, "opacity": 1, "pose": "leopard-hybrid-guard"},
+            {"t": 900, "x": 0.56, "y": 0.01, "scale": 0.91, "rotation": -1, "opacity": 1, "pose": "leopard-hybrid-guard", "ease": "smooth"},
+            {"t": 1400, "x": 0.62, "y": 0, "scale": 0.89, "rotation": 3, "opacity": 1, "pose": "leopard-hybrid-guard", "ease": "accelerate"},
+            {"t": 1500, "x": 0.42, "y": 0.05, "scale": 0.94, "rotation": -3, "opacity": 1, "pose": "soru-rush", "ease": "accelerate"},
+            {"t": 1950, "x": 0.2, "y": 0.09, "scale": 0.98, "rotation": -6, "opacity": 1, "pose": "soru-rush", "ease": "linear"},
+            {"t": 2030, "x": 0.2, "y": 0.09, "scale": 0.98, "rotation": -6, "opacity": 1, "pose": "soru-rush", "ease": "linear"},
+            {"t": 2700, "x": 0.42, "y": 0.01, "scale": 0.92, "rotation": 1, "opacity": 1, "pose": "leopard-hybrid-guard", "ease": "decelerate"},
+            {"t": 3050, "x": 0.14, "y": 0.025, "scale": 0.99, "rotation": -2, "opacity": 1, "pose": "finger-pistol", "ease": "accelerate"},
+            {"t": 3130, "x": 0.08, "y": 0.02, "scale": 1.0, "rotation": 0, "opacity": 1, "pose": "finger-pistol", "ease": "linear"},
+            {"t": 3700, "x": 0.2, "y": 0.1, "scale": 1.0, "rotation": 4, "opacity": 1, "pose": "tempest-kick", "ease": "accelerate"},
+            {"t": 3800, "x": 0.24, "y": 0.13, "scale": 1.02, "rotation": 7, "opacity": 1, "pose": "tempest-kick", "ease": "linear"},
+            {"t": 4600, "x": 0.34, "y": 0.04, "scale": 0.96, "rotation": 2, "opacity": 1, "pose": "tempest-kick", "ease": "decelerate"},
+            {"t": 5300, "x": 0.48, "y": 0.06, "scale": 0.94, "rotation": 7, "opacity": 1, "pose": "leopard-hybrid-guard", "ease": "accelerate"},
+            {"t": 5380, "x": 0.48, "y": 0.06, "scale": 0.94, "rotation": 7, "opacity": 1, "pose": "leopard-hybrid-guard", "ease": "linear"},
+            {"t": 6000, "x": 0.16, "y": 0.025, "scale": 1.02, "rotation": -2, "opacity": 1, "pose": "rokuogan-shockwave", "ease": "accelerate"},
+            {"t": 6200, "x": 0.04, "y": 0.02, "scale": 1.06, "rotation": 0, "opacity": 1, "pose": "rokuogan-shockwave", "ease": "linear"},
+            {"t": 6280, "x": 0.04, "y": 0.02, "scale": 1.06, "rotation": 0, "opacity": 1, "pose": "rokuogan-shockwave", "ease": "linear"},
+            {"t": 7000, "x": 0.36, "y": 0.02, "scale": 0.94, "rotation": 1, "opacity": 1, "pose": "leopard-hybrid-guard", "ease": "decelerate"},
+            {"t": 7350, "x": 0.62, "y": 0.18, "scale": 0.94, "rotation": 14, "opacity": 1, "pose": "jet-gatling-defeat", "ease": "accelerate"},
+            {"t": 10100, "x": 0.76, "y": 0.02, "scale": 0.88, "rotation": 24, "opacity": 1, "pose": "jet-gatling-defeat", "ease": "decelerate"}
+          ]
+        }
+      ],
+      "events": [
+        {"t": 0, "type": "gear-second-steam", "duration_ms": 3600, "intensity": 0.85},
+        {"t": 1950, "type": "jet-strike", "duration_ms": 900, "intensity": 0.9},
+        {"t": 3050, "type": "finger-pistol-flash", "duration_ms": 750, "intensity": 0.75},
+        {"t": 3700, "type": "tempest-kick", "duration_ms": 1100, "intensity": 0.85},
+        {"t": 5300, "type": "gear-third-impact", "duration_ms": 1400, "intensity": 1.0},
+        {"t": 6200, "type": "rokuogan-shockwave", "duration_ms": 1350, "intensity": 1.0},
+        {"t": 7350, "type": "jet-gatling", "duration_ms": 3600, "intensity": 1.0},
+        {"t": 10100, "type": "defeat-impact", "duration_ms": 1200, "intensity": 0.9},
+        {"t": 11000, "type": "victory-pulse", "duration_ms": 1500, "intensity": 0.75}
+      ]
+    }
+  ],
+  "future_milestones": [
+    {"id": "enies-lobby-cp9-fights", "status": "complete", "scenes": ["enies-lobby-luffy-vs-blueno", "enies-lobby-sanji-vs-jabra", "enies-lobby-zoro-vs-kaku", "enies-lobby-luffy-vs-rob-lucci"], "note": "First Gear Second, first Diable Jambe, Asura, and the final Jet Gatling are separate chapter-gated runtime and audio-sync states."}
+  ]
+}

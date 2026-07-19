@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "pack_id": "enies-lobby-saga-2d-v1",
+  "status": "passed",
+  "verified_at": "2026-07-19T00:23:11Z",
+  "web_repository": "/Users/shawnos.ai/dead-reckoning",
+  "base_commit": "7a761432b6fa7b4e4efb00d2ff91fb13de036c4d",
+  "runtime_scenes": 4,
+  "feature_gate": "NEXT_PUBLIC_STORY_SIMULATION_PACKS",
+  "default_gate_state": "off",
+  "artifact_checks": {
+    "command": "python3 scripts/check_story_simulations.py --pack enies-lobby-saga-2d-v1",
+    "passed": 21,
+    "total": 21
+  },
+  "east_blue_data_regression": {
+    "command": "python3 scripts/check_simulations.py",
+    "passed": 9,
+    "total": 9
+  },
+  "browser_audit": {
+    "command": "python3 scripts/audit_journey_climax_simulations.py",
+    "passed": 47,
+    "total": 47
+  },
+  "east_blue_regression_audit": {
+    "command": "python3 scripts/audit_simulations.py",
+    "passed": 14,
+    "total": 14
+  },
+  "production_build": "passed",
+  "proof_scope": [
+    "chapter-386 pre-gate with zero Enies Lobby atlas requests",
+    "chapter-387 exact Luffy and Blueno lazy-atlas loading, Gear Second activation, Door-Door state, and Jet Bazooka finish",
+    "chapter-415 exact Sanji and Jabra lazy-atlas loading, flame-free opening, first Diable Jambe ignition, and Flambage Shot",
+    "chapter-416 exact Zoro and Kaku lazy-atlas loading, Four-Sword Style, Asura manifestation, and nine-sword finish",
+    "chapter-418 exact Luffy and Rob Lucci lazy-atlas loading, Gear Third, Rokuogan, Jet Gatling, and final hold",
+    "Gear Second, Diable Jambe, Santoryu, and Jet Gatling voice calls each fire once on the matching visual event",
+    "voice audio fetches only after user unlock and matching scene entry",
+    "same-anchor scene replacement, backward-scrub disposal, and deterministic restart",
+    "reduced-motion final tableau with no audio request",
+    "44/44 Arabasta browser regression and 14/14 East Blue WorldMap compatibility"
+  ],
+  "note": "Technical integration proof only. The One Piece voice clips remain local-prototype-only under the existing audio registry rights status; the pack remains invisible unless explicitly allowlisted at build time."
+}

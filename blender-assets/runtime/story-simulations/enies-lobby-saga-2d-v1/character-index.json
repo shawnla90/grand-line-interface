@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "pack_id": "enies-lobby-saga-2d-v1",
+  "representation": "camera-facing-2d-atlas",
+  "character_count": 8,
+  "characters": [
+    {
+      "id": "monkey-d-luffy-enies-lobby-blueno",
+      "kind": "character",
+      "variant": "enies-lobby-blueno-chapters-387-388",
+      "metadata": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/monkey-d-luffy-enies-lobby-blueno/character.json",
+      "atlas": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/monkey-d-luffy-enies-lobby-blueno/atlas.png",
+      "atlas_sha256": "bc61eaf449e560ff52c35f657d60ff54c957cb5f718e18b8b908bce9bdb952d8",
+      "poses": [
+        "rooftop-fighting-guard",
+        "gear-second-activation",
+        "jet-pistol-rush",
+        "jet-bazooka-impact",
+        "steam-overdrive",
+        "victory-stance"
+      ],
+      "map_height": 1.03
+    },
+    {
+      "id": "blueno-enies-lobby",
+      "kind": "character",
+      "variant": "enies-lobby-door-door-chapters-387-388",
+      "metadata": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/blueno-enies-lobby/character.json",
+      "atlas": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/blueno-enies-lobby/atlas.png",
+      "atlas_sha256": "37234206d74cb70b9b34de0c2d1fbbc761ae3fbd8b0117eee7184003b37fcaa6",
+      "poses": [
+        "iron-body-guard",
+        "door-door-evasion",
+        "air-door-ambush",
+        "iron-body-impact",
+        "jet-bazooka-defeat",
+        "collapsed-defeat"
+      ],
+      "map_height": 1.12
+    },
+    {
+      "id": "sanji-enies-lobby-jabra",
+      "kind": "character",
+      "variant": "enies-lobby-jabra-chapter-415",
+      "metadata": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/sanji-enies-lobby-jabra/character.json",
+      "atlas": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/sanji-enies-lobby-jabra/atlas.png",
+      "atlas_sha256": "a3948af2b93dfa8f7d43cd5e8fc5c9860f352c1338f7653cf6f42f74dfbfdb05",
+      "poses": [
+        "cp9-fighting-guard",
+        "collier-kick",
+        "spinning-kick-counter",
+        "diable-jambe-ignite",
+        "flambage-shot",
+        "smoking-victory"
+      ],
+      "map_height": 1.07
+    },
+    {
+      "id": "jabra-enies-lobby",
+      "kind": "character",
+      "variant": "enies-lobby-wolf-hybrid-chapter-415",
+      "metadata": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/jabra-enies-lobby/character.json",
+      "atlas": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/jabra-enies-lobby/atlas.png",
+      "atlas_sha256": "18b575e7edbf7f4d976d83348247266dafc63af3211b0951a08691f4206f7b4c",
+      "poses": [
+        "wolf-hybrid-guard",
+        "wolf-fang-rush",
+        "iron-body-kenpo",
+        "claw-counter",
+        "diable-jambe-impact",
+        "defeated-hold"
+      ],
+      "map_height": 1.14
+    },
+    {
+      "id": "roronoa-zoro-enies-lobby-kaku",
+      "kind": "character",
+      "variant": "enies-lobby-kaku-chapters-416-417",
+      "metadata": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/roronoa-zoro-enies-lobby-kaku/character.json",
+      "atlas": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/roronoa-zoro-enies-lobby-kaku/atlas.png",
+      "atlas_sha256": "e3f546d7e9d47829e7a5d9c5e9e858d05b41f60d2323b65b587b07c81e9730cf",
+      "poses": [
+        "three-sword-guard",
+        "tempest-kick-counter",
+        "tower-clash",
+        "asura-manifestation",
+        "nine-sword-asura-strike",
+        "sheathed-victory"
+      ],
+      "map_height": 1.08
+    },
+    {
+      "id": "kaku-enies-lobby",
+      "kind": "character",
+      "variant": "enies-lobby-giraffe-hybrid-chapters-416-417",
+      "metadata": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/kaku-enies-lobby/character.json",
+      "atlas": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/kaku-enies-lobby/atlas.png",
+      "atlas_sha256": "5c8d5beda0ccf21bb8dc061625c3917b0ed645e3bf98b4fbb2cf71c358b5b2f7",
+      "poses": [
+        "giraffe-hybrid-guard",
+        "four-sword-style",
+        "giraffe-tempest-kick",
+        "pasta-machine-charge",
+        "asura-impact",
+        "collapsed-defeat"
+      ],
+      "map_height": 1.16
+    },
+    {
+      "id": "monkey-d-luffy-enies-lobby-lucci",
+      "kind": "character",
+      "variant": "enies-lobby-lucci-chapters-418-427",
+      "metadata": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/monkey-d-luffy-enies-lobby-lucci/character.json",
+      "atlas": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/monkey-d-luffy-enies-lobby-lucci/atlas.png",
+      "atlas_sha256": "b548b55b57d72953e89e16f8ffe5a20da981afc99811761134f851fbac39c0f9",
+      "poses": [
+        "gear-second-guard",
+        "jet-pistol",
+        "jet-whip",
+        "gear-third-giant-arm",
+        "jet-gatling-barrage",
+        "exhausted-victory"
+      ],
+      "map_height": 1.03
+    },
+    {
+      "id": "rob-lucci-enies-lobby",
+      "kind": "character",
+      "variant": "enies-lobby-leopard-hybrid-chapters-418-427",
+      "metadata": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/rob-lucci-enies-lobby/character.json",
+      "atlas": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/rob-lucci-enies-lobby/atlas.png",
+      "atlas_sha256": "64e7cc4cf557bbedc1ef62cdda1daa342eba7cfdfc8d1b37e2846f766e71ab48",
+      "poses": [
+        "leopard-hybrid-guard",
+        "soru-rush",
+        "finger-pistol",
+        "tempest-kick",
+        "rokuogan-shockwave",
+        "jet-gatling-defeat"
+      ],
+      "map_height": 1.15
+    }
+  ]
+}

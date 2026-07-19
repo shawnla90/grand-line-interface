@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "pack_id": "enies-lobby-saga-2d-v1",
+  "researched_at": "2026-07-18",
+  "policy": "Only verified manga-scale beats enter the runnable contract; named techniques are ordered inside the real fight window.",
+  "scenes": [
+    {
+      "id": "enies-lobby-luffy-vs-blueno",
+      "status": "chapter_verified",
+      "arc_id": "enies-lobby",
+      "chapter_gate": {
+        "start": 387,
+        "end": 388,
+        "verification": "verified",
+        "source_urls": [
+          "https://www.viz.com/shonenjump/one-piece-chapter-387/chapter/11521",
+          "https://one-piece.com/character/Blueno/index.html"
+        ]
+      },
+      "place": {
+        "id": "enies-lobby",
+        "landmark": "Courthouse-rooftop",
+        "arena": "enies-lobby-courthouse-rooftop",
+        "anchor_status": "resolved_to_existing_island"
+      },
+      "cast": ["monkey-d-luffy-enies-lobby-blueno", "blueno-enies-lobby"],
+      "outcome_claim": "Luffy unveils Gear Second, overwhelms Blueno's Iron Body and Door-Door evasions with Jet attacks, and wins with the double-palm finish.",
+      "visual_variant_notes": [
+        "pre-timeskip Luffy with compact Gear Second steam",
+        "Blueno's horn-shaped hair and formal CP9 clothing remain readable at globe scale",
+        "Door-Door power uses pale-blue opaque portal geometry",
+        "the defeat state is non-graphic"
+      ],
+      "unknowns": [],
+      "integration_note": "The local Gear Second voice clip belongs on the activation event, before the first Jet strike."
+    },
+    {
+      "id": "enies-lobby-sanji-vs-jabra",
+      "status": "chapter_verified",
+      "arc_id": "enies-lobby",
+      "chapter_gate": {
+        "start": 415,
+        "end": 415,
+        "verification": "verified",
+        "source_urls": [
+          "https://www.viz.com/shonenjump/one-piece-chapter-415/chapter/11549",
+          "https://one-piece.com/character/Jabra/"
+        ]
+      },
+      "place": {
+        "id": "enies-lobby",
+        "landmark": "Tower-of-Justice-hallway",
+        "arena": "enies-lobby-tower-hallway",
+        "anchor_status": "resolved_to_existing_island"
+      },
+      "cast": ["sanji-enies-lobby-jabra", "jabra-enies-lobby"],
+      "outcome_claim": "Sanji counters Jabra's wolf-form Iron Body style, ignites Diable Jambe for the first time, and finishes the fight with the flaming kick sequence.",
+      "visual_variant_notes": [
+        "Sanji keeps his Enies Lobby black suit and fights only with kicks",
+        "the first three poses stay flame-free so Diable Jambe visibly debuts mid-scene",
+        "Jabra remains a braided wolf-human hybrid rather than a generic werewolf",
+        "the defeat state is non-graphic"
+      ],
+      "unknowns": [],
+      "integration_note": "The local Diable Jambe clip belongs on the ignition event, not at scene start."
+    },
+    {
+      "id": "enies-lobby-zoro-vs-kaku",
+      "status": "chapter_verified",
+      "arc_id": "enies-lobby",
+      "chapter_gate": {
+        "start": 416,
+        "end": 417,
+        "verification": "verified",
+        "source_urls": [
+          "https://www.viz.com/shonenjump/one-piece-chapter-416/chapter/11550",
+          "https://www.viz.com/shonenjump/one-piece-chapter-417/chapter/11551",
+          "https://one-piece.com/character/Kaku/index.html"
+        ]
+      },
+      "place": {
+        "id": "enies-lobby",
+        "landmark": "Tower-of-Justice-chamber",
+        "arena": "enies-lobby-tower-chamber",
+        "anchor_status": "resolved_to_existing_island"
+      },
+      "cast": ["roronoa-zoro-enies-lobby-kaku", "kaku-enies-lobby"],
+      "outcome_claim": "Zoro answers Kaku's giraffe-hybrid Four-Sword Style and Tempest Kicks by manifesting Asura and ending the fight with his nine-sword strike.",
+      "visual_variant_notes": [
+        "Zoro wears the black bandana and all three swords stay visually distinct",
+        "Asura uses a violet-black spiritual silhouette to suggest three heads and nine swords",
+        "Kaku's square nose, long giraffe neck, formal CP9 clothes and paired swords stay readable",
+        "the defeat state is non-graphic"
+      ],
+      "unknowns": [],
+      "integration_note": "The existing Zoro Santoryu clip can lead the Asura manifestation while the generated SFX carries the sword impact."
+    },
+    {
+      "id": "enies-lobby-luffy-vs-rob-lucci",
+      "status": "chapter_verified",
+      "arc_id": "enies-lobby",
+      "chapter_gate": {
+        "start": 418,
+        "end": 427,
+        "verification": "verified",
+        "source_urls": [
+          "https://www.viz.com/shonenjump/one-piece-chapter-418/chapter/11552",
+          "https://www.viz.com/manga-books/manga/one-piece-volume-43-0/product/2439",
+          "https://one-piece.com/character/Rob_Lucci/index.html"
+        ]
+      },
+      "place": {
+        "id": "enies-lobby",
+        "landmark": "Tower-of-Justice-undersea-passage",
+        "arena": "enies-lobby-undersea-tunnel",
+        "anchor_status": "resolved_to_existing_island"
+      },
+      "cast": ["monkey-d-luffy-enies-lobby-lucci", "rob-lucci-enies-lobby"],
+      "outcome_claim": "Luffy fights Rob Lucci through Gear Second and Gear Third escalation, survives the Rokuogan pressure, and defeats Lucci with the final Jet Gatling barrage.",
+      "visual_variant_notes": [
+        "pre-timeskip Enies Lobby Luffy",
+        "Gear Second steam is compact and opaque for atlas use",
+        "Gear Third appears before the finishing barrage",
+        "Jet Gatling must read as repeated two-arm fists rather than one stretched punch",
+        "Lucci uses his leopard-human hybrid form and holds a non-graphic defeat state"
+      ],
+      "unknowns": [],
+      "integration_note": "The existing Gatling prototype audio belongs on the Jet Gatling event here, not on the single-punch Don Krieg scene."
+    }
+  ]
+}

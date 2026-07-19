@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "id": "enies-lobby-saga-2d-v1",
+  "state": "runtime_verified",
+  "integration_ready": true,
+  "supersedes_visible_art": [],
+  "chapter_span": {
+    "start": 375,
+    "end": 441
+  },
+  "representation": "camera-facing-2d-atlas",
+  "contract": {
+    "path": "contracts/story-simulations/enies-lobby-saga-2d-v1.simulation.json",
+    "bytes": 17852,
+    "sha256": "cb509b0268d9f10ecc57855fe6ba466e1501d5c3d0656bb4725f7b1c3326e39f"
+  },
+  "character_index": {
+    "path": "runtime/story-simulations/enies-lobby-saga-2d-v1/character-index.json",
+    "bytes": 5596,
+    "sha256": "fd018f41c99d520a4d54ee154ce4b0b2c26086e6b41db9313c5b3f4b7eab3467"
+  },
+  "canon_intake": {
+    "path": "research/story-scenes/enies-lobby-batch-a.json",
+    "bytes": 5835,
+    "sha256": "23ceadf07e648cf2a2f823d1545d9b7614698475cb43ceb65f9938a575786ae1"
+  },
+  "provenance": {
+    "path": "provenance/enies-lobby-saga-2d-v1-imagegen.md",
+    "bytes": 4585,
+    "sha256": "05259d2774a38aaaa1cc77a4aa57d9072a9d3dd2d603007756abb60a56eefcae"
+  },
+  "metrics": {
+    "character_packages": 8,
+    "pose_frames": 48,
+    "atlas_bytes": 6266179,
+    "scenes": 4,
+    "runtime_ready_scenes": 4,
+    "non_ready_scenes": 0,
+    "actor_tracks": 8,
+    "movement_keyframes": 76,
+    "fx_events": 33,
+    "review_video_seconds": 8.0
+  },
+  "characters": [
+    {
+      "id": "monkey-d-luffy-enies-lobby-blueno",
+      "kind": "character",
+      "variant": "enies-lobby-blueno-chapters-387-388",
+      "source": {
+        "path": "art/enies-lobby/source-sheets/monkey-d-luffy-enies-lobby-blueno-pose-sheet-v1.png",
+        "bytes": 1992433,
+        "sha256": "549480f60b0cb66a4b882b9afff737a04986f7dcc8ddd185ca350f68a859957e"
+      },
+      "keyed_source": {
+        "path": "art/enies-lobby/keyed-sheets/monkey-d-luffy-enies-lobby-blueno-pose-sheet-v1.png",
+        "bytes": 1283760,
+        "sha256": "36d10f24ccbe6193cbe602b88dd2d3f4e61ca1cd5411e7f9271232cae871c262"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/monkey-d-luffy-enies-lobby-blueno/atlas.png",
+        "bytes": 843583,
+        "sha256": "bc61eaf449e560ff52c35f657d60ff54c957cb5f718e18b8b908bce9bdb952d8"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/monkey-d-luffy-enies-lobby-blueno/character.json",
+        "bytes": 3219,
+        "sha256": "64fd72584f60b8d6fa5f9b82c22c77033a510a868111e0e91fd7d8499e96ab02"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "blueno-enies-lobby",
+      "kind": "character",
+      "variant": "enies-lobby-door-door-chapters-387-388",
+      "source": {
+        "path": "art/enies-lobby/source-sheets/blueno-enies-lobby-pose-sheet-v1.png",
+        "bytes": 1725600,
+        "sha256": "65f3ba0fb3c370c1965ae442fcbf76f3fcc087a181151859db886249e185e37e"
+      },
+      "keyed_source": {
+        "path": "art/enies-lobby/keyed-sheets/blueno-enies-lobby-pose-sheet-v1.png",
+        "bytes": 1012840,
+        "sha256": "ea2acba0c3d81f66d11e65b915100f0e4ee866b04e27a0ea6dd252d90957a00e"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/blueno-enies-lobby/atlas.png",
+        "bytes": 669863,
+        "sha256": "37234206d74cb70b9b34de0c2d1fbbc761ae3fbd8b0117eee7184003b37fcaa6"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/blueno-enies-lobby/character.json",
+        "bytes": 3161,
+        "sha256": "5ed8762cceb31b0992abf1a0a1c77eb5b5d6569cecd4dce1f848ab3f30d6306a"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "sanji-enies-lobby-jabra",
+      "kind": "character",
+      "variant": "enies-lobby-jabra-chapter-415",
+      "source": {
+        "path": "art/enies-lobby/source-sheets/sanji-enies-lobby-jabra-pose-sheet-v1.png",
+        "bytes": 1706527,
+        "sha256": "d1a021c5bbbe76bff4852ae58b97b57f06bf209a3e017bbb0b5ce548923a1945"
+      },
+      "keyed_source": {
+        "path": "art/enies-lobby/keyed-sheets/sanji-enies-lobby-jabra-pose-sheet-v1.png",
+        "bytes": 903960,
+        "sha256": "d21ee8cfcc2e4a2a4ce95fc8f7f1e0ed3bf30d967bc708e36c7e804dc0082f37"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/sanji-enies-lobby-jabra/atlas.png",
+        "bytes": 544077,
+        "sha256": "a3948af2b93dfa8f7d43cd5e8fc5c9860f352c1338f7653cf6f42f74dfbfdb05"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/sanji-enies-lobby-jabra/character.json",
+        "bytes": 3166,
+        "sha256": "95a1ba327619835f94784a703269e756c0699b913e1413104673795e839de206"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "jabra-enies-lobby",
+      "kind": "character",
+      "variant": "enies-lobby-wolf-hybrid-chapter-415",
+      "source": {
+        "path": "art/enies-lobby/source-sheets/jabra-enies-lobby-pose-sheet-v1.png",
+        "bytes": 2045494,
+        "sha256": "ec6c971166172ee6187a57cf6cdbc18d62d9cf046d53c087c755c4b4ba770568"
+      },
+      "keyed_source": {
+        "path": "art/enies-lobby/keyed-sheets/jabra-enies-lobby-pose-sheet-v1.png",
+        "bytes": 1395993,
+        "sha256": "1f29ee17d6f220e580b76fa4202e56a91f368100e737c25864fd0904c9b7c041"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/jabra-enies-lobby/atlas.png",
+        "bytes": 848418,
+        "sha256": "18b575e7edbf7f4d976d83348247266dafc63af3211b0951a08691f4206f7b4c"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/jabra-enies-lobby/character.json",
+        "bytes": 3144,
+        "sha256": "16ba152b61735a52f1977b8a6965a6030d73ce9f43068aaacdb2fdab5a7a3b02"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "roronoa-zoro-enies-lobby-kaku",
+      "kind": "character",
+      "variant": "enies-lobby-kaku-chapters-416-417",
+      "source": {
+        "path": "art/enies-lobby/source-sheets/roronoa-zoro-enies-lobby-kaku-pose-sheet-v1.png",
+        "bytes": 2254102,
+        "sha256": "b7278ad9ee7257946a75f987480256badfe4ee2b229b8b8e54e753e6ea9e7c9b"
+      },
+      "keyed_source": {
+        "path": "art/enies-lobby/keyed-sheets/roronoa-zoro-enies-lobby-kaku-pose-sheet-v1.png",
+        "bytes": 1564120,
+        "sha256": "4296d21d67f039d30e87c9d30181510eb34342de6af6101ab95d4912c3ba7442"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/roronoa-zoro-enies-lobby-kaku/atlas.png",
+        "bytes": 994297,
+        "sha256": "e3f546d7e9d47829e7a5d9c5e9e858d05b41f60d2323b65b587b07c81e9730cf"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/roronoa-zoro-enies-lobby-kaku/character.json",
+        "bytes": 3204,
+        "sha256": "c1cd141378fceddac8d3b2fdaaf67ea5a794019d0b65d0dcd9ffa9ea793bfb72"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "kaku-enies-lobby",
+      "kind": "character",
+      "variant": "enies-lobby-giraffe-hybrid-chapters-416-417",
+      "source": {
+        "path": "art/enies-lobby/source-sheets/kaku-enies-lobby-pose-sheet-v1.png",
+        "bytes": 1906931,
+        "sha256": "ecec525e51b13ac6cb61d274fb3fdd762470ddacbbae7075425171fcbdd23e2c"
+      },
+      "keyed_source": {
+        "path": "art/enies-lobby/keyed-sheets/kaku-enies-lobby-pose-sheet-v1.png",
+        "bytes": 1125069,
+        "sha256": "6ebeebfcc090ab1a3c8e6c9d7259dd0e98c58523cbb4e9309db590608d9ecd15"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/kaku-enies-lobby/atlas.png",
+        "bytes": 664436,
+        "sha256": "5c8d5beda0ccf21bb8dc061625c3917b0ed645e3bf98b4fbb2cf71c358b5b2f7"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/kaku-enies-lobby/character.json",
+        "bytes": 3165,
+        "sha256": "e9882888749999c8c65d99474f61ab18b81087359049732d789414b5d04192fc"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "monkey-d-luffy-enies-lobby-lucci",
+      "kind": "character",
+      "variant": "enies-lobby-lucci-chapters-418-427",
+      "source": {
+        "path": "art/enies-lobby/source-sheets/monkey-d-luffy-enies-lobby-lucci-pose-sheet-v1.png",
+        "bytes": 1991853,
+        "sha256": "43b511479ed69705e88873850e40ac357c8a881adc7ffab93346925d40c0de1c"
+      },
+      "keyed_source": {
+        "path": "art/enies-lobby/keyed-sheets/monkey-d-luffy-enies-lobby-lucci-pose-sheet-v1.png",
+        "bytes": 1284859,
+        "sha256": "a5fc26d7cbb2ffad5dbedaff4c0383a790507e0bdfbe24509c1ef6c3d848f7fe"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/monkey-d-luffy-enies-lobby-lucci/atlas.png",
+        "bytes": 907101,
+        "sha256": "b548b55b57d72953e89e16f8ffe5a20da981afc99811761134f851fbac39c0f9"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/monkey-d-luffy-enies-lobby-lucci/character.json",
+        "bytes": 3203,
+        "sha256": "32fb1df20048e0144dfabf47709cabe34decf1b23ec075c0e1f72080e319b20f"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "rob-lucci-enies-lobby",
+      "kind": "character",
+      "variant": "enies-lobby-leopard-hybrid-chapters-418-427",
+      "source": {
+        "path": "art/enies-lobby/source-sheets/rob-lucci-enies-lobby-pose-sheet-v1.png",
+        "bytes": 2053009,
+        "sha256": "5f2c200882e1929f415554c330f6b2380c1ccce6843cd25a811de092e72b5757"
+      },
+      "keyed_source": {
+        "path": "art/enies-lobby/keyed-sheets/rob-lucci-enies-lobby-pose-sheet-v1.png",
+        "bytes": 1268219,
+        "sha256": "5168e43854f21be41f2d2d9d031c29a2c6da9558977072d602b79b6e46ba8f61"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/rob-lucci-enies-lobby/atlas.png",
+        "bytes": 794404,
+        "sha256": "64e7cc4cf557bbedc1ef62cdda1daa342eba7cfdfc8d1b37e2846f766e71ab48"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/enies-lobby-saga-2d-v1/characters/rob-lucci-enies-lobby/character.json",
+        "bytes": 3173,
+        "sha256": "dc91743908ccda755150efea5583e29bcea84396e57912388e55f21c57ab48a0"
+      },
+      "pose_count": 6
+    }
+  ],
+  "reviews": [
+    {
+      "path": "renders/story-simulations/enies-lobby-saga-2d-v1/character-atlas-catalog.png",
+      "bytes": 731405,
+      "sha256": "be196ea51a3b8c14cc2ae6668d375285e46d6bcfff6b24795a4af4b41ec701d5"
+    },
+    {
+      "path": "renders/story-simulations/enies-lobby-saga-2d-v1/scene-board.png",
+      "bytes": 459557,
+      "sha256": "1918ff4111a0a8b5ea00bf90e7b1bc46d931872be54dbb2ce41c0d604c844346"
+    },
+    {
+      "path": "renders/story-simulations/enies-lobby-saga-2d-v1/sampler-poster.png",
+      "bytes": 193627,
+      "sha256": "980e638286b05c29a8d77949a31bbe821f53a0b2623f5f1547e746c72b6ffa99"
+    },
+    {
+      "path": "renders/story-simulations/enies-lobby-saga-2d-v1/sampler.mp4",
+      "bytes": 1758218,
+      "sha256": "800aa27de403866b660747af9daabcb4bef90cd8c65d61f84647ef77f3011967"
+    }
+  ],
+  "web_proof": {
+    "path": "proofs/enies-lobby-saga-2d-v1-web-proof.json",
+    "bytes": 2144,
+    "sha256": "70d7cbfcaaff976687ab76dcc14d0e178a00d95885b0c95237190f4dab60eac9"
+  },
+  "blockers": []
+}

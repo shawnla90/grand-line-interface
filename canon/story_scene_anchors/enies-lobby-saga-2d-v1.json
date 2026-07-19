@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "pack_id": "enies-lobby-saga-2d-v1",
+  "anchors": {
+    "enies-lobby-luffy-vs-blueno": {
+      "island": "enies-lobby",
+      "note": "The existing Enies Lobby island coordinate is the journey theatre; the simulation does not assert courthouse-rooftop topology."
+    },
+    "enies-lobby-sanji-vs-jabra": {
+      "island": "enies-lobby",
+      "note": "The existing Enies Lobby island coordinate is the journey theatre; the simulation does not assert Tower-of-Justice hallway topology."
+    },
+    "enies-lobby-zoro-vs-kaku": {
+      "island": "enies-lobby",
+      "note": "The existing Enies Lobby island coordinate is the journey theatre; the simulation does not assert Tower-of-Justice chamber topology."
+    },
+    "enies-lobby-luffy-vs-rob-lucci": {
+      "island": "enies-lobby",
+      "note": "The existing Enies Lobby island coordinate is the journey theatre; the simulation does not assert undersea-passage topology."
+    }
+  }
+}
