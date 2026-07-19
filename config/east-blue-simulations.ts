@@ -26,9 +26,14 @@ export const STAGE_SPAN_M = 600_000;
  */
 export const SIM_MIN_ZOOM = 4.6;
 
-/** Fade-in ms when a scene mounts; fade-out is the layer removal (instant),
- * because backward scrub must re-fog NOW, not after a courtesy fade. */
+/** Fade-in ms when a scene mounts. */
 export const SIM_FADE_IN_MS = 450;
+
+/** Fade-out ms when a scene leaves by CAMERA (zoom-out / viewport exit) —
+ * the pose freezes and the stage dissolves instead of popping off. Backward
+ * scrub and same-anchor supersede stay INSTANT: re-fog NOW, not after a
+ * courtesy fade — that contract (and the audits asserting it) is untouched. */
+export const SIM_FADE_OUT_MS = 300;
 
 /* The journey's East Blue moment table used to live here (five hand-typed
  * MomentDefs). It moved into the playback manifest — canon/story_scene_playback.json

@@ -42,29 +42,26 @@
 
 import maplibregl, { type Map as MlMap, type Marker } from "maplibre-gl";
 import {
-  loadSimulations, sceneEligible, sceneInActiveWindow,
-  type StorySimulationPack, type SimScene,
+  createReadyGatedSceneClock, loadSimulations, markSceneClockReady,
+  pauseSceneClock, resumeSceneClock, sceneClockElapsedMs, sceneEligible,
+  sceneInActiveWindow, type ReadyGatedSceneClock, type StorySimulationPack,
+  type SimScene,
 } from "@/lib/simulation";
 import { createSimLayer, type SimLayer } from "@/components/sim-layer";
-import { SIM_FADE_IN_MS, SIM_MIN_ZOOM, STAGE_SPAN_M } from "@/config/east-blue-simulations";
+import { SIM_FADE_IN_MS, SIM_FADE_OUT_MS, SIM_MIN_ZOOM, STAGE_SPAN_M } from "@/config/east-blue-simulations";
 import { selectStoryPack, type StoryPackId } from "@/config/story-simulations";
 import { GENERATED_PACKS } from "@/config/story-packs.generated";
 import { getSimAudioSink } from "@/lib/sim-audio-bridge";
-
-type SceneClock = {
-  /** performance.now() at t=0, shifted forward across hidden-tab pauses. */
-  startedAt: number;
-  /** set while document.hidden; cleared (and startedAt shifted) on return. */
-  pausedAt: number | null;
-  mountedAt: number;
-};
 
 type HostState = {
   map: MlMap;
   packId: StoryPackId;
   sims: StorySimulationPack;
   layers: Map<string, SimLayer>;
-  clocks: Map<string, SceneClock>;
+  clocks: Map<string, ReadyGatedSceneClock>;
+  /** Scenes leaving by camera, mid-fade-out: id → performance.now() at fade
+   * start. The clock freezes so the pose holds while the stage dissolves. */
+  dying: Map<string, number>;
   /** Wide-zoom story beacons — "a story just happened here, click to see it". */
   beacons: Map<string, { marker: Marker; el: HTMLDivElement }>;
   chapter: number;
@@ -110,8 +107,7 @@ function sceneTimeMs(state: HostState, scene: SimScene): number | null {
   if (!sceneInActiveWindow(scene, state.chapter)) return null;
   const clock = state.clocks.get(scene.id);
   if (!clock) return 0;
-  const base = clock.pausedAt ?? now();
-  return Math.max(0, base - clock.startedAt);
+  return sceneClockElapsedMs(clock, now());
 }
 
 /** Among still-running clocks, only the nearest to centre animates. */
@@ -120,6 +116,7 @@ function nearestRunningId(state: HostState): string | null {
   let best: string | null = null;
   let bestD = Infinity;
   for (const [id] of state.clocks) {
+    if (state.dying.has(id)) continue; // a dissolving stage yields the floor
     const scene = state.sims.scenes.find((s) => s.id === id);
     if (!scene) continue;
     const t = sceneTimeMs(state, scene);
@@ -203,21 +200,66 @@ function applySync(state: HostState): void {
   // superseded by a newer scene on the same anchor. Removal disposes GPU
   // memory AND deletes the clock — re-entry restarts at 0, which is the
   // contract's backward-scrub rule falling out of the lifecycle.
-  for (const [sceneId] of state.layers) {
-    if (wantedIds.has(sceneId)) continue;
+  //
+  // Two exits, on purpose: gate-closed and supersede remove INSTANTLY (re-fog
+  // now — the audited contract); camera exits (zoom-out / viewport) dissolve
+  // over SIM_FADE_OUT_MS with the pose frozen, because a stage popping off
+  // mid-swing was one of the measured "rough cut" causes.
+  const removeNow = (sceneId: string) => {
     // The map id carries the sim- prefix; the host maps are keyed by scene id.
     // removeLayer fires the layer's own onRemove, which disposes the GPU side.
     const layerId = `sim-${sceneId}`;
     if (state.map.getLayer(layerId)) state.map.removeLayer(layerId);
     state.layers.delete(sceneId);
     state.clocks.delete(sceneId);
+    state.dying.delete(sceneId);
+  };
+  for (const [sceneId] of state.layers) {
+    if (wantedIds.has(sceneId)) continue;
+    const scene = state.sims.scenes.find((s) => s.id === sceneId);
+    const gateClosed = !scene || !sceneEligible(scene, state.chapter, true);
+    const superseded =
+      !gateClosed &&
+      wanted.some((w) => w.anchor.lng === scene.anchor.lng && w.anchor.lat === scene.anchor.lat);
+    if (gateClosed || superseded || state.reducedMotion) {
+      removeNow(sceneId);
+      getSimAudioSink()?.onSceneEnd(sceneId);
+      continue;
+    }
+    if (state.dying.has(sceneId)) continue; // its ticker owns the removal
+    // Camera exit: freeze the pose, silence the scene now, dissolve, THEN
+    // dispose. The ticker keeps the map repainting through the fade (nothing
+    // else forces frames once the camera settles).
+    state.dying.set(sceneId, now());
+    const clock = state.clocks.get(sceneId);
+    if (clock) pauseSceneClock(clock, now());
     getSimAudioSink()?.onSceneEnd(sceneId);
+    const tick = () => {
+      const dyingAt = state.dying.get(sceneId);
+      if (dyingAt === undefined || !state.layers.has(sceneId)) return; // revived or disposed
+      if (now() - dyingAt >= SIM_FADE_OUT_MS) {
+        removeNow(sceneId);
+        return;
+      }
+      state.map.triggerRepaint();
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
   }
 
   for (const scene of wanted) {
     const id = `sim-${scene.id}`;
-    if (state.layers.has(scene.id)) continue;
-    const clock: SceneClock = { startedAt: now(), pausedAt: null, mountedAt: now() };
+    if (state.layers.has(scene.id)) {
+      // Wanted again mid-fade (moveend jitter): cancel the dissolve, resume
+      // the clock, and hand the scene back to the audio player.
+      if (state.dying.delete(scene.id)) {
+        const clock = state.clocks.get(scene.id);
+        if (clock && !document.hidden) resumeSceneClock(clock, now());
+        getSimAudioSink()?.onSceneMount(scene.id, scene, { reducedMotion: state.reducedMotion });
+      }
+      continue;
+    }
+    const clock = createReadyGatedSceneClock(now());
     // The single-active rule: a scene mounting while another is mid-fight
     // waits at t=0 (its startedAt keeps sliding until it is the nearest).
     state.clocks.set(scene.id, clock);
@@ -229,7 +271,18 @@ function applySync(state: HostState): void {
       assets: state.sims.assets,
       stageSpanMeters: STAGE_SPAN_M,
       reducedMotion: state.reducedMotion,
-      opacity: () => Math.min(1, (now() - clock.mountedAt) / SIM_FADE_IN_MS),
+      // Texture loading time is not story time. Open both the authored clock
+      // and the fade only when every required atlas is on the GPU.
+      onReady: () => {
+        if (state.clocks.get(scene.id) !== clock || state.dying.has(scene.id)) return;
+        markSceneClockReady(clock, now(), document.hidden);
+      },
+      opacity: () => {
+        const fadeIn = Math.min(1, (now() - clock.mountedAt) / SIM_FADE_IN_MS);
+        const dyingAt = state.dying.get(scene.id);
+        if (dyingAt === undefined) return fadeIn;
+        return fadeIn * Math.max(0, 1 - (now() - dyingAt) / SIM_FADE_OUT_MS);
+      },
       // The audio sink samples the EXACT value the renderer receives, on the
       // same frame — one clock, two cursors (see lib/sim-audio-bridge.ts).
       getTimeMs: () => {
@@ -262,10 +315,9 @@ function onVisibility(): void {
   const t = now();
   for (const [, clock] of host.clocks) {
     if (document.hidden) {
-      clock.pausedAt = t;
-    } else if (clock.pausedAt !== null) {
-      clock.startedAt += t - clock.pausedAt;
-      clock.pausedAt = null;
+      pauseSceneClock(clock, t);
+    } else {
+      resumeSceneClock(clock, t);
     }
   }
   host.map.triggerRepaint();
@@ -295,11 +347,28 @@ function clearRenderedState(state: HostState): void {
   }
   state.layers.clear();
   state.clocks.clear();
+  state.dying.clear();
   for (const [, beacon] of state.beacons) beacon.marker.remove();
   state.beacons.clear();
 }
 
 let loadSerial = 0;
+let audioInstallTask: Promise<void> | null = null;
+
+/** Install before any scene can mount, while retaining the flag-off split. */
+function ensureSimulationAudioInstalled(): Promise<void> {
+  if (!audioInstallTask) {
+    audioInstallTask = import("@/lib/simulation-audio-player")
+      .then((m) => m.installSimulationAudio())
+      .catch((error) => {
+        // Audio is enhancement-only: a registry/load failure must not erase
+        // the visual story, but it must be visible and retryable on next sync.
+        audioInstallTask = null;
+        console.error("simulation audio install failed", error);
+      });
+  }
+  return audioInstallTask;
+}
 
 export async function syncSimulations(
   map: MlMap,
@@ -313,14 +382,14 @@ export async function syncSimulations(
   );
   if (!packId) return;
 
-  // Scene sound rides the same dynamic-import chain as the host itself:
-  // flags off, neither the player nor its registries reach the bundle. The
-  // installer is idempotent and cheap after the first call.
-  void import("@/lib/simulation-audio-player").then((m) => m.installSimulationAudio());
+  // Scene sound rides the same dynamic-import chain as the host itself, but
+  // applySync MUST wait for it: otherwise the first onSceneMount vanishes into
+  // the bridge's null sink and that scene never receives an audio cursor.
+  const audioReady = ensureSimulationAudioInstalled();
 
   if (!host || host.map !== map || host.packId !== packId) {
     const serial = ++loadSerial;
-    const sims = await loadStoryPack(packId);
+    const [sims] = await Promise.all([loadStoryPack(packId), audioReady]);
     if (serial !== loadSerial) return;
 
     if (host?.map === map) {
@@ -335,6 +404,7 @@ export async function syncSimulations(
         sims,
         layers: new Map(),
         clocks: new Map(),
+        dying: new Map(),
         beacons: new Map(),
         chapter,
         reducedMotion:
@@ -343,6 +413,8 @@ export async function syncSimulations(
         listenersOn: false,
       };
     }
+  } else {
+    await audioReady;
   }
   host.chapter = chapter;
   if (!host.listenersOn) {

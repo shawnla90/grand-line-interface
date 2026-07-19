@@ -152,6 +152,76 @@ export type SimAsset = z.infer<typeof SimAsset>;
 export type StorySimulationPack = z.infer<typeof StorySimulationPack>;
 export type EastBlueSimulations = StorySimulationPack;
 
+/* ── ready-gated scene clock ────────────────────────────────────────────────
+ * Kept beside the pure evaluator so the browser host and a headless audit use
+ * the exact same clock math. A scene exists before its atlases do; `ready`
+ * makes that loading interval an authored t=0 hold rather than lost runtime.
+ */
+
+export type ReadyGatedSceneClock = {
+  /** Absolute host timestamp corresponding to authored t=0. */
+  startedAt: number;
+  /** Absolute timestamp at which the clock was paused, if any. */
+  pausedAt: number | null;
+  /** Fade-in origin. Reset when the required textures become renderable. */
+  mountedAt: number;
+  /** False until every required texture has loaded and reached the layer. */
+  ready: boolean;
+};
+
+export function createReadyGatedSceneClock(nowMs: number): ReadyGatedSceneClock {
+  return { startedAt: nowMs, pausedAt: null, mountedAt: nowMs, ready: false };
+}
+
+/** Open the clock exactly once. Loading in a hidden tab starts paused. */
+export function markSceneClockReady(
+  clock: ReadyGatedSceneClock,
+  nowMs: number,
+  hidden: boolean,
+): void {
+  if (clock.ready) return;
+  clock.ready = true;
+  clock.startedAt = nowMs;
+  clock.mountedAt = nowMs;
+  clock.pausedAt = hidden ? nowMs : null;
+}
+
+export function pauseSceneClock(clock: ReadyGatedSceneClock, nowMs: number): void {
+  if (clock.ready && clock.pausedAt === null) clock.pausedAt = nowMs;
+}
+
+export function resumeSceneClock(clock: ReadyGatedSceneClock, nowMs: number): void {
+  if (!clock.ready || clock.pausedAt === null) return;
+  clock.startedAt += nowMs - clock.pausedAt;
+  clock.pausedAt = null;
+}
+
+/** Authored local time. Before readiness, every caller receives exactly zero. */
+export function sceneClockElapsedMs(clock: ReadyGatedSceneClock, nowMs: number): number {
+  if (!clock.ready) return 0;
+  return Math.max(0, (clock.pausedAt ?? nowMs) - clock.startedAt);
+}
+
+/**
+ * Absolute displacement for a streak at `ageMs`.
+ *
+ * The old renderer added 0.015 units on every frame, making a 120 Hz device
+ * move twice as far as a 60 Hz one. This is the analytic integral of that
+ * intended 60 Hz velocity curve, so the look is preserved while frame history
+ * and refresh rate disappear from the result.
+ */
+export function streakDisplacementAtAge(
+  ageMs: number,
+  durationMs: number,
+  size: number,
+  direction: 1 | -1,
+): number {
+  const safeDuration = Math.max(1, durationMs);
+  const u = Math.min(1, Math.max(0, ageMs / safeDuration));
+  const intendedUnitsPerMs = 0.015 * 60 / 1000;
+  return direction * intendedUnitsPerMs * safeDuration * (u - 0.5 * u * u) * size;
+}
+
 /** Parse-or-throw, the lib/schema.ts posture. Callers dynamic-import the JSON
  * and hand it here; the throw happens before anything reaches a GPU. */
 export function loadSimulations(raw: unknown): StorySimulationPack {
