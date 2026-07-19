@@ -69,6 +69,10 @@ let prepared = 0;
 
 for (const cue of registry.cues) {
   if (!cue.enabled) continue;
+  // Only own-master cues are prepared here. OP-library and epic-journey srcs
+  // are frozen by their own pipelines (ingest_op_soundboard / prepare_epic)
+  // and cross-checked against their own manifests by the audit.
+  if (!cue.src.startsWith("/audio/simulations/")) continue;
   const masterPath = join(mastersRoot, cue.source_file);
   if (!existsSync(masterPath)) {
     console.error(`${cue.id}: master missing: assets/audio/simulations/masters/${cue.source_file}`);

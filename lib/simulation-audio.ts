@@ -22,12 +22,17 @@ export const SimulationAudioCue = z.object({
   /** Master filename — the provenance join key into the owning manifest
    * (simulations masters, or the frozen epic-journey OP library). */
   source_file: z.string().min(1),
-  /** Browser derivative under public/. Two legal homes: cues prepared by
-   * this pipeline, or the frozen epic-journey derivatives (the OP voice
-   * library serves both the Epic beds and the scene clocks). */
+  /** Browser derivative under public/. Three legal homes: cues prepared by
+   * this pipeline, the frozen epic-journey derivatives (the OP voice library
+   * serves both the Epic beds and the scene clocks), and the op-library
+   * soundboard cuts (ingest_op_soundboard.mjs — audit-pinned to
+   * local_prototype_only, so none of them survive the release gate). */
   src: z.string().refine(
-    (value) => value.startsWith("/audio/simulations/") || value.startsWith("/audio/epic-journey/"),
-    { message: "src must live under /audio/simulations/ or /audio/epic-journey/" },
+    (value) =>
+      value.startsWith("/audio/simulations/") ||
+      value.startsWith("/audio/epic-journey/") ||
+      value.startsWith("/audio/op-library/"),
+    { message: "src must live under /audio/simulations/, /audio/epic-journey/ or /audio/op-library/" },
   ),
   kind: z.enum(["sfx", "music", "voice", "ambience"]),
   bus: AudioBusName,

@@ -1,0 +1,511 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "clipSlug": "op-sfx-arm-stretch",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Luffy Arm Stretch",
+        "start": 23.741,
+        "end": 26.81
+      },
+      "cutRange": {
+        "start": 23.741,
+        "end": 26.81
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-arm-stretch.m4a",
+      "sourceSha256": "bc2569716dae9ddf848a815fd969fb1d32d130361b5dcef595a50cb1c10bd78c",
+      "publicPath": "/audio/op-library/op-sfx-arm-stretch.mp3",
+      "publicSha256": "724d730a46fea7abfff9568ceb024fa3bb86e8a3e26f46468507a6067e35c413",
+      "durationMs": 3072,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=5.00dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-armament-haki",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Armament Haki",
+        "start": 227.537,
+        "end": 229.387
+      },
+      "cutRange": {
+        "start": 227.537,
+        "end": 229.387
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-armament-haki.m4a",
+      "sourceSha256": "98243b4f0b9133f5cc1af380cfce993bd53bf8a76cfc0cd35133b215c2177c99",
+      "publicPath": "/audio/op-library/op-sfx-armament-haki.mp3",
+      "publicSha256": "846f320a05bebf28161ea0077c7caca780469ed360ae52deee8cdf341f280ba0",
+      "durationMs": 1856,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=2.80dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-cliffhanger-sting",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Enemy Introduction/ Attack Cliffhanger",
+        "start": 91.842,
+        "end": 94.062
+      },
+      "cutRange": {
+        "start": 91.842,
+        "end": 94.062
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-cliffhanger-sting.m4a",
+      "sourceSha256": "55dc4a78e9d775a69c88433456ecc8e2ed3c7f822e76bead7b9e653b0607e1af",
+      "publicPath": "/audio/op-library/op-sfx-cliffhanger-sting.mp3",
+      "publicSha256": "f3ea713212f3ef5116f7ebe9d705d8520a3ffad0c5b4e437d91445b243de6ec9",
+      "durationMs": 2219,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=7.40dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-clima-tact",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Nami using Clima Tact",
+        "start": 493.945,
+        "end": 500.359
+      },
+      "cutRange": {
+        "start": 493.945,
+        "end": 500.359
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-clima-tact.m4a",
+      "sourceSha256": "f8a2698a401cb37ecbbf275b82c444767992456f8c601a52e1d4b35254ba1782",
+      "publicPath": "/audio/op-library/op-sfx-clima-tact.mp3",
+      "publicSha256": "c9df525c0b2e8854ddc907cc12414b9795fbe686624449bef96c00c5294edd05",
+      "durationMs": 6421,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=18.10dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-conqueror-haki",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Conqueror Haki",
+        "start": 232.297,
+        "end": 246.008
+      },
+      "cutRange": {
+        "start": 232.297,
+        "end": 246.008
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-conqueror-haki.m4a",
+      "sourceSha256": "9a02489aae062b54a84965c28cd8c4394b5daf033da14152187f954d6fd2e5fd",
+      "publicPath": "/audio/op-library/op-sfx-conqueror-haki.mp3",
+      "publicSha256": "33a4c1c885de8eba378d0b67d137e7e8468a4116136bbc8f351f294f1ca23872",
+      "durationMs": 5013,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=5.00dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-consecutive-attacks",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Consecutive Attacks",
+        "start": 64.309,
+        "end": 67.579
+      },
+      "cutRange": {
+        "start": 64.309,
+        "end": 67.579
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-consecutive-attacks.m4a",
+      "sourceSha256": "673447a4070ea1e48befeb4ea0dd76e103f97ee2cfab9cfbd1242350b7c3bb8c",
+      "publicPath": "/audio/op-library/op-sfx-consecutive-attacks.mp3",
+      "publicSha256": "eb91500c0c7a8a8976686b4c98fbe743bc04f0c9a6b449a04a13c787edbd244b",
+      "durationMs": 3264,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=4.80dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-consecutive-kicks",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Consecutive Kicks",
+        "start": 250.85,
+        "end": 255.946
+      },
+      "cutRange": {
+        "start": 250.85,
+        "end": 255.946
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-consecutive-kicks.m4a",
+      "sourceSha256": "e5794423d26381c593391ca874815aaf60673d8a13bfb647fc01918909a6add0",
+      "publicPath": "/audio/op-library/op-sfx-consecutive-kicks.mp3",
+      "publicSha256": "68c396436b749b02d5036c1fd75c76f2d911c449c2bad36b2234b5deaf2010e8",
+      "durationMs": 5099,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=4.40dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-diable-jambe",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Diable Jamble",
+        "start": 280.829,
+        "end": 284.704
+      },
+      "cutRange": {
+        "start": 280.829,
+        "end": 284.704
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-diable-jambe.m4a",
+      "sourceSha256": "340075272c816731e31fd2597c50da90f11b8fa5537ccd6f5aebb25269d650b4",
+      "publicPath": "/audio/op-library/op-sfx-diable-jambe.mp3",
+      "publicSha256": "c34bf7bf599b5eb307122c3222b3e5cd053a86cde8367f9adc03ecde41812237",
+      "durationMs": 3883,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=8.30dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-enemy-sting",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Enemy Introduction/ Attack Cliffhanger",
+        "start": 81.604,
+        "end": 83.366
+      },
+      "cutRange": {
+        "start": 81.604,
+        "end": 83.366
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-enemy-sting.m4a",
+      "sourceSha256": "3aad61a777f88cc41f7ece53ef77d9d7db227cf16c69544024e43277a3803c6e",
+      "publicPath": "/audio/op-library/op-sfx-enemy-sting.mp3",
+      "publicSha256": "e4d41a50f8f58f9935cdb0fc55d69c171a34eeee0a3507880ea5042339cea083",
+      "durationMs": 1749,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=-0.20dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-explosion",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Explosion",
+        "start": 28.85,
+        "end": 32.593
+      },
+      "cutRange": {
+        "start": 28.85,
+        "end": 32.593
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-explosion.m4a",
+      "sourceSha256": "e02355f39f11d051009cf077a15685db0fd87d5f7dec463f2df6dbb0869d795b",
+      "publicPath": "/audio/op-library/op-sfx-explosion.mp3",
+      "publicSha256": "e5c09c9e80f759e222f7b529c377f688895d9dd809774c4c140d0eb253653a72",
+      "durationMs": 3733,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=1.80dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-flying-slice",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Flying Slice",
+        "start": 68.415,
+        "end": 69.608
+      },
+      "cutRange": {
+        "start": 68.415,
+        "end": 69.608
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-flying-slice.m4a",
+      "sourceSha256": "cf016a196e3c9bb1052a6d008cd378c324336f6bf4c131209527ddc8f277ca70",
+      "publicPath": "/audio/op-library/op-sfx-flying-slice.mp3",
+      "publicSha256": "f35dd48588691e20d4885d5996a4bb4cb61464f6b37b1745c13a3778717eaac4",
+      "durationMs": 1195,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=14.70dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-gear-second",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Entering Second Gear",
+        "start": 325.85,
+        "end": 332.055
+      },
+      "cutRange": {
+        "start": 325.85,
+        "end": 332.055
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-gear-second.m4a",
+      "sourceSha256": "fbdacb7a4b03820a7ac66d77619f3d7c9fb7cace26428d371dd3a2b2c36755a6",
+      "publicPath": "/audio/op-library/op-sfx-gear-second.mp3",
+      "publicSha256": "6bd98f317b2d2e32d487a0a21da2b71d98fb129d5f21c8176be57a0fc5666f71",
+      "durationMs": 6208,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=8.70dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-geppo",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "CP9's Skywalk (Geppo)",
+        "start": 263.85,
+        "end": 267.808
+      },
+      "cutRange": {
+        "start": 263.85,
+        "end": 267.808
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-geppo.m4a",
+      "sourceSha256": "fcfef75304a90270306a3cb87a61c8144b95990551a2f9ddfef25fea819b8d1e",
+      "publicPath": "/audio/op-library/op-sfx-geppo.mp3",
+      "publicSha256": "93d991f48854917b60f9c34cc8d851bcac0a2532bdd6cce629280cd226901aed",
+      "durationMs": 3968,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=10.90dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-golden-bell",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Golden Bell",
+        "start": 469.85,
+        "end": 483.035
+      },
+      "cutRange": {
+        "start": 469.85,
+        "end": 483.035
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-golden-bell.m4a",
+      "sourceSha256": "b4717ff2e63a27680c43e8826c6aff54b91dc57d8e4937828eb358b04200ced8",
+      "publicPath": "/audio/op-library/op-sfx-golden-bell.mp3",
+      "publicSha256": "8cd900e2b7903d2cbf56cc7e76e2a22eb31a857842efab5385f6f4fe2d861c16",
+      "durationMs": 13184,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=16.90dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-jet-gatling",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Jet Gatling Shots",
+        "start": 304.227,
+        "end": 322.073
+      },
+      "cutRange": {
+        "start": 304.227,
+        "end": 322.073
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-jet-gatling.m4a",
+      "sourceSha256": "cebf7c391697428358b84c0e84533a7fda39218ee6df01ee192862c5a99df3f0",
+      "publicPath": "/audio/op-library/op-sfx-jet-gatling.mp3",
+      "publicSha256": "2bf28c5c0af07af1c15c3db4acca6600ad71146b92e8fd6c2d1a1df2813e5fb3",
+      "durationMs": 4501,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=3.90dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-jet-pistol",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Jet Pistol Punch",
+        "start": 323.488,
+        "end": 324.648
+      },
+      "cutRange": {
+        "start": 323.488,
+        "end": 324.648
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-jet-pistol.m4a",
+      "sourceSha256": "5208132e76bbaedd60d5627066b6caa6356f68a7d47e1e4f19b382b797cd4fe6",
+      "publicPath": "/audio/op-library/op-sfx-jet-pistol.mp3",
+      "publicSha256": "1eff0f73b640ce2e73be05dc52d2017a87fda46a8afd96b1b03ce021ea24a1f2",
+      "durationMs": 1152,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=2.80dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-observation-haki",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Observation Haki",
+        "start": 246.85,
+        "end": 248.907
+      },
+      "cutRange": {
+        "start": 246.85,
+        "end": 248.907
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-observation-haki.m4a",
+      "sourceSha256": "24c68a9db4e8bd510ded027c79b49da950013b6fe9cc5b8d8ab14ffb8a4f7ef5",
+      "publicPath": "/audio/op-library/op-sfx-observation-haki.mp3",
+      "publicSha256": "4434fcf6de47f727e8238ef21011ea8f3ab60ed6022455b59cbc00b47f0b7a62",
+      "durationMs": 2048,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=13.70dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-spit-blood",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Spitting Blood",
+        "start": 37.812,
+        "end": 38.342
+      },
+      "cutRange": {
+        "start": 37.812,
+        "end": 38.342
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-spit-blood.m4a",
+      "sourceSha256": "be3d81d6b37bbc5d8be173e538a9cded06e69f2af1756ae4f3e456da94d20107",
+      "publicPath": "/audio/op-library/op-sfx-spit-blood.mp3",
+      "publicSha256": "fd50fec9d49535aaa81056bcf7a4221ca700774939ff68c88ec3bffe4badd8ea",
+      "durationMs": 533,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=5.30dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-sword-clash",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Great Sword Clash",
+        "start": 77.124,
+        "end": 78.596
+      },
+      "cutRange": {
+        "start": 77.124,
+        "end": 78.596
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-sword-clash.m4a",
+      "sourceSha256": "df48b1663a92eb2311422c0f41a3e10739de7b4c5730534913583a76facc6ad1",
+      "publicPath": "/audio/op-library/op-sfx-sword-clash.mp3",
+      "publicSha256": "95d3c04ae909638582df8be72f5f337323dda9e1313b11bd4e1d6704a4a5fa76",
+      "durationMs": 1472,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=8.30dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-sword-draw",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Partial Sheathe & Unsheathe",
+        "start": 57.164,
+        "end": 58.323
+      },
+      "cutRange": {
+        "start": 57.164,
+        "end": 58.323
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-sword-draw.m4a",
+      "sourceSha256": "9c49ffb1aec9e29829b07f6db57c880390803c88b3466237e71fbaa685c518e9",
+      "publicPath": "/audio/op-library/op-sfx-sword-draw.mp3",
+      "publicSha256": "6b76d560b4b095da4240523ba1dca98199c428d2b564fe0454ae746b8e0ff9fc",
+      "durationMs": 1152,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=3.80dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-sword-spin",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Sword Spin",
+        "start": 59.85,
+        "end": 62.629
+      },
+      "cutRange": {
+        "start": 59.85,
+        "end": 62.629
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-sword-spin.m4a",
+      "sourceSha256": "5dbb7413d2763e29fe675bd38065be1486970bdd4976ad7f01770f27c7ebd14a",
+      "publicPath": "/audio/op-library/op-sfx-sword-spin.mp3",
+      "publicSha256": "6494f7869f7e945ff3dbd761d8f4ddbfc068cdcc53627a6dcbc3e465b30eca82",
+      "durationMs": 2773,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=13.20dB",
+      "rightsStatus": "local_prototype_only"
+    },
+    {
+      "clipSlug": "op-sfx-whoosh",
+      "videoId": "t0VEOICvnsI",
+      "videoTitle": "100 One Piece Sound Effects",
+      "chapter": {
+        "title": "Whoosh Swing Throw",
+        "start": 341.217,
+        "end": 342.243
+      },
+      "cutRange": {
+        "start": 341.217,
+        "end": 342.243
+      },
+      "sourceFile": "assets/audio/op-library/op-sfx-board/op-sfx-whoosh.m4a",
+      "sourceSha256": "2c7f2487bceaf7016ba42a69d7da283e6f9ed3319ffec0b0097b23160d2baaee",
+      "publicPath": "/audio/op-library/op-sfx-whoosh.mp3",
+      "publicSha256": "73c9425ab6be75847bd2a6866089b26d1c5a9a3c2d3a062931154cd0520c3c18",
+      "durationMs": 1024,
+      "sampleRate": 48000,
+      "channels": 2,
+      "normalization": "volume=12.90dB",
+      "rightsStatus": "local_prototype_only"
+    }
+  ]
+}

@@ -35,6 +35,14 @@ const manifestById = new Map(manifest.files.map((f) => [f.id, f]));
 // the scene clocks); those cross-check the EPIC manifest's provenance instead.
 const epicManifest = JSON.parse(readFileSync(join(projectRoot, "public/audio/epic-journey/manifest.json"), "utf8"));
 const epicBySource = new Map(epicManifest.files.map((f) => [f.originalName, f]));
+// The OP clip library (soundboard cuts, ingest_op_soundboard.mjs): its own
+// provenance manifest, no orphan rule — a library holds more than the
+// registry binds, and rows opt in by hand.
+const opLibManifestPath = join(projectRoot, "public/audio/op-library/manifest.json");
+const opLibManifest = existsSync(opLibManifestPath)
+  ? JSON.parse(readFileSync(opLibManifestPath, "utf8"))
+  : { version: 1, files: [] };
+const opLibBySlug = new Map(opLibManifest.files.map((f) => [f.clipSlug, f]));
 
 const problems = [];
 const seen = new Set();
@@ -71,6 +79,23 @@ for (const cue of registry.cues) {
     }
     if (cue.rights_status !== "local_prototype_only") {
       problems.push(`${where}: OP-library material must stay local_prototype_only`);
+    }
+  } else if (cue.src.startsWith("/audio/op-library/")) {
+    // Soundboard cut: provenance lives in the op-library manifest; ripped
+    // material, so rights are pinned to prototype exactly like the epic lane.
+    const entry = opLibBySlug.get(cue.id);
+    if (!entry) {
+      problems.push(`${where}: not in the op-library manifest — run ingest_op_soundboard.mjs promote`);
+      continue;
+    }
+    if (entry.publicPath !== cue.src) problems.push(`${where}: op-library manifest path ${entry.publicPath} != registry src ${cue.src}`);
+    if (sha256(publicFile) !== entry.publicSha256) problems.push(`${where}: derivative hash drifted from op-library manifest`);
+    if (entry.sampleRate !== 48000) problems.push(`${where}: derivative is ${entry.sampleRate}Hz, not 48000`);
+    if (Math.abs(entry.durationMs - cue.duration_ms) > 40) {
+      problems.push(`${where}: duration ${entry.durationMs}ms drifts >40ms from registry ${cue.duration_ms}ms`);
+    }
+    if (cue.rights_status !== "local_prototype_only") {
+      problems.push(`${where}: op-library material must stay local_prototype_only`);
     }
   } else {
     const entry = manifestById.get(cue.id);
