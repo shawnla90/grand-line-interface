@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "generator": "scripts/build_endgame_island_batch.py",
+  "definition": "chapter-gated LOD1 runtime world models; cited topology, normalized local scale",
+  "assets": [
+    {
+      "id": "egghead-future-island-system",
+      "blend": "source/egghead-future-island-system.blend",
+      "render": "renders/runtime/egghead-future-island-system.png",
+      "contract": "contracts/egghead-future-island-system.visual.json",
+      "maturity": "runtime_blockout_v1",
+      "runtime_export": true,
+      "safe_full_scene_chapter": 1066,
+      "layout_status": "vertical_phase_stack_relative_topology",
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "component_ids": [
+        "central-factory",
+        "cloud-plant",
+        "egghead",
+        "egghead-winter-sea",
+        "fabriophase",
+        "frontier-dome",
+        "future-city",
+        "lab-building-a",
+        "lab-building-b",
+        "lab-building-c",
+        "labophase",
+        "punk-records-attached",
+        "scrapyard"
+      ],
+      "objects": 132,
+      "blend_sha256": "7e088f1975f111d7a4ee694a68ddde67b86ec6e128aaf6fb6ba550cecb380819",
+      "render_sha256": "42626b1f79014bf55d21c860a12db1a553a56352c8c7bad7e79ed58e074ac240",
+      "contract_sha256": "01f4827cfea35625ea6066990f5abd2e053b21521c9af3a159db378ec2ef2a3b"
+    },
+    {
+      "id": "wano-onigashima-country-system",
+      "blend": "source/wano-onigashima-country-system.blend",
+      "render": "renders/runtime/wano-onigashima-country-system.png",
+      "contract": "contracts/wano-onigashima-country-system.visual.json",
+      "maturity": "runtime_blockout_v1",
+      "runtime_export": true,
+      "safe_full_scene_chapter": 978,
+      "layout_status": "regional_bowl_and_local_offshore_fortress_chapter_shifted",
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "component_ids": [
+        "flower-capital",
+        "giant-katana",
+        "hakumai",
+        "kibi",
+        "kuri",
+        "mount-fuji",
+        "old-wano-submerged",
+        "onigashima",
+        "onigashima-flame-clouds",
+        "onigashima-port",
+        "onigashima-roads",
+        "ringo",
+        "skull-dome",
+        "udon",
+        "wano-country",
+        "wano-inland-sea",
+        "wano-walls"
+      ],
+      "objects": 156,
+      "blend_sha256": "db47ab721abbfd09fdd8dea4cca96ca9b37a160d4baca860bc464d10ad8ae411",
+      "render_sha256": "a31dda0fdef934616b72057a1e22573d1ef221ba743b1214ac86e9711aa82431",
+      "contract_sha256": "983bdb59848997702b2704bc8a53349fee0605299f6dfdd39cacd09d19693d50",
+      "named_clips": [
+        "onigashima_geographic_shift"
+      ],
+      "geographic_checkpoints": [
+        793,
+        997,
+        1027,
+        1039,
+        1049,
+        1109
+      ]
+    },
+    {
+      "id": "elbaph-adam-world-system",
+      "blend": "source/elbaph-adam-world-system.blend",
+      "render": "renders/runtime/elbaph-adam-world-system.png",
+      "contract": "contracts/elbaph-adam-world-system.visual.json",
+      "maturity": "runtime_blockout_v1",
+      "runtime_export": true,
+      "safe_full_scene_chapter": 1132,
+      "layout_status": "vertical_world_tree_canon_relationships_theory_overlay_excluded",
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "component_ids": [
+        "chapter-1188-current-state",
+        "elbaph-underworld",
+        "giant-fauna-layer",
+        "heaven-world",
+        "idas-bar",
+        "roads-castle",
+        "sleep-mist-route",
+        "sun-world",
+        "treasure-tree-adam",
+        "warland-settlement"
+      ],
+      "objects": 193,
+      "blend_sha256": "28b632bd2bbd5f0f00655ccd6d9397217bed335aeed459e2187eebd10e8e3b87",
+      "render_sha256": "cf07b8ebed95166ca2b734aba3ed9311ea812d44159f31a983a6a9109d80fc81",
+      "contract_sha256": "17414110c3a0c3958c7b664d11da54c3820341c95b205ac2db119c713f38614e"
+    }
+  ]
+}

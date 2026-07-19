@@ -1,0 +1,115 @@
+{
+  "schema_version": 2,
+  "batch_id": "paradise-gap-batch-a",
+  "id": "long-ring-long-land-tidal-ring-system",
+  "label": "Long Ring Long Land tidal ring island system",
+  "entity_type": "chapter-gated geographic island system",
+  "priority": 1,
+  "contract_status": "ready_for_blender_blockout_unregistered",
+  "identity": {
+    "anchor": {
+      "slug": "long-ring-long-land",
+      "name": "Long Ring Long Land",
+      "japanese": "ロングリングロングランド",
+      "romaji": "Ronguringu Rongurando",
+      "region": "Paradise",
+      "canon_status": "manga",
+      "local_debut_chapter": 304,
+      "verified_visual_reveal_chapter": 304,
+      "source_ref": "data/canon.json#long-ring-long-land",
+      "wiki_url": "https://onepiece.fandom.com/wiki/Long_Ring_Long_Land",
+      "atlas_anchor": {
+        "lng": -83.0667,
+        "lat": -2.0718,
+        "confidence": "derived",
+        "usage": "scene_entry_anchor_only",
+        "warning": "The atlas point is deterministic route placement, not canon geography or a source for local bearings."
+      }
+    },
+    "components": [
+      {"id": "long-ring-present-root", "role": "one_of_ten_visible_island_sections", "reveal_chapter": 304, "verification": "verified_chapter_summary", "default_hidden": false},
+      {"id": "elongated-plain-and-hills", "role": "long_open_grassland_topography", "reveal_chapter": 304, "verification": "verified_location_summary", "default_hidden": false},
+      {"id": "elongated-flora", "role": "representative_long_vegetation", "reveal_chapter": 304, "verification": "cited_location_summary", "default_hidden": false},
+      {"id": "elongated-fauna-proxies", "role": "non_character_scale_markers", "reveal_chapter": 304, "verification": "verified_location_identity_representative_only", "default_hidden": true},
+      {"id": "ten-island-ring-proxy", "role": "explanatory_low_detail_ring_of_visible_sections", "reveal_chapter": 305, "verification": "verified_topology_exact_outlines_unresolved", "default_hidden": true},
+      {"id": "submerged-connecting-land-proxy", "role": "shared_island_base_below_normal_water", "reveal_chapter": 305, "verification": "verified_topology_depth_unresolved", "default_hidden": true},
+      {"id": "annual-low-tide-land-bridge-overlay", "role": "once_yearly_exposed_connection_reference", "reveal_chapter": 305, "verification": "verified_explanation_not_current_chapter_state", "classification": "referenced_geographic_cycle", "default_hidden": true}
+    ]
+  },
+  "topology": {
+    "coordinate_system": "normalized local theatre; Blender Z-up",
+    "layout_status": "verified_ten_section_ring_and_shared_base_with_interpolated_outlines_spacing_and_tide_height",
+    "verified_relationships": [
+      "Long Ring Long Land appears as ten island sections arranged in a ring.",
+      "The ten sections are parts of one island whose connecting land is normally submerged.",
+      "Once each year, low tide exposes the connecting path and permits travel between sections.",
+      "The island's vegetation, animals, and open land share a distinctive elongated visual identity."
+    ],
+    "interpolated_relationships": [
+      "Each section outline, ring diameter, section spacing, submerged shelf, water depth, and land-bridge width are visual interpolation.",
+      "The local ring is composed for readability and carries no canon north, rotation, or measured circumference.",
+      "Elongated fauna proxies communicate scale only and must not be treated as exact encounter placement."
+    ],
+    "transformation_policy": "Normal runtime state shows one present island section. Chapter 305 unlocks an explanatory ring/base overlay, not an assertion that the annual low tide occurs during that chapter. No automatic chapter-driven tide transition is permitted."
+  },
+  "chapter_logic": {
+    "base_reveal_chapter": 304,
+    "safe_full_scene_chapter": 305,
+    "states": [
+      {"id": "pre-reveal", "through_chapter": 303, "visible_components": [], "verification": "verified"},
+      {"id": "elongated-island-arrival", "reveal_chapter": 304, "visible_components": ["long-ring-present-root", "elongated-plain-and-hills", "elongated-flora"], "optional_reference": "elongated-fauna-proxies", "verification": "verified"},
+      {"id": "ring-topology-explained", "reveal_chapter": 305, "optional_references": ["ten-island-ring-proxy", "submerged-connecting-land-proxy", "annual-low-tide-land-bridge-overlay"], "verification": "verified_explanation_only"}
+    ],
+    "default_rule": "Render the present section from chapter 304. Ring, submerged base, and annual low-tide connections remain explanatory overlays after chapter 305.",
+    "unknown_gate_rule": "Do not assign a chapter-state tide, exact section outline, or exact ring layout without direct panel-level evidence."
+  },
+  "proposed_local_scene_layout": {
+    "root": "LRLL_ROOT at local origin with sea-level Z=0",
+    "zones": [
+      {"id": "present-section", "purpose": "chapter-304 playable/readable island theatre", "placement": "camera-facing long grass plain with low stretched hills"},
+      {"id": "outer-ring-proxy", "purpose": "chapter-305 topology explanation", "placement": "nine additional low-detail sections around a normalized circle; exact spacing withheld"},
+      {"id": "submerged-shared-base", "purpose": "show that the sections form one island", "placement": "translucent or cutaway layer below sea level"},
+      {"id": "low-tide-connection-overlay", "purpose": "explain annual passage", "placement": "stylized connecting shelf between sections; never used as a current-time claim"}
+    ],
+    "camera_read": "Begin at ground level on one elongated plain; explanatory mode pulls up to a diagrammatic ring and underwater shared base.",
+    "excluded_from_scene": ["Davy Back Fight arenas", "character meshes", "specific animal encounters", "invented current-year tide timing"]
+  },
+  "unreal_runtime_reuse": {
+    "reusable_modules": ["elongated_grassland_section", "stretched_vegetation_hism", "ring_proxy_instancer", "submerged_shelf_material", "low_tide_overlay_mesh"],
+    "unreal_notes": "Instance one section archetype with authored variations for the diagrammatic ring. Use material fades for submerged/exposed explanatory layers; do not simulate a chapter-timed ocean tide.",
+    "map_runtime_notes": "The normal map layer may load only the present section. The ten-section context should be a chapter-305 exposition overlay with explicit non-scale labeling.",
+    "lod_policy": "Preserve the long horizontal silhouette and ring read; collapse small vegetation and fauna proxies first."
+  },
+  "coordinate_policy": {
+    "atlas_anchor": [-83.0667, -2.0718],
+    "anchor_confidence": "derived",
+    "scale_policy": "visual_fit_not_canon_scale",
+    "warning": "No canon ring diameter, section bearings, tide height, or island dimensions are encoded."
+  },
+  "integration_contract": {
+    "mode": "future_maplibre_custom_3d_layer",
+    "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
+    "proposed_runtime_glb": "runtime/long-ring-long-land-tidal-ring-system.glb",
+    "proposed_fallback": "renders/runtime/long-ring-long-land-tidal-ring-system.png",
+    "node_gate_policy": "Read component_id, reveal_chapter, classification, verification, and default_hidden from glTF extras.",
+    "registration_status": "not_registered_by_this_lane"
+  },
+  "evidence": {
+    "ledger": "research/paradise-gap-batch-a-evidence.json",
+    "claim_ids": ["long-ring-identity-and-reveal", "long-ring-elongated-geography", "long-ring-ten-section-topology", "long-ring-annual-low-tide"],
+    "primary_local_record": "data/canon.json#long-ring-long-land",
+    "sources": [
+      "https://one-piece.com/story/davy_back_fight/index.html",
+      "https://onepiece.fandom.com/wiki/Long_Ring_Long_Land",
+      "https://onepiece.fandom.com/wiki/Chapter_304",
+      "https://onepiece.fandom.com/wiki/Chapter_305"
+    ]
+  },
+  "unresolved": [
+    "Exact outlines, dimensions, spacing, orientation, elevation, and ring diameter of the ten sections remain visual interpolation.",
+    "Exact depth and geometry of the common submerged island base are unknown.",
+    "The annual low-tide route is verified as a cycle but is not verified as the active physical state in chapter 305; it stays explanatory.",
+    "Exact flora/fauna species placement and elongated proportions are not geographic measurements and remain representative.",
+    "No relationship to other regional weather systems is encoded from secondary databook claims."
+  ]
+}

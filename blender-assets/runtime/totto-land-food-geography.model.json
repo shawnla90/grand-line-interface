@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "id": "totto-land-food-geography",
+  "source_blend": "/Users/shawnos.ai/dead-reckoning/blender-assets/source/totto-land-food-geography.blend",
+  "runtime_glb": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/totto-land-food-geography.glb",
+  "model_units": "stylized Blender units; runtime scale is defined by the integration manifest",
+  "coordinate_system": "glTF 2.0 Y-up; Blender exporter converts from Z-up",
+  "export": {
+    "exporter": "Blender built-in glTF 2.0 exporter",
+    "compression": "none; optional gltfpack binary is not installed",
+    "animations": true,
+    "animation_mode": "ACTIONS",
+    "named_clips": [
+      {
+        "name": "totto_land_food_route_cycle",
+        "duration_seconds": 5.0417
+      }
+    ],
+    "preview_proxy_excluded": true,
+    "curves_converted_to_mesh": [
+      "Open sea route foam ribbon"
+    ],
+    "excluded_objects": [
+      "Food geography key",
+      "Food geography fill",
+      "Food geography rim",
+      "Food Geography Camera"
+    ]
+  },
+  "stats": {
+    "objects": 333,
+    "vertices_input": 19114,
+    "triangles_input": 36884,
+    "materials": 18,
+    "bounds_blender": {
+      "min": [
+        -20.1,
+        -12.3,
+        -0.57
+      ],
+      "max": [
+        14.9,
+        12.900001,
+        5.66
+      ]
+    },
+    "bytes": 2728248
+  },
+  "build": {
+    "blender": "4.5.3 LTS",
+    "glb_sha256": "28f50f92090b8cf817e81ae857ba25e96d47a4b4baa3f76bf1df113cdeefd0bb",
+    "glb_header": {
+      "magic": "glTF",
+      "version": 2,
+      "declared_length": 2728248
+    }
+  }
+}

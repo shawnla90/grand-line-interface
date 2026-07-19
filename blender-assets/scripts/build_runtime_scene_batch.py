@@ -642,42 +642,137 @@ def build_mary_geoise(contract: dict, rx: int, ry: int) -> dict:
 
 def build_sabaody(contract: dict, rx: int, ry: int) -> dict:
     reset(); c=collections()
+    sea=material("M_Sabaody_Sea","123f57",.3,emission="0e4058",emission_strength=.18,alpha=.78)
     root=material("M_Yarukiman_Root","6d4a35",.9)
-    canopy=material("M_Yarukiman_Canopy","3a7050",.78)
+    root_light=material("M_Yarukiman_Root_Light","a27350",.82)
+    canopy=material("M_Yarukiman_Canopy","2f7456",.74)
+    canopy_light=material("M_Yarukiman_Canopy_Light","55a06c",.7)
     grass=material("M_Grove_Ground","6f8b55",.82)
     bridge=material("M_Root_Bridge","9a7048",.74)
-    bubble=material("M_Resin_Bubble","9ee9ef",.18,emission="7bdce5",emission_strength=.5,alpha=.28)
-    park=material("M_Sabaody_Park","dc7b8e",.58)
-    auction=material("M_Auction_House","77554c",.75)
+    bubble=material("M_Resin_Bubble","9ee9ef",.14,emission="7bdce5",emission_strength=.75,alpha=.24)
+    bubble_glow=material("M_Resin_Glow","d8fbff",.12,emission="a5f5ff",emission_strength=1.2,alpha=.42)
+    park=material("M_Sabaody_Park","dc7b8e",.5,emission="b95476",emission_strength=.18)
+    park_gold=material("M_Sabaody_Park_Gold","f1c96d",.4,metallic=.22,emission="e3b852",emission_strength=.2)
+    auction=material("M_Auction_House","77554c",.7)
+    auction_light=material("M_Auction_House_Trim","d8b773",.4,metallic=.18,emission="b88e46",emission_strength=.22)
+    event_flash=material("M_Auction_Event_Flash","fff2c6",.22,emission="ffe29a",emission_strength=3.2,alpha=.72)
+    crowd=material("M_Auction_Crowd","292338",.88)
+
+    island("Sabaody water stage",(0,0,-.25),10.8,.34,sea,c.topology,(1.08,.74),64,
+           component="sabaody-archipelago",reveal=496)
     positions=[]
-    # Contract proves 79 numbered roots, not their exact plan. A compact golden-angle
-    # network makes every grove addressable while declaring itself schematic.
+    # The contract proves 79 numbered roots, not their exact bearings. A
+    # compact golden-angle relationship graph keeps every grove addressable
+    # without presenting this local layout as a canon map.
     golden=math.pi*(3-math.sqrt(5))
     for i in range(79):
         r=1.0+math.sqrt(i)*.82
         a=i*golden
         x,y=math.cos(a)*r,math.sin(a)*r*.72
         positions.append((x,y))
-        island(f"Grove {i+1:02d} root island",(x,y,.12),.48+(i%4)*.035,.34,grass,c.topology,(1,.82),20,
+        radius=.48+(i%4)*.035
+        island(f"Grove {i+1:02d} root island",(x,y,.12),radius,.34,grass,c.topology,(1,.82),18,
                component="yarukiman-mangroves",reveal=496)
-        cylinder(f"Grove {i+1:02d} mangrove",(x,y,1.2),.18+(i%3)*.018,2.1,root,c.landmarks,12,
+        trunk=cylinder(f"Grove {i+1:02d} mangrove",(x,y,1.18),.18+(i%3)*.018,2.06,root,c.landmarks,10,
+                       component="yarukiman-mangroves",reveal=496)
+        trunk["grove_number"]=i+1
+        # Buttress roots give the archipelago its defining mangrove silhouette.
+        for j in range(3):
+            angle=a+j*math.tau/3
+            end=(x+math.cos(angle)*radius*.9,y+math.sin(angle)*radius*.7,.34)
+            beam(f"Grove {i+1:02d} buttress {j+1}",(x,y,.58),end,.045,root_light,c.landmarks,
                  component="yarukiman-mangroves",reveal=496)
-        sphere(f"Grove {i+1:02d} canopy",(x,y,2.35),(.72,.62,.58),canopy,c.landmarks,14,8,
+        crown=canopy_light if i%5==0 else canopy
+        sphere(f"Grove {i+1:02d} canopy",(x,y,2.32),(.72,.62,.58),crown,c.landmarks,12,6,
                component="yarukiman-mangroves",reveal=496)
-        if i%3==0:
-            sphere(f"Grove {i+1:02d} bubble",(x+.42,y-.28,2.0+(i%5)*.16),(.22,.22,.22),bubble,c.atmosphere,12,8,
+        # Number pylons are addressable metadata, not baked typography. The UI
+        # can label them without shipping 79 expensive text meshes.
+        if i%4==0:
+            marker=cube(f"Grove {i+1:02d} number pylon",(x+radius*.65,y-radius*.42,.66),(.06,.04,.34),
+                        park_gold,c.landmarks,component="yarukiman-mangroves",reveal=496)
+            marker["grove_number"]=i+1
+        if i%2==0:
+            bx=x+.38*math.cos(a*1.7); by=y+.3*math.sin(a*1.3)
+            sphere(f"Grove {i+1:02d} resin bubble",(bx,by,1.85+(i%7)*.12),(.18+(i%3)*.04,)*3,
+                   bubble,c.atmosphere,12,7,component="sabaody-bubble-layer",reveal=496)
+        if i%11==0:
+            bx=x-.5; by=y+.28
+            sphere(f"Grove {i+1:02d} bubble vehicle",(bx,by,1.05),(.31,.31,.31),bubble,c.atmosphere,14,8,
                    component="sabaody-bubble-layer",reveal=496)
+            cube(f"Grove {i+1:02d} bubble gondola",(bx,by,.82),(.18,.14,.08),park_gold,c.atmosphere,
+                 component="sabaody-bubble-layer",reveal=496)
         if i>0:
             parent=max(0,int(i-math.sqrt(i)*1.7))
             px,py=positions[parent]
-            curve(f"Root bridge {parent+1:02d}-{i+1:02d}",[(px,py,.58),((px+x)/2,(py+y)/2,.76),(x,y,.58)],
+            curve(f"Root bridge {parent+1:02d}-{i+1:02d}",[(px,py,.58),((px+x)/2,(py+y)/2,.78),(x,y,.58)],
                   .055,bridge,c.topology,component="sabaody-root-bridges",reveal=496)
+
+    # Sabaody Park reads as a real nested landmark: wheel, spokes, gondolas,
+    # carousel and resin-bubble rides, all separate from the generic grove kit.
     px,py=positions[20]
-    torus("Sabaody Park wheel",(px,py,1.7),.7,.08,park,c.landmarks,rotation=(math.pi/2,0,0),
+    wheel_center=(px,py,2.0)
+    torus("Sabaody Park ferris wheel",wheel_center,.92,.075,park,c.landmarks,rotation=(math.pi/2,0,0),
           component="sabaody-park",reveal=499)
+    for i in range(10):
+        angle=math.tau*i/10
+        gx=px+math.cos(angle)*.92; gz=2.0+math.sin(angle)*.92
+        beam(f"Sabaody Park wheel spoke {i+1}",wheel_center,(gx,py,gz),.026,park_gold,c.landmarks,
+             component="sabaody-park",reveal=499)
+        cube(f"Sabaody Park gondola {i+1}",(gx,py-.04,gz-.1),(.13,.11,.1),park_gold,c.landmarks,
+             component="sabaody-park",reveal=499)
+    for side in (-.72,.72):
+        beam(f"Sabaody Park wheel support {side:+}",(px+side,py,.48),(px,py,1.96),.07,park_gold,c.landmarks,
+             component="sabaody-park",reveal=499)
+    cx,cy=px+1.42,py-.18
+    cylinder("Sabaody Park carousel base",(cx,cy,.58),.62,.18,park,c.landmarks,28,
+             component="sabaody-park",reveal=499)
+    cone("Sabaody Park carousel canopy",(cx,cy,1.25),.72,.12,.42,park_gold,c.landmarks,vertices=20,
+         component="sabaody-park",reveal=499)
+    for i in range(6):
+        angle=math.tau*i/6
+        sphere(f"Sabaody Park ride bubble {i+1}",(cx+math.cos(angle)*.48,cy+math.sin(angle)*.38,.98),
+               (.16,.16,.16),bubble_glow,c.atmosphere,12,7,component="sabaody-park",reveal=499)
+
+    # Human Auctioning House: stepped hall, façade columns, domed roof and
+    # entry stairs. The chapter-502 event state is separate and default-hidden.
     ax,ay=positions[37]
-    cube("Human Auctioning House",(ax,ay,1.0),(.7,.55,.6),auction,c.landmarks,
+    island("Auction House grove platform",(ax,ay,.28),1.15,.42,root_light,c.landmarks,(1.15,.82),28,
+           component="human-auctioning-house",reveal=501)
+    cube("Human Auctioning House main hall",(ax,ay,1.18),(.92,.68,.78),auction,c.landmarks,
          component="human-auctioning-house",reveal=501)
+    cube("Human Auctioning House front wing",(ax,ay-.72,.94),(.72,.24,.48),auction,c.landmarks,
+         component="human-auctioning-house",reveal=501)
+    for i,xoff in enumerate((-.62,-.31,0,.31,.62)):
+        cylinder(f"Auction House facade column {i+1}",(ax+xoff,ay-.99,1.05),.07,1.15,auction_light,c.landmarks,14,
+                 component="human-auctioning-house",reveal=501)
+    cylinder("Auction House roof drum",(ax,ay,2.0),.68,.28,auction_light,c.landmarks,28,
+             component="human-auctioning-house",reveal=501)
+    sphere("Auction House roof dome",(ax,ay,2.2),(.72,.56,.38),auction,c.landmarks,20,10,
+           component="human-auctioning-house",reveal=501)
+    torus("Auction House entrance arch",(ax,ay-1.03,1.08),.28,.055,auction_light,c.landmarks,
+          rotation=(math.pi/2,0,0),component="human-auctioning-house",reveal=501)
+    for i in range(3):
+        cube(f"Auction House stair {i+1}",(ax,ay-1.15-i*.12,.42-i*.06),(.62+i*.12,.16,.06),auction_light,c.landmarks,
+             component="human-auctioning-house",reveal=501)
+
+    def event_gate(obj: bpy.types.Object) -> bpy.types.Object:
+        tag(obj,"auction-house-confrontation",reveal=502,
+            confidence="verified_state_window",default_hidden=True)
+        obj["active_through_chapter"]=502
+        return obj
+
+    event_gate(torus("Auction House chapter-502 impact ring",(ax,ay-.72,1.42),.58,.065,event_flash,c.states,
+                     rotation=(math.pi/2,0,0)))
+    for i in range(8):
+        angle=math.tau*i/8
+        event_gate(beam(f"Auction House impact ray {i+1}",(ax,ay-.74,1.42),
+                        (ax+math.cos(angle)*.9,ay-.74,1.42+math.sin(angle)*.9),.035,event_flash,c.states))
+    for row in range(3):
+        for i in range(8+row*2):
+            x=ax-.78+i*(1.56/max(1,7+row*2)); y=ay+.42+row*.18
+            event_gate(sphere(f"Auction House event crowd {row+1}-{i+1}",(x,y,.78+row*.12),
+                              (.07,.05,.1),crowd,c.states,10,6))
+
     return finish("sabaody-grove-network",contract,c,rx,ry,(18,-25,20),(0,0,1.0),
                   safe_full_chapter=501,layout_status="relationship_schematic_not_canon_bearings")
 

@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "pack_id": "sabaody-saga-2d-v1",
+  "route": "/dev/sim-proof?pack=sabaody&ch=501",
+  "checks": [
+    {
+      "name": "ch501 fetches zero Sabaody atlases",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "ch501 mounts no Sabaody scene",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "ch502 loads exactly the three signed atlases",
+      "pass": true,
+      "detail": "monkey-d-luffy-sabaody-auction, octy-sabaody-auction, saint-charloss-sabaody-auction"
+    },
+    {
+      "name": "Hatchan warns Luffy while wounded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Luffy crosses into the silent lunge",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Luffy reaches the full-extension punch",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Charloss reaches face impact",
+      "pass": true,
+      "detail": "face-impact"
+    },
+    {
+      "name": "actor-only gamma/gain envelope peaks on contact",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "impact audio fires once on the authored blow",
+      "pass": true,
+      "detail": "auction-lunge-whoosh, charloss-impact"
+    },
+    {
+      "name": "Hatchan reaches the safe collapse",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Charloss holds the defeated fall",
+      "pass": true,
+      "detail": "defeated-fall"
+    },
+    {
+      "name": "ch503 keeps only the frozen aftermath tableau",
+      "pass": true,
+      "detail": "hatchan=relieved-collapse, charloss=defeated-fall"
+    },
+    {
+      "name": "ch503 fetches no new atlas or audio",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "scrub below the gate then re-enter restarts the clock",
+      "pass": true,
+      "detail": "t=1.9000000953674316"
+    },
+    {
+      "name": "reduced motion freezes on the safe final tableau",
+      "pass": true,
+      "detail": "poses={'octy': 'relieved-collapse', 'luffy': 'impact-follow-through', 'charloss': 'defeated-fall'}"
+    },
+    {
+      "name": "browser reports no runtime errors",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "summary": {
+    "passes": 16,
+    "failures": 0
+  }
+}

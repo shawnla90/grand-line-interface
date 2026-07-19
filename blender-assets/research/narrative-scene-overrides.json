@@ -274,7 +274,8 @@
       "manual_components": [
         { "id": "yarukiman-mangroves", "name": "79 Yarukiman Mangrove groves", "role": "numbered_tree_root_nodes", "reveal_chapter": 496, "source_url": "https://onepiece.fandom.com/wiki/Sabaody_Archipelago" },
         { "id": "sabaody-root-bridges", "name": "Root bridges", "role": "inter_grove_connections", "reveal_chapter": 496, "source_url": "https://onepiece.fandom.com/wiki/Sabaody_Archipelago" },
-        { "id": "sabaody-bubble-layer", "name": "Resin bubble ecology", "role": "transport_and_atmosphere_system", "reveal_chapter": 496, "source_url": "https://onepiece.fandom.com/wiki/Sabaody_Archipelago" }
+        { "id": "sabaody-bubble-layer", "name": "Resin bubble ecology", "role": "transport_and_atmosphere_system", "reveal_chapter": 496, "source_url": "https://onepiece.fandom.com/wiki/Sabaody_Archipelago" },
+        { "id": "auction-house-confrontation", "name": "Human Auctioning House confrontation state", "role": "chapter_502_event_state", "reveal_chapter": 502, "source_url": "https://api.api-onepiece.com/v2/chapters/en/502" }
       ],
       "relationships": [
         { "from": "yarukiman-mangroves", "type": "forms", "to": "sabaody-archipelago", "confidence": "cited_summary" },
@@ -288,15 +289,16 @@
       "temporal_variants": [
         { "id": "arrival-network", "reveal_chapter": 496, "state": "Grove roots, bridges, bubbles, and numbered wayfinding visible.", "verification": "verified" },
         { "id": "auction-house-event", "reveal_chapter": 501, "state": "Auction house becomes an active narrative landmark.", "verification": "verified" },
+        { "id": "celestial-dragon-incident", "reveal_chapter": 502, "state": "The auction-floor confrontation state and Luffy's strike become available only for the verified chapter-502 replay.", "verification": "verified" },
         { "id": "post-timeskip-return", "reveal_chapter": null, "state": "Later return-state activity and character visibility.", "verification": "chapter_to_verify" }
       ],
       "event_scenes": [
         { "id": "sabaody-bubble-travel", "importance": 1, "reveal_chapter": 496, "landmark": "sabaody-bubble-layer", "state_delta": "Bubbles become moving transport, hotel, and helmet instances across the grove network.", "verification": "verified", "camera_cue": "Travel under colossal roots, then rise alongside bubbles to reveal the numbered canopy network.", "fx": ["iridescent bubbles", "resin glints", "root fog"] },
-        { "id": "auction-house-confrontation", "importance": 1, "reveal_chapter": null, "landmark": "human-auctioning-house", "state_delta": "Interior event state activates while the surrounding grove remains navigable.", "verification": "chapter_to_verify", "camera_cue": "Route from grove signage to the auction-house exterior, then switch to a gated interior set.", "fx": ["crowd silhouettes", "interior dust", "impact cue"] }
+        { "id": "auction-house-confrontation", "importance": 1, "reveal_chapter": 502, "landmark": "human-auctioning-house", "state_delta": "A wide interior event theatre activates for the chapter-502 Celestial Dragon incident while the surrounding grove remains navigable.", "verification": "verified", "camera_cue": "Route from grove signage to the auction-house exterior, then switch to a gated interior set.", "fx": ["crowd silhouettes", "interior dust", "impact cue"] }
       ],
       "must_show": ["79 numbered mangrove-root grove nodes", "bridges among roots", "bubble ecology and bubble transport", "grove-scale zoning and signage", "landmarks nested within the network"],
       "must_not_show": ["three generic island polygons", "ordinary rock islands standing in for mangrove roots", "auction event before its gate"],
-      "unresolved": ["Exact map positions for all 79 grove numbers and zone categories.", "Exact chapter for the auction-house confrontation event.", "Runtime LOD strategy for thousands of bubbles and root structures."]
+      "unresolved": ["Exact map positions for all 79 grove numbers and zone categories.", "Runtime LOD strategy for thousands of bubbles and root structures."]
     },
     {
       "id": "skypiea-sky-system",

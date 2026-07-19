@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "id": "wano-onigashima-country-system",
+  "source_blend": "/Users/shawnos.ai/dead-reckoning/blender-assets/source/wano-onigashima-country-system.blend",
+  "runtime_glb": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/wano-onigashima-country-system.glb",
+  "model_units": "stylized Blender units; runtime scale is defined by the integration manifest",
+  "coordinate_system": "glTF 2.0 Y-up; Blender exporter converts from Z-up",
+  "export": {
+    "exporter": "Blender built-in glTF 2.0 exporter",
+    "compression": "none; optional gltfpack binary is not installed",
+    "animations": true,
+    "animation_mode": "ACTIONS",
+    "named_clips": [
+      {
+        "name": "onigashima_geographic_shift",
+        "duration_seconds": 5.8333
+      }
+    ],
+    "preview_proxy_excluded": true,
+    "curves_converted_to_mesh": [
+      "Onigashima mountain road",
+      "Wano waterfall 1",
+      "Wano waterfall 2",
+      "Wano waterfall 3",
+      "Wano waterfall 4",
+      "Wano waterfall 5",
+      "Wano waterfall 6",
+      "Wano waterfall 7"
+    ],
+    "excluded_objects": [
+      "Runtime Camera",
+      "Key",
+      "Fill",
+      "Rim"
+    ]
+  },
+  "stats": {
+    "objects": 152,
+    "vertices_input": 5601,
+    "triangles_input": 10506,
+    "materials": 16,
+    "bounds_blender": {
+      "min": [
+        -19.440002,
+        -13.284,
+        -3.2
+      ],
+      "max": [
+        19.440002,
+        13.284,
+        7.637776
+      ]
+    },
+    "bytes": 718264
+  },
+  "build": {
+    "blender": "4.5.3 LTS",
+    "glb_sha256": "7a289fcc84732782d106743254b03554b5d86a0ed511013724e2d32c0eaaaf8c",
+    "glb_header": {
+      "magic": "glTF",
+      "version": 2,
+      "declared_length": 718264
+    }
+  }
+}

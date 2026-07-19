@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "id": "fish-man-red-line-descent",
+  "label": "Sabaody coating and Fish-Man descent system",
+  "entity_type": "undersea_route_cross_section",
+  "contract_status": "integration_ready",
+  "identity": {
+    "anchor": {
+      "slug": "sabaody-archipelago",
+      "lng": -48.2843,
+      "lat": 2.9,
+      "confidence": "derived",
+      "usage": "local_transition_stage_only",
+      "warning": "The anchor opens a local undersea cross-section. It is not a canon survey coordinate or a literal horizontal route bearing."
+    }
+  },
+  "chapter_contract": {
+    "route_explained": 496,
+    "rayleigh_coating_commitment": 507,
+    "coated_sunny_submerges": 602,
+    "coating_mechanics_and_pressure": 603,
+    "downward_plume_and_kraken": 604,
+    "underworld_of_the_sea": 605,
+    "deep_sea_volcanic_region": 606,
+    "ten_thousand_meter_trench": 607,
+    "full_island_owned_by_other_asset": 608
+  },
+  "components": [
+    {
+      "id": "red-line-undersea-route",
+      "role": "route_cross_section_root",
+      "reveal_chapter": 496,
+      "verification": "verified",
+      "default_hidden": false
+    },
+    {
+      "id": "sabaody-coating-yard",
+      "role": "rayleigh_coating_work_area_without_character_proxy",
+      "reveal_chapter": 507,
+      "verification": "verified",
+      "default_hidden": false
+    },
+    {
+      "id": "coated-sunny-dive",
+      "role": "chapter_sampled_descent_vehicle",
+      "reveal_chapter": 602,
+      "active_through_chapter": 607.999,
+      "verification": "verified_state_window",
+      "default_hidden": true
+    },
+    {
+      "id": "undersea-pressure-zone",
+      "role": "coated_ship_pressure_and_light_zone",
+      "reveal_chapter": 603,
+      "active_through_chapter": 607.999,
+      "verification": "verified_state_window",
+      "default_hidden": true
+    },
+    {
+      "id": "downward-plume",
+      "role": "deep_current_route",
+      "reveal_chapter": 604,
+      "active_through_chapter": 607.999,
+      "verification": "verified_state_window",
+      "default_hidden": true
+    },
+    {
+      "id": "kraken-route-hazard",
+      "role": "kraken_encounter_landmark",
+      "reveal_chapter": 604,
+      "active_through_chapter": 607.999,
+      "verification": "verified_state_window",
+      "default_hidden": true
+    },
+    {
+      "id": "underworld-sea-creatures",
+      "role": "deep_sea_creature_field",
+      "reveal_chapter": 605,
+      "active_through_chapter": 607.999,
+      "verification": "verified_state_window",
+      "default_hidden": true
+    },
+    {
+      "id": "deep-sea-volcanic-region",
+      "role": "hydrothermal_and_volcanic_hazard",
+      "reveal_chapter": 606,
+      "active_through_chapter": 607.999,
+      "verification": "verified_state_window",
+      "default_hidden": true
+    },
+    {
+      "id": "red-line-trench-approach",
+      "role": "ten_thousand_meter_trench",
+      "reveal_chapter": 607,
+      "active_through_chapter": 607.999,
+      "verification": "verified_state_window",
+      "default_hidden": true
+    },
+    {
+      "id": "fish-man-island-distant-gate",
+      "role": "distant_approach_glow_not_full_island",
+      "reveal_chapter": 607,
+      "active_through_chapter": 607.999,
+      "verification": "verified_state_window",
+      "default_hidden": true
+    }
+  ],
+  "animation_plan": {
+    "geographic_tracks": [
+      {
+        "channel": "fishman_descent",
+        "name": "fishman_descent_route_state",
+        "keyframes": [
+          {"chapter": 602, "progress": 0.0},
+          {"chapter": 603, "progress": 0.18},
+          {"chapter": 604, "progress": 0.38},
+          {"chapter": 605, "progress": 0.58},
+          {"chapter": 606, "progress": 0.78},
+          {"chapter": 607, "progress": 1.0}
+        ],
+        "hold_before": false,
+        "hold_after": false
+      }
+    ],
+    "ambient_tracks": [
+      {
+        "channel": "fishman_current",
+        "name": "fishman_current_cycle",
+        "active_from_chapter": 603,
+        "active_through_chapter": 607.999,
+        "duration_ms": 4833,
+        "loop": true
+      },
+      {
+        "channel": "fishman_volcano",
+        "name": "fishman_volcanic_cycle",
+        "active_from_chapter": 606,
+        "active_through_chapter": 607.999,
+        "duration_ms": 5042,
+        "loop": true
+      }
+    ]
+  },
+  "runtime": {
+    "glb": "runtime/fish-man-red-line-descent.glb",
+    "fallback": "renders/runtime/fish-man-red-line-descent.png",
+    "source_blend": "source/fish-man-red-line-descent.blend",
+    "projection_support": ["mercator_closeup"],
+    "scale_policy": {"mode": "visual_fit_not_canon_scale", "use_model_bounds": true}
+  },
+  "boundaries": [
+    "The full Fish-Man Island geometry remains owned by fish-man-island and is not shown before chapter 608.",
+    "The cross-section is an explanatory local theatre; exact horizontal bearings and distances are not asserted.",
+    "No Rayleigh character proxy is included; only the coating work area and tools are represented."
+  ]
+}

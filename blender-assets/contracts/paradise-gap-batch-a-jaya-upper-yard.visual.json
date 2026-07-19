@@ -1,0 +1,124 @@
+{
+  "schema_version": 2,
+  "batch_id": "paradise-gap-batch-a",
+  "id": "jaya-upper-yard-relationship-system",
+  "label": "Jaya present-island and Upper Yard historical relationship system",
+  "entity_type": "chapter-gated geographic relationship system",
+  "priority": 1,
+  "contract_status": "ready_for_blender_blockout_unregistered",
+  "identity": {
+    "anchor": {
+      "slug": "jaya",
+      "name": "Jaya",
+      "japanese": "ジャヤ",
+      "romaji": "Jaya",
+      "region": "Paradise",
+      "canon_status": "manga",
+      "local_debut_chapter": 222,
+      "verified_visual_reveal_chapter": 222,
+      "source_ref": "data/canon.json#jaya",
+      "wiki_url": "https://onepiece.fandom.com/wiki/Jaya",
+      "atlas_anchor": {
+        "lng": -96.4286,
+        "lat": 6.9118,
+        "confidence": "derived",
+        "usage": "scene_entry_anchor_only",
+        "warning": "The atlas point is deterministic route placement, not canon geography or a source for local bearings."
+      }
+    },
+    "components": [
+      {"id": "present-jaya-root", "role": "remaining_present_day_island", "reveal_chapter": 222, "verification": "verified_chapter_summary", "default_hidden": false},
+      {"id": "mock-town-port", "role": "western_settlement_and_port", "reveal_chapter": 223, "verification": "verified_chapter_summary_plus_official_arc_summary", "default_hidden": false},
+      {"id": "mock-town-massing", "role": "only_present_settlement_low_detail_shell", "reveal_chapter": 223, "verification": "cited_location_summary", "default_hidden": false},
+      {"id": "cricket-cape-and-salvage-zone", "role": "coastal_home_and_salvage_staging_zone", "reveal_chapter": 229, "verification": "conservative_chapter_summary_gate", "default_hidden": false},
+      {"id": "knock-up-stream-reference-socket", "role": "offshore_route_reference_not_permanent_geometry", "reveal_chapter": 229, "verification": "verified_explanation_geometry_interpolated", "default_hidden": true},
+      {"id": "upper-yard-alignment-proxy", "role": "non_rendering_reference_to_existing_skypiea_upper_yard_geometry", "reveal_chapter": 253, "verification": "verified_map_alignment", "default_hidden": true},
+      {"id": "historical-skull-map-overlay", "role": "combined_pre_separation_landmass_reference", "reveal_chapter": 253, "verification": "verified_map_alignment_not_measured_geometry", "classification": "referenced_historical_reconstruction", "default_hidden": true},
+      {"id": "historical-launch-overlay", "role": "four_hundred_year_old_separation_reference", "reveal_chapter": 292, "active_through_chapter": 292.999, "verification": "verified_historical_explanation", "classification": "referenced_historical_reconstruction", "default_hidden": true}
+    ]
+  },
+  "topology": {
+    "coordinate_system": "normalized local theatre; Blender Z-up",
+    "layout_status": "verified_present_day_roles_and_historical_adjacency_with_unmeasured_shape_alignment",
+    "verified_relationships": [
+      "Present-day Jaya is the surviving lower-sea portion of a larger historical island.",
+      "Mock Town is the present island's settlement and is described by the official arc summary as being on the west side.",
+      "Upper Yard is the separated historical portion launched into the sky roughly four hundred years earlier.",
+      "Chapter 253 aligns the present Jaya and Upper Yard maps into a skull-like former landmass; this is a relationship proof, not a measured survey.",
+      "Upper Yard geometry belongs to the existing Skypiea sky system and must not be duplicated in this asset."
+    ],
+    "interpolated_relationships": [
+      "Present coastline, town footprint, cape outline, port geometry, and distances are visual interpolation.",
+      "The west-side fact may guide composition, but no compass bearing derived from the atlas is allowed.",
+      "The chapter-253 skull alignment is a normalized overlay; exact scale, rotation, seam, and missing coastline remain unmeasured."
+    ],
+    "transformation_policy": "The runtime present-day Jaya model never separates. Historical overlays are opt-in explanatory references unlocked at chapters 253 and 292; they must not replace or move current Jaya or duplicate Upper Yard."
+  },
+  "chapter_logic": {
+    "base_reveal_chapter": 222,
+    "safe_full_scene_chapter": 253,
+    "states": [
+      {"id": "pre-reveal", "through_chapter": 221, "visible_components": [], "verification": "verified"},
+      {"id": "jaya-arrival", "reveal_chapter": 222, "visible_components": ["present-jaya-root"], "verification": "verified"},
+      {"id": "mock-town-port", "reveal_chapter": 223, "adds": ["mock-town-port", "mock-town-massing"], "verification": "verified"},
+      {"id": "cricket-and-stream-explanation", "reveal_chapter": 229, "adds": ["cricket-cape-and-salvage-zone"], "optional_reference": "knock-up-stream-reference-socket", "verification": "verified_summary"},
+      {"id": "upper-yard-map-alignment", "reveal_chapter": 253, "optional_references": ["upper-yard-alignment-proxy", "historical-skull-map-overlay"], "verification": "verified"},
+      {"id": "historical-launch-explained", "reveal_chapter": 292, "optional_one_shot": "historical-launch-overlay", "verification": "verified_historical_reference"}
+    ],
+    "default_rule": "Render present-day components only when their reveal gate is reached; historical overlays remain default_hidden and require an explanatory mode.",
+    "unknown_gate_rule": "Do not infer the missing landmass seam, exact historical rotation, launch trajectory, distance to Skypiea, or Knock Up Stream placement."
+  },
+  "proposed_local_scene_layout": {
+    "root": "JAYA_ROOT at local origin with sea-level Z=0",
+    "zones": [
+      {"id": "present-island-hull", "purpose": "chapter-222 geographic read", "placement": "normalized coastline; skull-like absence suggested only after chapter 253"},
+      {"id": "western-mock-town-zone", "purpose": "port and settlement massing", "placement": "west-designated side in local composition; exact bearing withheld"},
+      {"id": "cricket-cape-zone", "purpose": "coastal salvage landmark", "placement": "separate readable cape; distance and side interpolated"},
+      {"id": "upper-yard-reference-socket", "purpose": "align an external Skypiea Upper Yard proxy in authoring/debug overlays", "placement": "stored as a transform hypothesis with no canon-unit claim"}
+    ],
+    "camera_read": "Present Jaya remains grounded. Explanatory mode can pull back to show a translucent Upper Yard proxy completing the historical silhouette without instantiating a second Upper Yard mesh.",
+    "excluded_from_scene": ["Upper Yard duplicate mesh", "Skypiea cloud environment", "historical actor reenactment", "exact Knock Up Stream simulation", "Mock Town interiors"]
+  },
+  "unreal_runtime_reuse": {
+    "reusable_modules": ["tropical_island_hull", "port_town_hism", "salvage_cape_props", "historical_map_overlay_material", "external_upper_yard_reference_socket"],
+    "unreal_notes": "Use a soft object reference or level-instance socket for the canonical Upper Yard asset. Never package a copy inside Jaya. Historical alignment should be a translucent debug/exposition layer, not a physical world transform.",
+    "map_runtime_notes": "Resolve Upper Yard through the existing skypiea-sky-system asset registry when available. If absent, keep the proxy hidden rather than substituting invented land.",
+    "lod_policy": "Preserve the present-island void/silhouette and Mock Town cluster; collapse port and salvage props first."
+  },
+  "coordinate_policy": {
+    "atlas_anchor": [-96.4286, 6.9118],
+    "anchor_confidence": "derived",
+    "scale_policy": "visual_fit_not_canon_scale",
+    "warning": "The Jaya/Upper Yard fit is a source-backed identity relationship but not an exact dimensional transform."
+  },
+  "integration_contract": {
+    "mode": "future_maplibre_custom_3d_layer_with_external_reference",
+    "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
+    "proposed_runtime_glb": "runtime/jaya-upper-yard-relationship-system.glb",
+    "proposed_fallback": "renders/runtime/jaya-upper-yard-relationship-system.png",
+    "external_asset_reference": {"system_id": "skypiea-sky-system", "component_role": "upper-yard", "policy": "reference_only_no_geometry_duplication"},
+    "node_gate_policy": "Read component_id, reveal_chapter, classification, verification, and default_hidden from glTF extras.",
+    "registration_status": "not_registered_by_this_lane"
+  },
+  "evidence": {
+    "ledger": "research/paradise-gap-batch-a-evidence.json",
+    "claim_ids": ["jaya-identity-and-reveal", "jaya-mock-town", "jaya-upper-yard-relationship", "jaya-historical-separation"],
+    "primary_local_record": "data/canon.json#jaya",
+    "sources": [
+      "https://one-piece.com/story/skypiea/index.html",
+      "https://onepiece.fandom.com/wiki/Jaya",
+      "https://onepiece.fandom.com/wiki/Chapter_222",
+      "https://onepiece.fandom.com/wiki/Chapter_223",
+      "https://onepiece.fandom.com/wiki/Chapter_229",
+      "https://onepiece.fandom.com/wiki/Chapter_253",
+      "https://onepiece.fandom.com/wiki/Chapter_292"
+    ]
+  },
+  "unresolved": [
+    "Exact current and historical coastline geometry, scale, rotation, seam, and dimensions are not measured by the selected sources.",
+    "The chapter-253 skull-map relationship permits a normalized overlay but not a panel-exact 3D transform.",
+    "Exact bearings and distances among Mock Town, the port, Cricket's cape, and the Knock Up Stream are withheld.",
+    "The historical launch trajectory and geometry deformation remain abstract; only the identity relationship is verified.",
+    "Upper Yard must be reused from its own system; if no compatible runtime component exists, the relationship overlay remains withheld."
+  ]
+}

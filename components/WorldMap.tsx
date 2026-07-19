@@ -1095,8 +1095,16 @@ function syncModels(m: MLMap, ch: number) {
     const wholeChapter = Math.floor(ch);
     if (model.animationPlan) {
       const clock = modelPlayback.get(model.id);
-      if (!clock || clock.chapter !== wholeChapter) {
+      const enteringTimedState = model.animationPlan.chapter_states.some(
+        (state) => state.chapter === wholeChapter,
+      );
+      if (!clock || (clock.chapter !== wholeChapter && enteringTimedState)) {
         modelPlayback.set(model.id, { chapter: wholeChapter, startedAt: performance.now() });
+      } else if (clock && clock.chapter !== wholeChapter) {
+        // Ambient island weather/water must not jump back to frame zero at every
+        // chapter boundary. Keep its wall-clock origin while recording the live
+        // chapter; an exact chapter-entry story state still resets above.
+        clock.chapter = wholeChapter;
       }
     }
     if (process.env.NODE_ENV !== "production" && model.labelAt) {
@@ -1265,7 +1273,6 @@ export default function WorldMap({
   const map = useRef<MLMap | null>(null);
   const ready = useRef(false);
   const ship = useRef<ShipHandle | null>(null);
-
   // The presence pools: one HTML marker per crew flag / Warlord monogram, built
   // once on load and diffed per frame by paint(). NEVER created per frame.
   const crewFlags = useRef<Map<string, PresenceHandle>>(new Map());

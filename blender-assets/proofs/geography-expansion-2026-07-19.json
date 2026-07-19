@@ -1,0 +1,72 @@
+{
+  "proof_id": "geography-expansion-2026-07-19",
+  "status": "runtime_verified",
+  "working_tree_policy": "shared_dirty_tree_no_commit_no_push",
+  "core_story_coverage": {
+    "before_complete_stage_chains": 19,
+    "after_complete_stage_chains": 21,
+    "denominator": 31,
+    "closed_partial_chains": [
+      "fish-man-island",
+      "punk-hazard-geographic-system"
+    ]
+  },
+  "assets": [
+    {
+      "id": "punk-hazard-geographic-system",
+      "glb_bytes": 1342704,
+      "glb_sha256": "9cde554e6a085753b4b29eb4a8798eaa08eefbe830d481dcbef73837ca5644a4",
+      "objects": 195,
+      "triangles": 28868,
+      "materials": 17,
+      "bounds_blender": {
+        "min": [-16.703999, -11.808, -1.125],
+        "max": [16.703999, 11.808, 9.39]
+      },
+      "clips": [
+        "punk_hazard_environment_cycle",
+        "punk_hazard_duel_memory_fx"
+      ],
+      "browser_checks": [
+        "chapter_655_arrival_hot_side_only",
+        "chapter_664_full_glb_visible",
+        "directory_dive_enters_mercator"
+      ]
+    },
+    {
+      "id": "totto-land-food-geography",
+      "glb_bytes": 2728248,
+      "glb_sha256": "28f50f92090b8cf817e81ae857ba25e96d47a4b4baa3f76bf1df113cdeefd0bb",
+      "objects": 333,
+      "triangles": 36884,
+      "materials": 18,
+      "clip": "totto_land_food_route_cycle",
+      "browser_checks": [
+        "chapter_831_food_geography_glb_visible",
+        "registered_replacement_not_duplicate"
+      ]
+    },
+    {
+      "id": "fish-man-island",
+      "browser_checks": [
+        "chapter_607_directory_locked",
+        "chapter_608_directory_reachable"
+      ]
+    }
+  ],
+  "runtime": {
+    "registered_assets": 21,
+    "copied_assets": 21,
+    "refused_assets": 0,
+    "directory_wired_island_systems": 19,
+    "ambient_track_support": true,
+    "mercator_directory_dive_fix": true
+  },
+  "next_contract_batch": {
+    "id": "paradise-gap-batch-a",
+    "contracts": 5,
+    "gated_components": 51,
+    "evidence_claims": 20,
+    "glbs_built": 0
+  }
+}

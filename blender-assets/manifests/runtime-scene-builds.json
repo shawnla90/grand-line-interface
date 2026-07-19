@@ -4,101 +4,13 @@
   "definition": "loader-ready procedural runtime blockouts; not final cinematic art",
   "assets": [
     {
-      "id": "totto-land",
-      "blend": "source/totto-land.blend",
-      "render": "renders/runtime/totto-land.png",
-      "contract": "contracts/totto-land.visual.json",
+      "id": "amazon-lily",
+      "blend": "source/amazon-lily.blend",
+      "render": "renders/runtime/amazon-lily.png",
+      "contract": "contracts/amazon-lily.visual.json",
       "maturity": "runtime_blockout_v1",
       "runtime_export": true,
-      "safe_full_scene_chapter": 899,
-      "layout_status": "authored_direction_when_known_unknowns_schematic",
-      "collections": [
-        "00_TOPOLOGY",
-        "10_LANDMARKS",
-        "20_EVENT_STATES",
-        "30_ATMOSPHERE_FX",
-        "40_RUNTIME_LOD"
-      ],
-      "component_ids": [
-        "100-island",
-        "biscuits-island",
-        "black-island",
-        "cacao-island",
-        "candy-island",
-        "cheese-island",
-        "cutlery-island",
-        "flavor-island",
-        "fruits-island",
-        "funwari-island",
-        "futoru-island",
-        "ice-island",
-        "jam-island",
-        "jelly-island",
-        "kibo-island",
-        "kimi-island",
-        "kinko-island",
-        "komugi-island",
-        "liqueur-island",
-        "loving-island",
-        "margarine-island",
-        "milenge-island",
-        "noko-island",
-        "nuts-island",
-        "package-island",
-        "piepie-island",
-        "poripori-island",
-        "potato-island",
-        "rokumitsu-island",
-        "sanshoku-island",
-        "tanega-island",
-        "topping-island",
-        "totto-land",
-        "unique-island",
-        "whole-cake-chateau",
-        "whole-cake-island",
-        "yakigashi-island"
-      ],
-      "objects": 103,
-      "blend_sha256": "7943573a6e13d04afe31e078fb146647644d1f369d7ed8592ded3710ff344a35",
-      "render_sha256": "8145a8d0183764d1cefe3212a70a3fdc6954809e30da8147792d64d4624df75f",
-      "contract_sha256": "314206a9f19a88de2eda1273c5f1840d608f84e6ebdeb38b340c5db28f72f668"
-    },
-    {
-      "id": "world-government-tarai-system",
-      "blend": "source/world-government-tarai-system.blend",
-      "render": "renders/runtime/world-government-tarai-system.png",
-      "contract": "contracts/world-government-tarai-system.visual.json",
-      "maturity": "runtime_blockout_v1",
-      "runtime_export": true,
-      "safe_full_scene_chapter": 525,
-      "layout_status": "relational_triangle_exact_bearings_unknown",
-      "collections": [
-        "00_TOPOLOGY",
-        "10_LANDMARKS",
-        "20_EVENT_STATES",
-        "30_ATMOSPHERE_FX",
-        "40_RUNTIME_LOD"
-      ],
-      "component_ids": [
-        "enies-lobby",
-        "gates-of-justice",
-        "impel-down",
-        "marineford",
-        "tarai-current"
-      ],
-      "objects": 35,
-      "blend_sha256": "442d5d0c21f3a1d060da30ecf863c6dbb470d6581a11f0ef6028c2be7537ec6e",
-      "render_sha256": "0fab0f7d024bb93588633c6f26903d10a4a06c5cdd020560fba6303f7e5edad6",
-      "contract_sha256": "cf0e7a3696c8a01b2176f1e13f022221e5f1370d8ec8eb303a99e5d4467095ef"
-    },
-    {
-      "id": "conomi-arlong-park",
-      "blend": "source/conomi-arlong-park.blend",
-      "render": "renders/runtime/conomi-arlong-park.png",
-      "contract": "contracts/conomi-arlong-park.visual.json",
-      "maturity": "runtime_blockout_v1",
-      "runtime_export": true,
-      "safe_full_scene_chapter": 70,
+      "safe_full_scene_chapter": 514,
       "layout_status": "contract_relationship_graph",
       "collections": [
         "00_TOPOLOGY",
@@ -108,15 +20,15 @@
         "40_RUNTIME_LOD"
       ],
       "component_ids": [
-        "arlong-map-room",
-        "arlong-park",
-        "cocoyasi-village",
-        "conomi-islands"
+        "amazon-lily",
+        "amazon-lily-mountain-bowl",
+        "kuja-palace",
+        "kuja-village"
       ],
-      "objects": 41,
-      "blend_sha256": "279ce8ade6c3e012659494654d84efc51a5eee7b487e32984e608636ef7e6c6e",
-      "render_sha256": "6197d3a61b85052e4ddf400e9342a74d0449a31adcfb76840b15f77fbf6cebf7",
-      "contract_sha256": "b45ea94b28902ec1f945641373d66bfbf970c63802fbb80c84db4dd655f60643"
+      "objects": 134,
+      "blend_sha256": "80aeebdbb4766764826d4da4eb89de2c73aa5d4b958555d0013964ec14c3e839",
+      "render_sha256": "572ddf01ccd1f2262dc6cbe23255f3db02394774685697118607bb54346228b5",
+      "contract_sha256": "2dca6b3d94cd22f55ab13f8b6093ee5228facd1df0c9aa600f11b7df06f43a79"
     },
     {
       "id": "arabasta-kingdom",
@@ -182,6 +94,33 @@
       "contract_sha256": "644a962d504c33ad7fa6505f03c09f29ef946a58ec2315de443860857a41a6af"
     },
     {
+      "id": "conomi-arlong-park",
+      "blend": "source/conomi-arlong-park.blend",
+      "render": "renders/runtime/conomi-arlong-park.png",
+      "contract": "contracts/conomi-arlong-park.visual.json",
+      "maturity": "runtime_blockout_v1",
+      "runtime_export": true,
+      "safe_full_scene_chapter": 70,
+      "layout_status": "contract_relationship_graph",
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "component_ids": [
+        "arlong-map-room",
+        "arlong-park",
+        "cocoyasi-village",
+        "conomi-islands"
+      ],
+      "objects": 41,
+      "blend_sha256": "279ce8ade6c3e012659494654d84efc51a5eee7b487e32984e608636ef7e6c6e",
+      "render_sha256": "6197d3a61b85052e4ddf400e9342a74d0449a31adcfb76840b15f77fbf6cebf7",
+      "contract_sha256": "b45ea94b28902ec1f945641373d66bfbf970c63802fbb80c84db4dd655f60643"
+    },
+    {
       "id": "dressrosa-green-bit",
       "blend": "source/dressrosa-green-bit.blend",
       "render": "renders/runtime/dressrosa-green-bit.png",
@@ -213,14 +152,14 @@
       "contract_sha256": "a66ed38220e0f957085c0ced73ae23364861a30f3a9929c224411acbd27f3cdd"
     },
     {
-      "id": "zou-zunesha",
-      "blend": "source/zou-zunesha.blend",
-      "render": "renders/runtime/zou-zunesha.png",
-      "contract": "contracts/zou-zunesha.visual.json",
+      "id": "fish-man-red-line-descent",
+      "blend": "source/fish-man-red-line-descent.blend",
+      "render": "renders/runtime/fish-man-red-line-descent.png",
+      "contract": "contracts/fish-man-red-line-descent.visual.json",
       "maturity": "runtime_blockout_v1",
       "runtime_export": true,
-      "safe_full_scene_chapter": 804,
-      "layout_status": "moving_entity_local_scene",
+      "safe_full_scene_chapter": 507,
+      "layout_status": "local_undersea_cross_section_not_survey_geometry",
       "collections": [
         "00_TOPOLOGY",
         "10_LANDMARKS",
@@ -229,43 +168,21 @@
         "40_RUNTIME_LOD"
       ],
       "component_ids": [
-        "mokomo-dukedom",
-        "zou",
-        "zunesha",
-        "zunesha-legs",
-        "zunesha-trunk"
+        "coated-sunny-dive",
+        "deep-sea-volcanic-region",
+        "downward-plume",
+        "fish-man-island-distant-gate",
+        "kraken-route-hazard",
+        "red-line-trench-approach",
+        "red-line-undersea-route",
+        "sabaody-coating-yard",
+        "undersea-pressure-zone",
+        "underworld-sea-creatures"
       ],
-      "objects": 83,
-      "blend_sha256": "3e9844e12fee9db39c365095e5cafd065c1bf1bb11acd0d0d95fe160cf095e50",
-      "render_sha256": "06383614c07404c3c7890c85e3932bdd3b25c871b0d19bfb89a2a429f201bc26",
-      "contract_sha256": "5c0c691b9686d3e9b30d421ca3dae5204799ce912108e602c8c8cf543f65ab0c"
-    },
-    {
-      "id": "amazon-lily",
-      "blend": "source/amazon-lily.blend",
-      "render": "renders/runtime/amazon-lily.png",
-      "contract": "contracts/amazon-lily.visual.json",
-      "maturity": "runtime_blockout_v1",
-      "runtime_export": true,
-      "safe_full_scene_chapter": 514,
-      "layout_status": "contract_relationship_graph",
-      "collections": [
-        "00_TOPOLOGY",
-        "10_LANDMARKS",
-        "20_EVENT_STATES",
-        "30_ATMOSPHERE_FX",
-        "40_RUNTIME_LOD"
-      ],
-      "component_ids": [
-        "amazon-lily",
-        "amazon-lily-mountain-bowl",
-        "kuja-palace",
-        "kuja-village"
-      ],
-      "objects": 134,
-      "blend_sha256": "80aeebdbb4766764826d4da4eb89de2c73aa5d4b958555d0013964ec14c3e839",
-      "render_sha256": "572ddf01ccd1f2262dc6cbe23255f3db02394774685697118607bb54346228b5",
-      "contract_sha256": "2dca6b3d94cd22f55ab13f8b6093ee5228facd1df0c9aa600f11b7df06f43a79"
+      "objects": 68,
+      "blend_sha256": "3fe3dfda547f622b5e6d1483bf66ac6097b433ca05267e7733231052551d774b",
+      "render_sha256": "90abfec5f6e2bdfcf4c50296ddf10d180826f823c401e4c290911a62bcd90f87",
+      "contract_sha256": "3a7830722d47bf12902d532dd303a30ff7e7975a6faec62179e762f0a8a98027"
     },
     {
       "id": "mary-geoise-red-line",
@@ -274,8 +191,8 @@
       "contract": "contracts/mary-geoise-red-line.visual.json",
       "maturity": "runtime_blockout_v1",
       "runtime_export": true,
-      "safe_full_scene_chapter": 142,
-      "layout_status": "vertical_cross_section",
+      "safe_full_scene_chapter": 905,
+      "layout_status": "vertical_cross_section_with_irregular_stylized_coastline",
       "collections": [
         "00_TOPOLOGY",
         "10_LANDMARKS",
@@ -291,10 +208,10 @@
         "red-port-new-world",
         "red-port-paradise"
       ],
-      "objects": 67,
-      "blend_sha256": "83067d24f11f740131337ccf219121fefaf5887bc292466d507a39a4a0b5f085",
-      "render_sha256": "6c01dc445f84f89ffa8e86978dfdd226b7a251476a09a3b0ceaf4e3169472150",
-      "contract_sha256": "23fb3492fa139be072ab90a4fd08306730f7719a8403f3edd856b4342b4cb6ed"
+      "objects": 89,
+      "blend_sha256": "308cd52567b1542a01d992b6c636bc1480a2fb20970231737df09f3f8dde6819",
+      "render_sha256": "c375f08270d852402034454916e5f7986c8c3bf7fc0bb47e40f83718baed2f45",
+      "contract_sha256": "3be5852c1c5c3280427e77fd03e7897d779c7d04443f2c1ae443c7fe479ee0ba"
     },
     {
       "id": "sabaody-grove-network",
@@ -313,16 +230,18 @@
         "40_RUNTIME_LOD"
       ],
       "component_ids": [
+        "auction-house-confrontation",
         "human-auctioning-house",
+        "sabaody-archipelago",
         "sabaody-bubble-layer",
         "sabaody-park",
         "sabaody-root-bridges",
         "yarukiman-mangroves"
       ],
-      "objects": 348,
-      "blend_sha256": "bf13c6a25635fe5f708b985bf41576a471b6510f1c7fa8cf8513b6a5aa910296",
-      "render_sha256": "0aeff66f2134136b7ca9ed5868f5f1874dd2fd1d929785cccb6e6b0accd5ed40",
-      "contract_sha256": "0f2bf30fe9d36a9aa7d20421d3c9d222e63521368ca69b7d2fdee3b42e999708"
+      "objects": 717,
+      "blend_sha256": "a4d4033430a6c0b3ae6df7969353126ca073caca9eae724a61e1a149ccf65525",
+      "render_sha256": "10269d436583b3b1817d211bb6e68bfc33a8f001671f3c869010e5d6cd2bd58f",
+      "contract_sha256": "1f35ae1bda199b2ff5f569248325f1b35e196dd340181372a7dd83440f77d0af"
     },
     {
       "id": "skypiea-sky-system",
@@ -352,6 +271,158 @@
       "blend_sha256": "ae2b57efab59c139b027cad5251739573ab1ddec4c23bc5cec62f057aef451db",
       "render_sha256": "55d2e1aa14f57513c065ddbeb4edbe18d583ce34c363f531128e1883e5d3a4bf",
       "contract_sha256": "eb59c400e1a51e8e630dd94039d7f02b0c53db3f67719c7cd1656a2b00ac82a2"
+    },
+    {
+      "id": "totto-land",
+      "blend": "source/totto-land.blend",
+      "render": "renders/runtime/totto-land.png",
+      "contract": "contracts/totto-land.visual.json",
+      "maturity": "runtime_blockout_v1",
+      "runtime_export": true,
+      "safe_full_scene_chapter": 899,
+      "layout_status": "authored_direction_when_known_unknowns_schematic",
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "component_ids": [
+        "100-island",
+        "biscuits-island",
+        "black-island",
+        "cacao-island",
+        "candy-island",
+        "cheese-island",
+        "cutlery-island",
+        "flavor-island",
+        "fruits-island",
+        "funwari-island",
+        "futoru-island",
+        "ice-island",
+        "jam-island",
+        "jelly-island",
+        "kibo-island",
+        "kimi-island",
+        "kinko-island",
+        "komugi-island",
+        "liqueur-island",
+        "loving-island",
+        "margarine-island",
+        "milenge-island",
+        "noko-island",
+        "nuts-island",
+        "package-island",
+        "piepie-island",
+        "poripori-island",
+        "potato-island",
+        "rokumitsu-island",
+        "sanshoku-island",
+        "tanega-island",
+        "topping-island",
+        "totto-land",
+        "unique-island",
+        "whole-cake-chateau",
+        "whole-cake-island",
+        "yakigashi-island"
+      ],
+      "objects": 103,
+      "blend_sha256": "7943573a6e13d04afe31e078fb146647644d1f369d7ed8592ded3710ff344a35",
+      "render_sha256": "8145a8d0183764d1cefe3212a70a3fdc6954809e30da8147792d64d4624df75f",
+      "contract_sha256": "314206a9f19a88de2eda1273c5f1840d608f84e6ebdeb38b340c5db28f72f668"
+    },
+    {
+      "id": "water-7-sea-train-network",
+      "blend": "source/water-7-sea-train-network.blend",
+      "render": "renders/runtime/water-7-sea-train-network.png",
+      "contract": "contracts/water-7-sea-train-network.visual.json",
+      "maturity": "runtime_blockout_v1",
+      "runtime_export": true,
+      "safe_full_scene_chapter": 657,
+      "layout_status": "dynamic_relationship_graph_not_canon_bearings",
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "component_ids": [
+        "aqua-laguna",
+        "blue-station",
+        "day-station",
+        "enies-lobby",
+        "pucci",
+        "puffing-ice",
+        "puffing-tom",
+        "rocketman",
+        "san-faldo",
+        "shift-station",
+        "st-poplar",
+        "subsurface-sea-rails",
+        "water-7"
+      ],
+      "objects": 334,
+      "blend_sha256": "0174acb40a60b533f8c2278b5a600f8aad3fa7824a8ecc49bb42f4f1df904507",
+      "render_sha256": "9e56a1f1e4997d0a917751fea6dbc2cb61abcda52bf1f619f4293847305f2251",
+      "contract_sha256": "05103c8344988449f99748ac4676c73c5fc7dbd2df548ca0bee88410335519f0"
+    },
+    {
+      "id": "world-government-tarai-system",
+      "blend": "source/world-government-tarai-system.blend",
+      "render": "renders/runtime/world-government-tarai-system.png",
+      "contract": "contracts/world-government-tarai-system.visual.json",
+      "maturity": "runtime_blockout_v1",
+      "runtime_export": true,
+      "safe_full_scene_chapter": 525,
+      "layout_status": "relational_triangle_exact_bearings_unknown",
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "component_ids": [
+        "enies-lobby",
+        "gates-of-justice",
+        "impel-down",
+        "marineford",
+        "tarai-current"
+      ],
+      "objects": 35,
+      "blend_sha256": "442d5d0c21f3a1d060da30ecf863c6dbb470d6581a11f0ef6028c2be7537ec6e",
+      "render_sha256": "0fab0f7d024bb93588633c6f26903d10a4a06c5cdd020560fba6303f7e5edad6",
+      "contract_sha256": "cf0e7a3696c8a01b2176f1e13f022221e5f1370d8ec8eb303a99e5d4467095ef"
+    },
+    {
+      "id": "zou-zunesha",
+      "blend": "source/zou-zunesha.blend",
+      "render": "renders/runtime/zou-zunesha.png",
+      "contract": "contracts/zou-zunesha.visual.json",
+      "maturity": "runtime_blockout_v1",
+      "runtime_export": true,
+      "safe_full_scene_chapter": 804,
+      "layout_status": "moving_entity_local_scene",
+      "collections": [
+        "00_TOPOLOGY",
+        "10_LANDMARKS",
+        "20_EVENT_STATES",
+        "30_ATMOSPHERE_FX",
+        "40_RUNTIME_LOD"
+      ],
+      "component_ids": [
+        "mokomo-dukedom",
+        "zou",
+        "zunesha",
+        "zunesha-legs",
+        "zunesha-trunk"
+      ],
+      "objects": 83,
+      "blend_sha256": "3e9844e12fee9db39c365095e5cafd065c1bf1bb11acd0d0d95fe160cf095e50",
+      "render_sha256": "06383614c07404c3c7890c85e3932bdd3b25c871b0d19bfb89a2a429f201bc26",
+      "contract_sha256": "5c0c691b9686d3e9b30d421ca3dae5204799ce912108e602c8c8cf543f65ab0c"
     }
   ]
 }

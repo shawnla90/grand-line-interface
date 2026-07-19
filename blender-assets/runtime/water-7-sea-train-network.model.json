@@ -8,58 +8,81 @@
   "export": {
     "exporter": "Blender built-in glTF 2.0 exporter",
     "compression": "none; optional gltfpack binary is not installed",
-    "animations": false,
+    "animations": true,
+    "animation_mode": "ACTIONS",
+    "named_clips": [
+      {
+        "name": "water7_puffing_tom_route_cycle",
+        "duration_seconds": 5.0417
+      },
+      {
+        "name": "water7_rocketman_route_state",
+        "duration_seconds": 5.0417
+      },
+      {
+        "name": "water7_aqua_laguna_tide_state",
+        "duration_seconds": 5.0417
+      },
+      {
+        "name": "water7_enies_waterfall_cycle",
+        "duration_seconds": 4.2083
+      }
+    ],
     "preview_proxy_excluded": true,
     "curves_converted_to_mesh": [
-      "Schematic rail Water7 to Enies -0.13",
-      "Schematic rail Water7 to Enies +0.13",
-      "Schematic rail Water7 to Pucci -0.13",
-      "Schematic rail Water7 to Pucci +0.13",
-      "Schematic rail Water7 to StPoplar -0.13",
-      "Schematic rail Water7 to StPoplar +0.13",
-      "Schematic rail Water7 to SanFaldo -0.13",
-      "Schematic rail Water7 to SanFaldo +0.13",
-      "Aqua Laguna wave wall"
+      "Subsurface rail Water 7 to Enies -0.13",
+      "Subsurface rail Water 7 to Enies +0.13",
+      "Subsurface rail Water 7 to Pucci -0.13",
+      "Subsurface rail Water 7 to Pucci +0.13",
+      "Subsurface rail Water 7 to St Poplar -0.13",
+      "Subsurface rail Water 7 to St Poplar +0.13",
+      "Subsurface rail Water 7 to San Faldo -0.13",
+      "Subsurface rail Water 7 to San Faldo +0.13",
+      "Water 7 radial canal 1",
+      "Water 7 radial canal 2",
+      "Water 7 radial canal 3",
+      "Water 7 radial canal 4",
+      "Water 7 radial canal 5",
+      "Water 7 radial canal 6",
+      "Water 7 radial canal 7",
+      "Water 7 radial canal 8",
+      "Water 7 radial canal 9",
+      "Water 7 radial canal 10",
+      "Enies Lobby land bridge"
     ],
     "excluded_objects": [
-      "Review Camera",
+      "Runtime Camera",
       "Key",
       "Fill",
-      "Rim",
-      "Water 7 label",
-      "Enies label",
-      "Pucci label",
-      "St. Poplar label",
-      "San Faldo label",
-      "Shift Station label"
+      "Rim"
     ]
   },
   "stats": {
-    "objects": 96,
-    "vertices_input": 5842,
-    "triangles_input": 11160,
-    "materials": 12,
+    "objects": 334,
+    "vertices_input": 13942,
+    "triangles_input": 26352,
+    "materials": 18,
     "bounds_blender": {
       "min": [
-        -18.0,
-        -12.0,
-        -1.05
+        -17.799999,
+        -11.5,
+        -1.12
       ],
       "max": [
-        18.0,
-        12.0,
-        6.6437
+        17.799999,
+        11.5,
+        5.55
       ]
     },
-    "bytes": 530224
+    "bytes": 1589396
   },
   "build": {
     "blender": "4.5.3 LTS",
-    "glb_sha256": "01049271111d0e2cadcae347114f3f1f5762bbe5b9983b38a73e3968632d634c",
+    "glb_sha256": "d706bbb7ccfba5ac70ad59a1404172db1c270a4b6d0c132cbe88d6fdec273e5d",
     "glb_header": {
       "magic": "glTF",
       "version": 2,
-      "declared_length": 530224
+      "declared_length": 1589396
     }
   }
 }

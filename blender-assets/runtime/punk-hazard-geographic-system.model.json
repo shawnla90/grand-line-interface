@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "id": "punk-hazard-geographic-system",
+  "source_blend": "/Users/shawnos.ai/dead-reckoning/blender-assets/source/punk-hazard-geographic-system.blend",
+  "runtime_glb": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/punk-hazard-geographic-system.glb",
+  "model_units": "normalized stylized local theatre; app integration owns globe scale",
+  "coordinate_system": "glTF 2.0 Y-up converted from Blender Z-up",
+  "export": {
+    "exporter": "Blender built-in glTF 2.0 exporter",
+    "animations": true,
+    "animation_mode": "ACTIONS",
+    "named_clips": [
+      {
+        "name": "punk_hazard_environment_cycle",
+        "duration_seconds": 5.0,
+        "mode": "loop",
+        "classification": "neutral_ambient",
+        "reveal_chapter": 657
+      },
+      {
+        "name": "punk_hazard_duel_memory_fx",
+        "duration_seconds": 3.9583,
+        "mode": "one_shot",
+        "classification": "referenced_historical_reconstruction",
+        "reveal_chapter": 658,
+        "active_through_chapter": 658.999
+      }
+    ],
+    "curves_converted_to_mesh": [
+      "Crater sea channel",
+      "Ice Lands river",
+      "Laboratory pipe 1",
+      "Laboratory pipe 2",
+      "Laboratory pipe 3",
+      "Laboratory pipe 4",
+      "Lava run 1",
+      "Lava run 2",
+      "Lava run 3",
+      "Emissive lava fissure 1",
+      "Emissive lava fissure 2",
+      "Emissive lava fissure 3",
+      "Emissive lava fissure 4",
+      "Emissive lava fissure 5",
+      "Emissive lava fissure 6",
+      "Emissive lava fissure 7",
+      "Glacier face seam 1",
+      "Glacier face seam 2",
+      "Glacier face seam 3",
+      "Glacier face seam 4",
+      "Crater current 1",
+      "Crater current 2",
+      "Crater current 3",
+      "Crater current 4",
+      "Crater current 5",
+      "Crater current 6",
+      "Crater current 7",
+      "Crater current 8",
+      "Crater current 9",
+      "Crater current 10",
+      "Ice river luminous current"
+    ],
+    "historical_state_policy": "static post-duel geography; memory clip is environmental FX only"
+  },
+  "stats": {
+    "objects": 195,
+    "vertices_input": 15000,
+    "triangles_input": 28868,
+    "materials": 17,
+    "bounds_blender": {
+      "min": [
+        -16.703999,
+        -11.808,
+        -1.125
+      ],
+      "max": [
+        16.703999,
+        11.808,
+        9.39
+      ]
+    },
+    "bytes": 1342704
+  },
+  "build": {
+    "blender": "4.5.3 LTS",
+    "glb_sha256": "9cde554e6a085753b4b29eb4a8798eaa08eefbe830d481dcbef73837ca5644a4",
+    "glb_header": {
+      "magic": "glTF",
+      "version": 2,
+      "declared_length": 1342704
+    }
+  }
+}

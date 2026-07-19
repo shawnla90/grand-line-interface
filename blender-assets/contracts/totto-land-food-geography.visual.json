@@ -1,0 +1,349 @@
+{
+  "schema_version": 1,
+  "id": "totto-land-food-geography",
+  "label": "Totto Land food-island hero geography",
+  "entity_type": "archipelago_component_upgrade",
+  "contract_status": "built_pending_runtime_integration",
+  "scope": {
+    "purpose": "Replace the close-view generic Totto Land blockout with a chapter-gated, close-readable food-geography package while retaining the existing 34-island contract as research context.",
+    "chapter_window": [651, 831],
+    "runtime_asset_id": "totto-land-food-geography",
+    "ownership_boundary": "New source, GLB, sidecar, renders, contract, evidence, and focused generators only. Shared runtime manifests and app components are integration-owner work."
+  },
+  "baseline_audit": {
+    "existing_asset_id": "totto-land",
+    "source": "blender-assets/source/totto-land.blend",
+    "glb": "blender-assets/runtime/totto-land.glb",
+    "sidecar": "blender-assets/runtime/totto-land.model.json",
+    "glb_sha256": "dcfe66c1fedfcf08c74cc3cd84d547247d18e447b7e123f49a258f2347935e3d",
+    "objects": 99,
+    "triangles": 6444,
+    "materials": 9,
+    "animations": 0,
+    "assessment": "Useful 34-island addressable macro blockout, but subsidiary geometry is intentionally generic and too small to express Cacao, Biscuits, Sweet City, or the Forest of Temptation as explorable places.",
+    "upgrade_strategy": "Use this hero package as the close-view replacement. Do not render old and new GLBs simultaneously at the same anchor."
+  },
+  "identity": {
+    "anchor": {
+      "id": "whole-cake-island",
+      "name": "Whole Cake Island",
+      "debut_chapter": 651,
+      "verification": "existing_structured_canon_record",
+      "source_ref": "data/generated/islands.json#whole-cake-island",
+      "coordinate_policy": "Reuse the app's existing Totto Land/Whole Cake scene-entry anchor only. Local model positions are presentation space, not canon cartography."
+    },
+    "components": [
+      {
+        "id": "totto-land-food-geography",
+        "role": "local_ocean_stage_and_package_root",
+        "reveal_chapter": 651,
+        "verification": "package_scaffold",
+        "geometry_status": "additive_local_theatre_not_canon_scale"
+      },
+      {
+        "id": "whole-cake-island",
+        "role": "central_food_island",
+        "reveal_chapter": 651,
+        "verification": "verified_identity",
+        "geometry_status": "verified_identity_visual_interpolation",
+        "source_ref": "data/generated/islands.json#whole-cake-island"
+      },
+      {
+        "id": "whole-cake-chateau",
+        "role": "central_landmark",
+        "reveal_chapter": 651,
+        "verification": "verified_identity",
+        "geometry_status": "verified_identity_visual_interpolation",
+        "source_ref": "data/generated/islands.json#whole-cake-chateau"
+      },
+      {
+        "id": "cacao-island",
+        "role": "entirely_chocolate_subsidiary_island",
+        "reveal_chapter": 827,
+        "verification": "verified_identity_and_material_premise",
+        "geometry_status": "verified_entirely_chocolate_visual_interpolation",
+        "source_ref": "data/raw/chapters.json#chapter-827 and data/generated/islands.json#cacao-island"
+      },
+      {
+        "id": "cacao-chocolate-settlement",
+        "role": "edible_building_settlement",
+        "reveal_chapter": 827,
+        "verification": "verified_feature_neutral_label",
+        "geometry_status": "verified_feature_visual_interpolation",
+        "source_ref": "data/raw/chapters.json#chapter-827",
+        "label_warning": "The repository does not contain the remembered proper label Chocolate Town. Use this neutral component id until a direct source is added."
+      },
+      {
+        "id": "pudding-home-cacao",
+        "role": "distinct_home_landmark",
+        "reveal_chapter": 827,
+        "verification": "verified_feature",
+        "geometry_status": "visual_interpolation",
+        "source_ref": "data/raw/chapters.json#chapter-827"
+      },
+      {
+        "id": "biscuits-island",
+        "role": "food_theme_subsidiary_island",
+        "reveal_chapter": 828,
+        "verification": "verified_identity_theme_directional_only",
+        "geometry_status": "verified_island_and_theme_visual_interpolation",
+        "source_ref": "data/generated/islands.json#biscuits-island",
+        "geometry_warning": "The island name and gate are supported. Exact cracker terraces, perforations, and wafer towers are presentation interpolation, not claimed manga terrain."
+      },
+      {
+        "id": "sweet-city",
+        "role": "whole_cake_city_district",
+        "reveal_chapter": 829,
+        "verification": "verified_local_chapter_feature",
+        "geometry_status": "visual_interpolation",
+        "source_ref": "data/raw/chapters.json#chapter-829"
+      },
+      {
+        "id": "totto-land-sea-route",
+        "role": "ordinary_open_sea_navigation_path",
+        "reveal_chapter": 829,
+        "active_through_chapter": 829.999,
+        "verification": "verified_state_window",
+        "gate_confidence": "verified_state_window",
+        "default_hidden": true,
+        "geometry_status": "open_sea_foam_ribbon_not_exact_bearing",
+        "source_ref": "data/raw/chapters.json#chapter-829",
+        "negative_claim": "Not a juice river, chocolate river, inland canal, or canon-accurate route bearing."
+      },
+      {
+        "id": "seducing-woods",
+        "display_label": "Forest of Temptation",
+        "role": "strange_living_forest",
+        "reveal_chapter": 831,
+        "verification": "verified_local_chapter_feature",
+        "geometry_status": "visual_interpolation",
+        "source_ref": "data/raw/chapters.json#chapter-831",
+        "alias_warning": "Seducing Woods is retained as a user-facing/common-memory component alias; the local chapter feed calls it Forest of Temptation."
+      }
+    ]
+  },
+  "recollection_resolution": [
+    {
+      "remembered_item": "Biscuit island",
+      "resolution": "supported",
+      "canonical_local_name": "Biscuits Island",
+      "gate": 828,
+      "build_decision": "Built as a hero island. Food terrain forms are explicitly visual interpolation."
+    },
+    {
+      "remembered_item": "Chocolate Town",
+      "resolution": "partially_supported",
+      "canonical_local_name": "Cacao Island",
+      "gate": 827,
+      "build_decision": "Built the verified entirely-chocolate island and edible settlement, but did not promote Chocolate Town as an official label."
+    },
+    {
+      "remembered_item": "river island / juice river / chocolate river / canal",
+      "resolution": "unsupported_in_local_sources",
+      "canonical_local_name": null,
+      "gate": null,
+      "build_decision": "Omitted. No literal inland liquid route was modeled."
+    },
+    {
+      "remembered_item": "100% Island juice theme",
+      "resolution": "name_present_gate_unverified_theme_directional_only",
+      "canonical_local_name": "100% Island",
+      "gate": null,
+      "build_decision": "Omitted from the hero GLB rather than guessing a juice island or river."
+    },
+    {
+      "remembered_item": "Seducing Woods",
+      "resolution": "feature_supported_under_local_translation",
+      "canonical_local_name": "Forest of Temptation",
+      "gate": 831,
+      "build_decision": "Built as a separately gated living-forest wedge on Whole Cake Island. Exact bearing is visual interpolation."
+    }
+  ],
+  "topology": {
+    "layout_mode": "local_hero_theatre_reusing_existing_direction_hints",
+    "whole_cake_role": "central",
+    "cacao_hint": "southwest_outermost in the existing contract",
+    "biscuits_hint": "northwest in the existing contract",
+    "exact_distances": "unknown",
+    "exact_bearings": "partially_known_but_not_panel_traced",
+    "route_shape": "visual_interpolation",
+    "scale": "visual_fit_not_canon_scale",
+    "atlas_policy": "Never derive local positions from deterministic atlas jitter."
+  },
+  "chapter_logic": {
+    "base_reveal": 651,
+    "component_gates": [
+      {
+        "id": "totto-land-food-geography",
+        "reveal_chapter": 651,
+        "verification": "package_scaffold"
+      },
+      {
+        "id": "whole-cake-island",
+        "reveal_chapter": 651,
+        "verification": "verified"
+      },
+      {
+        "id": "whole-cake-chateau",
+        "reveal_chapter": 651,
+        "verification": "verified"
+      },
+      {
+        "id": "cacao-island",
+        "reveal_chapter": 827,
+        "verification": "verified"
+      },
+      {
+        "id": "cacao-chocolate-settlement",
+        "reveal_chapter": 827,
+        "verification": "verified_feature"
+      },
+      {
+        "id": "pudding-home-cacao",
+        "reveal_chapter": 827,
+        "verification": "verified_feature"
+      },
+      {
+        "id": "biscuits-island",
+        "reveal_chapter": 828,
+        "verification": "verified"
+      },
+      {
+        "id": "sweet-city",
+        "reveal_chapter": 829,
+        "verification": "verified_feature"
+      },
+      {
+        "id": "totto-land-sea-route",
+        "reveal_chapter": 829,
+        "active_through_chapter": 829.999,
+        "verification": "verified_state_window",
+        "gate_confidence": "verified_state_window",
+        "default_hidden": true
+      },
+      {
+        "id": "seducing-woods",
+        "reveal_chapter": 831,
+        "verification": "verified_feature"
+      }
+    ],
+    "default_rule": "The app/MapLibre layer owns chapter state and hides every node whose reveal_chapter is later than the reader chapter. The open-sea route is the sole exception: it is a default-hidden event inset that activates only inside its verified chapter-829 state window.",
+    "unknown_rule": "No unsupported component with a null gate is present in the GLB."
+  },
+  "geometry_program": {
+    "whole_cake_island": [
+      "irregular wafer coast",
+      "four differentiated cake tiers",
+      "icing garland and drops",
+      "multi-tower Whole Cake Chateau",
+      "chapter-829 Sweet City outer district",
+      "chapter-831 Forest of Temptation living-tree wedge"
+    ],
+    "cacao_island": [
+      "whole-island dark-chocolate coast",
+      "chocolate-bar terrain tiles",
+      "edible chocolate settlement",
+      "distinct interpolated Pudding home",
+      "cacao-pod silhouette ring"
+    ],
+    "biscuits_island": [
+      "irregular biscuit coast",
+      "three cracker terraces",
+      "biscuit perforation pattern",
+      "wafer tower silhouette family"
+    ],
+    "open_sea": [
+      "ordinary ocean stage",
+      "chapter-829 foam route ribbon",
+      "independent foam beads",
+      "no inland river or canal"
+    ]
+  },
+  "animation_plan": {
+    "clips": [
+      {
+        "name": "totto_land_food_route_cycle",
+        "duration_seconds": 5.0417,
+        "loop": true,
+        "target_component": "totto-land-sea-route",
+        "active_window": [829, 829.999],
+        "default_hidden": true,
+        "behavior": "Small deterministic vertical and scale breathing on the open-sea foam ribbon.",
+        "canon_boundary": "Ambient readability only; it does not imply current direction, liquid type, route distance, or travel speed."
+      }
+    ],
+    "timeline_owner": "App playback chooses whether to play the ambient clip. The clip cannot advance chapter or route state."
+  },
+  "runtime_handoff": {
+    "replacement_policy": "Integration owner replaces/removes the old totto-land runtime row when promoting this package. Never enable both at the same anchor.",
+    "anchor_owner": "MapLibre/app journey runtime",
+    "chapter_gate_owner": "app canon/runtime registry",
+    "render_owner": "Three.js local GLB layer",
+    "clip_owner": "Three.js AnimationMixer under persistent ambient playback",
+    "geometry_owner": "Blender source package",
+    "fallback_owner": "transparent PNG review/fallback",
+    "dispose_rule": "Unload geometry, materials, textures, and mixer actions when the scene is hidden."
+  },
+  "unreal_reuse": {
+    "source_scale": "stylized local theatre; integration defines world scale",
+    "semantic_data": "Preserve component_id, reveal_chapter, gate_confidence, visual_status, route_claim, and not_a_claim node extras.",
+    "route_mapping": "Open-sea foam ribbon may become a Spline Component with material/Niagara foam; never rename it as a river.",
+    "clip_mapping": "Import totto_land_food_route_cycle as a looping ambient transform clip.",
+    "chapter_mapping": "Map the same component ids and gates into an Unreal Data Asset/controller.",
+    "material_mapping": "Rebuild neutral food materials in Unreal while preserving stable material-slot intent."
+  },
+  "visual_program": {
+    "must_show": [
+      "Three visibly distinct food-island geographies",
+      "Cacao as an entirely chocolate place with edible buildings",
+      "Biscuits as its own readable island rather than a generic disc",
+      "Whole Cake Chateau, Sweet City, and a separate living forest",
+      "ordinary open sea between Cacao and Whole Cake, with its foam route shown only during the chapter-829 event inset",
+      "chapter-safe component extras on every exported mesh"
+    ],
+    "must_not_show": [
+      "the old and new Totto Land GLBs together",
+      "Chocolate Town as a verified official local label",
+      "a juice river, chocolate river, inland canal, or candy waterfall",
+      "100% Island before its gate is verified",
+      "exact local bearings copied from atlas jitter",
+      "food-theme interpolation presented as panel-exact terrain"
+    ]
+  },
+  "artifact_targets": {
+    "source_blend": "blender-assets/source/totto-land-food-geography.blend",
+    "runtime_glb": "blender-assets/runtime/totto-land-food-geography.glb",
+    "runtime_sidecar": "blender-assets/runtime/totto-land-food-geography.model.json",
+    "transparent_render": "blender-assets/renders/runtime/totto-land-food-geography.png",
+    "closeup_renders": [
+      "blender-assets/renders/runtime/totto-land-food-geography-whole-cake.png",
+      "blender-assets/renders/runtime/totto-land-food-geography-cacao.png",
+      "blender-assets/renders/runtime/totto-land-food-geography-biscuits.png"
+    ],
+    "contact_sheet": "blender-assets/renders/totto-land-food-geography-contact-sheet.png"
+  },
+  "acceptance_criteria": [
+    "GLB id is exactly totto-land-food-geography.",
+    "GLB contains the exact clip totto_land_food_route_cycle and no fabricated river clip.",
+    "Every exported mesh has component_id, reveal_chapter, gate_confidence, default_hidden, and visual_status extras.",
+    "totto-land-sea-route is the only default-hidden component, uses gate_confidence verified_state_window, and carries active_through_chapter 829.999 on every route node.",
+    "Every non-route component remains default_hidden false so generic later-reveal chapter gating can open it.",
+    "Whole Cake/Chateau gate at 651; Cacao and its settlement/home gate at 827; Biscuits gate at 828; Sweet City and sea route gate at 829; forest gate at 831.",
+    "No 100% Island, Chocolate Town, juice river, chocolate river, canal, or candy-waterfall component enters the GLB.",
+    "The transparent render has a real alpha channel and transparent corners.",
+    "The source .blend, GLB, sidecar, four renders, and contact sheet all match the evidence-ledger hashes.",
+    "Triangle count remains below 60000 and uncompressed GLB size below 4 MB.",
+    "Existing Totto Land source/runtime files remain byte-identical to the recorded baseline hashes."
+  ],
+  "unresolved": [
+    "Direct local structured record for the remembered Chocolate Town proper label.",
+    "Panel-verified Cacao settlement street plan, Pudding home design, and coast proportions.",
+    "Panel-verified Biscuits Island terrain and settlement design beyond its verified name/theme lane.",
+    "Panel-verified position and boundary of Sweet City and the Forest of Temptation on Whole Cake Island.",
+    "Exact sailing route shape and bearing between Cacao and Whole Cake.",
+    "Any canon navigable juice/chocolate/candy river, canal, or waterfall relevant to this requested set; none is locally supported yet.",
+    "100% Island reveal chapter and any literal juice geography.",
+    "Whether later close exploration needs separate LOD0 sub-scenes rather than the current combined LOD1 hero theatre."
+  ],
+  "evidence_ledger": "blender-assets/research/totto-land-food-geography.evidence.json"
+}

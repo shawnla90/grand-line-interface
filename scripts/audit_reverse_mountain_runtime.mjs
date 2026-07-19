@@ -16,7 +16,7 @@ const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const registry = JSON.parse(fs.readFileSync(path.join(root, "data/generated/runtime_assets.json"), "utf8"));
 const asset = registry.assets.find((item) => item.id === "reverse-mountain-twin-cape-voyage");
 assert(asset, "Reverse Mountain is missing from the generated runtime registry");
-assert.equal(registry._meta.counts.copied, 17);
+assert.equal(registry._meta.counts.copied, 22);
 assert.equal(registry._meta.counts.refused, 0);
 assert.equal(modelAnchorDistanceDeg([-179, -2], [179, -2]), 2);
 assert(modelAnchorDistanceDeg([-179, -2], [-120, 0]) > 13);

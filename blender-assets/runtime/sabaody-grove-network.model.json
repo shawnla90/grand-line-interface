@@ -98,31 +98,31 @@
     ]
   },
   "stats": {
-    "objects": 344,
-    "vertices_input": 31286,
-    "triangles_input": 60264,
-    "materials": 7,
+    "objects": 713,
+    "vertices_input": 34944,
+    "triangles_input": 66112,
+    "materials": 15,
     "bounds_blender": {
       "min": [
-        -8.6595,
-        -6.335512,
-        -0.05
+        -11.664001,
+        -7.992,
+        -0.42
       ],
       "max": [
-        8.711749,
-        6.391388,
-        2.93
+        11.664001,
+        7.992,
+        2.995
       ]
     },
-    "bytes": 2784044
+    "bytes": 3574648
   },
   "build": {
     "blender": "4.5.3 LTS",
-    "glb_sha256": "21fb6fde8e0a5d059ca69239c4907d2eb730eaffc791a8455d50a65de2bb78cf",
+    "glb_sha256": "765b0e8b9b6e1f11a2632e7fd64ba0a7d943eb5b2cc7d9ea596eec8d4f7f32d0",
     "glb_header": {
       "magic": "glTF",
       "version": 2,
-      "declared_length": 2784044
+      "declared_length": 3574648
     }
   }
 }

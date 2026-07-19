@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "id": "sabaody-saga-2d-v1",
+  "chapter_span": {"start": 490, "end": 513},
+  "arcs": [
+    {"id": "sabaody", "label": "Sabaody Archipelago", "chapters": [490, 513]}
+  ],
+  "representation": "camera-facing-2d-atlas",
+  "supersedes_visible_art": [],
+  "runtime_policy": {
+    "chapter_gate": "Never fetch a scene before a verified start chapter.",
+    "playback": "Play once on entering close range, then hold the authored final frame.",
+    "backward_scrub": "Reset scene time, actors, pose selection, effects, and audio deterministically.",
+    "max_active_close_scenes": 1,
+    "max_distant_loops": 3,
+    "reduced_motion": "Use the final safe pose and suppress autoplay and effects.",
+    "cross_pack_rule": "One animated scene globally; newest verified saga pack owns the globe."
+  },
+  "scenes": [
+    {
+      "id": "sabaody-luffy-punches-charloss",
+      "label": "Luffy punches the Celestial Dragon at the Human Auctioning House",
+      "arc_id": "sabaody",
+      "type": "encounter",
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "missing_assets": null,
+      "chapter_gate": {
+        "start": 502,
+        "end": 502,
+        "verification": "verified",
+        "source_url": "https://api.api-onepiece.com/v2/chapters/en/502"
+      },
+      "place": {
+        "id": "sabaody-archipelago",
+        "landmark": "human-auctioning-house",
+        "arena": "sabaody-auction-house"
+      },
+      "visual_treatment": {
+        "base_gamma": 0.94,
+        "impact_gamma": 0.72,
+        "base_gain": 1.04,
+        "impact_gain": 1.34,
+        "impact_at_ms": 5150,
+        "impact_window_ms": 280
+      },
+      "duration_ms": 9800,
+      "actors": [
+        {
+          "id": "octy",
+          "asset_id": "octy-sabaody-auction",
+          "z": 18,
+          "keyframes": [
+            {"t": 0, "x": -0.05, "y": -0.05, "scale": 0.74, "rotation": 0, "opacity": 1, "pose": "wounded-kneeling"},
+            {"t": 1200, "x": -0.04, "y": -0.04, "scale": 0.76, "rotation": 0, "opacity": 1, "pose": "warning-luffy", "ease": "smooth"},
+            {"t": 2500, "x": -0.08, "y": -0.04, "scale": 0.75, "rotation": -2, "opacity": 1, "pose": "apology"},
+            {"t": 3800, "x": -0.03, "y": -0.03, "scale": 0.77, "rotation": 2, "opacity": 1, "pose": "reaching-stop", "ease": "accelerate"},
+            {"t": 5350, "x": -0.12, "y": -0.04, "scale": 0.75, "rotation": -5, "opacity": 1, "pose": "shocked-impact"},
+            {"t": 7600, "x": -0.12, "y": -0.06, "scale": 0.72, "rotation": -2, "opacity": 1, "pose": "relieved-collapse"}
+          ]
+        },
+        {
+          "id": "luffy",
+          "asset_id": "monkey-d-luffy-sabaody-auction",
+          "z": 25,
+          "keyframes": [
+            {"t": 0, "x": -0.68, "y": 0, "scale": 0.82, "rotation": 0, "opacity": 1, "pose": "wounded-approach"},
+            {"t": 1450, "x": -0.52, "y": 0, "scale": 0.86, "rotation": 0, "opacity": 1, "pose": "wounded-approach", "ease": "smooth"},
+            {"t": 2600, "x": -0.43, "y": 0.01, "scale": 0.9, "rotation": 0, "opacity": 1, "pose": "furious-stare"},
+            {"t": 3750, "x": -0.35, "y": 0.02, "scale": 0.93, "rotation": -4, "opacity": 1, "pose": "fist-drawback"},
+            {"t": 4650, "x": -0.08, "y": 0.06, "scale": 1.0, "rotation": 2, "opacity": 1, "pose": "silent-lunge", "ease": "accelerate"},
+            {"t": 5150, "x": 0.22, "y": 0.06, "scale": 1.07, "rotation": 4, "opacity": 1, "pose": "full-extension-punch", "ease": "accelerate"},
+            {"t": 5480, "x": 0.17, "y": 0.03, "scale": 1.03, "rotation": 1, "opacity": 1, "pose": "full-extension-punch"},
+            {"t": 6900, "x": 0.03, "y": 0, "scale": 0.94, "rotation": 0, "opacity": 1, "pose": "impact-follow-through", "ease": "decelerate"}
+          ]
+        },
+        {
+          "id": "charloss",
+          "asset_id": "saint-charloss-sabaody-auction",
+          "z": 23,
+          "keyframes": [
+            {"t": 0, "x": 0.58, "y": 0.03, "scale": 0.86, "rotation": 0, "opacity": 1, "pose": "smug-with-pistol"},
+            {"t": 700, "x": 0.54, "y": 0.02, "scale": 0.88, "rotation": -2, "opacity": 1, "pose": "pistol-fired"},
+            {"t": 2050, "x": 0.53, "y": 0.02, "scale": 0.87, "rotation": 0, "opacity": 1, "pose": "confused-turn"},
+            {"t": 4200, "x": 0.48, "y": 0.03, "scale": 0.9, "rotation": -4, "opacity": 1, "pose": "panic-recoil"},
+            {"t": 5150, "x": 0.44, "y": 0.08, "scale": 0.96, "rotation": -12, "opacity": 1, "pose": "face-impact"},
+            {"t": 5380, "x": 0.7, "y": 0.2, "scale": 0.91, "rotation": 28, "opacity": 1, "pose": "face-impact"},
+            {"t": 6900, "x": 0.76, "y": -0.05, "scale": 0.82, "rotation": 78, "opacity": 1, "pose": "defeated-fall", "ease": "decelerate"}
+          ]
+        }
+      ],
+      "events": [
+        {"t": 0, "type": "crowd", "duration_ms": 3200, "intensity": 0.5},
+        {"t": 650, "type": "smoke", "duration_ms": 1200, "intensity": 0.55},
+        {"t": 1300, "type": "walk-up-dust", "duration_ms": 1800, "intensity": 0.45},
+        {"t": 2700, "type": "promise-pulse", "duration_ms": 1100, "intensity": 0.55},
+        {"t": 4450, "type": "speed-lines", "duration_ms": 1150, "intensity": 1.0},
+        {"t": 5120, "type": "impact", "duration_ms": 760, "intensity": 1.0},
+        {"t": 5160, "type": "defeat-impact", "duration_ms": 1050, "intensity": 1.0},
+        {"t": 5350, "type": "dust", "duration_ms": 2200, "intensity": 0.85}
+      ]
+    }
+  ],
+  "future_milestones": [
+    {
+      "id": "sabaody-auction-house-punch",
+      "status": "complete",
+      "scenes": ["sabaody-luffy-punches-charloss"],
+      "note": "Chapter 502 action order is panel-backed by the 19 user-supplied reference pages and metadata-checked against the live chapter API."
+    },
+    {
+      "id": "sabaody-pressure-spine",
+      "status": "planned",
+      "scenes": ["sabaody-kizaru-supernovas", "sabaody-kuma-separates-crew"],
+      "note": "Keep later scenes independently chapter-verified; do not stretch the chapter-502 contract into them."
+    }
+  ]
+}

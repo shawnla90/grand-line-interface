@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "pack_id": "sabaody-saga-2d-v1",
+  "representation": "camera-facing-2d-atlas",
+  "character_count": 3,
+  "characters": [
+    {
+      "id": "monkey-d-luffy-sabaody-auction",
+      "kind": "character",
+      "variant": "sabaody-auction-house-chapter-502",
+      "metadata": "runtime/story-simulations/sabaody-saga-2d-v1/characters/monkey-d-luffy-sabaody-auction/character.json",
+      "atlas": "runtime/story-simulations/sabaody-saga-2d-v1/characters/monkey-d-luffy-sabaody-auction/atlas.png",
+      "atlas_sha256": "a69093e8aa40e60d8660faabe959b50a90a3f6e6eee9ed24451241ecad2414df",
+      "poses": [
+        "wounded-approach",
+        "furious-stare",
+        "fist-drawback",
+        "silent-lunge",
+        "full-extension-punch",
+        "impact-follow-through"
+      ],
+      "map_height": 1.03
+    },
+    {
+      "id": "saint-charloss-sabaody-auction",
+      "kind": "character",
+      "variant": "sabaody-auction-house-chapter-502",
+      "metadata": "runtime/story-simulations/sabaody-saga-2d-v1/characters/saint-charloss-sabaody-auction/character.json",
+      "atlas": "runtime/story-simulations/sabaody-saga-2d-v1/characters/saint-charloss-sabaody-auction/atlas.png",
+      "atlas_sha256": "4e76f80faf626351d271b433ebd9c0fd30cc69647eca0db6c17cea0d55ede11f",
+      "poses": [
+        "smug-with-pistol",
+        "pistol-fired",
+        "confused-turn",
+        "panic-recoil",
+        "face-impact",
+        "defeated-fall"
+      ],
+      "map_height": 1.13
+    },
+    {
+      "id": "octy-sabaody-auction",
+      "kind": "character",
+      "variant": "sabaody-auction-house-chapter-502",
+      "metadata": "runtime/story-simulations/sabaody-saga-2d-v1/characters/octy-sabaody-auction/character.json",
+      "atlas": "runtime/story-simulations/sabaody-saga-2d-v1/characters/octy-sabaody-auction/atlas.png",
+      "atlas_sha256": "73e931018148b685ddaa7c2e7a04eefdd47f024c9c3f7549ac53141fcf73b221",
+      "poses": [
+        "wounded-kneeling",
+        "warning-luffy",
+        "apology",
+        "reaching-stop",
+        "shocked-impact",
+        "relieved-collapse"
+      ],
+      "map_height": 0.94
+    }
+  ]
+}

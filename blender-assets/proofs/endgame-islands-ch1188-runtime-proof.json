@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-07-19",
+  "app_url": "http://localhost:3000/?ch=1188",
+  "app_http": {"status": 200, "chapter_slider_max": 1188},
+  "runtime_asset_http": [
+    {"path": "/art/runtime/egghead-future-island-system.glb", "status": 200, "bytes": 1710592, "sha256": "d51a8ad1983f4a8827e2319e53ce13923115de74dfa16b77399324d8164ea052"},
+    {"path": "/art/runtime/wano-onigashima-country-system.glb", "status": 200, "bytes": 718264, "sha256": "7a289fcc84732782d106743254b03554b5d86a0ed511013724e2d32c0eaaaf8c"},
+    {"path": "/art/runtime/elbaph-adam-world-system.glb", "status": 200, "bytes": 1660168, "sha256": "06c62e7adf3f2671ab5550e8702550d94c1de7977cde12472596e080cf7728fa"}
+  ],
+  "onigashima_geographic_shift": {
+    "app_checks": [
+      {"chapter": 997, "runtime": "Wano close-Mercator dive loaded", "state": "lifted with Flame Clouds"},
+      {"chapter": 1049, "runtime": "same Wano GLB remained loaded", "state": "landed outside Flower Capital; Flame Clouds hidden"}
+    ],
+    "named_clip": "onigashima_geographic_shift",
+    "duration_seconds": 5.833333333333333,
+    "channels": 2,
+    "animated_root": "Onigashima geographic root",
+    "animated_root_children": 39,
+    "flame_cloud_geometry_nodes": 14,
+    "flame_cloud_chapter_window": [997, 1048],
+    "chapter_checkpoints": [793, 996, 997, 1027, 1039, 1049, 1108, 1109],
+    "motion_preview": {
+      "path": "/art/runtime/onigashima-geographic-shift-preview.mp4",
+      "status": 200,
+      "bytes": 353436,
+      "sha256": "b8e53d2e37a005f6b7977bee25e8174e24c5e6e209203608ebd4faca6d7ccbb9"
+    },
+    "spatial_policy": "Verified chapter states are fixed checkpoints; continuous motion between them is visual interpolation, not asserted canon survey geometry."
+  },
+  "verification": {
+    "runtime_registry": "PASS: 20 runtime GLBs and fallbacks verified",
+    "runtime_sync": "PASS: 20 copied, 0 refused",
+    "onigashima_geography_audit": "PASS: chapter progress, reverse scrub, Flame Cloud visibility, GLB clip, and root hierarchy",
+    "reverse_mountain_regression_audit": "PASS",
+    "next_build": "PASS",
+    "targeted_eslint": "PASS",
+    "known_unrelated_warning": "The pre-existing Mary Geoise model still reports three fail-closed gate contradictions; none belong to this batch."
+  },
+  "spoiler_receipt": {
+    "chapter_1188_official_release": "verified",
+    "chapter_1188_elbaph_event_geometry": "withheld_chapter_to_verify",
+    "nine_world_theory_geometry": "excluded_from_canon_base"
+  }
+}

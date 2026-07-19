@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "pack_id": "sabaody-saga-2d-v1",
+  "researched_at": "2026-07-18",
+  "policy": "The fan API supplies structured metadata only. The user-supplied chapter pages establish action order, staging, costumes, and the exact punch beat. The runtime reanimates original derived pose art and does not ship the photographed pages.",
+  "api_snapshot": {
+    "url": "https://api.api-onepiece.com/v2/chapters/en/502",
+    "id": 502,
+    "title": "The Celestial Dragons incident",
+    "description": "",
+    "tome_id": 51,
+    "tome_title": "The eleven Supernovae",
+    "observed_at": "2026-07-18"
+  },
+  "source_sequence": {
+    "directory": "/Users/shawnos.ai/Downloads",
+    "files": [
+      {"file": "IMG_5560.HEIC", "sha256": "78962c3f404f4069ece705bc2dd668598b81ed0329b605a4a16594052a7b4a8b", "role": "chapter title and auction-house exterior"},
+      {"file": "IMG_5561.HEIC", "sha256": "67498b2cf0c0446e8b9341f262c4edf9d9737ea6db0e401ad0d1e641f0e16aa6", "role": "auction-house interior and stage establishing"},
+      {"file": "IMG_5562.HEIC", "sha256": "255c680259e12d9b848756ba1fc6ad1a383aa5877625be0065b013e9f16a0238", "role": "Celestial Dragon and mermaid-auction context"},
+      {"file": "IMG_5563.HEIC", "sha256": "7913964b82e5a96faeef9b559b8a806e9bac8e5e50d32ca5e9ceba078f680dad", "role": "auction-floor reactions and approach"},
+      {"file": "IMG_5564.HEIC", "sha256": "fcfa0a5d133012cb90300a1bd3f105c157568b3ae0bffc0da54065ceb6b3507f", "role": "auction crowd and stage continuity"},
+      {"file": "IMG_5565.HEIC", "sha256": "4ab098fe48407fac256c2c534932270addf3220405be790597ad063412042102", "role": "auction bid and stage blocking"},
+      {"file": "IMG_5566.HEIC", "sha256": "e938398aa53d1c2b7b3adfce849d733bbf417ed22e9535795373258111539b77", "role": "crew and crowd reaction"},
+      {"file": "IMG_5567.HEIC", "sha256": "a3947c7e817ac1691e32b7a831e64ecab6c01ae770a246308d353cdba80d0959", "role": "Hachi and Charloss confrontation setup"},
+      {"file": "IMG_5568.HEIC", "sha256": "f0b1666ad239dbb7b04c56bb641d739f9142bd77ac0b1e768bb2b48763853ca3", "role": "gunshot and room reaction"},
+      {"file": "IMG_5569.HEIC", "sha256": "34225f6dc751954d42bc59d2e3aa9737b74ad16db8f490aaa128296fb9780444", "role": "Luffy notices the shot"},
+      {"file": "IMG_5570.HEIC", "sha256": "4ec567a1ebdc646b94094454e01a7bdc9d573b11347185999f656d928a7f49b9", "role": "Luffy advances through the auction floor"},
+      {"file": "IMG_5571.HEIC", "sha256": "1a7ecb10b65d17193c4f93668ccff73cd3a0d112a1d0c6b06b7d6dd5f9dd0c5e", "role": "Hachi warning and Luffy approach"},
+      {"file": "IMG_5572.HEIC", "sha256": "e56b7621b34ebe62d66ed513d27dc8d8aa17a28a50e4b7d46073468a0b42a491", "role": "room reaction and Luffy commitment"},
+      {"file": "IMG_5573.HEIC", "sha256": "640af4b6d2d01652ea3f085f720ba37a5eba169626e087ef8843f32ad84c2d25", "role": "approach continuation"},
+      {"file": "IMG_5574.HEIC", "sha256": "28160673f32e5e571d6ef105a4c0863e39ad00d0c79aae70320688ed0effcac3", "role": "Hachi wounded and Luffy entering confrontation distance"},
+      {"file": "IMG_5575.HEIC", "sha256": "069b36746b69ae3f5c72dd9bf88c1a0bcf562bc47ee2e9ae157dbeab8dfaf871", "role": "Hachi apology and Luffy close approach"},
+      {"file": "IMG_5576.HEIC", "sha256": "bb033f950d3a9cb6a94ab3141fee4358aa0ad160d6076fcf34b1d7b3833e5e32", "role": "Luffy stare, Charloss gun, and final warning"},
+      {"file": "IMG_5577.HEIC", "sha256": "77aea01afbd296fd016b47b979525e8d1d2ab28531eaa0b2f6d8a2df3301e272", "role": "punch contact composition"},
+      {"file": "IMG_5578.HEIC", "sha256": "72a1d08613e91f67ced27fdcc33bf24dade5a3ada2ca2452698e90c8f4510160", "role": "Charloss impact reaction and chapter endpoint"}
+    ]
+  },
+  "scenes": [
+    {
+      "id": "sabaody-luffy-punches-charloss",
+      "status": "chapter_verified",
+      "arc_id": "sabaody",
+      "chapter_gate": {
+        "start": 502,
+        "end": 502,
+        "verification": "verified",
+        "source_urls": [
+          "https://api.api-onepiece.com/v2/chapters/en/502"
+        ]
+      },
+      "place": {
+        "id": "sabaody-archipelago",
+        "landmark": "human-auctioning-house",
+        "arena": "sabaody-auction-house",
+        "anchor_status": "resolved_to_existing_island_and_landmark"
+      },
+      "cast": [
+        "monkey-d-luffy-sabaody-auction",
+        "saint-charloss-sabaody-auction",
+        "octy-sabaody-auction"
+      ],
+      "outcome_claim": "After Charloss shoots Hatchan, Luffy walks across the auction floor despite Hachi's warning and strikes the Celestial Dragon in the face.",
+      "visual_variant_notes": [
+        "pre-timeskip Sabaody Luffy wears his red vest, blue shorts, sandals, and straw hat behind his neck",
+        "Luffy's expression remains controlled and furious rather than a generic battle grin",
+        "Charloss retains the bubble helmet, upward hair, formal Celestial Dragon suit, and pistol until impact",
+        "Hatchan is wounded and grounded; he is a supporting emotional anchor, not a combatant",
+        "the camera is a 16:9 auction-floor theatre, never a square crop of the supplied pages",
+        "the contact frame uses a short freeze, gamma lift, edge flash, and recovery rather than a static color grade"
+      ],
+      "unknowns": [
+        "Exact local bearing of the Human Auctioning House within the 79-grove network remains intentionally unspecified."
+      ],
+      "integration_note": "Only chapter 502 receives this replay. Later Kizaru, Pacifista, and Kuma scenes require independent contracts."
+    }
+  ]
+}

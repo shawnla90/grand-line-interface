@@ -1,0 +1,407 @@
+{
+  "_warning": "HAND-AUTHORED. A sync script that writes this file is a bug. No upstream source has BOARD STATE as an entity — where the era's key players stand, as of a chapter, in the form the reader has seen — so every row here is hand-typed. verified:false means Shawn has not confirmed the chapters against the manga yet.",
+  "_why_this_file_exists": "The voyage line answers where the STRAW HATS are; nothing answers where everyone else is. This file is the war table: the emperors, admirals, revolutionaries and wildcards whose positions ARE the state of the story. At the max chapter it answers 'where is everyone right now' for a caught-up reader; at chapter 500 the same page deals an honest 2008 board.",
+  "_semantics": "A player joins the board when their character debut has passed AND their first position window has opened — both gates, because a name is a spoiler by itself. position_timeline uses the crew_presence window rule: the active window at chapter N is the last whose from_chapter <= N, unless its to_chapter has passed — then the player is 'off your chart' (position unknown is an honest state, not a bug). island_slug resolves against data/canon.json islands[] or is null for open sea / unplaceable positions. form_timeline is the same idea for POWER: the form the reader has seen by chapter N (gears, awakenings), so a card never shows a form the reader hasn't met. Coverage grows by authoring windows, not by writing code.",
+  "_coverage_note": "Deliberately endgame-weighted: most windows open after Wano, because that is where 'where are they NOW' has the most value and the voyage line has the least coverage. Early-era windows exist only where they anchor a player's introduction to the board. This list grows when the research does.",
+  "_before_any_content_ships": "Every row is verified:false. Shawn must confirm every chapter against the manga and flip verified to true. Until then the UI renders these as unverified.",
+  "players": [
+    {
+      "slug": "monkey-d-luffy",
+      "role": "Emperor · Captain, Straw Hat Pirates",
+      "position_timeline": [
+        {
+          "from_chapter": 1058,
+          "to_chapter": 1060,
+          "island_slug": "wano-country",
+          "label": "Named an Emperor — departing Wano",
+          "source_ref": "Hand-authored. The new bounties and emperor designation land after the raid (~ch. 1058). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "from_chapter": 1061,
+          "to_chapter": 1124,
+          "island_slug": "egghead",
+          "label": "Egghead — the island of the future",
+          "source_ref": "Hand-authored. The crew reaches Egghead's waters (~ch. 1061) and the incident runs to the escape (~ch. 1124). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "from_chapter": 1125,
+          "to_chapter": null,
+          "island_slug": "elbaph",
+          "label": "Making for Elbaph, land of the giants",
+          "source_ref": "Hand-authored. The Sunny sails from Egghead with the giants' warship (~ch. 1125). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "form_timeline": [
+        {
+          "from_chapter": 387,
+          "form": "Gear Second",
+          "source_ref": "Hand-authored. First used against Blueno at Enies Lobby (~ch. 387). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "from_chapter": 404,
+          "form": "Gear Third",
+          "source_ref": "Hand-authored. First shown in the Enies Lobby fights (~ch. 404). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "from_chapter": 784,
+          "form": "Gear Fourth — Boundman",
+          "source_ref": "Hand-authored. Unveiled against Doflamingo at Dressrosa (~ch. 784). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "from_chapter": 895,
+          "form": "Gear Fourth — Snakeman",
+          "source_ref": "Hand-authored. Unveiled against Katakuri on Whole Cake Island (~ch. 895). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "from_chapter": 1044,
+          "form": "Gear Fifth — the warrior of liberation",
+          "source_ref": "Hand-authored. The awakening atop Onigashima (~ch. 1044). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "shanks",
+      "role": "Emperor · Captain, Red Hair Pirates",
+      "position_timeline": [
+        {
+          "from_chapter": 907,
+          "to_chapter": 907,
+          "island_slug": "mary-geoise",
+          "label": "Mary Geoise — an audience no pirate should have",
+          "source_ref": "Hand-authored. Shanks received by the Five Elders at the Reverie (~ch. 907). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "from_chapter": 1054,
+          "to_chapter": 1075,
+          "island_slug": null,
+          "label": "Moving in the New World — reaching for the One Piece",
+          "source_ref": "Hand-authored. Shanks resolves to claim the One Piece after Wano (~ch. 1054). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "from_chapter": 1076,
+          "to_chapter": null,
+          "island_slug": "elbaph",
+          "label": "Elbaph — anchored among the giants",
+          "source_ref": "Hand-authored. The Red Hair fleet at Elbaph; Kid finds them there (~ch. 1076–1079). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "form_timeline": []
+    },
+    {
+      "slug": "marshall-d-teach-blackbeard",
+      "role": "Emperor · Admiral, Blackbeard Pirates",
+      "position_timeline": [
+        {
+          "from_chapter": 925,
+          "to_chapter": 1062,
+          "island_slug": "hachinosu",
+          "label": "Hachinosu — the pirate island",
+          "source_ref": "Hand-authored. Blackbeard shown ruling from Hachinosu (~ch. 925). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "from_chapter": 1063,
+          "to_chapter": 1080,
+          "island_slug": null,
+          "label": "At sea — hunting Law's road poneglyphs",
+          "source_ref": "Hand-authored. The ambush of the Heart Pirates (~ch. 1063). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "from_chapter": 1081,
+          "to_chapter": null,
+          "island_slug": "hachinosu",
+          "label": "Hachinosu — holding the Hero of the Marines",
+          "source_ref": "Hand-authored. Back at Hachinosu through the Garp raid and after (~ch. 1081–1088). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "form_timeline": [
+        {
+          "from_chapter": 441,
+          "form": "Yami Yami no Mi — darkness",
+          "source_ref": "Hand-authored. The darkness shown against Ace at Banaro (~ch. 441). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "from_chapter": 577,
+          "form": "Two powers — darkness and the quake",
+          "source_ref": "Hand-authored. Whitebeard's power taken at Marineford (~ch. 577). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "buggy-the-clown",
+      "role": "Emperor · Cross Guild, the accidental figurehead",
+      "position_timeline": [
+        {
+          "from_chapter": 1053,
+          "to_chapter": 1055,
+          "island_slug": null,
+          "label": "Named an Emperor — to everyone's horror, including his",
+          "source_ref": "Hand-authored. The new emperor lineup revealed after Wano (~ch. 1053). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "from_chapter": 1056,
+          "to_chapter": null,
+          "island_slug": "karai-bari-island",
+          "label": "Karai Bari Island — Cross Guild headquarters",
+          "source_ref": "Hand-authored. Cross Guild's base shown (~ch. 1056). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "form_timeline": []
+    },
+    {
+      "slug": "dracule-mihawk",
+      "role": "Cross Guild · the strongest sword",
+      "position_timeline": [
+        {
+          "from_chapter": 1056,
+          "to_chapter": null,
+          "island_slug": "karai-bari-island",
+          "label": "Karai Bari Island — the sword behind the clown",
+          "source_ref": "Hand-authored. Cross Guild's true hierarchy shown (~ch. 1056). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "form_timeline": []
+    },
+    {
+      "slug": "crocodile",
+      "role": "Cross Guild · the debt collector",
+      "position_timeline": [
+        {
+          "from_chapter": 1056,
+          "to_chapter": null,
+          "island_slug": "karai-bari-island",
+          "label": "Karai Bari Island — the mind behind the clown",
+          "source_ref": "Hand-authored. Cross Guild's true hierarchy shown (~ch. 1056). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "form_timeline": []
+    },
+    {
+      "slug": "sakazuki-akainu",
+      "role": "Fleet Admiral, Marine Headquarters",
+      "position_timeline": [
+        {
+          "from_chapter": 700,
+          "to_chapter": null,
+          "island_slug": null,
+          "label": "New Marineford — the fleet admiral's desk",
+          "source_ref": "Hand-authored. Sakazuki as fleet admiral at the relocated HQ, post-timeskip (~ch. 700 era). Window opening is conservative. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "form_timeline": []
+    },
+    {
+      "slug": "borsalino-kizaru",
+      "role": "Admiral, Marine Headquarters",
+      "position_timeline": [
+        {
+          "from_chapter": 1061,
+          "to_chapter": 1125,
+          "island_slug": "egghead",
+          "label": "Egghead — sent to erase a genius",
+          "source_ref": "Hand-authored. Kizaru dispatched to Egghead with CP0 (~ch. 1061), through the withdrawal (~ch. 1125). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "form_timeline": []
+    },
+    {
+      "slug": "monkey-d-garp",
+      "role": "Vice Admiral · the Hero of the Marines",
+      "position_timeline": [
+        {
+          "from_chapter": 1080,
+          "to_chapter": 1087,
+          "island_slug": "hachinosu",
+          "label": "Hachinosu — one man's raid to bring Koby home",
+          "source_ref": "Hand-authored. Garp's assault on the pirate island (~ch. 1080). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "from_chapter": 1088,
+          "to_chapter": null,
+          "island_slug": "hachinosu",
+          "label": "Held on Hachinosu — the hero stayed behind",
+          "source_ref": "Hand-authored. Koby escapes; Garp remains in Blackbeard hands (~ch. 1088). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "form_timeline": []
+    },
+    {
+      "slug": "monkey-d-dragon",
+      "role": "Supreme Commander, Revolutionary Army",
+      "position_timeline": [
+        {
+          "from_chapter": 1058,
+          "to_chapter": null,
+          "island_slug": "momoiro-island",
+          "label": "Kamabakka Queendom — the army's new heart",
+          "source_ref": "Hand-authored. The revolutionary command shown at Kamabakka after Baltigo's fall (~ch. 1058). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "form_timeline": []
+    },
+    {
+      "slug": "sabo",
+      "role": "Chief of Staff, Revolutionary Army",
+      "position_timeline": [
+        {
+          "from_chapter": 1060,
+          "to_chapter": 1081,
+          "island_slug": null,
+          "label": "Out of Lulusia — the island that no longer exists",
+          "source_ref": "Hand-authored. Sabo's call from Lulusia before its erasure; his survival revealed later (~ch. 1060). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "from_chapter": 1082,
+          "to_chapter": null,
+          "island_slug": "momoiro-island",
+          "label": "Kamabakka — carrying what he saw in the empty throne room",
+          "source_ref": "Hand-authored. Sabo reports to Dragon what he witnessed at Mary Geoise (~ch. 1082). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "form_timeline": [
+        {
+          "from_chapter": 744,
+          "form": "Mera Mera no Mi — his brother's flame",
+          "source_ref": "Hand-authored. Sabo claims the flame at Dressrosa's colosseum (~ch. 744). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "slug": "nefertari-vivi",
+      "role": "Princess of Alabasta · officially missing",
+      "position_timeline": [
+        {
+          "from_chapter": 1074,
+          "to_chapter": null,
+          "island_slug": null,
+          "label": "Aboard Morgans' news balloon — hidden in the world's loudest place",
+          "source_ref": "Hand-authored. Vivi shown traveling with Big News Morgans (~ch. 1074). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "form_timeline": []
+    },
+    {
+      "slug": "trafalgar-d-water-law",
+      "role": "Captain, Heart Pirates",
+      "position_timeline": [
+        {
+          "from_chapter": 1063,
+          "to_chapter": 1080,
+          "island_slug": null,
+          "label": "At sea — ambushed by the Blackbeard Pirates",
+          "source_ref": "Hand-authored. The Heart Pirates intercepted (~ch. 1063). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "from_chapter": 1081,
+          "to_chapter": null,
+          "island_slug": null,
+          "label": "Beaten on Winner Island — slipped away, bearing unknown",
+          "source_ref": "Hand-authored. The defeat shown; Bepo carries Law out (~ch. 1081). Position after is deliberately uncharted. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "form_timeline": []
+    },
+    {
+      "slug": "eustass-kidd",
+      "role": "Captain, Kid Pirates",
+      "position_timeline": [
+        {
+          "from_chapter": 1076,
+          "to_chapter": 1078,
+          "island_slug": null,
+          "label": "Racing for the last road poneglyph",
+          "source_ref": "Hand-authored. The Victoria Punk's course after Wano (~ch. 1076). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        },
+        {
+          "from_chapter": 1079,
+          "to_chapter": null,
+          "island_slug": "elbaph",
+          "label": "Wrecked off Elbaph — he drew on Red Hair and lost",
+          "source_ref": "Hand-authored. Shanks ends the duel in one stroke (~ch. 1079). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "form_timeline": []
+    },
+    {
+      "slug": "im-sama",
+      "role": "The figure on the empty throne",
+      "position_timeline": [
+        {
+          "from_chapter": 908,
+          "to_chapter": null,
+          "island_slug": "mary-geoise",
+          "label": "Pangaea Castle — the throne the world swears is empty",
+          "source_ref": "Hand-authored. Imu takes the empty throne at the Reverie (~ch. 908). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "form_timeline": []
+    }
+  ]
+}

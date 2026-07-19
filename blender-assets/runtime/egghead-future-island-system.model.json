@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "egghead-future-island-system",
+  "source_blend": "/Users/shawnos.ai/dead-reckoning/blender-assets/source/egghead-future-island-system.blend",
+  "runtime_glb": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/egghead-future-island-system.glb",
+  "model_units": "stylized Blender units; runtime scale is defined by the integration manifest",
+  "coordinate_system": "glTF 2.0 Y-up; Blender exporter converts from Z-up",
+  "export": {
+    "exporter": "Blender built-in glTF 2.0 exporter",
+    "compression": "none; optional gltfpack binary is not installed",
+    "animations": false,
+    "preview_proxy_excluded": true,
+    "curves_converted_to_mesh": [],
+    "excluded_objects": [
+      "Runtime Camera",
+      "Key",
+      "Fill",
+      "Rim"
+    ]
+  },
+  "stats": {
+    "objects": 128,
+    "vertices_input": 12944,
+    "triangles_input": 25436,
+    "materials": 10,
+    "bounds_blender": {
+      "min": [
+        -16.24,
+        -11.6,
+        -1.3
+      ],
+      "max": [
+        16.24,
+        11.6,
+        12.4
+      ]
+    },
+    "bytes": 1710592
+  },
+  "build": {
+    "blender": "4.5.3 LTS",
+    "glb_sha256": "d51a8ad1983f4a8827e2319e53ce13923115de74dfa16b77399324d8164ea052",
+    "glb_header": {
+      "magic": "glTF",
+      "version": 2,
+      "declared_length": 1710592
+    }
+  }
+}

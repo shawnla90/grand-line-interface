@@ -8,9 +8,9 @@
   },
   "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_TRANSITIONS",
   "counts": {
-    "models": 17,
-    "transitions": 2,
-    "runtime_scenes": 15
+    "models": 22,
+    "transitions": 3,
+    "runtime_scenes": 19
   },
   "models": [
     {
@@ -215,7 +215,7 @@
         "alpha": true
       },
       "source_blend": "source/fish-man-island.blend",
-      "contract": null,
+      "contract": "contracts/fish-man-island.visual.json",
       "integration": {
         "mode": "maplibre_custom_3d_layer",
         "fallback_mode": "maplibre_image_source",
@@ -243,19 +243,19 @@
         ],
         "anchor_confidence": "derived",
         "chapter_beats": {
-          "base_reveal": 68,
+          "base_reveal": 608,
           "dive": {
             "dive": 602,
             "deep": 605,
             "riseStart": 651,
             "surface": 653
           },
-          "safe_full_scene": 68
+          "safe_full_scene": 608
         },
         "component_gates": [
           {
             "id": "fish-man-island",
-            "reveal_chapter": 68,
+            "reveal_chapter": 608,
             "verification": "verified",
             "default_hidden": false
           }
@@ -304,563 +304,6 @@
           "magic": "glTF",
           "version": 2,
           "declared_length": 1461208
-        }
-      }
-    },
-    {
-      "id": "totto-land",
-      "label": "Totto Land archipelago",
-      "maturity": "runtime_blockout_v1",
-      "glb": "runtime/totto-land.glb",
-      "fallback_raster": "renders/runtime/totto-land.png",
-      "fallback": {
-        "path": "renders/runtime/totto-land.png",
-        "bytes": 751260,
-        "sha256": "8145a8d0183764d1cefe3212a70a3fdc6954809e30da8147792d64d4624df75f",
-        "pixel_size": [
-          1200,
-          900
-        ],
-        "alpha": true
-      },
-      "source_blend": "source/totto-land.blend",
-      "contract": "contracts/totto-land.visual.json",
-      "integration": {
-        "mode": "maplibre_custom_3d_layer",
-        "fallback_mode": "maplibre_image_source_or_inset",
-        "anchor": [
-          72.2778,
-          -2.819
-        ],
-        "anchor_confidence": "derived",
-        "anchor_usage": "atlas_anchor_only",
-        "anchor_warning": "Deterministic atlas placement; never use it as evidence of relative canon topology.",
-        "chapter_beats": {
-          "base_reveal": 651,
-          "safe_full_scene": 899
-        },
-        "component_gates": [
-          {
-            "id": "whole-cake-island",
-            "role": "central_main_island",
-            "reveal_chapter": 651,
-            "verification": "verified",
-            "default_hidden": false
-          },
-          {
-            "id": "whole-cake-chateau",
-            "role": "nested_landmark",
-            "reveal_chapter": 651,
-            "verification": "verified",
-            "default_hidden": false
-          },
-          {
-            "id": "100-island",
-            "role": "subsidiary_island",
-            "theme_hint": "juice",
-            "reveal_chapter": null,
-            "verification": "chapter_to_verify",
-            "default_hidden": true,
-            "relative_placement": {
-              "direction": null,
-              "ring": null,
-              "medium": "unresolved"
-            }
-          },
-          {
-            "id": "biscuits-island",
-            "role": "subsidiary_island",
-            "theme_hint": "biscuits",
-            "reveal_chapter": 828,
-            "verification": "verified",
-            "default_hidden": false,
-            "relative_placement": {
-              "direction": "northwest",
-              "ring": null,
-              "medium": "manga_and_anime"
-            }
-          },
-          {
-            "id": "black-island",
-            "role": "subsidiary_island",
-            "theme_hint": "tea",
-            "reveal_chapter": null,
-            "verification": "chapter_to_verify",
-            "default_hidden": true,
-            "relative_placement": {
-              "direction": "northwest",
-              "ring": null,
-              "medium": "anime"
-            }
-          },
-          {
-            "id": "cacao-island",
-            "role": "subsidiary_island",
-            "theme_hint": "cacao",
-            "reveal_chapter": 827,
-            "verification": "verified",
-            "default_hidden": false,
-            "relative_placement": {
-              "direction": "southwest",
-              "ring": "outermost",
-              "medium": "manga_and_anime"
-            }
-          },
-          {
-            "id": "candy-island",
-            "role": "subsidiary_island",
-            "theme_hint": "candy",
-            "reveal_chapter": 828,
-            "verification": "verified",
-            "default_hidden": false,
-            "relative_placement": {
-              "direction": "southwest",
-              "ring": "innermost",
-              "medium": "manga_and_anime"
-            }
-          },
-          {
-            "id": "cheese-island",
-            "role": "subsidiary_island",
-            "theme_hint": "cheese",
-            "reveal_chapter": 859,
-            "verification": "verified",
-            "default_hidden": false,
-            "relative_placement": {
-              "direction": "west",
-              "ring": null,
-              "medium": "manga_and_anime"
-            }
-          },
-          {
-            "id": "cutlery-island",
-            "role": "subsidiary_island",
-            "theme_hint": "cutlery",
-            "reveal_chapter": 899,
-            "verification": "verified",
-            "default_hidden": false,
-            "relative_placement": {
-              "direction": null,
-              "ring": null,
-              "medium": "unresolved"
-            }
-          },
-          {
-            "id": "flavor-island",
-            "role": "subsidiary_island",
-            "theme_hint": "flavor",
-            "reveal_chapter": 874,
-            "verification": "verified",
-            "default_hidden": false,
-            "relative_placement": {
-              "direction": "northwest",
-              "ring": null,
-              "medium": "anime"
-            }
-          },
-          {
-            "id": "fruits-island",
-            "role": "subsidiary_island",
-            "theme_hint": "fruits",
-            "reveal_chapter": 894,
-            "verification": "verified",
-            "default_hidden": false,
-            "relative_placement": {
-              "direction": "east",
-              "ring": null,
-              "medium": "anime"
-            }
-          },
-          {
-            "id": "funwari-island",
-            "role": "subsidiary_island",
-            "theme_hint": "funwari",
-            "reveal_chapter": 899,
-            "verification": "verified",
-            "default_hidden": false,
-            "relative_placement": {
-              "direction": "southwest",
-              "ring": null,
-              "medium": "anime"
-            }
-          },
-          {
-            "id": "futoru-island",
-            "role": "subsidiary_island",
-            "theme_hint": "tasting",
-            "reveal_chapter": null,
-            "verification": "chapter_to_verify",
-            "default_hidden": true,
-            "relative_placement": {
-              "direction": "north",
-              "ring": null,
-              "medium": "anime"
-            }
-          },
-          {
-            "id": "ice-island",
-            "role": "subsidiary_island",
-            "theme_hint": "ice",
-            "reveal_chapter": 899,
-            "verification": "verified",
-            "default_hidden": false,
-            "relative_placement": {
-              "direction": "southeast",
-              "ring": null,
-              "medium": "anime"
-            }
-          },
-          {
-            "id": "jam-island",
-            "role": "subsidiary_island",
-            "theme_hint": "jam",
-            "reveal_chapter": 829,
-            "verification": "verified",
-            "default_hidden": false,
-            "relative_placement": {
-              "direction": "west",
-              "ring": null,
-              "medium": "manga_and_anime"
-            }
-          },
-          {
-            "id": "jelly-island",
-            "role": "subsidiary_island",
-            "theme_hint": "jelly",
-            "reveal_chapter": 894,
-            "verification": "verified",
-            "default_hidden": false,
-            "relative_placement": {
-              "direction": "south",
-              "ring": null,
-              "medium": "anime"
-            }
-          },
-          {
-            "id": "kibo-island",
-            "role": "subsidiary_island",
-            "theme_hint": "yeast",
-            "reveal_chapter": null,
-            "verification": "chapter_to_verify",
-            "default_hidden": true,
-            "relative_placement": {
-              "direction": null,
-              "ring": null,
-              "medium": "unresolved"
-            }
-          },
-          {
-            "id": "kimi-island",
-            "role": "subsidiary_island",
-            "theme_hint": "eggs",
-            "reveal_chapter": null,
-            "verification": "chapter_to_verify",
-            "default_hidden": true,
-            "relative_placement": {
-              "direction": null,
-              "ring": null,
-              "medium": "unresolved"
-            }
-          },
-          {
-            "id": "kinko-island",
-            "role": "subsidiary_island",
-            "theme_hint": "finance",
-            "reveal_chapter": 886,
-            "verification": "verified",
-            "default_hidden": false,
-            "relative_placement": {
-              "direction": null,
-              "ring": null,
-              "medium": "unresolved"
-            }
-          },
-          {
-            "id": "komugi-island",
-            "role": "subsidiary_island",
-            "theme_hint": "flour",
-            "reveal_chapter": 891,
-            "verification": "verified",
-            "default_hidden": false,
-            "relative_placement": {
-              "direction": null,
-              "ring": null,
-              "medium": "unresolved"
-            }
-          },
-          {
-            "id": "liqueur-island",
-            "role": "subsidiary_island",
-            "theme_hint": "liqueur",
-            "reveal_chapter": 894,
-            "verification": "verified",
-            "default_hidden": false,
-            "relative_placement": {
-              "direction": "southwest",
-              "ring": null,
-              "medium": "manga; anime placement conflicts"
-            }
-          },
-          {
-            "id": "loving-island",
-            "role": "subsidiary_island",
-            "theme_hint": "love",
-            "reveal_chapter": null,
-            "verification": "chapter_to_verify",
-            "default_hidden": true,
-            "relative_placement": {
-              "direction": null,
-              "ring": null,
-              "medium": "unresolved"
-            }
-          },
-          {
-            "id": "margarine-island",
-            "role": "subsidiary_island",
-            "theme_hint": "margarine",
-            "reveal_chapter": null,
-            "verification": "chapter_to_verify",
-            "default_hidden": true,
-            "relative_placement": {
-              "direction": null,
-              "ring": null,
-              "medium": "unresolved"
-            }
-          },
-          {
-            "id": "milenge-island",
-            "role": "subsidiary_island",
-            "theme_hint": "meringue",
-            "reveal_chapter": 894,
-            "verification": "verified",
-            "default_hidden": false,
-            "relative_placement": {
-              "direction": "south",
-              "ring": null,
-              "medium": "anime"
-            }
-          },
-          {
-            "id": "noko-island",
-            "role": "subsidiary_island",
-            "theme_hint": "whipped-cream",
-            "reveal_chapter": null,
-            "verification": "chapter_to_verify",
-            "default_hidden": true,
-            "relative_placement": {
-              "direction": null,
-              "ring": null,
-              "medium": "unresolved"
-            }
-          },
-          {
-            "id": "nuts-island",
-            "role": "subsidiary_island",
-            "theme_hint": "nuts",
-            "reveal_chapter": 859,
-            "verification": "verified",
-            "default_hidden": false,
-            "relative_placement": {
-              "direction": "west",
-              "ring": null,
-              "medium": "manga_and_anime"
-            }
-          },
-          {
-            "id": "package-island",
-            "role": "subsidiary_island",
-            "theme_hint": "package",
-            "reveal_chapter": null,
-            "verification": "chapter_to_verify",
-            "default_hidden": true,
-            "relative_placement": {
-              "direction": "northwest",
-              "ring": null,
-              "medium": "anime"
-            }
-          },
-          {
-            "id": "piepie-island",
-            "role": "subsidiary_island",
-            "theme_hint": "piepie",
-            "reveal_chapter": 894,
-            "verification": "verified",
-            "default_hidden": false,
-            "relative_placement": {
-              "direction": "northeast",
-              "ring": null,
-              "medium": "anime"
-            }
-          },
-          {
-            "id": "poripori-island",
-            "role": "subsidiary_island",
-            "theme_hint": "beans",
-            "reveal_chapter": 899,
-            "verification": "verified",
-            "default_hidden": false,
-            "relative_placement": {
-              "direction": null,
-              "ring": null,
-              "medium": "unresolved"
-            }
-          },
-          {
-            "id": "potato-island",
-            "role": "subsidiary_island",
-            "theme_hint": "potato",
-            "reveal_chapter": 886,
-            "verification": "verified",
-            "default_hidden": false,
-            "relative_placement": {
-              "direction": null,
-              "ring": null,
-              "medium": "unresolved"
-            }
-          },
-          {
-            "id": "rokumitsu-island",
-            "role": "subsidiary_island",
-            "theme_hint": "rokumitsu",
-            "reveal_chapter": 894,
-            "verification": "verified",
-            "default_hidden": false,
-            "relative_placement": {
-              "direction": "south",
-              "ring": null,
-              "medium": "anime"
-            }
-          },
-          {
-            "id": "sanshoku-island",
-            "role": "subsidiary_island",
-            "theme_hint": "mix",
-            "reveal_chapter": null,
-            "verification": "chapter_to_verify",
-            "default_hidden": true,
-            "relative_placement": {
-              "direction": null,
-              "ring": null,
-              "medium": "unresolved"
-            }
-          },
-          {
-            "id": "tanega-island",
-            "role": "subsidiary_island",
-            "theme_hint": "seeds",
-            "reveal_chapter": null,
-            "verification": "chapter_to_verify",
-            "default_hidden": true,
-            "relative_placement": {
-              "direction": null,
-              "ring": null,
-              "medium": "unresolved"
-            }
-          },
-          {
-            "id": "topping-island",
-            "role": "subsidiary_island",
-            "theme_hint": "topping",
-            "reveal_chapter": null,
-            "verification": "chapter_to_verify",
-            "default_hidden": true,
-            "relative_placement": {
-              "direction": "northwest",
-              "ring": null,
-              "medium": "anime"
-            }
-          },
-          {
-            "id": "unique-island",
-            "role": "subsidiary_island",
-            "theme_hint": "design",
-            "reveal_chapter": null,
-            "verification": "chapter_to_verify",
-            "default_hidden": true,
-            "relative_placement": {
-              "direction": null,
-              "ring": null,
-              "medium": "unresolved"
-            }
-          },
-          {
-            "id": "yakigashi-island",
-            "role": "subsidiary_island",
-            "theme_hint": "browned-food",
-            "reveal_chapter": null,
-            "verification": "chapter_to_verify",
-            "default_hidden": true,
-            "relative_placement": {
-              "direction": null,
-              "ring": null,
-              "medium": "unresolved"
-            }
-          }
-        ],
-        "withheld_variants": [
-          "100-island",
-          "black-island",
-          "futoru-island",
-          "kibo-island",
-          "kimi-island",
-          "loving-island",
-          "margarine-island",
-          "noko-island",
-          "package-island",
-          "sanshoku-island",
-          "tanega-island",
-          "topping-island",
-          "unique-island",
-          "yakigashi-island"
-        ],
-        "layout_status": "authored_direction_when_known_unknowns_schematic",
-        "projection_support": [
-          "mercator_closeup"
-        ],
-        "scale_policy": {
-          "mode": "visual_fit_not_canon_scale",
-          "use_model_bounds": true
-        }
-      },
-      "runtime_policy": {
-        "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
-        "default": "fallback_raster",
-        "enable_glb_when": "feature flag on, close zoom, mercator projection, chapter gate open",
-        "unload_when_hidden": true,
-        "dispose_on_remove": [
-          "geometries",
-          "materials",
-          "textures"
-        ],
-        "globe_policy": "transparent fallback; do not apply a naive mercator model matrix on globe",
-        "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, and default_hidden from glTF node extras"
-      },
-      "stats": {
-        "objects": 99,
-        "vertices_input": 3420,
-        "triangles_input": 6444,
-        "materials": 9,
-        "bounds_blender": {
-          "min": [
-            -15.0,
-            -12.0,
-            -0.775
-          ],
-          "max": [
-            15.0,
-            12.0,
-            4.12
-          ]
-        },
-        "bytes": 500216
-      },
-      "build": {
-        "blender": "4.5.3 LTS",
-        "glb_sha256": "dcfe66c1fedfcf08c74cc3cd84d547247d18e447b7e123f49a258f2347935e3d",
-        "glb_header": {
-          "magic": "glTF",
-          "version": 2,
-          "declared_length": 500216
         }
       }
     },
@@ -1790,17 +1233,17 @@
     },
     {
       "id": "mary-geoise-red-line",
-      "label": "Mary Geoise atop the Red Line",
+      "label": "Mary Geoise, Red Port, and Bondola ascent",
       "maturity": "runtime_blockout_v1",
       "glb": "runtime/mary-geoise-red-line.glb",
       "fallback_raster": "renders/runtime/mary-geoise-red-line.png",
       "fallback": {
         "path": "renders/runtime/mary-geoise-red-line.png",
-        "bytes": 756927,
-        "sha256": "6c01dc445f84f89ffa8e86978dfdd226b7a251476a09a3b0ceaf4e3169472150",
+        "bytes": 1005670,
+        "sha256": "c375f08270d852402034454916e5f7986c8c3bf7fc0bb47e40f83718baed2f45",
         "pixel_size": [
-          1200,
-          900
+          1400,
+          1000
         ],
         "alpha": true
       },
@@ -1808,17 +1251,18 @@
       "contract": "contracts/mary-geoise-red-line.visual.json",
       "integration": {
         "mode": "maplibre_custom_3d_layer",
-        "fallback_mode": "screen_space_html_marker",
+        "fallback_mode": "maplibre_image_source_or_inset",
         "anchor": [
           -2.7363,
           -9.3782
         ],
         "anchor_confidence": "derived",
         "anchor_usage": "scene_entry_anchor_only",
-        "anchor_warning": "Never infer local bearings, distances, or topology from this deterministic atlas point.",
+        "anchor_warning": "The local vertical cross-section is contract-driven; its irregular coastline is stylized rather than survey geometry.",
         "chapter_beats": {
           "base_reveal": 142,
-          "safe_full_scene": 142
+          "red_port_and_bondola": 905,
+          "safe_full_scene": 905
         },
         "component_gates": [
           {
@@ -1830,53 +1274,80 @@
           },
           {
             "id": "pangaea-castle",
-            "role": "central_castle",
+            "role": "central_castle_exterior",
             "reveal_chapter": 142,
             "verification": "verified",
             "default_hidden": false
           },
           {
             "id": "red-line-summit",
-            "role": "continental_wall",
+            "role": "irregular_world_continent_cross_section",
             "reveal_chapter": 142,
             "verification": "verified",
             "default_hidden": false
           },
           {
             "id": "red-port-paradise",
-            "role": "lower_port",
-            "reveal_chapter": null,
-            "verification": "chapter_to_verify",
-            "default_hidden": true
-          },
-          {
-            "id": "red-port-new-world",
-            "role": "lower_port",
-            "reveal_chapter": null,
-            "verification": "chapter_to_verify",
-            "default_hidden": true
+            "role": "lower_port_where_original_ships_remain",
+            "reveal_chapter": 905,
+            "verification": "verified",
+            "default_hidden": false
           },
           {
             "id": "bondola-route",
-            "role": "vertical_transit",
+            "role": "people_carrying_vertical_transit",
+            "reveal_chapter": 905,
+            "verification": "verified",
+            "default_hidden": false
+          },
+          {
+            "id": "red-port-new-world",
+            "role": "opposite_lower_port",
             "reveal_chapter": null,
             "verification": "chapter_to_verify",
             "default_hidden": true
           }
         ],
-        "withheld_variants": [
-          "late-interior-reveals",
-          "levely-state",
-          "red-line-summit-arrival"
+        "named_clips": [
+          "mary_geoise_bondola_cycle",
+          "red_line_cloud_drift"
         ],
-        "layout_status": "vertical_cross_section",
+        "animation_plan": {
+          "clock": "chapter_entry_elapsed_ms",
+          "reduced_motion": "freeze the summit cloud bank and Bondola at their authored rest poses",
+          "chapter_states": [],
+          "ambient_tracks": [
+            {
+              "channel": "red_line_clouds",
+              "name": "red_line_cloud_drift",
+              "active_from_chapter": 142,
+              "duration_ms": 5042,
+              "loop": true
+            },
+            {
+              "channel": "mary_geoise_bondola",
+              "name": "mary_geoise_bondola_cycle",
+              "active_from_chapter": 905,
+              "active_through_chapter": 1125,
+              "duration_ms": 5042,
+              "loop": true
+            }
+          ]
+        },
+        "withheld_variants": [
+          "red-port-new-world",
+          "late-interior-reveals"
+        ],
+        "layout_status": "vertical_cross_section_with_irregular_stylized_coastline",
         "projection_support": [
           "mercator_closeup"
         ],
         "scale_policy": {
           "mode": "visual_fit_not_canon_scale",
           "use_model_bounds": true
-        }
+        },
+        "transport_policy": "Bondola carries people. Their original ships remain at Red Port; the lift does not haul those ships over the Red Line.",
+        "coastline_policy": "Map and GLB silhouettes are deterministic art direction; the exact jagged Red Line coastline is not asserted as canon survey data."
       },
       "runtime_policy": {
         "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
@@ -1886,37 +1357,38 @@
         "dispose_on_remove": [
           "geometries",
           "materials",
-          "textures"
+          "textures",
+          "animation_actions"
         ],
-        "globe_policy": "transparent fallback; do not apply a naive mercator model matrix on globe",
-        "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, and default_hidden from glTF node extras"
+        "globe_policy": "transparent fallback; close-detail GLB is Mercator-only",
+        "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, default_hidden, and verified state windows from glTF extras"
       },
       "stats": {
-        "objects": 63,
-        "vertices_input": 1428,
-        "triangles_input": 2556,
-        "materials": 5,
+        "objects": 89,
+        "vertices_input": 3232,
+        "triangles_input": 6084,
+        "materials": 9,
         "bounds_blender": {
           "min": [
-            -5.6,
-            -5.99,
-            -0.05
+            -7.31866,
+            -7.582,
+            -0.125
           ],
           "max": [
-            5.6,
-            5.99,
-            14.45
+            7.318659,
+            7.582,
+            15.224999
           ]
         },
-        "bytes": 151100
+        "bytes": 422652
       },
       "build": {
         "blender": "4.5.3 LTS",
-        "glb_sha256": "7520b16f70f95ddb3c8e8d4c95c3feb2612556287e7acdc4884102deb9800b23",
+        "glb_sha256": "f4fcebd62cd09f1abce1b4efd26985b70f6f330ca1947423488a53cf9955a4a3",
         "glb_header": {
           "magic": "glTF",
           "version": 2,
-          "declared_length": 151100
+          "declared_length": 422652
         }
       }
     },
@@ -1928,8 +1400,8 @@
       "fallback_raster": "renders/runtime/sabaody-grove-network.png",
       "fallback": {
         "path": "renders/runtime/sabaody-grove-network.png",
-        "bytes": 663969,
-        "sha256": "0aeff66f2134136b7ca9ed5868f5f1874dd2fd1d929785cccb6e6b0accd5ed40",
+        "bytes": 962906,
+        "sha256": "10269d436583b3b1817d211bb6e68bfc33a8f001671f3c869010e5d6cd2bd58f",
         "pixel_size": [
           1200,
           900
@@ -1994,10 +1466,17 @@
             "reveal_chapter": 496,
             "verification": "verified",
             "default_hidden": false
+          },
+          {
+            "id": "auction-house-confrontation",
+            "role": "chapter_502_event_state",
+            "reveal_chapter": 502,
+            "active_through_chapter": 502,
+            "verification": "verified_state_window",
+            "default_hidden": true
           }
         ],
         "withheld_variants": [
-          "auction-house-confrontation",
           "post-timeskip-return"
         ],
         "layout_status": "relationship_schematic_not_canon_bearings",
@@ -2023,31 +1502,31 @@
         "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, and default_hidden from glTF node extras"
       },
       "stats": {
-        "objects": 344,
-        "vertices_input": 31286,
-        "triangles_input": 60264,
-        "materials": 7,
+        "objects": 713,
+        "vertices_input": 34944,
+        "triangles_input": 66112,
+        "materials": 15,
         "bounds_blender": {
           "min": [
-            -8.6595,
-            -6.335512,
-            -0.05
+            -11.664001,
+            -7.992,
+            -0.42
           ],
           "max": [
-            8.711749,
-            6.391388,
-            2.93
+            11.664001,
+            7.992,
+            2.995
           ]
         },
-        "bytes": 2784044
+        "bytes": 3574648
       },
       "build": {
         "blender": "4.5.3 LTS",
-        "glb_sha256": "21fb6fde8e0a5d059ca69239c4907d2eb730eaffc791a8455d50a65de2bb78cf",
+        "glb_sha256": "765b0e8b9b6e1f11a2632e7fd64ba0a7d943eb5b2cc7d9ea596eec8d4f7f32d0",
         "glb_header": {
           "magic": "glTF",
           "version": 2,
-          "declared_length": 2784044
+          "declared_length": 3574648
         }
       }
     },
@@ -2301,17 +1780,17 @@
     },
     {
       "id": "water-7-sea-train-network",
-      "label": "Water 7 Sea Train network",
+      "label": "Water 7, Aqua Laguna, and Sea Train network",
       "maturity": "runtime_blockout_v1",
       "glb": "runtime/water-7-sea-train-network.glb",
       "fallback_raster": "renders/runtime/water-7-sea-train-network.png",
       "fallback": {
         "path": "renders/runtime/water-7-sea-train-network.png",
-        "bytes": 884802,
-        "sha256": "3a490c1fe5c04425e42c2cd9d309d68fe46f1dbe43fbf72156a6811a8bcab43f",
+        "bytes": 1120224,
+        "sha256": "9e56a1f1e4997d0a917751fea6dbc2cb61abcda52bf1f619f4293847305f2251",
         "pixel_size": [
-          1200,
-          900
+          1400,
+          1000
         ],
         "alpha": true
       },
@@ -2319,44 +1798,35 @@
       "contract": "contracts/water-7-sea-train-network.visual.json",
       "integration": {
         "mode": "maplibre_custom_3d_layer",
-        "fallback_mode": "screen_space_html_marker",
+        "fallback_mode": "maplibre_image_source_or_inset",
         "anchor": [
           -73.7901,
           3.1588
         ],
         "anchor_confidence": "derived",
         "anchor_usage": "scene_entry_anchor_only",
-        "anchor_warning": "Never infer local bearings, distances, or topology from this deterministic atlas point.",
+        "anchor_warning": "The atlas point opens a local relationship graph; rail bearings and distances are not canon survey geometry.",
         "chapter_beats": {
-          "base_reveal": 323,
+          "network_reveal": 322,
+          "base_reveal": 322,
+          "water_7_arrival": 323,
+          "aqua_laguna_reaches_city": 363,
+          "rocketman_departure": 365,
+          "enies_arrival": 375,
           "safe_full_scene": 657
         },
         "component_gates": [
           {
-            "id": "water-7",
-            "role": "network_hub_city",
-            "reveal_chapter": 323,
+            "id": "subsurface-sea-rails",
+            "role": "route_geometry",
+            "reveal_chapter": 322,
             "verification": "verified",
             "default_hidden": false
           },
           {
-            "id": "enies-lobby",
-            "role": "government_terminus",
-            "reveal_chapter": 358,
-            "verification": "verified",
-            "default_hidden": false
-          },
-          {
-            "id": "pucci",
-            "role": "connected_island",
-            "reveal_chapter": 657,
-            "verification": "verified",
-            "default_hidden": false
-          },
-          {
-            "id": "st-poplar",
-            "role": "connected_island",
-            "reveal_chapter": 496,
+            "id": "puffing-tom",
+            "role": "commercial_sea_train",
+            "reveal_chapter": 322,
             "verification": "verified",
             "default_hidden": false
           },
@@ -2382,25 +1852,48 @@
             "default_hidden": false
           },
           {
-            "id": "day-station",
-            "role": "enies_lobby_station",
-            "reveal_chapter": null,
-            "verification": "chapter_to_verify",
-            "default_hidden": true
-          },
-          {
-            "id": "puffing-tom",
-            "role": "commercial_sea_train",
-            "reveal_chapter": 322,
+            "id": "water-7",
+            "role": "network_hub_city",
+            "reveal_chapter": 323,
             "verification": "verified",
             "default_hidden": false
           },
           {
+            "id": "enies-lobby",
+            "role": "never_night_government_terminus_over_waterfall_void",
+            "reveal_chapter": 358,
+            "verification": "verified",
+            "default_hidden": false
+          },
+          {
+            "id": "aqua-laguna",
+            "role": "temporary_water_7_flood_and_route_hazard",
+            "reveal_chapter": 363,
+            "verification": "verified_state_window",
+            "default_hidden": true,
+            "active_through_chapter": 367.999
+          },
+          {
             "id": "rocketman",
-            "role": "uncontrollable_prototype_train",
-            "reveal_chapter": null,
-            "verification": "chapter_to_verify",
-            "default_hidden": true
+            "role": "temporary_prototype_train_pursuit",
+            "reveal_chapter": 365,
+            "verification": "verified_state_window",
+            "default_hidden": true,
+            "active_through_chapter": 378.999
+          },
+          {
+            "id": "day-station",
+            "role": "enies_lobby_station",
+            "reveal_chapter": 375,
+            "verification": "verified",
+            "default_hidden": false
+          },
+          {
+            "id": "st-poplar",
+            "role": "connected_island",
+            "reveal_chapter": 496,
+            "verification": "verified",
+            "default_hidden": false
           },
           {
             "id": "puffing-ice",
@@ -2410,25 +1903,100 @@
             "default_hidden": false
           },
           {
-            "id": "subsurface-sea-rails",
-            "role": "route_geometry",
-            "reveal_chapter": 322,
+            "id": "pucci",
+            "role": "connected_island",
+            "reveal_chapter": 657,
             "verification": "verified",
             "default_hidden": false
-          },
-          {
-            "id": "aqua-laguna",
-            "role": "annual_route_hazard",
-            "reveal_chapter": null,
-            "verification": "chapter_to_verify",
-            "default_hidden": true
           }
         ],
-        "withheld_variants": [
-          "aqua-laguna-pursuit",
-          "rocketman-aqua-laguna-pursuit"
+        "named_clips": [
+          "water7_puffing_tom_route_cycle",
+          "water7_rocketman_route_state",
+          "water7_aqua_laguna_tide_state",
+          "water7_enies_waterfall_cycle"
         ],
-        "layout_status": "contract_relationship_graph",
+        "animation_plan": {
+          "clock": "chapter_entry_elapsed_ms",
+          "reduced_motion": "freeze Puffing Tom and the permanent waterfall; retain chapter-sampled Aqua Laguna and Rocketman positions",
+          "chapter_states": [],
+          "geographic_tracks": [
+            {
+              "channel": "water7_aqua_laguna",
+              "name": "water7_aqua_laguna_tide_state",
+              "keyframes": [
+                {
+                  "chapter": 362,
+                  "progress": 0.0
+                },
+                {
+                  "chapter": 363,
+                  "progress": 0.2
+                },
+                {
+                  "chapter": 364,
+                  "progress": 0.45
+                },
+                {
+                  "chapter": 365,
+                  "progress": 0.65
+                },
+                {
+                  "chapter": 366,
+                  "progress": 0.82
+                },
+                {
+                  "chapter": 367,
+                  "progress": 1.0
+                }
+              ],
+              "hold_before": false,
+              "hold_after": false
+            },
+            {
+              "channel": "water7_rocketman",
+              "name": "water7_rocketman_route_state",
+              "keyframes": [
+                {
+                  "chapter": 365,
+                  "progress": 0.0
+                },
+                {
+                  "chapter": 367,
+                  "progress": 0.18
+                },
+                {
+                  "chapter": 375,
+                  "progress": 0.82
+                },
+                {
+                  "chapter": 378,
+                  "progress": 1.0
+                }
+              ],
+              "hold_before": false,
+              "hold_after": false
+            }
+          ],
+          "ambient_tracks": [
+            {
+              "channel": "water7_puffing_tom",
+              "name": "water7_puffing_tom_route_cycle",
+              "active_from_chapter": 322,
+              "duration_ms": 5042,
+              "loop": true
+            },
+            {
+              "channel": "water7_enies_waterfall",
+              "name": "water7_enies_waterfall_cycle",
+              "active_from_chapter": 375,
+              "duration_ms": 4208,
+              "loop": true
+            }
+          ]
+        },
+        "withheld_variants": [],
+        "layout_status": "dynamic_relationship_graph_not_canon_bearings",
         "projection_support": [
           "mercator_closeup"
         ],
@@ -2436,7 +2004,8 @@
           "mode": "visual_fit_not_canon_scale",
           "use_model_bounds": true
         },
-        "route_policy": "local relationship schematic; never project local bearings as canon globe geometry"
+        "route_policy": "Sea Train branches are cited relationships rendered as a local schematic; do not project them as literal globe bearings.",
+        "flood_policy": "Aqua Laguna floods Water 7 and the approach waters only; Enies Lobby retains its permanent daylight waterfall-void geography."
       },
       "runtime_policy": {
         "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
@@ -2446,37 +2015,38 @@
         "dispose_on_remove": [
           "geometries",
           "materials",
-          "textures"
+          "textures",
+          "animation_actions"
         ],
-        "globe_policy": "transparent fallback; do not apply a naive mercator model matrix on globe",
-        "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, and default_hidden from glTF node extras"
+        "globe_policy": "transparent fallback; close-detail GLB is Mercator-only",
+        "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, default_hidden, and verified state windows from glTF extras"
       },
       "stats": {
-        "objects": 96,
-        "vertices_input": 5842,
-        "triangles_input": 11160,
-        "materials": 12,
+        "objects": 334,
+        "vertices_input": 13942,
+        "triangles_input": 26352,
+        "materials": 18,
         "bounds_blender": {
           "min": [
-            -18.0,
-            -12.0,
-            -1.05
+            -17.799999,
+            -11.5,
+            -1.12
           ],
           "max": [
-            18.0,
-            12.0,
-            6.6437
+            17.799999,
+            11.5,
+            5.55
           ]
         },
-        "bytes": 530224
+        "bytes": 1589396
       },
       "build": {
         "blender": "4.5.3 LTS",
-        "glb_sha256": "01049271111d0e2cadcae347114f3f1f5762bbe5b9983b38a73e3968632d634c",
+        "glb_sha256": "d706bbb7ccfba5ac70ad59a1404172db1c270a4b6d0c132cbe88d6fdec273e5d",
         "glb_header": {
           "magic": "glTF",
           "version": 2,
-          "declared_length": 530224
+          "declared_length": 1589396
         }
       }
     },
@@ -2490,7 +2060,10 @@
         "path": "renders/runtime/reverse-mountain-twin-cape-voyage.png",
         "bytes": 882178,
         "sha256": "3812b62df328525e6c7340f9b28f11ca3fbb00cb4ac682c307f58b4722e90134",
-        "pixel_size": [1200, 900],
+        "pixel_size": [
+          1200,
+          900
+        ],
         "alpha": true,
         "tableau": "chapter-102 exterior; the app label remains Unidentified giant whale"
       },
@@ -2499,7 +2072,10 @@
       "integration": {
         "mode": "maplibre_custom_3d_layer",
         "fallback_mode": "maplibre_image_source_or_inset",
-        "anchor": [-179.0, -2.0],
+        "anchor": [
+          -179.0,
+          -2.0
+        ],
         "anchor_confidence": "hand_authored_belt_model",
         "anchor_usage": "scene_entry_anchor_only",
         "anchor_warning": "Never infer local canals, bearings, distances, or Twin Cape placement from this atlas point.",
@@ -2508,23 +2084,107 @@
           "safe_full_scene": 102
         },
         "component_gates": [
-          {"id": "reverse-mountain-massif", "role": "red_line_crossing_environment", "reveal_chapter": 101, "verification": "verified", "default_hidden": false},
-          {"id": "east-blue-ascent-current", "role": "going_merry_uphill_route", "reveal_chapter": 101, "verification": "verified_for_uphill_motion_only", "default_hidden": false},
-          {"id": "reverse-mountain-crest", "role": "voyage_transition_peak", "reveal_chapter": 101, "verification": "inferred_transition_landmark", "default_hidden": false},
-          {"id": "grand-line-descent-current", "role": "summit_to_grand_line_exit_route", "reveal_chapter": 102, "verification": "inferred_route_between_verified_states", "default_hidden": false},
-          {"id": "twin-cape", "role": "grand_line_entry_cape", "reveal_chapter": 102, "verification": "verified", "default_hidden": false},
-          {"id": "twin-cape-lighthouse", "role": "crocus_home_landmark", "reveal_chapter": 103, "verification": "derived_from_crocus_lighthouse_keeper_record", "default_hidden": false},
-          {"id": "going-merry", "role": "voyage_vehicle", "reveal_chapter": 100, "verification": "known_present_in_window", "default_hidden": false},
-          {"id": "laboon-unidentified", "role": "first_contact_spoiler_safe_state", "reveal_chapter": 102, "verification": "verified", "default_hidden": false},
-          {"id": "laboon", "role": "identity_label_gate", "reveal_chapter": 103, "verification": "verified", "default_hidden": false},
-          {"id": "laboon-interior-theatre", "role": "chapter_103_story_inset", "reveal_chapter": 103, "verification": "verified_state_window", "default_hidden": true, "active_through_chapter": 103.999},
-          {"id": "crocus", "role": "signed_2_5d_actor_anchor", "reveal_chapter": 103, "verification": "verified", "default_hidden": false},
-          {"id": "local-whirlpool-emitter", "role": "reusable_ocean_hazard_control", "reveal_chapter": null, "verification": "chapter_to_verify", "default_hidden": true}
+          {
+            "id": "reverse-mountain-massif",
+            "role": "red_line_crossing_environment",
+            "reveal_chapter": 101,
+            "verification": "verified",
+            "default_hidden": false
+          },
+          {
+            "id": "east-blue-ascent-current",
+            "role": "going_merry_uphill_route",
+            "reveal_chapter": 101,
+            "verification": "verified_for_uphill_motion_only",
+            "default_hidden": false
+          },
+          {
+            "id": "reverse-mountain-crest",
+            "role": "voyage_transition_peak",
+            "reveal_chapter": 101,
+            "verification": "inferred_transition_landmark",
+            "default_hidden": false
+          },
+          {
+            "id": "grand-line-descent-current",
+            "role": "summit_to_grand_line_exit_route",
+            "reveal_chapter": 102,
+            "verification": "inferred_route_between_verified_states",
+            "default_hidden": false
+          },
+          {
+            "id": "twin-cape",
+            "role": "grand_line_entry_cape",
+            "reveal_chapter": 102,
+            "verification": "verified",
+            "default_hidden": false
+          },
+          {
+            "id": "twin-cape-lighthouse",
+            "role": "crocus_home_landmark",
+            "reveal_chapter": 103,
+            "verification": "derived_from_crocus_lighthouse_keeper_record",
+            "default_hidden": false
+          },
+          {
+            "id": "going-merry",
+            "role": "voyage_vehicle",
+            "reveal_chapter": 100,
+            "verification": "known_present_in_window",
+            "default_hidden": false
+          },
+          {
+            "id": "laboon-unidentified",
+            "role": "first_contact_spoiler_safe_state",
+            "reveal_chapter": 102,
+            "verification": "verified",
+            "default_hidden": false
+          },
+          {
+            "id": "laboon",
+            "role": "identity_label_gate",
+            "reveal_chapter": 103,
+            "verification": "verified",
+            "default_hidden": false
+          },
+          {
+            "id": "laboon-interior-theatre",
+            "role": "chapter_103_story_inset",
+            "reveal_chapter": 103,
+            "verification": "verified_state_window",
+            "default_hidden": true,
+            "active_through_chapter": 103.999
+          },
+          {
+            "id": "crocus",
+            "role": "signed_2_5d_actor_anchor",
+            "reveal_chapter": 103,
+            "verification": "verified",
+            "default_hidden": false
+          },
+          {
+            "id": "local-whirlpool-emitter",
+            "role": "reusable_ocean_hazard_control",
+            "reveal_chapter": null,
+            "verification": "chapter_to_verify",
+            "default_hidden": true
+          }
         ],
-        "withheld_variants": ["local-whirlpool-emitter"],
+        "withheld_variants": [
+          "local-whirlpool-emitter"
+        ],
         "label_gates": [
-          {"id": "laboon", "from_chapter": 102, "through_chapter": 102, "label": "Unidentified giant whale"},
-          {"id": "laboon", "from_chapter": 103, "label": "Laboon"}
+          {
+            "id": "laboon",
+            "from_chapter": 102,
+            "through_chapter": 102,
+            "label": "Unidentified giant whale"
+          },
+          {
+            "id": "laboon",
+            "from_chapter": 103,
+            "label": "Laboon"
+          }
         ],
         "animation_plan": {
           "clock": "chapter_entry_elapsed_ms",
@@ -2534,70 +2194,263 @@
               "chapter": 101,
               "duration_ms": 7800,
               "clips": [
-                {"channel": "current", "name": "current_ascent_flow_loop", "start_ms": 0, "duration_ms": 7800, "loop": true},
-                {"channel": "merry", "name": "merry_ascent_climb", "start_ms": 0, "duration_ms": 4500, "loop": false},
-                {"channel": "crest_fx", "name": "current_crest_surge", "start_ms": 3900, "duration_ms": 1800, "loop": false},
-                {"channel": "merry", "name": "merry_summit_crest", "start_ms": 4500, "duration_ms": 3300, "loop": false}
+                {
+                  "channel": "current",
+                  "name": "current_ascent_flow_loop",
+                  "start_ms": 0,
+                  "duration_ms": 7800,
+                  "loop": true
+                },
+                {
+                  "channel": "merry",
+                  "name": "merry_ascent_climb",
+                  "start_ms": 0,
+                  "duration_ms": 4500,
+                  "loop": false
+                },
+                {
+                  "channel": "crest_fx",
+                  "name": "current_crest_surge",
+                  "start_ms": 3900,
+                  "duration_ms": 1800,
+                  "loop": false
+                },
+                {
+                  "channel": "merry",
+                  "name": "merry_summit_crest",
+                  "start_ms": 4500,
+                  "duration_ms": 3300,
+                  "loop": false
+                }
               ]
             },
             {
               "chapter": 102,
               "duration_ms": 7600,
               "clips": [
-                {"channel": "current", "name": "current_descent_flow_loop", "start_ms": 0, "duration_ms": 7600, "loop": true},
-                {"channel": "merry", "name": "merry_descent_run", "start_ms": 0, "duration_ms": 3300, "loop": false},
-                {"channel": "laboon", "name": "laboon_first_contact_breach", "start_ms": 0, "duration_ms": 3300, "loop": false},
-                {"channel": "contact_fx", "name": "laboon_contact_displacement", "start_ms": 2200, "duration_ms": 2100, "loop": false},
-                {"channel": "laboon_mouth", "name": "laboon_mouth_open_swallow", "start_ms": 3300, "duration_ms": 4300, "loop": false},
-                {"channel": "merry", "name": "merry_swallowed_transition", "start_ms": 3300, "duration_ms": 4300, "loop": false}
+                {
+                  "channel": "current",
+                  "name": "current_descent_flow_loop",
+                  "start_ms": 0,
+                  "duration_ms": 7600,
+                  "loop": true
+                },
+                {
+                  "channel": "merry",
+                  "name": "merry_descent_run",
+                  "start_ms": 0,
+                  "duration_ms": 3300,
+                  "loop": false
+                },
+                {
+                  "channel": "laboon",
+                  "name": "laboon_first_contact_breach",
+                  "start_ms": 0,
+                  "duration_ms": 3300,
+                  "loop": false
+                },
+                {
+                  "channel": "contact_fx",
+                  "name": "laboon_contact_displacement",
+                  "start_ms": 2200,
+                  "duration_ms": 2100,
+                  "loop": false
+                },
+                {
+                  "channel": "laboon_mouth",
+                  "name": "laboon_mouth_open_swallow",
+                  "start_ms": 3300,
+                  "duration_ms": 4300,
+                  "loop": false
+                },
+                {
+                  "channel": "merry",
+                  "name": "merry_swallowed_transition",
+                  "start_ms": 3300,
+                  "duration_ms": 4300,
+                  "loop": false
+                }
               ]
             },
             {
               "chapter": 103,
               "duration_ms": 7000,
               "clips": [
-                {"channel": "laboon", "name": "laboon_surface_idle_loop", "start_ms": 0, "duration_ms": 7000, "loop": true},
-                {"channel": "crocus", "name": "crocus_explain_laboon", "start_ms": 700, "duration_ms": 5600, "loop": false}
+                {
+                  "channel": "laboon",
+                  "name": "laboon_surface_idle_loop",
+                  "start_ms": 0,
+                  "duration_ms": 7000,
+                  "loop": true
+                },
+                {
+                  "channel": "crocus",
+                  "name": "crocus_explain_laboon",
+                  "start_ms": 700,
+                  "duration_ms": 5600,
+                  "loop": false
+                }
               ]
             },
             {
               "chapter": 104,
               "duration_ms": 6800,
               "clips": [
-                {"channel": "swell", "name": "twin_cape_swell_loop", "start_ms": 0, "duration_ms": 6800, "loop": true},
-                {"channel": "merry", "name": "merry_idle_bob_loop", "start_ms": 0, "duration_ms": 6800, "loop": true},
-                {"channel": "wake", "name": "merry_wake_loop", "start_ms": 0, "duration_ms": 6800, "loop": true},
-                {"channel": "laboon", "name": "laboon_promise_response", "start_ms": 900, "duration_ms": 5000, "loop": false}
+                {
+                  "channel": "swell",
+                  "name": "twin_cape_swell_loop",
+                  "start_ms": 0,
+                  "duration_ms": 6800,
+                  "loop": true
+                },
+                {
+                  "channel": "merry",
+                  "name": "merry_idle_bob_loop",
+                  "start_ms": 0,
+                  "duration_ms": 6800,
+                  "loop": true
+                },
+                {
+                  "channel": "wake",
+                  "name": "merry_wake_loop",
+                  "start_ms": 0,
+                  "duration_ms": 6800,
+                  "loop": true
+                },
+                {
+                  "channel": "laboon",
+                  "name": "laboon_promise_response",
+                  "start_ms": 900,
+                  "duration_ms": 5000,
+                  "loop": false
+                }
               ]
             },
             {
               "chapter": 105,
               "duration_ms": 7200,
               "clips": [
-                {"channel": "swell", "name": "twin_cape_swell_loop", "start_ms": 0, "duration_ms": 7200, "loop": true},
-                {"channel": "merry", "name": "merry_twin_cape_departure", "start_ms": 0, "duration_ms": 7200, "loop": false},
-                {"channel": "crocus", "name": "crocus_present_log_pose", "start_ms": 0, "duration_ms": 4200, "loop": false},
-                {"channel": "laboon_fx", "name": "laboon_breath_mist", "start_ms": 700, "duration_ms": 3500, "loop": false}
+                {
+                  "channel": "swell",
+                  "name": "twin_cape_swell_loop",
+                  "start_ms": 0,
+                  "duration_ms": 7200,
+                  "loop": true
+                },
+                {
+                  "channel": "merry",
+                  "name": "merry_twin_cape_departure",
+                  "start_ms": 0,
+                  "duration_ms": 7200,
+                  "loop": false
+                },
+                {
+                  "channel": "crocus",
+                  "name": "crocus_present_log_pose",
+                  "start_ms": 0,
+                  "duration_ms": 4200,
+                  "loop": false
+                },
+                {
+                  "channel": "laboon_fx",
+                  "name": "laboon_breath_mist",
+                  "start_ms": 700,
+                  "duration_ms": 3500,
+                  "loop": false
+                }
               ]
             }
           ]
         },
         "named_clips": [
-          "merry_idle_bob_loop", "merry_ascent_climb", "merry_summit_crest", "merry_descent_run", "merry_swallowed_transition", "merry_twin_cape_departure",
-          "laboon_surface_idle_loop", "laboon_first_contact_breach", "laboon_mouth_open_swallow", "laboon_breath_mist", "laboon_promise_response",
-          "crocus_idle_watch", "crocus_explain_laboon", "crocus_present_log_pose",
-          "current_ascent_flow_loop", "current_crest_surge", "current_descent_flow_loop", "twin_cape_swell_loop", "merry_wake_loop", "laboon_contact_displacement", "whirlpool_loop_default_hidden"
+          "merry_idle_bob_loop",
+          "merry_ascent_climb",
+          "merry_summit_crest",
+          "merry_descent_run",
+          "merry_swallowed_transition",
+          "merry_twin_cape_departure",
+          "laboon_surface_idle_loop",
+          "laboon_first_contact_breach",
+          "laboon_mouth_open_swallow",
+          "laboon_breath_mist",
+          "laboon_promise_response",
+          "crocus_idle_watch",
+          "crocus_explain_laboon",
+          "crocus_present_log_pose",
+          "current_ascent_flow_loop",
+          "current_crest_surge",
+          "current_descent_flow_loop",
+          "twin_cape_swell_loop",
+          "merry_wake_loop",
+          "laboon_contact_displacement",
+          "whirlpool_loop_default_hidden"
         ],
         "fx_masks": [
-          {"id": "rm-current-flow-rgba", "path": "runtime/reverse-mountain-twin-cape-voyage/masks/rm-current-flow-rgba.png", "sha256": "df7d2fbf9c8c0923b8de3373c8f5e5d1bb30589bf9eec253a230ae1e43119dec", "channels": {"r": "flow_direction_u", "g": "flow_direction_v", "b": "flow_speed", "a": "chapter_safe_effect_enable"}},
-          {"id": "rm-foam-spray-rgba", "path": "runtime/reverse-mountain-twin-cape-voyage/masks/rm-foam-spray-rgba.png", "sha256": "673fe641935af6aa3ae6469e0647e1f4d83727d28971047b6945ff359de0a92a", "channels": {"r": "bank_foam", "g": "crest_foam", "b": "spray_emission", "a": "water_occlusion"}},
-          {"id": "merry-hull-contact-rgba", "path": "runtime/reverse-mountain-twin-cape-voyage/masks/merry-hull-contact-rgba.png", "sha256": "278a64f4515d8cab22e62f43e459a4fc786d299dfd6c5673b9f73c5925ead717", "channels": {"r": "bow_wake", "g": "stern_wake", "b": "hull_wetness", "a": "spray_occlusion"}},
-          {"id": "laboon-water-contact-rgba", "path": "runtime/reverse-mountain-twin-cape-voyage/masks/laboon-water-contact-rgba.png", "sha256": "6ee75cd5ad0fbbd79bf9d719787af62bdc8d7eaa5747210a4c3ee81dd181229e", "channels": {"r": "surface_displacement", "g": "contact_foam", "b": "breath_mist_emission", "a": "skin_wetness"}},
-          {"id": "whirlpool-control-rgba", "path": "runtime/reverse-mountain-twin-cape-voyage/masks/whirlpool-control-rgba.png", "sha256": "3a7a76c14e0959450b29dc6c3926486302c3e120bd57f492b255983faae9e478", "channels": {"r": "vortex_strength", "g": "foam_ring", "b": "spray_orbit", "a": "enable_mask"}, "default_hidden": true}
+          {
+            "id": "rm-current-flow-rgba",
+            "path": "runtime/reverse-mountain-twin-cape-voyage/masks/rm-current-flow-rgba.png",
+            "sha256": "df7d2fbf9c8c0923b8de3373c8f5e5d1bb30589bf9eec253a230ae1e43119dec",
+            "channels": {
+              "r": "flow_direction_u",
+              "g": "flow_direction_v",
+              "b": "flow_speed",
+              "a": "chapter_safe_effect_enable"
+            }
+          },
+          {
+            "id": "rm-foam-spray-rgba",
+            "path": "runtime/reverse-mountain-twin-cape-voyage/masks/rm-foam-spray-rgba.png",
+            "sha256": "673fe641935af6aa3ae6469e0647e1f4d83727d28971047b6945ff359de0a92a",
+            "channels": {
+              "r": "bank_foam",
+              "g": "crest_foam",
+              "b": "spray_emission",
+              "a": "water_occlusion"
+            }
+          },
+          {
+            "id": "merry-hull-contact-rgba",
+            "path": "runtime/reverse-mountain-twin-cape-voyage/masks/merry-hull-contact-rgba.png",
+            "sha256": "278a64f4515d8cab22e62f43e459a4fc786d299dfd6c5673b9f73c5925ead717",
+            "channels": {
+              "r": "bow_wake",
+              "g": "stern_wake",
+              "b": "hull_wetness",
+              "a": "spray_occlusion"
+            }
+          },
+          {
+            "id": "laboon-water-contact-rgba",
+            "path": "runtime/reverse-mountain-twin-cape-voyage/masks/laboon-water-contact-rgba.png",
+            "sha256": "6ee75cd5ad0fbbd79bf9d719787af62bdc8d7eaa5747210a4c3ee81dd181229e",
+            "channels": {
+              "r": "surface_displacement",
+              "g": "contact_foam",
+              "b": "breath_mist_emission",
+              "a": "skin_wetness"
+            }
+          },
+          {
+            "id": "whirlpool-control-rgba",
+            "path": "runtime/reverse-mountain-twin-cape-voyage/masks/whirlpool-control-rgba.png",
+            "sha256": "3a7a76c14e0959450b29dc6c3926486302c3e120bd57f492b255983faae9e478",
+            "channels": {
+              "r": "vortex_strength",
+              "g": "foam_ring",
+              "b": "spray_orbit",
+              "a": "enable_mask"
+            },
+            "default_hidden": true
+          }
         ],
         "layout_status": "ordered_route_graph_not_atlas_geometry",
-        "projection_support": ["mercator_closeup"],
-        "scale_policy": {"mode": "visual_fit_not_canon_scale", "use_model_bounds": true},
+        "projection_support": [
+          "mercator_closeup"
+        ],
+        "scale_policy": {
+          "mode": "visual_fit_not_canon_scale",
+          "use_model_bounds": true
+        },
         "route_policy": "local normalized theatre only; MapLibre owns world route and no local bearing is canon"
       },
       "runtime_policy": {
@@ -2605,7 +2458,12 @@
         "default": "fallback_raster",
         "enable_glb_when": "feature flag on, close zoom, supported projection, and chapter gate open",
         "unload_when_hidden": true,
-        "dispose_on_remove": ["geometries", "materials", "textures", "animation_mixer"],
+        "dispose_on_remove": [
+          "geometries",
+          "materials",
+          "textures",
+          "animation_mixer"
+        ],
         "globe_policy": "use only after photographed globe proof; otherwise retain transparent fallback",
         "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, default_hidden, and verified state windows from glTF extras",
         "animation_policy": "sample named clips from chapter-entry elapsed time; MapLibre/app state owns the clock and reduced-motion freeze"
@@ -2615,13 +2473,1299 @@
         "vertices_input": 9584,
         "triangles_input": 18996,
         "materials": 16,
-        "bounds_blender": {"min": [-18.0, -18.0, -2.35], "max": [18.0, 21.976843, 10.793863]},
+        "bounds_blender": {
+          "min": [
+            -18.0,
+            -18.0,
+            -2.35
+          ],
+          "max": [
+            18.0,
+            21.976843,
+            10.793863
+          ]
+        },
         "bytes": 1307736
       },
       "build": {
         "blender": "4.5.3 LTS",
         "glb_sha256": "2accbf7f105a76f6c9b35a6d62c508d1730de9634c0018b8f7052df6a2e60d29",
-        "glb_header": {"magic": "glTF", "version": 2, "declared_length": 1307736}
+        "glb_header": {
+          "magic": "glTF",
+          "version": 2,
+          "declared_length": 1307736
+        }
+      }
+    },
+    {
+      "id": "egghead-future-island-system",
+      "label": "Egghead Future Island system",
+      "maturity": "runtime_blockout_v1",
+      "glb": "runtime/egghead-future-island-system.glb",
+      "fallback_raster": "renders/runtime/egghead-future-island-system.png",
+      "fallback": {
+        "path": "renders/runtime/egghead-future-island-system.png",
+        "bytes": 1209298,
+        "sha256": "42626b1f79014bf55d21c860a12db1a553a56352c8c7bad7e79ed58e074ac240",
+        "pixel_size": [
+          1400,
+          1000
+        ],
+        "alpha": true
+      },
+      "source_blend": "source/egghead-future-island-system.blend",
+      "contract": "contracts/egghead-future-island-system.visual.json",
+      "integration": {
+        "mode": "maplibre_custom_3d_layer",
+        "fallback_mode": "maplibre_image_source_or_inset",
+        "anchor": [
+          149.0991,
+          -0.4304
+        ],
+        "anchor_confidence": "derived",
+        "anchor_usage": "scene_entry_anchor_only",
+        "anchor_warning": "Local topology is contract-driven; never infer it from the deterministic atlas point.",
+        "chapter_beats": {
+          "base_reveal": 1061,
+          "safe_full_scene": 1066
+        },
+        "component_gates": [
+          {
+            "id": "egghead",
+            "role": "winter_island_base",
+            "reveal_chapter": 1061,
+            "verification": "verified",
+            "default_hidden": false
+          },
+          {
+            "id": "egghead-winter-sea",
+            "role": "cold_ocean_and_ice_boundary",
+            "reveal_chapter": 1061,
+            "verification": "verified",
+            "default_hidden": false
+          },
+          {
+            "id": "fabriophase",
+            "role": "lower_factory_city_phase",
+            "reveal_chapter": 1061,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "future-city",
+            "role": "climate_modified_city",
+            "reveal_chapter": 1061,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "central-factory",
+            "role": "lower_phase_factory",
+            "reveal_chapter": 1061,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "scrapyard",
+            "role": "lower_phase_material_yard",
+            "reveal_chapter": 1061,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "cloud-plant",
+            "role": "island_cloud_generator",
+            "reveal_chapter": 1065,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "labophase",
+            "role": "upper_research_phase",
+            "reveal_chapter": 1065,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "frontier-dome",
+            "role": "upper_phase_defense_boundary",
+            "reveal_chapter": 1065,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "lab-building-a",
+            "role": "upper_lab_structure",
+            "reveal_chapter": 1065,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "lab-building-b",
+            "role": "upper_lab_structure",
+            "reveal_chapter": 1065,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "lab-building-c",
+            "role": "upper_lab_structure",
+            "reveal_chapter": 1065,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "punk-records-attached",
+            "role": "records_attached_state",
+            "reveal_chapter": 1066,
+            "verification": "verified_state_window",
+            "default_hidden": false,
+            "active_through_chapter": 1124.999
+          }
+        ],
+        "withheld_variants": [
+          "punk-records-detached",
+          "egghead-damaged-state"
+        ],
+        "layout_status": "vertical_phase_stack_relative_topology",
+        "projection_support": [
+          "mercator_closeup"
+        ],
+        "scale_policy": {
+          "mode": "visual_fit_not_canon_scale",
+          "use_model_bounds": true
+        },
+        "theory_policy": "separate_overlay_only; never mutate canon base geometry"
+      },
+      "runtime_policy": {
+        "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
+        "default": "fallback_raster",
+        "enable_glb_when": "feature flag on, close zoom, mercator projection, chapter gate open",
+        "unload_when_hidden": true,
+        "dispose_on_remove": [
+          "geometries",
+          "materials",
+          "textures"
+        ],
+        "globe_policy": "transparent fallback; do not apply a naive mercator model matrix on globe",
+        "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, default_hidden, and verified state windows from glTF extras"
+      },
+      "stats": {
+        "objects": 128,
+        "vertices_input": 12944,
+        "triangles_input": 25436,
+        "materials": 10,
+        "bounds_blender": {
+          "min": [
+            -16.24,
+            -11.6,
+            -1.3
+          ],
+          "max": [
+            16.24,
+            11.6,
+            12.4
+          ]
+        },
+        "bytes": 1710592
+      },
+      "build": {
+        "blender": "4.5.3 LTS",
+        "glb_sha256": "d51a8ad1983f4a8827e2319e53ce13923115de74dfa16b77399324d8164ea052",
+        "glb_header": {
+          "magic": "glTF",
+          "version": 2,
+          "declared_length": 1710592
+        }
+      }
+    },
+    {
+      "id": "wano-onigashima-country-system",
+      "label": "Wano Country and Onigashima system",
+      "maturity": "runtime_blockout_v1",
+      "glb": "runtime/wano-onigashima-country-system.glb",
+      "fallback_raster": "renders/runtime/wano-onigashima-country-system.png",
+      "fallback": {
+        "path": "renders/runtime/wano-onigashima-country-system.png",
+        "bytes": 1134822,
+        "sha256": "a31dda0fdef934616b72057a1e22573d1ef221ba743b1214ac86e9711aa82431",
+        "pixel_size": [
+          1400,
+          1000
+        ],
+        "alpha": true
+      },
+      "source_blend": "source/wano-onigashima-country-system.blend",
+      "contract": "contracts/wano-onigashima-country-system.visual.json",
+      "integration": {
+        "mode": "maplibre_custom_3d_layer",
+        "fallback_mode": "maplibre_image_source_or_inset",
+        "anchor": [
+          118.2306,
+          7.5751
+        ],
+        "anchor_confidence": "derived",
+        "anchor_usage": "scene_entry_anchor_only",
+        "anchor_warning": "Local topology is contract-driven; never infer it from the deterministic atlas point.",
+        "chapter_beats": {
+          "base_reveal": 793,
+          "safe_full_scene": 978
+        },
+        "component_gates": [
+          {
+            "id": "wano-country",
+            "role": "high_walled_country",
+            "reveal_chapter": 793,
+            "verification": "verified",
+            "default_hidden": false
+          },
+          {
+            "id": "wano-walls",
+            "role": "colossal_country_bowl",
+            "reveal_chapter": 793,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "wano-inland-sea",
+            "role": "regional_water_system",
+            "reveal_chapter": 909,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "mount-fuji",
+            "role": "central_mountain",
+            "reveal_chapter": 909,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "flower-capital",
+            "role": "central_capital",
+            "reveal_chapter": 909,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "kuri",
+            "role": "country_region",
+            "reveal_chapter": 909,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "udon",
+            "role": "country_region",
+            "reveal_chapter": 909,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "kibi",
+            "role": "country_region",
+            "reveal_chapter": 909,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "hakumai",
+            "role": "country_region",
+            "reveal_chapter": 909,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "ringo",
+            "role": "country_region",
+            "reveal_chapter": 909,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "onigashima",
+            "role": "nearby_fortress_island",
+            "reveal_chapter": 793,
+            "verification": "verified",
+            "default_hidden": false
+          },
+          {
+            "id": "skull-dome",
+            "role": "fortress_silhouette",
+            "reveal_chapter": 978,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "onigashima-port",
+            "role": "fortress_approach",
+            "reveal_chapter": 978,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "giant-katana",
+            "role": "fortress_scale_landmark",
+            "reveal_chapter": 978,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "onigashima-roads",
+            "role": "mountain_approach_network",
+            "reveal_chapter": 978,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "onigashima-flame-clouds",
+            "role": "verified_flight_support_clouds",
+            "reveal_chapter": 997,
+            "verification": "verified_state_window",
+            "default_hidden": true,
+            "active_through_chapter": 1048.999
+          },
+          {
+            "id": "old-wano-submerged",
+            "role": "historical_depth_state",
+            "reveal_chapter": 1055,
+            "verification": "cited_summary",
+            "default_hidden": true
+          }
+        ],
+        "withheld_variants": [
+          "onigashima-raid-state",
+          "old-wano-submerged"
+        ],
+        "layout_status": "regional_bowl_and_local_offshore_fortress_chapter_shifted",
+        "projection_support": [
+          "mercator_closeup"
+        ],
+        "scale_policy": {
+          "mode": "visual_fit_not_canon_scale",
+          "use_model_bounds": true
+        },
+        "theory_policy": "separate_overlay_only; never mutate canon base geometry",
+        "animation_plan": {
+          "clock": "chapter_entry_elapsed_ms",
+          "reduced_motion": "geography remains chapter-sampled; no autonomous repaint loop",
+          "chapter_states": [],
+          "geographic_tracks": [
+            {
+              "channel": "onigashima_geography",
+              "name": "onigashima_geographic_shift",
+              "hold_before": true,
+              "hold_after": true,
+              "keyframes": [
+                {
+                  "chapter": 793,
+                  "progress": 0.0,
+                  "state": "offshore"
+                },
+                {
+                  "chapter": 996,
+                  "progress": 0.0,
+                  "state": "offshore_pre_liftoff"
+                },
+                {
+                  "chapter": 997,
+                  "progress": 0.17266187,
+                  "state": "lifted_by_flame_clouds"
+                },
+                {
+                  "chapter": 1027,
+                  "progress": 0.49640288,
+                  "state": "approaching_flower_capital"
+                },
+                {
+                  "chapter": 1039,
+                  "progress": 0.64028777,
+                  "state": "redirected_away_by_momonosuke"
+                },
+                {
+                  "chapter": 1049,
+                  "progress": 0.78417266,
+                  "state": "landed_outside_flower_capital"
+                },
+                {
+                  "chapter": 1108,
+                  "progress": 0.85611511,
+                  "state": "landing_state_held"
+                },
+                {
+                  "chapter": 1109,
+                  "progress": 1.0,
+                  "state": "returned_to_wano_sea_and_sunk"
+                }
+              ]
+            }
+          ]
+        },
+        "named_clips": [
+          "onigashima_geographic_shift"
+        ],
+        "geographic_motion_owner": "chapter-sampled runtime track; actual GLB root transform"
+      },
+      "runtime_policy": {
+        "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
+        "default": "fallback_raster",
+        "enable_glb_when": "feature flag on, close zoom, mercator projection, chapter gate open",
+        "unload_when_hidden": true,
+        "dispose_on_remove": [
+          "geometries",
+          "materials",
+          "textures"
+        ],
+        "globe_policy": "transparent fallback; do not apply a naive mercator model matrix on globe",
+        "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, default_hidden, and verified state windows from glTF extras"
+      },
+      "stats": {
+        "objects": 152,
+        "vertices_input": 5601,
+        "triangles_input": 10506,
+        "materials": 16,
+        "bounds_blender": {
+          "min": [
+            -19.440002,
+            -13.284,
+            -3.2
+          ],
+          "max": [
+            19.440002,
+            13.284,
+            7.637776
+          ]
+        },
+        "bytes": 718264
+      },
+      "build": {
+        "blender": "4.5.3 LTS",
+        "glb_sha256": "7a289fcc84732782d106743254b03554b5d86a0ed511013724e2d32c0eaaaf8c",
+        "glb_header": {
+          "magic": "glTF",
+          "version": 2,
+          "declared_length": 718264
+        }
+      }
+    },
+    {
+      "id": "elbaph-adam-world-system",
+      "label": "Elbaph Treasure Tree Adam world system",
+      "maturity": "runtime_blockout_v1",
+      "glb": "runtime/elbaph-adam-world-system.glb",
+      "fallback_raster": "renders/runtime/elbaph-adam-world-system.png",
+      "fallback": {
+        "path": "renders/runtime/elbaph-adam-world-system.png",
+        "bytes": 1355308,
+        "sha256": "cf07b8ebed95166ca2b734aba3ed9311ea812d44159f31a983a6a9109d80fc81",
+        "pixel_size": [
+          1400,
+          1000
+        ],
+        "alpha": true
+      },
+      "source_blend": "source/elbaph-adam-world-system.blend",
+      "contract": "contracts/elbaph-adam-world-system.visual.json",
+      "integration": {
+        "mode": "maplibre_custom_3d_layer",
+        "fallback_mode": "maplibre_image_source_or_inset",
+        "anchor": [
+          154.2701,
+          -7.171
+        ],
+        "anchor_confidence": "derived",
+        "anchor_usage": "scene_entry_anchor_only",
+        "anchor_warning": "Local topology is contract-driven; never infer it from the deterministic atlas point.",
+        "chapter_beats": {
+          "base_reveal": 865,
+          "safe_full_scene": 1132
+        },
+        "component_gates": [
+          {
+            "id": "elbaph",
+            "role": "giant_nation_identity",
+            "reveal_chapter": 865,
+            "verification": "verified",
+            "default_hidden": false
+          },
+          {
+            "id": "sleep-mist-route",
+            "role": "fogged_sea_approach",
+            "reveal_chapter": 1127,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "elbaph-underworld",
+            "role": "snowy_root_region",
+            "reveal_chapter": 1130,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "roads-castle",
+            "role": "underworld_castle",
+            "reveal_chapter": 1130,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "giant-fauna-layer",
+            "role": "giant_ecology",
+            "reveal_chapter": 1130,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "idas-bar",
+            "role": "underworld_landmark",
+            "reveal_chapter": 1131,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "treasure-tree-adam",
+            "role": "vertical_world_connector",
+            "reveal_chapter": 1132,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "sun-world",
+            "role": "branch_world",
+            "reveal_chapter": 1132,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "warland-settlement",
+            "role": "giant_scale_settlement",
+            "reveal_chapter": 1132,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "heaven-world",
+            "role": "upper_cloud_region",
+            "reveal_chapter": null,
+            "verification": "chapter_to_verify",
+            "default_hidden": true
+          },
+          {
+            "id": "chapter-1188-current-state",
+            "role": "current_event_overlay",
+            "reveal_chapter": null,
+            "verification": "chapter_to_verify",
+            "default_hidden": true
+          }
+        ],
+        "withheld_variants": [
+          "heaven-world",
+          "chapter-1188-current-state",
+          "nine-world-theory-overlay"
+        ],
+        "layout_status": "vertical_world_tree_canon_relationships_theory_overlay_excluded",
+        "projection_support": [
+          "mercator_closeup"
+        ],
+        "scale_policy": {
+          "mode": "visual_fit_not_canon_scale",
+          "use_model_bounds": true
+        },
+        "theory_policy": "separate_overlay_only; never mutate canon base geometry"
+      },
+      "runtime_policy": {
+        "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
+        "default": "fallback_raster",
+        "enable_glb_when": "feature flag on, close zoom, mercator projection, chapter gate open",
+        "unload_when_hidden": true,
+        "dispose_on_remove": [
+          "geometries",
+          "materials",
+          "textures"
+        ],
+        "globe_policy": "transparent fallback; do not apply a naive mercator model matrix on globe",
+        "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, default_hidden, and verified state windows from glTF extras"
+      },
+      "stats": {
+        "objects": 189,
+        "vertices_input": 11951,
+        "triangles_input": 23186,
+        "materials": 11,
+        "bounds_blender": {
+          "min": [
+            -16.674999,
+            -11.6,
+            -1.325
+          ],
+          "max": [
+            16.674999,
+            11.6,
+            19.300001
+          ]
+        },
+        "bytes": 1660168
+      },
+      "build": {
+        "blender": "4.5.3 LTS",
+        "glb_sha256": "06c62e7adf3f2671ab5550e8702550d94c1de7977cde12472596e080cf7728fa",
+        "glb_header": {
+          "magic": "glTF",
+          "version": 2,
+          "declared_length": 1660168
+        }
+      }
+    },
+    {
+      "id": "punk-hazard-geographic-system",
+      "maturity": "runtime_blockout_v1",
+      "glb": "runtime/punk-hazard-geographic-system.glb",
+      "fallback_raster": "renders/runtime/punk-hazard-geographic-system.png",
+      "fallback": {
+        "path": "renders/runtime/punk-hazard-geographic-system.png",
+        "bytes": 1054579,
+        "sha256": "59b1c64c2c30d5a301da0d0ba986a4d69e88b3ec89511a4f9c1a327c9396339b",
+        "pixel_size": [
+          1400,
+          1000
+        ],
+        "alpha": true
+      },
+      "source_blend": "source/punk-hazard-geographic-system.blend",
+      "contract": "contracts/punk-hazard-geographic-system.visual.json",
+      "runtime_policy": {
+        "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
+        "default": "fallback_raster",
+        "enable_glb_when": "feature flag on, close zoom, mercator projection, chapter gate open",
+        "unload_when_hidden": true,
+        "dispose_on_remove": [
+          "geometries",
+          "materials",
+          "textures",
+          "animation_actions"
+        ],
+        "globe_policy": "transparent fallback; close-detail GLB is Mercator-only",
+        "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, default_hidden, and verified state windows from glTF extras"
+      },
+      "stats": {
+        "objects": 195,
+        "vertices_input": 15000,
+        "triangles_input": 28868,
+        "materials": 17,
+        "bounds_blender": {
+          "min": [
+            -16.703999,
+            -11.808,
+            -1.125
+          ],
+          "max": [
+            16.703999,
+            11.808,
+            9.39
+          ]
+        },
+        "bytes": 1342704
+      },
+      "build": {
+        "blender": "4.5.3 LTS",
+        "glb_sha256": "9cde554e6a085753b4b29eb4a8798eaa08eefbe830d481dcbef73837ca5644a4",
+        "glb_header": {
+          "magic": "glTF",
+          "version": 2,
+          "declared_length": 1342704
+        }
+      },
+      "label": "Punk Hazard fire-and-ice geographic system",
+      "integration": {
+        "mode": "maplibre_custom_3d_layer",
+        "fallback_mode": "maplibre_image_source_or_inset",
+        "anchor": [
+          18.7035,
+          -5.2418
+        ],
+        "anchor_confidence": "derived",
+        "anchor_usage": "atlas_anchor_only",
+        "anchor_warning": "Deterministic atlas placement; never use it as canon survey geometry.",
+        "chapter_beats": {
+          "pre_reveal_through": 654,
+          "base_reveal": 655,
+          "two_sided_reveal": 657,
+          "historical_cause_reveal": 658,
+          "compass_orientation": 659,
+          "crater_origin_reveal": 661,
+          "safe_full_scene": 664
+        },
+        "component_gates": [
+          {
+            "id": "punk-hazard",
+            "role": "island_system_root",
+            "reveal_chapter": 655,
+            "verification": "verified",
+            "default_hidden": false
+          },
+          {
+            "id": "burning-lands",
+            "role": "hot_southwestern_half",
+            "reveal_chapter": 655,
+            "verification": "verified_arrival_then_compass_orientation_ch659",
+            "default_hidden": false
+          },
+          {
+            "id": "fiery-sea",
+            "role": "burning_approach_water",
+            "reveal_chapter": 655,
+            "verification": "verified",
+            "default_hidden": false
+          },
+          {
+            "id": "burning-lands-volcano",
+            "role": "active_volcanic_landmark",
+            "reveal_chapter": 655,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "melted-government-base",
+            "role": "abandoned_melted_base_and_gate",
+            "reveal_chapter": 655,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "ice-lands",
+            "role": "cold_northeastern_half",
+            "reveal_chapter": 657,
+            "verification": "verified_discovery_then_compass_orientation_ch659",
+            "default_hidden": false
+          },
+          {
+            "id": "central-crater-lake",
+            "role": "seawater_crater_dividing_halves",
+            "reveal_chapter": 657,
+            "verification": "visible_ch657_origin_explained_ch661",
+            "default_hidden": false
+          },
+          {
+            "id": "sea-channel",
+            "role": "lake_connection_to_outer_sea",
+            "reveal_chapter": 657,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "ice-river",
+            "role": "river_from_cold_side_to_harbor",
+            "reveal_chapter": 658,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "captured-ships-harbor",
+            "role": "ice_side_natural_harbor",
+            "reveal_chapter": 658,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "iceberg-choke",
+            "role": "river_and_harbor_navigation_hazard",
+            "reveal_chapter": 658,
+            "verification": "cited_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "third-research-institute",
+            "role": "mountainside_laboratory_exterior",
+            "reveal_chapter": 657,
+            "verification": "verified_first_appearance",
+            "default_hidden": false
+          },
+          {
+            "id": "laboratory-industrial-system",
+            "role": "exterior_tanks_pipes_chimneys_and_sections",
+            "reveal_chapter": 658,
+            "verification": "cited_summary_exterior_only",
+            "default_hidden": false
+          },
+          {
+            "id": "first-second-institute-ruins",
+            "role": "destroyed_earlier_laboratories",
+            "reveal_chapter": 664,
+            "verification": "verified_summary",
+            "default_hidden": false
+          },
+          {
+            "id": "climate-boundary-ambient",
+            "role": "neutral_steam_lava_glow_and_ice_wind_cycle",
+            "reveal_chapter": 657,
+            "verification": "derived_visualization_of_verified_temperature_boundary",
+            "default_hidden": false
+          },
+          {
+            "id": "duel-memory-fx",
+            "role": "chapter_658_environmental_history_overlay",
+            "reveal_chapter": 658,
+            "active_through_chapter": 658.999,
+            "verification": "verified_state_window",
+            "classification": "referenced_historical_reconstruction",
+            "default_hidden": true
+          }
+        ],
+        "named_clips": [
+          "punk_hazard_environment_cycle",
+          "punk_hazard_duel_memory_fx"
+        ],
+        "animation_plan": {
+          "clock": "chapter_entry_elapsed_ms",
+          "reduced_motion": "freeze ambient climate proxies and sample the historical memory FX at its final authored frame",
+          "chapter_states": [
+            {
+              "chapter": 658,
+              "duration_ms": 3958,
+              "clips": [
+                {
+                  "channel": "punk_hazard_history",
+                  "name": "punk_hazard_duel_memory_fx",
+                  "start_ms": 0,
+                  "duration_ms": 3958,
+                  "loop": false
+                }
+              ]
+            }
+          ],
+          "ambient_tracks": [
+            {
+              "channel": "punk_hazard_climate",
+              "name": "punk_hazard_environment_cycle",
+              "active_from_chapter": 657,
+              "duration_ms": 5000,
+              "loop": true
+            }
+          ]
+        },
+        "historical_reconstruction_policy": "Chapter 658 runs abstract magma/ice environmental FX over the already-final island. No characters and no asserted duel choreography.",
+        "layout_status": "verified_hot_cold_relationships_with_visual_interpolation_for_dimensions_and_local_bearings",
+        "projection_support": [
+          "mercator_closeup"
+        ],
+        "scale_policy": {
+          "mode": "visual_fit_not_canon_scale",
+          "use_model_bounds": true
+        },
+        "withheld_variants": [],
+        "route_policy": "Local island theatre; exact coastline, channel, river, harbor, and lab bearings are visual interpolation."
+      }
+    },
+    {
+      "id": "totto-land-food-geography",
+      "maturity": "runtime_blockout_v1",
+      "glb": "runtime/totto-land-food-geography.glb",
+      "fallback_raster": "renders/runtime/totto-land-food-geography.png",
+      "fallback": {
+        "path": "renders/runtime/totto-land-food-geography.png",
+        "bytes": 1891460,
+        "sha256": "dd826e51f6b5bac297abd68604e4a44085a883680dc38532f02118380b526cd2",
+        "pixel_size": [
+          1600,
+          1050
+        ],
+        "alpha": true
+      },
+      "source_blend": "source/totto-land-food-geography.blend",
+      "contract": "contracts/totto-land-food-geography.visual.json",
+      "runtime_policy": {
+        "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
+        "default": "fallback_raster",
+        "enable_glb_when": "feature flag on, close zoom, mercator projection, chapter gate open",
+        "unload_when_hidden": true,
+        "dispose_on_remove": [
+          "geometries",
+          "materials",
+          "textures",
+          "animation_actions"
+        ],
+        "globe_policy": "transparent fallback; close-detail GLB is Mercator-only",
+        "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, default_hidden, and verified state windows from glTF extras"
+      },
+      "stats": {
+        "objects": 333,
+        "vertices_input": 19114,
+        "triangles_input": 36884,
+        "materials": 18,
+        "bounds_blender": {
+          "min": [
+            -20.1,
+            -12.3,
+            -0.57
+          ],
+          "max": [
+            14.9,
+            12.900001,
+            5.66
+          ]
+        },
+        "bytes": 2728248
+      },
+      "build": {
+        "blender": "4.5.3 LTS",
+        "glb_sha256": "28f50f92090b8cf817e81ae857ba25e96d47a4b4baa3f76bf1df113cdeefd0bb",
+        "glb_header": {
+          "magic": "glTF",
+          "version": 2,
+          "declared_length": 2728248
+        }
+      },
+      "label": "Totto Land food-island hero geography",
+      "integration": {
+        "mode": "maplibre_custom_3d_layer",
+        "fallback_mode": "maplibre_image_source_or_inset",
+        "anchor": [
+          72.2778,
+          -2.819
+        ],
+        "anchor_confidence": "derived",
+        "anchor_usage": "atlas_anchor_only",
+        "anchor_warning": "The central atlas pin places a close-detail local theatre; it does not measure distances among Totto Land islands.",
+        "chapter_beats": {
+          "base_reveal": 651,
+          "safe_full_scene": 831
+        },
+        "component_gates": [
+          {
+            "id": "totto-land-food-geography",
+            "reveal_chapter": 651,
+            "verification": "package_scaffold",
+            "role": "archipelago_detail_system",
+            "default_hidden": false
+          },
+          {
+            "id": "whole-cake-island",
+            "reveal_chapter": 651,
+            "verification": "verified",
+            "role": "central_main_island",
+            "default_hidden": false
+          },
+          {
+            "id": "whole-cake-chateau",
+            "reveal_chapter": 651,
+            "verification": "verified",
+            "role": "nested_landmark",
+            "default_hidden": false
+          },
+          {
+            "id": "cacao-island",
+            "reveal_chapter": 827,
+            "verification": "verified",
+            "role": "subsidiary_island",
+            "default_hidden": false
+          },
+          {
+            "id": "cacao-chocolate-settlement",
+            "reveal_chapter": 827,
+            "verification": "verified_feature",
+            "role": "island_settlement",
+            "default_hidden": false
+          },
+          {
+            "id": "pudding-home-cacao",
+            "reveal_chapter": 827,
+            "verification": "verified_feature",
+            "role": "island_landmark",
+            "default_hidden": false
+          },
+          {
+            "id": "biscuits-island",
+            "reveal_chapter": 828,
+            "verification": "verified",
+            "role": "subsidiary_island",
+            "default_hidden": false
+          },
+          {
+            "id": "sweet-city",
+            "reveal_chapter": 829,
+            "verification": "verified_feature",
+            "role": "island_city",
+            "default_hidden": false
+          },
+          {
+            "id": "totto-land-sea-route",
+            "reveal_chapter": 829,
+            "active_through_chapter": 829.999,
+            "verification": "verified_state_window",
+            "gate_confidence": "verified_state_window",
+            "default_hidden": true,
+            "role": "verified_state_window_route"
+          },
+          {
+            "id": "seducing-woods",
+            "reveal_chapter": 831,
+            "verification": "verified_feature",
+            "role": "island_forest",
+            "default_hidden": false
+          }
+        ],
+        "named_clips": [
+          "totto_land_food_route_cycle"
+        ],
+        "animation_plan": {
+          "clock": "chapter_entry_elapsed_ms",
+          "reduced_motion": "freeze the ordinary open-sea foam route at its rest pose",
+          "chapter_states": [],
+          "ambient_tracks": [
+            {
+              "channel": "totto_land_route",
+              "name": "totto_land_food_route_cycle",
+              "active_from_chapter": 829,
+              "active_through_chapter": 829.999,
+              "duration_ms": 5042,
+              "loop": true
+            }
+          ]
+        },
+        "layout_status": "three_close_detail_food_islands_with_verified_identity_and_visually_interpolated_terrain",
+        "projection_support": [
+          "mercator_closeup"
+        ],
+        "scale_policy": {
+          "mode": "visual_fit_not_canon_scale",
+          "use_model_bounds": true
+        },
+        "withheld_variants": [],
+        "route_policy": "Cacao-to-Whole-Cake foam is a chapter-829 visual interpolation; no juice, chocolate, candy river, or inland canal is asserted.",
+        "replacement_policy": "Replaces old totto-land runtime row; never load both at one anchor."
+      }
+    },
+    {
+      "id": "fish-man-red-line-descent",
+      "label": "Sabaody coating and Fish-Man descent",
+      "maturity": "runtime_blockout_v1",
+      "glb": "runtime/fish-man-red-line-descent.glb",
+      "fallback_raster": "renders/runtime/fish-man-red-line-descent.png",
+      "fallback": {
+        "path": "renders/runtime/fish-man-red-line-descent.png",
+        "bytes": 1345368,
+        "sha256": "90abfec5f6e2bdfcf4c50296ddf10d180826f823c401e4c290911a62bcd90f87",
+        "pixel_size": [
+          1400,
+          1000
+        ],
+        "alpha": true
+      },
+      "source_blend": "source/fish-man-red-line-descent.blend",
+      "contract": "contracts/fish-man-red-line-descent.visual.json",
+      "integration": {
+        "mode": "maplibre_custom_3d_layer",
+        "fallback_mode": "maplibre_image_source_or_inset",
+        "anchor": [
+          -48.2843,
+          2.9
+        ],
+        "anchor_confidence": "derived",
+        "anchor_usage": "local_transition_stage_only",
+        "anchor_warning": "This anchor opens an explanatory vertical theatre and does not claim a literal horizontal undersea route.",
+        "chapter_beats": {
+          "base_reveal": 496,
+          "coating_yard": 507,
+          "dive": 602,
+          "deep": 605,
+          "trench": 607,
+          "safe_full_scene": 507
+        },
+        "component_gates": [
+          {
+            "id": "red-line-undersea-route",
+            "role": "route_cross_section_root",
+            "reveal_chapter": 496,
+            "verification": "verified",
+            "default_hidden": false
+          },
+          {
+            "id": "sabaody-coating-yard",
+            "role": "rayleigh_coating_work_area_without_character_proxy",
+            "reveal_chapter": 507,
+            "verification": "verified",
+            "default_hidden": false
+          },
+          {
+            "id": "coated-sunny-dive",
+            "role": "chapter_sampled_descent_vehicle",
+            "reveal_chapter": 602,
+            "active_through_chapter": 607.999,
+            "verification": "verified_state_window",
+            "default_hidden": true
+          },
+          {
+            "id": "undersea-pressure-zone",
+            "role": "coated_ship_pressure_and_light_zone",
+            "reveal_chapter": 603,
+            "active_through_chapter": 607.999,
+            "verification": "verified_state_window",
+            "default_hidden": true
+          },
+          {
+            "id": "downward-plume",
+            "role": "deep_current_route",
+            "reveal_chapter": 604,
+            "active_through_chapter": 607.999,
+            "verification": "verified_state_window",
+            "default_hidden": true
+          },
+          {
+            "id": "kraken-route-hazard",
+            "role": "kraken_encounter_landmark",
+            "reveal_chapter": 604,
+            "active_through_chapter": 607.999,
+            "verification": "verified_state_window",
+            "default_hidden": true
+          },
+          {
+            "id": "underworld-sea-creatures",
+            "role": "deep_sea_creature_field",
+            "reveal_chapter": 605,
+            "active_through_chapter": 607.999,
+            "verification": "verified_state_window",
+            "default_hidden": true
+          },
+          {
+            "id": "deep-sea-volcanic-region",
+            "role": "hydrothermal_and_volcanic_hazard",
+            "reveal_chapter": 606,
+            "active_through_chapter": 607.999,
+            "verification": "verified_state_window",
+            "default_hidden": true
+          },
+          {
+            "id": "red-line-trench-approach",
+            "role": "ten_thousand_meter_trench",
+            "reveal_chapter": 607,
+            "active_through_chapter": 607.999,
+            "verification": "verified_state_window",
+            "default_hidden": true
+          },
+          {
+            "id": "fish-man-island-distant-gate",
+            "role": "distant_approach_glow_not_full_island",
+            "reveal_chapter": 607,
+            "active_through_chapter": 607.999,
+            "verification": "verified_state_window",
+            "default_hidden": true
+          }
+        ],
+        "named_clips": [
+          "fishman_descent_route_state",
+          "fishman_current_cycle",
+          "fishman_volcanic_cycle"
+        ],
+        "animation_plan": {
+          "clock": "chapter_entry_elapsed_ms",
+          "reduced_motion": "retain the chapter-sampled Sunny depth and freeze currents and volcanic vent motion",
+          "chapter_states": [],
+          "geographic_tracks": [
+            {
+              "channel": "fishman_descent",
+              "name": "fishman_descent_route_state",
+              "keyframes": [
+                {
+                  "chapter": 602,
+                  "progress": 0.0
+                },
+                {
+                  "chapter": 603,
+                  "progress": 0.18
+                },
+                {
+                  "chapter": 604,
+                  "progress": 0.38
+                },
+                {
+                  "chapter": 605,
+                  "progress": 0.58
+                },
+                {
+                  "chapter": 606,
+                  "progress": 0.78
+                },
+                {
+                  "chapter": 607,
+                  "progress": 1.0
+                }
+              ],
+              "hold_before": false,
+              "hold_after": false
+            }
+          ],
+          "ambient_tracks": [
+            {
+              "channel": "fishman_current",
+              "name": "fishman_current_cycle",
+              "active_from_chapter": 603,
+              "active_through_chapter": 607.999,
+              "duration_ms": 4833,
+              "loop": true
+            },
+            {
+              "channel": "fishman_volcano",
+              "name": "fishman_volcanic_cycle",
+              "active_from_chapter": 606,
+              "active_through_chapter": 607.999,
+              "duration_ms": 5042,
+              "loop": true
+            }
+          ]
+        },
+        "withheld_variants": [],
+        "layout_status": "local_undersea_cross_section_not_survey_geometry",
+        "projection_support": [
+          "mercator_closeup"
+        ],
+        "scale_policy": {
+          "mode": "visual_fit_not_canon_scale",
+          "use_model_bounds": true
+        },
+        "route_policy": "The vertical depth sequence is chapter-verified; horizontal bearings, distances, and wall proportions are explanatory art direction.",
+        "destination_policy": "The descent stops at a distant gate in chapter 607. The separate fish-man-island asset owns the full destination from chapter 608."
+      },
+      "runtime_policy": {
+        "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
+        "default": "fallback_raster",
+        "enable_glb_when": "feature flag on, close zoom, mercator projection, chapter gate open",
+        "unload_when_hidden": true,
+        "dispose_on_remove": [
+          "geometries",
+          "materials",
+          "textures",
+          "animation_actions"
+        ],
+        "globe_policy": "transparent fallback; close-detail GLB is Mercator-only",
+        "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, default_hidden, and verified state windows from glTF extras"
+      },
+      "stats": {
+        "objects": 68,
+        "vertices_input": 7792,
+        "triangles_input": 15156,
+        "materials": 14,
+        "bounds_blender": {
+          "min": [
+            -9.618153,
+            -4.2,
+            -0.47
+          ],
+          "max": [
+            9.657043,
+            4.2,
+            14.55
+          ]
+        },
+        "bytes": 826768
+      },
+      "build": {
+        "blender": "4.5.3 LTS",
+        "glb_sha256": "412f6e45fdae9f2a1f68b86d8b457f8ac8602fac17055eecd5e3aefd33646d42",
+        "glb_header": {
+          "magic": "glTF",
+          "version": 2,
+          "declared_length": 826768
+        }
       }
     }
   ]

@@ -28,6 +28,8 @@ def cli_args() -> argparse.Namespace:
     parser.add_argument("--id", required=True)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--metadata", type=Path)
+    parser.add_argument("--animations", action="store_true",
+                        help="Export named Blender Actions for chapter-sampled runtime motion")
     return parser.parse_args(argv)
 
 
@@ -45,6 +47,15 @@ def glb_header(path: Path) -> dict:
     if magic != b"glTF" or version != 2 or declared_length != path.stat().st_size:
         raise RuntimeError(f"Invalid GLB header: {path}")
     return {"magic": "glTF", "version": version, "declared_length": declared_length}
+
+
+def glb_json(path: Path) -> dict:
+    with path.open("rb") as handle:
+        handle.read(12)
+        length, chunk_type = struct.unpack("<II", handle.read(8))
+        if chunk_type != 0x4E4F534A:
+            raise RuntimeError(f"GLB JSON chunk missing: {path}")
+        return json.loads(handle.read(length).decode("utf-8").rstrip(" \t\r\n\x00"))
 
 
 def main() -> int:
@@ -117,26 +128,45 @@ def main() -> int:
         triangle_count += sum(max(1, len(poly.vertices) - 2) for poly in obj.data.polygons)
         materials.update(slot.material.name for slot in obj.material_slots if slot.material)
 
-    bpy.ops.export_scene.gltf(
-        filepath=str(output),
-        export_format="GLB",
-        use_selection=True,
-        export_apply=True,
-        export_animations=False,
-        export_cameras=False,
-        export_lights=False,
-        export_extras=True,
-        export_yup=True,
+    export_kwargs = {
+        "filepath": str(output),
+        "export_format": "GLB",
+        "use_selection": True,
+        # Applying animated object transforms destroys the hierarchy the clip
+        # needs to move. Static blockouts retain the old baked-transform path.
+        "export_apply": not args.animations,
+        "export_animations": args.animations,
+        "export_cameras": False,
+        "export_lights": False,
+        "export_extras": True,
+        "export_yup": True,
         # Keep this export self-contained. Blender exposes the gltfpack option
         # even when no gltfpack binary is configured, which fails after all
         # geometry has been extracted. Runtime size is enforced by the
         # verification pass instead.
-        export_use_gltfpack=False,
-        export_image_format="AUTO",
-        export_materials="EXPORT",
-        check_existing=False,
-    )
+        "export_use_gltfpack": False,
+        "export_image_format": "AUTO",
+        "export_materials": "EXPORT",
+        "check_existing": False,
+    }
+    if args.animations:
+        export_kwargs.update({
+            "export_animation_mode": "ACTIONS",
+            "export_force_sampling": False,
+            "export_optimize_animation_size": True,
+            "export_optimize_animation_keep_anim_object": True,
+        })
+    bpy.ops.export_scene.gltf(**export_kwargs)
     header = glb_header(output)
+    payload = glb_json(output)
+    named_clips = []
+    for animation in payload.get("animations", []):
+        duration = 0.0
+        for sampler in animation.get("samplers", []):
+            accessor = payload["accessors"][sampler["input"]]
+            duration = max(duration, float((accessor.get("max") or [0])[0]))
+        named_clips.append({"name": animation.get("name"),
+                            "duration_seconds": round(duration, 4)})
     report = {
         "schema_version": 1,
         "id": args.id,
@@ -147,7 +177,9 @@ def main() -> int:
         "export": {
             "exporter": "Blender built-in glTF 2.0 exporter",
             "compression": "none; optional gltfpack binary is not installed",
-            "animations": False,
+            "animations": args.animations,
+            "animation_mode": "ACTIONS" if args.animations else None,
+            "named_clips": named_clips,
             "preview_proxy_excluded": True,
             "curves_converted_to_mesh": converted,
             "excluded_objects": excluded,

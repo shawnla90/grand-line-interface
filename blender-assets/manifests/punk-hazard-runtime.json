@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "id": "punk-hazard-geographic-system",
+  "generator": "scripts/punk-hazard-build.py",
+  "definition": "standalone chapter-gated Punk Hazard LOD1 geography; not registered into shared runtime manifests",
+  "registration_status": "not_registered_by_this_lane",
+  "maturity": "runtime_blockout_v1",
+  "files": {
+    "contract": "contracts/punk-hazard-geographic-system.visual.json",
+    "research": "research/punk-hazard-geography-evidence.json",
+    "blend": "source/punk-hazard-geographic-system.blend",
+    "glb": "runtime/punk-hazard-geographic-system.glb",
+    "model": "runtime/punk-hazard-geographic-system.model.json",
+    "fallback": "renders/runtime/punk-hazard-geographic-system.png",
+    "previews": [
+      "previews/punk-hazard-ch655-arrival.png",
+      "previews/punk-hazard-ch657-split.png",
+      "previews/punk-hazard-ch658-memory-fx.png",
+      "previews/punk-hazard-ch664-full-geography.png",
+      "previews/punk-hazard-geographic-system-hero-ch664.png",
+      "previews/punk-hazard-geographic-system-contact-sheet.png"
+    ]
+  },
+  "chapter_beats": {
+    "pre_reveal_through": 654,
+    "base_reveal": 655,
+    "two_sided_reveal": 657,
+    "historical_cause_reveal": 658,
+    "compass_orientation": 659,
+    "crater_origin_reveal": 661,
+    "safe_full_scene": 664
+  },
+  "component_gates": [
+    {
+      "id": "punk-hazard",
+      "role": "island_system_root",
+      "reveal_chapter": 655,
+      "verification": "verified",
+      "default_hidden": false
+    },
+    {
+      "id": "burning-lands",
+      "role": "hot_southwestern_half",
+      "reveal_chapter": 655,
+      "verification": "verified_arrival_then_compass_orientation_ch659",
+      "default_hidden": false
+    },
+    {
+      "id": "fiery-sea",
+      "role": "burning_approach_water",
+      "reveal_chapter": 655,
+      "verification": "verified",
+      "default_hidden": false
+    },
+    {
+      "id": "burning-lands-volcano",
+      "role": "active_volcanic_landmark",
+      "reveal_chapter": 655,
+      "verification": "cited_summary",
+      "default_hidden": false
+    },
+    {
+      "id": "melted-government-base",
+      "role": "abandoned_melted_base_and_gate",
+      "reveal_chapter": 655,
+      "verification": "cited_summary",
+      "default_hidden": false
+    },
+    {
+      "id": "ice-lands",
+      "role": "cold_northeastern_half",
+      "reveal_chapter": 657,
+      "verification": "verified_discovery_then_compass_orientation_ch659",
+      "default_hidden": false
+    },
+    {
+      "id": "central-crater-lake",
+      "role": "seawater_crater_dividing_halves",
+      "reveal_chapter": 657,
+      "verification": "visible_ch657_origin_explained_ch661",
+      "default_hidden": false
+    },
+    {
+      "id": "sea-channel",
+      "role": "lake_connection_to_outer_sea",
+      "reveal_chapter": 657,
+      "verification": "cited_summary",
+      "default_hidden": false
+    },
+    {
+      "id": "ice-river",
+      "role": "river_from_cold_side_to_harbor",
+      "reveal_chapter": 658,
+      "verification": "cited_summary",
+      "default_hidden": false
+    },
+    {
+      "id": "captured-ships-harbor",
+      "role": "ice_side_natural_harbor",
+      "reveal_chapter": 658,
+      "verification": "cited_summary",
+      "default_hidden": false
+    },
+    {
+      "id": "iceberg-choke",
+      "role": "river_and_harbor_navigation_hazard",
+      "reveal_chapter": 658,
+      "verification": "cited_summary",
+      "default_hidden": false
+    },
+    {
+      "id": "third-research-institute",
+      "role": "mountainside_laboratory_exterior",
+      "reveal_chapter": 657,
+      "verification": "verified_first_appearance",
+      "default_hidden": false
+    },
+    {
+      "id": "laboratory-industrial-system",
+      "role": "exterior_tanks_pipes_chimneys_and_sections",
+      "reveal_chapter": 658,
+      "verification": "cited_summary_exterior_only",
+      "default_hidden": false
+    },
+    {
+      "id": "first-second-institute-ruins",
+      "role": "destroyed_earlier_laboratories",
+      "reveal_chapter": 664,
+      "verification": "verified_summary",
+      "default_hidden": false
+    },
+    {
+      "id": "climate-boundary-ambient",
+      "role": "neutral_steam_lava_glow_and_ice_wind_cycle",
+      "reveal_chapter": 657,
+      "verification": "derived_visualization_of_verified_temperature_boundary",
+      "default_hidden": false
+    },
+    {
+      "id": "duel-memory-fx",
+      "role": "chapter_658_environmental_history_overlay",
+      "reveal_chapter": 658,
+      "active_through_chapter": 658.999,
+      "verification": "verified_state_window",
+      "classification": "referenced_historical_reconstruction",
+      "default_hidden": true
+    }
+  ],
+  "named_clips": [
+    {
+      "name": "punk_hazard_environment_cycle",
+      "duration_seconds": 5.0,
+      "mode": "loop",
+      "classification": "neutral_ambient",
+      "reveal_chapter": 657
+    },
+    {
+      "name": "punk_hazard_duel_memory_fx",
+      "duration_seconds": 3.9583,
+      "mode": "one_shot",
+      "classification": "referenced_historical_reconstruction",
+      "reveal_chapter": 658,
+      "active_through_chapter": 658.999
+    }
+  ],
+  "integration": {
+    "anchor": [
+      18.7035,
+      -5.2418
+    ],
+    "anchor_confidence": "derived",
+    "projection_support": [
+      "mercator_closeup"
+    ],
+    "node_gate_policy": "glTF extras: component_id, reveal_chapter, gate_confidence, default_hidden, active_through_chapter",
+    "ambient_policy": "loop environment cycle only while visible from chapter 657; memory FX is one-shot chapter 658 only"
+  },
+  "stats": {
+    "objects": 195,
+    "vertices_input": 15000,
+    "triangles_input": 28868,
+    "materials": 17,
+    "bounds_blender": {
+      "min": [
+        -16.703999,
+        -11.808,
+        -1.125
+      ],
+      "max": [
+        16.703999,
+        11.808,
+        9.39
+      ]
+    },
+    "bytes": 1342704
+  },
+  "hashes": {
+    "contract_sha256": "c82deca9334eccb6b61891eacf696979b9beace39767ca8b81ea8875540dbcc1",
+    "research_sha256": "e69c0e9d694616d9be6be2b6ae298ddb55f459406b4dc29dc47676c74e299553",
+    "blend_sha256": "d6b2b51e007ea1fda74afb0c81e04f7badfb17e71a8e3efdbf175fb519460e75",
+    "glb_sha256": "9cde554e6a085753b4b29eb4a8798eaa08eefbe830d481dcbef73837ca5644a4",
+    "model_sha256": "b1e6c2a3d67231ad8ff0c9cf4d2c0d63f15d11b962e0d8626357c641488fc2ba",
+    "fallback_sha256": "59b1c64c2c30d5a301da0d0ba986a4d69e88b3ec89511a4f9c1a327c9396339b",
+    "preview_sha256": {
+      "punk-hazard-ch655-arrival.png": "aab02d71923ea162ba96b38ebfcd3401e705005d249c26727cf06b43bba94c71",
+      "punk-hazard-ch657-split.png": "a4e90fbe877afea9780d59a94fbe881cb433a9e7698a8b2a8e55d219e6dcf322",
+      "punk-hazard-ch658-memory-fx.png": "5360f9aa2184c257bd93c9c686b1121080e8e3807d0a352b703df9eeaec3a9a1",
+      "punk-hazard-ch664-full-geography.png": "7abb4200455b57cf29cbfe7065924f868d21c417e619c8d23fed2ce41b085a72",
+      "punk-hazard-geographic-system-hero-ch664.png": "d42e0ec6b279756269b48b86dfb15d57e7cca52355951deb2ad973adb1b46bc7",
+      "punk-hazard-geographic-system-contact-sheet.png": "ca30270cd9704b338230c892f39c0bca7858cdb7f16180b31a0c0946faafde9c"
+    }
+  },
+  "fallback": {
+    "pixel_size": [
+      1400,
+      1000
+    ],
+    "bytes": 1054579,
+    "alpha": true
+  },
+  "unresolved_gates": [
+    "Exact coastline and central-crater geometry are not available as canon measurements.",
+    "Exact river, harbor, laboratory, and destroyed-institute bearings are not established.",
+    "The specific chapter where gale-force boundary wind is first verbally explained needs panel-level verification; the neutral ambient visualization is gated to the visible two-sided discovery at chapter 657.",
+    "Interior Third Research Institute room topology is deliberately outside this geographic asset.",
+    "Historical duel choreography and character staging are deliberately excluded; the optional memory FX is abstract environmental reconstruction only."
+  ]
+}

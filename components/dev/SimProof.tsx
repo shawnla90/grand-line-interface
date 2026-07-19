@@ -28,6 +28,7 @@ const RAINBASE: [number, number] = [-116.2875, 6.0506];
 const ALUBARNA: [number, number] = [-120.1992, -0.7873];
 const SKYPIEA: [number, number] = [-91.1362, 17.0745];
 const ENIES_LOBBY: [number, number] = [-68.3696, -7.1283];
+const HUMAN_AUCTIONING_HOUSE: [number, number] = [-51.2008, 6.2035];
 
 export default function SimProof({
   initialChapter,
@@ -55,13 +56,15 @@ export default function SimProof({
         sources: {},
         layers: [{ id: "bg", type: "background", paint: { "background-color": "#0b1d33" } }],
       },
-      center: initialPack === "enies-lobby-saga-2d-v1"
-        ? ENIES_LOBBY
-        : initialPack === "skypiea-saga-2d-v1"
-          ? SKYPIEA
-          : initialPack === "arabasta-saga-2d-v1"
-            ? (initialChapter >= 158 ? NANOHANA : WHISKY_PEAK)
-            : BARATIE,
+      center: initialPack === "sabaody-saga-2d-v1"
+        ? HUMAN_AUCTIONING_HOUSE
+        : initialPack === "enies-lobby-saga-2d-v1"
+          ? ENIES_LOBBY
+          : initialPack === "skypiea-saga-2d-v1"
+            ? SKYPIEA
+            : initialPack === "arabasta-saga-2d-v1"
+              ? (initialChapter >= 158 ? NANOHANA : WHISKY_PEAK)
+              : BARATIE,
       zoom: 5.2,
       // The 2.5D cards are VERTICAL billboards ("camera-facing around local
       // up, do not flatten onto the map" — the contract). A pitch-0 top-down
@@ -135,6 +138,9 @@ export default function SimProof({
           <button onClick={() => jump(ENIES_LOBBY, 416, "enies-lobby-saga-2d-v1")} data-testid="go-416">Kaku ch416</button>
           <button onClick={() => jump(ENIES_LOBBY, 417, "enies-lobby-saga-2d-v1")} data-testid="go-417">Asura ch417</button>
           <button onClick={() => jump(ENIES_LOBBY, 418, "enies-lobby-saga-2d-v1")} data-testid="go-418">Lucci ch418</button>
+          <button onClick={() => jump(HUMAN_AUCTIONING_HOUSE, 501, "sabaody-saga-2d-v1")} data-testid="go-501">Sabaody pre-gate ch501</button>
+          <button onClick={() => jump(HUMAN_AUCTIONING_HOUSE, 502, "sabaody-saga-2d-v1")} data-testid="go-502">auction punch ch502</button>
+          <button onClick={() => jump(HUMAN_AUCTIONING_HOUSE, 503, "sabaody-saga-2d-v1")} data-testid="go-503">Sabaody post-gate ch503</button>
           <button
             onClick={() => {
               const director = AudioDirector.get();

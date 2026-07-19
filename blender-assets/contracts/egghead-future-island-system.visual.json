@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "id": "egghead-future-island-system",
+  "label": "Egghead Future Island system",
+  "entity_type": "vertical_future_island_system",
+  "priority": 1,
+  "contract_status": "ready_for_blender_blockout",
+  "identity": {
+    "anchor": {
+      "id": "egghead",
+      "slug": "egghead",
+      "name": "Egghead",
+      "region": "New World",
+      "debut_chapter": 1061,
+      "canon_status": "manga",
+      "canon_confidence": "canon",
+      "source_ref": "onepiece.fandom.com/wiki/Egghead#Island_Box",
+      "atlas_anchor": {
+        "lng": 149.0991,
+        "lat": -0.4304,
+        "confidence": "derived",
+        "usage": "scene_entry_anchor_only",
+        "warning": "Never infer local phase geometry, scale, bearings, or elevation from this deterministic atlas point."
+      }
+    },
+    "components": [
+      {"id": "egghead", "role": "winter_island_base", "debut_chapter": 1061},
+      {"id": "egghead-winter-sea", "role": "cold_ocean_and_ice_boundary", "debut_chapter": 1061},
+      {"id": "fabriophase", "role": "lower_factory_city_phase", "debut_chapter": 1061},
+      {"id": "future-city", "role": "climate_modified_retro_future_city", "debut_chapter": 1061},
+      {"id": "central-factory", "role": "fabriophase_industrial_landmark", "debut_chapter": 1061},
+      {"id": "scrapyard", "role": "lower_phase_material_yard", "debut_chapter": 1061},
+      {"id": "cloud-plant", "role": "artificial_island_cloud_generator", "debut_chapter": 1065},
+      {"id": "labophase", "role": "upper_research_phase", "debut_chapter": 1065},
+      {"id": "frontier-dome", "role": "upper_phase_defense_boundary", "debut_chapter": 1065},
+      {"id": "lab-building-a", "role": "upper_lab_structure", "debut_chapter": 1065},
+      {"id": "lab-building-b", "role": "upper_lab_structure", "debut_chapter": 1065},
+      {"id": "lab-building-c", "role": "upper_lab_structure", "debut_chapter": 1065},
+      {"id": "punk-records-attached", "role": "upper_records_structure_attached_state", "debut_chapter": 1066},
+      {"id": "punk-records-detached", "role": "post_incident_floating_state", "debut_chapter": 1125}
+    ]
+  },
+  "relationships": [
+    {"from": "fabriophase", "type": "below", "to": "labophase", "confidence": "cited_summary"},
+    {"from": "cloud-plant", "type": "supports", "to": "labophase", "confidence": "cited_summary"},
+    {"from": "frontier-dome", "type": "protects", "to": "labophase", "confidence": "cited_summary"},
+    {"from": "future-city", "type": "within", "to": "fabriophase", "confidence": "cited_summary"},
+    {"from": "punk-records-attached", "type": "crowns", "to": "labophase", "confidence": "cited_summary"}
+  ],
+  "topology": {
+    "summary": "A cold natural island transformed into a warm lower future-city phase, topped by an artificial cloud and egg-shaped laboratory phase.",
+    "sources": ["https://one-piece.com/story/egghead/index.html", "https://onepiece.fandom.com/wiki/Egghead"],
+    "exact_distances": "unknown",
+    "exact_bearings": "unknown",
+    "layout_mode": "vertical_phase_stack_relative_topology"
+  },
+  "chapter_logic": {
+    "base_reveal_chapter": 1061,
+    "temporal_variants": [
+      {"id": "punk-records-attached", "reveal_chapter": 1066, "active_through_chapter": 1124.999, "verification": "cited_summary"},
+      {"id": "punk-records-detached", "reveal_chapter": 1125, "verification": "cited_summary"},
+      {"id": "egghead-damaged-state", "reveal_chapter": null, "verification": "chapter_to_verify", "default_hidden": true}
+    ],
+    "event_scenes": [],
+    "rules": ["The base fallback uses an intact state.", "Damage never appears without a verified chapter gate."]
+  },
+  "coordinate_policy": "The atlas coordinate is an entry anchor only; the model is a local normalized theatre.",
+  "api_coverage": {"structured_record": "data/generated/islands.json", "coverage": "identity_and_debut_only", "topology_source": "cited_manual_research"},
+  "visual_program": {"silhouette": "green lower island, dense future city, cloud belt, cracked egg laboratory", "palette": ["ice_blue", "tropical_green", "porcelain_white", "cyan", "magenta"]},
+  "unresolved": ["exact local measurements", "complete laboratory interior", "exact incident damage chapters"],
+  "evidence": ["research/endgame-islands-chapter-1188-evidence.json", "art/endgame-islands/reference-plates/egghead-future-island-system-v1.png"]
+}

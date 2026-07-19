@@ -218,18 +218,69 @@ export const RED_LINE: FeatureCollection<LineString> = {
 };
 
 /**
- * The Red Line as a CONTINENT, not a stroke: a banded landmass along the 0/180
- * meridian. Width gives it presence (it is the wall that halves the world) and
- * on the globe it fills the antimeridian seam. Drawn under the red centre-lines,
- * which then read as its coastlines.
+ * The Red Line as a CONTINENT, not a ruler-straight graphic band.
+ *
+ * Canon establishes the north/south world-continent and its two Grand Line
+ * crossings, but does not give this app a surveyed coastline.  We therefore
+ * preserve the exact 0/180 great-circle centreline for topology while giving
+ * the visible landmass a deterministic, irregular rock silhouette.  The
+ * wobble is explicitly art direction: it must never move Reverse Mountain or
+ * the Sabaody/Fish-Man/Mary Geoise crossing away from longitude 180/0.
  */
-const RED_HALF_WIDTH = 3.2;
+function redLineHalfWidth(lat: number): number {
+  const radians = (lat * Math.PI) / 180;
+  return 3.2 + .55 * Math.sin(radians * 3.1 + .6) + .28 * Math.sin(radians * 8.3 - .4);
+}
+
+function redLineCenterOffset(lat: number): number {
+  const radians = (lat * Math.PI) / 180;
+  // Both terms are zero at the equator, preserving the exact world crossing.
+  return .72 * Math.sin(radians * 2.7) + .24 * Math.sin(radians * 7.4);
+}
+
+function irregularRedLinePrime(steps = 160): Feature<Polygon> {
+  const west: [number, number][] = [];
+  const east: [number, number][] = [];
+  for (let i = 0; i <= steps; i++) {
+    const lat = -POLE + (2 * POLE * i) / steps;
+    const center = redLineCenterOffset(lat);
+    const half = redLineHalfWidth(lat);
+    west.push([center - half, lat]);
+    east.push([center + half, lat]);
+  }
+  return {
+    type: "Feature",
+    properties: { id: "red-land-0", geometry_status: "stylized_irregular_coastline" },
+    geometry: { type: "Polygon", coordinates: [[...west, ...east.reverse(), west[0]]] },
+  };
+}
+
+function irregularRedLineAntimeridian(side: "east" | "west", steps = 160): Feature<Polygon> {
+  const seam = side === "east" ? 180 : -180;
+  const coast: [number, number][] = [];
+  const edge: [number, number][] = [];
+  for (let i = 0; i <= steps; i++) {
+    const lat = -POLE + (2 * POLE * i) / steps;
+    const half = redLineHalfWidth(lat);
+    coast.push([side === "east" ? seam - half : seam + half, lat]);
+    edge.push([seam, lat]);
+  }
+  return {
+    type: "Feature",
+    properties: {
+      id: side === "east" ? "red-land-180e" : "red-land-180w",
+      geometry_status: "stylized_irregular_coastline",
+    },
+    geometry: { type: "Polygon", coordinates: [[...coast, ...edge.reverse(), coast[0]]] },
+  };
+}
+
 export const RED_LINE_LAND: FeatureCollection<Polygon> = {
   type: "FeatureCollection",
   features: [
-    quad(-RED_HALF_WIDTH, RED_HALF_WIDTH, -POLE, POLE, { id: "red-land-0" }),
-    quad(180 - RED_HALF_WIDTH, 180, -POLE, POLE, { id: "red-land-180e" }),
-    quad(-180, -180 + RED_HALF_WIDTH, -POLE, POLE, { id: "red-land-180w" }),
+    irregularRedLinePrime(),
+    irregularRedLineAntimeridian("east"),
+    irregularRedLineAntimeridian("west"),
   ],
 };
 

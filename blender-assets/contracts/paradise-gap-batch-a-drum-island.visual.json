@@ -1,0 +1,121 @@
+{
+  "schema_version": 2,
+  "batch_id": "paradise-gap-batch-a",
+  "id": "drum-island-winter-mountain-system",
+  "label": "Drum Island winter mountain and settlement system",
+  "entity_type": "chapter-gated geographic island system",
+  "priority": 1,
+  "contract_status": "ready_for_blender_blockout_unregistered",
+  "identity": {
+    "anchor": {
+      "slug": "drum-island",
+      "name": "Drum Island",
+      "japanese": "ドラム島",
+      "romaji": "Doramu-tō",
+      "region": "Paradise",
+      "canon_status": "manga",
+      "local_debut_chapter": 132,
+      "verified_visual_reveal_chapter": 132,
+      "source_ref": "data/canon.json#drum-island",
+      "wiki_url": "https://onepiece.fandom.com/wiki/Drum_Island",
+      "atlas_anchor": {
+        "lng": -108.7954,
+        "lat": -6.3428,
+        "confidence": "derived",
+        "usage": "scene_entry_anchor_only",
+        "warning": "The atlas point is deterministic route placement, not canon geography or a source for local bearings."
+      }
+    },
+    "components": [
+      {"id": "drum-island-root", "role": "permanent_winter_island", "reveal_chapter": 132, "verification": "verified_chapter_summary", "default_hidden": false},
+      {"id": "drum-rockies", "role": "cluster_of_drum_shaped_mountains", "reveal_chapter": 132, "verification": "verified_location_summary", "default_hidden": false},
+      {"id": "central-drum-rock", "role": "tallest_mountain_and_primary_silhouette", "reveal_chapter": 132, "verification": "verified_location_summary", "default_hidden": false},
+      {"id": "drum-castle-exterior", "role": "castle_atop_central_drum_rock", "reveal_chapter": 132, "verification": "verified_first_appearance", "default_hidden": false},
+      {"id": "snow-coast-and-river", "role": "coastline_and_inland_water_route", "reveal_chapter": 132, "verification": "cited_location_summary_exact_course_unresolved", "default_hidden": false},
+      {"id": "village-clusters", "role": "representative_bighorn_cocoa_weed_gyasta_and_robelle_settlements", "reveal_chapter": 136, "verification": "conservative_cited_summary_gate", "default_hidden": false},
+      {"id": "mountain-ropeway", "role": "ropeway_to_drum_castle", "reveal_chapter": 142, "verification": "cited_location_summary", "default_hidden": false},
+      {"id": "avalanche-fx", "role": "temporary_snow_hazard", "reveal_chapter": 136, "active_through_chapter": 136.999, "verification": "referenced_event_geometry_interpolated", "default_hidden": true},
+      {"id": "pink-sakura-snow-fx", "role": "one_shot_pink_snow_sky_event", "reveal_chapter": 153, "active_through_chapter": 153.999, "verification": "verified_chapter_summary", "default_hidden": true},
+      {"id": "post-timeskip-castle-state", "role": "later_royal_castle_and_medical_state", "reveal_chapter": null, "chapter_to_verify": 636, "verification": "chapter_to_verify", "default_hidden": true}
+    ]
+  },
+  "topology": {
+    "coordinate_system": "normalized local theatre; Blender Z-up",
+    "layout_status": "verified_vertical_hierarchy_with_interpolated_coastline_routes_and_settlement_bearings",
+    "verified_relationships": [
+      "Drum Island is a permanent winter island dominated by the Drum Rockies.",
+      "The tallest central Drum Rock carries Drum Castle at its summit.",
+      "Multiple named villages occupy lower terrain and a ropeway connects the mountain system to the castle.",
+      "The chapter-153 pink-snow display is a temporary atmospheric event, not a permanent terrain transformation."
+    ],
+    "interpolated_relationships": [
+      "Coastline, number and spacing of drum peaks, river route, waterfall height, village bearings, and ropeway span are visual interpolation.",
+      "The five villages may be represented as separate low-detail clusters without asserting an exact map.",
+      "No exact mountain height, island diameter, or castle footprint is asserted."
+    ],
+    "transformation_policy": "Keep the winter geography static. Avalanche and pink snow are optional chapter-window effects; the later post-timeskip castle state stays hidden until its first visual gate and footprint are verified."
+  },
+  "chapter_logic": {
+    "base_reveal_chapter": 132,
+    "safe_full_scene_chapter": 153,
+    "states": [
+      {"id": "pre-reveal", "through_chapter": 131, "visible_components": [], "verification": "verified"},
+      {"id": "winter-arrival", "reveal_chapter": 132, "visible_components": ["drum-island-root", "drum-rockies", "central-drum-rock", "drum-castle-exterior", "snow-coast-and-river"], "verification": "verified"},
+      {"id": "settlement-and-avalanche", "reveal_chapter": 136, "adds": ["village-clusters"], "optional_one_shot": "avalanche-fx", "verification": "conservative_gate"},
+      {"id": "ropeway-reveal", "reveal_chapter": 142, "adds": ["mountain-ropeway"], "verification": "cited_summary"},
+      {"id": "sakura-farewell", "reveal_chapter": 153, "optional_one_shot": "pink-sakura-snow-fx", "verification": "verified"}
+    ],
+    "default_rule": "Render only components whose reveal_chapter is known and less than or equal to the reader chapter.",
+    "unknown_gate_rule": "Any later Drum Kingdom/Sakura Kingdom architecture with an unverified first visual chapter remains default_hidden."
+  },
+  "proposed_local_scene_layout": {
+    "root": "DRUM_ROOT at local origin with sea-level Z=0",
+    "zones": [
+      {"id": "winter-coast", "purpose": "chapter-132 arrival and river mouth", "placement": "camera-facing edge; coastline interpolated"},
+      {"id": "lower-settlement-basin", "purpose": "five named village clusters at readable LOD", "placement": "distributed below the mountain crown; bearings withheld"},
+      {"id": "drum-rockies-crown", "purpose": "primary vertical silhouette", "placement": "central composition with one tallest Drum Rock"},
+      {"id": "castle-summit", "purpose": "Drum Castle exterior and ropeway terminus", "placement": "top of central Drum Rock"}
+    ],
+    "camera_read": "A snowy coastal approach rises through village scale to the drum-shaped peak cluster and summit castle.",
+    "excluded_from_scene": ["castle interiors", "character action", "exact village street plans", "post-timeskip medical interiors"]
+  },
+  "unreal_runtime_reuse": {
+    "reusable_modules": ["snow_island_hull", "drum_peak_cluster", "summit_castle_shell", "winter_village_hism", "ropeway_spline", "avalanche_fx_socket", "pink_snow_niagara_socket"],
+    "unreal_notes": "Use separate actors for mountains, castle, villages, ropeway, and temporary FX. Pink snow should be a Niagara/event layer, not baked pink terrain.",
+    "map_runtime_notes": "Preserve component gates as glTF extras. The derived atlas point only selects the local scene; it does not orient the river or villages.",
+    "lod_policy": "Protect the drum-peak and summit-castle silhouette; collapse villages, ropeway hardware, and snow props first."
+  },
+  "coordinate_policy": {
+    "atlas_anchor": [-108.7954, -6.3428],
+    "anchor_confidence": "derived",
+    "scale_policy": "visual_fit_not_canon_scale",
+    "warning": "No canon dimensions, route bearings, or peak spacing are encoded."
+  },
+  "integration_contract": {
+    "mode": "future_maplibre_custom_3d_layer",
+    "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
+    "proposed_runtime_glb": "runtime/drum-island-winter-mountain-system.glb",
+    "proposed_fallback": "renders/runtime/drum-island-winter-mountain-system.png",
+    "node_gate_policy": "Read component_id, reveal_chapter, active_through_chapter, verification, and default_hidden from glTF extras.",
+    "registration_status": "not_registered_by_this_lane"
+  },
+  "evidence": {
+    "ledger": "research/paradise-gap-batch-a-evidence.json",
+    "claim_ids": ["drum-identity-and-reveal", "drum-vertical-geography", "drum-settlements-and-ropeway", "drum-temporary-environment-states"],
+    "primary_local_record": "data/canon.json#drum-island",
+    "sources": [
+      "https://one-piece.com/story/alabasta/index.html",
+      "https://onepiece.fandom.com/wiki/Chapter_132",
+      "https://onepiece.fandom.com/wiki/Drum_Island",
+      "https://onepiece.fandom.com/wiki/Drum_Castle",
+      "https://onepiece.fandom.com/wiki/Chapter_153"
+    ]
+  },
+  "unresolved": [
+    "Exact coastline, Drum Rockies count/spacing, peak dimensions, river course, and waterfall geometry remain interpolation.",
+    "Exact village positions, footprints, roads, and distances from the central mountain are not established by the selected sources.",
+    "The village cluster gate at chapter 136 and ropeway gate at chapter 142 are conservative source-summary gates, not page-level geometry receipts.",
+    "Avalanche path, volume, and persistent damage are not established; the effect must remain optional and non-destructive.",
+    "The post-timeskip castle/medical state must remain withheld until chapter 636/637 imagery and exterior differences are verified."
+  ]
+}

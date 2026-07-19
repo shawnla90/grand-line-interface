@@ -1,0 +1,700 @@
+{
+  "_warning": "HAND-AUTHORED. A sync script that writes this file is a bug. No upstream source has THEORIES as entities — the fandom's iceberg lives in forum threads and video essays, never as data with chapter stamps — so every row here is hand-typed. verified:false means Shawn has not confirmed the chapters against the manga yet.",
+  "_why_this_file_exists": "The atlas charts what the reader KNOWS as of a chapter. A theory is the other half of reading One Piece: the thing the reader WONDERS. This file charts the fandom's iceberg the same way the map charts islands — every theory surfaces at a chapter, gathers evidence chapter by chapter, and one day flips to confirmed or debunked ON a chapter. Scrub the dial and watch the iceberg melt.",
+  "_semantics": "surfaces_at_chapter is when the theory becomes chartable — the fruit_reveals rule, applied to a QUESTION: it must not surface before every noun in its title is on the page (a chapter-500 reader must never see the string 'Imu'), and never before its first evidence row. Each evidence row gates on its own chapter. status is resolved by status_timeline: the active status at chapter N is the last window whose from_chapter <= N — so a theory can be open for 400 chapters and flip to confirmed the chapter you watch it happen.",
+  "_tiers": "1 = surface (the questions every reader asks in East Blue). 2 = waterline. 3 = submerged (you had to be paying attention). 4 = deep (the fandom's long arguments). 5 = abyss (the questions the whole story is steering toward).",
+  "_statuses": "open = the story has not answered. partly_confirmed = the story answered a piece of it on the page. confirmed = answered on the page. debunked = the story said no. SBS answers count as partly_confirmed at best and say so in the source_ref — the page outranks the postscript.",
+  "_before_any_content_ships": "Every row is verified:false. Shawn must confirm every chapter against the manga and flip verified to true. Until then the UI renders these as unverified.",
+  "theories": [
+    {
+      "slug": "will-of-d",
+      "title": "What does the D. stand for?",
+      "tier": 1,
+      "surfaces_at_chapter": 154,
+      "question": "A single letter rides in the middle of the names the World Government fears most. Somebody knows what it means, and it is not the reader.",
+      "evidence": [
+        {
+          "chapter": 154,
+          "claim": "Kureha, watching fireworks over Drum: 'the Will of D. lives on' — the first time anyone says the letter OUT LOUD as a thing.",
+          "source_ref": "Hand-authored. Dr. Kureha invokes the Will of D. as Chopper sails away (~ch. 154). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 576,
+          "claim": "Whitebeard to Blackbeard at Marineford: Teach is not 'the man Roger is waiting for' — the D. carries an inheritance, and it is selective.",
+          "source_ref": "Hand-authored. Whitebeard's dying speech names an inheritor and denies Teach the title (~ch. 576). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 966,
+          "claim": "Roger asks Whitebeard, of all things, about the meaning of the D. — the man who reached the end wanted to know what his own name meant.",
+          "source_ref": "Hand-authored. Oden flashback: Roger and Whitebeard's night of drinking and questions (~ch. 966). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 1085,
+          "claim": "The queen who defied the World Government eight hundred years ago signed her letter 'Nefertari D. Lili'. The letter is older than the fear of it.",
+          "source_ref": "Hand-authored. Cobra's audience: Lili's full name revealed (~ch. 1085). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 154, "status": "open", "note": "Named on the page, never explained on it." }
+      ],
+      "related": { "characters": ["monkey-d-luffy", "gol-d-roger", "marshall-d-teach-blackbeard"], "islands": [], "poneglyphs": [] },
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "laugh-tale-name",
+      "title": "Why is the last island called what it is called?",
+      "tier": 1,
+      "surfaces_at_chapter": 105,
+      "question": "The island at the end of the Grand Line has a name sailors repeat like a rumor. The spelling turned out to be the first clue.",
+      "evidence": [
+        {
+          "chapter": 105,
+          "claim": "Crocus, at the twin capes, names the final island — the place only Roger's crew ever reached.",
+          "source_ref": "Hand-authored. Crocus tells the crew of the final island at Reverse Mountain's exit (~ch. 105). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        },
+        {
+          "chapter": 967,
+          "claim": "Roger, standing on it, laughs and names it LAUGH TALE — 'what a funny story'. The name was never a place-name; it was a review.",
+          "source_ref": "Hand-authored. Roger flashback: the naming of Laugh Tale (~ch. 967). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 105, "status": "open", "note": "A rumor with a name." },
+        { "from_chapter": 967, "status": "confirmed", "note": "Roger named it laughing. WHAT he laughed at is a different theory, further down the iceberg." }
+      ],
+      "related": { "characters": ["gol-d-roger", "crocus"], "islands": [], "poneglyphs": [] },
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "all-blue",
+      "title": "The All Blue exists",
+      "tier": 1,
+      "surfaces_at_chapter": 56,
+      "question": "A sea where the fish of all four seas swim together. Every cook who mentions it gets laughed at, and one of them staked his life on it anyway.",
+      "evidence": [
+        {
+          "chapter": 56,
+          "claim": "Sanji names his dream: the All Blue, the legendary sea every chef dismisses as a fairy tale.",
+          "source_ref": "Hand-authored. Sanji's dream established at the Baratie (~ch. 56). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 56, "status": "open", "note": "Still a cook's fairy tale. The Grand Line keeps hinting the seas were once one sea." }
+      ],
+      "related": { "characters": ["sanji"], "islands": [], "poneglyphs": [] },
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "luffys-fruit-lie",
+      "title": "Luffy's devil fruit was never what the book said",
+      "tier": 2,
+      "surfaces_at_chapter": 1017,
+      "question": "A back-of-the-book paramecia that the World Government spent eight hundred years chasing. The name in the encyclopedia was the cover story.",
+      "evidence": [
+        {
+          "chapter": 1017,
+          "claim": "Who's-Who — a former CP9 agent — was jailed for losing custody of, of all things, the Gomu Gomu no Mi. Nobody guards a rubber fruit that hard.",
+          "source_ref": "Hand-authored. Who's-Who tells Jinbe why he left CP9 (~ch. 1017). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 1037,
+          "claim": "The Five Elders discuss a fruit that has not awakened in centuries — one the government renamed to bury it.",
+          "source_ref": "Hand-authored. Gorosei conversation over the Wano battle (~ch. 1037). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 1044,
+          "claim": "The book was wrong on purpose: Hito Hito no Mi, Model Nika — a mythical zoan, awakened. The rubber was the warm-up act.",
+          "source_ref": "Hand-authored. The fruit's true name stated during Luffy's awakening (~ch. 1044). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 1017, "status": "open", "note": "Why would CP9 guard rubber?" },
+        { "from_chapter": 1044, "status": "confirmed", "note": "Renamed and reclassified on the page. The encyclopedia lied for eight centuries." }
+      ],
+      "related": { "characters": ["monkey-d-luffy"], "islands": [], "poneglyphs": [] },
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "poseidon-is-the-princess",
+      "title": "An ancient weapon is alive and shy",
+      "tier": 2,
+      "surfaces_at_chapter": 626,
+      "question": "One of the three weapons that could end the world is not a machine at all.",
+      "evidence": [
+        {
+          "chapter": 626,
+          "claim": "Neptune says it plainly: his daughter is Poseidon — the ancient weapon is a mermaid who is afraid of everything.",
+          "source_ref": "Hand-authored. Neptune reveals Shirahoshi's identity during the Fish-Man Island arc (~ch. 626). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 649,
+          "claim": "The power shown on the page: the Sea Kings answer her, and remember a promise made centuries ago.",
+          "source_ref": "Hand-authored. Shirahoshi commands the Sea Kings; the ancient promise is recalled (~ch. 649). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 626, "status": "confirmed", "note": "Stated by a king, demonstrated by the sea." }
+      ],
+      "related": { "characters": ["shirahoshi", "neptune"], "islands": ["fish-man-island"], "poneglyphs": ["shandora-poneglyph"] },
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "zoro-of-wano",
+      "title": "The swordsman's blood comes from Wano",
+      "tier": 2,
+      "surfaces_at_chapter": 953,
+      "question": "A boy from an East Blue village fights with a style a closed country would recognize, and old men in that country keep staring at his face.",
+      "evidence": [
+        {
+          "chapter": 953,
+          "claim": "Zoro's black blade Shusui belongs to Wano's hero Ryuma — and Wano treats Zoro's swordsmanship as something coming home.",
+          "source_ref": "Hand-authored. The Shusui/Ryuma thread through Zoro's Wano chapters (~ch. 953). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 1023,
+          "claim": "Kawamatsu and Hyogoro, mid-battle: he is the image of Shimotsuki Ushimaru, the last daimyo of Ringo.",
+          "source_ref": "Hand-authored. The resemblance remarked on the page (~ch. 1023). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 953, "status": "open", "note": "A face old men keep recognizing." },
+        { "from_chapter": 1023, "status": "partly_confirmed", "note": "The lineage is drawn on the page but never said to Zoro; an SBS traces the family tree. The postscript is not the page — see source_ref." }
+      ],
+      "related": { "characters": ["roronoa-zoro"], "islands": ["wano-country"], "poneglyphs": [] },
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "sabo-killed-cobra",
+      "title": "The revolutionary murdered the king",
+      "tier": 2,
+      "surfaces_at_chapter": 1054,
+      "question": "The world's newspapers convicted a revolutionary of regicide. The reader was not shown the room — which is always the tell.",
+      "evidence": [
+        {
+          "chapter": 1054,
+          "claim": "The headline: Sabo killed King Cobra at the Reverie. The world believes it instantly.",
+          "source_ref": "Hand-authored. The news of Cobra's death and Sabo's blame breaks after Wano (~ch. 1054). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 1085,
+          "claim": "The room, finally shown: the king asked one question too many, and it was not Sabo who answered it. The story pinned its own crime on a witness.",
+          "source_ref": "Hand-authored. The Reverie flashback shows what actually killed Cobra (~ch. 1085). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 1054, "status": "open", "note": "A headline without a witness." },
+        { "from_chapter": 1085, "status": "debunked", "note": "The flashback shows the real killer. The frame-up was the point." }
+      ],
+      "related": { "characters": ["sabo", "nefertari-cobra"], "islands": [], "poneglyphs": [] },
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "who-was-joy-boy",
+      "title": "Who was Joy Boy?",
+      "tier": 3,
+      "surfaces_at_chapter": 628,
+      "question": "A name from the Void Century that keeps apologizing. He broke a promise eight hundred years ago, and the sea has been waiting for him to come back and keep it.",
+      "evidence": [
+        {
+          "chapter": 628,
+          "claim": "Fish-Man Island keeps an apology addressed to it from a man called Joy Boy — a letter carved in stone, in the forbidden language.",
+          "source_ref": "Hand-authored. Joy Boy's apology poneglyph enters the story at Fish-Man Island (~ch. 628). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        },
+        {
+          "chapter": 967,
+          "claim": "Roger's crew reaches the last island, learns who Joy Boy was — and laughs. The reader is left outside the panel.",
+          "source_ref": "Hand-authored. Laugh Tale flashback; the crew learns Joy Boy's story off-page (~ch. 967). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 1043,
+          "claim": "Zunesha, who has walked the sea for eight hundred years, hears the drums and says it: 'Joy Boy has returned.'",
+          "source_ref": "Hand-authored. Zunesha's declaration as Luffy's awakening begins (~ch. 1043). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 1114,
+          "claim": "Vegapunk's broadcast gives him a title at last: Joy Boy was the first pirate — a man who sailed before the word existed.",
+          "source_ref": "Hand-authored. Vegapunk's posthumous message names Joy Boy the first pirate (~ch. 1114). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 628, "status": "open", "note": "A name that apologizes." },
+        { "from_chapter": 1114, "status": "partly_confirmed", "note": "The first pirate — title confirmed, man still unnamed. The iceberg keeps most of this one." }
+      ],
+      "related": { "characters": ["monkey-d-luffy", "gol-d-roger"], "islands": ["fish-man-island"], "poneglyphs": [] },
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "zuneshas-crime",
+      "title": "What was Zunesha's crime?",
+      "tier": 3,
+      "surfaces_at_chapter": 821,
+      "question": "An elephant the size of an island was sentenced to walk the sea forever. The sentence is on the page; the crime never is.",
+      "evidence": [
+        {
+          "chapter": 821,
+          "claim": "Zunesha speaks: it committed a crime long ago and may only act when ordered — the walking IS the sentence.",
+          "source_ref": "Hand-authored. Zunesha's voice reaches Momonosuke during the Zou attack (~ch. 821). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 1043,
+          "claim": "Zunesha recognizes the drums of liberation the instant they sound — whatever the crime was, it happened close enough to Joy Boy to know his heartbeat.",
+          "source_ref": "Hand-authored. Zunesha names Joy Boy's return unprompted (~ch. 1043). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 821, "status": "open", "note": "The sentence without the charge. The leading read: the crime was helping." }
+      ],
+      "related": { "characters": [], "islands": ["zou"], "poneglyphs": [] },
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "pluton-under-wano",
+      "title": "The lost warship sleeps under the closed country",
+      "tier": 3,
+      "surfaces_at_chapter": 1053,
+      "question": "Crocodile tore Alabasta apart for a weapon that was never there. The stone he wanted read was a map to somewhere else — a country that sealed itself shut.",
+      "evidence": [
+        {
+          "chapter": 218,
+          "claim": "The name PLUTON enters the story: a warship from the ancient past, worth a kingdom to a warlord.",
+          "source_ref": "Hand-authored. Crocodile's true objective in Alabasta (~ch. 218). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 1053,
+          "claim": "Robin asks about Pluton in Wano, and nobody laughs — the question lands like a fact.",
+          "source_ref": "Hand-authored. Robin raises Pluton with Sukiyaki after the raid (~ch. 1053). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 1055,
+          "claim": "Sukiyaki confirms it: Pluton lies beneath Wano, and opening the country's borders is what would let it out.",
+          "source_ref": "Hand-authored. The former shogun explains what Wano's walls are actually holding (~ch. 1055). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 1053, "status": "open", "note": "The question that lands like a fact." },
+        { "from_chapter": 1055, "status": "confirmed", "note": "Stated by the man whose family sealed it in." }
+      ],
+      "related": { "characters": ["nico-robin", "crocodile"], "islands": ["wano-country"], "poneglyphs": ["alabasta-poneglyph"] },
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "blackbeards-body",
+      "title": "Blackbeard's body is not built like other people's",
+      "tier": 3,
+      "surfaces_at_chapter": 577,
+      "question": "One man, two devil fruits — a thing the world's own rules say should kill him. The people who knew him longest keep saying the same strange word: different.",
+      "evidence": [
+        {
+          "chapter": 434,
+          "claim": "Shanks carries three scars he did not get from an enemy of legend — he got them from Teach, and he warns Whitebeard about him by name.",
+          "source_ref": "Hand-authored. Shanks shows Whitebeard the scars and names the man who gave them (~ch. 434). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 577,
+          "claim": "Teach takes a second fruit's power and lives. Marco's only explanation: his body is 'different' — said like a man quoting something he half remembers.",
+          "source_ref": "Hand-authored. The Yami-Gura double power shown at Marineford; Marco's remark (~ch. 577). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 577, "status": "open", "note": "The flag has three skulls. The fandom has counted them for fifteen years." }
+      ],
+      "related": { "characters": ["marshall-d-teach-blackbeard", "shanks", "marco"], "islands": [], "poneglyphs": [] },
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "nefertari-betrayal",
+      "title": "The twentieth family took the other side",
+      "tier": 3,
+      "surfaces_at_chapter": 1084,
+      "question": "Twenty kingdoms won a war eight hundred years ago and their kings moved to the holy land. One royal family stayed home — and the world's rulers never forgave the desk where her name is written.",
+      "evidence": [
+        {
+          "chapter": 1084,
+          "claim": "The missing twentieth founder was Alabasta's queen, Lili — who declined the holy land and went home to her desert.",
+          "source_ref": "Hand-authored. The Nefertari founding-family thread laid out at the Reverie flashback (~ch. 1084). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 1085,
+          "claim": "Her letter home is signed Nefertari D. Lili. The family that stayed was a D. the whole time — royalty carrying the enemy's initial.",
+          "source_ref": "Hand-authored. Cobra reads the signature; Imu is listening (~ch. 1085). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 1084, "status": "open", "note": "Why did one founder go home?" },
+        { "from_chapter": 1085, "status": "confirmed", "note": "The signature settles the family; WHY she stayed is still the desert's secret." }
+      ],
+      "related": { "characters": ["nefertari-vivi", "nefertari-cobra"], "islands": ["arabasta-kingdom"], "poneglyphs": ["alabasta-poneglyph"] },
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "rocks-and-god-valley",
+      "title": "The pirate the world erased",
+      "tier": 3,
+      "surfaces_at_chapter": 957,
+      "question": "Before the Pirate King there was a crew so dangerous the government deleted the island they fell on. The men who survived that crew went on to rule the sea.",
+      "evidence": [
+        {
+          "chapter": 957,
+          "claim": "Sengoku names him: Rocks D. Xebec, captain of a crew that held Whitebeard, Big Mom and Kaido at once, defeated at God Valley by Garp and Roger together — an island now missing from every map.",
+          "source_ref": "Hand-authored. Sengoku's briefing on the Rocks Pirates (~ch. 957). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 1096,
+          "claim": "The reader is finally taken to God Valley — and the 'incident' turns out to have been a slave-hunt festival the Celestial Dragons threw on somebody's homeland.",
+          "source_ref": "Hand-authored. Kuma's flashback reaches God Valley (~ch. 1096). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 957, "status": "open", "note": "A deleted island, an erased captain, and a crew of future emperors." },
+        { "from_chapter": 1096, "status": "partly_confirmed", "note": "The valley shown; Xebec's own face and fate still in the dark — and his flag flies again over a man named Teach." }
+      ],
+      "related": { "characters": ["monkey-d-garp", "gol-d-roger", "marshall-d-teach-blackbeard", "kaido", "charlotte-linlin-big-mom"], "islands": [], "poneglyphs": [] },
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "imu-and-the-empty-throne",
+      "title": "Somebody sits on the empty throne",
+      "tier": 4,
+      "surfaces_at_chapter": 906,
+      "question": "The world's proudest fiction is that no single ruler exists — twenty kings and an empty chair to prove it. The chair is not empty.",
+      "evidence": [
+        {
+          "chapter": 906,
+          "claim": "Deep in Pangaea Castle, someone keeps a frozen straw hat the size of a giant. The reader is shown the vault before the owner.",
+          "source_ref": "Hand-authored. The colossal straw hat in the freezer beneath Mary Geoise (~ch. 906). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 908,
+          "claim": "The Five Elders — the top of the world — kneel. A figure named Imu climbs the empty throne like it was always theirs.",
+          "source_ref": "Hand-authored. Imu revealed above the Gorosei at the Reverie (~ch. 908). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 1085,
+          "claim": "Imu acts on the page for the first time — and what happens to the room is not something a ruler does. It is something a weapon does.",
+          "source_ref": "Hand-authored. Imu's power shown against Sabo and Cobra's chamber (~ch. 1085). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 906, "status": "open", "note": "A vault, a hat, a chair. Existence confirmed at 908; everything else — name's meaning, age, nature — is abyss." }
+      ],
+      "related": { "characters": ["sabo", "nefertari-cobra"], "islands": [], "poneglyphs": [] },
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "uranus-in-the-sky",
+      "title": "The third weapon answers to the throne",
+      "tier": 4,
+      "surfaces_at_chapter": 1060,
+      "question": "Poseidon is a princess. Pluton is a ship. The third ancient weapon has no face and no location — only a signature: islands stop existing.",
+      "evidence": [
+        {
+          "chapter": 1060,
+          "claim": "Lulusia Kingdom is removed from the world — not conquered, removed. Ordered from a throne room, delivered from the sky.",
+          "source_ref": "Hand-authored. The destruction of Lulusia (~ch. 1060). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 1113,
+          "claim": "Vegapunk's broadcast ties the pieces: an energy source from the ancient past — the Mother Flame — powers the thing that erased Lulusia.",
+          "source_ref": "Hand-authored. Vegapunk's message on the Mother Flame and the Lulusia strike (~ch. 1113). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 1060, "status": "open", "note": "Islands stop existing." },
+        { "from_chapter": 1113, "status": "partly_confirmed", "note": "The fuel is named; the weapon itself — Uranus or not — has still never been called by name on the page." }
+      ],
+      "related": { "characters": [], "islands": [], "poneglyphs": [] },
+      "canon_confidence": "derived",
+      "verified": false
+    },
+    {
+      "slug": "shanks-and-the-holy-blood",
+      "title": "The emperor the elders will meet",
+      "tier": 4,
+      "surfaces_at_chapter": 907,
+      "question": "A pirate walks into the holy land, and the men who rule the world clear their schedule. Emperors do not get appointments. Family does.",
+      "evidence": [
+        {
+          "chapter": 907,
+          "claim": "Shanks is received by the Five Elders themselves, to talk about 'a certain pirate'. No other emperor has ever been in that room as a guest.",
+          "source_ref": "Hand-authored. Shanks' audience with the Gorosei (~ch. 907). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 1086,
+          "claim": "The world meets Figarland Garling, champion of God Valley and supreme commander of the God's Knights — and the fandom meets a face it has seen before, under red hair.",
+          "source_ref": "Hand-authored. Garling introduced at the Reverie aftermath (~ch. 1086); the resemblance to Shanks is fan-observed, not stated. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "guess",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 907, "status": "open", "note": "Why does the holy land open its door to him?" }
+      ],
+      "related": { "characters": ["shanks"], "islands": [], "poneglyphs": [] },
+      "canon_confidence": "guess",
+      "verified": false
+    },
+    {
+      "slug": "dragons-wind",
+      "title": "The revolutionary carries the weather",
+      "tier": 4,
+      "surfaces_at_chapter": 100,
+      "question": "Every time the most wanted man in the world stands on a page, the wind picks up. Nobody in the story has said his power out loud — which, at this depth of the iceberg, is evidence.",
+      "evidence": [
+        {
+          "chapter": 100,
+          "claim": "At Loguetown, at the execution platform, at the exact moment his son needs it: a storm out of nowhere, and a stranger who smiles at the weather.",
+          "source_ref": "Hand-authored. The Loguetown gale as Buggy's blade falls (~ch. 100). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 589,
+          "claim": "Dragon on a rooftop in Gray Terminal, and the wind arrives with him again — a pattern by now, not a coincidence.",
+          "source_ref": "Hand-authored. Dragon at the Goa Kingdom fire in Ace/Luffy's flashback (~ch. 589). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 100, "status": "open", "note": "The storm keeps showing up on time. The fruit remains unnamed." }
+      ],
+      "related": { "characters": ["monkey-d-dragon"], "islands": [], "poneglyphs": [] },
+      "canon_confidence": "guess",
+      "verified": false
+    },
+    {
+      "slug": "the-sea-will-rise",
+      "title": "The world is going to drown",
+      "tier": 4,
+      "surfaces_at_chapter": 1113,
+      "question": "A dead genius bought one broadcast with his life, and spent it on a weather report: the seas will rise, and the world as drawn on every map will go under.",
+      "evidence": [
+        {
+          "chapter": 1113,
+          "claim": "Vegapunk's message: the world will sink into the sea. Not might — will. The islands the reader has spent a thousand chapters visiting are on a clock.",
+          "source_ref": "Hand-authored. The core claim of Vegapunk's posthumous broadcast (~ch. 1113). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 1114,
+          "claim": "And it has happened before: an entire ancient world already sank once. The Grand Line's islands are the mountaintops of the last drowning.",
+          "source_ref": "Hand-authored. Vegapunk on the sunken ancient world (~ch. 1114). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 1113, "status": "open", "note": "The claim is on the page; the flood is not. Whether the ending raises the sea — or the All Blue is what's left after — is the deepest live question on this chart." }
+      ],
+      "related": { "characters": [], "islands": [], "poneglyphs": [] },
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "what-is-the-one-piece",
+      "title": "What is the One Piece?",
+      "tier": 5,
+      "surfaces_at_chapter": 576,
+      "question": "The title of the story. A man on an execution stand said it exists; a man on a battlefield spent his death repeating it; a crew that saw it laughed. Nobody has said what it is.",
+      "evidence": [
+        {
+          "chapter": 576,
+          "claim": "Whitebeard's last words, chosen carefully with the whole world listening: the One Piece IS REAL. He detonates the age with a confirmation, not a clue.",
+          "source_ref": "Hand-authored. Whitebeard's death at Marineford (~ch. 576). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 967,
+          "claim": "Roger's crew finds it — and the panel shows the reader their backs and their laughter. Whatever it is, its first recorded property is that it is FUNNY.",
+          "source_ref": "Hand-authored. The treasure seen off-page at Laugh Tale (~ch. 967). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 1060,
+          "claim": "Luffy tells the crew his dream's end — and the balloon is blank for the reader, the same trick the story pulled at Laugh Tale. The answer exists in-world and is being deliberately held off-page.",
+          "source_ref": "Hand-authored. The hidden dream, told but not shown (~ch. 1060; first hidden at ~ch. 585). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 576, "status": "open", "note": "Confirmed to exist, never described. The bottom of the iceberg." }
+      ],
+      "related": { "characters": ["gol-d-roger", "edward-newgate-whitebeard", "monkey-d-luffy"], "islands": [], "poneglyphs": [] },
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "the-void-century",
+      "title": "What happened in the missing hundred years?",
+      "tier": 5,
+      "surfaces_at_chapter": 395,
+      "question": "History has a hole in it, eight hundred years back and a century wide, and reading about it is a capital crime. Governments do not execute archaeologists over nothing.",
+      "evidence": [
+        {
+          "chapter": 395,
+          "claim": "Ohara: an island of scholars burned down to its library for reading the wrong stones. Professor Clover begins to name the kingdom that fell — and is shot mid-sentence.",
+          "source_ref": "Hand-authored. The Buster Call on Ohara; Clover's interrupted sentence (~ch. 395). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 1114,
+          "claim": "Vegapunk fills in a shape: an ancient kingdom of impossible technology, a war it lost to twenty allied kings, and a world that sank. The century wasn't erased because it was shameful — it was erased because it isn't over.",
+          "source_ref": "Hand-authored. The broadcast's account of the ancient war (~ch. 1114). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 395, "status": "open", "note": "A hole where a century should be." },
+        { "from_chapter": 1114, "status": "partly_confirmed", "note": "The war and the sinking are on the page now. The kingdom's name, its king, and what the fight was ABOUT are still down here in the dark." }
+      ],
+      "related": { "characters": ["nico-robin"], "islands": ["ohara"], "poneglyphs": [] },
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "the-forbidden-name",
+      "title": "The ancient kingdom has a name",
+      "tier": 5,
+      "surfaces_at_chapter": 395,
+      "question": "Clover said the name of the fallen kingdom carried its whole meaning — that the name itself was the threat. He was killed one clause before saying it, and no one on the page has finished his sentence in over seven hundred chapters.",
+      "evidence": [
+        {
+          "chapter": 395,
+          "claim": "'That kingdom's name was—' is the exact point where the World Government opens fire. They did not shoot to stop a history lecture; they shot to stop a WORD.",
+          "source_ref": "Hand-authored. Clover's death mid-sentence on Ohara (~ch. 395). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 395, "status": "open", "note": "One proper noun, withheld for the length of the entire story so far. When it lands, the iceberg flips over." }
+      ],
+      "related": { "characters": ["nico-robin"], "islands": ["ohara"], "poneglyphs": [] },
+      "canon_confidence": "canon",
+      "verified": false
+    },
+    {
+      "slug": "imu-does-not-age",
+      "title": "The throne has had one occupant for eight hundred years",
+      "tier": 5,
+      "surfaces_at_chapter": 1085,
+      "question": "Imu speaks of an eight-hundred-year-old queen like a personal grudge. Either the throne keeps very good diaries, or the person on it was in the room.",
+      "evidence": [
+        {
+          "chapter": 1085,
+          "claim": "Imu, of Lili: spoken in the first person, with the heat of someone remembering — not the distance of someone quoting the archive.",
+          "source_ref": "Hand-authored. Imu's words on Nefertari D. Lili during Cobra's audience (~ch. 1085). NEEDS HUMAN VERIFICATION against the manga; the reading of tense and tone is interpretation, marked guess.",
+          "canon_confidence": "guess",
+          "verified": false
+        },
+        {
+          "chapter": 1110,
+          "claim": "The Five Elders manifest as something other than old men — the top of the government is not human in any charted sense, and their master sits above THEM.",
+          "source_ref": "Hand-authored. The Gorosei's transformations at Egghead (~ch. 1110). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ],
+      "status_timeline": [
+        { "from_chapter": 1085, "status": "open", "note": "The perennial-youth reading — an immortality operation, or something older. Nothing on the page rules it out, which is exactly why it lives at the bottom." }
+      ],
+      "related": { "characters": [], "islands": [], "poneglyphs": [] },
+      "canon_confidence": "guess",
+      "verified": false
+    }
+  ]
+}

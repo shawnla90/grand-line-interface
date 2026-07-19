@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "id": "punk-hazard-geography-evidence",
+  "retrieved_at": "2026-07-19",
+  "scope": "Chapter-safe geographic evidence for a standalone Punk Hazard runtime model; no manga panels or anime frames are copied.",
+  "local_system_of_record": {
+    "path": "data/canon.json",
+    "record": {
+      "slug": "punk-hazard",
+      "name": "Punk Hazard",
+      "region": "New World",
+      "debut_chapter": 655,
+      "debut_episode": 579,
+      "atlas_anchor": [18.7035, -5.2418],
+      "atlas_anchor_confidence": "derived"
+    },
+    "api_boundary": "The local island/API record supplies identity, debut, region, and a derived atlas point. It does not supply coastline, internal topology, climate split, lake, harbor, river, or laboratory geometry."
+  },
+  "claims": [
+    {
+      "id": "pre-reveal-through-654",
+      "claim": "Chapter 654 enters the New World but does not reveal Punk Hazard; the island first appears in chapter 655.",
+      "gate": {"visible_through": 654, "model_visible": false},
+      "verification": "local_canon_plus_chapter_index",
+      "sources": ["data/canon.json#punk-hazard", "https://onepiece.fandom.com/wiki/Chapters_and_Volumes/Volume_61-70"]
+    },
+    {
+      "id": "burning-arrival",
+      "claim": "At chapter 655 the Straw Hats approach through a fiery sea, see volcanic activity, enter through a warning gate, and find melted former-government-base ruins.",
+      "gate": {"reveal_chapter": 655},
+      "verification": "cited_summary",
+      "sources": ["https://onepiece.fandom.com/wiki/Chapter_655"]
+    },
+    {
+      "id": "two-sided-island",
+      "claim": "Chapter 657 reveals the frozen mountainous half beyond a lake and establishes that the island has fire and ice sides separated by that lake.",
+      "gate": {"reveal_chapter": 657},
+      "verification": "verified_summary",
+      "sources": ["https://onepiece.fandom.com/wiki/Chapter_657"]
+    },
+    {
+      "id": "duel-history",
+      "claim": "Chapter 658 identifies Punk Hazard as the site of Akainu and Aokiji's prior duel and connects that history to the two climate halves.",
+      "gate": {"historical_reference_reveal_chapter": 658},
+      "verification": "verified_summary",
+      "render_policy": "Historical exposition only. Do not instantiate Akainu or Aokiji or transform the geography. A chapter-658-only abstract magma/ice wave may play over the final island when labeled referenced_historical_reconstruction; it does not claim exact choreography.",
+      "sources": ["https://onepiece.fandom.com/wiki/Chapter_658", "https://onepiece.fandom.com/wiki/Punk_Hazard"]
+    },
+    {
+      "id": "compass-halves",
+      "claim": "Chapter 659 explicitly identifies the Burning Lands as southwest and the Ice Lands as northeast.",
+      "gate": {"reveal_chapter": 659},
+      "verification": "verified_summary",
+      "sources": ["https://onepiece.fandom.com/wiki/Chapter_659"]
+    },
+    {
+      "id": "central-crater-lake",
+      "claim": "The center is a seawater-filled crater/hole dividing the halves; chapter 661 reveals it as the duel epicenter later filled by seawater.",
+      "gate": {"geometry_reveal_chapter": 657, "origin_explanation_chapter": 661},
+      "verification": "verified_summary",
+      "sources": ["https://onepiece.fandom.com/wiki/Chapter_661", "https://onepiece.fandom.com/wiki/Punk_Hazard"]
+    },
+    {
+      "id": "lake-channel-wind",
+      "claim": "The crater lake connects to the sea and the extreme temperature-pressure boundary creates strong currents and gale-force wind.",
+      "gate": {"geometry_reveal_chapter": 657, "exact_explanation_chapter": null},
+      "verification": "cited_geography_exact_panel_gate_unresolved",
+      "sources": ["https://onepiece.fandom.com/wiki/Punk_Hazard"]
+    },
+    {
+      "id": "ice-river-harbor",
+      "claim": "The Ice Lands contain a river leading to a natural harbor filled with captured ships; icebergs normally block and threaten the route.",
+      "gate": {"reveal_chapter": 658},
+      "verification": "cited_summary",
+      "sources": ["https://onepiece.fandom.com/wiki/Punk_Hazard", "https://onepiece.fandom.com/wiki/Third_Research_Institute"]
+    },
+    {
+      "id": "third-research-institute",
+      "claim": "The surviving Third Research Institute first appears in chapter 657, is embedded at the base of a cold-side mountain, and faces a natural harbor connected to the river.",
+      "gate": {"exterior_reveal_chapter": 657, "ph006_detail_chapter": 658},
+      "verification": "cited_summary",
+      "sources": ["https://onepiece.fandom.com/wiki/Third_Research_Institute", "https://onepiece.fandom.com/wiki/Chapter_658"]
+    },
+    {
+      "id": "older-labs",
+      "claim": "The First and Second Research Institutes were destroyed in the earlier chemical disaster and lie in ruins behind the mountain; chapter 664 summarizes that two of three laboratories were demolished.",
+      "gate": {"reveal_chapter": 664},
+      "verification": "verified_summary",
+      "sources": ["https://onepiece.fandom.com/wiki/Chapter_664", "https://onepiece.fandom.com/wiki/Third_Research_Institute"]
+    }
+  ],
+  "interpolation_policy": {
+    "allowed": ["coastline silhouette", "normalized distance", "crater diameter", "river curvature", "harbor footprint", "representative iceberg count", "representative external lab massing", "representative volcano and melted street grid"],
+    "forbidden": ["canon global bearings inferred from the atlas point", "exact measurements", "uncited interior room topology", "Akainu-Aokiji actor reenactment", "historical geography transformation clip", "exact duel choreography claim", "anime screenshots", "manga panel textures"]
+  },
+  "unresolved_gates": [
+    {"id": "climate-boundary-wind-explanation", "chapter": null, "handling": "neutral ambient proxy begins with the visible split at chapter 657; wording remains cited_summary rather than panel_verified"},
+    {"id": "exact-harbor-river-first-panel", "chapter": 658, "handling": "provisional cited-summary gate; panel-level page receipt still needed"}
+  ]
+}

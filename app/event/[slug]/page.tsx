@@ -14,6 +14,8 @@ import type { Metadata } from "next";
 import { loadCanon } from "@/lib/schema";
 import { buildWorld } from "@/lib/canon";
 import { eventEntry, readChapter } from "@/lib/entry";
+import { overlaysForEvent } from "@/lib/overlays";
+import { loadOverlays } from "@/lib/overlays-load";
 import { BRAND } from "@/config/brand";
 import EventEntry from "@/components/entry/EventEntry";
 import Uncharted from "@/components/entry/Uncharted";
@@ -51,5 +53,8 @@ export default async function Page({ params, searchParams }: Props) {
   if (entry.state === "uncharted") {
     return <Uncharted chapter={ctx.chapter} chapterSet={ctx.chapterSet} />;
   }
-  return <EventEntry data={entry.data} chapter={ctx.chapter} />;
+  // Overlays gate through the event (already visible here) plus their own
+  // chapter; the registry is empty until docs/OVERLAY_INTAKE.md drops land.
+  const overlays = overlaysForEvent(loadOverlays(), slug, ctx.chapter);
+  return <EventEntry data={entry.data} chapter={ctx.chapter} overlays={overlays} />;
 }

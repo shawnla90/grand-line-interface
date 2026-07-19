@@ -527,6 +527,26 @@
       "source_ref": "Hand-authored from official VIZ chapter 418 and volume 43 receipts; the duel begins at chapter 418 and ends with the chapter-427 escape beat. NEEDS HUMAN VERIFICATION against the manga.",
       "canon_confidence": "canon",
       "verified": false
+    },
+    {
+      "slug": "luffy-punches-celestial-dragon",
+      "name": "Luffy Punches the Celestial Dragon",
+      "kind": "battle",
+      "occurred_chapter": 502,
+      "through_chapter": null,
+      "island_slug": "human-auctioning-house",
+      "lng": null,
+      "lat": null,
+      "participants": [
+        { "slug": "monkey-d-luffy", "name": "Monkey D. Luffy", "role": "strikes Charloss" },
+        { "slug": "charloss", "name": "Saint Charloss", "role": "struck" },
+        { "slug": "octy", "name": "Hatchan", "role": "shot and defended" }
+      ],
+      "outcome": "After Charloss shoots Hatchan inside the Human Auctioning House, Luffy crosses the floor despite Hachi's warning and drives one punch into the Celestial Dragon's face.",
+      "significance": 2,
+      "source_ref": "Hand-authored. Verified from the user-supplied Chapter 502 page sequence IMG_5560.HEIC through IMG_5578.HEIC; local SHA-256 receipts and panel roles are recorded in blender-assets/research/story-scenes/sabaody-chapter-502-user-refs.json.",
+      "canon_confidence": "canon",
+      "verified": true
     }
   ]
 }

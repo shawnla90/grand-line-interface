@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "elbaph-adam-world-system",
+  "source_blend": "/Users/shawnos.ai/dead-reckoning/blender-assets/source/elbaph-adam-world-system.blend",
+  "runtime_glb": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/elbaph-adam-world-system.glb",
+  "model_units": "stylized Blender units; runtime scale is defined by the integration manifest",
+  "coordinate_system": "glTF 2.0 Y-up; Blender exporter converts from Z-up",
+  "export": {
+    "exporter": "Blender built-in glTF 2.0 exporter",
+    "compression": "none; optional gltfpack binary is not installed",
+    "animations": false,
+    "preview_proxy_excluded": true,
+    "curves_converted_to_mesh": [],
+    "excluded_objects": [
+      "Runtime Camera",
+      "Key",
+      "Fill",
+      "Rim"
+    ]
+  },
+  "stats": {
+    "objects": 189,
+    "vertices_input": 11951,
+    "triangles_input": 23186,
+    "materials": 11,
+    "bounds_blender": {
+      "min": [
+        -16.674999,
+        -11.6,
+        -1.325
+      ],
+      "max": [
+        16.674999,
+        11.6,
+        19.300001
+      ]
+    },
+    "bytes": 1660168
+  },
+  "build": {
+    "blender": "4.5.3 LTS",
+    "glb_sha256": "06c62e7adf3f2671ab5550e8702550d94c1de7977cde12472596e080cf7728fa",
+    "glb_header": {
+      "magic": "glTF",
+      "version": 2,
+      "declared_length": 1660168
+    }
+  }
+}

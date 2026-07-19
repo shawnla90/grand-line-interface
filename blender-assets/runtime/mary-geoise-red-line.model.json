@@ -8,13 +8,22 @@
   "export": {
     "exporter": "Blender built-in glTF 2.0 exporter",
     "compression": "none; optional gltfpack binary is not installed",
-    "animations": false,
+    "animations": true,
+    "animation_mode": "ACTIONS",
+    "named_clips": [
+      {
+        "name": "mary_geoise_bondola_cycle",
+        "duration_seconds": 5.0417
+      },
+      {
+        "name": "red_line_cloud_drift",
+        "duration_seconds": 5.0417
+      }
+    ],
     "preview_proxy_excluded": true,
     "curves_converted_to_mesh": [
-      "Bondola cable red-port-paradise -1.4",
-      "Bondola cable red-port-paradise +1.4",
-      "Bondola cable red-port-new-world -1.4",
-      "Bondola cable red-port-new-world +1.4"
+      "Paradise Bondola cable -0.72",
+      "Paradise Bondola cable +0.72"
     ],
     "excluded_objects": [
       "Runtime Camera",
@@ -24,31 +33,31 @@
     ]
   },
   "stats": {
-    "objects": 63,
-    "vertices_input": 1428,
-    "triangles_input": 2556,
-    "materials": 5,
+    "objects": 89,
+    "vertices_input": 3232,
+    "triangles_input": 6084,
+    "materials": 9,
     "bounds_blender": {
       "min": [
-        -5.6,
-        -5.99,
-        -0.05
+        -7.31866,
+        -7.582,
+        -0.125
       ],
       "max": [
-        5.6,
-        5.99,
-        14.45
+        7.318659,
+        7.582,
+        15.224999
       ]
     },
-    "bytes": 151100
+    "bytes": 422652
   },
   "build": {
     "blender": "4.5.3 LTS",
-    "glb_sha256": "7520b16f70f95ddb3c8e8d4c95c3feb2612556287e7acdc4884102deb9800b23",
+    "glb_sha256": "f4fcebd62cd09f1abce1b4efd26985b70f6f330ca1947423488a53cf9955a4a3",
     "glb_header": {
       "magic": "glTF",
       "version": 2,
-      "declared_length": 151100
+      "declared_length": 422652
     }
   }
 }

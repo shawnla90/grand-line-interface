@@ -1,0 +1,146 @@
+{
+  "schema_version": 2,
+  "id": "punk-hazard-geographic-system",
+  "label": "Punk Hazard fire-and-ice geographic system",
+  "entity_type": "chapter-gated geographic island system",
+  "priority": 1,
+  "contract_status": "standalone_runtime_package_not_registered",
+  "identity": {
+    "anchor": {
+      "id": "punk-hazard",
+      "slug": "punk-hazard",
+      "name": "Punk Hazard",
+      "japanese": "パンクハザード島",
+      "romaji": "Panku Hazādo-tō",
+      "region": "New World",
+      "debut_chapter": 655,
+      "debut_episode": 579,
+      "canon_status": "manga",
+      "canon_confidence": "canon_identity_derived_atlas_position",
+      "source_ref": "data/canon.json#punk-hazard",
+      "wiki_url": "https://onepiece.fandom.com/wiki/Punk_Hazard",
+      "atlas_anchor": {
+        "lng": 18.7035,
+        "lat": -5.2418,
+        "confidence": "derived",
+        "usage": "scene_entry_anchor_only",
+        "warning": "The atlas coordinate is deterministic placement, not canon longitude or a source for local bearings."
+      }
+    },
+    "components": [
+      {"id": "punk-hazard", "role": "island_system_root", "reveal_chapter": 655, "verification": "verified", "default_hidden": false},
+      {"id": "burning-lands", "role": "hot_southwestern_half", "reveal_chapter": 655, "verification": "verified_arrival_then_compass_orientation_ch659", "default_hidden": false},
+      {"id": "fiery-sea", "role": "burning_approach_water", "reveal_chapter": 655, "verification": "verified", "default_hidden": false},
+      {"id": "burning-lands-volcano", "role": "active_volcanic_landmark", "reveal_chapter": 655, "verification": "cited_summary", "default_hidden": false},
+      {"id": "melted-government-base", "role": "abandoned_melted_base_and_gate", "reveal_chapter": 655, "verification": "cited_summary", "default_hidden": false},
+      {"id": "ice-lands", "role": "cold_northeastern_half", "reveal_chapter": 657, "verification": "verified_discovery_then_compass_orientation_ch659", "default_hidden": false},
+      {"id": "central-crater-lake", "role": "seawater_crater_dividing_halves", "reveal_chapter": 657, "verification": "visible_ch657_origin_explained_ch661", "default_hidden": false},
+      {"id": "sea-channel", "role": "lake_connection_to_outer_sea", "reveal_chapter": 657, "verification": "cited_summary", "default_hidden": false},
+      {"id": "ice-river", "role": "river_from_cold_side_to_harbor", "reveal_chapter": 658, "verification": "cited_summary", "default_hidden": false},
+      {"id": "captured-ships-harbor", "role": "ice_side_natural_harbor", "reveal_chapter": 658, "verification": "cited_summary", "default_hidden": false},
+      {"id": "iceberg-choke", "role": "river_and_harbor_navigation_hazard", "reveal_chapter": 658, "verification": "cited_summary", "default_hidden": false},
+      {"id": "third-research-institute", "role": "mountainside_laboratory_exterior", "reveal_chapter": 657, "verification": "verified_first_appearance", "default_hidden": false},
+      {"id": "laboratory-industrial-system", "role": "exterior_tanks_pipes_chimneys_and_sections", "reveal_chapter": 658, "verification": "cited_summary_exterior_only", "default_hidden": false},
+      {"id": "first-second-institute-ruins", "role": "destroyed_earlier_laboratories", "reveal_chapter": 664, "verification": "verified_summary", "default_hidden": false},
+      {"id": "climate-boundary-ambient", "role": "neutral_steam_lava_glow_and_ice_wind_cycle", "reveal_chapter": 657, "verification": "derived_visualization_of_verified_temperature_boundary", "default_hidden": false},
+      {"id": "duel-memory-fx", "role": "chapter_658_environmental_history_overlay", "reveal_chapter": 658, "active_through_chapter": 658.999, "verification": "verified_state_window", "classification": "referenced_historical_reconstruction", "default_hidden": true}
+    ]
+  },
+  "topology": {
+    "coordinate_system": "normalized local theatre; Blender Z-up",
+    "layout_status": "verified_relative_system_with_interpolated_coastline_and_distances",
+    "verified_relationships": [
+      "The Burning Lands and Ice Lands are opposing halves separated by a central seawater crater lake.",
+      "The Burning Lands are southwest and the Ice Lands northeast; this compass orientation is chapter-safe from chapter 659.",
+      "The central lake connects to the sea and contains strong wind and currents caused by the temperature-pressure difference.",
+      "The cold side contains a river leading to a captured-ships harbor; icebergs obstruct the route.",
+      "The Third Research Institute is built into the base of a cold-side mountain with a natural harbor in front.",
+      "The ruined First and Second Research Institutes lie beyond the mountain behind the surviving third institute."
+    ],
+    "interpolated_relationships": [
+      "Coastline outline, crater diameter, river curvature, harbor dimensions, mountain spacing, and exact laboratory footprint are artistic interpolation.",
+      "The local southwest/northeast axis is encoded without implying a canon globe bearing.",
+      "The volcano, melted street grid, ice mountain count, tanks, pipes, and iceberg placements are representative LOD1 geography."
+    ],
+    "historical_state_policy": "The hot/cold geography is static from its chapter reveal. The Akainu-Aokiji duel is referenced history disclosed in chapter 658, never an actor simulation or geography transformation. A chapter-658-only environmental-wave overlay may illustrate the explanation when explicitly labeled referenced_historical_reconstruction."
+  },
+  "chapter_logic": {
+    "base_reveal_chapter": 655,
+    "safe_full_scene_chapter": 664,
+    "states": [
+      {"id": "pre-reveal", "through_chapter": 654, "visible_components": [], "verification": "verified_no_island_reveal"},
+      {"id": "burning-arrival", "reveal_chapter": 655, "visible_components": ["punk-hazard", "burning-lands", "fiery-sea", "burning-lands-volcano", "melted-government-base"], "verification": "verified"},
+      {"id": "two-sided-discovery", "reveal_chapter": 657, "adds": ["ice-lands", "central-crater-lake", "sea-channel", "third-research-institute", "climate-boundary-ambient"], "verification": "verified"},
+      {"id": "harbor-and-cause", "reveal_chapter": 658, "adds": ["ice-river", "captured-ships-harbor", "iceberg-choke", "laboratory-industrial-system"], "historical_reference": "The prior ten-day duel explains the permanent split; no duel actors or transformation animation render.", "verification": "cited_summary"},
+      {"id": "compass-orientation", "reveal_chapter": 659, "state_delta": "Southwest hot / northeast cold orientation becomes explicit.", "verification": "verified"},
+      {"id": "crater-origin-explained", "reveal_chapter": 661, "state_delta": "The lake is identified as the duel epicenter later filled with seawater; geometry does not transform.", "verification": "verified"},
+      {"id": "older-lab-ruins-explained", "reveal_chapter": 664, "adds": ["first-second-institute-ruins"], "verification": "verified_summary"}
+    ],
+    "ambient_clip": {
+      "name": "punk_hazard_environment_cycle",
+      "duration_seconds": 5.0,
+      "loop": true,
+      "reveal_chapter": 657,
+      "meaning": "Neutral atmosphere cycle only: boundary rotation, steam breathing, lava-glow pulse, and ice-wind drift. It does not reenact the historical duel or move geography."
+    },
+    "historical_memory_clip": {
+      "name": "punk_hazard_duel_memory_fx",
+      "duration_seconds": 3.9583,
+      "mode": "one_shot",
+      "reveal_chapter": 658,
+      "active_through_chapter": 658.999,
+      "classification": "referenced_historical_reconstruction",
+      "meaning": "Abstract magma and ice environmental waves pass over the already-final island. There are no characters, no exact choreography claim, and no pre-duel geography state."
+    },
+    "default_rule": "Render only components whose reveal_chapter is less than or equal to the reader chapter; before chapter 655 render no Punk Hazard model.",
+    "unknown_gate_rule": "Do not invent interior room visibility, exact bearings, or historical duel choreography."
+  },
+  "visual_program": {
+    "style": "stylized LOD1 world theatre with readable fire/ice silhouette and original procedural materials",
+    "layers": ["ocean and outer hazards", "two climate landmasses", "central crater hydrology", "ice-side river and harbor", "industrial laboratory exterior", "ambient climate effects"],
+    "palette": {
+      "burning_lands": ["#3a241d", "#7d2f1f", "#ff5a22", "#e1a443"],
+      "ice_lands": ["#b9dce8", "#6ba8c2", "#dff5ff", "#284c6b"],
+      "water": ["#082a3e", "#0c6071", "#62bad0"],
+      "industrial": ["#535b61", "#8f9a9e", "#d6a94b"]
+    },
+    "runtime_budget": {"max_glb_bytes": 6291456, "target_triangles": 32000, "texture_policy": "procedural materials only; no external textures"}
+  },
+  "coordinate_policy": {
+    "atlas_anchor": [18.7035, -5.2418],
+    "anchor_confidence": "derived",
+    "projection_support": ["mercator_closeup"],
+    "scale_policy": "visual_fit_not_canon_scale",
+    "warning": "Never infer local geography from the atlas point or project the local SW/NE axis as a global bearing."
+  },
+  "integration_contract": {
+    "mode": "maplibre_custom_3d_layer",
+    "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
+    "fallback": "renders/runtime/punk-hazard-geographic-system.png",
+    "runtime_glb": "runtime/punk-hazard-geographic-system.glb",
+    "node_gate_policy": "Read component_id, reveal_chapter, gate_confidence, and default_hidden from glTF extras.",
+    "ambient_policy": "Sample punk_hazard_environment_cycle only while the model is visible and chapter >= 657; pause for reduced motion or when offscreen. Play punk_hazard_duel_memory_fx once only on chapter-658 entry and label it referenced_historical_reconstruction.",
+    "registration_status": "not_registered_by_this_lane"
+  },
+  "evidence": {
+    "ledger": "research/punk-hazard-geography-evidence.json",
+    "primary_local_record": "data/canon.json#punk-hazard",
+    "sources": [
+      "https://onepiece.fandom.com/wiki/Chapter_655",
+      "https://onepiece.fandom.com/wiki/Chapter_657",
+      "https://onepiece.fandom.com/wiki/Chapter_658",
+      "https://onepiece.fandom.com/wiki/Chapter_659",
+      "https://onepiece.fandom.com/wiki/Chapter_661",
+      "https://onepiece.fandom.com/wiki/Chapter_664",
+      "https://onepiece.fandom.com/wiki/Punk_Hazard",
+      "https://onepiece.fandom.com/wiki/Third_Research_Institute"
+    ]
+  },
+  "unresolved": [
+    "Exact coastline and central-crater geometry are not available as canon measurements.",
+    "Exact river, harbor, laboratory, and destroyed-institute bearings are not established.",
+    "The specific chapter where gale-force boundary wind is first verbally explained needs panel-level verification; the neutral ambient visualization is gated to the visible two-sided discovery at chapter 657.",
+    "Interior Third Research Institute room topology is deliberately outside this geographic asset.",
+    "Historical duel choreography and character staging are deliberately excluded; the optional memory FX is abstract environmental reconstruction only."
+  ]
+}

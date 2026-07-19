@@ -104,7 +104,7 @@
         "slug": null,
         "name": "Red Port, Paradise side",
         "role": "lower_port",
-        "debut_chapter": null,
+        "debut_chapter": 905,
         "canon_status": "manga_or_official_summary",
         "canon_confidence": "cited_summary",
         "source_ref": "https://onepiece.fandom.com/wiki/Mary_Geoise",
@@ -128,7 +128,7 @@
         "slug": null,
         "name": "Bondola vertical route",
         "role": "vertical_transit",
-        "debut_chapter": null,
+        "debut_chapter": 905,
         "canon_status": "manga_or_official_summary",
         "canon_confidence": "cited_summary",
         "source_ref": "https://onepiece.fandom.com/wiki/Mary_Geoise",
@@ -191,9 +191,9 @@
       },
       {
         "id": "levely-state",
-        "reveal_chapter": null,
-        "state": "Delegation traffic and summit gathering state.",
-        "verification": "chapter_to_verify"
+        "reveal_chapter": 905,
+        "state": "Paradise-side Red Port, Bondola cables, ascent vessel, and summit delegation arrival become visible.",
+        "verification": "verified"
       },
       {
         "id": "late-interior-reveals",
@@ -206,10 +206,10 @@
       {
         "id": "red-line-summit-arrival",
         "importance": 1,
-        "reveal_chapter": null,
+        "reveal_chapter": 905,
         "landmark": "bondola-route",
         "state_delta": "The globe route becomes a vertical ascent from Red Port to the summit city.",
-        "verification": "chapter_to_verify",
+        "verification": "verified",
         "camera_cue": "Track from sea-level Red Port up the wall until Pangaea Castle clears the rim.",
         "fx": [
           "high-altitude cloud",
@@ -263,10 +263,29 @@
     "runtime_handoff": "Export static environment and event-state collections separately; MapLibre controls anchor, visibility, route progress, and chapter gate."
   },
   "unresolved": [
-    "Exact chapter gates for both Red Ports and the Bondola route.",
+    "Exact independent visual gate for the New World-side Red Port.",
     "Spoiler-safe inventory of Pangaea Castle interiors.",
     "Exact summit-city street topology."
   ],
+  "runtime_animation": {
+    "clock": "chapter_entry_elapsed_ms",
+    "clips": [
+      {
+        "name": "mary_geoise_bondola_cycle",
+        "kind": "ambient_vertical_transit",
+        "active_from_chapter": 905,
+        "active_through_chapter": 1125,
+        "duration_ms": 5042
+      },
+      {
+        "name": "red_line_cloud_drift",
+        "kind": "ambient",
+        "active_from_chapter": 142,
+        "duration_ms": 5000
+      }
+    ],
+    "transport_correction": "Bondolas carry people between Red Port and Mary Geoise. Lawful sailors leave their ships below and obtain another ship on the opposite side; the lift does not carry their original ship over the Red Line."
+  },
   "evidence": [
     {
       "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",

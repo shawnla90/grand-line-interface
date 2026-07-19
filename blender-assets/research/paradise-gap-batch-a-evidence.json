@@ -1,0 +1,235 @@
+{
+  "schema_version": 1,
+  "id": "paradise-gap-batch-a-evidence",
+  "retrieved_at": "2026-07-19",
+  "scope": "Build-ready identity, chapter-gate, topology, transformation, and interpolation evidence for Little Garden, Drum Island, Jaya, Long Ring Long Land, and Thriller Bark. No manga panels, anime frames, copied maps, GLBs, or runtime registrations are included.",
+  "source_policy": {
+    "local_system_of_record": ["data/canon.json", "canon/islands.extra.json"],
+    "official_arc_summaries": "ONE PIECE.com is used for high-level arc/location identity.",
+    "chapter_receipts": "Exact Fandom chapter summary URLs are used to locate the first safe visual/explanation gates; these are evidence pointers, not licensed visual inputs.",
+    "geometry_policy": "Textual topology may support relative systems. Panel/map outlines, dimensions, bearings, and distances remain unmeasured unless explicitly established.",
+    "copyright_boundary": "Do not copy manga panels, anime stills, wiki maps, logos, or textures into generated assets."
+  },
+  "local_records": [
+    {
+      "slug": "little-garden",
+      "path": "data/canon.json#little-garden",
+      "record": {"name": "Little Garden", "japanese": "リトルガーデン", "romaji": "Ritoru Gāden", "region": "Paradise", "debut_chapter": 114, "atlas_anchor": [-118.6519, -5.3635], "atlas_anchor_confidence": "derived"},
+      "audit": "Identity is accepted. The visual model gate is corrected to chapter 115 because chapter 114 only identifies the next destination."
+    },
+    {
+      "slug": "drum-island",
+      "path": "data/canon.json#drum-island",
+      "record": {"name": "Drum Island", "japanese": "ドラム島", "romaji": "Doramu-tō", "region": "Paradise", "debut_chapter": 132, "atlas_anchor": [-108.7954, -6.3428], "atlas_anchor_confidence": "derived"},
+      "audit": "Identity and visual gate agree at chapter 132."
+    },
+    {
+      "slug": "jaya",
+      "path": "data/canon.json#jaya",
+      "record": {"name": "Jaya", "japanese": "ジャヤ", "romaji": "Jaya", "region": "Paradise", "debut_chapter": 222, "atlas_anchor": [-96.4286, 6.9118], "atlas_anchor_confidence": "derived"},
+      "audit": "Identity and visual gate agree at chapter 222. Upper Yard is an external related system, not a second Jaya mesh."
+    },
+    {
+      "slug": "long-ring-long-land",
+      "path": "data/canon.json#long-ring-long-land",
+      "record": {"name": "Long Ring Long Land", "japanese": "ロングリングロングランド", "romaji": "Ronguringu Rongurando", "region": "Paradise", "debut_chapter": 304, "atlas_anchor": [-83.0667, -2.0718], "atlas_anchor_confidence": "derived"},
+      "audit": "Identity and visual gate agree at chapter 304."
+    },
+    {
+      "slug": "thriller-bark",
+      "path": "canon/islands.extra.json#thriller-bark merged into data/canon.json#thriller-bark",
+      "record": {"name": "Thriller Bark", "romaji": "Suriraa Baaku", "region": "Florian Triangle", "sea": "Paradise", "island_type": "Ship", "debut_chapter": 442, "atlas_anchor": [-57.5, 1.8], "atlas_anchor_confidence": "guess"},
+      "audit": "The local hand-authored record correctly calls this a ship but flags its placement/debut for human verification. The geographic system first becomes visually safe at chapter 443. Its atlas point is never a fixed coordinate."
+    }
+  ],
+  "claims": [
+    {
+      "id": "little-garden-identity",
+      "system": "little-garden",
+      "claim": "Little Garden is a Paradise tropical island with a prehistoric ecosystem and a century-long giant duel as its defining story geography.",
+      "gate": {"identity_chapter": 114, "model_visible": false},
+      "verification": "local_identity_plus_official_arc_summary",
+      "sources": ["data/canon.json#little-garden", "https://one-piece.com/story/alabasta/index.html", "https://onepiece.fandom.com/wiki/Little_Garden"]
+    },
+    {
+      "id": "little-garden-visual-reveal",
+      "system": "little-garden",
+      "claim": "Chapter 115 is the safe first visual gate for the island, tropical forest, prehistoric scale, and arrival geography; chapter 114 only points the crew toward it.",
+      "gate": {"reveal_chapter": 115, "pre_reveal_through": 114},
+      "verification": "verified_chapter_summary",
+      "sources": ["https://onepiece.fandom.com/wiki/Chapter_115", "https://onepiece.fandom.com/wiki/Little_Garden_Arc"]
+    },
+    {
+      "id": "little-garden-duel-geography",
+      "system": "little-garden",
+      "claim": "Chapter 117 establishes Dorry and Brogy's recurring duel context, separate camp use, a shared duel space, and old sailor remains; exact camp bearings are not established.",
+      "gate": {"reveal_chapter": 117},
+      "verification": "verified_chapter_summary_relative_geometry_withheld",
+      "sources": ["https://onepiece.fandom.com/wiki/Chapter_117", "https://onepiece.fandom.com/wiki/Little_Garden"]
+    },
+    {
+      "id": "little-garden-hourly-volcano",
+      "system": "little-garden",
+      "claim": "Chapter 118 establishes the interior volcano eruption as the signal for the duel; plume geometry and exact island-center placement are not measurements.",
+      "gate": {"reveal_chapter": 118},
+      "verification": "verified_chapter_summary",
+      "sources": ["https://onepiece.fandom.com/wiki/Chapter_118", "https://onepiece.fandom.com/wiki/Little_Garden"]
+    },
+    {
+      "id": "drum-identity-and-reveal",
+      "system": "drum-island",
+      "claim": "Drum Island is a permanent winter island first safely visible at chapter 132.",
+      "gate": {"reveal_chapter": 132},
+      "verification": "local_identity_plus_verified_chapter_summary",
+      "sources": ["data/canon.json#drum-island", "https://one-piece.com/story/alabasta/index.html", "https://onepiece.fandom.com/wiki/Chapter_132"]
+    },
+    {
+      "id": "drum-vertical-geography",
+      "system": "drum-island",
+      "claim": "The Drum Rockies dominate the island and the tallest central Drum Rock supports Drum Castle, establishing a verified vertical hierarchy without measured heights.",
+      "gate": {"reveal_chapter": 132},
+      "verification": "cited_location_and_castle_summary",
+      "sources": ["https://onepiece.fandom.com/wiki/Drum_Island", "https://onepiece.fandom.com/wiki/Drum_Castle", "https://onepiece.fandom.com/wiki/Chapter_132"]
+    },
+    {
+      "id": "drum-settlements-and-ropeway",
+      "system": "drum-island",
+      "claim": "Named villages occupy lower island terrain and a ropeway serves the summit castle; chapter 136 and 142 are conservative build gates, while exact settlement positions and cable span remain unresolved.",
+      "gate": {"village_proxy_reveal_chapter": 136, "ropeway_reveal_chapter": 142},
+      "verification": "cited_location_summary_conservative_gates",
+      "sources": ["https://onepiece.fandom.com/wiki/Drum_Island"]
+    },
+    {
+      "id": "drum-temporary-environment-states",
+      "system": "drum-island",
+      "claim": "An avalanche can be represented as a chapter-136 event proxy, while chapter 153 verifies the one-shot pink-snow/sakura display; neither is permanent terrain.",
+      "gate": {"avalanche_reference_chapter": 136, "pink_snow_reveal_chapter": 153, "pink_snow_active_through": 153.999},
+      "verification": "cited_location_summary_plus_verified_chapter_summary",
+      "sources": ["https://onepiece.fandom.com/wiki/Drum_Island", "https://onepiece.fandom.com/wiki/Chapter_153"]
+    },
+    {
+      "id": "jaya-identity-and-reveal",
+      "system": "jaya",
+      "claim": "Present-day Jaya is safely visible from chapter 222 and is the remaining lower-sea part of a formerly larger island.",
+      "gate": {"reveal_chapter": 222},
+      "verification": "local_identity_plus_verified_chapter_summary",
+      "sources": ["data/canon.json#jaya", "https://onepiece.fandom.com/wiki/Chapter_222", "https://onepiece.fandom.com/wiki/Jaya"]
+    },
+    {
+      "id": "jaya-mock-town",
+      "system": "jaya",
+      "claim": "Mock Town and its port are safe at chapter 223; the official arc summary places Mock Town on Jaya's west side, but exact bearings and footprints remain unmeasured.",
+      "gate": {"reveal_chapter": 223},
+      "verification": "verified_chapter_summary_plus_official_arc_summary",
+      "sources": ["https://one-piece.com/story/skypiea/index.html", "https://onepiece.fandom.com/wiki/Chapter_223", "https://onepiece.fandom.com/wiki/Jaya"]
+    },
+    {
+      "id": "jaya-upper-yard-relationship",
+      "system": "jaya",
+      "claim": "Chapter 253 aligns current Jaya and Upper Yard maps into the former skull-like landmass, verifying their relationship but not an exact dimensional 3D transform.",
+      "gate": {"relationship_overlay_reveal_chapter": 253},
+      "verification": "verified_chapter_summary_transform_unmeasured",
+      "render_policy": "Reference the existing skypiea-sky-system Upper Yard component. Do not duplicate its geometry inside the Jaya package.",
+      "sources": ["https://onepiece.fandom.com/wiki/Chapter_253", "https://onepiece.fandom.com/wiki/Jaya", "https://one-piece.com/story/skypiea/index.html"]
+    },
+    {
+      "id": "jaya-historical-separation",
+      "system": "jaya",
+      "claim": "The separated portion was launched into the sky roughly four hundred years earlier; chapter 292 supports the historical event, which must never animate as a present-day transformation.",
+      "gate": {"historical_reference_reveal_chapter": 292},
+      "verification": "verified_historical_summary",
+      "sources": ["https://onepiece.fandom.com/wiki/Chapter_292", "https://onepiece.fandom.com/wiki/Jaya"]
+    },
+    {
+      "id": "long-ring-identity-and-reveal",
+      "system": "long-ring-long-land",
+      "claim": "Long Ring Long Land is safely visible from chapter 304 and has a distinctive elongated landscape and life-form identity.",
+      "gate": {"reveal_chapter": 304},
+      "verification": "local_identity_plus_official_and_chapter_summary",
+      "sources": ["data/canon.json#long-ring-long-land", "https://one-piece.com/story/davy_back_fight/index.html", "https://onepiece.fandom.com/wiki/Chapter_304"]
+    },
+    {
+      "id": "long-ring-elongated-geography",
+      "system": "long-ring-long-land",
+      "claim": "Open plains, hills, flora, and fauna share an elongated visual identity; representative proportions are allowed but exact species placement is not geographic evidence.",
+      "gate": {"reveal_chapter": 304},
+      "verification": "cited_location_summary",
+      "sources": ["https://onepiece.fandom.com/wiki/Long_Ring_Long_Land", "https://onepiece.fandom.com/wiki/Chapter_304"]
+    },
+    {
+      "id": "long-ring-ten-section-topology",
+      "system": "long-ring-long-land",
+      "claim": "Chapter 305 explains that ten apparent islands form a ring but are sections of one island connected beneath normal water level.",
+      "gate": {"topology_explanation_chapter": 305},
+      "verification": "verified_chapter_summary",
+      "sources": ["https://onepiece.fandom.com/wiki/Chapter_305", "https://onepiece.fandom.com/wiki/Long_Ring_Long_Land"]
+    },
+    {
+      "id": "long-ring-annual-low-tide",
+      "system": "long-ring-long-land",
+      "claim": "Low tide exposes the connecting path once each year; chapter 305 unlocks the explanation, not a claim that the tide is active during that chapter.",
+      "gate": {"explanation_chapter": 305, "chapter_driven_physical_state": false},
+      "verification": "verified_cycle_timing_current_state_withheld",
+      "sources": ["https://onepiece.fandom.com/wiki/Chapter_305", "https://onepiece.fandom.com/wiki/Long_Ring_Long_Land"]
+    },
+    {
+      "id": "thriller-bark-mobile-identity",
+      "system": "thriller-bark",
+      "claim": "Thriller Bark is a moving pirate ship built from a former West Blue island and must not be modeled or registered as fixed terrain.",
+      "gate": {"local_identity_chapter": 442, "model_visible": false, "ship_identity_fully_explained_chapter": 449},
+      "verification": "local_hand_authored_record_plus_cited_location_summary",
+      "sources": ["canon/islands.extra.json#thriller-bark", "https://onepiece.fandom.com/wiki/Thriller_Bark", "https://onepiece.fandom.com/wiki/Chapter_449"]
+    },
+    {
+      "id": "thriller-bark-visual-reveal",
+      "system": "thriller-bark",
+      "claim": "Chapter 443 is the first safe visual gate for the fog-hidden giant mouth gate, enclosing outer structure, and ship/island system trapping the Sunny; chapter 442 alone is not sufficient.",
+      "gate": {"reveal_chapter": 443, "pre_reveal_through": 442},
+      "verification": "verified_chapter_summary",
+      "sources": ["https://onepiece.fandom.com/wiki/Chapter_443", "https://one-piece.com/story/thriller_bark/index.html"]
+    },
+    {
+      "id": "thriller-bark-nested-geography",
+      "system": "thriller-bark",
+      "claim": "Chapter 444 establishes the shore/dead-forest entry, chapter 445 establishes the graveyard and Hogback mansion, and the island/defense layers sit inside the outer ship wall without exact surveyed bearings.",
+      "gate": {"shore_forest_reveal_chapter": 444, "graveyard_mansion_reveal_chapter": 445},
+      "verification": "verified_chapter_summaries_plus_cited_location_topology",
+      "sources": ["https://onepiece.fandom.com/wiki/Chapter_444", "https://onepiece.fandom.com/wiki/Chapter_445", "https://onepiece.fandom.com/wiki/Chapter_446", "https://onepiece.fandom.com/wiki/Thriller_Bark"]
+    },
+    {
+      "id": "thriller-bark-mast-ship-proof",
+      "system": "thriller-bark",
+      "claim": "Chapter 449 makes the enormous pirate-ship identity, middle village, main mast/giant sail, mast mansion, and wall-to-mast chain system safe for the full exterior scene.",
+      "gate": {"reveal_chapter": 449},
+      "verification": "verified_chapter_summary_plus_cited_location_summary",
+      "sources": ["https://onepiece.fandom.com/wiki/Chapter_449", "https://onepiece.fandom.com/wiki/Thriller_Bark"]
+    }
+  ],
+  "interpolation_policy": {
+    "allowed": [
+      "normalized coastline and island silhouette",
+      "visual-fit scale and elevation",
+      "representative vegetation and prop density",
+      "unmeasured path curvature and settlement massing",
+      "diagrammatic relationship overlays clearly labeled non-scale",
+      "neutral environmental effects that do not claim exact panel choreography"
+    ],
+    "forbidden": [
+      "canon bearings inferred from derived atlas anchors",
+      "invented exact dimensions or distances",
+      "panel-exact shoreline tracing without licensed source geometry",
+      "present-day Jaya separation or duplicate Upper Yard geometry",
+      "chapter-driven Long Ring annual tide without current-state evidence",
+      "fixed-world Thriller Bark placement",
+      "unverified late damage states",
+      "manga panel, anime still, wiki map, logo, or texture copying"
+    ]
+  },
+  "unresolved_geometry": [
+    {"system": "little-garden", "handling": "Interpolate coastline/volcano/camps for readable topology; withhold story combat and exact routes."},
+    {"system": "drum-island", "handling": "Interpolate peak/village/river/ropeway layout; withhold post-timeskip castle state until verified."},
+    {"system": "jaya", "handling": "Interpolate present local layout; use a non-scale external Upper Yard reference only; withhold exact fit transform."},
+    {"system": "long-ring-long-land", "handling": "Interpolate section outlines/ring/base; show annual low tide only as an explanatory overlay."},
+    {"system": "thriller-bark", "handling": "Interpolate nested exterior layout under a moving root; withhold Wonder Garden bridge and all late damage until exact gates are verified."}
+  ]
+}

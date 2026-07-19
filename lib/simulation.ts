@@ -77,6 +77,18 @@ export const SimAnchor = z.object({
   note: z.string().optional(),
 });
 
+/** Optional scene-authored color response. This is applied to the isolated
+ * actor sprites, never as a blanket map color grade. Gamma below 1 lifts the
+ * illustrated midtones; gain supplies the short contact exposure accent. */
+export const SimVisualTreatment = z.object({
+  base_gamma: z.number().min(0.5).max(1.5),
+  impact_gamma: z.number().min(0.5).max(1.5),
+  base_gain: z.number().min(0.5).max(2),
+  impact_gain: z.number().min(0.5).max(2),
+  impact_at_ms: z.number().int().nonnegative(),
+  impact_window_ms: z.number().int().positive(),
+});
+
 export const SimScene = z.object({
   id: z.string().min(1),
   label: z.string().min(1),
@@ -85,6 +97,7 @@ export const SimScene = z.object({
   priority: z.enum(["anchor", "supporting"]),
   chapter_gate: SimChapterGate,
   place: z.object({ id: z.string(), landmark: z.string(), arena: z.string() }),
+  visual_treatment: SimVisualTreatment.optional(),
   duration_ms: z.number().int().positive(),
   actors: z.array(SimActor).nonempty(),
   events: z.array(SimFxEvent),
@@ -147,6 +160,7 @@ export type SimKeyframe = z.infer<typeof SimKeyframe>;
 export type SimActor = z.infer<typeof SimActor>;
 export type SimFxEvent = z.infer<typeof SimFxEvent>;
 export type SimScene = z.infer<typeof SimScene>;
+export type SimVisualTreatment = z.infer<typeof SimVisualTreatment>;
 export type SimFrame = z.infer<typeof SimFrame>;
 export type SimAsset = z.infer<typeof SimAsset>;
 export type StorySimulationPack = z.infer<typeof StorySimulationPack>;
@@ -226,6 +240,24 @@ export function streakDisplacementAtAge(
  * and hand it here; the throw happens before anything reaches a GPU. */
 export function loadSimulations(raw: unknown): StorySimulationPack {
   return StorySimulationPack.parse(raw);
+}
+
+/** Deterministic, triangular-smoothed impact lift for actor materials. */
+export function visualTreatmentAt(
+  scene: SimScene,
+  tMs: number,
+): { gamma: number; gain: number; pulse: number } {
+  const treatment = scene.visual_treatment;
+  if (!treatment) return { gamma: 1, gain: 1, pulse: 0 };
+  const halfWindow = Math.max(1, treatment.impact_window_ms / 2);
+  const distance = Math.min(1, Math.abs(tMs - treatment.impact_at_ms) / halfWindow);
+  const inverse = 1 - distance;
+  const pulse = inverse * inverse * (3 - 2 * inverse);
+  return {
+    gamma: treatment.base_gamma + (treatment.impact_gamma - treatment.base_gamma) * pulse,
+    gain: treatment.base_gain + (treatment.impact_gain - treatment.base_gain) * pulse,
+    pulse,
+  };
 }
 
 /* ── easing ──────────────────────────────────────────────────────────────────

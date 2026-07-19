@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "pack_id": "sabaody-saga-2d-v1",
+  "anchors": {
+    "sabaody-luffy-punches-charloss": {
+      "event": "luffy-punches-celestial-dragon",
+      "note": "The event resolves to the Human Auctioning House canon coordinate; the simulation stages the verified chapter-502 action without asserting exact interior topology."
+    }
+  }
+}

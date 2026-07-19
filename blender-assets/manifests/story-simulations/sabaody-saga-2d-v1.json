@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "id": "sabaody-saga-2d-v1",
+  "state": "runtime_verified",
+  "integration_ready": true,
+  "supersedes_visible_art": [],
+  "chapter_span": {
+    "start": 490,
+    "end": 513
+  },
+  "representation": "camera-facing-2d-atlas",
+  "contract": {
+    "path": "contracts/story-simulations/sabaody-saga-2d-v1.simulation.json",
+    "bytes": 6052,
+    "sha256": "615463c896942b8b55efe78b6c9c7536afbddfb82134d598d19a1b264efa5388"
+  },
+  "character_index": {
+    "path": "runtime/story-simulations/sabaody-saga-2d-v1/character-index.json",
+    "bytes": 2145,
+    "sha256": "62f651c9615b6648ce83a60c67f4ed0d25e521be8f8d5d62055bc84dcea35244"
+  },
+  "canon_intake": {
+    "path": "research/story-scenes/sabaody-chapter-502-user-refs.json",
+    "bytes": 5551,
+    "sha256": "94f4d61bbcba4203e566a23db97270e9c35fe00cc6e5ad26b7f143eb6c5735ea"
+  },
+  "provenance": {
+    "path": "art/sabaody/IMAGEGEN_PROVENANCE.md",
+    "bytes": 2528,
+    "sha256": "7de2ff1970f83abe396e9a2705fe0477674d7fac2f142070b3ccb1d82be551c9"
+  },
+  "metrics": {
+    "character_packages": 3,
+    "pose_frames": 18,
+    "atlas_bytes": 1992092,
+    "scenes": 1,
+    "runtime_ready_scenes": 1,
+    "non_ready_scenes": 0,
+    "actor_tracks": 3,
+    "movement_keyframes": 21,
+    "fx_events": 8,
+    "review_video_seconds": 2.0
+  },
+  "characters": [
+    {
+      "id": "monkey-d-luffy-sabaody-auction",
+      "kind": "character",
+      "variant": "sabaody-auction-house-chapter-502",
+      "source": {
+        "path": "art/sabaody/source-sheets/monkey-d-luffy-sabaody-auction-pose-sheet-v1.png",
+        "bytes": 1755497,
+        "sha256": "d91a4f7e97cc98af87b3121805f444c86eb300afd8cd9dac9b2fc9d8417c6640"
+      },
+      "keyed_source": {
+        "path": "art/sabaody/keyed-sheets/monkey-d-luffy-sabaody-auction-pose-sheet-v1.png",
+        "bytes": 865799,
+        "sha256": "942c9e54dbcc73532cc572bbd5f5657e71aa5844dff0048834ff34b7ef9aaf36"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/sabaody-saga-2d-v1/characters/monkey-d-luffy-sabaody-auction/atlas.png",
+        "bytes": 529808,
+        "sha256": "a69093e8aa40e60d8660faabe959b50a90a3f6e6eee9ed24451241ecad2414df"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/sabaody-saga-2d-v1/characters/monkey-d-luffy-sabaody-auction/character.json",
+        "bytes": 4096,
+        "sha256": "838b1093bdf23fc957f56690ed0abf6dd83c271393df7bc339fee35f7f626f39"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "saint-charloss-sabaody-auction",
+      "kind": "character",
+      "variant": "sabaody-auction-house-chapter-502",
+      "source": {
+        "path": "art/sabaody/source-sheets/saint-charloss-sabaody-auction-pose-sheet-v1.png",
+        "bytes": 2035129,
+        "sha256": "5c4fc6c0696702d4b6665ad7c7d6f99a3ed1010bae0bb3601464eba589137c3a"
+      },
+      "keyed_source": {
+        "path": "art/sabaody/keyed-sheets/saint-charloss-sabaody-auction-pose-sheet-v1.png",
+        "bytes": 1158002,
+        "sha256": "2135bb9e9dedadea55476d744b94e12b6f5fcd81674696516ca006647acdc62b"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/sabaody-saga-2d-v1/characters/saint-charloss-sabaody-auction/atlas.png",
+        "bytes": 650389,
+        "sha256": "4e76f80faf626351d271b433ebd9c0fd30cc69647eca0db6c17cea0d55ede11f"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/sabaody-saga-2d-v1/characters/saint-charloss-sabaody-auction/character.json",
+        "bytes": 4067,
+        "sha256": "4d1be394e92b4491e73bb1a8ec80415cd1aee6703f0e428200665fbe20b79cde"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "octy-sabaody-auction",
+      "kind": "character",
+      "variant": "sabaody-auction-house-chapter-502",
+      "source": {
+        "path": "art/sabaody/source-sheets/octy-sabaody-auction-pose-sheet-v1.png",
+        "bytes": 2164246,
+        "sha256": "f7d083530c825e50d9f211b183ea5493f1ca29f5ecd830b07e34676fe2ef3640"
+      },
+      "keyed_source": {
+        "path": "art/sabaody/keyed-sheets/octy-sabaody-auction-pose-sheet-v1.png",
+        "bytes": 1512366,
+        "sha256": "3f52099e4e08333fd312d6ac5705fd8c37c57b2e91cdf3dd3cf3050f0f21b4d5"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/sabaody-saga-2d-v1/characters/octy-sabaody-auction/atlas.png",
+        "bytes": 811895,
+        "sha256": "73e931018148b685ddaa7c2e7a04eefdd47f024c9c3f7549ac53141fcf73b221"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/sabaody-saga-2d-v1/characters/octy-sabaody-auction/character.json",
+        "bytes": 4042,
+        "sha256": "f85e5c2d572ba66ef27edbc370254d732b6d1ed69dce1e19cafe615a0df25c9f"
+      },
+      "pose_count": 6
+    }
+  ],
+  "reviews": [
+    {
+      "path": "renders/story-simulations/sabaody-saga-2d-v1/character-atlas-catalog.png",
+      "bytes": 235638,
+      "sha256": "68112f1a9fcebdad93a5eb4afbcf85fd7848a32041e351d419c5897a1be22bca"
+    },
+    {
+      "path": "renders/story-simulations/sabaody-saga-2d-v1/scene-board.png",
+      "bytes": 163375,
+      "sha256": "16061156ef8c9ff7e80aef3d7f704757cbcf23838dd85e7f531f139045422e09"
+    },
+    {
+      "path": "renders/story-simulations/sabaody-saga-2d-v1/sampler-poster.png",
+      "bytes": 259918,
+      "sha256": "cdb0427111b800683ac2bd0d8feca077f29a6579bf1ead7f4c38509766ff604d"
+    },
+    {
+      "path": "renders/story-simulations/sabaody-saga-2d-v1/sampler.mp4",
+      "bytes": 386715,
+      "sha256": "cb63df12fabc019a3a5a81fd8a745c515b407ec0c4e085b3f0d5ed348527b957"
+    }
+  ],
+  "web_proof": {
+    "path": "proofs/sabaody-saga-2d-v1-web-proof.json",
+    "bytes": 2062,
+    "sha256": "3bbed62f6369228c0795da0d87ec8342ec4142e25053d7220698d11fde4f0f1f"
+  },
+  "blockers": []
+}

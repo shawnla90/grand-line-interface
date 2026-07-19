@@ -1,0 +1,116 @@
+{
+  "_warning": "HAND-AUTHORED. A sync script that writes this file is a bug. No upstream source has FRUIT LINEAGE as an entity — a devil fruit's life story across holders exists only in chapter prose — so every row here is hand-typed. verified:false means Shawn has not confirmed the chapters against the manga yet.",
+  "_why_this_file_exists": "canon/fruit_reveals.json answers WHO has a fruit and WHEN the reader learned it. This file answers the other question a devil fruit raises: where it has BEEN. A fruit outlives its eater — it burns back into the world and somebody else claims it — and those chains (a dead brother's flame, a bought miracle, a murdered crewmate's prize) are some of the story's heaviest beats. Nobody ships them as data.",
+  "_semantics": "A lineage hangs off a fruit_slug that must exist in canon/fruit_reveals.json — a lineage for an unrevealed fruit would be a spoiler with no page to live on. The lineage renders only once the fruit itself is chartable at the reader's chapter (its earliest reveal), and each event additionally gates on its own chapter. Events are ascending. kind: revealed = the reader meets the fruit; inherited = it passes to a new holder on the page; taken = it is taken by force or theft; staked = it is put up as a prize; lore = the page explains something about the fruit's nature or past.",
+  "_before_any_content_ships": "Every row is verified:false. Shawn must confirm every chapter against the manga and flip verified to true. Until then the UI renders these as unverified.",
+  "lineages": [
+    {
+      "fruit_slug": "mera-mera-no-mi",
+      "events": [
+        {
+          "chapter": 159,
+          "kind": "revealed",
+          "note": "The flame belongs to Ace — shown against Smoker in Alabasta, and named.",
+          "source_ref": "Hand-authored. Ace's Mera Mera no Mi named in Alabasta (~ch. 157-159). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 574,
+          "kind": "lore",
+          "note": "Ace dies at Marineford. The flame goes back into the world, the way every fruit does when its eater falls.",
+          "source_ref": "Hand-authored. Ace's death (~ch. 574); the fruit-rebirth rule is series lore. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 702,
+          "kind": "staked",
+          "note": "Doflamingo stakes the reborn flame as the Corrida Colosseum prize — a dead man's power as bait.",
+          "source_ref": "Hand-authored. The Mera Mera no Mi announced as the tournament prize at Dressrosa (~ch. 702). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 744,
+          "kind": "inherited",
+          "note": "Sabo takes the colosseum and eats his brother's flame. The lineage closes the way the story wanted it to.",
+          "source_ref": "Hand-authored. Sabo claims the Mera Mera no Mi at Dressrosa (~ch. 744). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "fruit_slug": "ope-ope-no-mi",
+      "events": [
+        {
+          "chapter": 662,
+          "kind": "revealed",
+          "note": "The Op-Op fruit belongs to Law — the surgeon's ROOM, shown at Punk Hazard.",
+          "source_ref": "Hand-authored. Law's power named around Punk Hazard (~ch. 662). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 761,
+          "kind": "lore",
+          "note": "Doflamingo names the fruit's final operation: eternal youth for one person, at the cost of the surgeon's life. The ultimate fruit, and the reason people hunt its holder.",
+          "source_ref": "Hand-authored. The perennial-youth surgery explained at Dressrosa (~ch. 761). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 766,
+          "kind": "inherited",
+          "note": "The backstory lands: Corazon stole the fruit from a deal and fed it to a dying boy — a gift bought with his life.",
+          "source_ref": "Hand-authored. Corazon's theft and gift to Law in the flashback (~ch. 764-766). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "fruit_slug": "yami-yami-no-mi",
+      "events": [
+        {
+          "chapter": 440,
+          "kind": "revealed",
+          "note": "The darkness belongs to Teach — and with the name comes the crime: he murdered his own crewmate Thatch to take it.",
+          "source_ref": "Hand-authored. The Yami Yami no Mi revealed at Banaro; the Thatch murder recounted (~ch. 440-441). check_canon.py tripwires the reveal at 440 — this lineage must never read earlier. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 577,
+          "kind": "taken",
+          "note": "At Marineford, its holder does the impossible: he takes a second power from Whitebeard's corpse. The darkness, the page implies, is HOW.",
+          "source_ref": "Hand-authored. The quake power taken at Marineford (~ch. 577); the mechanism is implied, not stated. NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "derived",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "fruit_slug": "uo-uo-no-mi-model-seiryu",
+      "events": [
+        {
+          "chapter": 999,
+          "kind": "lore",
+          "note": "The debt behind the dragon: Big Mom gave Kaido this fruit at God Valley, decades ago — an emperor's power was another emperor's gift.",
+          "source_ref": "Hand-authored. Big Mom recalls the God Valley gift during the Onigashima war (~ch. 999). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        },
+        {
+          "chapter": 1047,
+          "kind": "revealed",
+          "note": "The fruit is finally named on the page: Uo Uo no Mi, Model Seiryu — the azure dragon.",
+          "source_ref": "Hand-authored. Kaido's fruit named late in the Onigashima war (~ch. 1047). NEEDS HUMAN VERIFICATION against the manga.",
+          "canon_confidence": "canon",
+          "verified": false
+        }
+      ]
+    }
+  ]
+}

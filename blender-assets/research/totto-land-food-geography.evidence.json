@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "asset_id": "totto-land-food-geography",
+  "researched_at": "2026-07-19",
+  "policy": "Local repo data controls names and chapter gates. Theme words may guide an original visual family but cannot establish exact terrain. Unsupported remembered geography is omitted rather than guessed.",
+  "baseline": {
+    "asset_id": "totto-land",
+    "glb_sha256": "dcfe66c1fedfcf08c74cc3cd84d547247d18e447b7e123f49a258f2347935e3d",
+    "sidecar_sha256": "5f84d96fecc1a4e9c84f1262e815de9f9292c265bfa5e13182742289e81fd9f5",
+    "objects": 99,
+    "triangles": 6444,
+    "materials": 9,
+    "animations": 0,
+    "assessment": "Existing macro archipelago with addressable nodes; close-view subsidiary forms remain generic."
+  },
+  "source_files": [
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/raw/chapters.json",
+      "sha256": "f985248057f00310bfb0a09ad5feba5db0a96a7baaa6fa5e8006d1ca23baa9a2",
+      "ownership": "app_read_only",
+      "used_for": ["chapter 827 Cacao premise", "chapter 829 Sweet City and sea path", "chapter 831 Forest of Temptation"]
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/data/generated/islands.json",
+      "sha256": "a3065ba814b82b3cf9c9bd6ab290317220c6670d2e732d37447f746af4f71665",
+      "ownership": "app_read_only",
+      "used_for": ["Whole Cake Island", "Whole Cake Chateau", "Cacao Island", "Biscuits Island identities and debut chapters"]
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/contracts/totto-land.visual.json",
+      "sha256": "314206a9f19a88de2eda1273c5f1840d608f84e6ebdeb38b340c5db28f72f668",
+      "ownership": "existing_asset_read_only",
+      "used_for": ["central/subsidiary system", "Cacao southwest outermost hint", "Biscuits northwest hint", "directional-only food-theme warning"]
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/totto-land.glb",
+      "sha256": "dcfe66c1fedfcf08c74cc3cd84d547247d18e447b7e123f49a258f2347935e3d",
+      "ownership": "existing_asset_read_only",
+      "used_for": ["baseline node and geometry audit"]
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/totto-land.model.json",
+      "sha256": "5f84d96fecc1a4e9c84f1262e815de9f9292c265bfa5e13182742289e81fd9f5",
+      "ownership": "existing_asset_read_only",
+      "used_for": ["baseline object, triangle, material, byte, and animation counts"]
+    }
+  ],
+  "chapter_evidence": [
+    {
+      "chapter": 651,
+      "title": "A voice from the New World",
+      "description_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "description_status": "empty_in_local_feed",
+      "claims_allowed": ["No feature claim from the raw description. Whole Cake/Chateau gates come from generated island records and the existing contract."],
+      "claims_disallowed": ["Detailed chapter-651 choreography or geography from the empty description"]
+    },
+    {
+      "chapter": 827,
+      "title": "Totto Land",
+      "description_sha256": "7a3e0d6c57f73cf5d0789f25828ffaba00c18271ca599c96308523f270776327",
+      "claims_allowed": [
+        "Luffy's group lands on Cacao Island",
+        "Cacao Island is made entirely of chocolate",
+        "Luffy and Chopper eat a building",
+        "Pudding takes them to her home"
+      ],
+      "claims_disallowed": ["Official local label Chocolate Town", "exact settlement plan", "river or canal"]
+    },
+    {
+      "chapter": 828,
+      "title": "1 and 2",
+      "description_sha256": "c9733685ef5b916163d7844a566092ec26d64ac8662b32490e1211fe1999c593",
+      "claims_allowed": ["No Biscuits terrain claim from this chapter description; identity/gate comes from generated island records."],
+      "claims_disallowed": ["panel-exact biscuit terraces or settlement"]
+    },
+    {
+      "chapter": 829,
+      "title": "Charlotte Linlin",
+      "description_sha256": "8af2725e04a67364d137c293bcf4fde98c7437693bdb3ba7252f034ebba3b7da",
+      "claims_allowed": ["Luffy's group sails along a path indicated by Pudding", "Sweet City is on Tougato/Whole Cake Island"],
+      "claims_disallowed": ["juice river", "chocolate river", "inland canal", "exact route bearing"]
+    },
+    {
+      "chapter": 831,
+      "title": "Adventure in the enchanted forest",
+      "description_sha256": "273470739e842ceeb39f47a58fda464f25a765368a67ec99287c88da8785e125",
+      "claims_allowed": ["Forest of Temptation", "strange forest", "mysterious apparitions", "living objects"],
+      "claims_disallowed": ["exact forest boundary or bearing", "specific tree designs"]
+    }
+  ],
+  "claim_resolution": [
+    {
+      "claim": "Cacao Island",
+      "status": "verified",
+      "gate": 827,
+      "build": "whole-island chocolate coast, terrain tiles, edible settlement, Pudding home silhouette"
+    },
+    {
+      "claim": "Chocolate Town",
+      "status": "unverified_proper_label",
+      "gate": null,
+      "build": "neutral cacao-chocolate-settlement component; no Chocolate Town label"
+    },
+    {
+      "claim": "Biscuits Island",
+      "status": "verified_identity_theme_directional_only",
+      "gate": 828,
+      "build": "original biscuit/wafer silhouette family marked visual interpolation"
+    },
+    {
+      "claim": "Sweet City",
+      "status": "verified_feature",
+      "gate": 829,
+      "build": "outer district of individually addressable edible houses"
+    },
+    {
+      "claim": "Seducing Woods",
+      "status": "supported_as_forest_of_temptation_local_translation",
+      "gate": 831,
+      "build": "living-tree wedge with display label Forest of Temptation"
+    },
+    {
+      "claim": "navigable open sea path",
+      "status": "verified_state_window",
+      "gate": 829,
+      "active_through_chapter": 829.999,
+      "default_hidden": true,
+      "build": "default-hidden chapter-829 event-inset foam ribbon and beads with neutral ambient cycle"
+    },
+    {
+      "claim": "juice river / chocolate river / canal / candy waterfall",
+      "status": "unsupported",
+      "gate": null,
+      "build": "omitted"
+    },
+    {
+      "claim": "100% Island juice geography",
+      "status": "name_present_gate_unverified_theme_directional_only",
+      "gate": null,
+      "build": "omitted"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/source/totto-land-food-geography.blend",
+      "sha256": "6131441ec444d7c3c2f1fc14e67fdf41ad4dbff0f8a46c65bc9ab71d2af5e9ec",
+      "role": "editable_source"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/totto-land-food-geography.glb",
+      "sha256": "28f50f92090b8cf817e81ae857ba25e96d47a4b4baa3f76bf1df113cdeefd0bb",
+      "role": "runtime_model"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/totto-land-food-geography.model.json",
+      "sha256": "117ea29a34de0f37c220ccdf253d8078b69f2d895f6c647872b7ed77890604a8",
+      "role": "runtime_sidecar"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/renders/runtime/totto-land-food-geography.png",
+      "sha256": "dd826e51f6b5bac297abd68604e4a44085a883680dc38532f02118380b526cd2",
+      "role": "transparent_master_render"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/renders/runtime/totto-land-food-geography-whole-cake.png",
+      "sha256": "db01ec40a2395c414badd0288c1614a2b46d49b4c08566a8d9ef83a3f7338d6c",
+      "role": "whole_cake_closeup"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/renders/runtime/totto-land-food-geography-cacao.png",
+      "sha256": "114e468d585c8aea5d01ced3bc2c7721936e9c12ef9dd59fe6ee2d9432b1f064",
+      "role": "cacao_closeup"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/renders/runtime/totto-land-food-geography-biscuits.png",
+      "sha256": "0e551e3917a9a7303da05d8b82f8acb9fe4d82ad3ce0d6c60165a630d1a29876",
+      "role": "biscuits_closeup"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/renders/totto-land-food-geography-contact-sheet.png",
+      "sha256": "09dfbe34de8a05b4dceab58642e38b90aaf502f51e75a7ccde38487a0a6e639f",
+      "role": "review_contact_sheet"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/scripts/build_totto_land_food_geography.py",
+      "sha256": "29a32bc09c2701e33d9adb2ff8bde034f42dafa0adaa327206497343e73f9f40",
+      "role": "blender_generator"
+    },
+    {
+      "path": "/Users/shawnos.ai/dead-reckoning/blender-assets/scripts/build_totto_land_food_geography_contact_sheet.py",
+      "sha256": "3c9f0620ac2c04c83a5a28818d6430c3bb0ac46f1507e80ffdfff0c36c7ba2b6",
+      "role": "contact_sheet_generator"
+    }
+  ],
+  "runtime_stats": {
+    "objects": 333,
+    "vertices_input": 19114,
+    "triangles_input": 36884,
+    "materials": 18,
+    "bytes": 2728248,
+    "glb_sha256": "28f50f92090b8cf817e81ae857ba25e96d47a4b4baa3f76bf1df113cdeefd0bb",
+    "named_clips": [
+      {
+        "name": "totto_land_food_route_cycle",
+        "duration_seconds": 5.0417
+      }
+    ]
+  },
+  "unresolved": [
+    "Chocolate Town proper label in a direct local source.",
+    "Panel-exact Cacao, Biscuits, Sweet City, and forest topology.",
+    "Exact Pudding-indicated sea route geometry.",
+    "Any locally evidenced juice/chocolate/candy river, inland canal, or waterfall.",
+    "100% Island reveal chapter and literal terrain.",
+    "Runtime manifest replacement of the old totto-land row; intentionally left to the integration owner."
+  ]
+}

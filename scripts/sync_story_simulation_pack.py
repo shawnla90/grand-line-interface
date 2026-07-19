@@ -172,8 +172,13 @@ def main() -> int:
                 raise DataError(f"{scene_id}: FX event is outside the duration")
         row = {
             key: scene[key]
-            for key in ("id", "label", "arc_id", "type", "priority", "chapter_gate", "place", "duration_ms", "actors", "events")
+            for key in (
+                "id", "label", "arc_id", "type", "priority", "chapter_gate",
+                "place", "duration_ms", "actors", "events",
+            )
         }
+        if scene.get("visual_treatment") is not None:
+            row["visual_treatment"] = scene["visual_treatment"]
         row["anchor"] = resolve_anchor(scene_id)
         scenes.append(row)
 

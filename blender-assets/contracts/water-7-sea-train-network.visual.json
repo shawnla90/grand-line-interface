@@ -212,7 +212,7 @@
         "slug": null,
         "name": "Day Station",
         "role": "enies_lobby_station",
-        "debut_chapter": null,
+        "debut_chapter": 375,
         "canon_status": "manga_or_official_summary",
         "canon_confidence": "cited_summary",
         "source_ref": "https://onepiece.fandom.com/wiki/Enies_Lobby",
@@ -236,7 +236,7 @@
         "slug": null,
         "name": "Rocketman",
         "role": "uncontrollable_prototype_train",
-        "debut_chapter": null,
+        "debut_chapter": 365,
         "canon_status": "manga_or_official_summary",
         "canon_confidence": "cited_summary",
         "source_ref": "https://onepiece.fandom.com/wiki/Sea_Train",
@@ -272,7 +272,7 @@
         "slug": null,
         "name": "Aqua Laguna",
         "role": "annual_route_hazard",
-        "debut_chapter": null,
+        "debut_chapter": 363,
         "canon_status": "manga_or_official_summary",
         "canon_confidence": "cited_summary",
         "source_ref": "https://onepiece.fandom.com/wiki/Water_7_Arc",
@@ -365,9 +365,10 @@
       },
       {
         "id": "aqua-laguna-pursuit",
-        "reveal_chapter": null,
-        "state": "Storm overlay, damaged service state, and Rocketman pursuit to Enies Lobby.",
-        "verification": "chapter_to_verify"
+        "reveal_chapter": 363,
+        "active_through_chapter": 367.999,
+        "state": "Aqua Laguna reaches Water 7, floods the lower city, and remains a route hazard while Rocketman enters the storm.",
+        "verification": "verified_state_window"
       },
       {
         "id": "puffing-ice-post-timeskip",
@@ -394,10 +395,11 @@
       {
         "id": "rocketman-aqua-laguna-pursuit",
         "importance": 1,
-        "reveal_chapter": null,
+        "reveal_chapter": 365,
+        "active_through_chapter": 378.999,
         "landmark": "rocketman",
         "state_delta": "Route changes to storm hazard state with Rocketman pursuing Puffing Tom toward Enies Lobby.",
-        "verification": "chapter_to_verify",
+        "verification": "verified_state_window",
         "camera_cue": "Race beside the prototype at water level, then reveal the storm wall and Enies Lobby terminus.",
         "fx": [
           "Aqua Laguna waves",
@@ -464,7 +466,6 @@
   },
   "unresolved": [
     "Panel-verified branch ordering and bearings among the five connected islands.",
-    "Exact reveal chapter for Rocketman and Aqua Laguna pursuit.",
     "Which connected-island stations are named versus only known to exist.",
     "MapLibre representation for submerged rails when the globe is tilted."
   ],
@@ -518,5 +519,33 @@
       "puffing-ice-post-timeskip"
     ],
     "travel_interaction": "Selecting a revealed route can animate the train along the globe line, then open the destination inset."
+  },
+  "runtime_animation": {
+    "clock": "chapter_entry_elapsed_ms",
+    "clips": [
+      {
+        "name": "water7_puffing_tom_route_cycle",
+        "kind": "ambient",
+        "active_from_chapter": 322,
+        "duration_ms": 5042
+      },
+      {
+        "name": "water7_enies_waterfall_cycle",
+        "kind": "ambient",
+        "active_from_chapter": 375,
+        "duration_ms": 4208
+      },
+      {
+        "name": "water7_aqua_laguna_tide_state",
+        "kind": "chapter_sampled_geography",
+        "key_chapters": [362, 363, 364, 365, 366, 367]
+      },
+      {
+        "name": "water7_rocketman_route_state",
+        "kind": "chapter_sampled_route",
+        "key_chapters": [365, 367, 375, 378]
+      }
+    ],
+    "reduced_motion": "Freeze ambient clips and retain chapter-sampled tide and route transforms."
   }
 }

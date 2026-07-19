@@ -3,9 +3,9 @@
     "generator": "scripts/compile_scene_playback.py",
     "schema_version": 1,
     "counts": {
-      "scenes": 27,
-      "journey_enabled": 25,
-      "audio_bindings": 89
+      "scenes": 28,
+      "journey_enabled": 26,
+      "audio_bindings": 91
     }
   },
   "scenes": [
@@ -1270,6 +1270,48 @@
           "id": "final-blow",
           "cue_id": "heavy-fleet-impact-01",
           "at_ms": 10060,
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
+    },
+    {
+      "scene_id": "sabaody-luffy-punches-charloss",
+      "pack_id": "sabaody-saga-2d-v1",
+      "event": "luffy-punches-celestial-dragon",
+      "label_override": null,
+      "chapter": 502,
+      "duration_ms": 9800,
+      "anchor": {
+        "lng": -51.2008,
+        "lat": 6.2035
+      },
+      "journey": {
+        "enabled": true,
+        "hold_ms": 11800,
+        "zoom": 5.8,
+        "pitch": 55,
+        "camera": {
+          "zoom_to": 6.15,
+          "pitch_to": 57,
+          "at_ms": 3900,
+          "duration_ms": 2600
+        }
+      },
+      "audio": [
+        {
+          "id": "auction-lunge-whoosh",
+          "cue_id": "op-sfx-whoosh",
+          "at_ms": 4450,
+          "gain": 0.68,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "charloss-impact",
+          "cue_id": "heavy-fleet-impact-01",
+          "at_ms": 5080,
           "gain": 0.9,
           "pan": 0.0,
           "playback_rate": 1

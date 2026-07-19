@@ -11,6 +11,12 @@
 
 export const GENERATED_PACKS = [
   {
+    id: "sabaody-saga-2d-v1",
+    aliases: ["sabaody"],
+    firstSceneChapter: 502,
+    load: () => import("@/data/generated/story_simulations/sabaody-saga-2d-v1.json"),
+  },
+  {
     id: "enies-lobby-saga-2d-v1",
     aliases: ["enies-lobby"],
     firstSceneChapter: 387,

@@ -50,6 +50,7 @@ import type {
   FruitReveal,
   HakiFact,
 } from "./schema";
+import currentChapter from "../canon/current-chapter.json";
 
 export type { FruitType, HakiType };
 
@@ -382,7 +383,9 @@ export type WorldAt = {
 /* -------------------------------------------------------------------------- */
 
 /**
- * Derive the chapter ceiling from the data rather than hard-coding 1185.
+ * Derive the chapter ceiling from trustworthy data plus the independently
+ * verified official release ceiling. The structured fan API can lag current
+ * publication, so it does not get to clamp a caught-up reader backward.
  *
  * Deliberately does NOT consult episodes[].chapters: that field is the dirty
  * free-text bridge from the upstream API and it contains chapter 5642 and
@@ -397,7 +400,7 @@ function deriveChapterMax(canon: Canon): number {
     if (a.chapter_end && a.chapter_end > max) max = a.chapter_end;
   }
   for (const j of canon.crew_joins) if (j.join_chapter > max) max = j.join_chapter;
-  return max;
+  return Math.max(max, currentChapter.latest_official_chapter);
 }
 
 /**

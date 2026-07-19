@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "fish-man-island",
+  "label": "Fish-Man Island deep geographic system",
+  "entity_type": "undersea_island_system",
+  "contract_status": "integration_ready_existing_runtime_asset",
+  "identity": {
+    "slug": "fish-man-island",
+    "name": "Fish-Man Island",
+    "region": "Grand Line beneath the Red Line",
+    "canon_status": "manga",
+    "atlas_anchor": {
+      "lng": -5.9349,
+      "lat": -2.8548,
+      "confidence": "derived",
+      "usage": "atlas_anchor_only",
+      "warning": "The deterministic atlas pin places the local scene; it is not a canon survey coordinate."
+    }
+  },
+  "chapter_contract": {
+    "descent_route_starts": 602,
+    "full_island_reveal": 608,
+    "ascent_route_starts": 651,
+    "surface_transition": 653,
+    "runtime_rule": "The descent from chapter 602 is owned by components/fishman.ts. The complete island GLB remains hidden until the crew enters Fish-Man Island in chapter 608.",
+    "rejected_upstream_gate": {
+      "chapter": 68,
+      "reason": "An upstream location debut value is not the Straw Hats' route arrival and leaked the complete island 540 chapters early."
+    }
+  },
+  "components": [
+    {
+      "id": "fish-man-island",
+      "role": "complete_undersea_island",
+      "reveal_chapter": 608,
+      "verification": "verified",
+      "default_hidden": false
+    }
+  ],
+  "runtime": {
+    "glb": "runtime/fish-man-island.glb",
+    "fallback": "renders/fish-man-island.png",
+    "source_blend": "source/fish-man-island.blend",
+    "mode": "maplibre_custom_3d_layer",
+    "projection_support": ["mercator_closeup"],
+    "scale_policy": "exact_deterministic_hero_ring_footprint"
+  },
+  "evidence": [
+    {
+      "chapter": 608,
+      "claim": "The Straw Hats enter Fish-Man Island; Mermaid Cove and Fish-Man District are shown.",
+      "source": "https://onepiece.fandom.com/wiki/Chapter_608",
+      "source_type": "chapter_summary_with_manga_references"
+    },
+    {
+      "chapter": 608,
+      "claim": "The local voyage waypoint records Fish-Man Island arrival.",
+      "source": "data/canon.json",
+      "source_type": "local_canon_route"
+    }
+  ],
+  "unresolved": [
+    "The atlas anchor is derived rather than a canon coordinate.",
+    "This contract corrects the whole-model spoiler gate but does not assert independent local-camera anchors for every district."
+  ]
+}

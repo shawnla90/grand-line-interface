@@ -10,6 +10,7 @@
 import Link from "next/link";
 import type { EventEntryData } from "@/lib/entry";
 import type { EventKind } from "@/lib/canon";
+import type { Overlay } from "@/lib/overlays";
 import { Confidence, Field, FieldGrid, Kicker, Panel, Receipts } from "@/components/ui/Panel";
 import { BRAND } from "@/config/brand";
 
@@ -35,9 +36,13 @@ const SIGNIFICANCE_LABEL: Record<1 | 2 | 3, string> = {
 export default function EventEntry({
   data,
   chapter,
+  overlays = [],
 }: {
   data: EventEntryData;
   chapter: number;
+  /** Pre-gated by overlaysForEvent — this component never re-gates. Empty
+   *  until drops land through docs/OVERLAY_INTAKE.md, and that's fine. */
+  overlays?: Overlay[];
 }) {
   const { event, islandName, arcName } = data;
   const span =
@@ -87,6 +92,44 @@ export default function EventEntry({
           <Field label="Weight">{SIGNIFICANCE_LABEL[event.significance]}</Field>
         </FieldGrid>
       </Panel>
+
+      {overlays.length > 0 && (
+        <Panel className="mt-4 px-6 py-5">
+          <Kicker>The page itself</Kicker>
+          <ul className="mt-3 space-y-4">
+            {overlays.map((o) => (
+              <li key={o.slug}>
+                {o.kind === "panel" ? (
+                  /* eslint-disable-next-line @next/next/no-img-element -- art
+                     assets ship at their authored size; the optimizer would
+                     re-encode rights-holders' work for no layout gain. */
+                  <img
+                    src={o.media_path}
+                    alt={o.title}
+                    className="w-full rounded-sm border border-rope/70"
+                  />
+                ) : (
+                  <video
+                    src={o.media_path}
+                    className="w-full rounded-sm border border-rope/70"
+                    muted
+                    loop
+                    autoPlay
+                    playsInline
+                  />
+                )}
+                <div className="mt-1.5 flex items-baseline justify-between gap-3">
+                  <span className="font-document text-[12px] text-muted">{o.title}</span>
+                  <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-muted-2">
+                    {o.credit.license_note}
+                  </span>
+                </div>
+                <Receipts sourceRef={o.credit.source_ref} className="mt-1" />
+              </li>
+            ))}
+          </ul>
+        </Panel>
+      )}
 
       <Panel className="mt-4 px-6 py-5">
         <Kicker>Who was there</Kicker>

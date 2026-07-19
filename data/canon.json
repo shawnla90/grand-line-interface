@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-19T00:03:09.223376+00:00",
+    "generated_at": "2026-07-19T04:15:14.661288+00:00",
     "generator": "scripts/normalize.py",
     "source_manifest_sha": "be7af436b558b373ae1e6f28cc5007ef89153529fb274cb7efd1a47b4f1ef25a",
     "sources": {
@@ -23,7 +23,7 @@
       "crew_presence contains UNVERIFIED windows. Who-is-where chapter stamps are not manga-confirmed. The UI must render presence as unverified.",
       "statuses contains UNVERIFIED windows. Warlord/Emperor/Supernova reveal chapters are not manga-confirmed. The UI must render them as unverified.",
       "poneglyphs contains UNVERIFIED custody windows (7 stones, 3 of them Road Poneglyphs). Reveal chapters are not manga-confirmed. The UI must render them as unverified.",
-      "events contains UNVERIFIED rows (27 events). Occurrence chapters are not manga-confirmed. The UI must render events as unverified.",
+      "events contains UNVERIFIED rows (28 events). Occurrence chapters are not manga-confirmed. The UI must render events as unverified.",
       "fruit_reveals contains UNVERIFIED rows. Fruit reveal chapters are not manga-confirmed. The UI must render fruit facts as unverified.",
       "haki_users contains UNVERIFIED rows. Haki reveal chapters are not manga-confirmed. The UI must render haki facts as unverified.",
       "124 bounty rows were dropped for carrying no reveal chapter (databook, Vivre Card and magazine figures the wiki never ties to a chapter). An ungated bounty cannot be fogged, so it is dropped rather than shown from chapter 1. To restore one, give it a chapter in canon/bounties.json."
@@ -56,8 +56,8 @@
       "statuses": 29,
       "poneglyphs": 7,
       "poneglyphs_road": 3,
-      "events": 27,
-      "events_verified": 0,
+      "events": 28,
+      "events_verified": 1,
       "status_windows": 29,
       "status_windows_verified": 0,
       "fruit_reveals": 35,
@@ -55123,6 +55123,38 @@
       "source_ref": "Hand-authored from official VIZ chapter 418 and volume 43 receipts; the duel begins at chapter 418 and ends with the chapter-427 escape beat. NEEDS HUMAN VERIFICATION against the manga.",
       "canon_confidence": "canon",
       "verified": false
+    },
+    {
+      "slug": "luffy-punches-celestial-dragon",
+      "name": "Luffy Punches the Celestial Dragon",
+      "kind": "battle",
+      "occurred_chapter": 502,
+      "through_chapter": null,
+      "island_slug": "human-auctioning-house",
+      "lng": -51.2008,
+      "lat": 6.2035,
+      "participants": [
+        {
+          "slug": "monkey-d-luffy",
+          "name": "Monkey D. Luffy",
+          "role": "strikes Charloss"
+        },
+        {
+          "slug": "charloss",
+          "name": "Saint Charloss",
+          "role": "struck"
+        },
+        {
+          "slug": "octy",
+          "name": "Hatchan",
+          "role": "shot and defended"
+        }
+      ],
+      "outcome": "After Charloss shoots Hatchan inside the Human Auctioning House, Luffy crosses the floor despite Hachi's warning and drives one punch into the Celestial Dragon's face.",
+      "significance": 2,
+      "source_ref": "Hand-authored. Verified from the user-supplied Chapter 502 page sequence IMG_5560.HEIC through IMG_5578.HEIC; local SHA-256 receipts and panel roles are recorded in blender-assets/research/story-scenes/sabaody-chapter-502-user-refs.json.",
+      "canon_confidence": "canon",
+      "verified": true
     }
   ],
   "boats": [

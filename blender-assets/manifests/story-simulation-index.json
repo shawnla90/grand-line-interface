@@ -33,6 +33,17 @@
       "integration_ready": true,
       "manifest": "manifests/story-simulations/enies-lobby-saga-2d-v1.json",
       "manifest_sha256": "91ae8ed87780a361adf002e0b600c053f6a6584b78f6a269a9520f7454998141"
+    },
+    {
+      "id": "sabaody-saga-2d-v1",
+      "chapter_span": {
+        "start": 490,
+        "end": 513
+      },
+      "state": "runtime_verified",
+      "integration_ready": true,
+      "manifest": "manifests/story-simulations/sabaody-saga-2d-v1.json",
+      "manifest_sha256": "c053fa8fb0e3788cf84795881100cb5a8c4fb215abcd8de9779378f1b7cee0f5"
     }
   ]
 }

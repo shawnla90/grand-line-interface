@@ -1,0 +1,136 @@
+{
+  "schema_version": 2,
+  "batch_id": "paradise-gap-batch-a",
+  "id": "thriller-bark-ship-island-system",
+  "label": "Thriller Bark moving ship-island system",
+  "entity_type": "chapter-gated mobile ship-island geographic system",
+  "priority": 1,
+  "contract_status": "ready_for_blender_blockout_unregistered",
+  "identity": {
+    "anchor": {
+      "slug": "thriller-bark",
+      "name": "Thriller Bark",
+      "japanese": null,
+      "romaji": "Suriraa Baaku",
+      "region": "Florian Triangle",
+      "sea": "Paradise",
+      "canon_status": "manga",
+      "local_debut_chapter": 442,
+      "verified_visual_reveal_chapter": 443,
+      "debut_audit": "The hand-authored local record uses the arc opening at chapter 442; chapter 443 is the verified visual gate for the giant gate and moving ship/island enclosing the Sunny.",
+      "source_ref": "canon/islands.extra.json#thriller-bark merged into data/canon.json#thriller-bark",
+      "wiki_url": "https://onepiece.fandom.com/wiki/Thriller_Bark",
+      "atlas_anchor": {
+        "lng": -57.5,
+        "lat": 1.8,
+        "confidence": "guess",
+        "usage": "route_scene_entry_only_never_fixed_position",
+        "warning": "Thriller Bark is a moving ship. The atlas point is an authored voyage-stage pin, not a canon coordinate, bearing, or persistent location."
+      }
+    },
+    "components": [
+      {"id": "thriller-bark-ship-root", "role": "mobile_worlds_largest_pirate_ship_and_island_platform", "reveal_chapter": 443, "verification": "verified_chapter_summary_identity_fully_explained_ch449", "default_hidden": false},
+      {"id": "outer-circular-hull-wall", "role": "massive_enclosing_ship_wall", "reveal_chapter": 443, "verification": "verified_chapter_summary", "default_hidden": false},
+      {"id": "mouth-gate", "role": "giant_entry_gate_in_outer_wall", "reveal_chapter": 443, "verification": "verified_chapter_summary", "default_hidden": false},
+      {"id": "mouth-gate-closed-state", "role": "post_entry_gate_state", "reveal_chapter": 443, "verification": "verified_chapter_summary_timing_not_frame_exact", "default_hidden": true},
+      {"id": "island-deck-and-shore", "role": "former_island_terrain_carried_inside_hull", "reveal_chapter": 444, "verification": "verified_landing_summary", "default_hidden": false},
+      {"id": "dead-forest", "role": "shore_to_interior_forest_zone", "reveal_chapter": 444, "verification": "verified_landing_summary", "default_hidden": false},
+      {"id": "inner-wall-towers-and-moat", "role": "older_island_defense_ring", "reveal_chapter": 444, "verification": "cited_location_summary_exact_gate_conservative", "default_hidden": false},
+      {"id": "graveyard", "role": "cemetery_zone", "reveal_chapter": 445, "verification": "verified_chapter_summary", "default_hidden": false},
+      {"id": "hogback-mansion-exterior", "role": "central_mansion_landmark", "reveal_chapter": 445, "verification": "verified_chapter_summary", "default_hidden": false},
+      {"id": "village-cluster", "role": "settlement_in_middle_of_ship_island", "reveal_chapter": 449, "verification": "verified_identity_explanation", "default_hidden": false},
+      {"id": "main-mast-and-giant-sail", "role": "ship_scale_identity_landmark", "reveal_chapter": 449, "verification": "verified_chapter_summary", "default_hidden": false},
+      {"id": "mast-mansion", "role": "mansion_built_into_main_mast", "reveal_chapter": 449, "verification": "verified_chapter_summary", "default_hidden": false},
+      {"id": "wall-to-mast-chain-system", "role": "four_major_support_chains", "reveal_chapter": 449, "verification": "cited_location_summary_exact_attachment_interpolated", "default_hidden": false},
+      {"id": "wonder-garden-bridge", "role": "bridge_between_hogback_and_mast_mansions", "reveal_chapter": null, "chapter_to_verify": 449, "verification": "chapter_to_verify", "default_hidden": true},
+      {"id": "wonder-garden-bridge-destroyed-state", "role": "late_arc_damage_state", "reveal_chapter": null, "chapter_to_verify": null, "verification": "chapter_to_verify", "default_hidden": true},
+      {"id": "late-arc-hull-damage-state", "role": "post_battle_ship_damage", "reveal_chapter": null, "chapter_to_verify": null, "verification": "chapter_to_verify", "default_hidden": true},
+      {"id": "florian-fog-volume", "role": "moving_ship_ambient_occlusion", "reveal_chapter": 443, "verification": "verified_setting", "default_hidden": false}
+    ]
+  },
+  "topology": {
+    "coordinate_system": "ship-local normalized theatre; Blender Z-up; +Y chosen only as authoring-forward",
+    "layout_status": "verified_nested_ship_island_hierarchy_with_interpolated_dimensions_bearings_and_footprints",
+    "verified_relationships": [
+      "Thriller Bark is a moving pirate ship built from a former West Blue island, not a fixed island.",
+      "A massive outer hull/wall and giant mouth gate enclose arriving vessels and the carried island terrain.",
+      "The carried terrain includes shore, dead forest, an older inner wall/moat system, graveyard, village, and Hogback mansion.",
+      "The main mast, giant sail, mast mansion, and four chains tying the outer wall toward the mast establish the ship-scale silhouette.",
+      "The Log Pose does not respond to Thriller Bark, reinforcing that the runtime should not treat it as a fixed magnetic island waypoint."
+    ],
+    "interpolated_relationships": [
+      "Hull diameter, wall height, gate size, shoreline, inner moat, road network, mansion footprint, chain catenaries, and mast proportions are visual interpolation.",
+      "The nested sequence outer gate to shore/forest to graveyard/mansion to mast is preserved without claiming exact compass bearings.",
+      "The atlas anchor selects the story theatre only; ship heading and position must never be inferred from it."
+    ],
+    "transformation_policy": "The root is mobile and may drift as a whole. The chapter-443 mouth gate may close as a one-shot state change. Late bridge and hull destruction remain withheld until exact gates and visible geometry are verified."
+  },
+  "chapter_logic": {
+    "base_reveal_chapter": 443,
+    "safe_full_scene_chapter": 449,
+    "states": [
+      {"id": "pre-visual-reveal", "through_chapter": 442, "visible_components": [], "verification": "verified_arc_opening_without_ship_island_system"},
+      {"id": "fog-gate-entrapment", "reveal_chapter": 443, "visible_components": ["thriller-bark-ship-root", "outer-circular-hull-wall", "mouth-gate", "florian-fog-volume"], "optional_one_shot": "mouth-gate-closed-state", "verification": "verified"},
+      {"id": "shore-and-dead-forest", "reveal_chapter": 444, "adds": ["island-deck-and-shore", "dead-forest", "inner-wall-towers-and-moat"], "verification": "verified_plus_conservative_location_gate"},
+      {"id": "graveyard-and-mansion", "reveal_chapter": 445, "adds": ["graveyard", "hogback-mansion-exterior"], "verification": "verified"},
+      {"id": "ship-identity-and-mast", "reveal_chapter": 449, "adds": ["village-cluster", "main-mast-and-giant-sail", "mast-mansion", "wall-to-mast-chain-system"], "verification": "verified"}
+    ],
+    "default_rule": "Render only verified components whose gate has been reached. Move the entire root as a vessel; never resolve it as fixed world geography.",
+    "unknown_gate_rule": "Any bridge, collapse, hull breach, late-arc damage, or interior room without a verified first visual chapter remains default_hidden."
+  },
+  "proposed_local_scene_layout": {
+    "root": "TB_SHIP_ROOT at local origin; all geographic modules parented to the moving vessel root",
+    "zones": [
+      {"id": "outer-hull-and-gate", "purpose": "chapter-443 enclosing silhouette and gate state", "placement": "circular readable perimeter; exact diameter withheld"},
+      {"id": "shore-forest-ring", "purpose": "chapter-444 landing transition", "placement": "inside hull wall with a navigable approach corridor"},
+      {"id": "inner-defense-ring", "purpose": "old wall, towers, and moat", "placement": "nested around the central built zone; exact footprint interpolated"},
+      {"id": "graveyard-mansion-village", "purpose": "chapters 445-449 narrative geography", "placement": "three readable masses around a central approach; bearings withheld"},
+      {"id": "mast-complex", "purpose": "chapter-449 ship identity reveal", "placement": "dominant rear/central vertical landmark in authoring composition, not a canon bearing"}
+    ],
+    "camera_read": "Fog reveals the mouth gate and enclosing wall first; the camera then enters the island deck before pulling back at chapter 449 to prove the whole structure is a ship.",
+    "excluded_from_scene": ["mansion interiors", "character or zombie meshes", "exact battle damage", "Florian Triangle monsters", "fixed-world island collision"]
+  },
+  "unreal_runtime_reuse": {
+    "reusable_modules": ["mobile_ship_island_root", "circular_hull_wall", "mouth_gate_rig", "island_deck_terrain", "dead_forest_hism", "moat_defense_ring", "graveyard_cluster", "mansion_shell", "mast_sail_chain_rig", "fog_volume"],
+    "unreal_notes": "Build all modules under one movable actor or level instance. Gate collision should follow the mouth-gate state. Fog belongs to the ship-local theatre. Do not use World Partition as if this were permanent terrain.",
+    "map_runtime_notes": "Use an authored story-entry transform and optional drift animation. Never snap the vessel back to the atlas pin as a geographic truth. Runtime registration must identify entity_type as mobile ship-island.",
+    "lod_policy": "Preserve outer wall/gate, mast/sail, mansion, and chain silhouette; collapse village, grave markers, trees, and tower detail first."
+  },
+  "coordinate_policy": {
+    "atlas_anchor": [-57.5, 1.8],
+    "anchor_confidence": "guess",
+    "scale_policy": "visual_fit_not_canon_scale",
+    "mobility_policy": "moving_vessel_local_frame",
+    "warning": "No fixed coordinate, heading, hull dimensions, or internal bearings are canonized by this contract."
+  },
+  "integration_contract": {
+    "mode": "future_maplibre_mobile_custom_3d_layer",
+    "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
+    "proposed_runtime_glb": "runtime/thriller-bark-ship-island-system.glb",
+    "proposed_fallback": "renders/runtime/thriller-bark-ship-island-system.png",
+    "node_gate_policy": "Read component_id, reveal_chapter, chapter_to_verify, verification, default_hidden, and ship_local_parent from glTF extras.",
+    "mobility_policy": "Load at story-scene transform; any drift applies to TB_SHIP_ROOT and all descendants.",
+    "registration_status": "not_registered_by_this_lane"
+  },
+  "evidence": {
+    "ledger": "research/paradise-gap-batch-a-evidence.json",
+    "claim_ids": ["thriller-bark-mobile-identity", "thriller-bark-visual-reveal", "thriller-bark-nested-geography", "thriller-bark-mast-ship-proof"],
+    "primary_local_record": "canon/islands.extra.json#thriller-bark",
+    "sources": [
+      "https://one-piece.com/story/thriller_bark/index.html",
+      "https://onepiece.fandom.com/wiki/Thriller_Bark",
+      "https://onepiece.fandom.com/wiki/Chapter_443",
+      "https://onepiece.fandom.com/wiki/Chapter_444",
+      "https://onepiece.fandom.com/wiki/Chapter_445",
+      "https://onepiece.fandom.com/wiki/Chapter_446",
+      "https://onepiece.fandom.com/wiki/Chapter_449"
+    ]
+  },
+  "unresolved": [
+    "Exact outer hull diameter, wall height, gate dimensions, deck/island coastline, moat geometry, routes, and building footprints remain interpolation.",
+    "No fixed atlas coordinate, heading, speed, or route bearing exists for the moving vessel; the local pin is only a story-stage anchor.",
+    "The exact first visual gate and external geometry for Wonder Garden bridge require panel-level verification, so the bridge is withheld.",
+    "The exact chapters and geometry for bridge destruction, hull breaches, and other late-arc damage are unresolved and remain hidden.",
+    "Interior mansion/mast room topology and exact chain attachment geometry are outside this contract."
+  ]
+}

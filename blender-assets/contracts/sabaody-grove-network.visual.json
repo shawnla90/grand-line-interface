@@ -4,7 +4,7 @@
   "label": "Sabaody 79-grove mangrove network",
   "entity_type": "mangrove_grove_network",
   "priority": 1,
-  "contract_status": "ready_for_system_sketch",
+  "contract_status": "ready_for_blender_blockout",
   "identity": {
     "anchor": {
       "slug": "sabaody-archipelago",
@@ -149,6 +149,18 @@
         "source_ref": "https://onepiece.fandom.com/wiki/Sabaody_Archipelago",
         "record_origin": "cited_manual_topology_node",
         "atlas_anchor": null
+      },
+      {
+        "id": "auction-house-confrontation",
+        "slug": null,
+        "name": "Human Auctioning House confrontation state",
+        "role": "chapter_502_event_state",
+        "debut_chapter": 502,
+        "canon_status": "manga",
+        "canon_confidence": "canon",
+        "source_ref": "/Users/shawnos.ai/Downloads/IMG_5560.HEIC through IMG_5578.HEIC; SHA-256 ledger in research/story-scenes/sabaody-chapter-502-user-refs.json",
+        "record_origin": "user_supplied_panel_evidence",
+        "atlas_anchor": null
       }
     ]
   },
@@ -209,6 +221,12 @@
         "verification": "verified"
       },
       {
+        "id": "celestial-dragon-incident",
+        "reveal_chapter": 502,
+        "state": "The auction-floor confrontation state and Luffy's strike become available only for the verified chapter-502 replay.",
+        "verification": "verified"
+      },
+      {
         "id": "post-timeskip-return",
         "reveal_chapter": null,
         "state": "Later return-state activity and character visibility.",
@@ -233,10 +251,10 @@
       {
         "id": "auction-house-confrontation",
         "importance": 1,
-        "reveal_chapter": null,
+        "reveal_chapter": 502,
         "landmark": "human-auctioning-house",
-        "state_delta": "Interior event state activates while the surrounding grove remains navigable.",
-        "verification": "chapter_to_verify",
+        "state_delta": "A wide interior event theatre activates for the chapter-502 Celestial Dragon incident while the surrounding grove remains navigable.",
+        "verification": "verified",
         "camera_cue": "Route from grove signage to the auction-house exterior, then switch to a gated interior set.",
         "fx": [
           "crowd silhouettes",
@@ -265,7 +283,7 @@
       "Sabaody Park"
     ],
     "generated_component_count": 3,
-    "manual_topology_node_count": 3
+    "manual_topology_node_count": 4
   },
   "visual_program": {
     "master_scene": "One Blender master scene with addressable collections for topology nodes, chapter states, event actors, atmosphere, and runtime LODs.",
@@ -292,7 +310,6 @@
   },
   "unresolved": [
     "Exact map positions for all 79 grove numbers and zone categories.",
-    "Exact chapter for the auction-house confrontation event.",
     "Runtime LOD strategy for thousands of bubbles and root structures."
   ],
   "evidence": [

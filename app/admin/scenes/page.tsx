@@ -14,6 +14,7 @@
 import { notFound } from "next/navigation";
 import { loadScenes } from "@/lib/scenes-load";
 import SceneInspector from "@/components/admin/SceneInspector";
+import currentChapter from "@/canon/current-chapter.json";
 
 export const dynamic = "force-dynamic";
 
@@ -31,7 +32,8 @@ export default async function AdminScenesPage({
     <SceneInspector
       scenes={scenes}
       warnings={_meta.warnings}
-      chapter={Number.isFinite(ch) ? ch : 1185}
+      chapter={Number.isFinite(ch) ? ch : currentChapter.latest_official_chapter}
+      chapterMax={currentChapter.latest_official_chapter}
     />
   );
 }

@@ -27,10 +27,12 @@ export default function SceneInspector({
   scenes,
   warnings,
   chapter: initial,
+  chapterMax,
 }: {
   scenes: NarrativeScene[];
   warnings: string[];
   chapter: number;
+  chapterMax: number;
 }) {
   const [chapter, setChapter] = useState(initial);
   const [projection, setProjection] = useState<"globe" | "mercator">("mercator");
@@ -51,7 +53,7 @@ export default function SceneInspector({
         <input
           type="range"
           min={1}
-          max={1185}
+          max={chapterMax}
           value={chapter}
           onChange={(e) => setChapter(Number(e.target.value))}
           className="dial w-[420px]"

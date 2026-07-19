@@ -144,6 +144,53 @@ def draw_background(scene: dict) -> Image.Image:
         draw.arc((250, 45, 1030, 740), 180, 360, fill=(129, 151, 151, 180), width=18)
         for y in range(145, 500, 85):
             draw.line((170, y, 1110, y), fill=(94, 121, 128, 80), width=3)
+    elif arena == "sabaody-auction-house":
+        # Original wide auction-floor theatre derived from the user's chapter
+        # 502 evidence sequence. This is not a panel crop: it leaves lateral
+        # room for approach, contact, overshoot, and recovery inside a 16:9 map.
+        vertical_gradient(image, (34, 28, 52), (118, 75, 66))
+        draw = ImageDraw.Draw(image, "RGBA")
+        draw.ellipse((250, 38, 1030, 520), fill=(86, 48, 57, 210), outline=(225, 190, 113, 210), width=10)
+        draw.rectangle((0, 475, WIDTH, HEIGHT), fill=(90, 58, 52, 255))
+        draw.rectangle((70, 430, 1210, 500), fill=(172, 114, 78, 255), outline=(236, 197, 119, 225), width=8)
+        draw.rectangle((470, 278, 810, 468), fill=(108, 64, 72, 255), outline=(235, 197, 121, 235), width=9)
+        draw.polygon(((450, 278), (640, 170), (830, 278)), fill=(129, 79, 78, 255), outline=(235, 197, 121, 235))
+        for x in (110, 1170):
+            draw.rectangle((x - 38, 120, x + 38, 485), fill=(157, 112, 81, 255), outline=(232, 194, 119, 210), width=7)
+        for row, y in enumerate((365, 414, 458)):
+            count = 15 + row * 3
+            for index in range(count):
+                x = 55 + index * (1170 / max(1, count - 1))
+                radius = 12 + (index + row) % 5
+                draw.ellipse((x - radius, y - radius, x + radius, y + radius), fill=(27, 24, 36, 185))
+        for x, y, radius in ((205, 142, 33), (1045, 178, 24), (935, 86, 18)):
+            draw.ellipse((x - radius, y - radius, x + radius, y + radius), outline=(146, 237, 243, 145), width=5)
+    elif arena == "enies-lobby-courthouse-rooftop":
+        vertical_gradient(image, (36, 145, 202), (219, 239, 237))
+        draw = ImageDraw.Draw(image, "RGBA")
+        draw.rectangle((0, 495, WIDTH, HEIGHT), fill=(190, 207, 202, 255))
+        draw.rectangle((0, 485, WIDTH, 515), fill=(82, 109, 115, 255))
+        for x in range(35, WIDTH, 180):
+            draw.rectangle((x, 388, x + 118, 515), fill=(226, 232, 221, 255), outline=(90, 113, 116, 255), width=5)
+            draw.polygon(((x - 8, 388), (x + 59, 326), (x + 126, 388)), fill=(91, 147, 170, 255))
+        draw.ellipse((1020, 55, 1148, 183), fill=(249, 239, 185, 200))
+    elif arena == "enies-lobby-tower-hallway":
+        vertical_gradient(image, (44, 61, 76), (105, 116, 114))
+        draw = ImageDraw.Draw(image, "RGBA")
+        draw.rectangle((0, 520, WIDTH, HEIGHT), fill=(80, 82, 78, 255))
+        for x in (70, 300, 890, 1120):
+            draw.rectangle((x, 75, x + 105, 555), fill=(119, 130, 128, 255), outline=(192, 203, 194, 160), width=6)
+        for y in range(130, 520, 88):
+            draw.line((175, y, 1120, y), fill=(167, 181, 177, 80), width=3)
+        draw.polygon(((450, 520), (535, 150), (745, 150), (830, 520)), fill=(43, 49, 54, 255), outline=(154, 170, 168, 180))
+    elif arena == "enies-lobby-tower-chamber":
+        vertical_gradient(image, (30, 43, 58), (91, 101, 104))
+        draw = ImageDraw.Draw(image, "RGBA")
+        draw.rectangle((0, 505, WIDTH, HEIGHT), fill=(65, 70, 73, 255))
+        draw.ellipse((430, 80, 850, 500), fill=(72, 92, 104, 120), outline=(176, 193, 194, 180), width=12)
+        for x in (40, 230, 955, 1145):
+            draw.rectangle((x, 95, x + 90, 540), fill=(100, 111, 112, 255), outline=(156, 172, 170, 170), width=5)
+        draw.line((0, 505, WIDTH, 505), fill=(187, 194, 185, 180), width=8)
     else:
         vertical_gradient(image, (244, 173, 89), (238, 218, 172))
         draw = ImageDraw.Draw(image, "RGBA")
@@ -165,7 +212,7 @@ def draw_events(image: Image.Image, scene: dict, time_ms: float):
         intensity = event.get("intensity", 1.0)
         alpha = round(255 * (1 - progress) * intensity)
         kind = event["type"]
-        if kind in {"slash", "fire-wall", "fire-fist-wave", "sand-blade", "kick-trail", "ballet-spin", "spike-thrust", "tornado", "golden-rifle", "tempest-kick"}:
+        if kind in {"slash", "fire-wall", "fire-fist-wave", "sand-blade", "kick-trail", "ballet-spin", "spike-thrust", "tornado", "golden-rifle", "tempest-kick", "four-sword-rush", "sword-clash", "nine-sword-impact", "claw-slash", "kick-impact", "flambage-impact", "jet-bazooka-impact"}:
             color = (235, 246, 255, alpha) if kind in {"slash", "kick-trail"} else (255, 134, 38, alpha)
             if kind == "sand-blade":
                 color = (224, 179, 93, alpha)
@@ -179,13 +226,23 @@ def draw_events(image: Image.Image, scene: dict, time_ms: float):
                 color = (255, 217, 76, alpha)
             elif kind == "tempest-kick":
                 color = (215, 244, 255, alpha)
+            elif kind in {"four-sword-rush", "sword-clash"}:
+                color = (230, 244, 255, alpha)
+            elif kind == "nine-sword-impact":
+                color = (141, 75, 238, alpha)
+            elif kind == "claw-slash":
+                color = (228, 233, 237, alpha)
+            elif kind in {"kick-impact", "jet-bazooka-impact"}:
+                color = (255, 231, 190, alpha)
+            elif kind == "flambage-impact":
+                color = (255, 104, 20, alpha)
             if kind == "fire-fist-wave":
                 width = 160 + round(progress * 520)
                 x0 = round(250 + progress * 300)
                 draw.rounded_rectangle((x0, 320, min(WIDTH - 80, x0 + width), 430), radius=52, fill=(255, 116, 25, min(alpha, 185)), outline=(255, 226, 90, alpha), width=14)
             else:
                 draw.arc((330, 170, 950, 650), 205, 338, fill=color, width=round(18 * intensity))
-        elif kind in {"impact", "route-pulse", "smoke-fire-clash", "hana-hana-bloom", "clone-flash", "steel-sparks", "weather-heat", "weather-cool", "wet-sand-impact", "dehydration-pulse", "poison-flash", "blood-counter-impact", "victory-pulse", "rubber-immunity-pulse", "gold-ball-weight", "golden-bell-impact", "gear-third-impact", "rokuogan-shockwave", "defeat-impact"}:
+        elif kind in {"impact", "route-pulse", "promise-pulse", "smoke-fire-clash", "hana-hana-bloom", "clone-flash", "steel-sparks", "weather-heat", "weather-cool", "wet-sand-impact", "dehydration-pulse", "poison-flash", "blood-counter-impact", "victory-pulse", "rubber-immunity-pulse", "gold-ball-weight", "golden-bell-impact", "gear-third-impact", "rokuogan-shockwave", "defeat-impact", "iron-body-impact", "giraffe-transformation"}:
             color = (255, 236, 174, alpha)
             if kind == "hana-hana-bloom":
                 color = (205, 126, 213, alpha)
@@ -207,6 +264,8 @@ def draw_events(image: Image.Image, scene: dict, time_ms: float):
                 color = (176, 92, 70, alpha)
             elif kind == "victory-pulse":
                 color = (255, 221, 112, alpha)
+            elif kind == "promise-pulse":
+                color = (245, 199, 106, alpha)
             elif kind == "rubber-immunity-pulse":
                 color = (255, 244, 125, alpha)
             elif kind in {"gold-ball-weight", "golden-bell-impact"}:
@@ -217,6 +276,10 @@ def draw_events(image: Image.Image, scene: dict, time_ms: float):
                 color = (226, 246, 255, alpha)
             elif kind == "defeat-impact":
                 color = (255, 235, 205, alpha)
+            elif kind == "iron-body-impact":
+                color = (198, 224, 236, alpha)
+            elif kind == "giraffe-transformation":
+                color = (235, 188, 82, alpha)
             radius = 35 + progress * 230
             draw.ellipse((WIDTH / 2 - radius, HEIGHT * 0.53 - radius, WIDTH / 2 + radius, HEIGHT * 0.53 + radius), outline=color, width=10)
         elif kind in {"smoke", "dust", "crowd", "sand-body-disperse", "sandstorm", "moisture-drain", "thunder-field", "gear-second-steam"}:
@@ -262,7 +325,7 @@ def draw_events(image: Image.Image, scene: dict, time_ms: float):
                 x1 = 735 + progress * 170 + rng.randint(-35, 40)
                 draw.line((x0, y, x1, y + rng.randint(-18, 18)), fill=(247, 215, 175, min(alpha, 205)), width=13)
                 draw.ellipse((x1 - 24, y - 22, x1 + 24, y + 22), fill=(245, 207, 164, min(alpha, 200)))
-        elif kind in {"speed-lines", "wind", "jet-strike"}:
+        elif kind in {"speed-lines", "wind", "jet-strike", "wolf-fang-rush", "air-door-ambush"}:
             for index in range(22):
                 y = 120 + index * 22 + rng.randint(-5, 5)
                 x = (round(progress * (WIDTH + 420)) + index * 83) % (WIDTH + 420) - 210
@@ -271,10 +334,23 @@ def draw_events(image: Image.Image, scene: dict, time_ms: float):
             color = (86, 205, 255, alpha) if kind == "enel-lightning" else (245, 250, 255, alpha)
             x = WIDTH * (0.58 if kind == "enel-lightning" else 0.52)
             draw.line((x, 100, x - 80, 310, x + 35, 290, x - 40, 560), fill=color, width=18)
-        elif kind in {"fire-burst", "explosion"}:
+        elif kind in {"fire-burst", "explosion", "diable-jambe-ignite"}:
             center = (WIDTH * 0.48, HEIGHT * 0.54)
             radius = 45 + progress * 190
             draw.ellipse((center[0] - radius, center[1] - radius, center[0] + radius, center[1] + radius), fill=(255, 125, 32, min(alpha, 150)))
+        elif kind == "door-door-ripple":
+            radius_x = 50 + progress * 145
+            radius_y = 95 + progress * 120
+            center = (WIDTH * 0.62, HEIGHT * 0.47)
+            for ring in range(3):
+                inset = ring * 22
+                draw.ellipse((center[0] - radius_x + inset, center[1] - radius_y + inset, center[0] + radius_x - inset, center[1] + radius_y - inset), outline=(125, 225, 255, max(25, alpha - ring * 45)), width=8)
+        elif kind == "asura-aura":
+            center = (WIDTH * 0.43, HEIGHT * 0.52)
+            radius = 90 + progress * 210
+            for ring in range(4):
+                inset = ring * 25
+                draw.arc((center[0] - radius + inset, center[1] - radius + inset, center[0] + radius - inset, center[1] + radius - inset), 195, 345, fill=(126, 52, 218, max(25, alpha - ring * 38)), width=12)
 
 
 def make_pose_loader(pose_root: Path):

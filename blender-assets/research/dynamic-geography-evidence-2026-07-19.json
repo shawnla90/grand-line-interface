@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "scope": [
+    "water-7-sea-train-network",
+    "mary-geoise-red-line",
+    "fish-man-red-line-descent"
+  ],
+  "claims": [
+    {"chapter": 322, "claim": "Puffing Tom and its water-level rail network are introduced.", "source": "https://onepiece.fandom.com/wiki/Chapter_322"},
+    {"chapter": 363, "claim": "Aqua Laguna reaches Water 7 and crushes the lower bridge system.", "source": "https://onepiece.fandom.com/wiki/Chapter_363"},
+    {"chapter": 365, "claim": "Rocketman departs Water 7 toward Enies Lobby.", "source": "https://onepiece.fandom.com/wiki/Chapter_365"},
+    {"chapter": 367, "claim": "Rocketman passes through Aqua Laguna.", "source": "https://onepiece.fandom.com/wiki/Chapter_367"},
+    {"chapter": 375, "claim": "Puffing Tom reaches Day Station and Rocketman comes within sight of Enies Lobby.", "source": "https://onepiece.fandom.com/wiki/Chapter_375"},
+    {"chapter": 496, "claim": "The two Red Line crossings are explained: abandon the ship for the lawful surface route or use coating to pass beneath through Fish-Man Island.", "source": "https://onepiece.fandom.com/wiki/Chapter_496"},
+    {"chapter": 507, "claim": "Rayleigh accepts the coating job and says it will take three days.", "source": "https://onepiece.fandom.com/wiki/Chapter_507"},
+    {"chapter": 602, "claim": "The coated Thousand Sunny inflates its resin bubble and submerges.", "source": "https://onepiece.fandom.com/wiki/Coating"},
+    {"chapter": 603, "claim": "Coating pressure mechanics and dangers are explained during the descent.", "source": "https://onepiece.fandom.com/wiki/Chapter_603"},
+    {"chapter": 604, "claim": "The downward current and Kraken route hazard are encountered.", "source": "https://onepiece.fandom.com/wiki/Chapter_604"},
+    {"chapter": 605, "claim": "The crew enters the Underworld of the Sea.", "source": "https://onepiece.fandom.com/wiki/Chapter_605"},
+    {"chapter": 606, "claim": "The deep-sea volcanic region is identified.", "source": "https://onepiece.fandom.com/wiki/Chapter_606"},
+    {"chapter": 607, "claim": "The volcano erupts and the ship descends the trench to 10,000 meters.", "source": "https://onepiece.fandom.com/wiki/Chapter_607"},
+    {"chapter": 905, "claim": "The Paradise-side Red Port and Bondola ascent to Mary Geoise are shown.", "source": "https://onepiece.fandom.com/wiki/Chapter_905"},
+    {"chapter": 905, "claim": "Bondolas carry people; sailors do not take their original ships over the Red Line.", "source": "https://onepiece.fandom.com/wiki/Bondola"}
+  ],
+  "cartographic_boundary": "The Red Line is a continent encircling the globe. The app may use an irregular rocky coastline for visual truth, but no exact canon zigzag path or survey width is claimed."
+}

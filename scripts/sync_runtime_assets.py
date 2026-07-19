@@ -354,6 +354,13 @@ def main() -> int:
             "anchor_warning": integ.get("anchor_warning"),
             "withheld_variants": integ.get("withheld_variants") or [],
             "route_policy": integ.get("route_policy"),
+            # Human-readable accuracy boundaries surfaced to inspectors and
+            # audits. They do not drive transforms, but keep a local theatre
+            # from being mistaken for canon survey geometry or transport.
+            "flood_policy": integ.get("flood_policy"),
+            "transport_policy": integ.get("transport_policy"),
+            "coastline_policy": integ.get("coastline_policy"),
+            "destination_policy": integ.get("destination_policy"),
             # Where the manifest and the model's own extras disagree. Never
             # absorbed silently: it is the asset track's bug and only we can see it.
             "gate_contradictions": contradictions(m, j),

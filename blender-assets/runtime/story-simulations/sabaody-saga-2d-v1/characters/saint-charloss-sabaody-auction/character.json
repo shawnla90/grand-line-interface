@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "pack_id": "sabaody-saga-2d-v1",
+  "id": "saint-charloss-sabaody-auction",
+  "display_name": "Saint Charloss",
+  "kind": "character",
+  "variant": "sabaody-auction-house-chapter-502",
+  "representation": "camera-facing-2d-atlas",
+  "source_sheet": "art/sabaody/keyed-sheets/saint-charloss-sabaody-auction-pose-sheet-v1.png",
+  "source_sha256": "2135bb9e9dedadea55476d744b94e12b6f5fcd81674696516ca006647acdc62b",
+  "atlas": "runtime/story-simulations/sabaody-saga-2d-v1/characters/saint-charloss-sabaody-auction/atlas.png",
+  "atlas_sha256": "4e76f80faf626351d271b433ebd9c0fd30cc69647eca0db6c17cea0d55ede11f",
+  "atlas_size": {
+    "width": 1152,
+    "height": 768
+  },
+  "grid": {
+    "columns": 3,
+    "rows": 2,
+    "cell_px": 384
+  },
+  "map_height": 1.13,
+  "facing": "camera",
+  "normalization": {
+    "mode": "shared_actor_scale",
+    "subject_scale": 0.6970297,
+    "baseline_y": 0.9583333333333334,
+    "padding_px": 16
+  },
+  "frames": {
+    "smug-with-pistol": {
+      "index": 0,
+      "pixel_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9583333333333334
+      },
+      "content_rect": {
+        "x": 97,
+        "y": 16,
+        "width": 190,
+        "height": 352
+      }
+    },
+    "pistol-fired": {
+      "index": 1,
+      "pixel_rect": {
+        "x": 384,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.3333333333333333,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9583333333333334
+      },
+      "content_rect": {
+        "x": 47,
+        "y": 17,
+        "width": 289,
+        "height": 351
+      }
+    },
+    "confused-turn": {
+      "index": 2,
+      "pixel_rect": {
+        "x": 768,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.6666666666666666,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9583333333333334
+      },
+      "content_rect": {
+        "x": 70,
+        "y": 37,
+        "width": 244,
+        "height": 331
+      }
+    },
+    "panic-recoil": {
+      "index": 3,
+      "pixel_rect": {
+        "x": 0,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.0,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9583333333333334
+      },
+      "content_rect": {
+        "x": 65,
+        "y": 49,
+        "width": 253,
+        "height": 319
+      }
+    },
+    "face-impact": {
+      "index": 4,
+      "pixel_rect": {
+        "x": 384,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.3333333333333333,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9583333333333334
+      },
+      "content_rect": {
+        "x": 19,
+        "y": 53,
+        "width": 346,
+        "height": 315
+      }
+    },
+    "defeated-fall": {
+      "index": 5,
+      "pixel_rect": {
+        "x": 768,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.6666666666666666,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9583333333333334
+      },
+      "content_rect": {
+        "x": 45,
+        "y": 110,
+        "width": 293,
+        "height": 258
+      }
+    }
+  },
+  "runtime_rules": {
+    "pose_interpolation": "step",
+    "transform_interpolation": "linear-or-authored-ease",
+    "depth_write": false,
+    "alpha_test": 0.05,
+    "reduced_motion": "defeated-fall"
+  }
+}

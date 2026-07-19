@@ -655,10 +655,14 @@ export default function Atlas({
   >(null);
   const flyKey = useRef(0);
   // Dive into a 3D island from the directory: land past the model's zoom gate,
-  // tilted, so grab-and-spin is immediately available. Breaks follow like any
-  // deliberate camera takeover.
+  // tilted, so grab-and-spin is immediately available. Runtime island GLBs are
+  // authored as close-detail Mercator stages unless an explicit globe override
+  // proves otherwise, so the directory must enter flat projection as part of
+  // the dive. Otherwise its button can land on the right island while the model
+  // gate remains shut. Breaks follow like any deliberate camera takeover.
   const diveTo = useCallback((anchor: [number, number]) => {
     setFollow(false);
+    setProjection("mercator");
     flyKey.current += 1;
     setFlyTarget({ lng: anchor[0], lat: anchor[1], key: flyKey.current, zoom: 6.4, pitch: 45 });
   }, []);

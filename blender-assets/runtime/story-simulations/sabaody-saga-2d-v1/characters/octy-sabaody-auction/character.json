@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "pack_id": "sabaody-saga-2d-v1",
+  "id": "octy-sabaody-auction",
+  "display_name": "Hatchan (Hachi)",
+  "kind": "character",
+  "variant": "sabaody-auction-house-chapter-502",
+  "representation": "camera-facing-2d-atlas",
+  "source_sheet": "art/sabaody/keyed-sheets/octy-sabaody-auction-pose-sheet-v1.png",
+  "source_sha256": "3f52099e4e08333fd312d6ac5705fd8c37c57b2e91cdf3dd3cf3050f0f21b4d5",
+  "atlas": "runtime/story-simulations/sabaody-saga-2d-v1/characters/octy-sabaody-auction/atlas.png",
+  "atlas_sha256": "73e931018148b685ddaa7c2e7a04eefdd47f024c9c3f7549ac53141fcf73b221",
+  "atlas_size": {
+    "width": 1152,
+    "height": 768
+  },
+  "grid": {
+    "columns": 3,
+    "rows": 2,
+    "cell_px": 384
+  },
+  "map_height": 0.94,
+  "facing": "camera",
+  "normalization": {
+    "mode": "shared_actor_scale",
+    "subject_scale": 0.6875,
+    "baseline_y": 0.9583333333333334,
+    "padding_px": 16
+  },
+  "frames": {
+    "wounded-kneeling": {
+      "index": 0,
+      "pixel_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9583333333333334
+      },
+      "content_rect": {
+        "x": 58,
+        "y": 33,
+        "width": 268,
+        "height": 335
+      }
+    },
+    "warning-luffy": {
+      "index": 1,
+      "pixel_rect": {
+        "x": 384,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.3333333333333333,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9583333333333334
+      },
+      "content_rect": {
+        "x": 33,
+        "y": 29,
+        "width": 318,
+        "height": 339
+      }
+    },
+    "apology": {
+      "index": 2,
+      "pixel_rect": {
+        "x": 768,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.6666666666666666,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9583333333333334
+      },
+      "content_rect": {
+        "x": 88,
+        "y": 78,
+        "width": 207,
+        "height": 290
+      }
+    },
+    "reaching-stop": {
+      "index": 3,
+      "pixel_rect": {
+        "x": 0,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.0,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9583333333333334
+      },
+      "content_rect": {
+        "x": 34,
+        "y": 63,
+        "width": 316,
+        "height": 305
+      }
+    },
+    "shocked-impact": {
+      "index": 4,
+      "pixel_rect": {
+        "x": 384,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.3333333333333333,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9583333333333334
+      },
+      "content_rect": {
+        "x": 16,
+        "y": 44,
+        "width": 352,
+        "height": 324
+      }
+    },
+    "relieved-collapse": {
+      "index": 5,
+      "pixel_rect": {
+        "x": 768,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.6666666666666666,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9583333333333334
+      },
+      "content_rect": {
+        "x": 30,
+        "y": 160,
+        "width": 323,
+        "height": 208
+      }
+    }
+  },
+  "runtime_rules": {
+    "pose_interpolation": "step",
+    "transform_interpolation": "linear-or-authored-ease",
+    "depth_write": false,
+    "alpha_test": 0.05,
+    "reduced_motion": "relieved-collapse"
+  }
+}

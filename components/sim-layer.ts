@@ -25,7 +25,7 @@
 import type { CustomLayerInterface, CustomRenderMethodInput, Map as MlMap } from "maplibre-gl";
 import type * as THREE from "three";
 import {
-  createFxCursor, evaluateActor, poseUv,
+  createFxCursor, evaluateActor, poseUv, visualTreatmentAt,
   type FxCursor, type SimAsset, type SimScene,
 } from "@/lib/simulation";
 import { createFxInstance, type FxInstance } from "@/components/sim-fx";
@@ -64,6 +64,8 @@ type ActorRig = {
   mapHeight: number;
   /** The pose currently on the UVs, so we only touch offsets on change. */
   pose: string | null;
+  gammaUniform: { value: number };
+  gainUniform: { value: number };
 };
 
 type Loaded = {
@@ -144,6 +146,29 @@ export function createSimLayer(opts: SimLayerOptions): SimLayer {
               depthWrite: false,
               side: three.DoubleSide,
             });
+            // The user's Sabaody reference review exposed why a whole-frame
+            // color grade looks wrong on the globe. Apply the optional authored
+            // gamma/gain response to this isolated actor texture only. Uniforms
+            // remain live after compilation and are sampled from absolute scene
+            // time, so contact brightness is deterministic across frame rates.
+            const gammaUniform = { value: 1 };
+            const gainUniform = { value: 1 };
+            material.onBeforeCompile = (shader) => {
+              shader.uniforms.uSimActorGamma = gammaUniform;
+              shader.uniforms.uSimActorGain = gainUniform;
+              shader.fragmentShader = shader.fragmentShader.replace(
+                "#include <map_fragment>",
+                `#include <map_fragment>
+                 diffuseColor.rgb = pow(max(diffuseColor.rgb, vec3(0.00001)), vec3(uSimActorGamma)) * uSimActorGain;`,
+              );
+              shader.fragmentShader = shader.fragmentShader.replace(
+                "void main() {",
+                `uniform float uSimActorGamma;
+                 uniform float uSimActorGain;
+                 void main() {`,
+              );
+            };
+            material.customProgramCacheKey = () => "sim-actor-gamma-v1";
             // Unit plane; real size comes from map_height × keyframe scale at
             // render time. The pivot shift puts the authored anchor point (the
             // feet, pivot.y≈0.96 measured from the cell's top) at local origin,
@@ -161,6 +186,7 @@ export function createSimLayer(opts: SimLayerOptions): SimLayer {
             rigs[actorIdx] = {
               actorIdx, mesh, material, texture,
               frames: asset.frames, mapHeight: asset.map_height, pose: null,
+              gammaUniform, gainUniform,
             };
           }),
         );
@@ -201,6 +227,8 @@ export function createSimLayer(opts: SimLayerOptions): SimLayer {
                 repeat: [r.texture.repeat.x, r.texture.repeat.y],
                 offset: [r.texture.offset.x, r.texture.offset.y],
                 opacity: r.material.opacity,
+                gamma: r.gammaUniform.value,
+                gain: r.gainUniform.value,
                 mapIsClone: r.material.map === r.texture,
               }));
             },
@@ -221,6 +249,7 @@ export function createSimLayer(opts: SimLayerOptions): SimLayer {
       // can forget it.
       const rawT = opts.reducedMotion ? null : opts.getTimeMs();
       const tMs = rawT === null ? opts.scene.duration_ms : Math.min(rawT, opts.scene.duration_ms);
+      const treatment = visualTreatmentAt(opts.scene, tMs);
 
       const yaw = g.stage.children[0] as THREE.Group;
       for (const rig of g.rigs) {
@@ -238,6 +267,8 @@ export function createSimLayer(opts: SimLayerOptions): SimLayer {
         rig.mesh.position.set(s.x * half, s.y * half, 0);
         rig.mesh.rotation.z = (-s.rotation * Math.PI) / 180;
         rig.material.opacity = s.opacity * layerOpacity;
+        rig.gammaUniform.value = treatment.gamma;
+        rig.gainUniform.value = treatment.gain;
       }
 
       // FX: the cursor answers "what has fired by tMs" (rebuilding on backward

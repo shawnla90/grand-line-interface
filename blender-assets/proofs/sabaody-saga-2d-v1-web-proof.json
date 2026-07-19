@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "pack_id": "sabaody-saga-2d-v1",
+  "status": "passed",
+  "verified_at": "2026-07-19T04:25:15Z",
+  "web_repository": "/Users/shawnos.ai/dead-reckoning",
+  "base_commit": "6933584f3c1d7e2c6fa73e1de9bfd387e15064f8",
+  "runtime_scenes": 1,
+  "feature_gate": "NEXT_PUBLIC_STORY_SIMULATION_PACKS",
+  "default_gate_state": "off",
+  "artifact_checks": {
+    "command": "python3 scripts/check_story_simulations.py --pack sabaody-saga-2d-v1",
+    "passed": 18,
+    "total": 18
+  },
+  "east_blue_data_regression": {
+    "command": "python3 scripts/check_simulations.py",
+    "passed": 9,
+    "total": 9
+  },
+  "browser_audit": {
+    "command": "AUDIT_URL=http://localhost:3000 python3 scripts/audit_sabaody_ch502.py",
+    "passed": 16,
+    "total": 16
+  },
+  "east_blue_regression_audit": {
+    "command": "AUDIT_URL=http://localhost:3000 python3 scripts/audit_simulations.py",
+    "passed": 14,
+    "total": 14
+  },
+  "production_build": "passed",
+  "proof_scope": [
+    "chapter 501 fetches zero Sabaody atlases and mounts no Sabaody scene",
+    "chapter 502 lazy-loads exactly the signed Luffy, Saint Charloss, and corrected Hatchan atlases",
+    "Hatchan warning, Luffy lunge, full-extension punch, Charloss face impact, and final fall all land",
+    "actor-only gamma and gain peak on the contact frame without grading the map",
+    "whoosh and impact audio bindings fire once on their authored visual events",
+    "chapter 503 holds the frozen aftermath without new atlas or audio requests",
+    "scrubbing below the gate disposes the scene and chapter-502 re-entry restarts near zero",
+    "reduced motion freezes on the safe final tableau",
+    "14/14 East Blue browser regression and 9/9 signed East Blue data regression",
+    "targeted ESLint, TypeScript, and the Next.js production build pass"
+  ],
+  "note": "Technical integration proof only. The character art is an original generated runtime interpretation derived from user-supplied chapter references; public or commercial distribution still requires a separate rights review."
+}

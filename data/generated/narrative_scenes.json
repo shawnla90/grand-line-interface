@@ -1,16 +1,18 @@
 {
   "_meta": {
-    "generated_at": "2026-07-19T03:03:38.980933+00:00",
+    "generated_at": "2026-07-19T04:29:41.319200+00:00",
     "generator": "scripts/sync_scenes.py",
     "source": "blender-assets/ (read-only; owned by the Blender asset track)",
-    "warnings": [],
+    "warnings": [
+      "EVIDENCE DRIFT: 11 contracts were built against blender-assets/research/narrative-scene-overrides.json at f22d970c2e91; it is now 449d3a043945. Their claims about their own scenes are unaffected, but any atlas_anchor derived from that file is stale. The asset track should re-run scripts/build_narrative_scene_contracts.py."
+    ],
     "note": "Joined from the narrative-scene INDEX (never a glob — two other schema_version-2 contracts are not v2 narrative scenes). integration_ready is a queue property, joined here; it is never a field on a scene.",
     "counts": {
       "scenes": 12,
       "with_blockout": 12,
       "runtime_exportable": 12,
       "integration_ready": 12,
-      "evidence_sha256_checked": 55
+      "evidence_sha256_checked": 44
     }
   },
   "scenes": [
@@ -2235,7 +2237,7 @@
       "id": "sabaody-grove-network",
       "label": "Sabaody 79-grove mangrove network",
       "entity_type": "mangrove_grove_network",
-      "contract_status": "ready_for_system_sketch",
+      "contract_status": "ready_for_blender_blockout",
       "priority": 1,
       "index_state": "ready_for_system_sketch",
       "identity": {
@@ -2382,6 +2384,18 @@
             "source_ref": "https://onepiece.fandom.com/wiki/Sabaody_Archipelago",
             "record_origin": "cited_manual_topology_node",
             "atlas_anchor": null
+          },
+          {
+            "id": "auction-house-confrontation",
+            "slug": null,
+            "name": "Human Auctioning House confrontation state",
+            "role": "chapter_502_event_state",
+            "debut_chapter": 502,
+            "canon_status": "manga",
+            "canon_confidence": "canon",
+            "source_ref": "/Users/shawnos.ai/Downloads/IMG_5560.HEIC through IMG_5578.HEIC; SHA-256 ledger in research/story-scenes/sabaody-chapter-502-user-refs.json",
+            "record_origin": "user_supplied_panel_evidence",
+            "atlas_anchor": null
           }
         ]
       },
@@ -2433,6 +2447,12 @@
             "verification": "verified"
           },
           {
+            "id": "celestial-dragon-incident",
+            "reveal_chapter": 502,
+            "state": "The auction-floor confrontation state and Luffy's strike become available only for the verified chapter-502 replay.",
+            "verification": "verified"
+          },
+          {
             "id": "post-timeskip-return",
             "reveal_chapter": null,
             "state": "Later return-state activity and character visibility.",
@@ -2457,10 +2477,10 @@
           {
             "id": "auction-house-confrontation",
             "importance": 1,
-            "reveal_chapter": null,
+            "reveal_chapter": 502,
             "landmark": "human-auctioning-house",
-            "state_delta": "Interior event state activates while the surrounding grove remains navigable.",
-            "verification": "chapter_to_verify",
+            "state_delta": "A wide interior event theatre activates for the chapter-502 Celestial Dragon incident while the surrounding grove remains navigable.",
+            "verification": "verified",
             "camera_cue": "Route from grove signage to the auction-house exterior, then switch to a gated interior set.",
             "fx": [
               "crowd silhouettes",
@@ -2484,7 +2504,6 @@
       },
       "unresolved": [
         "Exact map positions for all 79 grove numbers and zone categories.",
-        "Exact chapter for the auction-house confrontation event.",
         "Runtime LOD strategy for thousands of bubbles and root structures."
       ],
       "visual_program": {

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "pack_id": "sabaody-saga-2d-v1",
+  "grid": {"columns": 3, "rows": 2, "runtime_cell_px": 384},
+  "characters": [
+    {
+      "id": "monkey-d-luffy-sabaody-auction",
+      "display_name": "Monkey D. Luffy",
+      "kind": "character",
+      "variant": "sabaody-auction-house-chapter-502",
+      "map_height": 1.03,
+      "poses": [
+        "wounded-approach",
+        "furious-stare",
+        "fist-drawback",
+        "silent-lunge",
+        "full-extension-punch",
+        "impact-follow-through"
+      ],
+      "source_sheet": "art/sabaody/source-sheets/monkey-d-luffy-sabaody-auction-pose-sheet-v1.png",
+      "keyed_sheet": "art/sabaody/keyed-sheets/monkey-d-luffy-sabaody-auction-pose-sheet-v1.png"
+    },
+    {
+      "id": "saint-charloss-sabaody-auction",
+      "display_name": "Saint Charloss",
+      "kind": "character",
+      "variant": "sabaody-auction-house-chapter-502",
+      "map_height": 1.13,
+      "poses": [
+        "smug-with-pistol",
+        "pistol-fired",
+        "confused-turn",
+        "panic-recoil",
+        "face-impact",
+        "defeated-fall"
+      ],
+      "source_sheet": "art/sabaody/source-sheets/saint-charloss-sabaody-auction-pose-sheet-v1.png",
+      "keyed_sheet": "art/sabaody/keyed-sheets/saint-charloss-sabaody-auction-pose-sheet-v1.png"
+    },
+    {
+      "id": "octy-sabaody-auction",
+      "display_name": "Hatchan (Hachi)",
+      "kind": "character",
+      "variant": "sabaody-auction-house-chapter-502",
+      "map_height": 0.94,
+      "poses": [
+        "wounded-kneeling",
+        "warning-luffy",
+        "apology",
+        "reaching-stop",
+        "shocked-impact",
+        "relieved-collapse"
+      ],
+      "source_sheet": "art/sabaody/source-sheets/octy-sabaody-auction-pose-sheet-v1.png",
+      "keyed_sheet": "art/sabaody/keyed-sheets/octy-sabaody-auction-pose-sheet-v1.png"
+    }
+  ]
+}

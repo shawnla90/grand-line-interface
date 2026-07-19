@@ -128,6 +128,26 @@ export type RuntimeAnimationPlan = {
     duration_ms: number;
     clips: RuntimeAnimationClipPlan[];
   }[];
+  /** Persistent physical geography sampled from the reader's chapter, not from
+   * wall-clock time. Scrubbing backward restores the earlier transform. */
+  geographic_tracks?: {
+    channel: string;
+    name: string;
+    keyframes: { chapter: number; progress: number }[];
+    hold_before?: boolean;
+    hold_after?: boolean;
+  }[];
+  /** Neutral environmental motion that remains alive while a chapter window is
+   * open. Unlike chapter_states it is not an event replay, and unlike
+   * geographic_tracks it never changes where canon geography is located. */
+  ambient_tracks?: {
+    channel: string;
+    name: string;
+    active_from_chapter: number;
+    active_through_chapter?: number;
+    duration_ms: number;
+    loop?: boolean;
+  }[];
 };
 
 export type RuntimeAnimationSample = {
@@ -137,9 +157,9 @@ export type RuntimeAnimationSample = {
   elapsedMs: number;
 };
 
-/** Pure chapter-entry sampler. One clip per channel is active, so sequential
- * actions on the same root never fight. Reduced motion lands on the same final
- * chapter tableau without starting a repaint loop. */
+/** Pure animation sampler. Chapter-entry actions use elapsed time; geographic
+ * tracks use the actual chapter coordinate so they persist across the full arc
+ * and reverse exactly when the reader scrubs backward. */
 export function sampleRuntimeAnimation(
   plan: RuntimeAnimationPlan,
   chapter: number,
@@ -148,26 +168,74 @@ export function sampleRuntimeAnimation(
 ): RuntimeAnimationSample | null {
   const wholeChapter = Math.floor(chapter);
   const state = plan.chapter_states.find((item) => item.chapter === wholeChapter);
-  if (!state) return null;
-  const t = reducedMotion
-    ? state.duration_ms
-    : Math.max(0, Math.min(state.duration_ms, elapsedMs));
-  const byChannel = new Map<string, RuntimeAnimationClipPlan>();
-  for (const item of state.clips) {
+  const geographic = plan.geographic_tracks ?? [];
+  const ambient = (plan.ambient_tracks ?? []).filter((item) => {
+    if (chapter < item.active_from_chapter) return false;
+    return item.active_through_chapter == null || chapter <= item.active_through_chapter;
+  });
+  if (!state && geographic.length === 0 && ambient.length === 0) return null;
+  const t = state
+    ? (reducedMotion ? state.duration_ms : Math.max(0, Math.min(state.duration_ms, elapsedMs)))
+    : 0;
+  const byChannel = new Map<string, { name: string; progress: number; loop: boolean }>();
+  const timedByChannel = new Map<string, RuntimeAnimationClipPlan>();
+  for (const item of state?.clips ?? []) {
     if (t < item.start_ms) continue;
-    const current = byChannel.get(item.channel);
-    if (!current || item.start_ms >= current.start_ms) byChannel.set(item.channel, item);
+    const current = timedByChannel.get(item.channel);
+    if (!current || item.start_ms >= current.start_ms) timedByChannel.set(item.channel, item);
   }
-  const clips = [...byChannel.values()].map((item) => {
+  for (const [channel, item] of timedByChannel) {
     const local = Math.max(0, t - item.start_ms);
     const progress = item.loop
       ? (local % item.duration_ms) / item.duration_ms
       : Math.min(1, local / item.duration_ms);
-    return { name: item.name, progress, loop: item.loop };
-  });
+    byChannel.set(channel, { name: item.name, progress, loop: item.loop });
+  }
+  for (const track of geographic) {
+    const keys = track.keyframes;
+    if (keys.length === 0) continue;
+    let progress: number | null = null;
+    if (chapter < keys[0].chapter) {
+      if (track.hold_before !== false) progress = keys[0].progress;
+    } else if (chapter === keys[0].chapter) {
+      progress = keys[0].progress;
+    } else if (chapter > keys[keys.length - 1].chapter) {
+      if (track.hold_after !== false) progress = keys[keys.length - 1].progress;
+    } else if (chapter === keys[keys.length - 1].chapter) {
+      progress = keys[keys.length - 1].progress;
+    } else {
+      for (let i = 1; i < keys.length; i++) {
+        const right = keys[i];
+        if (chapter > right.chapter) continue;
+        const left = keys[i - 1];
+        const span = Math.max(Number.EPSILON, right.chapter - left.chapter);
+        const u = (chapter - left.chapter) / span;
+        progress = left.progress + (right.progress - left.progress) * u;
+        break;
+      }
+    }
+    if (progress !== null) {
+      byChannel.set(track.channel, {
+        name: track.name,
+        progress: Math.max(0, Math.min(1, progress)),
+        loop: false,
+      });
+    }
+  }
+  for (const track of ambient) {
+    const duration = Math.max(1, track.duration_ms);
+    const progress = reducedMotion ? 0 : (Math.max(0, elapsedMs) % duration) / duration;
+    byChannel.set(track.channel, {
+      name: track.name,
+      progress,
+      loop: track.loop !== false,
+    });
+  }
   return {
-    clips,
-    animate: !reducedMotion && t < state.duration_ms,
+    clips: [...byChannel.values()],
+    // Geography is driven by chapter motion, so it does not create its own
+    // repaint loop. The Journey's chapter updates are the clock.
+    animate: !reducedMotion && ((!!state && t < state.duration_ms) || ambient.length > 0),
     chapter: wholeChapter,
     elapsedMs: t,
   };

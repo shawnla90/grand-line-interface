@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "id": "elbaph-adam-world-system",
+  "label": "Elbaph Treasure Tree Adam world system",
+  "entity_type": "vertical_world_tree_island_system",
+  "priority": 1,
+  "contract_status": "ready_for_blender_blockout",
+  "identity": {
+    "anchor": {
+      "id": "elbaph",
+      "slug": "elbaph",
+      "name": "Elbaph",
+      "region": "New World",
+      "debut_chapter": 865,
+      "canon_status": "manga",
+      "canon_confidence": "canon",
+      "source_ref": "onepiece.fandom.com/wiki/Elbaph#Island_Box",
+      "atlas_anchor": {"lng": 154.2701, "lat": -7.171, "confidence": "derived", "usage": "scene_entry_anchor_only", "warning": "Never infer world-tree dimensions or local region geometry from this deterministic atlas point."}
+    },
+    "components": [
+      {"id": "elbaph", "role": "giant_nation_island", "debut_chapter": 865},
+      {"id": "elbaph-underworld", "role": "snowy_root_region", "debut_chapter": 1130},
+      {"id": "treasure-tree-adam", "role": "vertical_world_connector", "debut_chapter": 1132},
+      {"id": "sun-world", "role": "branch_region_and_main_settlement_layer", "debut_chapter": 1132},
+      {"id": "heaven-world", "role": "upper_cloud_region", "debut_chapter": null},
+      {"id": "warland-settlement", "role": "giant_scale_nordic_settlement", "debut_chapter": 1132},
+      {"id": "roads-castle", "role": "underworld_castle_landmark", "debut_chapter": 1130},
+      {"id": "idas-bar", "role": "underworld_hospitality_landmark", "debut_chapter": 1131},
+      {"id": "giant-fauna-layer", "role": "scale_and_ecology_system", "debut_chapter": 1130},
+      {"id": "sleep-mist-route", "role": "fogged_sea_approach", "debut_chapter": 1127},
+      {"id": "chapter-1188-current-state", "role": "current_manga_event_overlay", "debut_chapter": null}
+    ]
+  },
+  "relationships": [
+    {"from": "elbaph-underworld", "type": "at_roots_of", "to": "treasure-tree-adam", "confidence": "cited_summary"},
+    {"from": "sun-world", "type": "supported_by_branches_of", "to": "treasure-tree-adam", "confidence": "cited_summary"},
+    {"from": "warland-settlement", "type": "within", "to": "sun-world", "confidence": "cited_summary"},
+    {"from": "roads-castle", "type": "within", "to": "elbaph-underworld", "confidence": "cited_summary"}
+  ],
+  "topology": {"summary": "A giant tree creates a vertical island civilization: snowy roots below, a sunlit branch world above, and an upper cloud region whose exact geography remains withheld.", "sources": ["https://onepiece.fandom.com/wiki/Elbaph"], "exact_distances": "unknown", "exact_bearings": "unknown", "layout_mode": "vertical_world_tree_cross_section_canon_relationships_not_nine_world_theory"},
+  "chapter_logic": {
+    "base_reveal_chapter": 865,
+    "temporal_variants": [
+      {"id": "heaven-world", "reveal_chapter": null, "verification": "chapter_to_verify", "default_hidden": true},
+      {"id": "chapter-1188-current-state", "reveal_chapter": null, "verification": "chapter_to_verify", "default_hidden": true}
+    ],
+    "event_scenes": [],
+    "rules": ["Chapter 1188 may be selected because its official release is verified, but its event geometry stays hidden without page-level evidence.", "Do not translate the Nine Worlds theory into canon geometry."]
+  },
+  "coordinate_policy": "The atlas coordinate is an entry anchor only; the local theatre emphasizes verified vertical relationships.",
+  "api_coverage": {"structured_record": "data/generated/islands.json", "coverage": "identity_and_debut_only_through_1185", "official_ceiling_source": "VIZ Chapter 1188", "topology_source": "cited_manual_research"},
+  "visual_program": {"silhouette": "colossal trunk linking a snowy root world to a warm inhabited branch world", "palette": ["ice_blue", "violet", "bark_brown", "amber", "pine_green", "cloud_white"]},
+  "unresolved": ["exact Heaven World layout", "Chapter 1188 event geometry", "literal cosmology count"],
+  "evidence": ["research/endgame-islands-chapter-1188-evidence.json", "art/endgame-islands/reference-plates/elbaph-adam-world-system-v1.png"]
+}

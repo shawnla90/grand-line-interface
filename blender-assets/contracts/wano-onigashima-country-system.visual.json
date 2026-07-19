@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "id": "wano-onigashima-country-system",
+  "label": "Wano Country and Onigashima system",
+  "entity_type": "regional_country_and_offshore_fortress",
+  "priority": 1,
+  "contract_status": "ready_for_blender_blockout",
+  "identity": {
+    "anchor": {
+      "id": "wano-country",
+      "slug": "wano-country",
+      "name": "Wano Country",
+      "region": "New World",
+      "debut_chapter": 793,
+      "canon_status": "manga",
+      "canon_confidence": "canon",
+      "source_ref": "onepiece.fandom.com/wiki/Wano_Country#Island_Box",
+      "atlas_anchor": {"lng": 118.2306, "lat": 7.5751, "confidence": "derived", "usage": "scene_entry_anchor_only", "warning": "The Onigashima atlas point is not used; it is locally nested beside Wano from cited topology."}
+    },
+    "components": [
+      {"id": "wano-country", "role": "high_walled_country", "debut_chapter": 793},
+      {"id": "wano-walls", "role": "colossal_country_bowl", "debut_chapter": 793},
+      {"id": "wano-inland-sea", "role": "regional_water_system", "debut_chapter": 909},
+      {"id": "mount-fuji", "role": "central_mountain", "debut_chapter": 909},
+      {"id": "flower-capital", "role": "central_capital", "debut_chapter": 909},
+      {"id": "kuri", "role": "country_region", "debut_chapter": 909},
+      {"id": "udon", "role": "country_region", "debut_chapter": 909},
+      {"id": "kibi", "role": "country_region", "debut_chapter": 909},
+      {"id": "hakumai", "role": "country_region", "debut_chapter": 909},
+      {"id": "ringo", "role": "country_region", "debut_chapter": 909},
+      {"id": "onigashima", "role": "nearby_fortress_island", "debut_chapter": 793},
+      {"id": "skull-dome", "role": "fortress_silhouette", "debut_chapter": 978},
+      {"id": "onigashima-port", "role": "fortress_approach", "debut_chapter": 978},
+      {"id": "giant-katana", "role": "fortress_scale_landmark", "debut_chapter": 978},
+      {"id": "onigashima-roads", "role": "mountain_approach_network", "debut_chapter": 978},
+      {"id": "old-wano-submerged", "role": "submerged_historical_state", "debut_chapter": 1055}
+    ]
+  },
+  "relationships": [
+    {"from": "flower-capital", "type": "within", "to": "wano-country", "confidence": "canon"},
+    {"from": "kuri", "type": "one_of_six_regions_of", "to": "wano-country", "confidence": "cited_summary"},
+    {"from": "udon", "type": "one_of_six_regions_of", "to": "wano-country", "confidence": "cited_summary"},
+    {"from": "kibi", "type": "one_of_six_regions_of", "to": "wano-country", "confidence": "cited_summary"},
+    {"from": "hakumai", "type": "one_of_six_regions_of", "to": "wano-country", "confidence": "cited_summary"},
+    {"from": "ringo", "type": "one_of_six_regions_of", "to": "wano-country", "confidence": "cited_summary"},
+    {"from": "onigashima", "type": "nearby_separate_island", "to": "wano-country", "confidence": "cited_summary"}
+  ],
+  "topology": {"summary": "Six regional landmasses occupy the inland waters of a high walled country, while the skull fortress island remains a separate local neighbor.", "sources": ["https://one-piece.com/story/land_of_wano2/index.html", "https://onepiece.fandom.com/wiki/Wano_Country", "https://onepiece.fandom.com/wiki/Onigashima"], "exact_distances": "unknown", "exact_bearings": "unknown", "layout_mode": "regional_bowl_and_local_offshore_fortress"},
+  "chapter_logic": {
+    "base_reveal_chapter": 793,
+    "temporal_variants": [
+      {"id": "onigashima-raid-state", "reveal_chapter": null, "verification": "chapter_to_verify", "default_hidden": true},
+      {"id": "onigashima-flame-clouds", "reveal_chapter": 997, "active_through_chapter": 1048.999, "verification": "verified_state_window", "default_hidden": true},
+      {"id": "onigashima-liftoff", "reveal_chapter": 997, "verification": "verified"},
+      {"id": "onigashima-redirection", "reveal_chapter": 1039, "verification": "verified"},
+      {"id": "onigashima-safe-landing", "reveal_chapter": 1049, "verification": "verified"},
+      {"id": "onigashima-return-to-wano-sea", "reveal_chapter": 1109, "verification": "cited_summary"},
+      {"id": "old-wano-submerged", "reveal_chapter": 1055, "verification": "cited_summary", "default_hidden": true}
+    ],
+    "event_scenes": [],
+    "geographic_shift": {
+      "clip": "onigashima_geographic_shift",
+      "motion_owner": "chapter-sampled runtime geography",
+      "checkpoints": [
+        {"chapter": 793, "state": "offshore fortress at its initial local position", "verification": "canon"},
+        {"chapter": 997, "state": "island lifted by Kaidou's Flame Clouds and begins moving toward the Flower Capital", "verification": "verified", "source_ref": "One Piece Chapter 997 pages 15-17"},
+        {"chapter": 1027, "state": "floating island approaches the Flower Capital while control weakens", "verification": "cited_summary"},
+        {"chapter": 1039, "state": "Momonosuke pulls the island away from the Flower Capital", "verification": "verified", "source_ref": "One Piece Chapter 1039 pages 3 and 13-17"},
+        {"chapter": 1049, "state": "Momonosuke safely lands the island outside the Flower Capital", "verification": "verified", "source_ref": "One Piece Chapter 1049 pages 11-13 and 17"},
+        {"chapter": 1109, "state": "cover story relocates the island back to Wano's sea and it sinks toward old Wano", "verification": "cited_summary", "source_ref": "One Piece Chapter 1109 cover story"}
+      ]
+    },
+    "rules": ["The 3D island hierarchy moves; this is not a raster replacement.", "Scrubbing backward must restore earlier geography.", "Flame clouds render only during the verified flight window."]
+  },
+  "coordinate_policy": "Use Wano's atlas point for scene entry. Never draw the derived Onigashima point as a globe-to-globe relationship.",
+  "api_coverage": {"structured_record": "data/generated/islands.json", "coverage": "identity_and_debut_only", "topology_source": "cited_manual_research"},
+  "visual_program": {"silhouette": "walled bowl, six regions, central mountain, separate horned skull fortress and katana", "palette": ["vermilion", "jade", "teal", "gold", "indigo", "lava_red"]},
+  "unresolved": ["exact regional measurements", "exact fortress road bearings", "continuous canon route between checkpoint panels"],
+  "evidence": ["research/endgame-islands-chapter-1188-evidence.json", "art/endgame-islands/reference-plates/wano-onigashima-country-system-v1.png"]
+}

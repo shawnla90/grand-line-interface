@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "id": "fish-man-red-line-descent",
+  "source_blend": "/Users/shawnos.ai/dead-reckoning/blender-assets/source/fish-man-red-line-descent.blend",
+  "runtime_glb": "/Users/shawnos.ai/dead-reckoning/blender-assets/runtime/fish-man-red-line-descent.glb",
+  "model_units": "stylized Blender units; runtime scale is defined by the integration manifest",
+  "coordinate_system": "glTF 2.0 Y-up; Blender exporter converts from Z-up",
+  "export": {
+    "exporter": "Blender built-in glTF 2.0 exporter",
+    "compression": "none; optional gltfpack binary is not installed",
+    "animations": true,
+    "animation_mode": "ACTIONS",
+    "named_clips": [
+      {
+        "name": "fishman_descent_route_state",
+        "duration_seconds": 5.0417
+      },
+      {
+        "name": "fishman_current_cycle",
+        "duration_seconds": 4.8333
+      },
+      {
+        "name": "fishman_volcanic_cycle",
+        "duration_seconds": 5.0417
+      }
+    ],
+    "preview_proxy_excluded": true,
+    "curves_converted_to_mesh": [
+      "Descent depth contour 1",
+      "Descent depth contour 2",
+      "Descent depth contour 3",
+      "Descent depth contour 4",
+      "Descent depth contour 5",
+      "Downward plume animated root",
+      "Kraken route tentacle 1",
+      "Kraken route tentacle 2",
+      "Kraken route tentacle 3",
+      "Kraken route tentacle 4",
+      "Kraken route tentacle 5",
+      "Kraken route tentacle 6",
+      "Kraken route tentacle 7",
+      "Kraken route tentacle 8"
+    ],
+    "excluded_objects": [
+      "Runtime Camera",
+      "Key",
+      "Fill",
+      "Rim"
+    ]
+  },
+  "stats": {
+    "objects": 68,
+    "vertices_input": 7792,
+    "triangles_input": 15156,
+    "materials": 14,
+    "bounds_blender": {
+      "min": [
+        -9.618153,
+        -4.2,
+        -0.47
+      ],
+      "max": [
+        9.657043,
+        4.2,
+        14.55
+      ]
+    },
+    "bytes": 826768
+  },
+  "build": {
+    "blender": "4.5.3 LTS",
+    "glb_sha256": "412f6e45fdae9f2a1f68b86d8b457f8ac8602fac17055eecd5e3aefd33646d42",
+    "glb_header": {
+      "magic": "glTF",
+      "version": 2,
+      "declared_length": 826768
+    }
+  }
+}

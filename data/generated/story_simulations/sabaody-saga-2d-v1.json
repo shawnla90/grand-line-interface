@@ -1,0 +1,555 @@
+{
+  "_meta": {
+    "generator": "scripts/sync_story_simulation_pack.py",
+    "schema_version": 1,
+    "pack_id": "sabaody-saga-2d-v1",
+    "chapter_span": {
+      "start": 490,
+      "end": 513
+    },
+    "source_manifest_sha256": "c053fa8fb0e3788cf84795881100cb5a8c4fb215abcd8de9779378f1b7cee0f5",
+    "integration_ready": true,
+    "feature_flag": "NEXT_PUBLIC_STORY_SIMULATION_PACKS",
+    "note": "Only runtime-ready scenes with verified chapter gates ship; the new pack remains disabled unless explicitly allowlisted.",
+    "counts": {
+      "scenes": 1,
+      "refused": 0,
+      "assets": 3
+    }
+  },
+  "arcs": [
+    {
+      "id": "sabaody",
+      "label": "Sabaody Archipelago",
+      "chapters": [
+        490,
+        513
+      ]
+    }
+  ],
+  "runtime_policy": {
+    "chapter_gate": "Never fetch a scene before a verified start chapter.",
+    "playback": "Play once on entering close range, then hold the authored final frame.",
+    "backward_scrub": "Reset scene time, actors, pose selection, effects, and audio deterministically.",
+    "max_active_close_scenes": 1,
+    "max_distant_loops": 3,
+    "reduced_motion": "Use the final safe pose and suppress autoplay and effects.",
+    "cross_pack_rule": "One animated scene globally; newest verified saga pack owns the globe."
+  },
+  "scenes": [
+    {
+      "id": "sabaody-luffy-punches-charloss",
+      "label": "Luffy punches the Celestial Dragon at the Human Auctioning House",
+      "arc_id": "sabaody",
+      "type": "encounter",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 502,
+        "end": 502,
+        "verification": "verified",
+        "source_url": "https://api.api-onepiece.com/v2/chapters/en/502"
+      },
+      "place": {
+        "id": "sabaody-archipelago",
+        "landmark": "human-auctioning-house",
+        "arena": "sabaody-auction-house"
+      },
+      "duration_ms": 9800,
+      "actors": [
+        {
+          "id": "octy",
+          "asset_id": "octy-sabaody-auction",
+          "z": 18,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.05,
+              "y": -0.05,
+              "scale": 0.74,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "wounded-kneeling"
+            },
+            {
+              "t": 1200,
+              "x": -0.04,
+              "y": -0.04,
+              "scale": 0.76,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "warning-luffy",
+              "ease": "smooth"
+            },
+            {
+              "t": 2500,
+              "x": -0.08,
+              "y": -0.04,
+              "scale": 0.75,
+              "rotation": -2,
+              "opacity": 1,
+              "pose": "apology"
+            },
+            {
+              "t": 3800,
+              "x": -0.03,
+              "y": -0.03,
+              "scale": 0.77,
+              "rotation": 2,
+              "opacity": 1,
+              "pose": "reaching-stop",
+              "ease": "accelerate"
+            },
+            {
+              "t": 5350,
+              "x": -0.12,
+              "y": -0.04,
+              "scale": 0.75,
+              "rotation": -5,
+              "opacity": 1,
+              "pose": "shocked-impact"
+            },
+            {
+              "t": 7600,
+              "x": -0.12,
+              "y": -0.06,
+              "scale": 0.72,
+              "rotation": -2,
+              "opacity": 1,
+              "pose": "relieved-collapse"
+            }
+          ]
+        },
+        {
+          "id": "luffy",
+          "asset_id": "monkey-d-luffy-sabaody-auction",
+          "z": 25,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.68,
+              "y": 0,
+              "scale": 0.82,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "wounded-approach"
+            },
+            {
+              "t": 1450,
+              "x": -0.52,
+              "y": 0,
+              "scale": 0.86,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "wounded-approach",
+              "ease": "smooth"
+            },
+            {
+              "t": 2600,
+              "x": -0.43,
+              "y": 0.01,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "furious-stare"
+            },
+            {
+              "t": 3750,
+              "x": -0.35,
+              "y": 0.02,
+              "scale": 0.93,
+              "rotation": -4,
+              "opacity": 1,
+              "pose": "fist-drawback"
+            },
+            {
+              "t": 4650,
+              "x": -0.08,
+              "y": 0.06,
+              "scale": 1.0,
+              "rotation": 2,
+              "opacity": 1,
+              "pose": "silent-lunge",
+              "ease": "accelerate"
+            },
+            {
+              "t": 5150,
+              "x": 0.22,
+              "y": 0.06,
+              "scale": 1.07,
+              "rotation": 4,
+              "opacity": 1,
+              "pose": "full-extension-punch",
+              "ease": "accelerate"
+            },
+            {
+              "t": 5480,
+              "x": 0.17,
+              "y": 0.03,
+              "scale": 1.03,
+              "rotation": 1,
+              "opacity": 1,
+              "pose": "full-extension-punch"
+            },
+            {
+              "t": 6900,
+              "x": 0.03,
+              "y": 0,
+              "scale": 0.94,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "impact-follow-through",
+              "ease": "decelerate"
+            }
+          ]
+        },
+        {
+          "id": "charloss",
+          "asset_id": "saint-charloss-sabaody-auction",
+          "z": 23,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.58,
+              "y": 0.03,
+              "scale": 0.86,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "smug-with-pistol"
+            },
+            {
+              "t": 700,
+              "x": 0.54,
+              "y": 0.02,
+              "scale": 0.88,
+              "rotation": -2,
+              "opacity": 1,
+              "pose": "pistol-fired"
+            },
+            {
+              "t": 2050,
+              "x": 0.53,
+              "y": 0.02,
+              "scale": 0.87,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "confused-turn"
+            },
+            {
+              "t": 4200,
+              "x": 0.48,
+              "y": 0.03,
+              "scale": 0.9,
+              "rotation": -4,
+              "opacity": 1,
+              "pose": "panic-recoil"
+            },
+            {
+              "t": 5150,
+              "x": 0.44,
+              "y": 0.08,
+              "scale": 0.96,
+              "rotation": -12,
+              "opacity": 1,
+              "pose": "face-impact"
+            },
+            {
+              "t": 5380,
+              "x": 0.7,
+              "y": 0.2,
+              "scale": 0.91,
+              "rotation": 28,
+              "opacity": 1,
+              "pose": "face-impact"
+            },
+            {
+              "t": 6900,
+              "x": 0.76,
+              "y": -0.05,
+              "scale": 0.82,
+              "rotation": 78,
+              "opacity": 1,
+              "pose": "defeated-fall",
+              "ease": "decelerate"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 0,
+          "type": "crowd",
+          "duration_ms": 3200,
+          "intensity": 0.5
+        },
+        {
+          "t": 650,
+          "type": "smoke",
+          "duration_ms": 1200,
+          "intensity": 0.55
+        },
+        {
+          "t": 1300,
+          "type": "walk-up-dust",
+          "duration_ms": 1800,
+          "intensity": 0.45
+        },
+        {
+          "t": 2700,
+          "type": "promise-pulse",
+          "duration_ms": 1100,
+          "intensity": 0.55
+        },
+        {
+          "t": 4450,
+          "type": "speed-lines",
+          "duration_ms": 1150,
+          "intensity": 1.0
+        },
+        {
+          "t": 5120,
+          "type": "impact",
+          "duration_ms": 760,
+          "intensity": 1.0
+        },
+        {
+          "t": 5160,
+          "type": "defeat-impact",
+          "duration_ms": 1050,
+          "intensity": 1.0
+        },
+        {
+          "t": 5350,
+          "type": "dust",
+          "duration_ms": 2200,
+          "intensity": 0.85
+        }
+      ],
+      "visual_treatment": {
+        "base_gamma": 0.94,
+        "impact_gamma": 0.72,
+        "base_gain": 1.04,
+        "impact_gain": 1.34,
+        "impact_at_ms": 5150,
+        "impact_window_ms": 280
+      },
+      "anchor": {
+        "kind": "event",
+        "ref": "luffy-punches-celestial-dragon",
+        "lng": -51.2008,
+        "lat": 6.2035,
+        "note": "The event resolves to the Human Auctioning House canon coordinate; the simulation stages the verified chapter-502 action without asserting exact interior topology."
+      }
+    }
+  ],
+  "refused": [],
+  "assets": {
+    "monkey-d-luffy-sabaody-auction": {
+      "url": "/art/story-simulations/sabaody-saga-2d-v1/monkey-d-luffy-sabaody-auction/atlas.png",
+      "sha256": "a69093e8aa40e60d8660faabe959b50a90a3f6e6eee9ed24451241ecad2414df",
+      "kind": "character",
+      "variant": "sabaody-auction-house-chapter-502",
+      "map_height": 1.03,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "wounded-approach": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.9583333333333334
+          }
+        },
+        "furious-stare": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.9583333333333334
+          }
+        },
+        "fist-drawback": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.9583333333333334
+          }
+        },
+        "silent-lunge": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.9583333333333334
+          }
+        },
+        "full-extension-punch": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.9583333333333334
+          }
+        },
+        "impact-follow-through": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.9583333333333334
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "impact-follow-through"
+      }
+    },
+    "saint-charloss-sabaody-auction": {
+      "url": "/art/story-simulations/sabaody-saga-2d-v1/saint-charloss-sabaody-auction/atlas.png",
+      "sha256": "4e76f80faf626351d271b433ebd9c0fd30cc69647eca0db6c17cea0d55ede11f",
+      "kind": "character",
+      "variant": "sabaody-auction-house-chapter-502",
+      "map_height": 1.13,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "smug-with-pistol": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.9583333333333334
+          }
+        },
+        "pistol-fired": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.9583333333333334
+          }
+        },
+        "confused-turn": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.9583333333333334
+          }
+        },
+        "panic-recoil": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.9583333333333334
+          }
+        },
+        "face-impact": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.9583333333333334
+          }
+        },
+        "defeated-fall": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.9583333333333334
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "defeated-fall"
+      }
+    },
+    "octy-sabaody-auction": {
+      "url": "/art/story-simulations/sabaody-saga-2d-v1/octy-sabaody-auction/atlas.png",
+      "sha256": "73e931018148b685ddaa7c2e7a04eefdd47f024c9c3f7549ac53141fcf73b221",
+      "kind": "character",
+      "variant": "sabaody-auction-house-chapter-502",
+      "map_height": 0.94,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "wounded-kneeling": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.9583333333333334
+          }
+        },
+        "warning-luffy": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.9583333333333334
+          }
+        },
+        "apology": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.9583333333333334
+          }
+        },
+        "reaching-stop": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.9583333333333334
+          }
+        },
+        "shocked-impact": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.9583333333333334
+          }
+        },
+        "relieved-collapse": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.9583333333333334
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "relieved-collapse"
+      }
+    }
+  },
+  "supersedes_visible_art": []
+}

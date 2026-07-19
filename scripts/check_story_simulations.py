@@ -81,6 +81,9 @@ def main() -> int:
             "enies-lobby-zoro-vs-kaku": (416, 417),
             "enies-lobby-luffy-vs-rob-lucci": (418, 427),
         },
+        "sabaody-saga-2d-v1": {
+            "sabaody-luffy-punches-charloss": (502, 502),
+        },
     }
     expected_gates = pack_gates.get(pack_id)
     check("known_pack_contract", expected_gates is not None)
@@ -164,6 +167,26 @@ def main() -> int:
         check("gear_progression_is_authored", {"gear-second-guard", "gear-third-giant-arm"} <= lucci_poses)
         check("jet_gatling_is_authored", "jet-gatling-barrage" in lucci_poses and "jet-gatling-defeat" in lucci_poses and "jet-gatling" in lucci_events)
         check("lucci_rokushiki_states_are_authored", {"soru-rush", "finger-pistol", "tempest-kick", "rokuogan-shockwave"} <= lucci_poses)
+    elif pack_id == "sabaody-saga-2d-v1":
+        scene = scenes[0]
+        poses = {frame["pose"] for actor in scene["actors"] for frame in actor["keyframes"]}
+        events = {event["type"] for event in scene["events"]}
+        check(
+            "chapter_502_action_order_is_authored",
+            {"wounded-kneeling", "warning-luffy", "silent-lunge", "full-extension-punch", "face-impact", "defeated-fall"} <= poses
+            and {"speed-lines", "impact", "defeat-impact"} <= events,
+        )
+        check(
+            "hatchan_is_support_not_combatant",
+            all("attack" not in frame["pose"] for actor in scene["actors"] if actor["id"] == "octy" for frame in actor["keyframes"]),
+        )
+        treatment = scene.get("visual_treatment") or {}
+        check(
+            "impact_gamma_envelope_is_actor_only_data",
+            treatment.get("impact_at_ms") == 5150
+            and treatment.get("impact_gamma", 1) < treatment.get("base_gamma", 1)
+            and treatment.get("impact_gain", 1) > treatment.get("base_gain", 1),
+        )
 
     assets = artifact["assets"]
     referenced = {actor["asset_id"] for scene in scenes for actor in scene["actors"]}

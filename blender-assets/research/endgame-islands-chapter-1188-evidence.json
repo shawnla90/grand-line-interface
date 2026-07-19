@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-07-19",
+  "purpose": "Evidence and spoiler policy for the Egghead, Wano/Onigashima, and Elbaph runtime-island batch.",
+  "official_chapter_ceiling": {
+    "chapter": 1188,
+    "release_date": "2026-07-12",
+    "source": "https://www.viz.com/shonenjump/one-piece-chapter-1188/chapter/50757",
+    "status": "official_release_verified"
+  },
+  "api_coverage": {
+    "endpoint": "https://api.api-onepiece.com/v2/chapters/en/1188",
+    "observed_result": "Chapter not found",
+    "latest_collection_id_observed": 1185,
+    "policy": "The fan API remains useful for structured historical metadata but cannot define the current chapter ceiling. VIZ defines the official release ceiling."
+  },
+  "islands": [
+    {
+      "id": "egghead-future-island-system",
+      "base_sources": [
+        "https://one-piece.com/story/egghead/index.html",
+        "https://onepiece.fandom.com/wiki/Egghead"
+      ],
+      "verified_relationships": [
+        "winter sea surrounds the climate-modified island",
+        "Fabriophase is the lower city and factory layer",
+        "Labophase sits above on artificial island clouds",
+        "the cracked egg laboratory and Frontier Dome dominate the upper silhouette"
+      ],
+      "withheld": [
+        "battle-damage variants without exact chapter receipts",
+        "unverified interior room layouts"
+      ]
+    },
+    {
+      "id": "wano-onigashima-country-system",
+      "base_sources": [
+        "https://one-piece.com/story/land_of_wano2/index.html",
+        "https://onepiece.fandom.com/wiki/Wano_Country",
+        "https://onepiece.fandom.com/wiki/Onigashima"
+      ],
+      "verified_relationships": [
+        "current Wano occupies a high walled bowl above dangerous seas",
+        "six named regions surround the central mountain and inland waters",
+        "Onigashima is a separate nearby fortress island",
+        "the skull dome, horns, port, torii approaches, roads, and giant katana are the key fortress silhouette"
+      ],
+      "geographic_shift_receipts": [
+        {"chapter": 997, "event": "Kaidou lifts Onigashima with Flame Clouds and moves it toward the Flower Capital", "source": "https://onepiece.fandom.com/wiki/Onigashima", "source_detail": "Volume 99 Chapter 997 pages 15-17"},
+        {"chapter": 1027, "event": "Onigashima approaches the Flower Capital while its support weakens", "source": "https://onepiece.fandom.com/wiki/Chapter_1027"},
+        {"chapter": 1039, "event": "Momonosuke pulls Onigashima away from the Flower Capital", "source": "https://onepiece.fandom.com/wiki/Kouzuki_Momonosuke", "source_detail": "Volume 103 Chapter 1039 pages 3 and 13-17"},
+        {"chapter": 1049, "event": "Momonosuke safely lands Onigashima outside the Flower Capital", "source": "https://onepiece.fandom.com/wiki/Chapter_1049", "source_detail": "Volume 104 Chapter 1049 pages 11-13 and 17"},
+        {"chapter": 1109, "event": "The cover story returns Onigashima to Wano's sea and it sinks toward old Wano", "source": "https://onepiece.fandom.com/wiki/Onigashima", "source_detail": "Volume 109 Chapter 1109 cover story"}
+      ],
+      "withheld": [
+        "raid damage state",
+        "submerged old-Wano closeup"
+      ]
+    },
+    {
+      "id": "elbaph-adam-world-system",
+      "base_sources": [
+        "https://www.viz.com/shonenjump/chapters/one-piece",
+        "https://onepiece.fandom.com/wiki/Elbaph"
+      ],
+      "verified_relationships": [
+        "a giant tree vertically connects the island's revealed regions",
+        "the snowy Underworld occupies the roots and receives little sunlight",
+        "the Sun World occupies the immense branches above",
+        "fog and sleeping mist characterize the surrounding approach"
+      ],
+      "withheld": [
+        "an exact nine-world theory map",
+        "unverified Chapter 1188 event geometry",
+        "specific Heaven World geography without page-level receipts"
+      ]
+    }
+  ],
+  "theory_policy": "Iceberg theories may be added later as a separately toggled overlay namespace. They never alter the canon base model or its chapter gates."
+}
