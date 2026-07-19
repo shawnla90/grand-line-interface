@@ -19,6 +19,7 @@ Run: python3 scripts/compile_scene_playback.py
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -36,6 +37,14 @@ SIM_MIN_ZOOM = 4.6
 # The journey camera eases over rampFrac of a dwell window; a hold without
 # this allowance would cut the tableau during the ease-out.
 RAMP_ALLOWANCE_MS = 1200
+# A scene whose events land blows is a FIGHT, and fights have two extra
+# contracts (the phase-10 cinematic floor): they may not play silent, and
+# their finishing beat must hold on screen past the ramp. Quiet tableaus
+# (no matching events) are exempt — silence suits them.
+CLIMAX_EVENT_RE = re.compile(r"impact|defeat|victory-pulse")
+CLIMAX_MIN_BINDINGS = 2
+CLIMAX_SYNC_WINDOW_MS = 600
+CLIMAX_TAIL_MS = 800  # held final beat on top of RAMP_ALLOWANCE_MS
 
 
 class DataError(Exception):
@@ -141,6 +150,35 @@ def main() -> int:
             if journey["zoom"] < SIM_MIN_ZOOM:
                 raise DataError(f"{where}: journey zoom {journey['zoom']} below scene-mount gate {SIM_MIN_ZOOM}")
 
+        # Optional one-shot push-in on the dwell clock. Bounded tight: the
+        # actors are billboards, so a big zoom delta breaks the stage read,
+        # and the move must finish inside the hold it lives in.
+        camera = journey.get("camera")
+        if camera is not None:
+            cwhere = f"{where} journey.camera"
+            if not enabled:
+                raise DataError(f"{cwhere}: push-in on a journey-disabled row")
+            allowed = {"zoom_to", "pitch_to", "at_ms", "duration_ms"}
+            if not set(camera) <= allowed or "at_ms" not in camera or "duration_ms" not in camera:
+                raise DataError(f"{cwhere}: fields must be at_ms + duration_ms (+ zoom_to/pitch_to), got {sorted(camera)}")
+            if "zoom_to" not in camera and "pitch_to" not in camera:
+                raise DataError(f"{cwhere}: needs zoom_to and/or pitch_to — an empty move is a typo")
+            zoom_to = camera.get("zoom_to")
+            if zoom_to is not None:
+                if zoom_to < SIM_MIN_ZOOM:
+                    raise DataError(f"{cwhere}: zoom_to {zoom_to} below scene-mount gate {SIM_MIN_ZOOM}")
+                if abs(zoom_to - journey["zoom"]) > 0.9:
+                    raise DataError(f"{cwhere}: |zoom_to - zoom| {abs(zoom_to - journey['zoom']):.2f} > 0.9 — billboards break under big pushes")
+            pitch_to = camera.get("pitch_to")
+            if pitch_to is not None and not (30 <= pitch_to <= 62):
+                raise DataError(f"{cwhere}: pitch_to {pitch_to} outside [30, 62]")
+            if not (isinstance(camera["at_ms"], int) and camera["at_ms"] >= 0):
+                raise DataError(f"{cwhere}: at_ms must be a non-negative integer")
+            if not (isinstance(camera["duration_ms"], int) and camera["duration_ms"] >= 1500):
+                raise DataError(f"{cwhere}: duration_ms must be an integer >= 1500 — faster reads as a snap")
+            if camera["at_ms"] + camera["duration_ms"] > hold_ms:
+                raise DataError(f"{cwhere}: at_ms + duration_ms {camera['at_ms'] + camera['duration_ms']} > hold_ms {hold_ms}")
+
         bindings = []
         binding_ids: set[str] = set()
         for b in row["audio"]:
@@ -170,6 +208,32 @@ def main() -> int:
                 "playback_rate": b["playback_rate"],
             })
 
+        # The cinematic floor. A fight (climax events present) may not ship
+        # silent, and one of its sounds must land ON a blow — the Fire Fist
+        # reference reads cinematic because the audio hits the hits.
+        climax_ts = sorted(
+            e["t"] for e in scene.get("events", []) if CLIMAX_EVENT_RE.search(e["type"])
+        )
+        if climax_ts:
+            if len(bindings) < CLIMAX_MIN_BINDINGS:
+                raise DataError(
+                    f"{where}: a fight with {len(bindings)} audio binding(s) — "
+                    f"climax scenes need >= {CLIMAX_MIN_BINDINGS} (silence is for tableaus)"
+                )
+            on_blow = any(
+                abs(b["at_ms"] - t) <= CLIMAX_SYNC_WINDOW_MS for b in bindings for t in climax_ts
+            )
+            if not on_blow:
+                raise DataError(
+                    f"{where}: no binding within {CLIMAX_SYNC_WINDOW_MS}ms of a climax event — "
+                    f"the sound must land on the blow"
+                )
+            if enabled and hold_ms < duration + RAMP_ALLOWANCE_MS + CLIMAX_TAIL_MS:
+                raise DataError(
+                    f"{where}: climax hold_ms {hold_ms} < duration {duration} + "
+                    f"{RAMP_ALLOWANCE_MS} ramp + {CLIMAX_TAIL_MS} held final beat"
+                )
+
         anchor = scene["anchor"]
         compiled.append({
             "scene_id": sid,
@@ -184,6 +248,8 @@ def main() -> int:
                 "hold_ms": hold_ms,
                 "zoom": journey["zoom"],
                 "pitch": journey["pitch"],
+                # Emitted only when authored — un-pushed rows stay byte-identical.
+                **({"camera": camera} if camera is not None else {}),
             },
             "audio": bindings,
         })

@@ -1,6 +1,6 @@
 {
-  "_warning": "HAND-AUTHORED, APP-OWNED. This file is journey/sound TREATMENT for signed story scenes — camera dwell, hold length, and audio-cue bindings. It never carries lore (labels and facts resolve from canon events at runtime) and never touches the signed packs: changing a mix or a dwell must not invalidate an atlas. Compiled by scripts/compile_scene_playback.py into data/generated/story_scene_playback.json; the app imports only the compiled artifact.",
-  "_semantics": "scene_id/pack_id join the signed pack artifacts. `event` is the canon events slug the journey caption reads (required when journey.enabled). journey.hold_ms is the authored dwell (must cover duration_ms + 1200ms camera ramp). audio[].at binds a cue to a visual event by {type, occurrence, offset_ms} — occurrence indexes same-type events sorted by t — or by literal {ms} for Foley/ambience with no visual event. The compiler resolves every binding to an absolute at_ms; the runtime never re-derives timing.",
+  "_warning": "HAND-AUTHORED, APP-OWNED. This file is journey/sound TREATMENT for signed story scenes \u2014 camera dwell, hold length, and audio-cue bindings. It never carries lore (labels and facts resolve from canon events at runtime) and never touches the signed packs: changing a mix or a dwell must not invalidate an atlas. Compiled by scripts/compile_scene_playback.py into data/generated/story_scene_playback.json; the app imports only the compiled artifact.",
+  "_semantics": "scene_id/pack_id join the signed pack artifacts. `event` is the canon events slug the journey caption reads (required when journey.enabled). journey.hold_ms is the authored dwell (must cover duration_ms + 1200ms camera ramp). audio[].at binds a cue to a visual event by {type, occurrence, offset_ms} \u2014 occurrence indexes same-type events sorted by t \u2014 or by literal {ms} for Foley/ambience with no visual event. The compiler resolves every binding to an absolute at_ms; the runtime never re-derives timing.",
   "version": 1,
   "scenes": [
     {
@@ -44,7 +44,7 @@
       "event": "alvida-falls",
       "journey": {
         "enabled": true,
-        "hold_ms": 8400,
+        "hold_ms": 10000,
         "zoom": 5.8,
         "pitch": 55
       },
@@ -60,6 +60,30 @@
           "gain": 0.9,
           "pan": 0.0,
           "playback_rate": 1
+        },
+        {
+          "id": "stretch",
+          "cue_id": "op-sfx-arm-stretch",
+          "at": {
+            "type": "rubber-stretch",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.7,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "punch",
+          "cue_id": "op-sfx-jet-pistol",
+          "at": {
+            "type": "impact",
+            "occurrence": 0,
+            "offset_ms": -40
+          },
+          "gain": 0.8,
+          "pan": 0.0,
+          "playback_rate": 1
         }
       ]
     },
@@ -69,7 +93,7 @@
       "event": "buggy-blasted-away",
       "journey": {
         "enabled": true,
-        "hold_ms": 9400,
+        "hold_ms": 11000,
         "zoom": 5.8,
         "pitch": 55
       },
@@ -83,6 +107,30 @@
           "gain": 0.9,
           "pan": 0.0,
           "playback_rate": 1
+        },
+        {
+          "id": "detach-stretch",
+          "cue_id": "op-sfx-arm-stretch",
+          "at": {
+            "type": "detach",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.6,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "bazooka-hit",
+          "cue_id": "heavy-fleet-impact-01",
+          "at": {
+            "type": "impact",
+            "occurrence": 0,
+            "offset_ms": -40
+          },
+          "gain": 0.7,
+          "pan": 0.0,
+          "playback_rate": 1
         }
       ]
     },
@@ -92,7 +140,7 @@
       "event": "kuro-of-a-hundred-plans-falls",
       "journey": {
         "enabled": true,
-        "hold_ms": 9400,
+        "hold_ms": 11000,
         "zoom": 5.8,
         "pitch": 55
       },
@@ -108,6 +156,42 @@
           "gain": 0.9,
           "pan": 0.0,
           "playback_rate": 1
+        },
+        {
+          "id": "stalk-whoosh",
+          "cue_id": "op-sfx-whoosh",
+          "at": {
+            "type": "speed-lines",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.6,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "kuro-slash",
+          "cue_id": "op-sfx-flying-slice",
+          "at": {
+            "type": "slash",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.7,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "finish-hit",
+          "cue_id": "op-sfx-jet-pistol",
+          "at": {
+            "type": "impact",
+            "occurrence": 0,
+            "offset_ms": -40
+          },
+          "gain": 0.8,
+          "pan": 0.0,
+          "playback_rate": 1
         }
       ]
     },
@@ -117,7 +201,7 @@
       "event": "zoro-vs-mihawk-baratie",
       "journey": {
         "enabled": true,
-        "hold_ms": 9400,
+        "hold_ms": 11000,
         "zoom": 5.8,
         "pitch": 55
       },
@@ -143,6 +227,42 @@
           "gain": 0.9,
           "pan": 0.0,
           "playback_rate": 1
+        },
+        {
+          "id": "blades-meet",
+          "cue_id": "op-sfx-sword-clash",
+          "at": {
+            "type": "slash",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.75,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "black-blade",
+          "cue_id": "op-sfx-flying-slice",
+          "at": {
+            "type": "black-blade-slash",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.85,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "duel-end",
+          "cue_id": "heavy-fleet-impact-01",
+          "at": {
+            "type": "impact",
+            "occurrence": 0,
+            "offset_ms": -40
+          },
+          "gain": 0.7,
+          "pan": 0.0,
+          "playback_rate": 1
         }
       ]
     },
@@ -152,18 +272,32 @@
       "event": "don-krieg-defeated",
       "journey": {
         "enabled": true,
-        "hold_ms": 9400,
+        "hold_ms": 11000,
         "zoom": 5.8,
         "pitch": 55
       },
       "audio": [
         {
-          "id": "gatling-call",
-          "cue_id": "op-luffy-gatling",
+          "id": "bomb",
+          "cue_id": "op-sfx-explosion",
           "at": {
-            "ms": 800
+            "type": "explosion",
+            "occurrence": 0,
+            "offset_ms": 0
           },
-          "gain": 0.9,
+          "gain": 0.8,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "armor-shatter",
+          "cue_id": "heavy-fleet-impact-01",
+          "at": {
+            "type": "armor-break",
+            "occurrence": 0,
+            "offset_ms": -40
+          },
+          "gain": 0.8,
           "pan": 0.0,
           "playback_rate": 1
         }
@@ -235,11 +369,48 @@
       "event": "arlong-park-falls",
       "journey": {
         "enabled": true,
-        "hold_ms": 9900,
+        "hold_ms": 11500,
         "zoom": 5.8,
         "pitch": 55
       },
-      "audio": []
+      "audio": [
+        {
+          "id": "fang-slash",
+          "cue_id": "op-sfx-flying-slice",
+          "at": {
+            "type": "slash",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.7,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "park-hit",
+          "cue_id": "heavy-fleet-impact-01",
+          "at": {
+            "type": "impact",
+            "occurrence": 0,
+            "offset_ms": -40
+          },
+          "gain": 0.85,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "park-falls",
+          "cue_id": "timber-collapse-01",
+          "at": {
+            "type": "structure-collapse",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.85,
+          "pan": 0.1,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "luffy-near-execution",
@@ -258,7 +429,7 @@
       "scene_id": "east-blue-grand-line-vows",
       "pack_id": "east-blue-saga-2d",
       "event": "the-loguetown-escape",
-      "label_override": "Into the Grand Line — the vows",
+      "label_override": "Into the Grand Line \u2014 the vows",
       "journey": {
         "enabled": true,
         "hold_ms": 9400,
@@ -273,7 +444,7 @@
       "event": "zoro-vs-the-bounty-hunters",
       "journey": {
         "enabled": true,
-        "hold_ms": 10400,
+        "hold_ms": 12000,
         "zoom": 5.8,
         "pitch": 55
       },
@@ -286,6 +457,42 @@
           },
           "gain": 0.9,
           "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "draw-spin",
+          "cue_id": "op-sfx-sword-spin",
+          "at": {
+            "type": "speed-lines",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.7,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "first-slice",
+          "cue_id": "op-sfx-flying-slice",
+          "at": {
+            "type": "slash",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.8,
+          "pan": -0.1,
+          "playback_rate": 1
+        },
+        {
+          "id": "second-slice",
+          "cue_id": "op-sfx-flying-slice",
+          "at": {
+            "type": "slash",
+            "occurrence": 1,
+            "offset_ms": 0
+          },
+          "gain": 0.7,
+          "pan": 0.1,
           "playback_rate": 1
         }
       ]
@@ -300,7 +507,32 @@
         "zoom": 5.8,
         "pitch": 55
       },
-      "audio": []
+      "audio": [
+        {
+          "id": "all-sunday-sting",
+          "cue_id": "op-sfx-enemy-sting",
+          "at": {
+            "type": "smoke",
+            "occurrence": 0,
+            "offset_ms": -200
+          },
+          "gain": 0.8,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "bloom-flourish",
+          "cue_id": "op-sfx-sword-spin",
+          "at": {
+            "type": "hana-hana-bloom",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.5,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "ace-blocks-smoker-at-nanohana",
@@ -312,7 +544,44 @@
         "zoom": 5.8,
         "pitch": 55
       },
-      "audio": []
+      "audio": [
+        {
+          "id": "fire-wall-rise",
+          "cue_id": "fire-charge-01",
+          "at": {
+            "type": "fire-wall",
+            "occurrence": 0,
+            "offset_ms": -300
+          },
+          "gain": 0.6,
+          "pan": -0.15,
+          "playback_rate": 1
+        },
+        {
+          "id": "clash-whoosh",
+          "cue_id": "fire-fist-whoosh-01",
+          "at": {
+            "type": "smoke-fire-clash",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.7,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "burst-crackle",
+          "cue_id": "fire-crackle-01",
+          "at": {
+            "type": "fire-burst",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.6,
+          "pan": 0.1,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "ace-fire-fist-destroys-billions-fleet",
@@ -320,7 +589,7 @@
       "event": "ace-fire-fist-nanohana",
       "journey": {
         "enabled": true,
-        "hold_ms": 10400,
+        "hold_ms": 12000,
         "zoom": 5.8,
         "pitch": 55
       },
@@ -405,7 +674,7 @@
       "event": "luffy-vs-crocodile-round-one",
       "journey": {
         "enabled": true,
-        "hold_ms": 11600,
+        "hold_ms": 13000,
         "zoom": 5.8,
         "pitch": 55
       },
@@ -419,6 +688,42 @@
           "gain": 0.95,
           "pan": 0.0,
           "playback_rate": 1
+        },
+        {
+          "id": "stretch-open",
+          "cue_id": "op-sfx-arm-stretch",
+          "at": {
+            "type": "rubber-stretch",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.7,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "sand-blade-slice",
+          "cue_id": "op-sfx-flying-slice",
+          "at": {
+            "type": "sand-blade",
+            "occurrence": 0,
+            "offset_ms": -100
+          },
+          "gain": 0.7,
+          "pan": 0.15,
+          "playback_rate": 1
+        },
+        {
+          "id": "takedown",
+          "cue_id": "heavy-fleet-impact-01",
+          "at": {
+            "type": "impact",
+            "occurrence": 0,
+            "offset_ms": -40
+          },
+          "gain": 0.85,
+          "pan": 0.0,
+          "playback_rate": 1
         }
       ]
     },
@@ -428,7 +733,7 @@
       "event": "sanji-vs-bon-clay",
       "journey": {
         "enabled": true,
-        "hold_ms": 10400,
+        "hold_ms": 12000,
         "zoom": 5.8,
         "pitch": 55
       },
@@ -442,6 +747,42 @@
             "offset_ms": -1300
           },
           "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "first-hit",
+          "cue_id": "op-sfx-jet-pistol",
+          "at": {
+            "type": "impact",
+            "occurrence": 0,
+            "offset_ms": -40
+          },
+          "gain": 0.7,
+          "pan": -0.1,
+          "playback_rate": 1
+        },
+        {
+          "id": "ballet-whirl",
+          "cue_id": "op-sfx-sword-spin",
+          "at": {
+            "type": "ballet-spin",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.55,
+          "pan": 0.1,
+          "playback_rate": 1
+        },
+        {
+          "id": "kick-flurry",
+          "cue_id": "op-sfx-consecutive-kicks",
+          "at": {
+            "type": "kick-trail",
+            "occurrence": 1,
+            "offset_ms": 0
+          },
+          "gain": 0.8,
           "pan": 0.0,
           "playback_rate": 1
         }
@@ -481,6 +822,42 @@
           "gain": 0.9,
           "pan": 0.0,
           "playback_rate": 1
+        },
+        {
+          "id": "steel-meet",
+          "cue_id": "op-sfx-sword-clash",
+          "at": {
+            "type": "steel-sparks",
+            "occurrence": 0,
+            "offset_ms": -100
+          },
+          "gain": 0.8,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "lion-song",
+          "cue_id": "op-sfx-flying-slice",
+          "at": {
+            "type": "slash",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.85,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "pillar-fall",
+          "cue_id": "timber-collapse-01",
+          "at": {
+            "type": "structure-collapse",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.7,
+          "pan": 0.1,
+          "playback_rate": 1
         }
       ]
     },
@@ -490,11 +867,60 @@
       "event": "nami-vs-miss-doublefinger",
       "journey": {
         "enabled": true,
-        "hold_ms": 12000,
+        "hold_ms": 13000,
         "zoom": 5.8,
         "pitch": 55
       },
-      "audio": []
+      "audio": [
+        {
+          "id": "tact-twirl",
+          "cue_id": "op-sfx-clima-tact",
+          "at": {
+            "type": "weather-heat",
+            "occurrence": 0,
+            "offset_ms": -200
+          },
+          "gain": 0.7,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "thunderbolt",
+          "cue_id": "op-sfx-explosion",
+          "at": {
+            "type": "lightning",
+            "occurrence": 0,
+            "offset_ms": -80
+          },
+          "gain": 0.8,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "tornado-rush",
+          "cue_id": "op-sfx-consecutive-attacks",
+          "at": {
+            "type": "tornado",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.7,
+          "pan": 0.1,
+          "playback_rate": 1
+        },
+        {
+          "id": "finisher-hit",
+          "cue_id": "heavy-fleet-impact-01",
+          "at": {
+            "type": "impact",
+            "occurrence": 0,
+            "offset_ms": -40
+          },
+          "gain": 0.8,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "arabasta-luffy-vs-crocodile-round-two",
@@ -502,11 +928,72 @@
       "event": "luffy-vs-crocodile-round-two",
       "journey": {
         "enabled": true,
-        "hold_ms": 12400,
+        "hold_ms": 14000,
         "zoom": 5.8,
         "pitch": 55
       },
-      "audio": []
+      "audio": [
+        {
+          "id": "splash-open",
+          "cue_id": "debris-splash-01",
+          "at": {
+            "type": "water-splash",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.7,
+          "pan": -0.1,
+          "playback_rate": 1
+        },
+        {
+          "id": "wet-windup",
+          "cue_id": "op-sfx-arm-stretch",
+          "at": {
+            "type": "wet-sand-impact",
+            "occurrence": 0,
+            "offset_ms": -600
+          },
+          "gain": 0.7,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "wet-hit",
+          "cue_id": "heavy-fleet-impact-01",
+          "at": {
+            "type": "wet-sand-impact",
+            "occurrence": 0,
+            "offset_ms": -40
+          },
+          "gain": 0.85,
+          "pan": 0.1,
+          "playback_rate": 1
+        },
+        {
+          "id": "drain-turn",
+          "cue_id": "op-sfx-cliffhanger-sting",
+          "at": {
+            "type": "moisture-drain",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.75,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "revival-drop",
+          "cue_id": "debris-splash-01",
+          "at": {
+            "type": "water-drop",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.5,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
     },
     {
       "scene_id": "arabasta-luffy-vs-crocodile-final",
@@ -514,9 +1001,15 @@
       "event": "luffy-vs-crocodile-final",
       "journey": {
         "enabled": true,
-        "hold_ms": 12900,
+        "hold_ms": 14900,
         "zoom": 5.8,
-        "pitch": 55
+        "pitch": 55,
+        "camera": {
+          "zoom_to": 6.15,
+          "pitch_to": 57,
+          "at_ms": 7000,
+          "duration_ms": 5000
+        }
       },
       "audio": [
         {
@@ -528,6 +1021,407 @@
             "offset_ms": -1900
           },
           "gain": 0.95,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "stretch-open",
+          "cue_id": "op-sfx-arm-stretch",
+          "at": {
+            "type": "rubber-stretch",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.7,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "blood-counter",
+          "cue_id": "heavy-fleet-impact-01",
+          "at": {
+            "type": "blood-counter-impact",
+            "occurrence": 0,
+            "offset_ms": -40
+          },
+          "gain": 0.8,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "blood-spit",
+          "cue_id": "op-sfx-spit-blood",
+          "at": {
+            "type": "blood-counter-impact",
+            "occurrence": 0,
+            "offset_ms": 150
+          },
+          "gain": 0.55,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "storm-barrage",
+          "cue_id": "op-sfx-consecutive-attacks",
+          "at": {
+            "type": "gum-gum-storm",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.85,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "tomb-collapse",
+          "cue_id": "timber-collapse-01",
+          "at": {
+            "type": "structure-collapse",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.8,
+          "pan": 0.1,
+          "playback_rate": 1
+        }
+      ]
+    },
+    {
+      "scene_id": "skypiea-luffy-vs-enel",
+      "pack_id": "skypiea-saga-2d-v1",
+      "event": "luffy-vs-enel",
+      "journey": {
+        "enabled": true,
+        "hold_ms": 14600,
+        "zoom": 5.8,
+        "pitch": 55,
+        "camera": {
+          "zoom_to": 6.15,
+          "pitch_to": 57,
+          "at_ms": 6000,
+          "duration_ms": 5000
+        }
+      },
+      "audio": [
+        {
+          "id": "enel-bolt",
+          "cue_id": "op-sfx-explosion",
+          "at": {
+            "type": "enel-lightning",
+            "occurrence": 0,
+            "offset_ms": -100
+          },
+          "gain": 0.8,
+          "pan": 0.15,
+          "playback_rate": 1
+        },
+        {
+          "id": "gomu-call",
+          "cue_id": "op-gomu-gomu",
+          "at": {
+            "type": "rubber-stretch",
+            "occurrence": 0,
+            "offset_ms": -1600
+          },
+          "gain": 0.9,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "stretch",
+          "cue_id": "op-sfx-arm-stretch",
+          "at": {
+            "type": "rubber-stretch",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.7,
+          "pan": -0.1,
+          "playback_rate": 1
+        },
+        {
+          "id": "rifle-whoosh",
+          "cue_id": "fire-fist-whoosh-01",
+          "at": {
+            "type": "golden-rifle",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.6,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "golden-bell",
+          "cue_id": "op-sfx-golden-bell",
+          "at": {
+            "type": "golden-bell-impact",
+            "occurrence": 0,
+            "offset_ms": -100
+          },
+          "gain": 0.95,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
+    },
+    {
+      "scene_id": "enies-lobby-luffy-vs-blueno",
+      "pack_id": "enies-lobby-saga-2d-v1",
+      "event": "luffy-vs-blueno",
+      "journey": {
+        "enabled": true,
+        "hold_ms": 13200,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": [
+        {
+          "id": "gear-second-call",
+          "cue_id": "op-gear-second",
+          "at": {
+            "type": "gear-second-steam",
+            "occurrence": 0,
+            "offset_ms": -300
+          },
+          "gain": 0.95,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "steam-hiss",
+          "cue_id": "op-sfx-gear-second",
+          "at": {
+            "type": "gear-second-steam",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.55,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "jet-hit",
+          "cue_id": "op-sfx-jet-pistol",
+          "at": {
+            "type": "jet-strike",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.75,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "bazooka",
+          "cue_id": "heavy-fleet-impact-01",
+          "at": {
+            "type": "jet-bazooka-impact",
+            "occurrence": 0,
+            "offset_ms": -40
+          },
+          "gain": 0.85,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "defeat",
+          "cue_id": "heavy-fleet-impact-01",
+          "at": {
+            "type": "defeat-impact",
+            "occurrence": 0,
+            "offset_ms": -40
+          },
+          "gain": 0.8,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
+    },
+    {
+      "scene_id": "enies-lobby-sanji-vs-jabra",
+      "pack_id": "enies-lobby-saga-2d-v1",
+      "event": "sanji-vs-jabra",
+      "journey": {
+        "enabled": true,
+        "hold_ms": 16400,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": [
+        {
+          "id": "diable-jambe-call",
+          "cue_id": "op-sanji-diable",
+          "at": {
+            "type": "diable-jambe-ignite",
+            "occurrence": 0,
+            "offset_ms": -800
+          },
+          "gain": 0.95,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "wolf-rush",
+          "cue_id": "op-sfx-consecutive-kicks",
+          "at": {
+            "type": "wolf-fang-rush",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.7,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "ignite",
+          "cue_id": "op-sfx-diable-jambe",
+          "at": {
+            "type": "diable-jambe-ignite",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.7,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "flambage",
+          "cue_id": "heavy-fleet-impact-01",
+          "at": {
+            "type": "flambage-impact",
+            "occurrence": 0,
+            "offset_ms": -40
+          },
+          "gain": 0.85,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
+    },
+    {
+      "scene_id": "enies-lobby-zoro-vs-kaku",
+      "pack_id": "enies-lobby-saga-2d-v1",
+      "event": "zoro-vs-kaku",
+      "journey": {
+        "enabled": true,
+        "hold_ms": 13800,
+        "zoom": 5.8,
+        "pitch": 55
+      },
+      "audio": [
+        {
+          "id": "asura-santoryu-call",
+          "cue_id": "op-zoro-santoryu",
+          "at": {
+            "type": "asura-aura",
+            "occurrence": 0,
+            "offset_ms": -600
+          },
+          "gain": 0.92,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "clash",
+          "cue_id": "op-sfx-sword-clash",
+          "at": {
+            "type": "sword-clash",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.8,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "tempest",
+          "cue_id": "op-sfx-flying-slice",
+          "at": {
+            "type": "tempest-kick",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.7,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "nine-sword",
+          "cue_id": "op-sfx-consecutive-attacks",
+          "at": {
+            "type": "nine-sword-impact",
+            "occurrence": 0,
+            "offset_ms": -200
+          },
+          "gain": 0.85,
+          "pan": 0.0,
+          "playback_rate": 1
+        }
+      ]
+    },
+    {
+      "scene_id": "enies-lobby-luffy-vs-rob-lucci",
+      "pack_id": "enies-lobby-saga-2d-v1",
+      "event": "luffy-vs-rob-lucci",
+      "journey": {
+        "enabled": true,
+        "hold_ms": 16200,
+        "zoom": 5.8,
+        "pitch": 55,
+        "camera": {
+          "zoom_to": 6.15,
+          "pitch_to": 57,
+          "at_ms": 6500,
+          "duration_ms": 5500
+        }
+      },
+      "audio": [
+        {
+          "id": "jet-gatling-call",
+          "cue_id": "op-luffy-gatling",
+          "at": {
+            "type": "jet-gatling",
+            "occurrence": 0,
+            "offset_ms": -1200
+          },
+          "gain": 0.95,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "steam",
+          "cue_id": "op-sfx-gear-second",
+          "at": {
+            "type": "gear-second-steam",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.5,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "gatling-sfx",
+          "cue_id": "op-sfx-jet-gatling",
+          "at": {
+            "type": "jet-gatling",
+            "occurrence": 0,
+            "offset_ms": 0
+          },
+          "gain": 0.8,
+          "pan": 0.0,
+          "playback_rate": 1
+        },
+        {
+          "id": "final-blow",
+          "cue_id": "heavy-fleet-impact-01",
+          "at": {
+            "type": "defeat-impact",
+            "occurrence": 0,
+            "offset_ms": -40
+          },
+          "gain": 0.9,
           "pan": 0.0,
           "playback_rate": 1
         }

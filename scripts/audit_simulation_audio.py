@@ -193,8 +193,14 @@ def main() -> int:
             page.wait_for_timeout(6000)
             duel_fired = [f for f in fired(page) if f["sceneId"] == "baratie-zoro-vs-mihawk"]
             duel_ids = sorted(f["bindingId"] for f in duel_fired)
+            # SUBSET, not the whole set: the phase-10 scoring pass added duel
+            # SFX beside the voices, and each future binding must not re-break
+            # this pin. Each fired binding still fires exactly once.
             check("ch51: both Zoro voice lines fire once",
-                  duel_ids == ["onigiri-call", "santoryu-announce"], ", ".join(duel_ids))
+                  duel_ids.count("onigiri-call") == 1
+                  and duel_ids.count("santoryu-announce") == 1
+                  and len(duel_ids) == len(set(duel_ids)),
+                  ", ".join(duel_ids))
             duel_timing = all(abs(f["firedAtT"] - f["atMs"]) < 250 for f in duel_fired)
             check("ch51: voice lines land on their compiled times", duel_timing,
                   "; ".join(f"{f['bindingId']}@{f['firedAtT']:.0f}(want {f['atMs']})" for f in duel_fired))
