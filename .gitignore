@@ -64,3 +64,10 @@ data/review/
 
 # Agent worktrees and session scratch — not part of the app.
 .claude/
+
+# Codex scratch build dirs — parallel-session Next builds, never the app's.
+.next-codex-*/
+
+# Soundboard ingest staging — full downloads + every candidate cut live here;
+# only human-accepted clips are promoted into assets/audio/op-library/ proper.
+assets/audio/op-library/_staging/
