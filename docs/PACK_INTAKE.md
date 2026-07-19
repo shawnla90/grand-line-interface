@@ -77,3 +77,32 @@ Add the pack id (or its alias) to `NEXT_PUBLIC_STORY_SIMULATION_PACKS` —
 `.env.development` for local, Railway env for production. Production also
 requires the rights wall: `npm run audit:sim-audio -- --release` must pass
 (every enabled cue `cleared`, receipts on disk) before the flag flips.
+
+## Chapter breakdowns (`/breakdown/[chapter]`)
+
+A breakdown is a narrated video cut about one chapter, published on the channel
+and mirrored here so the atlas is the credibility engine rather than a bio link.
+
+Contract: `canon/breakdowns.json`, validated by `lib/breakdowns.ts`, loaded by
+`lib/breakdowns-load.ts`, guarded by `scripts/check_breakdowns.py`. Media lives
+under `public/art/breakdowns/<chapter>/`.
+
+Two things that are easy to get wrong:
+
+1. **The gate does NOT use `readChapter`'s clamped chapter.** `clampChapter` caps
+   at the world's `chapterMax` (currently 1185, derived from the furthest
+   arc/island/join in `data/canon.json`). A breakdown of ch. 1188 run through
+   that clamp compares `1185 >= 1188` and can never unlock — the page is walled
+   forever. Breakdowns cover chapters beyond the atlas horizon by design, so they
+   gate on `readerChapterForBreakdown()`, which reads `?ch` unclamped and fails
+   closed (missing/invalid → 0 → locked).
+
+2. **`locked_poster_path` must be a separate, genuinely blurred file.** The
+   locked branch is decided on the server and renders only the chapter number and
+   that file. Never hide the real poster with CSS — the sharp frame would ship in
+   the payload and the wall becomes cosmetic. `check_breakdowns.py` asserts the
+   two files are not byte-identical.
+
+Unlike `/event/[slug]`, this route does not collapse locked and nonexistent into
+one byte-identical page: the cut is already public on TikTok/YouTube, so its
+existence is not the secret — its content is.
