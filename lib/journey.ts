@@ -57,6 +57,10 @@ export type JourneyMoment = {
   /** Per-moment camera overrides (scene moments; from the playback manifest). */
   zoom?: number;
   pitch?: number;
+  /** Optional one-shot push-in during the dwell: ease zoom/pitch toward the
+   * targets starting at atMs on the dwell clock, then hold there. The climax
+   * framing — a static locked-off shot for every scene was the rough cut. */
+  camera?: { zoomTo?: number; pitchTo?: number; atMs: number; durationMs: number };
 };
 
 /** A slow chapter sweep with a pitched camera — the vertical rides. */
@@ -159,6 +163,12 @@ export const DEEP_VOYAGE_SLUGS = new Set<string>([
  * the sweep starts just before so the eruption/dive is seen, and hands back
  * to a travel leg (or dwell) at the far side. */
 export const VOYAGE_TRANSITS: JourneyTransit[] = [
+  // The first living-world proof: approach on the globe, then spend a full
+  // authored sweep inside the local Reverse Mountain theatre. Chapter 102 is a
+  // separate model moment so the unidentified-whale encounter receives its own
+  // deterministic entry clock instead of being a blink at the end of the ride.
+  { fromCh: 100, toCh: 101, label: "Approaching Reverse Mountain", pitch: 42, zoom: 4.7, weight: 55 },
+  { fromCh: 101, toCh: 102, label: "Riding the current over Reverse Mountain", pitch: 58, zoom: 6.2, weight: 240 },
   // Skypiea cannot be one linear 72-chapter sweep: the actual climb is only
   // 235→237, so the old schedule spent 2/72 of a nine-second shot on the
   // ascent — roughly a quarter-second. These authored phases give the boat a
@@ -170,7 +180,11 @@ export const VOYAGE_TRANSITS: JourneyTransit[] = [
   // beat; it scales with the show.
   { fromCh: 233, toCh: 235, label: "Approaching the Knock-Up Stream", pitch: 48, zoom: 4.8, weight: 70 },
   { fromCh: 235, toCh: 237, label: "Riding the Knock-Up Stream", pitch: 60, zoom: 5.4, weight: 340 },
-  { fromCh: 237, toCh: 300, label: "Skypiea — above the White Sea", pitch: 48, zoom: 5.6, weight: 120 },
+  // The aloft sweep is SPLIT around ch279 on purpose: a transit consumes
+  // every beat inside its range, and the Enel fight is a ch279 scene moment —
+  // one unbroken 237→300 sweep silently swallowed the god of Skypiea.
+  { fromCh: 237, toCh: 278, label: "Skypiea — above the White Sea", pitch: 48, zoom: 5.6, weight: 70 },
+  { fromCh: 279, toCh: 300, label: "Skypiea — above the White Sea", pitch: 48, zoom: 5.6, weight: 50 },
   { fromCh: 300, toCh: 304, label: "Descending from the White Sea", pitch: 55, zoom: 5.2, weight: 75 },
   { fromCh: 304, toCh: 305, label: "Splash-down from Skypiea", pitch: 25, zoom: 4.4, weight: 25 },
   { fromCh: 601, toCh: 607, label: "Diving beneath the Red Line", pitch: 55, zoom: 5.4, weight: 110 },
@@ -341,9 +355,21 @@ export function buildJourney(
       }
     }
     if (!best || bestP <= 0) return { zoom: o.outZoom, pitch: 0, orbitDegPerSec: 0 };
+    // The authored push-in rides the dwell clock: the window's wall time is
+    // sized from holdMs (Atlas.momentSpans sizing), so window fraction ≈ ms.
+    let targetZoom = best.zoom;
+    let targetPitch = best.pitch;
+    const push = best.moment?.camera;
+    const holdMs = best.moment?.holdMs;
+    if (push && holdMs && t >= best.t0) {
+      const u = (Math.min(best.t1, t) - best.t0) / Math.max(1e-9, best.t1 - best.t0);
+      const s = smooth((u - push.atMs / holdMs) / Math.max(1e-9, push.durationMs / holdMs));
+      targetZoom += ((push.zoomTo ?? targetZoom) - targetZoom) * s;
+      targetPitch += ((push.pitchTo ?? targetPitch) - targetPitch) * s;
+    }
     return {
-      zoom: o.outZoom + (best.zoom - o.outZoom) * bestP,
-      pitch: best.pitch * bestP,
+      zoom: o.outZoom + (targetZoom - o.outZoom) * bestP,
+      pitch: targetPitch * bestP,
       // Orbit only once settled — a drifting bearing during the zoom ramp
       // reads as a wobble, not a reveal.
       orbitDegPerSec: bestP >= 0.98 ? best.orbit : 0,

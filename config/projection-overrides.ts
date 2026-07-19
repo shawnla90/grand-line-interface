@@ -65,6 +65,7 @@ export const GLOBE_PROVEN: ReadonlySet<string> = new Set<string>([
   "fish-man-island",
   "loguetown-roger-execution",
   "mary-geoise-red-line",
+  "reverse-mountain-twin-cape-voyage",
   "sabaody-grove-network",
   "skypiea-knock-up-stream",
   "totto-land",

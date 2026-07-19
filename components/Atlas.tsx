@@ -35,8 +35,8 @@ import { BRAND } from "@/config/brand";
 import { focusKey, type Focus, type PresenceLens } from "@/lib/lenses";
 import type { BuildLog } from "@/lib/buildlog";
 import type { Art } from "@/lib/art";
-import { buildJourney, type CamTarget } from "@/lib/journey";
-import { buildJourneyStops, STORY_JOURNEY_ON } from "@/config/journey-stops";
+import { buildJourney, type CamTarget, type JourneyMoment } from "@/lib/journey";
+import { buildJourneyStops, SHORT_CUT_SIM_IDS, STORY_JOURNEY_ON } from "@/config/journey-stops";
 import {
   ACTIVE_EPIC_AUDIO_CUES,
   EPIC_CROSSFADE_MS,
@@ -69,6 +69,15 @@ const BASE_CPS = 2;
  * cut); with the story layers on the run carries ~10 story/model dwells and
  * two vertical rides, so it stretches to 150s to keep the sea legs pacing. */
 const JOURNEY_MS = STORY_JOURNEY_ON ? 150_000 : 90_000;
+// The ?cut=short floor: the five-hero roster's weight math lands ~90s on its
+// own; the floor only catches a future roster edit that would undershoot.
+const SHORT_JOURNEY_MS = 88_000;
+// Captured ONCE at module load (the ?record=1 lesson): the app rewrites the
+// query string as the reader navigates, so reading location.search at click
+// time would lose the flag.
+const SHORT_CUT_ARMED =
+  typeof window !== "undefined" &&
+  new URLSearchParams(window.location.search).get("cut") === "short";
 
 /**
  * One float position (`swept`) eased or sailed toward/through chapters.
@@ -179,11 +188,25 @@ function useChapterEngine(world: World, initial: number) {
     let dwellUntil: number | null = null;
     let recoverUntil: number | null = null;
     let dwelling = false;
+    // The authored push-in (scene stops only): while holding, the chase's
+    // target eases from the base framing toward the climax framing — the
+    // damped camera does the rest. Null for stops without one.
+    let dwellPush: {
+      start: number;
+      base: { zoom: number; pitch: number };
+      camera: NonNullable<JourneyMoment["camera"]>;
+      focus: [number, number] | null;
+    } | null = null;
+    const smoothstep = (x: number) => {
+      const c = Math.max(0, Math.min(1, x));
+      return c * c * (3 - 2 * c);
+    };
 
     const endDwell = () => {
       dwelling = false;
       dwellUntil = null;
       recoverUntil = null;
+      dwellPush = null;
       journeyCam.current = null;
       setJourney(false);
       setJourneyLabel("");
@@ -198,6 +221,16 @@ function useChapterEngine(world: World, initial: number) {
         // Holding at a story stop: the chapter stands, the chase (running in
         // journey mode) frames the stage, the scene plays itself.
         if (now < dwellUntil) {
+          if (dwellPush) {
+            const { start, base, camera, focus } = dwellPush;
+            const s = smoothstep((now - start - camera.atMs) / camera.durationMs);
+            journeyCam.current = {
+              zoom: base.zoom + ((camera.zoomTo ?? base.zoom) - base.zoom) * s,
+              pitch: base.pitch + ((camera.pitchTo ?? base.pitch) - base.pitch) * s,
+              orbitDegPerSec: 0,
+              focus,
+            };
+          }
           raf.current = requestAnimationFrame(step);
           return;
         }
@@ -223,12 +256,23 @@ function useChapterEngine(world: World, initial: number) {
         // Scene stops dwell for their AUTHORED hold (playback manifest) — the
         // old flat 8000 cut the 8500/9000ms scenes off mid-play.
         dwellUntil = now + (stop.kind === "model" ? 5500 : (stop.holdMs ?? 8000));
+        const baseZoom = stop.kind === "model" ? 6.4 : (stop.zoom ?? 5.8);
+        const basePitch = stop.kind === "model" ? 48 : (stop.pitch ?? 55);
         journeyCam.current = {
-          zoom: stop.kind === "model" ? 6.4 : (stop.zoom ?? 5.8),
-          pitch: stop.kind === "model" ? 48 : (stop.pitch ?? 55),
+          zoom: baseZoom,
+          pitch: basePitch,
           orbitDegPerSec: stop.kind === "model" ? 5 : 0,
           focus: stop.focus ?? null,
         };
+        dwellPush =
+          stop.kind !== "model" && stop.camera
+            ? {
+                start: now,
+                base: { zoom: baseZoom, pitch: basePitch },
+                camera: stop.camera,
+                focus: stop.focus ?? null,
+              }
+            : null;
         // journey=true borrows the whole cinematic apparatus for the dwell:
         // helm lock, hero trail, the damped chase. The sail keeps ownership
         // of playingRef, so resuming is just this rAF continuing.
@@ -314,22 +358,40 @@ function useChapterEngine(world: World, initial: number) {
     // the sail loop does — we own `pos.current`/`swept` for the duration.
     playingRef.current = true;
 
-    const plan = buildJourney(
-      world.voyage.waypoints.map((w) => ({ chapter: w.chapter, slug: w.slug, label: w.label })),
-      world.chapterMax,
-      undefined,
-      {},
-      // Scene moments + model spotlights ride their own flags; both off =
-      // today's 90s run, byte for byte.
-      buildJourneyStops(world),
-    );
+    // ?cut=short: the phone-length recording cut — the same voyage, the five
+    // hero fights only, no 3D dwells, no transits. Scenes still play their
+    // full authored cut; the ♫ epic keeps its own full-length timeline.
+    const shortCut = SHORT_CUT_ARMED;
+    const allStops = buildJourneyStops(world);
+    const plan = shortCut
+      ? buildJourney(
+          world.voyage.waypoints.map((w) => ({ chapter: w.chapter, slug: w.slug, label: w.label })),
+          world.chapterMax,
+          new Set(),
+          // Tighter ocean crossings and heavier stops than the feature cut:
+          // five fights carry this ride, the sea between them is connective
+          // tissue. momentWeight 380 lands the whole run at ~89s (the run
+          // length is 8000 x totalWeight / momentWeight — see buildJourney).
+          { travelCapCh: 60, momentWeight: 380 },
+          allStops.filter((m) => m.kind === "scene" && m.simId != null && SHORT_CUT_SIM_IDS.has(m.simId)),
+          [],
+        )
+      : buildJourney(
+          world.voyage.waypoints.map((w) => ({ chapter: w.chapter, slug: w.slug, label: w.label })),
+          world.chapterMax,
+          undefined,
+          {},
+          // Scene moments + model spotlights ride their own flags; both off =
+          // today's 90s run, byte for byte.
+          allStops,
+        );
 
     // Weights are relative, so an authored holdMs only becomes a wall-clock
     // guarantee once the run is long enough: each moment window must span at
     // least its holdMs. Today's content still fits inside the 150s floor; a
     // future long scene stretches the run instead of silently cutting itself.
     const journeyMs = Math.max(
-      JOURNEY_MS,
+      shortCut ? SHORT_JOURNEY_MS : JOURNEY_MS,
       ...plan.momentSpans().map((s) => (s.moment.holdMs ?? 0) / Math.max(s.t1 - s.t0, 1e-6)),
     );
     if (process.env.NODE_ENV !== "production") {

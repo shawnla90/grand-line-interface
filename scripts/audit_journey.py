@@ -86,8 +86,13 @@ def main() -> int:
             t0 = time.time()
             # The run stretches past the 150s floor when the enabled moment
             # holds demand it (Atlas sizes journeyMs from momentSpans); sample
-            # until the button rests, with a generous ceiling.
-            while time.time() - t0 < 420:
+            # until the button rests. The ceiling SCALES WITH THE BUILT RUN
+            # (dev exposes __journeySpans.journeyMs) — a fixed cap failed the
+            # moment the phase-10 climax holds pushed the ride past it.
+            page.wait_for_function("() => window.__journeySpans", timeout=15000)
+            journey_s = page.evaluate("() => window.__journeySpans.journeyMs / 1000")
+            ceiling = journey_s + 60
+            while time.time() - t0 < ceiling:
                 s = page.evaluate(
                     """() => ({
                       z: +window.__map.getZoom().toFixed(2),

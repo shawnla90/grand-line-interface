@@ -256,12 +256,40 @@ def main() -> int:
             refused.append({"id": mid, "why": "fallback bytes do not match the manifest's sha256"})
             continue
 
+        integ = m.get("integration") or {}
+
+        # Optional reusable shader/particle control masks. They are signed with
+        # the model, but copied beside it rather than embedded so both the web
+        # runtime and an Unreal import adapter can address the same RGBA fields.
+        fx_masks = []
+        mask_error = None
+        for mask in integ.get("fx_masks") or []:
+            rel = mask.get("path")
+            want_mask = mask.get("sha256")
+            mask_src = ASSETS / rel if rel else None
+            if not rel or not want_mask or mask_src is None or not mask_src.exists():
+                mask_error = f"FX mask is missing path/hash/bytes: {mask.get('id')!r}"
+                break
+            if sha256(mask_src) != want_mask:
+                mask_error = f"FX mask bytes do not match sha256: {mask.get('id')!r}"
+                break
+            mask_dst = OUT_DIR / mid / "masks" / mask_src.name
+            mask_dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(mask_src, mask_dst)
+            fx_masks.append({
+                **mask,
+                "url": f"/art/runtime/{mid}/masks/{mask_src.name}",
+                "bytes": mask_dst.stat().st_size,
+            })
+        if mask_error:
+            refused.append({"id": mid, "why": mask_error})
+            continue
+
         png_dst = OUT_DIR / f"{mid}.png"
         glb_dst = OUT_DIR / f"{mid}.glb"
         shutil.copyfile(src, png_dst)
         shutil.copyfile(glb, glb_dst)
 
-        integ = m.get("integration") or {}
         pol = m.get("runtime_policy") or {}
         beats = integ.get("chapter_beats") or {}
         # A beat set the asset track itself flags as unverified is NOT a gate.
@@ -296,6 +324,9 @@ def main() -> int:
             "runtime_module": integ.get("runtime_module"),
             "chapter_beats": beats,
             "component_gates": integ.get("component_gates") or [],
+            "label_gates": integ.get("label_gates") or [],
+            "animation_plan": integ.get("animation_plan") or None,
+            "fx_masks": fx_masks,
             "tagged_component_ids": tagged_component_ids(j),
             "layout_status": integ.get("layout_status"),
             "projection_support": integ.get("projection_support"),

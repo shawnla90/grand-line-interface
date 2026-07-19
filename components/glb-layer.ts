@@ -119,6 +119,14 @@ export type GlbLayerOptions = {
    * hiding.
    */
   nodeVisible?: (extras: Record<string, unknown>, nodeName: string) => boolean;
+  /** Absolute chapter-entry sampling supplied by the app. The renderer never
+   * advances story state; it only evaluates named clips at requested progress. */
+  animationState?: () => {
+    clips: { name: string; progress: number; loop: boolean }[];
+    animate: boolean;
+    chapter: number;
+    elapsedMs: number;
+  } | null;
 };
 
 type Gated = { obj: THREE.Object3D; extras: Record<string, unknown>; name: string };
@@ -132,6 +140,9 @@ type Loaded = {
   materials: THREE.Material[];
   /** Every node carrying extras, collected once so re-gating is a short loop. */
   gated: Gated[];
+  mixer: THREE.AnimationMixer | null;
+  actions: Map<string, THREE.AnimationAction>;
+  activeActions: Set<string>;
 };
 
 export type GlbLayer = CustomLayerInterface & {
@@ -154,6 +165,39 @@ export function createGlbLayer(opts: GlbLayerOptions): GlbLayer {
   function applyGates(): void {
     if (!g || !opts.nodeVisible) return;
     for (const n of g.gated) n.obj.visible = opts.nodeVisible(n.extras, n.name);
+  }
+
+  function applyAnimation(): boolean {
+    if (!g || !g.mixer || !opts.animationState) return false;
+    const sample = opts.animationState();
+    const wanted = new Set(sample?.clips.map((item) => item.name) ?? []);
+    for (const name of g.activeActions) {
+      if (!wanted.has(name)) g.actions.get(name)?.stop();
+    }
+    for (const item of sample?.clips ?? []) {
+      const action = g.actions.get(item.name);
+      if (!action) continue;
+      if (!g.activeActions.has(item.name)) action.reset().play();
+      action.enabled = true;
+      action.paused = true;
+      action.clampWhenFinished = !item.loop;
+      action.setLoop(item.loop ? g.three.LoopRepeat : g.three.LoopOnce, item.loop ? Infinity : 1);
+      action.time = Math.max(0, Math.min(action.getClip().duration, item.progress * action.getClip().duration));
+    }
+    g.activeActions = wanted;
+    g.mixer.update(0);
+    if (process.env.NODE_ENV !== "production" && sample) {
+      const w = window as unknown as {
+        __glbAnimationState?: Record<string, { chapter: number; elapsedMs: number; clips: string[]; animate: boolean }>;
+      };
+      (w.__glbAnimationState ??= {})[opts.id] = {
+        chapter: sample.chapter,
+        elapsedMs: sample.elapsedMs,
+        clips: sample.clips.map((item) => item.name),
+        animate: sample.animate,
+      };
+    }
+    return sample?.animate ?? false;
   }
 
   return {
@@ -243,13 +287,22 @@ export function createGlbLayer(opts: GlbLayerOptions): GlbLayer {
           }
         });
 
-        g = { three, renderer, scene, camera, group, materials, gated };
+        const mixer = gltf.animations.length ? new three.AnimationMixer(model) : null;
+        const actions = new Map<string, THREE.AnimationAction>();
+        if (mixer) {
+          for (const animation of gltf.animations) actions.set(animation.name, mixer.clipAction(animation));
+        }
+        g = { three, renderer, scene, camera, group, materials, gated, mixer, actions, activeActions: new Set() };
         // Dev-only, beside window.__map: lets an audit reach into the loaded scene
         // to inspect or toggle nodes by name (e.g. testing whether hiding a
         // backdrop plate reads better) without shipping any of it.
         if (process.env.NODE_ENV !== "production") {
-          const w = window as unknown as { __glbScenes?: Record<string, THREE.Object3D> };
+          const w = window as unknown as {
+            __glbScenes?: Record<string, THREE.Object3D>;
+            __glbClipNames?: Record<string, string[]>;
+          };
           (w.__glbScenes ??= {})[opts.id] = model;
+          (w.__glbClipNames ??= {})[opts.id] = gltf.animations.map((animation) => animation.name);
         }
         // Gate BEFORE the first frame. `loadAsync` resolving means the geometry
         // is ready to draw, so anything withheld must be hidden now and not on
@@ -285,9 +338,12 @@ export function createGlbLayer(opts: GlbLayerOptions): GlbLayer {
         g.renderer.clippingPlanes = [];
       }
 
+      const keepAnimating = applyAnimation();
+
       // three.js has no idea MapLibre just used this context.
       g.renderer.resetState();
       g.renderer.render(g.scene, g.camera);
+      if (keepAnimating) map.triggerRepaint();
     },
 
     onRemove() {
@@ -300,6 +356,21 @@ export function createGlbLayer(opts: GlbLayerOptions): GlbLayer {
         if (mesh.isMesh) mesh.geometry?.dispose();
       });
       for (const mat of g.materials) mat.dispose();
+      if (g.mixer) {
+        g.mixer.stopAllAction();
+        const root = g.group.children[0];
+        if (root) g.mixer.uncacheRoot(root);
+      }
+      if (process.env.NODE_ENV !== "production") {
+        const w = window as unknown as {
+          __glbScenes?: Record<string, THREE.Object3D>;
+          __glbClipNames?: Record<string, string[]>;
+          __glbAnimationState?: Record<string, unknown>;
+        };
+        delete w.__glbScenes?.[opts.id];
+        delete w.__glbClipNames?.[opts.id];
+        delete w.__glbAnimationState?.[opts.id];
+      }
       // NOT renderer.dispose(): the context is MapLibre's, and disposing the
       // renderer takes the map's own GL state down with it.
       g = null;

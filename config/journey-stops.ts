@@ -35,6 +35,10 @@ export const STORY_JOURNEY_ON = ANY_STORY_SIMULATIONS_ON || RUNTIME_3D_ON;
  * declared positions) — hand-carried here because this file must stay tiny
  * and the artifact is 60KB. If a model's anchor moves, move it here too. */
 const MODEL_SPOTLIGHTS: JourneyMoment[] = [
+  { chapter: 102, kind: "model", label: "First contact — an unidentified giant whale", fact: "The Grand Line entrance is blocked by something larger than the ship.", focus: [-179, -2], holdMs: 7600 },
+  { chapter: 103, kind: "model", label: "Twin Cape — Laboon and Crocus", fact: "Inside the whale, the crew meets the lighthouse keeper and learns Laboon's story.", focus: [-179, -2], holdMs: 7000 },
+  { chapter: 104, kind: "model", label: "The promise to Laboon", fact: "Luffy promises a rematch after the crew circles the Grand Line.", focus: [-179, -2], holdMs: 6800 },
+  { chapter: 105, kind: "model", label: "Log Pose — departure for Whisky Peak", fact: "Crocus points the crew toward its first Grand Line route.", focus: [-179, -2], holdMs: 7200 },
   { chapter: 105, kind: "model", label: "Whisky Peak", fact: "The first Grand Line welcome — too warm to be true.", focus: [-121.5765, -5.8639] },
   { chapter: 430, kind: "model", label: "Enies Lobby & the Gates of Justice", fact: "The judicial island, where the world's law meets the sea.", focus: [-92.4053, 11.8445] },
   { chapter: 490, kind: "model", label: "Mary Geoise — the Red Line's summit", fact: "The holy land above the world, where the Celestial Dragons rule.", focus: [-2.7363, -9.3782] },
@@ -80,6 +84,16 @@ function buildStoryMoments(world: WorldEvents): JourneyMoment[] {
       holdMs: row.journey.hold_ms,
       zoom: row.journey.zoom,
       pitch: row.journey.pitch,
+      ...(row.journey.camera
+        ? {
+            camera: {
+              ...(row.journey.camera.zoom_to != null ? { zoomTo: row.journey.camera.zoom_to } : {}),
+              ...(row.journey.camera.pitch_to != null ? { pitchTo: row.journey.camera.pitch_to } : {}),
+              atMs: row.journey.camera.at_ms,
+              durationMs: row.journey.camera.duration_ms,
+            },
+          }
+        : {}),
     });
   }
   return moments;
@@ -92,3 +106,20 @@ export function buildJourneyStops(world: WorldEvents): JourneyMoment[] {
   if (RUNTIME_3D_ON) stops.push(...MODEL_SPOTLIGHTS);
   return stops.sort((a, b) => a.chapter - b.chapter);
 }
+
+/**
+ * The ?cut=short roster — the whole voyage in ~90 seconds, for a phone-length
+ * recording. One hero fight per saga (curated, not derived — art direction):
+ * their authored holds sum to ~69s, and with 3D dwells and transits skipped
+ * the journey's own weight math lands the run at ~90s without any per-scene
+ * squeezing — scenes still play their full authored cut, there are just
+ * fewer of them. Enabled-pack and spoiler gates still apply: a pack that is
+ * off simply drops its stop from the short cut too.
+ */
+export const SHORT_CUT_SIM_IDS = new Set<string>([
+  "baratie-zoro-vs-mihawk",
+  "ace-fire-fist-destroys-billions-fleet",
+  "arabasta-luffy-vs-crocodile-final",
+  "skypiea-luffy-vs-enel",
+  "enies-lobby-luffy-vs-rob-lucci",
+]);

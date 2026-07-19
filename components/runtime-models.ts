@@ -49,7 +49,16 @@ export type RuntimeAsset = {
   glb: string;
   anchor: [number, number] | null;
   chapter_beats: Record<string, unknown>;
-  component_gates: { id: string; role?: string; reveal_chapter: number | null; verification?: string; default_hidden?: boolean }[];
+  component_gates: {
+    id: string;
+    role?: string;
+    reveal_chapter: number | null;
+    verification?: string;
+    default_hidden?: boolean;
+    active_through_chapter?: number;
+  }[];
+  label_gates?: { id: string; from_chapter?: number; through_chapter?: number; label: string }[];
+  animation_plan?: RuntimeAnimationPlan | null;
   withheld_variants: string[];
   projection_support: string[] | null;
   scale_policy: { mode: string; use_model_bounds?: boolean } | null;
@@ -95,9 +104,86 @@ export type RuntimeModel = {
    * already sea. Not a spoiler gate — permanent, load-time. See glb-layer.
    */
   hideNode?: (nodeName: string) => boolean;
+  /** Chapter-entry animation plan. The app supplies elapsed time; the GLB only
+   * contains neutral named clips and never advances canon state itself. */
+  animationPlan?: RuntimeAnimationPlan;
+  labelAt?: (id: string) => string | null;
   /** Why this model is not wired, or null if it is. */
   skipped: string | null;
 };
+
+export type RuntimeAnimationClipPlan = {
+  channel: string;
+  name: string;
+  start_ms: number;
+  duration_ms: number;
+  loop: boolean;
+};
+
+export type RuntimeAnimationPlan = {
+  clock: "chapter_entry_elapsed_ms";
+  reduced_motion: string;
+  chapter_states: {
+    chapter: number;
+    duration_ms: number;
+    clips: RuntimeAnimationClipPlan[];
+  }[];
+};
+
+export type RuntimeAnimationSample = {
+  clips: { name: string; progress: number; loop: boolean }[];
+  animate: boolean;
+  chapter: number;
+  elapsedMs: number;
+};
+
+/** Pure chapter-entry sampler. One clip per channel is active, so sequential
+ * actions on the same root never fight. Reduced motion lands on the same final
+ * chapter tableau without starting a repaint loop. */
+export function sampleRuntimeAnimation(
+  plan: RuntimeAnimationPlan,
+  chapter: number,
+  elapsedMs: number,
+  reducedMotion: boolean,
+): RuntimeAnimationSample | null {
+  const wholeChapter = Math.floor(chapter);
+  const state = plan.chapter_states.find((item) => item.chapter === wholeChapter);
+  if (!state) return null;
+  const t = reducedMotion
+    ? state.duration_ms
+    : Math.max(0, Math.min(state.duration_ms, elapsedMs));
+  const byChannel = new Map<string, RuntimeAnimationClipPlan>();
+  for (const item of state.clips) {
+    if (t < item.start_ms) continue;
+    const current = byChannel.get(item.channel);
+    if (!current || item.start_ms >= current.start_ms) byChannel.set(item.channel, item);
+  }
+  const clips = [...byChannel.values()].map((item) => {
+    const local = Math.max(0, t - item.start_ms);
+    const progress = item.loop
+      ? (local % item.duration_ms) / item.duration_ms
+      : Math.min(1, local / item.duration_ms);
+    return { name: item.name, progress, loop: item.loop };
+  });
+  return {
+    clips,
+    animate: !reducedMotion && t < state.duration_ms,
+    chapter: wholeChapter,
+    elapsedMs: t,
+  };
+}
+
+/** Spoiler-safe runtime label resolver for assets whose geometry identity is
+ * intentionally named later than its silhouette first appears. */
+export function runtimeLabelAt(a: RuntimeAsset, id: string, chapter: number): string | null {
+  const gates = (a.label_gates ?? []).filter((gate) => {
+    if (gate.id !== id) return false;
+    if (gate.from_chapter != null && chapter < gate.from_chapter) return false;
+    if (gate.through_chapter != null && chapter > gate.through_chapter) return false;
+    return true;
+  });
+  return gates.at(-1)?.label ?? null;
+}
 
 /**
  * The decorative sea/stage plate an archipelago blockout sits on. Matched on the
@@ -111,6 +197,13 @@ const BACKDROP_PLATE = /(?:ocean|sea)_stage|cloud_shadow/i;
 
 /** 1 degree of latitude, in metres. The map's own convention. */
 export const M_PER_DEG = 111_195;
+
+/** Small local-stage distance, antimeridian-safe. The values are intentionally
+ * degrees because this is a visibility/cost guard, not a canon distance claim. */
+export function modelAnchorDistanceDeg(a: [number, number], b: [number, number]): number {
+  const dLng = ((((a[0] - b[0]) % 360) + 540) % 360) - 180;
+  return Math.hypot(dLng, a[1] - b[1]);
+}
 
 /** Ids whose scale is measured or derived rather than fitted. */
 const BESPOKE: Record<string, { metersPerUnit: number; mode: ScaleMode }> = {
@@ -174,23 +267,36 @@ export function needsPerNode(a: RuntimeAsset): boolean {
 export function makeNodeVisible(a: RuntimeAsset, getChapter: () => number) {
   const gates = new Map(a.component_gates.map((g) => [g.id, g]));
   const withheld = new Set(a.withheld_variants);
-  return (extras: Record<string, unknown>, _name: string): boolean => {
+  return (extras: Record<string, unknown>): boolean => {
     const cid = extras.component_id as string | undefined;
     // Untagged geometry rides the model's own gate — the layer is only added
     // once that is open, so this is "part of the base scene", not "ungated".
     if (!cid) return true;
     if (withheld.has(cid)) return false;
-    if (extras.default_hidden === true) return false;
     if (extras.gate_confidence === "chapter_to_verify") return false;
 
     const g = gates.get(cid);
-    if (g && (g.default_hidden === true || g.verification === "chapter_to_verify")) return false;
+    if (g?.verification === "chapter_to_verify") return false;
+
+    // A default-hidden event inset can open only when BOTH the signed manifest
+    // and the node extras declare the same verified, finite state window. This
+    // is deliberately narrower than treating `default_hidden` as reversible:
+    // every existing unknown gate remains permanently dark.
+    const extrasThrough = extras.active_through_chapter as number | undefined;
+    const verifiedStateWindow =
+      g?.verification === "verified_state_window" &&
+      extras.gate_confidence === "verified_state_window" &&
+      typeof g.active_through_chapter === "number" &&
+      extrasThrough === g.active_through_chapter;
+    if ((extras.default_hidden === true || g?.default_hidden === true) && !verifiedStateWindow) return false;
 
     // A reveal chapter from either source; null/absent in BOTH means nobody has
     // verified it, and an unverified gate is not a gate.
     const rc = (extras.reveal_chapter as number | undefined) ?? g?.reveal_chapter ?? null;
     if (rc === null || rc === undefined) return false;
-    return getChapter() >= rc;
+    const chapter = getChapter();
+    if (verifiedStateWindow && chapter > g.active_through_chapter!) return false;
+    return chapter >= rc;
   };
 }
 
@@ -356,6 +462,8 @@ export function buildModels(
       nodeVisible: perNode ? makeNodeVisible(a, getChapter) : undefined,
       // Only a spread archipelago drops its ocean-stage plate onto the map's sea.
       hideNode: spread > 1 ? (name: string) => BACKDROP_PLATE.test(name) : undefined,
+      animationPlan: a.animation_plan ?? undefined,
+      labelAt: a.label_gates?.length ? (id: string) => runtimeLabelAt(a, id, getChapter()) : undefined,
       skipped: null,
     });
   }

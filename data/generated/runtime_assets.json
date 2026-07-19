@@ -1,13 +1,13 @@
 {
   "_meta": {
-    "generated_at": "2026-07-17T06:53:36.324756+00:00",
+    "generated_at": "2026-07-19T02:57:45.097178+00:00",
     "generator": "scripts/sync_runtime_assets.py",
     "schema_version": 2,
     "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_TRANSITIONS",
     "note": "Only integration_ready entries whose bytes match their sha256 AND whose withheld component gates each resolve to a tagged glTF node are copied. A model that declares default_hidden geometry it cannot address is refused: the app would otherwise draw what the manifest says to hide.",
     "counts": {
-      "copied": 13,
-      "refused": 3,
+      "copied": 17,
+      "refused": 0,
       "gate_contradictions": 3
     }
   },
@@ -74,6 +74,9 @@
         "splash": 304
       },
       "component_gates": [],
+      "label_gates": [],
+      "animation_plan": null,
+      "fx_masks": [],
       "tagged_component_ids": {},
       "layout_status": null,
       "projection_support": null,
@@ -144,6 +147,9 @@
         "status": "proposed; exact waterfall climb beats need human verification"
       },
       "component_gates": [],
+      "label_gates": [],
+      "animation_plan": null,
+      "fx_masks": [],
       "tagged_component_ids": {},
       "layout_status": null,
       "projection_support": null,
@@ -239,6 +245,9 @@
           "default_hidden": false
         }
       ],
+      "label_gates": [],
+      "animation_plan": null,
+      "fx_masks": [],
       "tagged_component_ids": {},
       "layout_status": "exact_deterministic_hero_ring_footprint",
       "projection_support": [
@@ -762,6 +771,9 @@
           }
         }
       ],
+      "label_gates": [],
+      "animation_plan": null,
+      "fx_masks": [],
       "tagged_component_ids": {
         "totto-land": 1,
         "100-island": 2,
@@ -920,6 +932,9 @@
           "default_hidden": false
         }
       ],
+      "label_gates": [],
+      "animation_plan": null,
+      "fx_masks": [],
       "tagged_component_ids": {
         "tarai-current": 4,
         "marineford": 7,
@@ -1024,6 +1039,9 @@
           "default_hidden": false
         }
       ],
+      "label_gates": [],
+      "animation_plan": null,
+      "fx_masks": [],
       "tagged_component_ids": {
         "conomi-islands": 2,
         "arlong-park": 11,
@@ -1064,6 +1082,188 @@
       },
       "source_ref": "blender-assets/renders/runtime/conomi-arlong-park.png",
       "glb_source_ref": "blender-assets/runtime/conomi-arlong-park.glb"
+    },
+    {
+      "id": "arabasta-kingdom",
+      "label": "Arabasta kingdom region system",
+      "glb": "/art/runtime/arabasta-kingdom.glb",
+      "glb_bytes": 292084,
+      "glb_sha256": "38f62c3a6e4486720c345a5321c97a91cad341be808bcfc6fd43a1a57971d2b5",
+      "raster": "/art/runtime/arabasta-kingdom.png",
+      "bytes": 759062,
+      "maturity": "runtime_blockout_v1",
+      "anchor": [
+        -125.4532,
+        -2.0675
+      ],
+      "source_anchor": null,
+      "destination_anchor": null,
+      "anchor_confidence": "derived",
+      "bounds_blender": {
+        "min": [
+          -11.88,
+          -8.856,
+          -0.425
+        ],
+        "max": [
+          11.88,
+          8.856,
+          4.45
+        ]
+      },
+      "mode": "maplibre_custom_3d_layer",
+      "fallback_mode": "maplibre_image_source_or_inset",
+      "coordinates": null,
+      "runtime_module": null,
+      "chapter_beats": {
+        "base_reveal": 113,
+        "safe_full_scene": 202
+      },
+      "component_gates": [
+        {
+          "id": "arabasta-kingdom",
+          "role": "kingdom_landmass",
+          "reveal_chapter": 113,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "sandora-river",
+          "role": "dividing_river",
+          "reveal_chapter": 161,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "sandora-desert",
+          "role": "desert_region",
+          "reveal_chapter": 162,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "nanohana",
+          "role": "port_city",
+          "reveal_chapter": 155,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "rainbase",
+          "role": "casino_city",
+          "reveal_chapter": 126,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "erumalu",
+          "role": "ruined_city",
+          "reveal_chapter": 161,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "yuba",
+          "role": "oasis_town",
+          "reveal_chapter": 162,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "yuba-oasis",
+          "role": "oasis",
+          "reveal_chapter": null,
+          "verification": "chapter_to_verify",
+          "default_hidden": true
+        },
+        {
+          "id": "katorea",
+          "role": "rebel_base",
+          "reveal_chapter": 164,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "alubarna",
+          "role": "capital_city",
+          "reveal_chapter": 129,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "tomb-of-the-kings",
+          "role": "subterranean_landmark",
+          "reveal_chapter": 202,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "alubarna-clock-tower",
+          "role": "event_landmark",
+          "reveal_chapter": null,
+          "verification": "chapter_to_verify",
+          "default_hidden": true
+        },
+        {
+          "id": "alubarna-palace",
+          "role": "capital_landmark",
+          "reveal_chapter": 129,
+          "verification": "verified",
+          "default_hidden": false
+        }
+      ],
+      "label_gates": [],
+      "animation_plan": null,
+      "fx_masks": [],
+      "tagged_component_ids": {
+        "arabasta-kingdom": 1,
+        "sandora-desert": 18,
+        "sandora-river": 1,
+        "alubarna": 29,
+        "alubarna-palace": 1,
+        "alubarna-clock-tower": 1,
+        "tomb-of-the-kings": 1,
+        "nanohana": 9,
+        "rainbase": 9,
+        "erumalu": 5,
+        "yuba": 9,
+        "katorea": 9,
+        "yuba-oasis": 1
+      },
+      "layout_status": "contract_relationship_graph",
+      "projection_support": [
+        "mercator_closeup"
+      ],
+      "scale_policy": {
+        "mode": "visual_fit_not_canon_scale",
+        "use_model_bounds": true
+      },
+      "anchor_usage": "scene_entry_anchor_only",
+      "anchor_warning": "Never infer local bearings, distances, or topology from this deterministic atlas point.",
+      "withheld_variants": [
+        "alubarna-clock-tower-crisis",
+        "capital-climax",
+        "rain-restored"
+      ],
+      "route_policy": null,
+      "gate_contradictions": [],
+      "gate_unverified": false,
+      "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
+      "runtime_policy": {
+        "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
+        "default": "fallback_raster",
+        "enable_glb_when": "feature flag on, close zoom, mercator projection, chapter gate open",
+        "unload_when_hidden": true,
+        "dispose_on_remove": [
+          "geometries",
+          "materials",
+          "textures"
+        ],
+        "globe_policy": "transparent fallback; do not apply a naive mercator model matrix on globe",
+        "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, and default_hidden from glTF node extras"
+      },
+      "source_ref": "blender-assets/renders/runtime/arabasta-kingdom.png",
+      "glb_source_ref": "blender-assets/runtime/arabasta-kingdom.glb"
     },
     {
       "id": "cactus-island-whisky-peak",
@@ -1131,6 +1331,9 @@
           "default_hidden": false
         }
       ],
+      "label_gates": [],
+      "animation_plan": null,
+      "fx_masks": [],
       "tagged_component_ids": {
         "cactus-island": 1,
         "whisky-peak-river-dock": 2,
@@ -1265,6 +1468,9 @@
           "default_hidden": false
         }
       ],
+      "label_gates": [],
+      "animation_plan": null,
+      "fx_masks": [],
       "tagged_component_ids": {
         "dressrosa": 49,
         "green-bit": 1,
@@ -1384,6 +1590,9 @@
           "default_hidden": false
         }
       ],
+      "label_gates": [],
+      "animation_plan": null,
+      "fx_masks": [],
       "tagged_component_ids": {
         "zunesha-legs": 12,
         "zunesha": 16,
@@ -1491,6 +1700,9 @@
           "default_hidden": false
         }
       ],
+      "label_gates": [],
+      "animation_plan": null,
+      "fx_masks": [],
       "tagged_component_ids": {
         "amazon-lily": 70,
         "amazon-lily-mountain-bowl": 2,
@@ -1608,6 +1820,9 @@
           "default_hidden": true
         }
       ],
+      "label_gates": [],
+      "animation_plan": null,
+      "fx_masks": [],
       "tagged_component_ids": {
         "red-line-summit": 1,
         "red-port-paradise": 2,
@@ -1792,6 +2007,9 @@
           "default_hidden": false
         }
       ],
+      "label_gates": [],
+      "animation_plan": null,
+      "fx_masks": [],
       "tagged_component_ids": {
         "yarukiman-mangroves": 237,
         "sabaody-root-bridges": 78,
@@ -1832,6 +2050,138 @@
       },
       "source_ref": "blender-assets/renders/runtime/sabaody-grove-network.png",
       "glb_source_ref": "blender-assets/runtime/sabaody-grove-network.glb"
+    },
+    {
+      "id": "skypiea-sky-system",
+      "label": "Skypiea sky-island system",
+      "glb": "/art/runtime/skypiea-sky-system.glb",
+      "glb_bytes": 729952,
+      "glb_sha256": "26228fbcffa465dfcaa1dad88957673560111d29921b77afb7dadce355547974",
+      "raster": "/art/runtime/skypiea-sky-system.png",
+      "bytes": 1113179,
+      "maturity": "runtime_blockout_v1",
+      "anchor": [
+        -91.1362,
+        17.0745
+      ],
+      "source_anchor": null,
+      "destination_anchor": null,
+      "anchor_confidence": "derived",
+      "bounds_blender": {
+        "min": [
+          -12.65,
+          -8.58,
+          -0.46
+        ],
+        "max": [
+          12.65,
+          8.58,
+          13.9
+        ]
+      },
+      "mode": "maplibre_custom_3d_layer",
+      "fallback_mode": "maplibre_image_source_or_inset",
+      "coordinates": null,
+      "runtime_module": null,
+      "chapter_beats": {
+        "base_reveal": 239,
+        "safe_full_scene": 268
+      },
+      "component_gates": [
+        {
+          "id": "skypiea",
+          "role": "sky_region",
+          "reveal_chapter": 239,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "shandora",
+          "role": "ancient_city_ruins",
+          "reveal_chapter": 268,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "angel-island",
+          "role": "island_cloud_settlement",
+          "reveal_chapter": 239,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "upper-yard",
+          "role": "solid_jaya_landmass",
+          "reveal_chapter": 239,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "giant-jack",
+          "role": "vertical_vine_axis",
+          "reveal_chapter": null,
+          "verification": "chapter_to_verify",
+          "default_hidden": true
+        },
+        {
+          "id": "golden-belfry-cloud",
+          "role": "high_altitude_landmark",
+          "reveal_chapter": null,
+          "verification": "chapter_to_verify",
+          "default_hidden": true
+        },
+        {
+          "id": "white-white-sea",
+          "role": "cloud_ocean",
+          "reveal_chapter": 239,
+          "verification": "verified",
+          "default_hidden": false
+        }
+      ],
+      "label_gates": [],
+      "animation_plan": null,
+      "fx_masks": [],
+      "tagged_component_ids": {
+        "white-white-sea": 25,
+        "angel-island": 46,
+        "upper-yard": 1,
+        "shandora": 12,
+        "giant-jack": 1,
+        "golden-belfry-cloud": 8
+      },
+      "layout_status": "layered_sky_local_scene",
+      "projection_support": [
+        "mercator_closeup"
+      ],
+      "scale_policy": {
+        "mode": "visual_fit_not_canon_scale",
+        "use_model_bounds": true
+      },
+      "anchor_usage": "scene_entry_anchor_only",
+      "anchor_warning": "Never infer local bearings, distances, or topology from this deterministic atlas point.",
+      "withheld_variants": [
+        "giant-jack-and-belfry",
+        "golden-bell-ring"
+      ],
+      "route_policy": null,
+      "gate_contradictions": [],
+      "gate_unverified": false,
+      "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
+      "runtime_policy": {
+        "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
+        "default": "fallback_raster",
+        "enable_glb_when": "feature flag on, close zoom, mercator projection, chapter gate open",
+        "unload_when_hidden": true,
+        "dispose_on_remove": [
+          "geometries",
+          "materials",
+          "textures"
+        ],
+        "globe_policy": "transparent fallback; do not apply a naive mercator model matrix on globe",
+        "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, and default_hidden from glTF node extras"
+      },
+      "source_ref": "blender-assets/renders/runtime/skypiea-sky-system.png",
+      "glb_source_ref": "blender-assets/runtime/skypiea-sky-system.glb"
     },
     {
       "id": "loguetown-roger-execution",
@@ -1892,6 +2242,9 @@
           "default_hidden": false
         }
       ],
+      "label_gates": [],
+      "animation_plan": null,
+      "fx_masks": [],
       "tagged_component_ids": {},
       "layout_status": "contract_relationship_graph",
       "projection_support": [
@@ -1926,23 +2279,607 @@
       },
       "source_ref": "blender-assets/renders/runtime/loguetown-roger-execution.png",
       "glb_source_ref": "blender-assets/runtime/loguetown-roger-execution.glb"
-    }
-  ],
-  "refused": [
-    {
-      "id": "arabasta-kingdom",
-      "why": "declares withheld component(s) with no tagged node to hide: yuba-oasis (default_hidden)",
-      "actionable": "tag the geometry with component_id in the glTF node extras, or omit it from the export"
-    },
-    {
-      "id": "skypiea-sky-system",
-      "why": "declares withheld component(s) with no tagged node to hide: giant-jack (default_hidden), golden-belfry-cloud (default_hidden)",
-      "actionable": "tag the geometry with component_id in the glTF node extras, or omit it from the export"
     },
     {
       "id": "water-7-sea-train-network",
-      "why": "declares withheld component(s) with no tagged node to hide: day-station (default_hidden), rocketman (default_hidden), aqua-laguna (default_hidden)",
-      "actionable": "tag the geometry with component_id in the glTF node extras, or omit it from the export"
+      "label": "Water 7 Sea Train network",
+      "glb": "/art/runtime/water-7-sea-train-network.glb",
+      "glb_bytes": 530224,
+      "glb_sha256": "01049271111d0e2cadcae347114f3f1f5762bbe5b9983b38a73e3968632d634c",
+      "raster": "/art/runtime/water-7-sea-train-network.png",
+      "bytes": 884802,
+      "maturity": "runtime_blockout_v1",
+      "anchor": [
+        -73.7901,
+        3.1588
+      ],
+      "source_anchor": null,
+      "destination_anchor": null,
+      "anchor_confidence": "derived",
+      "bounds_blender": {
+        "min": [
+          -18.0,
+          -12.0,
+          -1.05
+        ],
+        "max": [
+          18.0,
+          12.0,
+          6.6437
+        ]
+      },
+      "mode": "maplibre_custom_3d_layer",
+      "fallback_mode": "screen_space_html_marker",
+      "coordinates": null,
+      "runtime_module": null,
+      "chapter_beats": {
+        "base_reveal": 323,
+        "safe_full_scene": 657
+      },
+      "component_gates": [
+        {
+          "id": "water-7",
+          "role": "network_hub_city",
+          "reveal_chapter": 323,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "enies-lobby",
+          "role": "government_terminus",
+          "reveal_chapter": 358,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "pucci",
+          "role": "connected_island",
+          "reveal_chapter": 657,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "st-poplar",
+          "role": "connected_island",
+          "reveal_chapter": 496,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "san-faldo",
+          "role": "connected_island",
+          "reveal_chapter": 322,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "shift-station",
+          "role": "intermediate_station_and_lighthouse",
+          "reveal_chapter": 322,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "blue-station",
+          "role": "water_7_station",
+          "reveal_chapter": 322,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "day-station",
+          "role": "enies_lobby_station",
+          "reveal_chapter": null,
+          "verification": "chapter_to_verify",
+          "default_hidden": true
+        },
+        {
+          "id": "puffing-tom",
+          "role": "commercial_sea_train",
+          "reveal_chapter": 322,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "rocketman",
+          "role": "uncontrollable_prototype_train",
+          "reveal_chapter": null,
+          "verification": "chapter_to_verify",
+          "default_hidden": true
+        },
+        {
+          "id": "puffing-ice",
+          "role": "post_timeskip_train",
+          "reveal_chapter": 656,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "subsurface-sea-rails",
+          "role": "route_geometry",
+          "reveal_chapter": 322,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "aqua-laguna",
+          "role": "annual_route_hazard",
+          "reveal_chapter": null,
+          "verification": "chapter_to_verify",
+          "default_hidden": true
+        }
+      ],
+      "label_gates": [],
+      "animation_plan": null,
+      "fx_masks": [],
+      "tagged_component_ids": {
+        "day-station": 1,
+        "rocketman": 8,
+        "aqua-laguna": 1
+      },
+      "layout_status": "contract_relationship_graph",
+      "projection_support": [
+        "mercator_closeup"
+      ],
+      "scale_policy": {
+        "mode": "visual_fit_not_canon_scale",
+        "use_model_bounds": true
+      },
+      "anchor_usage": "scene_entry_anchor_only",
+      "anchor_warning": "Never infer local bearings, distances, or topology from this deterministic atlas point.",
+      "withheld_variants": [
+        "aqua-laguna-pursuit",
+        "rocketman-aqua-laguna-pursuit"
+      ],
+      "route_policy": "local relationship schematic; never project local bearings as canon globe geometry",
+      "gate_contradictions": [],
+      "gate_unverified": false,
+      "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
+      "runtime_policy": {
+        "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
+        "default": "fallback_raster",
+        "enable_glb_when": "feature flag on, close zoom, mercator projection, chapter gate open",
+        "unload_when_hidden": true,
+        "dispose_on_remove": [
+          "geometries",
+          "materials",
+          "textures"
+        ],
+        "globe_policy": "transparent fallback; do not apply a naive mercator model matrix on globe",
+        "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, and default_hidden from glTF node extras"
+      },
+      "source_ref": "blender-assets/renders/runtime/water-7-sea-train-network.png",
+      "glb_source_ref": "blender-assets/runtime/water-7-sea-train-network.glb"
+    },
+    {
+      "id": "reverse-mountain-twin-cape-voyage",
+      "label": "Reverse Mountain and Twin Cape — moving voyage graybox",
+      "glb": "/art/runtime/reverse-mountain-twin-cape-voyage.glb",
+      "glb_bytes": 1307736,
+      "glb_sha256": "2accbf7f105a76f6c9b35a6d62c508d1730de9634c0018b8f7052df6a2e60d29",
+      "raster": "/art/runtime/reverse-mountain-twin-cape-voyage.png",
+      "bytes": 882178,
+      "maturity": "runtime_animated_graybox_v1",
+      "anchor": [
+        -179.0,
+        -2.0
+      ],
+      "source_anchor": null,
+      "destination_anchor": null,
+      "anchor_confidence": "hand_authored_belt_model",
+      "bounds_blender": {
+        "min": [
+          -18.0,
+          -18.0,
+          -2.35
+        ],
+        "max": [
+          18.0,
+          21.976843,
+          10.793863
+        ]
+      },
+      "mode": "maplibre_custom_3d_layer",
+      "fallback_mode": "maplibre_image_source_or_inset",
+      "coordinates": null,
+      "runtime_module": null,
+      "chapter_beats": {
+        "base_reveal": 101,
+        "safe_full_scene": 102
+      },
+      "component_gates": [
+        {
+          "id": "reverse-mountain-massif",
+          "role": "red_line_crossing_environment",
+          "reveal_chapter": 101,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "east-blue-ascent-current",
+          "role": "going_merry_uphill_route",
+          "reveal_chapter": 101,
+          "verification": "verified_for_uphill_motion_only",
+          "default_hidden": false
+        },
+        {
+          "id": "reverse-mountain-crest",
+          "role": "voyage_transition_peak",
+          "reveal_chapter": 101,
+          "verification": "inferred_transition_landmark",
+          "default_hidden": false
+        },
+        {
+          "id": "grand-line-descent-current",
+          "role": "summit_to_grand_line_exit_route",
+          "reveal_chapter": 102,
+          "verification": "inferred_route_between_verified_states",
+          "default_hidden": false
+        },
+        {
+          "id": "twin-cape",
+          "role": "grand_line_entry_cape",
+          "reveal_chapter": 102,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "twin-cape-lighthouse",
+          "role": "crocus_home_landmark",
+          "reveal_chapter": 103,
+          "verification": "derived_from_crocus_lighthouse_keeper_record",
+          "default_hidden": false
+        },
+        {
+          "id": "going-merry",
+          "role": "voyage_vehicle",
+          "reveal_chapter": 100,
+          "verification": "known_present_in_window",
+          "default_hidden": false
+        },
+        {
+          "id": "laboon-unidentified",
+          "role": "first_contact_spoiler_safe_state",
+          "reveal_chapter": 102,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "laboon",
+          "role": "identity_label_gate",
+          "reveal_chapter": 103,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "laboon-interior-theatre",
+          "role": "chapter_103_story_inset",
+          "reveal_chapter": 103,
+          "verification": "verified_state_window",
+          "default_hidden": true,
+          "active_through_chapter": 103.999
+        },
+        {
+          "id": "crocus",
+          "role": "signed_2_5d_actor_anchor",
+          "reveal_chapter": 103,
+          "verification": "verified",
+          "default_hidden": false
+        },
+        {
+          "id": "local-whirlpool-emitter",
+          "role": "reusable_ocean_hazard_control",
+          "reveal_chapter": null,
+          "verification": "chapter_to_verify",
+          "default_hidden": true
+        }
+      ],
+      "label_gates": [
+        {
+          "id": "laboon",
+          "from_chapter": 102,
+          "through_chapter": 102,
+          "label": "Unidentified giant whale"
+        },
+        {
+          "id": "laboon",
+          "from_chapter": 103,
+          "label": "Laboon"
+        }
+      ],
+      "animation_plan": {
+        "clock": "chapter_entry_elapsed_ms",
+        "reduced_motion": "sample_each_clip_at_its_final_safe_frame_and_stop_repainting",
+        "chapter_states": [
+          {
+            "chapter": 101,
+            "duration_ms": 7800,
+            "clips": [
+              {
+                "channel": "current",
+                "name": "current_ascent_flow_loop",
+                "start_ms": 0,
+                "duration_ms": 7800,
+                "loop": true
+              },
+              {
+                "channel": "merry",
+                "name": "merry_ascent_climb",
+                "start_ms": 0,
+                "duration_ms": 4500,
+                "loop": false
+              },
+              {
+                "channel": "crest_fx",
+                "name": "current_crest_surge",
+                "start_ms": 3900,
+                "duration_ms": 1800,
+                "loop": false
+              },
+              {
+                "channel": "merry",
+                "name": "merry_summit_crest",
+                "start_ms": 4500,
+                "duration_ms": 3300,
+                "loop": false
+              }
+            ]
+          },
+          {
+            "chapter": 102,
+            "duration_ms": 7600,
+            "clips": [
+              {
+                "channel": "current",
+                "name": "current_descent_flow_loop",
+                "start_ms": 0,
+                "duration_ms": 7600,
+                "loop": true
+              },
+              {
+                "channel": "merry",
+                "name": "merry_descent_run",
+                "start_ms": 0,
+                "duration_ms": 3300,
+                "loop": false
+              },
+              {
+                "channel": "laboon",
+                "name": "laboon_first_contact_breach",
+                "start_ms": 0,
+                "duration_ms": 3300,
+                "loop": false
+              },
+              {
+                "channel": "contact_fx",
+                "name": "laboon_contact_displacement",
+                "start_ms": 2200,
+                "duration_ms": 2100,
+                "loop": false
+              },
+              {
+                "channel": "laboon_mouth",
+                "name": "laboon_mouth_open_swallow",
+                "start_ms": 3300,
+                "duration_ms": 4300,
+                "loop": false
+              },
+              {
+                "channel": "merry",
+                "name": "merry_swallowed_transition",
+                "start_ms": 3300,
+                "duration_ms": 4300,
+                "loop": false
+              }
+            ]
+          },
+          {
+            "chapter": 103,
+            "duration_ms": 7000,
+            "clips": [
+              {
+                "channel": "laboon",
+                "name": "laboon_surface_idle_loop",
+                "start_ms": 0,
+                "duration_ms": 7000,
+                "loop": true
+              },
+              {
+                "channel": "crocus",
+                "name": "crocus_explain_laboon",
+                "start_ms": 700,
+                "duration_ms": 5600,
+                "loop": false
+              }
+            ]
+          },
+          {
+            "chapter": 104,
+            "duration_ms": 6800,
+            "clips": [
+              {
+                "channel": "swell",
+                "name": "twin_cape_swell_loop",
+                "start_ms": 0,
+                "duration_ms": 6800,
+                "loop": true
+              },
+              {
+                "channel": "merry",
+                "name": "merry_idle_bob_loop",
+                "start_ms": 0,
+                "duration_ms": 6800,
+                "loop": true
+              },
+              {
+                "channel": "wake",
+                "name": "merry_wake_loop",
+                "start_ms": 0,
+                "duration_ms": 6800,
+                "loop": true
+              },
+              {
+                "channel": "laboon",
+                "name": "laboon_promise_response",
+                "start_ms": 900,
+                "duration_ms": 5000,
+                "loop": false
+              }
+            ]
+          },
+          {
+            "chapter": 105,
+            "duration_ms": 7200,
+            "clips": [
+              {
+                "channel": "swell",
+                "name": "twin_cape_swell_loop",
+                "start_ms": 0,
+                "duration_ms": 7200,
+                "loop": true
+              },
+              {
+                "channel": "merry",
+                "name": "merry_twin_cape_departure",
+                "start_ms": 0,
+                "duration_ms": 7200,
+                "loop": false
+              },
+              {
+                "channel": "crocus",
+                "name": "crocus_present_log_pose",
+                "start_ms": 0,
+                "duration_ms": 4200,
+                "loop": false
+              },
+              {
+                "channel": "laboon_fx",
+                "name": "laboon_breath_mist",
+                "start_ms": 700,
+                "duration_ms": 3500,
+                "loop": false
+              }
+            ]
+          }
+        ]
+      },
+      "fx_masks": [
+        {
+          "id": "rm-current-flow-rgba",
+          "path": "runtime/reverse-mountain-twin-cape-voyage/masks/rm-current-flow-rgba.png",
+          "sha256": "df7d2fbf9c8c0923b8de3373c8f5e5d1bb30589bf9eec253a230ae1e43119dec",
+          "channels": {
+            "r": "flow_direction_u",
+            "g": "flow_direction_v",
+            "b": "flow_speed",
+            "a": "chapter_safe_effect_enable"
+          },
+          "url": "/art/runtime/reverse-mountain-twin-cape-voyage/masks/rm-current-flow-rgba.png",
+          "bytes": 1826
+        },
+        {
+          "id": "rm-foam-spray-rgba",
+          "path": "runtime/reverse-mountain-twin-cape-voyage/masks/rm-foam-spray-rgba.png",
+          "sha256": "673fe641935af6aa3ae6469e0647e1f4d83727d28971047b6945ff359de0a92a",
+          "channels": {
+            "r": "bank_foam",
+            "g": "crest_foam",
+            "b": "spray_emission",
+            "a": "water_occlusion"
+          },
+          "url": "/art/runtime/reverse-mountain-twin-cape-voyage/masks/rm-foam-spray-rgba.png",
+          "bytes": 17848
+        },
+        {
+          "id": "merry-hull-contact-rgba",
+          "path": "runtime/reverse-mountain-twin-cape-voyage/masks/merry-hull-contact-rgba.png",
+          "sha256": "278a64f4515d8cab22e62f43e459a4fc786d299dfd6c5673b9f73c5925ead717",
+          "channels": {
+            "r": "bow_wake",
+            "g": "stern_wake",
+            "b": "hull_wetness",
+            "a": "spray_occlusion"
+          },
+          "url": "/art/runtime/reverse-mountain-twin-cape-voyage/masks/merry-hull-contact-rgba.png",
+          "bytes": 38042
+        },
+        {
+          "id": "laboon-water-contact-rgba",
+          "path": "runtime/reverse-mountain-twin-cape-voyage/masks/laboon-water-contact-rgba.png",
+          "sha256": "6ee75cd5ad0fbbd79bf9d719787af62bdc8d7eaa5747210a4c3ee81dd181229e",
+          "channels": {
+            "r": "surface_displacement",
+            "g": "contact_foam",
+            "b": "breath_mist_emission",
+            "a": "skin_wetness"
+          },
+          "url": "/art/runtime/reverse-mountain-twin-cape-voyage/masks/laboon-water-contact-rgba.png",
+          "bytes": 55071
+        },
+        {
+          "id": "whirlpool-control-rgba",
+          "path": "runtime/reverse-mountain-twin-cape-voyage/masks/whirlpool-control-rgba.png",
+          "sha256": "3a7a76c14e0959450b29dc6c3926486302c3e120bd57f492b255983faae9e478",
+          "channels": {
+            "r": "vortex_strength",
+            "g": "foam_ring",
+            "b": "spray_orbit",
+            "a": "enable_mask"
+          },
+          "default_hidden": true,
+          "url": "/art/runtime/reverse-mountain-twin-cape-voyage/masks/whirlpool-control-rgba.png",
+          "bytes": 50498
+        }
+      ],
+      "tagged_component_ids": {
+        "reverse-mountain-massif": 1,
+        "twin-cape": 1,
+        "reverse-mountain-crest": 1,
+        "twin-cape-lighthouse": 1,
+        "east-blue-ascent-current": 1,
+        "grand-line-descent-current": 1,
+        "going-merry": 1,
+        "laboon": 1,
+        "laboon-unidentified": 1,
+        "laboon-interior-theatre": 1,
+        "crocus": 1,
+        "local-whirlpool-emitter": 1
+      },
+      "layout_status": "ordered_route_graph_not_atlas_geometry",
+      "projection_support": [
+        "mercator_closeup"
+      ],
+      "scale_policy": {
+        "mode": "visual_fit_not_canon_scale",
+        "use_model_bounds": true
+      },
+      "anchor_usage": "scene_entry_anchor_only",
+      "anchor_warning": "Never infer local canals, bearings, distances, or Twin Cape placement from this atlas point.",
+      "withheld_variants": [
+        "local-whirlpool-emitter"
+      ],
+      "route_policy": "local normalized theatre only; MapLibre owns world route and no local bearing is canon",
+      "gate_contradictions": [],
+      "gate_unverified": false,
+      "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
+      "runtime_policy": {
+        "feature_flag": "NEXT_PUBLIC_RUNTIME_3D_ASSETS",
+        "default": "fallback_raster",
+        "enable_glb_when": "feature flag on, close zoom, supported projection, and chapter gate open",
+        "unload_when_hidden": true,
+        "dispose_on_remove": [
+          "geometries",
+          "materials",
+          "textures",
+          "animation_mixer"
+        ],
+        "globe_policy": "use only after photographed globe proof; otherwise retain transparent fallback",
+        "node_gate_policy": "read component_id, reveal_chapter, gate_confidence, default_hidden, and verified state windows from glTF extras",
+        "animation_policy": "sample named clips from chapter-entry elapsed time; MapLibre/app state owns the clock and reduced-motion freeze"
+      },
+      "source_ref": "blender-assets/renders/runtime/reverse-mountain-twin-cape-voyage.png",
+      "glb_source_ref": "blender-assets/runtime/reverse-mountain-twin-cape-voyage.glb"
     }
-  ]
+  ],
+  "refused": []
 }

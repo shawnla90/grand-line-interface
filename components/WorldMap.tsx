@@ -47,7 +47,13 @@ import { poneglyphSvg, poneglyphInk, PONEGLYPH_INK, ROAD_PONEGLYPH_INK, type Pon
 import { globeProven } from "@/config/projection-overrides";
 import { createGlbLayer, type GlbLayer } from "./glb-layer";
 import { OrbitControls } from "./OrbitControls";
-import { buildModels, type RuntimeAsset, type RuntimeModel } from "./runtime-models";
+import {
+  buildModels,
+  modelAnchorDistanceDeg,
+  sampleRuntimeAnimation,
+  type RuntimeAsset,
+  type RuntimeModel,
+} from "./runtime-models";
 import { altitudeT, columnOpacity, expandSkyWaypoints, SKY_BASE, SKY_BODY, transitBase } from "./skypiea";
 import { makeWanoElement, WANO_ANCHOR, wanoOpacity } from "./wano";
 import { recorderBridge } from "./recorder";
@@ -904,6 +910,10 @@ const KNOCK_UP_M_PER_UNIT =
  */
 const GLB_MIN_ZOOM = 4.6;
 const GLB_FULL_ZOOM = 5.4;
+// Close local theatres should not all load just because the camera is zoomed
+// in somewhere. The wider exit radius prevents moveend jitter at the boundary.
+const GLB_ENTER_RADIUS_DEG = 9;
+const GLB_EXIT_RADIUS_DEG = 13;
 
 /**
  * THE ASSET TRACK'S FLAG, which is not the pilots' flag. runtime-3d.json v2 moved
@@ -982,6 +992,7 @@ function rasterOpacity(ch: number): ExpressionSpecification {
  */
 let MODELS: RuntimeModel[] | null = null;
 const modelLayers = new Map<string, GlbLayer>();
+const modelPlayback = new Map<string, { chapter: number; startedAt: number }>();
 let modelChapter = 1;
 
 /**
@@ -1076,9 +1087,24 @@ function syncModels(m: MLMap, ch: number) {
   for (const model of MODELS) {
     if (model.skipped) continue;
     if (model.id === "skypiea-knock-up-stream") continue; // its own module owns it
-    const open = ch >= model.reveal && zoomOk && model.projections.includes(proj);
     const live = modelLayers.get(model.id);
+    const center = m.getCenter();
+    const distance = modelAnchorDistanceDeg(model.lngLat, [center.lng, center.lat]);
+    const near = distance <= (live ? GLB_EXIT_RADIUS_DEG : GLB_ENTER_RADIUS_DEG);
+    const open = ch >= model.reveal && zoomOk && near && model.projections.includes(proj);
+    const wholeChapter = Math.floor(ch);
+    if (model.animationPlan) {
+      const clock = modelPlayback.get(model.id);
+      if (!clock || clock.chapter !== wholeChapter) {
+        modelPlayback.set(model.id, { chapter: wholeChapter, startedAt: performance.now() });
+      }
+    }
+    if (process.env.NODE_ENV !== "production" && model.labelAt) {
+      const w = window as unknown as { __runtimeAssetLabels?: Record<string, Record<string, string | null>> };
+      (w.__runtimeAssetLabels ??= {})[model.id] = { laboon: model.labelAt("laboon") };
+    }
     if (open && !live) {
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const layer = createGlbLayer({
         id: `glb-${model.id}`,
         url: model.glb,
@@ -1087,6 +1113,17 @@ function syncModels(m: MLMap, ch: number) {
         opacity: () => Math.min(1, Math.max(0, (m.getZoom() - GLB_MIN_ZOOM) / (GLB_FULL_ZOOM - GLB_MIN_ZOOM))),
         nodeVisible: model.nodeVisible,
         hideNode: model.hideNode,
+        animationState: model.animationPlan
+          ? () => {
+              const clock = modelPlayback.get(model.id);
+              return sampleRuntimeAnimation(
+                model.animationPlan!,
+                modelChapter,
+                clock ? performance.now() - clock.startedAt : 0,
+                reducedMotion,
+              );
+            }
+          : undefined,
         onReady: () => {
           if (process.env.NODE_ENV !== "production") {
             (window as unknown as { __glbReady?: boolean }).__glbReady = true;
@@ -1101,6 +1138,7 @@ function syncModels(m: MLMap, ch: number) {
     } else if (!open && live) {
       if (m.getLayer(`glb-${model.id}`)) m.removeLayer(`glb-${model.id}`);
       modelLayers.delete(model.id);
+      modelPlayback.delete(model.id);
     } else if (live) {
       // Scrubbing BACKWARDS has to re-fog geometry already on the GPU.
       live.regate();

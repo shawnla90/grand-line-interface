@@ -38,6 +38,16 @@ export const ScenePlaybackRow = z.object({
     hold_ms: z.number().int().positive(),
     zoom: z.number(),
     pitch: z.number(),
+    /** Optional one-shot push-in on the dwell clock — compiler-bounded
+     * (|Δzoom| ≤ 0.9, pitch 30..62, finishes inside hold_ms). */
+    camera: z
+      .object({
+        zoom_to: z.number().optional(),
+        pitch_to: z.number().optional(),
+        at_ms: z.number().int().nonnegative(),
+        duration_ms: z.number().int().positive(),
+      })
+      .optional(),
   }),
   audio: z.array(SceneAudioBinding),
 });
