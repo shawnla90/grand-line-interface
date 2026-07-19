@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "pack_id": "skypiea-saga-2d-v1",
+  "status": "passed",
+  "verified_at": "2026-07-18T22:55:17Z",
+  "web_repository": "/Users/shawnos.ai/dead-reckoning",
+  "base_commit": "7a761432b6fa7b4e4efb00d2ff91fb13de036c4d",
+  "runtime_scenes": 1,
+  "feature_gate": "NEXT_PUBLIC_STORY_SIMULATION_PACKS",
+  "default_gate_state": "off",
+  "artifact_checks": {
+    "command": "python3 scripts/check_story_simulations.py --pack skypiea-saga-2d-v1",
+    "passed": 18,
+    "total": 18
+  },
+  "east_blue_data_regression": {
+    "command": "python3 scripts/check_simulations.py",
+    "passed": 9,
+    "total": 9
+  },
+  "browser_audit": {
+    "command": "python3 scripts/audit_journey_climax_simulations.py",
+    "passed": 26,
+    "total": 26
+  },
+  "east_blue_regression_audit": {
+    "command": "python3 scripts/audit_simulations.py",
+    "passed": 14,
+    "total": 14
+  },
+  "production_build": "passed",
+  "proof_scope": [
+    "chapter-278 pre-gate with zero Skypiea atlas requests",
+    "chapter-279 exact Luffy and Enel lazy-atlas loading",
+    "rubber immunity, gold-ball burden, Golden Rifle, bell defeat, and final hold",
+    "backward-scrub disposal and deterministic restart",
+    "cross-pack transition into Enies Lobby",
+    "reduced-motion final tableau with no audio request",
+    "East Blue WorldMap compatibility"
+  ],
+  "note": "Technical integration proof only. The pack remains invisible unless explicitly allowlisted at build time."
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "pack_id": "skypiea-saga-2d-v1",
+  "representation": "camera-facing-2d-atlas",
+  "character_count": 2,
+  "characters": [
+    {
+      "id": "monkey-d-luffy-skypiea-enel",
+      "kind": "character",
+      "variant": "skypiea-enel-chapters-279-302",
+      "metadata": "runtime/story-simulations/skypiea-saga-2d-v1/characters/monkey-d-luffy-skypiea-enel/character.json",
+      "atlas": "runtime/story-simulations/skypiea-saga-2d-v1/characters/monkey-d-luffy-skypiea-enel/atlas.png",
+      "atlas_sha256": "01b591b3b7fc9758de897e4591d3e4cef7edaa7f14387680ec9117f2138014d0",
+      "poses": [
+        "sky-island-fighting-guard",
+        "lightning-immunity-laugh",
+        "rubber-rifle-windup",
+        "gold-ball-burden",
+        "golden-rifle-launch",
+        "bell-ring-victory"
+      ],
+      "map_height": 1.02
+    },
+    {
+      "id": "enel-skypiea",
+      "kind": "character",
+      "variant": "skypiea-goro-goro-chapters-279-302",
+      "metadata": "runtime/story-simulations/skypiea-saga-2d-v1/characters/enel-skypiea/character.json",
+      "atlas": "runtime/story-simulations/skypiea-saga-2d-v1/characters/enel-skypiea/atlas.png",
+      "atlas_sha256": "f0335a80bc603911124e4aec9b6fbbe2a982aa40ae1b4f3d65976c70de740f78",
+      "poses": [
+        "god-idle",
+        "lightning-discharge",
+        "rubber-immunity-recoil",
+        "golden-trident-lunge",
+        "amaru-thunder-form",
+        "golden-bell-defeat"
+      ],
+      "map_height": 1.16
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "id": "skypiea-saga-2d-v1",
+  "chapter_span": {"start": 218, "end": 305},
+  "arcs": [
+    {"id": "jaya", "label": "Jaya", "chapters": [218, 236]},
+    {"id": "skypiea", "label": "Skypiea", "chapters": [237, 305]}
+  ],
+  "representation": "camera-facing-2d-atlas",
+  "supersedes_visible_art": [],
+  "runtime_policy": {
+    "chapter_gate": "Never fetch a scene before a verified start chapter.",
+    "playback": "Play once on entering close range, then hold the authored final frame.",
+    "backward_scrub": "Reset scene time, actors, pose selection, effects, and audio deterministically.",
+    "max_active_close_scenes": 1,
+    "max_distant_loops": 3,
+    "reduced_motion": "Use the final safe pose and suppress autoplay and effects.",
+    "cross_pack_rule": "One animated scene globally; newest verified saga pack owns the globe."
+  },
+  "scenes": [
+    {
+      "id": "skypiea-luffy-vs-enel",
+      "label": "Luffy defies Enel's lightning and rings the golden bell",
+      "arc_id": "skypiea",
+      "type": "encounter",
+      "priority": "anchor",
+      "readiness": "runtime_ready",
+      "missing_assets": null,
+      "chapter_gate": {
+        "start": 279,
+        "end": 302,
+        "verification": "verified",
+        "source_url": "https://www.viz.com/shonenjump/one-piece-chapter-279/chapter/11412"
+      },
+      "place": {"id": "skypiea", "landmark": "Shandora-giant-jack-and-golden-bell", "arena": "skypiea-golden-bell"},
+      "duration_ms": 11200,
+      "actors": [
+        {
+          "id": "luffy",
+          "asset_id": "monkey-d-luffy-skypiea-enel",
+          "z": 24,
+          "keyframes": [
+            {"t": 0, "x": -0.58, "y": 0, "scale": 0.84, "rotation": 0, "opacity": 1, "pose": "sky-island-fighting-guard"},
+            {"t": 1800, "x": -0.44, "y": 0.02, "scale": 0.9, "rotation": 0, "opacity": 1, "pose": "lightning-immunity-laugh", "ease": "smooth"},
+            {"t": 3400, "x": -0.28, "y": 0.02, "scale": 0.92, "rotation": -4, "opacity": 1, "pose": "rubber-rifle-windup"},
+            {"t": 5200, "x": -0.38, "y": 0, "scale": 0.88, "rotation": -5, "opacity": 1, "pose": "gold-ball-burden"},
+            {"t": 7300, "x": -0.02, "y": 0.12, "scale": 1.0, "rotation": 2, "opacity": 1, "pose": "golden-rifle-launch", "ease": "accelerate"},
+            {"t": 9300, "x": 0.08, "y": 0, "scale": 0.9, "rotation": 0, "opacity": 1, "pose": "bell-ring-victory"}
+          ]
+        },
+        {
+          "id": "enel",
+          "asset_id": "enel-skypiea",
+          "z": 21,
+          "keyframes": [
+            {"t": 0, "x": 0.56, "y": 0, "scale": 0.86, "rotation": 0, "opacity": 1, "pose": "god-idle"},
+            {"t": 1300, "x": 0.46, "y": 0.02, "scale": 0.92, "rotation": 0, "opacity": 1, "pose": "lightning-discharge"},
+            {"t": 2450, "x": 0.56, "y": 0.08, "scale": 0.9, "rotation": 9, "opacity": 1, "pose": "rubber-immunity-recoil"},
+            {"t": 3900, "x": 0.24, "y": 0.03, "scale": 0.96, "rotation": -5, "opacity": 1, "pose": "golden-trident-lunge", "ease": "accelerate"},
+            {"t": 5900, "x": 0.35, "y": 0.04, "scale": 1.05, "rotation": 0, "opacity": 1, "pose": "amaru-thunder-form"},
+            {"t": 8150, "x": 0.66, "y": 0.17, "scale": 0.92, "rotation": 15, "opacity": 1, "pose": "golden-bell-defeat"}
+          ]
+        }
+      ],
+      "events": [
+        {"t": 1250, "type": "enel-lightning", "duration_ms": 1350, "intensity": 1.0},
+        {"t": 1900, "type": "rubber-immunity-pulse", "duration_ms": 1000, "intensity": 0.9},
+        {"t": 3350, "type": "rubber-stretch", "duration_ms": 900, "intensity": 0.8},
+        {"t": 5000, "type": "gold-ball-weight", "duration_ms": 1600, "intensity": 0.8},
+        {"t": 5850, "type": "thunder-field", "duration_ms": 1800, "intensity": 1.0},
+        {"t": 7150, "type": "golden-rifle", "duration_ms": 1500, "intensity": 1.0},
+        {"t": 8000, "type": "golden-bell-impact", "duration_ms": 2200, "intensity": 1.0},
+        {"t": 9300, "type": "victory-pulse", "duration_ms": 1500, "intensity": 0.8}
+      ]
+    }
+  ],
+  "future_milestones": [
+    {"id": "skypiea-enel-fight", "status": "complete", "scenes": ["skypiea-luffy-vs-enel"], "note": "Rubber immunity, gold-ball burden, golden rifle, and bell finish are distinct runtime states."}
+  ]
+}

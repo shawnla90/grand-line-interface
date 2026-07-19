@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "id": "skypiea-saga-2d-v1",
+  "state": "runtime_verified",
+  "integration_ready": true,
+  "supersedes_visible_art": [],
+  "chapter_span": {
+    "start": 218,
+    "end": 305
+  },
+  "representation": "camera-facing-2d-atlas",
+  "contract": {
+    "path": "contracts/story-simulations/skypiea-saga-2d-v1.simulation.json",
+    "bytes": 4277,
+    "sha256": "4377d4e5b11a7603a8bc51a2bc8e7a3ace41b3e87d30f42e367c1f605b1380ea"
+  },
+  "character_index": {
+    "path": "runtime/story-simulations/skypiea-saga-2d-v1/character-index.json",
+    "bytes": 1492,
+    "sha256": "db9c4caaa3674ad67414ae089d20d62a73650d320e7793161c5b0e80ee31c591"
+  },
+  "canon_intake": {
+    "path": "research/story-scenes/skypiea-batch-a.json",
+    "bytes": 1769,
+    "sha256": "57ff932b3959315f366233231ae8f646398b0475384b018fe6fe5284f88ed09c"
+  },
+  "provenance": {
+    "path": "provenance/skypiea-saga-2d-v1-imagegen.md",
+    "bytes": 2064,
+    "sha256": "5dc021745d954d24a0167d9f4448279905b2b16c428bd04b52dfaf07f9d3cfd2"
+  },
+  "metrics": {
+    "character_packages": 2,
+    "pose_frames": 12,
+    "atlas_bytes": 1558607,
+    "scenes": 1,
+    "runtime_ready_scenes": 1,
+    "non_ready_scenes": 0,
+    "actor_tracks": 2,
+    "movement_keyframes": 12,
+    "fx_events": 8,
+    "review_video_seconds": 2.0
+  },
+  "characters": [
+    {
+      "id": "monkey-d-luffy-skypiea-enel",
+      "kind": "character",
+      "variant": "skypiea-enel-chapters-279-302",
+      "source": {
+        "path": "art/skypiea/source-sheets/monkey-d-luffy-skypiea-enel-pose-sheet-v1.png",
+        "bytes": 1975345,
+        "sha256": "a29bd2e41be49f5ed041599bfb6597d3f15c87fae6dd8ae6fffa5296718dc3dd"
+      },
+      "keyed_source": {
+        "path": "art/skypiea/keyed-sheets/monkey-d-luffy-skypiea-enel-pose-sheet-v1.png",
+        "bytes": 1182394,
+        "sha256": "67daba68bba60032efa9b268333f45060484b5e5715cec96bce2a40815d36ee4"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/skypiea-saga-2d-v1/characters/monkey-d-luffy-skypiea-enel/atlas.png",
+        "bytes": 770363,
+        "sha256": "01b591b3b7fc9758de897e4591d3e4cef7edaa7f14387680ec9117f2138014d0"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/skypiea-saga-2d-v1/characters/monkey-d-luffy-skypiea-enel/character.json",
+        "bytes": 3200,
+        "sha256": "63c4ab09a4a177b9bb7887924ee3577e3ddf2341e85f403ecaed3330290d90b2"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "enel-skypiea",
+      "kind": "character",
+      "variant": "skypiea-goro-goro-chapters-279-302",
+      "source": {
+        "path": "art/skypiea/source-sheets/enel-skypiea-pose-sheet-v1.png",
+        "bytes": 2134223,
+        "sha256": "c52d48251aee949d4abd3a9cc72d7b0d5e2335b4f496d99f3a74697d5c80d609"
+      },
+      "keyed_source": {
+        "path": "art/skypiea/keyed-sheets/enel-skypiea-pose-sheet-v1.png",
+        "bytes": 1354925,
+        "sha256": "5bf4733916588f11fb5af4db3bb15f6de2ea36daa443e8af78000defff7172a6"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/skypiea-saga-2d-v1/characters/enel-skypiea/atlas.png",
+        "bytes": 788244,
+        "sha256": "f0335a80bc603911124e4aec9b6fbbe2a982aa40ae1b4f3d65976c70de740f78"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/skypiea-saga-2d-v1/characters/enel-skypiea/character.json",
+        "bytes": 3135,
+        "sha256": "d8bcb9f208844abf77ea00c56a741a7c0b32e0e6d278f279228bef84bbb8aaa6"
+      },
+      "pose_count": 6
+    }
+  ],
+  "reviews": [
+    {
+      "path": "renders/story-simulations/skypiea-saga-2d-v1/character-atlas-catalog.png",
+      "bytes": 187879,
+      "sha256": "623eafe813bd915df8158e9c001445f857f081e1b110feab991f7507717920c7"
+    },
+    {
+      "path": "renders/story-simulations/skypiea-saga-2d-v1/scene-board.png",
+      "bytes": 152040,
+      "sha256": "f679c1fef692f97a6269cde9829249f6dad7bc18422b28f506175fa3e0b33270"
+    },
+    {
+      "path": "renders/story-simulations/skypiea-saga-2d-v1/sampler-poster.png",
+      "bytes": 230545,
+      "sha256": "549f7e8e81a485df408b0d461a2cd8f0f15b3314af553858a814583f4d90fc93"
+    },
+    {
+      "path": "renders/story-simulations/skypiea-saga-2d-v1/sampler.mp4",
+      "bytes": 452944,
+      "sha256": "dd7a6a814b82f823ede1ae9492a7688443fa8930a24cc5e8b67dba0b5de212a3"
+    }
+  ],
+  "web_proof": {
+    "path": "proofs/skypiea-saga-2d-v1-web-proof.json",
+    "bytes": 1462,
+    "sha256": "7f745ec7e989642576afb730fd117be4c2f041b5459e5059d8161e83c05d495a"
+  },
+  "blockers": []
+}

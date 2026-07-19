@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "pack_id": "skypiea-saga-2d-v1",
+  "researched_at": "2026-07-18",
+  "policy": "Only verified manga-scale beats enter the runnable contract; the simulation compresses the fight without inventing a different outcome.",
+  "scenes": [
+    {
+      "id": "skypiea-luffy-vs-enel",
+      "status": "chapter_verified",
+      "arc_id": "skypiea",
+      "chapter_gate": {
+        "start": 279,
+        "end": 302,
+        "verification": "verified",
+        "source_urls": [
+          "https://www.viz.com/shonenjump/one-piece-chapter-279/chapter/11412",
+          "https://www.viz.com/manga-books/manga/one-piece-volume-30/product/2426/digital",
+          "https://one-piece.com/character/Eneru/index.html"
+        ]
+      },
+      "place": {
+        "id": "skypiea",
+        "landmark": "Shandora-giant-jack-and-golden-bell",
+        "arena": "skypiea-golden-bell",
+        "anchor_status": "resolved_to_existing_island"
+      },
+      "cast": ["monkey-d-luffy-skypiea-enel", "enel-skypiea"],
+      "outcome_claim": "Luffy's rubber body resists Enel's lightning, he returns despite the gold ball fixed to his arm, and the compressed finish launches the golden strike that defeats Enel and rings the bell.",
+      "visual_variant_notes": [
+        "pre-timeskip Skypiea Luffy",
+        "rubber immunity is a reaction state rather than damage",
+        "Enel retains his drums, head wrap, long earlobes, and staff",
+        "blue lightning remains readable and non-photoreal",
+        "gold ball and bell finish remain distinct states"
+      ],
+      "unknowns": [],
+      "integration_note": "The broad chapter window represents one compressed replay of the fight spine; it does not claim every authored pose occurs in chapter 279 itself."
+    }
+  ]
+}
