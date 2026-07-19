@@ -6,26 +6,70 @@
       "video_path": "/art/breakdowns/1188/op1188.mp4",
       "poster_path": "/art/breakdowns/1188/poster.jpg",
       "locked_poster_path": "/art/breakdowns/1188/poster-locked.jpg",
-      "duration_s": 174.0,
+      "duration_s": 174.3,
       "beats": [
-        { "at": 0.25, "text": "Imu just clapped Gear 5 — not fought, not survived. Clapped." },
-        { "at": 8.27, "text": "Luffy says the thing 800 chapters were building to: I'm Joyboy." },
-        { "at": 18.57, "text": "Imu doesn't flinch. \"Joyboy is long dead.\"" },
-        { "at": 22.87, "text": "The crew doesn't even know who they're looking at — best guess is Commander of the Knights of God." },
-        { "at": 40.83, "text": "Gear 5 meets a halo of eyes with: \"are those supposed to be bombs?!\"" },
-        { "at": 54.19, "text": "Mid-fight, Luffy spots Loki alive. Loki: \"I'm still alive, you moron!!\"" },
-        { "at": 74.94, "text": "That distraction is the opening. Caught-You-Slipping Bullet." },
-        { "at": 85.18, "text": "Imu: \"Were thou not watching earlier?\"" },
-        { "at": 97.94, "text": "Jet Gatling, full send. Imu takes it like a man checking his watch." },
-        { "at": 105.69, "text": "The genie comes out of the smoke. Still not enough." },
-        { "at": 112.83, "text": "He names the blade. Vohu — the Blade of Nothingness." },
-        { "at": 126.19, "text": "Luffy run through: \"Joyboy... was not this weak.\"" },
-        { "at": 137.0, "text": "Was not. Past tense. Imu fought the first Joyboy personally." },
-        { "at": 158.71, "text": "Every Joyboy clue, chapter-gated, on the iceberg." }
+        {
+          "at": 0.25,
+          "text": "Imu just clapped Gear 5 \u2014 not fought, not survived. Clapped."
+        },
+        {
+          "at": 8.27,
+          "text": "Luffy says the thing 800 chapters were building to: I'm Joyboy."
+        },
+        {
+          "at": 18.57,
+          "text": "Imu doesn't flinch. \"Joyboy is long dead.\""
+        },
+        {
+          "at": 22.87,
+          "text": "The crew doesn't even know who they're looking at \u2014 best guess is Commander of the Knights of God."
+        },
+        {
+          "at": 40.83,
+          "text": "Gear 5 meets a halo of eyes with: \"are those supposed to be bombs?!\""
+        },
+        {
+          "at": 54.19,
+          "text": "Mid-fight, Luffy spots Loki alive. Loki: \"I'm still alive, you moron!!\""
+        },
+        {
+          "at": 74.94,
+          "text": "That distraction is the opening. Caught-You-Slipping Bullet."
+        },
+        {
+          "at": 85.18,
+          "text": "Imu: \"Were thou not watching earlier?\""
+        },
+        {
+          "at": 97.94,
+          "text": "Jet Gatling, full send. Imu takes it like a man checking his watch."
+        },
+        {
+          "at": 105.69,
+          "text": "The genie comes out of the smoke. Still not enough."
+        },
+        {
+          "at": 112.83,
+          "text": "He names the blade. Vohu \u2014 the Blade of Nothingness."
+        },
+        {
+          "at": 126.19,
+          "text": "Luffy run through: \"Joyboy... was not this weak.\""
+        },
+        {
+          "at": 137.0,
+          "text": "Was not. Past tense. Imu fought the first Joyboy personally."
+        },
+        {
+          "at": 158.71,
+          "text": "Every Joyboy clue, chapter-gated, on the iceberg."
+        }
       ],
-      "theory_refs": ["who-was-joy-boy"],
+      "theory_refs": [
+        "who-was-joy-boy"
+      ],
       "credit": {
-        "line": "Panels © Eiichiro Oda / Shueisha / VIZ Media, used transformatively for commentary and review. Read One Piece officially on the Shonen Jump app.",
+        "line": "Panels \u00a9 Eiichiro Oda / Shueisha / VIZ Media, used transformatively for commentary and review. Read One Piece officially on the Shonen Jump app.",
         "source_ref": "One Piece ch. 1188 \"VOHU\", Weekly Shonen Jump"
       }
     }
