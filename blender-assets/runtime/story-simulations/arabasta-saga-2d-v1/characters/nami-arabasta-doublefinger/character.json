@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "pack_id": "arabasta-saga-2d-v1",
+  "id": "nami-arabasta-doublefinger",
+  "display_name": "Nami",
+  "kind": "character",
+  "variant": "arabasta-first-clima-tact-chapters-190-193",
+  "representation": "camera-facing-2d-atlas",
+  "source_sheet": "art/arabasta/keyed-sheets/nami-arabasta-doublefinger-pose-sheet-v1.png",
+  "source_sha256": "66fc8d34a19799236c4f334a68314c1ed123ea1b22366e0e6cc076e73211bf57",
+  "atlas": "runtime/story-simulations/arabasta-saga-2d-v1/characters/nami-arabasta-doublefinger/atlas.png",
+  "atlas_sha256": "3f7e72de7569ee932c4c1202176ac63befcad9cb747dc75f0aab7098e4bcd492",
+  "atlas_size": {
+    "width": 1152,
+    "height": 768
+  },
+  "grid": {
+    "columns": 3,
+    "rows": 2,
+    "cell_px": 384
+  },
+  "map_height": 1.0,
+  "facing": "camera",
+  "frames": {
+    "clima-tact-guard": {
+      "index": 0,
+      "pixel_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "heat-ball-setup": {
+      "index": 1,
+      "pixel_rect": {
+        "x": 384,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.3333333333333333,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "cool-ball-focus": {
+      "index": 2,
+      "pixel_rect": {
+        "x": 768,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.6666666666666666,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "thunderbolt-tempo": {
+      "index": 3,
+      "pixel_rect": {
+        "x": 0,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.0,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "tornado-tempo": {
+      "index": 4,
+      "pixel_rect": {
+        "x": 384,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.3333333333333333,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "battered-victory": {
+      "index": 5,
+      "pixel_rect": {
+        "x": 768,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.6666666666666666,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    }
+  },
+  "runtime_rules": {
+    "pose_interpolation": "step",
+    "transform_interpolation": "linear-or-authored-ease",
+    "depth_write": false,
+    "alpha_test": 0.05,
+    "reduced_motion": "battered-victory"
+  }
+}

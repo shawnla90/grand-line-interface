@@ -82,6 +82,141 @@
       "visual_variant_notes": ["the targets are Baroque Works ships, not Marine ships", "five ships are grouped into one reusable convoy tableau", "existing Arabasta Ace atlas remains valid"],
       "unknowns": [],
       "integration_note": "At chapter 159 this becomes the newest story state at the Nanohana theatre anchor and supersedes the chapter-158 intervention tableau."
+    },
+    {
+      "id": "arabasta-luffy-vs-crocodile-round-one",
+      "status": "chapter_verified",
+      "arc_id": "arabasta",
+      "chapter_gate": {
+        "start": 176,
+        "end": 179,
+        "verification": "verified",
+        "source_urls": [
+          "https://api.api-onepiece.com/v2/chapters/en",
+          "https://onepiece.fandom.com/wiki/Chapter_176",
+          "https://onepiece.fandom.com/wiki/Chapter_177",
+          "https://onepiece.fandom.com/wiki/Chapter_178",
+          "https://onepiece.fandom.com/wiki/Chapter_179"
+        ]
+      },
+      "place": {"id": "rainbase-desert-outskirts", "landmark": "road-from-rain-dinners-toward-alubarna", "arena": "arabasta-open-desert", "anchor_status": "resolved_to_existing_arabasta_theatre"},
+      "cast": ["monkey-d-luffy-crocodile-round-one", "crocodile-arabasta-sand"],
+      "outcome_claim": "Luffy stays behind after Rain Dinners and confronts Crocodile, but his ordinary attacks pass through the sand body; Crocodile defeats him and casts him into quicksand.",
+      "visual_variant_notes": ["round one only", "no water barrel", "no blood countermeasure", "Crocodile retains a readable human face through every sand state", "non-graphic defeat aftermath"],
+      "unknowns": [],
+      "integration_note": "This illustrated scene supersedes the faceless rigid arabasta-luffy-crocodile-sand-study visual. Rounds two and three remain separate contracts."
+    },
+    {
+      "id": "arabasta-sanji-vs-bon-clay",
+      "status": "chapter_verified",
+      "arc_id": "arabasta",
+      "chapter_gate": {
+        "start": 187,
+        "end": 189,
+        "verification": "verified",
+        "source_urls": [
+          "https://api.api-onepiece.com/v2/chapters/en",
+          "https://onepiece.fandom.com/wiki/Chapter_187",
+          "https://onepiece.fandom.com/wiki/Chapter_188",
+          "https://onepiece.fandom.com/wiki/Chapter_189"
+        ]
+      },
+      "place": {"id": "alubarna", "landmark": "southern-quarter-battle-street", "arena": "alubarna-stone-street", "anchor_status": "resolved_to_existing_arabasta_theatre"},
+      "cast": ["sanji-arabasta-bon-clay", "bon-clay-mr-two"],
+      "outcome_claim": "Sanji and Bon Clay exchange kick-based techniques across Alubarna; after understanding the Clone-Clone fruit's weakness, Sanji defeats him in chapter 189.",
+      "visual_variant_notes": ["pre-timeskip Sanji", "no Diable Jambe", "Clone-Clone feint is compact and does not add a persistent copied actor", "Ballet Kenpo remains readable without anime-only extensions"],
+      "unknowns": [],
+      "integration_note": "The later first Diable Jambe versus Jabra remains a separate Enies Lobby progression scene."
+    },
+    {
+      "id": "arabasta-nami-vs-miss-doublefinger",
+      "status": "chapter_verified",
+      "arc_id": "arabasta",
+      "chapter_gate": {
+        "start": 190,
+        "end": 193,
+        "verification": "verified",
+        "source_urls": [
+          "https://api.api-onepiece.com/v2/chapters/en",
+          "https://onepiece.fandom.com/wiki/Chapter_190",
+          "https://onepiece.fandom.com/wiki/Chapter_191",
+          "https://onepiece.fandom.com/wiki/Chapter_192",
+          "https://onepiece.fandom.com/wiki/Chapter_193"
+        ]
+      },
+      "place": {"id": "alubarna", "landmark": "western-quarter-battle-street", "arena": "alubarna-stone-street", "anchor_status": "resolved_to_existing_arabasta_theatre"},
+      "cast": ["nami-arabasta-doublefinger", "miss-doublefinger-arabasta"],
+      "outcome_claim": "Nami learns the first Clima-Tact's weather-ball combinations under pressure and defeats Miss Doublefinger with Tornado Tempo across chapters 190 through 193.",
+      "visual_variant_notes": ["first-generation three-segment Clima-Tact only", "no Perfect Clima-Tact", "no Zeus", "Spike-Spike transformations retain Miss Doublefinger's readable face", "non-graphic defeat"],
+      "unknowns": [],
+      "integration_note": "At the shared Alubarna theatre this scene follows Sanji/Bon Clay and is replaced by Zoro/Mr. One when chapter 194 opens."
+    },
+    {
+      "id": "arabasta-zoro-vs-mr-one",
+      "status": "chapter_verified",
+      "arc_id": "arabasta",
+      "chapter_gate": {
+        "start": 194,
+        "end": 195,
+        "verification": "verified",
+        "source_urls": [
+          "https://api.api-onepiece.com/v2/chapters/en",
+          "https://onepiece.fandom.com/wiki/Chapter_194",
+          "https://onepiece.fandom.com/wiki/Chapter_195"
+        ]
+      },
+      "place": {"id": "alubarna", "landmark": "stone-buildings-and-courtyard", "arena": "alubarna-stone-quarter", "anchor_status": "resolved_to_existing_arabasta_theatre"},
+      "cast": ["roronoa-zoro-arabasta-mr-one", "daz-bones-mr-one"],
+      "outcome_claim": "Zoro fights Daz Bones across Alubarna, learns to cut steel after sensing its breath, and defeats Mr. 1 with a decisive one-sword Lion Song attack in chapter 195.",
+      "visual_variant_notes": ["both Zoro eyes remain open", "battle damage without gore", "Mr. 1's steel transformations keep his facial features visible", "one-sword decisive finish follows the pressure from three swords"],
+      "unknowns": [],
+      "integration_note": "Use reusable steel-spark, slash, and stone-debris FX; chapter 194 correctly replaces the preceding Nami/Miss Doublefinger scene at the shared Alubarna theatre."
+    },
+    {
+      "id": "arabasta-luffy-vs-crocodile-round-two",
+      "status": "chapter_verified",
+      "arc_id": "arabasta",
+      "chapter_gate": {
+        "start": 198,
+        "end": 201,
+        "verification": "verified",
+        "source_urls": [
+          "https://api.api-onepiece.com/v2/chapters/en",
+          "https://onepiece.fandom.com/wiki/Chapter_198",
+          "https://onepiece.fandom.com/wiki/Chapter_199",
+          "https://onepiece.fandom.com/wiki/Chapter_200",
+          "https://onepiece.fandom.com/wiki/Chapter_201"
+        ]
+      },
+      "place": {"id": "alubarna-palace", "landmark": "palace-battle-surface", "arena": "alubarna-palace-rooftop", "anchor_status": "resolved_to_existing_alubarna_theatre"},
+      "cast": ["monkey-d-luffy-crocodile-round-two", "crocodile-arabasta-round-two"],
+      "outcome_claim": "Luffy returns with water, makes Crocodile's sand body tangible, and lands hits, but Crocodile drains him; falling water restores Luffy after Crocodile leaves for the royal tomb.",
+      "visual_variant_notes": ["water barrel and Aqua Luffy", "water countermeasure only", "no final-round blood state", "Crocodile's wet solid body and face remain readable", "non-graphic dehydration and revival"],
+      "unknowns": [],
+      "integration_note": "Use a separate palace theatre and actor variants; never reuse the round-one quicksand outcome or final-tomb victory."
+    },
+    {
+      "id": "arabasta-luffy-vs-crocodile-final",
+      "status": "chapter_verified",
+      "arc_id": "arabasta",
+      "chapter_gate": {
+        "start": 203,
+        "end": 210,
+        "verification": "verified",
+        "source_urls": [
+          "https://api.api-onepiece.com/v2/chapters/en",
+          "https://onepiece.fandom.com/wiki/Chapter_203",
+          "https://onepiece.fandom.com/wiki/Chapter_204",
+          "https://onepiece.fandom.com/wiki/Chapter_209",
+          "https://onepiece.fandom.com/wiki/Chapter_210"
+        ]
+      },
+      "place": {"id": "arabasta-royal-tomb", "landmark": "underground-royal-tomb", "arena": "arabasta-royal-tomb", "anchor_status": "resolved_to_existing_alubarna_theatre"},
+      "cast": ["monkey-d-luffy-crocodile-final", "crocodile-arabasta-final"],
+      "outcome_claim": "In the underground royal tomb, Luffy uses restrained blood contact to strike Crocodile's sand body, survives the poison-hook escalation, and defeats him with an upward Gum-Gum Storm in chapter 210.",
+      "visual_variant_notes": ["final round only", "blood countermeasure conveyed as non-graphic matte battle smears", "poison hook visible", "upward Storm impact", "Crocodile remains facially readable through defeat"],
+      "unknowns": [],
+      "integration_note": "This is the trilogy resolution and must replace round two at the Alubarna theatre only when chapter 203 opens."
     }
   ]
 }

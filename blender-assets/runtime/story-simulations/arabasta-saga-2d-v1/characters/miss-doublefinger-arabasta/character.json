@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "pack_id": "arabasta-saga-2d-v1",
+  "id": "miss-doublefinger-arabasta",
+  "display_name": "Zala / Miss Doublefinger",
+  "kind": "character",
+  "variant": "arabasta-spike-spike-fruit-chapters-190-193",
+  "representation": "camera-facing-2d-atlas",
+  "source_sheet": "art/arabasta/keyed-sheets/miss-doublefinger-arabasta-pose-sheet-v1.png",
+  "source_sha256": "24a96055b0971f2cbc1cb36dd0d0a60292b49429ff6d65bd91e081a31e90c8a9",
+  "atlas": "runtime/story-simulations/arabasta-saga-2d-v1/characters/miss-doublefinger-arabasta/atlas.png",
+  "atlas_sha256": "947cdd46310f220008afaed31187220fc036e95cc7c6f25abde21fb438f25ab2",
+  "atlas_size": {
+    "width": 1152,
+    "height": 768
+  },
+  "grid": {
+    "columns": 3,
+    "rows": 2,
+    "cell_px": 384
+  },
+  "map_height": 1.12,
+  "facing": "camera",
+  "frames": {
+    "spike-fighter-idle": {
+      "index": 0,
+      "pixel_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "finger-spike-thrust": {
+      "index": 1,
+      "pixel_rect": {
+        "x": 384,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.3333333333333333,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "stinger-step": {
+      "index": 2,
+      "pixel_rect": {
+        "x": 768,
+        "y": 0,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.6666666666666666,
+        "y": 0.0,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "spike-spike-doping": {
+      "index": 3,
+      "pixel_rect": {
+        "x": 0,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.0,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "tornado-tempo-recoil": {
+      "index": 4,
+      "pixel_rect": {
+        "x": 384,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.3333333333333333,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    },
+    "defeated-hold": {
+      "index": 5,
+      "pixel_rect": {
+        "x": 768,
+        "y": 384,
+        "width": 384,
+        "height": 384
+      },
+      "uv_top_left": {
+        "x": 0.6666666666666666,
+        "y": 0.5,
+        "width": 0.3333333333333333,
+        "height": 0.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.96
+      }
+    }
+  },
+  "runtime_rules": {
+    "pose_interpolation": "step",
+    "transform_interpolation": "linear-or-authored-ease",
+    "depth_write": false,
+    "alpha_test": 0.05,
+    "reduced_motion": "defeated-hold"
+  }
+}

@@ -17,6 +17,30 @@
     "ace-fire-fist-destroys-billions-fleet": {
       "island": "nanohana",
       "note": "The chapter-159 convoy clash occurs after leaving Nanohana; the existing port-city point is a local theatre anchor, not a measured river coordinate."
+    },
+    "arabasta-luffy-vs-crocodile-round-one": {
+      "island": "rainbase",
+      "note": "The desert outskirts beyond Rainbase are staged at the existing Rainbase point; this replaces the earlier faceless Crocodile blockout."
+    },
+    "arabasta-sanji-vs-bon-clay": {
+      "island": "alubarna",
+      "note": "Sanji and Bon Clay's chapter-187 to 189 duel is staged at the existing Alubarna point."
+    },
+    "arabasta-zoro-vs-mr-one": {
+      "island": "alubarna",
+      "note": "Zoro and Daz Bones' chapter-194 to 195 duel shares the Alubarna theatre and supersedes Nami/Miss Doublefinger when its corrected gate opens."
+    },
+    "arabasta-nami-vs-miss-doublefinger": {
+      "island": "alubarna",
+      "note": "Nami's chapter-190 to 193 first Clima-Tact duel is staged at Alubarna and replaces Sanji/Bon Clay at the shared theatre."
+    },
+    "arabasta-luffy-vs-crocodile-round-two": {
+      "island": "alubarna",
+      "note": "The chapter-198 to 201 palace fight uses the existing Alubarna point as a local rooftop theatre and keeps the water-counter state separate from rounds one and three."
+    },
+    "arabasta-luffy-vs-crocodile-final": {
+      "island": "alubarna",
+      "note": "The underground royal-tomb final uses the existing Alubarna point as its local theatre and replaces round two when chapter 203 opens."
     }
   }
 }

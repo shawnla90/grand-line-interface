@@ -2,16 +2,16 @@
   "schema_version": 1,
   "pack_id": "arabasta-saga-2d-v1",
   "status": "passed",
-  "verified_at": "2026-07-18T06:36:12Z",
+  "verified_at": "2026-07-18T21:33:12Z",
   "web_repository": "/Users/shawnos.ai/dead-reckoning",
-  "base_commit": "5acb24a2a35ad801c131fe4ed78ffb5353749094",
-  "runtime_scenes": 4,
+  "base_commit": "878b636b2541432197d301a98e249daa6f446af9",
+  "runtime_scenes": 10,
   "feature_gate": "NEXT_PUBLIC_STORY_SIMULATION_PACKS",
   "default_gate_state": "off",
   "artifact_checks": {
     "command": "python3 scripts/check_story_simulations.py --pack arabasta-saga-2d-v1",
-    "passed": 14,
-    "total": 14
+    "passed": 19,
+    "total": 19
   },
   "east_blue_data_regression": {
     "command": "python3 scripts/check_simulations.py",
@@ -20,13 +20,13 @@
   },
   "arabasta_browser_audit": {
     "command": "python3 scripts/audit_story_simulations.py",
-    "passed": 16,
-    "total": 16
+    "passed": 44,
+    "total": 44
   },
   "east_blue_regression_audit": {
     "command": "python3 scripts/audit_simulations.py",
-    "passed": 12,
-    "total": 12
+    "passed": 14,
+    "total": 14
   },
   "production_build": "passed",
   "proof_scope": [
@@ -37,6 +37,12 @@
     "newest scene at a shared anchor",
     "Ace and Smoker Nanohana tableau",
     "chapter-159 Fire Fist impact, convoy-only lazy load, and burning-wreckage hold",
+    "chapter-176 Crocodile round one with Luffy rubber stretch, signed two-atlas isolation, final defeat tableau, and backward-scrub restart",
+    "chapter-187 Sanji versus Bon Clay with Anti-Manner Kick Course and no Diable Jambe chronology leak",
+    "chapter-194 Zoro versus Mr. One with Lion Song, shared-anchor replacement, and collapsed-victory hold",
+    "corrected chapter-190 to 193 Nami versus Miss Doublefinger gate with first Clima-Tact progression and Tornado Tempo",
+    "chapter-198 Crocodile round two with Aqua Luffy, wet-fist countermeasure, dehydration, revival, and restart",
+    "chapter-203 royal-tomb final with poison-hook escalation, Gum-Gum Storm, and final hold",
     "reduced-motion static safe state",
     "East Blue compatibility"
   ],

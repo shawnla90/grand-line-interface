@@ -3,6 +3,9 @@
   "id": "arabasta-saga-2d-v1",
   "state": "runtime_verified",
   "integration_ready": true,
+  "supersedes_visible_art": [
+    "arabasta-luffy-crocodile-sand-study"
+  ],
   "chapter_span": {
     "start": 101,
     "end": 217
@@ -10,35 +13,35 @@
   "representation": "camera-facing-2d-atlas-with-authored-movement-and-3d-fx",
   "contract": {
     "path": "contracts/story-simulations/arabasta-saga-2d-v1.simulation.json",
-    "bytes": 13160,
-    "sha256": "fc75137a010181841d4b3cd89abab776d5e61c37188de723386bf83133e34353"
+    "bytes": 31106,
+    "sha256": "ed39d0b68565af756011a63f96a3f6d85f90c0456744560021db7efeba9dca8f"
   },
   "character_index": {
     "path": "runtime/story-simulations/arabasta-saga-2d-v1/character-index.json",
-    "bytes": 4077,
-    "sha256": "342c2600844392906081c794e60cdd6e4c370e1f1287950d602d5032fc34373e"
+    "bytes": 12353,
+    "sha256": "b690d752f2c9c32908148952841ca24e15f187acce90fe0ecd3ff917487363da"
   },
   "canon_intake": {
     "path": "research/story-scenes/arabasta-batch-a.json",
-    "bytes": 4565,
-    "sha256": "779df5cdb67a1fd3ab85ec1d991ae532028956f2990350d1e632ad5175ca76d1"
+    "bytes": 12758,
+    "sha256": "dcb52ab0e84ec5e39c69639b061552e2ee75c5faa1b93b45dc5f4f39c173cae5"
   },
   "provenance": {
-    "path": "art/arabasta/IMAGEGEN_PROVENANCE.md",
-    "bytes": 2602,
-    "sha256": "1dfe59ad5157e2739a9d6fe2224dd2b28d75659356bb1ba2c4a3882376036073"
+    "path": "provenance/arabasta-saga-2d-v1-imagegen.md",
+    "bytes": 5939,
+    "sha256": "863bd2632cd12e1edf9063f40f147ebe20c39911d682e0bf114a68304a821b38"
   },
   "metrics": {
-    "character_packages": 6,
-    "pose_frames": 36,
-    "atlas_bytes": 4064886,
-    "scenes": 4,
-    "runtime_ready_scenes": 4,
+    "character_packages": 18,
+    "pose_frames": 108,
+    "atlas_bytes": 12930626,
+    "scenes": 10,
+    "runtime_ready_scenes": 10,
     "non_ready_scenes": 0,
-    "actor_tracks": 8,
-    "movement_keyframes": 46,
-    "fx_events": 21,
-    "review_video_seconds": 8.0
+    "actor_tracks": 20,
+    "movement_keyframes": 118,
+    "fx_events": 63,
+    "review_video_seconds": 20.0
   },
   "characters": [
     {
@@ -196,18 +199,330 @@
         "sha256": "4ddecc19c3af8e637c13c72bc59a0b9514ebfe0882f7d5b2e7010673b53b0555"
       },
       "pose_count": 6
+    },
+    {
+      "id": "roronoa-zoro-arabasta-mr-one",
+      "kind": "character",
+      "variant": "alubarna-mr-one-chapters-194-195",
+      "source": {
+        "path": "art/arabasta/source-sheets/roronoa-zoro-arabasta-mr-one-pose-sheet-v1.png",
+        "bytes": 1869765,
+        "sha256": "9f91a5090e0e6db0d998beacd1d3d9c985befa20c1f8ce5e3afaa4dd9f552b91"
+      },
+      "keyed_source": {
+        "path": "art/arabasta/keyed-sheets/roronoa-zoro-arabasta-mr-one-pose-sheet-v1.png",
+        "bytes": 1005093,
+        "sha256": "65aaa30658740cad74700a24bcbe8122f648cb57a22b8699282ca37ec035cd5e"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/roronoa-zoro-arabasta-mr-one/atlas.png",
+        "bytes": 602775,
+        "sha256": "37af92a178d844e1e4b69b3b51732c9060ce3a5efd864ba7d8f55070a91218c8"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/roronoa-zoro-arabasta-mr-one/character.json",
+        "bytes": 3198,
+        "sha256": "3e7f05e8f5a68bcda01226a74b3cb7d92c85d51f58c7e1dcce0890843dfe8bda"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "daz-bones-mr-one",
+      "kind": "character",
+      "variant": "alubarna-steel-body-chapters-194-195",
+      "source": {
+        "path": "art/arabasta/source-sheets/daz-bones-mr-one-pose-sheet-v1.png",
+        "bytes": 2070600,
+        "sha256": "124bbe64dda42ab8cc427e04be20f4b975aafafe2f0b31606977f049c90fe429"
+      },
+      "keyed_source": {
+        "path": "art/arabasta/keyed-sheets/daz-bones-mr-one-pose-sheet-v1.png",
+        "bytes": 1252457,
+        "sha256": "d786eb9b034d793290a64c4556f048862bb8fe31f4f7ed70055a1a665c796c76"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/daz-bones-mr-one/atlas.png",
+        "bytes": 729266,
+        "sha256": "621dba6f3f3c083fc4b411c40d1cd0736fc9fb31da412b8d21083a3cc91bc966"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/daz-bones-mr-one/character.json",
+        "bytes": 3133,
+        "sha256": "7b42bec43d4d95297c089bf7087de262d49245cec351386facfa6982f0869b97"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "sanji-arabasta-bon-clay",
+      "kind": "character",
+      "variant": "alubarna-bon-clay-chapters-187-189",
+      "source": {
+        "path": "art/arabasta/source-sheets/sanji-arabasta-bon-clay-pose-sheet-v1.png",
+        "bytes": 1597159,
+        "sha256": "e30f659c734adfb86d01ea40b91f0e66d7f837e02f8ec60221f5f6ad03df4538"
+      },
+      "keyed_source": {
+        "path": "art/arabasta/keyed-sheets/sanji-arabasta-bon-clay-pose-sheet-v1.png",
+        "bytes": 696653,
+        "sha256": "b3702b9d1bbbc53af0638a07e285c085658e0a13b49a1306c9fbb92a45df9741"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/sanji-arabasta-bon-clay/atlas.png",
+        "bytes": 492992,
+        "sha256": "f2861f4b483c62ef419b8dee2f86dec122f5b680deb04a8919f80b6baf3ce121"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/sanji-arabasta-bon-clay/character.json",
+        "bytes": 3179,
+        "sha256": "010319fa69b22b3d894b357a4c10091cccada207405189c1063c9a7ba64f9db8"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "bon-clay-mr-two",
+      "kind": "character",
+      "variant": "alubarna-ballet-kenpo-chapters-187-189",
+      "source": {
+        "path": "art/arabasta/source-sheets/bon-clay-mr-two-pose-sheet-v1.png",
+        "bytes": 1979298,
+        "sha256": "567b9aa5a6ef6a34a42d0154087c7d6707e7dc1866100528042a691ca1ff2585"
+      },
+      "keyed_source": {
+        "path": "art/arabasta/keyed-sheets/bon-clay-mr-two-pose-sheet-v1.png",
+        "bytes": 1182781,
+        "sha256": "89d489d405789dac17744ba6f3c90b6bc48f26b07cdca7e20e1553983d3d54a0"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/bon-clay-mr-two/atlas.png",
+        "bytes": 757164,
+        "sha256": "3f451be13e46323fe42b3711544a9b33d039a736afd2dcb795dcefd417f3e395"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/bon-clay-mr-two/character.json",
+        "bytes": 3154,
+        "sha256": "86ededa916e395bc5048ef9ebb4b7ce2ccaae6e7b8bd07e5b8c2b7ee8c3e9e1d"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "monkey-d-luffy-crocodile-round-one",
+      "kind": "character",
+      "variant": "arabasta-crocodile-round-one-chapters-176-179",
+      "source": {
+        "path": "art/arabasta/source-sheets/monkey-d-luffy-crocodile-round-one-pose-sheet-v1.png",
+        "bytes": 2101930,
+        "sha256": "99166ea116c331089e99d297b0bad3ea985074a6d0b7767b6f6d5b1b8eb355c8"
+      },
+      "keyed_source": {
+        "path": "art/arabasta/keyed-sheets/monkey-d-luffy-crocodile-round-one-pose-sheet-v1.png",
+        "bytes": 1333542,
+        "sha256": "b06fa1d175df98cce11fafaaa59d8d1796424b5e67c3b022a3e5967cdab510b3"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/monkey-d-luffy-crocodile-round-one/atlas.png",
+        "bytes": 847846,
+        "sha256": "25e499e7d0f94d74e37b86e6ae1964cc1d96d260920e5e9aedb0fe30ea20af0f"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/monkey-d-luffy-crocodile-round-one/character.json",
+        "bytes": 3234,
+        "sha256": "11b79df5bbebb95cf7d06c8a5f169d499fe9cbb964b1feaa51ad6bbf40f7d4b5"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "crocodile-arabasta-sand",
+      "kind": "character",
+      "variant": "arabasta-sand-body-round-one-chapters-176-179",
+      "source": {
+        "path": "art/arabasta/source-sheets/crocodile-arabasta-sand-pose-sheet-v1.png",
+        "bytes": 2306694,
+        "sha256": "b112839f77e42f2ae9e86ea91196125a6d339b16eaea340c5dde9b9c93290a44"
+      },
+      "keyed_source": {
+        "path": "art/arabasta/keyed-sheets/crocodile-arabasta-sand-pose-sheet-v1.png",
+        "bytes": 1717974,
+        "sha256": "5f715d71316e408d883c36690ae2e8e0a1ef3568ca529e5a0a074b0149078073"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/crocodile-arabasta-sand/atlas.png",
+        "bytes": 1017707,
+        "sha256": "f351454fcc71320a615137771e290c109f0343ecc1096bd7a8b9cab2c3bb7de9"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/crocodile-arabasta-sand/character.json",
+        "bytes": 3186,
+        "sha256": "8dc40ed081821e156ba94ea9e1177a62edeeaed5c547f909c337f89e46012fc7"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "nami-arabasta-doublefinger",
+      "kind": "character",
+      "variant": "arabasta-first-clima-tact-chapters-190-193",
+      "source": {
+        "path": "art/arabasta/source-sheets/nami-arabasta-doublefinger-pose-sheet-v1.png",
+        "bytes": 1781892,
+        "sha256": "2b0f8deaad026b07b00daab9a43723fdfeb16d528346ef09adc711611607bc87"
+      },
+      "keyed_source": {
+        "path": "art/arabasta/keyed-sheets/nami-arabasta-doublefinger-pose-sheet-v1.png",
+        "bytes": 1099909,
+        "sha256": "66fc8d34a19799236c4f334a68314c1ed123ea1b22366e0e6cc076e73211bf57"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/nami-arabasta-doublefinger/atlas.png",
+        "bytes": 612549,
+        "sha256": "3f7e72de7569ee932c4c1202176ac63befcad9cb747dc75f0aab7098e4bcd492"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/nami-arabasta-doublefinger/character.json",
+        "bytes": 3172,
+        "sha256": "2be1c1e0280e1fe71009dc24ab73393fcd119e12b1c5b7546b6f640eace5978f"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "miss-doublefinger-arabasta",
+      "kind": "character",
+      "variant": "arabasta-spike-spike-fruit-chapters-190-193",
+      "source": {
+        "path": "art/arabasta/source-sheets/miss-doublefinger-arabasta-pose-sheet-v1.png",
+        "bytes": 1731238,
+        "sha256": "54812ba08b5ddb012f495d6dba288bdad7813a54d09b118ad097d4835f36785d"
+      },
+      "keyed_source": {
+        "path": "art/arabasta/keyed-sheets/miss-doublefinger-arabasta-pose-sheet-v1.png",
+        "bytes": 1073873,
+        "sha256": "24a96055b0971f2cbc1cb36dd0d0a60292b49429ff6d65bd91e081a31e90c8a9"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/miss-doublefinger-arabasta/atlas.png",
+        "bytes": 724862,
+        "sha256": "947cdd46310f220008afaed31187220fc036e95cc7c6f25abde21fb438f25ab2"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/miss-doublefinger-arabasta/character.json",
+        "bytes": 3199,
+        "sha256": "f2c2bbc1e3de86f17b529c84aca562279ad40f202b359d0a4d9ea619dd3cb8c4"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "monkey-d-luffy-crocodile-round-two",
+      "kind": "character",
+      "variant": "arabasta-crocodile-water-counter-chapters-198-201",
+      "source": {
+        "path": "art/arabasta/source-sheets/monkey-d-luffy-crocodile-round-two-pose-sheet-v1.png",
+        "bytes": 1791874,
+        "sha256": "54741f7d5b39fbfaf7e484a760c886ed1aa78bb60df37632cd8b24141a07e8c0"
+      },
+      "keyed_source": {
+        "path": "art/arabasta/keyed-sheets/monkey-d-luffy-crocodile-round-two-pose-sheet-v1.png",
+        "bytes": 890959,
+        "sha256": "fde839802f3440a03477f92e9e4b36ad474161ce36f0f1ef01391aeb4c548306"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/monkey-d-luffy-crocodile-round-two/atlas.png",
+        "bytes": 613303,
+        "sha256": "4c81ed75d3a2fade4f2085cf83bd3b244e513a5e5e5f567dce70d58edc88d8b2"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/monkey-d-luffy-crocodile-round-two/character.json",
+        "bytes": 3226,
+        "sha256": "5cbac181647ca0227e92833fe58c1e6e02813d55088353376c3f127c5cd2ff62"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "crocodile-arabasta-round-two",
+      "kind": "character",
+      "variant": "arabasta-water-solidification-chapters-198-201",
+      "source": {
+        "path": "art/arabasta/source-sheets/crocodile-arabasta-round-two-pose-sheet-v1.png",
+        "bytes": 2171483,
+        "sha256": "e4cdb59f7158344176214c16b5f21798a79695282ae07593e3b3593229ddeddd"
+      },
+      "keyed_source": {
+        "path": "art/arabasta/keyed-sheets/crocodile-arabasta-round-two-pose-sheet-v1.png",
+        "bytes": 1461335,
+        "sha256": "3c425ada19dbb0cacb87e4f7b0ffdc4c491c28c965053e7b00ae7f58e837cd57"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/crocodile-arabasta-round-two/atlas.png",
+        "bytes": 907526,
+        "sha256": "8eca643b73a333771fad7e995934f6e1881f8b37f5b216a91b84c1af21a8c95c"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/crocodile-arabasta-round-two/character.json",
+        "bytes": 3197,
+        "sha256": "412e2270e0ca5f10425466f07d93a62952fefeef25aa486c7dffe630df5da40e"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "monkey-d-luffy-crocodile-final",
+      "kind": "character",
+      "variant": "arabasta-crocodile-final-blood-counter-chapters-203-210",
+      "source": {
+        "path": "art/arabasta/source-sheets/monkey-d-luffy-crocodile-final-pose-sheet-v1.png",
+        "bytes": 1827561,
+        "sha256": "8e5e60f24a64654d1b173e6d332daf89a21406d34c785ee1a573356923393612"
+      },
+      "keyed_source": {
+        "path": "art/arabasta/keyed-sheets/monkey-d-luffy-crocodile-final-pose-sheet-v1.png",
+        "bytes": 929157,
+        "sha256": "eff481d9a826def6c4d6ee509514c2c2950866f5c4c5e10b3c43527126eedfa4"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/monkey-d-luffy-crocodile-final/atlas.png",
+        "bytes": 678557,
+        "sha256": "b8881f887644bf6dddc288ae4877a87debd395189657ef487107e3ab79ed2249"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/monkey-d-luffy-crocodile-final/character.json",
+        "bytes": 3217,
+        "sha256": "64df53aa94405af9dd9575031083cf0b547e8d7f87949ecc0ef31766beadf295"
+      },
+      "pose_count": 6
+    },
+    {
+      "id": "crocodile-arabasta-final",
+      "kind": "character",
+      "variant": "arabasta-royal-tomb-final-chapters-203-210",
+      "source": {
+        "path": "art/arabasta/source-sheets/crocodile-arabasta-final-pose-sheet-v1.png",
+        "bytes": 2157572,
+        "sha256": "b2bf4af61830a915d42d61fd81c0b8279f89aa7ace14019c36ac2104b4d40a9b"
+      },
+      "keyed_source": {
+        "path": "art/arabasta/keyed-sheets/crocodile-arabasta-final-pose-sheet-v1.png",
+        "bytes": 1464222,
+        "sha256": "ad6b8580dcdd1571da9573daeea2905bc4807cf5033a872660883ac573abe6bb"
+      },
+      "atlas": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/crocodile-arabasta-final/atlas.png",
+        "bytes": 881193,
+        "sha256": "572b6c090806e248019c54bd43ef33711102aa62c0b3267069d603c8ed3a71af"
+      },
+      "metadata": {
+        "path": "runtime/story-simulations/arabasta-saga-2d-v1/characters/crocodile-arabasta-final/character.json",
+        "bytes": 3206,
+        "sha256": "073be8b4c0e4fae7ecdc40848628e205b818ba8ebcce89ac719a4da80e2bd3b9"
+      },
+      "pose_count": 6
     }
   ],
   "reviews": [
     {
       "path": "renders/story-simulations/arabasta-saga-2d-v1/character-atlas-catalog.png",
-      "bytes": 469622,
-      "sha256": "1a30ac0f736a19c81fa92a10ee461d5c9dc2f74cc6050a663c2c196a51ef3473"
+      "bytes": 1484217,
+      "sha256": "7eb9f11ad02ef8cfa8fef848af4894732fc0fe84d88a776f571396052f834c3c"
     },
     {
       "path": "renders/story-simulations/arabasta-saga-2d-v1/scene-board.png",
-      "bytes": 413290,
-      "sha256": "1bb29a4e31490abffaff3020735347134bdd09ad02b23803fdfe32ba98db712e"
+      "bytes": 1039986,
+      "sha256": "2a080e12ab43b97f8baa64254711ebacec8e7ca2ba808bb199963450760950de"
     },
     {
       "path": "renders/story-simulations/arabasta-saga-2d-v1/sampler-poster.png",
@@ -216,16 +531,14 @@
     },
     {
       "path": "renders/story-simulations/arabasta-saga-2d-v1/sampler.mp4",
-      "bytes": 1165992,
-      "sha256": "804c67856ecc2c2aa45278f45b633aeb5e8c16080cf16a390df66d0b656f3c41"
+      "bytes": 3219320,
+      "sha256": "61f63256857892f085b5c0a354236d61115dedabd468bd7212a05198c0cc4601"
     }
   ],
   "web_proof": {
     "path": "proofs/arabasta-saga-2d-v1-web-proof.json",
-    "bytes": 1459,
-    "sha256": "ce92a752d0f13aa34ab07eee5626476973ce958c085a49c1ccffca743da80b7d"
+    "bytes": 2151,
+    "sha256": "756b8d97ebf62f6b9a284cd19946c54d3b58e70379b54caa1a9b3d00ca90b514"
   },
-  "blockers": [
-    "Batch B and the three Crocodile rounds remain separately gated future work."
-  ]
+  "blockers": []
 }

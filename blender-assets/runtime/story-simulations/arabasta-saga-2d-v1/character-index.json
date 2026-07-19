@@ -2,7 +2,7 @@
   "schema_version": 1,
   "pack_id": "arabasta-saga-2d-v1",
   "representation": "camera-facing-2d-atlas",
-  "character_count": 6,
+  "character_count": 18,
   "characters": [
     {
       "id": "roronoa-zoro-whisky-peak",
@@ -105,6 +105,210 @@
         "burning-wreckage"
       ],
       "map_height": 1.42
+    },
+    {
+      "id": "roronoa-zoro-arabasta-mr-one",
+      "kind": "character",
+      "variant": "alubarna-mr-one-chapters-194-195",
+      "metadata": "runtime/story-simulations/arabasta-saga-2d-v1/characters/roronoa-zoro-arabasta-mr-one/character.json",
+      "atlas": "runtime/story-simulations/arabasta-saga-2d-v1/characters/roronoa-zoro-arabasta-mr-one/atlas.png",
+      "atlas_sha256": "37af92a178d844e1e4b69b3b51732c9060ce3a5efd864ba7d8f55070a91218c8",
+      "poses": [
+        "wounded-three-sword-guard",
+        "steel-barrage-brace",
+        "breath-of-steel-listen",
+        "one-sword-focus",
+        "lion-song-pass",
+        "collapsed-victory"
+      ],
+      "map_height": 1.04
+    },
+    {
+      "id": "daz-bones-mr-one",
+      "kind": "character",
+      "variant": "alubarna-steel-body-chapters-194-195",
+      "metadata": "runtime/story-simulations/arabasta-saga-2d-v1/characters/daz-bones-mr-one/character.json",
+      "atlas": "runtime/story-simulations/arabasta-saga-2d-v1/characters/daz-bones-mr-one/atlas.png",
+      "atlas_sha256": "621dba6f3f3c083fc4b411c40d1cd0736fc9fb31da412b8d21083a3cc91bc966",
+      "poses": [
+        "steel-idle",
+        "blade-arm-guard",
+        "spinning-blade-rush",
+        "steel-block",
+        "cut-recoil",
+        "defeated-hold"
+      ],
+      "map_height": 1.12
+    },
+    {
+      "id": "sanji-arabasta-bon-clay",
+      "kind": "character",
+      "variant": "alubarna-bon-clay-chapters-187-189",
+      "metadata": "runtime/story-simulations/arabasta-saga-2d-v1/characters/sanji-arabasta-bon-clay/character.json",
+      "atlas": "runtime/story-simulations/arabasta-saga-2d-v1/characters/sanji-arabasta-bon-clay/atlas.png",
+      "atlas_sha256": "f2861f4b483c62ef419b8dee2f86dec122f5b680deb04a8919f80b6baf3ce121",
+      "poses": [
+        "cigarette-kick-guard",
+        "straight-side-kick",
+        "ballet-kick-dodge",
+        "spinning-kick-flurry",
+        "anti-manner-kick-course",
+        "battered-victory"
+      ],
+      "map_height": 1.02
+    },
+    {
+      "id": "bon-clay-mr-two",
+      "kind": "character",
+      "variant": "alubarna-ballet-kenpo-chapters-187-189",
+      "metadata": "runtime/story-simulations/arabasta-saga-2d-v1/characters/bon-clay-mr-two/character.json",
+      "atlas": "runtime/story-simulations/arabasta-saga-2d-v1/characters/bon-clay-mr-two/atlas.png",
+      "atlas_sha256": "3f451be13e46323fe42b3711544a9b33d039a736afd2dcb795dcefd417f3e395",
+      "poses": [
+        "ballet-fighting-idle",
+        "high-swan-kick",
+        "clone-face-feint",
+        "spinning-ballet-rush",
+        "swan-strike-recoil",
+        "defeated-hold"
+      ],
+      "map_height": 1.08
+    },
+    {
+      "id": "monkey-d-luffy-crocodile-round-one",
+      "kind": "character",
+      "variant": "arabasta-crocodile-round-one-chapters-176-179",
+      "metadata": "runtime/story-simulations/arabasta-saga-2d-v1/characters/monkey-d-luffy-crocodile-round-one/character.json",
+      "atlas": "runtime/story-simulations/arabasta-saga-2d-v1/characters/monkey-d-luffy-crocodile-round-one/atlas.png",
+      "atlas_sha256": "25e499e7d0f94d74e37b86e6ae1964cc1d96d260920e5e9aedb0fe30ea20af0f",
+      "poses": [
+        "desert-fighting-guard",
+        "rubber-pistol-stretch",
+        "attack-through-sand",
+        "sandstorm-brace",
+        "hook-defeat-recoil",
+        "quicksand-aftermath"
+      ],
+      "map_height": 1.0
+    },
+    {
+      "id": "crocodile-arabasta-sand",
+      "kind": "character",
+      "variant": "arabasta-sand-body-round-one-chapters-176-179",
+      "metadata": "runtime/story-simulations/arabasta-saga-2d-v1/characters/crocodile-arabasta-sand/character.json",
+      "atlas": "runtime/story-simulations/arabasta-saga-2d-v1/characters/crocodile-arabasta-sand/atlas.png",
+      "atlas_sha256": "f351454fcc71320a615137771e290c109f0343ecc1096bd7a8b9cab2c3bb7de9",
+      "poses": [
+        "composed-hook-idle",
+        "sand-body-disperse",
+        "desert-spada",
+        "sandstorm-cast",
+        "gold-hook-strike",
+        "victorious-aftermath"
+      ],
+      "map_height": 1.18
+    },
+    {
+      "id": "nami-arabasta-doublefinger",
+      "kind": "character",
+      "variant": "arabasta-first-clima-tact-chapters-190-193",
+      "metadata": "runtime/story-simulations/arabasta-saga-2d-v1/characters/nami-arabasta-doublefinger/character.json",
+      "atlas": "runtime/story-simulations/arabasta-saga-2d-v1/characters/nami-arabasta-doublefinger/atlas.png",
+      "atlas_sha256": "3f7e72de7569ee932c4c1202176ac63befcad9cb747dc75f0aab7098e4bcd492",
+      "poses": [
+        "clima-tact-guard",
+        "heat-ball-setup",
+        "cool-ball-focus",
+        "thunderbolt-tempo",
+        "tornado-tempo",
+        "battered-victory"
+      ],
+      "map_height": 1.0
+    },
+    {
+      "id": "miss-doublefinger-arabasta",
+      "kind": "character",
+      "variant": "arabasta-spike-spike-fruit-chapters-190-193",
+      "metadata": "runtime/story-simulations/arabasta-saga-2d-v1/characters/miss-doublefinger-arabasta/character.json",
+      "atlas": "runtime/story-simulations/arabasta-saga-2d-v1/characters/miss-doublefinger-arabasta/atlas.png",
+      "atlas_sha256": "947cdd46310f220008afaed31187220fc036e95cc7c6f25abde21fb438f25ab2",
+      "poses": [
+        "spike-fighter-idle",
+        "finger-spike-thrust",
+        "stinger-step",
+        "spike-spike-doping",
+        "tornado-tempo-recoil",
+        "defeated-hold"
+      ],
+      "map_height": 1.12
+    },
+    {
+      "id": "monkey-d-luffy-crocodile-round-two",
+      "kind": "character",
+      "variant": "arabasta-crocodile-water-counter-chapters-198-201",
+      "metadata": "runtime/story-simulations/arabasta-saga-2d-v1/characters/monkey-d-luffy-crocodile-round-two/character.json",
+      "atlas": "runtime/story-simulations/arabasta-saga-2d-v1/characters/monkey-d-luffy-crocodile-round-two/atlas.png",
+      "atlas_sha256": "4c81ed75d3a2fade4f2085cf83bd3b244e513a5e5e5f567dce70d58edc88d8b2",
+      "poses": [
+        "water-barrel-guard",
+        "aqua-luffy",
+        "water-spray",
+        "wet-fist-rubber-punch",
+        "dehydrated-recoil",
+        "falling-water-revival"
+      ],
+      "map_height": 1.02
+    },
+    {
+      "id": "crocodile-arabasta-round-two",
+      "kind": "character",
+      "variant": "arabasta-water-solidification-chapters-198-201",
+      "metadata": "runtime/story-simulations/arabasta-saga-2d-v1/characters/crocodile-arabasta-round-two/character.json",
+      "atlas": "runtime/story-simulations/arabasta-saga-2d-v1/characters/crocodile-arabasta-round-two/atlas.png",
+      "atlas_sha256": "8eca643b73a333771fad7e995934f6e1881f8b37f5b216a91b84c1af21a8c95c",
+      "poses": [
+        "palace-hook-guard",
+        "water-hit",
+        "wet-sand-solid-recoil",
+        "moisture-drain-cast",
+        "wet-desert-la-spada",
+        "tomb-departure"
+      ],
+      "map_height": 1.18
+    },
+    {
+      "id": "monkey-d-luffy-crocodile-final",
+      "kind": "character",
+      "variant": "arabasta-crocodile-final-blood-counter-chapters-203-210",
+      "metadata": "runtime/story-simulations/arabasta-saga-2d-v1/characters/monkey-d-luffy-crocodile-final/character.json",
+      "atlas": "runtime/story-simulations/arabasta-saga-2d-v1/characters/monkey-d-luffy-crocodile-final/atlas.png",
+      "atlas_sha256": "b8881f887644bf6dddc288ae4877a87debd395189657ef487107e3ab79ed2249",
+      "poses": [
+        "blood-counter-guard",
+        "blood-rubber-pistol",
+        "poison-hook-dodge",
+        "rubber-bazooka",
+        "gum-gum-storm",
+        "exhausted-victory"
+      ],
+      "map_height": 1.02
+    },
+    {
+      "id": "crocodile-arabasta-final",
+      "kind": "character",
+      "variant": "arabasta-royal-tomb-final-chapters-203-210",
+      "metadata": "runtime/story-simulations/arabasta-saga-2d-v1/characters/crocodile-arabasta-final/character.json",
+      "atlas": "runtime/story-simulations/arabasta-saga-2d-v1/characters/crocodile-arabasta-final/atlas.png",
+      "atlas_sha256": "572b6c090806e248019c54bd43ef33711102aa62c0b3267069d603c8ed3a71af",
+      "poses": [
+        "wounded-hook-guard",
+        "poison-hook-reveal",
+        "blood-counter-recoil",
+        "desert-la-spada-final",
+        "storm-launch-defeat",
+        "unconscious-aftermath"
+      ],
+      "map_height": 1.18
     }
   ]
 }

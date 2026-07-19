@@ -7,14 +7,14 @@
       "start": 101,
       "end": 217
     },
-    "source_manifest_sha256": "3917bbf535a0037292ea4088e9dcc8b406d372c3f560775c9ef41274c2a0482c",
+    "source_manifest_sha256": "a35fbecb78e1a3d343f262991cdbf2d0e1c53d77e20b437869d8c5ae2abfec3e",
     "integration_ready": true,
     "feature_flag": "NEXT_PUBLIC_STORY_SIMULATION_PACKS",
     "note": "Only runtime-ready scenes with verified chapter gates ship; the new pack remains disabled unless explicitly allowlisted.",
     "counts": {
-      "scenes": 4,
+      "scenes": 10,
       "refused": 0,
-      "assets": 6
+      "assets": 18
     }
   },
   "arcs": [
@@ -795,6 +795,1193 @@
         "lat": 0.4813,
         "note": "The chapter-159 convoy clash occurs after leaving Nanohana; the existing port-city point is a local theatre anchor, not a measured river coordinate."
       }
+    },
+    {
+      "id": "arabasta-luffy-vs-crocodile-round-one",
+      "label": "Luffy's ordinary attacks fail against Crocodile's sand body",
+      "arc_id": "arabasta",
+      "type": "encounter",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 176,
+        "end": 179,
+        "verification": "verified",
+        "source_url": "https://api.api-onepiece.com/v2/chapters/en"
+      },
+      "place": {
+        "id": "rainbase-desert-outskirts",
+        "landmark": "road-from-rain-dinners-toward-alubarna",
+        "arena": "arabasta-open-desert"
+      },
+      "duration_ms": 10000,
+      "actors": [
+        {
+          "id": "crocodile",
+          "asset_id": "crocodile-arabasta-sand",
+          "z": 20,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.52,
+              "y": 0,
+              "scale": 0.92,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "composed-hook-idle"
+            },
+            {
+              "t": 1900,
+              "x": 0.42,
+              "y": 0.02,
+              "scale": 0.96,
+              "rotation": -2,
+              "opacity": 1,
+              "pose": "sand-body-disperse",
+              "ease": "smooth"
+            },
+            {
+              "t": 3500,
+              "x": 0.24,
+              "y": 0.02,
+              "scale": 0.98,
+              "rotation": -5,
+              "opacity": 1,
+              "pose": "desert-spada",
+              "ease": "accelerate"
+            },
+            {
+              "t": 5200,
+              "x": 0.18,
+              "y": 0.02,
+              "scale": 1.0,
+              "rotation": 1,
+              "opacity": 1,
+              "pose": "sandstorm-cast"
+            },
+            {
+              "t": 7000,
+              "x": 0.02,
+              "y": 0.04,
+              "scale": 1.04,
+              "rotation": -4,
+              "opacity": 1,
+              "pose": "gold-hook-strike",
+              "ease": "accelerate"
+            },
+            {
+              "t": 8500,
+              "x": 0.4,
+              "y": 0,
+              "scale": 0.94,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "victorious-aftermath"
+            }
+          ]
+        },
+        {
+          "id": "luffy",
+          "asset_id": "monkey-d-luffy-crocodile-round-one",
+          "z": 24,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.54,
+              "y": 0,
+              "scale": 0.86,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "desert-fighting-guard"
+            },
+            {
+              "t": 1450,
+              "x": -0.34,
+              "y": 0.02,
+              "scale": 0.94,
+              "rotation": -3,
+              "opacity": 1,
+              "pose": "rubber-pistol-stretch",
+              "ease": "accelerate"
+            },
+            {
+              "t": 2600,
+              "x": -0.06,
+              "y": 0.02,
+              "scale": 0.98,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "attack-through-sand"
+            },
+            {
+              "t": 4850,
+              "x": -0.46,
+              "y": 0.03,
+              "scale": 0.92,
+              "rotation": -8,
+              "opacity": 1,
+              "pose": "sandstorm-brace",
+              "ease": "decelerate"
+            },
+            {
+              "t": 7100,
+              "x": -0.2,
+              "y": 0.13,
+              "scale": 0.94,
+              "rotation": -14,
+              "opacity": 1,
+              "pose": "hook-defeat-recoil"
+            },
+            {
+              "t": 8650,
+              "x": -0.08,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "quicksand-aftermath"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 1350,
+          "type": "rubber-stretch",
+          "duration_ms": 1200,
+          "intensity": 0.85
+        },
+        {
+          "t": 2350,
+          "type": "sand-body-disperse",
+          "duration_ms": 1500,
+          "intensity": 0.9
+        },
+        {
+          "t": 3400,
+          "type": "sand-blade",
+          "duration_ms": 1200,
+          "intensity": 0.95
+        },
+        {
+          "t": 5000,
+          "type": "sandstorm",
+          "duration_ms": 2300,
+          "intensity": 1.0
+        },
+        {
+          "t": 6950,
+          "type": "impact",
+          "duration_ms": 900,
+          "intensity": 1.0
+        },
+        {
+          "t": 8450,
+          "type": "quicksand",
+          "duration_ms": 1500,
+          "intensity": 0.8
+        }
+      ],
+      "anchor": {
+        "kind": "island",
+        "ref": "rainbase",
+        "lng": -116.2875,
+        "lat": 6.0506,
+        "note": "The desert outskirts beyond Rainbase are staged at the existing Rainbase point; this replaces the earlier faceless Crocodile blockout."
+      }
+    },
+    {
+      "id": "arabasta-sanji-vs-bon-clay",
+      "label": "Sanji reads Bon Clay's feint and wins the Ballet Kenpo duel",
+      "arc_id": "arabasta",
+      "type": "encounter",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 187,
+        "end": 189,
+        "verification": "verified",
+        "source_url": "https://api.api-onepiece.com/v2/chapters/en"
+      },
+      "place": {
+        "id": "alubarna",
+        "landmark": "southern-quarter-battle-street",
+        "arena": "alubarna-stone-street"
+      },
+      "duration_ms": 9000,
+      "actors": [
+        {
+          "id": "bon-clay",
+          "asset_id": "bon-clay-mr-two",
+          "z": 20,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.5,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "ballet-fighting-idle"
+            },
+            {
+              "t": 1550,
+              "x": 0.2,
+              "y": 0.08,
+              "scale": 0.96,
+              "rotation": -5,
+              "opacity": 1,
+              "pose": "high-swan-kick",
+              "ease": "accelerate"
+            },
+            {
+              "t": 2950,
+              "x": 0.28,
+              "y": 0.02,
+              "scale": 0.94,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "clone-face-feint"
+            },
+            {
+              "t": 4450,
+              "x": 0.06,
+              "y": 0.1,
+              "scale": 1.0,
+              "rotation": -10,
+              "opacity": 1,
+              "pose": "spinning-ballet-rush",
+              "ease": "accelerate"
+            },
+            {
+              "t": 6500,
+              "x": 0.14,
+              "y": 0.12,
+              "scale": 0.98,
+              "rotation": 12,
+              "opacity": 1,
+              "pose": "swan-strike-recoil"
+            },
+            {
+              "t": 7700,
+              "x": 0.48,
+              "y": 0,
+              "scale": 0.88,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "defeated-hold"
+            }
+          ]
+        },
+        {
+          "id": "sanji",
+          "asset_id": "sanji-arabasta-bon-clay",
+          "z": 24,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.5,
+              "y": 0,
+              "scale": 0.88,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "cigarette-kick-guard"
+            },
+            {
+              "t": 1500,
+              "x": -0.2,
+              "y": 0.03,
+              "scale": 0.96,
+              "rotation": 3,
+              "opacity": 1,
+              "pose": "straight-side-kick",
+              "ease": "accelerate"
+            },
+            {
+              "t": 2800,
+              "x": -0.38,
+              "y": 0.08,
+              "scale": 0.92,
+              "rotation": 8,
+              "opacity": 1,
+              "pose": "ballet-kick-dodge"
+            },
+            {
+              "t": 4550,
+              "x": -0.08,
+              "y": 0.1,
+              "scale": 1.0,
+              "rotation": 8,
+              "opacity": 1,
+              "pose": "spinning-kick-flurry",
+              "ease": "accelerate"
+            },
+            {
+              "t": 6400,
+              "x": 0.02,
+              "y": 0.14,
+              "scale": 1.05,
+              "rotation": -4,
+              "opacity": 1,
+              "pose": "anti-manner-kick-course"
+            },
+            {
+              "t": 7700,
+              "x": -0.42,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "battered-victory"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 1450,
+          "type": "kick-trail",
+          "duration_ms": 900,
+          "intensity": 0.75
+        },
+        {
+          "t": 2200,
+          "type": "impact",
+          "duration_ms": 700,
+          "intensity": 0.72
+        },
+        {
+          "t": 2900,
+          "type": "clone-flash",
+          "duration_ms": 900,
+          "intensity": 0.65
+        },
+        {
+          "t": 4300,
+          "type": "ballet-spin",
+          "duration_ms": 1300,
+          "intensity": 0.9
+        },
+        {
+          "t": 6250,
+          "type": "kick-trail",
+          "duration_ms": 1100,
+          "intensity": 1.0
+        },
+        {
+          "t": 6500,
+          "type": "impact",
+          "duration_ms": 900,
+          "intensity": 1.0
+        },
+        {
+          "t": 7600,
+          "type": "dust",
+          "duration_ms": 1200,
+          "intensity": 0.6
+        }
+      ],
+      "anchor": {
+        "kind": "island",
+        "ref": "alubarna",
+        "lng": -120.1992,
+        "lat": -0.7873,
+        "note": "Sanji and Bon Clay's chapter-187 to 189 duel is staged at the existing Alubarna point."
+      }
+    },
+    {
+      "id": "arabasta-nami-vs-miss-doublefinger",
+      "label": "Nami masters the first Clima-Tact against Miss Doublefinger",
+      "arc_id": "arabasta",
+      "type": "encounter",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 190,
+        "end": 193,
+        "verification": "verified",
+        "source_url": "https://api.api-onepiece.com/v2/chapters/en"
+      },
+      "place": {
+        "id": "alubarna",
+        "landmark": "western-quarter-battle-street",
+        "arena": "alubarna-stone-street"
+      },
+      "duration_ms": 10000,
+      "actors": [
+        {
+          "id": "miss-doublefinger",
+          "asset_id": "miss-doublefinger-arabasta",
+          "z": 20,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.5,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "spike-fighter-idle"
+            },
+            {
+              "t": 1450,
+              "x": 0.24,
+              "y": 0.02,
+              "scale": 0.96,
+              "rotation": -3,
+              "opacity": 1,
+              "pose": "finger-spike-thrust",
+              "ease": "accelerate"
+            },
+            {
+              "t": 3000,
+              "x": 0.02,
+              "y": 0.08,
+              "scale": 1.0,
+              "rotation": -7,
+              "opacity": 1,
+              "pose": "stinger-step",
+              "ease": "accelerate"
+            },
+            {
+              "t": 4700,
+              "x": 0.22,
+              "y": 0.02,
+              "scale": 1.02,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "spike-spike-doping"
+            },
+            {
+              "t": 7350,
+              "x": 0.1,
+              "y": 0.16,
+              "scale": 0.98,
+              "rotation": 15,
+              "opacity": 1,
+              "pose": "tornado-tempo-recoil"
+            },
+            {
+              "t": 8700,
+              "x": 0.46,
+              "y": 0,
+              "scale": 0.88,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "defeated-hold"
+            }
+          ]
+        },
+        {
+          "id": "nami",
+          "asset_id": "nami-arabasta-doublefinger",
+          "z": 24,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.5,
+              "y": 0,
+              "scale": 0.88,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "clima-tact-guard"
+            },
+            {
+              "t": 1250,
+              "x": -0.38,
+              "y": 0.01,
+              "scale": 0.92,
+              "rotation": 2,
+              "opacity": 1,
+              "pose": "heat-ball-setup"
+            },
+            {
+              "t": 2850,
+              "x": -0.44,
+              "y": 0.02,
+              "scale": 0.93,
+              "rotation": -2,
+              "opacity": 1,
+              "pose": "cool-ball-focus"
+            },
+            {
+              "t": 5050,
+              "x": -0.16,
+              "y": 0.05,
+              "scale": 0.98,
+              "rotation": -4,
+              "opacity": 1,
+              "pose": "thunderbolt-tempo",
+              "ease": "accelerate"
+            },
+            {
+              "t": 7000,
+              "x": -0.02,
+              "y": 0.1,
+              "scale": 1.04,
+              "rotation": -8,
+              "opacity": 1,
+              "pose": "tornado-tempo",
+              "ease": "accelerate"
+            },
+            {
+              "t": 8650,
+              "x": -0.42,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "battered-victory"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 1150,
+          "type": "weather-heat",
+          "duration_ms": 1100,
+          "intensity": 0.55
+        },
+        {
+          "t": 2700,
+          "type": "weather-cool",
+          "duration_ms": 1100,
+          "intensity": 0.55
+        },
+        {
+          "t": 2950,
+          "type": "spike-thrust",
+          "duration_ms": 1000,
+          "intensity": 0.85
+        },
+        {
+          "t": 4950,
+          "type": "lightning",
+          "duration_ms": 850,
+          "intensity": 0.9
+        },
+        {
+          "t": 6850,
+          "type": "tornado",
+          "duration_ms": 1800,
+          "intensity": 1.0
+        },
+        {
+          "t": 7350,
+          "type": "impact",
+          "duration_ms": 850,
+          "intensity": 1.0
+        },
+        {
+          "t": 8550,
+          "type": "dust",
+          "duration_ms": 1100,
+          "intensity": 0.55
+        }
+      ],
+      "anchor": {
+        "kind": "island",
+        "ref": "alubarna",
+        "lng": -120.1992,
+        "lat": -0.7873,
+        "note": "Nami's chapter-190 to 193 first Clima-Tact duel is staged at Alubarna and replaces Sanji/Bon Clay at the shared theatre."
+      }
+    },
+    {
+      "id": "arabasta-zoro-vs-mr-one",
+      "label": "Zoro hears the breath of steel and cuts Mr. 1",
+      "arc_id": "arabasta",
+      "type": "encounter",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 194,
+        "end": 195,
+        "verification": "verified",
+        "source_url": "https://api.api-onepiece.com/v2/chapters/en"
+      },
+      "place": {
+        "id": "alubarna",
+        "landmark": "stone-buildings-and-courtyard",
+        "arena": "alubarna-stone-quarter"
+      },
+      "duration_ms": 9500,
+      "actors": [
+        {
+          "id": "mr-one",
+          "asset_id": "daz-bones-mr-one",
+          "z": 20,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.48,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "steel-idle"
+            },
+            {
+              "t": 1450,
+              "x": 0.3,
+              "y": 0.02,
+              "scale": 0.96,
+              "rotation": -2,
+              "opacity": 1,
+              "pose": "blade-arm-guard"
+            },
+            {
+              "t": 3000,
+              "x": 0.04,
+              "y": 0.08,
+              "scale": 1.02,
+              "rotation": -7,
+              "opacity": 1,
+              "pose": "spinning-blade-rush",
+              "ease": "accelerate"
+            },
+            {
+              "t": 4750,
+              "x": 0.12,
+              "y": 0.02,
+              "scale": 0.98,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "steel-block"
+            },
+            {
+              "t": 7150,
+              "x": 0.16,
+              "y": 0.13,
+              "scale": 1.0,
+              "rotation": 15,
+              "opacity": 1,
+              "pose": "cut-recoil"
+            },
+            {
+              "t": 8200,
+              "x": 0.46,
+              "y": 0,
+              "scale": 0.88,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "defeated-hold"
+            }
+          ]
+        },
+        {
+          "id": "zoro",
+          "asset_id": "roronoa-zoro-arabasta-mr-one",
+          "z": 24,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.5,
+              "y": 0,
+              "scale": 0.88,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "wounded-three-sword-guard"
+            },
+            {
+              "t": 1700,
+              "x": -0.28,
+              "y": 0.02,
+              "scale": 0.96,
+              "rotation": 4,
+              "opacity": 1,
+              "pose": "steel-barrage-brace"
+            },
+            {
+              "t": 3900,
+              "x": -0.42,
+              "y": 0,
+              "scale": 0.91,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "breath-of-steel-listen",
+              "ease": "decelerate"
+            },
+            {
+              "t": 5400,
+              "x": -0.26,
+              "y": 0.01,
+              "scale": 0.96,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "one-sword-focus"
+            },
+            {
+              "t": 6900,
+              "x": 0.02,
+              "y": 0.04,
+              "scale": 1.04,
+              "rotation": -4,
+              "opacity": 1,
+              "pose": "lion-song-pass",
+              "ease": "accelerate"
+            },
+            {
+              "t": 8250,
+              "x": -0.34,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "collapsed-victory"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 1550,
+          "type": "steel-sparks",
+          "duration_ms": 1200,
+          "intensity": 0.85
+        },
+        {
+          "t": 2850,
+          "type": "speed-lines",
+          "duration_ms": 1200,
+          "intensity": 0.9
+        },
+        {
+          "t": 4700,
+          "type": "steel-sparks",
+          "duration_ms": 900,
+          "intensity": 0.9
+        },
+        {
+          "t": 5350,
+          "type": "promise-pulse",
+          "duration_ms": 1000,
+          "intensity": 0.55
+        },
+        {
+          "t": 6800,
+          "type": "slash",
+          "duration_ms": 1100,
+          "intensity": 1.0
+        },
+        {
+          "t": 7100,
+          "type": "impact",
+          "duration_ms": 850,
+          "intensity": 1.0
+        },
+        {
+          "t": 7950,
+          "type": "structure-collapse",
+          "duration_ms": 1450,
+          "intensity": 0.65
+        }
+      ],
+      "anchor": {
+        "kind": "island",
+        "ref": "alubarna",
+        "lng": -120.1992,
+        "lat": -0.7873,
+        "note": "Zoro and Daz Bones' chapter-194 to 195 duel shares the Alubarna theatre and supersedes Nami/Miss Doublefinger when its corrected gate opens."
+      }
+    },
+    {
+      "id": "arabasta-luffy-vs-crocodile-round-two",
+      "label": "Aqua Luffy makes Crocodile's sand body tangible",
+      "arc_id": "arabasta",
+      "type": "encounter",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 198,
+        "end": 201,
+        "verification": "verified",
+        "source_url": "https://api.api-onepiece.com/v2/chapters/en"
+      },
+      "place": {
+        "id": "alubarna-palace",
+        "landmark": "palace-battle-surface",
+        "arena": "alubarna-palace-rooftop"
+      },
+      "duration_ms": 11000,
+      "actors": [
+        {
+          "id": "crocodile",
+          "asset_id": "crocodile-arabasta-round-two",
+          "z": 20,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.5,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "palace-hook-guard"
+            },
+            {
+              "t": 2350,
+              "x": 0.3,
+              "y": 0.07,
+              "scale": 0.96,
+              "rotation": 8,
+              "opacity": 1,
+              "pose": "water-hit"
+            },
+            {
+              "t": 4050,
+              "x": 0.18,
+              "y": 0.1,
+              "scale": 0.98,
+              "rotation": 11,
+              "opacity": 1,
+              "pose": "wet-sand-solid-recoil"
+            },
+            {
+              "t": 6100,
+              "x": 0.02,
+              "y": 0.02,
+              "scale": 1.03,
+              "rotation": -5,
+              "opacity": 1,
+              "pose": "moisture-drain-cast",
+              "ease": "accelerate"
+            },
+            {
+              "t": 7700,
+              "x": 0.08,
+              "y": 0.05,
+              "scale": 1.02,
+              "rotation": -7,
+              "opacity": 1,
+              "pose": "wet-desert-la-spada"
+            },
+            {
+              "t": 9300,
+              "x": 0.46,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "tomb-departure"
+            }
+          ]
+        },
+        {
+          "id": "luffy",
+          "asset_id": "monkey-d-luffy-crocodile-round-two",
+          "z": 24,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.52,
+              "y": 0,
+              "scale": 0.86,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "water-barrel-guard"
+            },
+            {
+              "t": 1550,
+              "x": -0.4,
+              "y": 0.01,
+              "scale": 0.94,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "aqua-luffy"
+            },
+            {
+              "t": 2250,
+              "x": -0.3,
+              "y": 0.03,
+              "scale": 0.96,
+              "rotation": -3,
+              "opacity": 1,
+              "pose": "water-spray"
+            },
+            {
+              "t": 3900,
+              "x": -0.02,
+              "y": 0.04,
+              "scale": 1.02,
+              "rotation": -4,
+              "opacity": 1,
+              "pose": "wet-fist-rubber-punch",
+              "ease": "accelerate"
+            },
+            {
+              "t": 6400,
+              "x": -0.18,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 5,
+              "opacity": 1,
+              "pose": "dehydrated-recoil"
+            },
+            {
+              "t": 9250,
+              "x": -0.08,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "falling-water-revival"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 1450,
+          "type": "water-splash",
+          "duration_ms": 1000,
+          "intensity": 0.7
+        },
+        {
+          "t": 2150,
+          "type": "water-spray",
+          "duration_ms": 1400,
+          "intensity": 0.9
+        },
+        {
+          "t": 3850,
+          "type": "wet-sand-impact",
+          "duration_ms": 1100,
+          "intensity": 1.0
+        },
+        {
+          "t": 5950,
+          "type": "moisture-drain",
+          "duration_ms": 1700,
+          "intensity": 0.9
+        },
+        {
+          "t": 6350,
+          "type": "dehydration-pulse",
+          "duration_ms": 1400,
+          "intensity": 0.7
+        },
+        {
+          "t": 7550,
+          "type": "sand-blade",
+          "duration_ms": 1200,
+          "intensity": 0.95
+        },
+        {
+          "t": 9150,
+          "type": "water-drop",
+          "duration_ms": 1300,
+          "intensity": 0.75
+        }
+      ],
+      "anchor": {
+        "kind": "island",
+        "ref": "alubarna",
+        "lng": -120.1992,
+        "lat": -0.7873,
+        "note": "The chapter-198 to 201 palace fight uses the existing Alubarna point as a local rooftop theatre and keeps the water-counter state separate from rounds one and three."
+      }
+    },
+    {
+      "id": "arabasta-luffy-vs-crocodile-final",
+      "label": "Luffy defeats Crocodile with the upward Gum-Gum Storm",
+      "arc_id": "arabasta",
+      "type": "encounter",
+      "priority": "anchor",
+      "chapter_gate": {
+        "start": 203,
+        "end": 210,
+        "verification": "verified",
+        "source_url": "https://api.api-onepiece.com/v2/chapters/en"
+      },
+      "place": {
+        "id": "arabasta-royal-tomb",
+        "landmark": "underground-royal-tomb",
+        "arena": "arabasta-royal-tomb"
+      },
+      "duration_ms": 11500,
+      "actors": [
+        {
+          "id": "crocodile",
+          "asset_id": "crocodile-arabasta-final",
+          "z": 20,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": 0.5,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "wounded-hook-guard"
+            },
+            {
+              "t": 1950,
+              "x": 0.34,
+              "y": 0.02,
+              "scale": 0.96,
+              "rotation": -2,
+              "opacity": 1,
+              "pose": "poison-hook-reveal"
+            },
+            {
+              "t": 3650,
+              "x": 0.18,
+              "y": 0.11,
+              "scale": 0.98,
+              "rotation": 10,
+              "opacity": 1,
+              "pose": "blood-counter-recoil"
+            },
+            {
+              "t": 5750,
+              "x": 0.04,
+              "y": 0.03,
+              "scale": 1.02,
+              "rotation": -7,
+              "opacity": 1,
+              "pose": "desert-la-spada-final",
+              "ease": "accelerate"
+            },
+            {
+              "t": 8450,
+              "x": 0.02,
+              "y": 0.36,
+              "scale": 1.03,
+              "rotation": 8,
+              "opacity": 1,
+              "pose": "storm-launch-defeat",
+              "ease": "accelerate"
+            },
+            {
+              "t": 10100,
+              "x": 0.34,
+              "y": 0,
+              "scale": 0.88,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "unconscious-aftermath"
+            }
+          ]
+        },
+        {
+          "id": "luffy",
+          "asset_id": "monkey-d-luffy-crocodile-final",
+          "z": 24,
+          "keyframes": [
+            {
+              "t": 0,
+              "x": -0.5,
+              "y": 0,
+              "scale": 0.87,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "blood-counter-guard"
+            },
+            {
+              "t": 1450,
+              "x": -0.24,
+              "y": 0.02,
+              "scale": 0.96,
+              "rotation": -3,
+              "opacity": 1,
+              "pose": "blood-rubber-pistol",
+              "ease": "accelerate"
+            },
+            {
+              "t": 3100,
+              "x": -0.42,
+              "y": 0.1,
+              "scale": 0.93,
+              "rotation": 10,
+              "opacity": 1,
+              "pose": "poison-hook-dodge"
+            },
+            {
+              "t": 5100,
+              "x": -0.06,
+              "y": 0.06,
+              "scale": 1.0,
+              "rotation": -4,
+              "opacity": 1,
+              "pose": "rubber-bazooka",
+              "ease": "accelerate"
+            },
+            {
+              "t": 7900,
+              "x": -0.02,
+              "y": 0.1,
+              "scale": 1.06,
+              "rotation": -2,
+              "opacity": 1,
+              "pose": "gum-gum-storm",
+              "ease": "accelerate"
+            },
+            {
+              "t": 10100,
+              "x": -0.36,
+              "y": 0,
+              "scale": 0.9,
+              "rotation": 0,
+              "opacity": 1,
+              "pose": "exhausted-victory"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "t": 1350,
+          "type": "rubber-stretch",
+          "duration_ms": 1100,
+          "intensity": 0.8
+        },
+        {
+          "t": 1850,
+          "type": "poison-flash",
+          "duration_ms": 1000,
+          "intensity": 0.7
+        },
+        {
+          "t": 3500,
+          "type": "blood-counter-impact",
+          "duration_ms": 900,
+          "intensity": 0.9
+        },
+        {
+          "t": 5050,
+          "type": "impact",
+          "duration_ms": 900,
+          "intensity": 0.9
+        },
+        {
+          "t": 5600,
+          "type": "sand-blade",
+          "duration_ms": 1200,
+          "intensity": 1.0
+        },
+        {
+          "t": 7800,
+          "type": "gum-gum-storm",
+          "duration_ms": 2100,
+          "intensity": 1.0
+        },
+        {
+          "t": 8500,
+          "type": "structure-collapse",
+          "duration_ms": 1600,
+          "intensity": 0.85
+        },
+        {
+          "t": 9950,
+          "type": "victory-pulse",
+          "duration_ms": 1500,
+          "intensity": 0.75
+        }
+      ],
+      "anchor": {
+        "kind": "island",
+        "ref": "alubarna",
+        "lng": -120.1992,
+        "lat": -0.7873,
+        "note": "The underground royal-tomb final uses the existing Alubarna point as its local theatre and replaces round two when chapter 203 opens."
+      }
     }
   ],
   "refused": [],
@@ -1212,7 +2399,837 @@
         "alpha_test": 0.05,
         "reduced_motion": "burning-wreckage"
       }
+    },
+    "roronoa-zoro-arabasta-mr-one": {
+      "url": "/art/story-simulations/arabasta-saga-2d-v1/roronoa-zoro-arabasta-mr-one/atlas.png",
+      "sha256": "37af92a178d844e1e4b69b3b51732c9060ce3a5efd864ba7d8f55070a91218c8",
+      "kind": "character",
+      "variant": "alubarna-mr-one-chapters-194-195",
+      "map_height": 1.04,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "wounded-three-sword-guard": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "steel-barrage-brace": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "breath-of-steel-listen": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "one-sword-focus": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "lion-song-pass": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "collapsed-victory": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "collapsed-victory"
+      }
+    },
+    "daz-bones-mr-one": {
+      "url": "/art/story-simulations/arabasta-saga-2d-v1/daz-bones-mr-one/atlas.png",
+      "sha256": "621dba6f3f3c083fc4b411c40d1cd0736fc9fb31da412b8d21083a3cc91bc966",
+      "kind": "character",
+      "variant": "alubarna-steel-body-chapters-194-195",
+      "map_height": 1.12,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "steel-idle": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "blade-arm-guard": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "spinning-blade-rush": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "steel-block": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "cut-recoil": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "defeated-hold": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "defeated-hold"
+      }
+    },
+    "sanji-arabasta-bon-clay": {
+      "url": "/art/story-simulations/arabasta-saga-2d-v1/sanji-arabasta-bon-clay/atlas.png",
+      "sha256": "f2861f4b483c62ef419b8dee2f86dec122f5b680deb04a8919f80b6baf3ce121",
+      "kind": "character",
+      "variant": "alubarna-bon-clay-chapters-187-189",
+      "map_height": 1.02,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "cigarette-kick-guard": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "straight-side-kick": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "ballet-kick-dodge": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "spinning-kick-flurry": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "anti-manner-kick-course": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "battered-victory": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "battered-victory"
+      }
+    },
+    "bon-clay-mr-two": {
+      "url": "/art/story-simulations/arabasta-saga-2d-v1/bon-clay-mr-two/atlas.png",
+      "sha256": "3f451be13e46323fe42b3711544a9b33d039a736afd2dcb795dcefd417f3e395",
+      "kind": "character",
+      "variant": "alubarna-ballet-kenpo-chapters-187-189",
+      "map_height": 1.08,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "ballet-fighting-idle": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "high-swan-kick": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "clone-face-feint": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "spinning-ballet-rush": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "swan-strike-recoil": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "defeated-hold": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "defeated-hold"
+      }
+    },
+    "monkey-d-luffy-crocodile-round-one": {
+      "url": "/art/story-simulations/arabasta-saga-2d-v1/monkey-d-luffy-crocodile-round-one/atlas.png",
+      "sha256": "25e499e7d0f94d74e37b86e6ae1964cc1d96d260920e5e9aedb0fe30ea20af0f",
+      "kind": "character",
+      "variant": "arabasta-crocodile-round-one-chapters-176-179",
+      "map_height": 1.0,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "desert-fighting-guard": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "rubber-pistol-stretch": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "attack-through-sand": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "sandstorm-brace": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "hook-defeat-recoil": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "quicksand-aftermath": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "quicksand-aftermath"
+      }
+    },
+    "crocodile-arabasta-sand": {
+      "url": "/art/story-simulations/arabasta-saga-2d-v1/crocodile-arabasta-sand/atlas.png",
+      "sha256": "f351454fcc71320a615137771e290c109f0343ecc1096bd7a8b9cab2c3bb7de9",
+      "kind": "character",
+      "variant": "arabasta-sand-body-round-one-chapters-176-179",
+      "map_height": 1.18,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "composed-hook-idle": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "sand-body-disperse": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "desert-spada": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "sandstorm-cast": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "gold-hook-strike": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "victorious-aftermath": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "victorious-aftermath"
+      }
+    },
+    "nami-arabasta-doublefinger": {
+      "url": "/art/story-simulations/arabasta-saga-2d-v1/nami-arabasta-doublefinger/atlas.png",
+      "sha256": "3f7e72de7569ee932c4c1202176ac63befcad9cb747dc75f0aab7098e4bcd492",
+      "kind": "character",
+      "variant": "arabasta-first-clima-tact-chapters-190-193",
+      "map_height": 1.0,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "clima-tact-guard": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "heat-ball-setup": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "cool-ball-focus": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "thunderbolt-tempo": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "tornado-tempo": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "battered-victory": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "battered-victory"
+      }
+    },
+    "miss-doublefinger-arabasta": {
+      "url": "/art/story-simulations/arabasta-saga-2d-v1/miss-doublefinger-arabasta/atlas.png",
+      "sha256": "947cdd46310f220008afaed31187220fc036e95cc7c6f25abde21fb438f25ab2",
+      "kind": "character",
+      "variant": "arabasta-spike-spike-fruit-chapters-190-193",
+      "map_height": 1.12,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "spike-fighter-idle": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "finger-spike-thrust": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "stinger-step": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "spike-spike-doping": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "tornado-tempo-recoil": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "defeated-hold": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "defeated-hold"
+      }
+    },
+    "monkey-d-luffy-crocodile-round-two": {
+      "url": "/art/story-simulations/arabasta-saga-2d-v1/monkey-d-luffy-crocodile-round-two/atlas.png",
+      "sha256": "4c81ed75d3a2fade4f2085cf83bd3b244e513a5e5e5f567dce70d58edc88d8b2",
+      "kind": "character",
+      "variant": "arabasta-crocodile-water-counter-chapters-198-201",
+      "map_height": 1.02,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "water-barrel-guard": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "aqua-luffy": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "water-spray": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "wet-fist-rubber-punch": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "dehydrated-recoil": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "falling-water-revival": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "falling-water-revival"
+      }
+    },
+    "crocodile-arabasta-round-two": {
+      "url": "/art/story-simulations/arabasta-saga-2d-v1/crocodile-arabasta-round-two/atlas.png",
+      "sha256": "8eca643b73a333771fad7e995934f6e1881f8b37f5b216a91b84c1af21a8c95c",
+      "kind": "character",
+      "variant": "arabasta-water-solidification-chapters-198-201",
+      "map_height": 1.18,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "palace-hook-guard": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "water-hit": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "wet-sand-solid-recoil": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "moisture-drain-cast": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "wet-desert-la-spada": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "tomb-departure": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "tomb-departure"
+      }
+    },
+    "monkey-d-luffy-crocodile-final": {
+      "url": "/art/story-simulations/arabasta-saga-2d-v1/monkey-d-luffy-crocodile-final/atlas.png",
+      "sha256": "b8881f887644bf6dddc288ae4877a87debd395189657ef487107e3ab79ed2249",
+      "kind": "character",
+      "variant": "arabasta-crocodile-final-blood-counter-chapters-203-210",
+      "map_height": 1.02,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "blood-counter-guard": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "blood-rubber-pistol": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "poison-hook-dodge": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "rubber-bazooka": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "gum-gum-storm": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "exhausted-victory": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "exhausted-victory"
+      }
+    },
+    "crocodile-arabasta-final": {
+      "url": "/art/story-simulations/arabasta-saga-2d-v1/crocodile-arabasta-final/atlas.png",
+      "sha256": "572b6c090806e248019c54bd43ef33711102aa62c0b3267069d603c8ed3a71af",
+      "kind": "character",
+      "variant": "arabasta-royal-tomb-final-chapters-203-210",
+      "map_height": 1.18,
+      "grid": {
+        "columns": 3,
+        "rows": 2,
+        "cell_px": 384
+      },
+      "frames": {
+        "wounded-hook-guard": {
+          "col": 0,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "poison-hook-reveal": {
+          "col": 1,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "blood-counter-recoil": {
+          "col": 2,
+          "row": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "desert-la-spada-final": {
+          "col": 0,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "storm-launch-defeat": {
+          "col": 1,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        },
+        "unconscious-aftermath": {
+          "col": 2,
+          "row": 1,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.96
+          }
+        }
+      },
+      "runtime_rules": {
+        "pose_interpolation": "step",
+        "transform_interpolation": "linear-or-authored-ease",
+        "depth_write": false,
+        "alpha_test": 0.05,
+        "reduced_motion": "unconscious-aftermath"
+      }
     }
   },
-  "supersedes_visible_art": []
+  "supersedes_visible_art": [
+    "arabasta-luffy-crocodile-sand-study"
+  ]
 }
