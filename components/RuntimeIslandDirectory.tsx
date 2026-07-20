@@ -1,21 +1,31 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import runtimeAssets from "@/data/generated/runtime_assets.json";
 import { runtimeDirectory, type DirectoryEntry, type RuntimeAsset } from "./runtime-models";
+
+// The original waterfall card remains as provenance/fallback, but the complete
+// Wano + Onigashima system supersedes it in the live browser.
+const SUPERSEDED = new Set(["wano-waterfall-ascent"]);
+const WIRED_ISLANDS = runtimeDirectory(
+  ((runtimeAssets as { assets: unknown[] }).assets as unknown as RuntimeAsset[]).filter(
+    (asset) => !SUPERSEDED.has(asset.id),
+  ),
+  ((runtimeAssets as { refused?: { id: string }[] }).refused ?? [])
+    .map((item) => item.id)
+    .filter((id) => !SUPERSEDED.has(id)),
+).filter((entry) => entry.status === "wired");
 
 /**
  * RuntimeIslandDirectory — "here is everything we built in 3D, and how to reach it."
  *
  * Answers a real gap: the models sit at their own anchors around the world, and
  * without this the only way to find one is to already know where and when it is.
- * This lists them, greys the ones you have not read far enough to see, and flies
- * you into the rest.
+ * This lists the islands available at the reader's chapter and flies them into
+ * the selected one.
  *
- * It NEVER breaks the reader's place in the story: an island whose reveal chapter
- * is ahead of you shows the chapter and is not clickable — the same fog the map
- * keeps, stated as a list. Diving does not advance your chapter; you can only
- * reach what you have already read to.
+ * It NEVER breaks the reader's place in the story: islands ahead of the reader's
+ * chapter stay out of the choices. Viewing an island does not advance the story.
  */
 export function RuntimeIslandDirectory({
   chapter,
@@ -28,78 +38,62 @@ export function RuntimeIslandDirectory({
 }) {
   const [open, setOpen] = useState(false);
 
-  const { wired, held } = useMemo(() => {
-    // The original waterfall card is still retained as provenance/fallback, but
-    // the complete Wano + Onigashima system supersedes it in the live browser.
-    // Listing both made the shipped Wano look unfinished even while the full
-    // system was wired directly above it.
-    const superseded = new Set(["wano-waterfall-ascent"]);
-    const d = runtimeDirectory(
-      ((runtimeAssets as { assets: unknown[] }).assets as unknown as RuntimeAsset[]).filter(
-        (asset) => !superseded.has(asset.id),
-      ),
-      ((runtimeAssets as { refused?: { id: string }[] }).refused ?? [])
-        .map((r) => r.id)
-        .filter((id) => !superseded.has(id)),
-    );
-    return {
-      wired: d.filter((e) => e.status === "wired"),
-      held: d.filter((e) => e.status !== "wired"),
-    };
-  }, []);
-
-  const reachable = wired.filter((e) => e.reveal !== null && chapter >= e.reveal).length;
+  const available = WIRED_ISLANDS.filter((entry) => entry.reveal !== null && chapter >= entry.reveal);
   const currentId = arcSlug ? CURRENT_ARC_MODEL[arcSlug] : undefined;
-  const current = currentId ? wired.find((entry) => entry.id === currentId) : undefined;
+  const current = currentId ? WIRED_ISLANDS.find((entry) => entry.id === currentId) : undefined;
   const currentReady = !!current?.anchor && current.reveal !== null && chapter >= current.reveal;
+  const choices = currentReady && current
+    ? [current, ...available.filter((entry) => entry.id !== current.id)]
+    : available;
+
+  const viewIsland = (anchor: [number, number]) => {
+    setOpen(false);
+    onDive(anchor);
+  };
 
   return (
     <div className="pointer-events-auto">
-      {currentReady && current && (
-        <button
-          type="button"
-          data-testid="current-arc-3d-dive"
-          onClick={() => onDive(current.anchor!)}
-          className="mb-1.5 flex w-full items-center justify-between gap-2 rounded-md border border-gold/70 bg-ink/92 px-3 py-2 text-left text-gold shadow-xl backdrop-blur transition-colors hover:border-gold hover:bg-gold/10"
-        >
-          <span className="font-mono text-[9px] uppercase tracking-[0.16em]">◈ enter</span>
-          <span className="min-w-0 flex-1 truncate text-[11px] text-parchment">
-            {CURRENT_ARC_LABEL[arcSlug!] ?? current.label}
-          </span>
-          <span className="shrink-0 font-mono text-[9px] uppercase tracking-[0.12em]">3D ↘</span>
-        </button>
-      )}
-
       <button
         type="button"
+        data-testid="explore-3d-islands"
+        aria-expanded={open}
+        aria-controls="runtime-island-choices"
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-2 rounded-md border border-rope/70 bg-ink/85 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-2 shadow-lg backdrop-blur transition-colors hover:border-gold/50 hover:text-parchment"
+        className="flex w-full items-center justify-between gap-3 rounded-md border border-gold/60 bg-ink/90 px-3 py-2 text-left text-parchment shadow-lg backdrop-blur transition-colors hover:border-gold hover:bg-gold/10"
       >
-        <span aria-hidden>◈</span> 3D islands
-        <span className="text-gold/80">{reachable}</span>
-        <span className="text-muted-2/60">/ {wired.length}</span>
-        <span className="text-muted-2/50">{open ? "▾" : "▸"}</span>
+        <span className="text-[11px] font-medium">Explore 3D islands</span>
+        <span className="shrink-0 font-mono text-[9px] uppercase tracking-[0.12em] text-gold/80">
+          {choices.length} available {open ? "▴" : "▾"}
+        </span>
       </button>
 
       {open && (
-        <div className="mt-2 max-h-[min(60vh,520px)] w-[236px] overflow-y-auto rounded-md border border-rope/70 bg-ink/92 p-1.5 shadow-2xl backdrop-blur">
-          {wired.map((e) => (
-            <Row key={e.id} entry={e} chapter={chapter} onDive={onDive} />
+        <div
+          id="runtime-island-choices"
+          className="mt-2 max-h-[min(60vh,520px)] w-[260px] overflow-y-auto rounded-md border border-rope/70 bg-ink/95 p-2 shadow-2xl backdrop-blur"
+        >
+          <div className="flex items-center justify-between px-2 py-1.5">
+            <span className="text-[11px] font-medium text-parchment">Choose an island</span>
+            <button
+              type="button"
+              aria-label="Close 3D island list"
+              onClick={() => setOpen(false)}
+              className="rounded px-1.5 py-0.5 text-sm text-muted-2 transition-colors hover:bg-parchment/10 hover:text-parchment"
+            >
+              ×
+            </button>
+          </div>
+          {choices.map((entry) => (
+            <Row
+              key={entry.id}
+              entry={entry}
+              current={currentReady && entry.id === current?.id}
+              currentLabel={currentReady && entry.id === current?.id && arcSlug
+                ? CURRENT_ARC_LABEL[arcSlug]
+                : undefined}
+              onView={viewIsland}
+            />
           ))}
-
-          {held.length > 0 && (
-            <div className="mt-2 border-t border-rope/40 px-2 pt-2 pb-1">
-              <div className="font-mono text-[8px] uppercase tracking-[0.2em] text-muted-2/70">
-                Not yet charted in 3D
-              </div>
-              <div className="mt-1 text-[10px] leading-snug text-muted-2/80">
-                {held.map((e) => e.label).join(" · ")}
-              </div>
-              <div className="mt-1 text-[9px] leading-snug text-muted-2/55">
-                Awaiting verification or asset fixes — not a missing feature.
-              </div>
-            </div>
-          )}
         </div>
       )}
     </div>
@@ -109,8 +103,8 @@ export function RuntimeIslandDirectory({
 /**
  * The chapter readout already knows the current arc. This table joins that
  * story truth to the runtime model representing the same place, so a reader at
- * Wano or Egghead gets an immediate, named entrance instead of needing to know
- * that a collapsed asset inventory is secretly the way into the island.
+ * Wano or Egghead appears first in the choices instead of getting lost in the
+ * full island list.
  */
 const CURRENT_ARC_MODEL: Record<string, string> = {
   "arlong-park": "conomi-arlong-park",
@@ -164,31 +158,32 @@ const CURRENT_ARC_LABEL: Record<string, string> = {
 
 function Row({
   entry,
-  chapter,
-  onDive,
+  current,
+  currentLabel,
+  onView,
 }: {
   entry: DirectoryEntry;
-  chapter: number;
-  onDive: (anchor: [number, number]) => void;
+  current: boolean;
+  currentLabel?: string;
+  onView: (anchor: [number, number]) => void;
 }) {
-  const ready = entry.reveal !== null && chapter >= entry.reveal;
-  if (!ready) {
-    return (
-      <div className="flex items-center justify-between rounded px-2 py-1.5 text-[11px] text-muted-2/45">
-        <span className="truncate">{entry.label}</span>
-        <span className="ml-2 shrink-0 font-mono text-[9px] tabular-nums">ch {entry.reveal}</span>
-      </div>
-    );
-  }
   return (
     <button
       type="button"
-      onClick={() => entry.anchor && onDive(entry.anchor)}
-      className="flex w-full items-center justify-between rounded px-2 py-1.5 text-left text-[11px] text-parchment transition-colors hover:bg-gold/10"
+      data-testid={current ? "current-arc-3d-dive" : undefined}
+      onClick={() => entry.anchor && onView(entry.anchor)}
+      className="flex w-full items-center justify-between gap-3 rounded px-2 py-2 text-left text-[11px] text-parchment transition-colors hover:bg-gold/10"
     >
-      <span className="truncate">{entry.label}</span>
-      <span className="ml-2 shrink-0 font-mono text-[9px] uppercase tracking-[0.12em] text-gold/70">
-        dive ↘
+      <span className="min-w-0 truncate">
+        {currentLabel ?? entry.label}
+        {current && (
+          <span className="ml-2 font-mono text-[8px] uppercase tracking-[0.12em] text-gold/70">
+            current
+          </span>
+        )}
+      </span>
+      <span className="shrink-0 font-mono text-[9px] uppercase tracking-[0.12em] text-gold/80">
+        View
       </span>
     </button>
   );

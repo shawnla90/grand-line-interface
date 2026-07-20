@@ -104,7 +104,7 @@ browser, not inferred from the manifest.
 ## How to inspect it in Journey
 
 Run the app with `NEXT_PUBLIC_RUNTIME_3D_ASSETS=1`, open the listed chapter,
-expand **3D islands**, then select the matching **dive** row.
+open **Explore 3D islands**, then select **View** for the matching island.
 
 - `http://localhost:3000/?ch=655` — Punk Hazard arrival-only state
 - `http://localhost:3000/?ch=657` — complete hot/cold split and ambient climate

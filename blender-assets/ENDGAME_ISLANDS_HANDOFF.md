@@ -15,7 +15,7 @@ Chapter 1188 is now the app ceiling because VIZ confirms the official release. T
 ## How to see it
 
 1. Open `http://localhost:3000/?ch=1188`.
-2. Open **3D islands** in the Journey HUD.
+2. Open **Explore 3D islands** in the Journey HUD.
 3. Choose **Egghead Future Island system**, **Wano Country and Onigashima system**, or **Elbaph Treasure Tree Adam world system** and press **dive**.
 4. The GLB appears at close Mercator zoom. The globe/far view uses the transparent fallback and unloads the 3D model.
 

@@ -139,7 +139,7 @@ coastline, destination, anchor, and route policies into
 ## How to inspect in Journey
 
 Run the app with `NEXT_PUBLIC_RUNTIME_3D_ASSETS=1`, open the chapter, expand
-**3D islands**, and choose the corresponding **dive** row.
+**Explore 3D islands**, and choose **View** for the corresponding island.
 
 - `http://localhost:3000/?ch=363` — Aqua Laguna begins over Water 7
 - `http://localhost:3000/?ch=367` — peak authored storm/pursuit state
