@@ -18,6 +18,7 @@ import type { World } from "@/lib/canon";
 import type { BuildLog } from "@/lib/buildlog";
 import { BRAND } from "@/config/brand";
 import ShipwrightsLog from "./ShipwrightsLog";
+import CreatorStrip from "./CreatorStrip";
 
 export default function Attribution({ world, buildLog }: { world: World; buildLog?: BuildLog }) {
   const [logOpen, setLogOpen] = useState(false);
@@ -29,8 +30,10 @@ export default function Attribution({ world, buildLog }: { world: World; buildLo
   const builders = buildLog ? new Set(buildLog.entries.map((e) => e.builder)).size : 0;
 
   return (
-    <footer className="pointer-events-auto border-t border-rope/40 bg-abyss px-6 py-2.5">
-      <div className="mx-auto flex max-w-[1180px] flex-col gap-1.5 text-[10px] leading-relaxed text-muted-2 sm:flex-row sm:items-center sm:justify-between">
+    <footer className="pointer-events-auto border-t border-rope/40 bg-abyss px-6 pt-2.5 pb-2">
+      <CreatorStrip />
+
+      <div className="mx-auto flex max-w-[1180px] flex-col gap-1.5 border-t border-rope/25 pt-2 text-[10px] leading-relaxed text-muted-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="max-w-[760px]">
           {BRAND.legal.copyright} {BRAND.legal.unofficial} Facts from{" "}
           {BRAND.legal.sources.map((s, i) => (
