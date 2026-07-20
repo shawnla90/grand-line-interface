@@ -2,22 +2,12 @@ import type { EpicAudioCue } from "@/config/epic-audio-cues";
 import type { EpicCuePlayback } from "@/lib/epic-journey";
 import type { CamTarget } from "@/lib/journey";
 
-/** One exportable treatment: exactly 90 seconds, chapter 1 through the horizon. */
+/** The single exportable trailer cut: chapter 1 through the present horizon. */
 export const JOURNEY_DURATION_MS = 90_000;
 
-export type JourneyShipTarget = {
-  lngLat: [number, number];
-  groundLngLat: [number, number];
-  liftPx: number;
-};
-
-export type JourneyMediaPlayback = {
-  src: string;
-  poster: string;
-  title: string;
-  sourceStartS: number;
-  sourceEndS: number;
-  elapsedMs: number;
+export type JourneyScenePlayback = {
+  sceneId: string;
+  timeMs: number;
 };
 
 export type JourneyShot = {
@@ -31,66 +21,108 @@ export type JourneyShot = {
   fromCam: CamTarget;
   toCam: CamTarget;
   focus?: [number, number];
-  ship?: "onigashima-approach" | "onigashima-lift" | "onigashima-land";
-  media?: Omit<JourneyMediaPlayback, "elapsedMs">;
+  /** Editorial time-remap: show the authored scene's complete action inside its trailer slot. */
+  scene?: { id: string; durationMs: number };
+  /** The map-marker ship must not impersonate a vessel attached to a 3D island. */
+  hideShip?: boolean;
 };
 
+const ROGER_EXECUTION: [number, number] = [-174, -20];
+const ALVIDA: [number, number] = [-136, -56];
+const ORANGE_TOWN: [number, number] = [-152, -45];
+const SYRUP_VILLAGE: [number, number] = [-160, -52];
+const BARATIE_DUEL: [number, number] = [-165, -40];
+const NAMI_HELP: [number, number] = [-167.6, -32.4];
+const ARLONG_PARK: [number, number] = [-168, -33.2];
+const REVERSE_MOUNTAIN: [number, number] = [-179, -2];
+const ALUBARNA: [number, number] = [-120.1992, -0.7873];
+const SKYPIEA: [number, number] = [-91.1362, 17.0745];
+const ENIES_LOBBY: [number, number] = [-68.3696, -7.1283];
+const SABAODY: [number, number] = [-51.2008, 6.2035];
+const MARINEFORD: [number, number] = [-92.4053, 11.8445];
+const FISHMAN_DESCENT: [number, number] = [-48.2843, 2.9];
+const PUNK_HAZARD: [number, number] = [18.7035, -5.2418];
+const DRESSROSA: [number, number] = [42.463, 7.6766];
+const ZOU: [number, number] = [53.1494, -4.3461];
+const WHOLE_CAKE: [number, number] = [72.2778, -2.819];
 const WANO: [number, number] = [118.2306, 7.5751];
 const EGGHEAD: [number, number] = [149.0991, -0.4304];
 const ELBAPH: [number, number] = [154.2701, -7.171];
-const SKYPIEA: [number, number] = [-91.1362, 17.0745];
-const ALUBARNA: [number, number] = [-120.1992, -0.7873];
-const ENIES_LOBBY: [number, number] = [-68.3696, -7.1283];
-const ROGER_EXECUTION: [number, number] = [-174, -20];
-const BARATIE_DUEL: [number, number] = [-165, -40];
-const ARLONG_PARK: [number, number] = [-168, -33.2];
 
-const sea = (zoom = 3.25): CamTarget => ({ zoom, pitch: 18, orbitDegPerSec: 0 });
 const stage = (zoom = 6.35, pitch = 50, orbitDegPerSec = 0): CamTarget => ({
   zoom,
   pitch,
   orbitDegPerSec,
 });
 
+const scene = (
+  id: string,
+  fromMs: number,
+  toMs: number,
+  chapter: number,
+  label: string,
+  fact: string,
+  focus: [number, number],
+  durationMs: number,
+  zoom = 6.35,
+): JourneyShot => ({
+  id,
+  fromMs,
+  toMs,
+  fromChapter: chapter,
+  toChapter: chapter,
+  label,
+  fact,
+  fromCam: stage(zoom - 0.25, 48),
+  toCam: stage(zoom, 55, 2),
+  focus,
+  scene: { id, durationMs },
+});
+
 /**
- * The edit, in wall-clock order. Adjacent shots may jump chapters on purpose:
- * the 654 -> 700 cut is the explicit Punk Hazard skip, not a fast fly-through.
+ * A trailer edit, not a chapter counter. Every authored scene is held on its
+ * actual gate and time-remapped through its complete animation; every large
+ * geographic model gets its own readable shot instead of being crossed in a
+ * multi-hundred-chapter blur.
  */
 export const JOURNEY_SHOTS: JourneyShot[] = [
-  { id: "roger-to-barrel", fromMs: 0, toMs: 3_000, fromChapter: 1, toChapter: 1.8, label: "The voyage begins", fact: "Roger lights the fuse; the camera moves before the first cut.", fromCam: stage(5.8, 50), toCam: stage(6.25, 55), focus: ROGER_EXECUTION },
-  { id: "east-blue-launch", fromMs: 3_000, toMs: 5_000, fromChapter: 2, toChapter: 43, label: "East Blue", fact: "A barrel, a promise, and the first crew.", fromCam: stage(5.2, 38), toCam: sea(3.35) },
-  { id: "mihawk", fromMs: 5_000, toMs: 8_000, fromChapter: 51, toChapter: 51.8, label: "Baratie — the world's greatest swordsman", fact: "The Zoro beat stays with Mihawk, where it belongs.", fromCam: stage(5.8, 50), toCam: stage(6.25, 55), focus: BARATIE_DUEL },
-  { id: "arlong", fromMs: 8_000, toMs: 10_000, fromChapter: 93, toChapter: 93.8, label: "Arlong Park", fact: "The crew walks together and East Blue opens behind them.", fromCam: stage(5.8, 48), toCam: stage(6.25, 54), focus: ARLONG_PARK },
-  { id: "reverse-mountain", fromMs: 10_000, toMs: 15_000, fromChapter: 94, toChapter: 102.9, label: "Reverse Mountain", fact: "The current carries the ship into the Grand Line.", fromCam: sea(3.5), toCam: stage(6.2, 58, 3) },
-  { id: "arabasta-crossing", fromMs: 15_000, toMs: 18_000, fromChapter: 103, toChapter: 203, label: "Arabasta", fact: "The route races across the desert kingdom toward Alubarna.", fromCam: sea(3.35), toCam: stage(5.9, 50), focus: ALUBARNA },
-  { id: "crocodile", fromMs: 18_000, toMs: 21_000, fromChapter: 203, toChapter: 203.8, label: "Luffy vs. Crocodile", fact: "The underground final gets a real stage, not a fly-by.", fromCam: stage(5.9, 50), toCam: stage(6.4, 55), focus: ALUBARNA },
-  { id: "jaya", fromMs: 21_000, toMs: 24_000, fromChapter: 204, toChapter: 235, label: "Jaya — aim for the sky", fact: "The camera reaches the stream before the climb begins.", fromCam: stage(5.4, 42), toCam: stage(5.2, 54) },
-  { id: "knock-up", fromMs: 24_000, toMs: 29_000, fromChapter: 235, toChapter: 237, label: "Riding the Knock-Up Stream", fact: "Five full seconds on the two chapters that actually carry the ascent.", fromCam: stage(5.2, 56), toCam: stage(5.7, 63) },
-  { id: "bell", fromMs: 29_000, toMs: 31_000, fromChapter: 278.8, toChapter: 304, label: "Skypiea — ring the bell", fact: "The city of gold answers from above the White Sea.", fromCam: stage(5.8, 52), toCam: stage(6.25, 55), focus: SKYPIEA },
-  { id: "water-seven", fromMs: 31_000, toMs: 34_000, fromChapter: 305, toChapter: 388, label: "Water 7", fact: "The sea train pulls the route toward Enies Lobby.", fromCam: sea(3.4), toCam: stage(5.7, 45) },
-  { id: "enies-lobby", fromMs: 34_000, toMs: 39_000, fromChapter: 388, toChapter: 441, label: "Enies Lobby", fact: "The crew declares war and punches through the gates.", fromCam: stage(5.7, 48), toCam: stage(6.35, 54), focus: ENIES_LOBBY },
-  { id: "war", fromMs: 39_000, toMs: 45_000, fromChapter: 442, toChapter: 580, label: "Sabaody to Marineford", fact: "The world breaks apart, then the war redraws it.", fromCam: sea(3.5), toCam: stage(5.8, 48, 2) },
-  { id: "fishman", fromMs: 45_000, toMs: 50_000, fromChapter: 601, toChapter: 653.9, label: "Beneath the Red Line", fact: "The ship dives instead of teleporting to Fish-Man Island.", fromCam: stage(5.3, 55), toCam: stage(5.8, 62) },
-  { id: "new-world", fromMs: 50_000, toMs: 55_000, fromChapter: 700, toChapter: 902, label: "Dressrosa · Zou · Whole Cake", fact: "Punk Hazard is deliberately cut; the route resumes beyond it.", fromCam: sea(3.25), toCam: sea(3.65) },
-  { id: "wano-approach", fromMs: 55_000, toMs: 58_000, fromChapter: 903, toChapter: 978, label: "Wano rises ahead", fact: "The camera reaches the country before Onigashima starts to move.", fromCam: sea(3.7), toCam: stage(6.2, 50, 3), focus: WANO, ship: "onigashima-approach" },
-  { id: "onigashima-lift", fromMs: 58_000, toMs: 66_000, fromChapter: 978, toChapter: 1039, label: "Onigashima lifts", fact: "The ship rides with the island as the geographic-shift clip advances.", fromCam: stage(6.2, 50, 3), toCam: stage(6.6, 58, 5), focus: WANO, ship: "onigashima-lift" },
-  { id: "onigashima-land", fromMs: 66_000, toMs: 70_000, fromChapter: 1039, toChapter: 1109, label: "Back into Wano", fact: "Onigashima settles into the country before the journey moves on.", fromCam: stage(6.6, 58, 5), toCam: stage(6.15, 48, 2), focus: WANO, ship: "onigashima-land" },
-  { id: "egghead", fromMs: 70_000, toMs: 76_000, fromChapter: 1109, toChapter: 1131.9, label: "Egghead", fact: "The Future Island loads as a close 3D stage.", fromCam: sea(3.7), toCam: stage(6.45, 50, 4), focus: EGGHEAD },
-  { id: "elbaph-1188", fromMs: 76_000, toMs: 86_000, fromChapter: 1132, toChapter: 1188, label: "Elbaph — Chapter 1188", fact: "The verified VOHU breakdown plays over the living Elbaph model.", fromCam: stage(5.9, 45), toCam: stage(6.5, 54, 4), focus: ELBAPH, media: { src: "/art/breakdowns/1188/op1188.mp4", poster: "/art/breakdowns/1188/poster.jpg", title: "Chapter 1188 — VOHU", sourceStartS: 8.27, sourceEndS: 18.27 } },
-  { id: "horizon", fromMs: 86_000, toMs: 90_000, fromChapter: 1188, toChapter: 1188, label: "The horizon is still moving", fact: "Ninety seconds. One route. The next chapter remains uncharted.", fromCam: stage(6.1, 48, 2), toCam: { zoom: 2.15, pitch: 12, orbitDegPerSec: 0 } },
+  scene("roger-execution-prologue", 0, 3_500, 1, "Gold Roger — the age begins", "The execution opens the route, then the cut leaves Loguetown.", ROGER_EXECUTION, 8_000, 6.4),
+  scene("luffy-punches-alvida", 3_500, 6_000, 2, "A barrel in East Blue", "Luffy arrives, makes the promise, and throws the first punch.", ALVIDA, 7_000, 6.35),
+  scene("orange-town-luffy-vs-buggy", 6_000, 8_500, 20, "Orange Town", "The first pirate showdown plays through instead of becoming a fly-by.", ORANGE_TOWN, 8_000),
+  scene("syrup-village-luffy-vs-kuro", 8_500, 11_000, 40, "Syrup Village", "Kuro's final rush gets a complete visual beat.", SYRUP_VILLAGE, 8_000),
+  scene("baratie-zoro-vs-mihawk", 11_000, 14_500, 51, "Baratie — Zoro vs. Mihawk", "Zoro's supplied line stays on the duel it belongs to.", BARATIE_DUEL, 8_000, 6.45),
+  scene("nami-asks-for-help", 14_500, 17_000, 81, "Nami asks for help", "The quiet turn lands before the crew answers.", NAMI_HELP, 8_500),
+  scene("arlong-park-final-clash", 17_000, 20_500, 93, "Arlong Park", "East Blue closes on the authored final clash.", ARLONG_PARK, 8_500, 6.45),
+  { id: "reverse-mountain", fromMs: 20_500, toMs: 24_500, fromChapter: 101, toChapter: 102, label: "Reverse Mountain", fact: "The current carries the Going Merry up and into the Grand Line.", fromCam: stage(6.2, 54), toCam: stage(6.7, 62, 3), focus: REVERSE_MOUNTAIN },
+  scene("arabasta-luffy-vs-crocodile-final", 24_500, 28_500, 203, "Arabasta — the final round", "The Alubarna battle advances through the complete authored action.", ALUBARNA, 11_500, 6.5),
+  { id: "jaya-approach", fromMs: 28_500, toMs: 31_000, fromChapter: 204, toChapter: 235, label: "Jaya — aim for the sky", fact: "The camera reaches the stream before the climb begins.", fromCam: stage(5.1, 42), toCam: stage(5.5, 54) },
+  { id: "knock-up-stream", fromMs: 31_000, toMs: 36_000, fromChapter: 235, toChapter: 237, label: "Riding the Knock-Up Stream", fact: "Five full seconds climb the route; this is not a chapter jump.", fromCam: stage(5.5, 56), toCam: stage(6.15, 64, 3) },
+  scene("skypiea-luffy-vs-enel", 36_000, 40_000, 279, "Skypiea — ring the bell", "The bell cue lands inside the Enel sequence above the White Sea.", SKYPIEA, 11_200, 6.45),
+  scene("enies-lobby-luffy-vs-rob-lucci", 40_000, 44_000, 418, "Enies Lobby", "The Lucci sequence gets a full editorial pass through its authored action.", ENIES_LOBBY, 12_800, 6.5),
+  scene("sabaody-luffy-punches-charloss", 44_000, 47_000, 502, "Sabaody", "The auction-house impact reads before the world breaks apart.", SABAODY, 9_800, 6.45),
+  { id: "marineford", fromMs: 47_000, toMs: 50_000, fromChapter: 522, toChapter: 525, label: "Marineford", fact: "The government sea system receives a dedicated war-stage shot.", fromCam: stage(6.1, 48), toCam: stage(6.7, 57, 3), focus: MARINEFORD },
+  { id: "fishman-descent", fromMs: 50_000, toMs: 54_000, fromChapter: 602, toChapter: 607, label: "Beneath the Red Line", fact: "The Sunny dives through the actual descent rather than teleporting.", fromCam: stage(5.5, 54), toCam: stage(6.5, 64, 2), focus: FISHMAN_DESCENT },
+  { id: "punk-hazard", fromMs: 54_000, toMs: 59_000, fromChapter: 655, toChapter: 664, label: "Punk Hazard", fact: "Five seconds reveal the split fire-and-ice island all the way to its safe full scene.", fromCam: stage(6.2, 50), toCam: stage(7.0, 58, 4), focus: PUNK_HAZARD },
+  { id: "dressrosa", fromMs: 59_000, toMs: 62_000, fromChapter: 682, toChapter: 738, label: "Dressrosa · Green Bit", fact: "The living geography gets its own close pass.", fromCam: stage(6.1, 48), toCam: stage(6.75, 56, 3), focus: DRESSROSA },
+  { id: "zou", fromMs: 62_000, toMs: 65_000, fromChapter: 795, toChapter: 804, label: "Zou", fact: "Zunesha fills the frame before the route moves on.", fromCam: stage(6.0, 48), toCam: stage(6.75, 57, 3), focus: ZOU },
+  { id: "whole-cake", fromMs: 65_000, toMs: 68_000, fromChapter: 824, toChapter: 831, label: "Totto Land", fact: "Whole Cake's food geography receives a readable stage.", fromCam: stage(6.0, 48), toCam: stage(6.7, 56, 3), focus: WHOLE_CAKE },
+  { id: "wano-approach", fromMs: 68_000, toMs: 72_000, fromChapter: 903, toChapter: 978, label: "Wano rises ahead", fact: "The whole country establishes before Onigashima moves.", fromCam: stage(5.8, 46), toCam: stage(6.65, 54, 2), focus: WANO },
+  { id: "onigashima-flight", fromMs: 72_000, toMs: 80_000, fromChapter: 997, toChapter: 1109, label: "Onigashima takes flight", fact: "The clean Wano frame holds while the real geographic-shift clip lifts and settles the skull island.", fromCam: stage(7.1, 56, 1), toCam: stage(7.2, 58, 1), focus: WANO, hideShip: true },
+  { id: "onigashima-landing", fromMs: 80_000, toMs: 83_000, fromChapter: 1109, toChapter: 1109, label: "Onigashima returns to Wano", fact: "The country, not a reversed DOM boat, resolves the landing.", fromCam: stage(7.35, 58, 2), toCam: stage(6.7, 52, 1), focus: WANO, hideShip: true },
+  { id: "egghead", fromMs: 83_000, toMs: 86_000, fromChapter: 1110, toChapter: 1131, label: "Egghead", fact: "Future Island loads as a close 3D stage.", fromCam: stage(6.0, 46), toCam: stage(6.8, 55, 3), focus: EGGHEAD },
+  { id: "elbaph", fromMs: 86_000, toMs: 89_000, fromChapter: 1132, toChapter: 1188, label: "Elbaph", fact: "The living Adam-world model closes the voyage—without a vertical video pasted over it.", fromCam: stage(6.0, 46), toCam: stage(6.8, 56, 3), focus: ELBAPH },
+  { id: "horizon", fromMs: 89_000, toMs: 90_000, fromChapter: 1188, toChapter: 1188, label: "The horizon is still moving", fact: "Ninety seconds. One route. The next chapter remains uncharted.", fromCam: stage(6.2, 48), toCam: { zoom: 3.2, pitch: 18, orbitDegPerSec: 0 }, focus: ELBAPH },
 ];
 
 const AUDIO_WINDOWS = [
   { id: "luffy-pirate-king", atMs: 0 },
-  { id: "city-of-gold-bell", atMs: 23_000 },
-  { id: "gear-second", atMs: 33_000 },
-  { id: "robin-live", atMs: 34_900 },
-  { id: "brook-laugh", atMs: 39_000 },
-  { id: "law-room", atMs: 42_100 },
-  { id: "kuma-scattering", atMs: 44_700 },
-  { id: "big-mom-laugh", atMs: 50_000 },
-  { id: "wano-theme", atMs: 55_000 },
-  { id: "kaido-laugh", atMs: 60_200 },
+  { id: "city-of-gold-bell", atMs: 31_000 },
+  { id: "gear-second", atMs: 40_000 },
+  { id: "robin-live", atMs: 41_800 },
+  { id: "kuma-scattering", atMs: 44_500 },
+  { id: "big-mom-laugh", atMs: 65_000 },
+  { id: "wano-theme", atMs: 68_000 },
+  { id: "kaido-laugh", atMs: 72_000 },
 ] as const;
 
 const clamp01 = (value: number) => Math.max(0, Math.min(1, value));
@@ -100,35 +132,12 @@ const smooth = (value: number) => {
 };
 const lerp = (from: number, to: number, t: number) => from + (to - from) * t;
 
-function shipAt(shot: JourneyShot, t: number): JourneyShipTarget | null {
-  if (!shot.ship) return null;
-  if (shot.ship === "onigashima-approach") {
-    return {
-      lngLat: [lerp(114.8, WANO[0], t), lerp(5.4, WANO[1], t)],
-      groundLngLat: WANO,
-      liftPx: 0,
-    };
-  }
-  if (shot.ship === "onigashima-lift") {
-    return {
-      lngLat: [WANO[0], WANO[1]],
-      groundLngLat: WANO,
-      liftPx: lerp(8, 104, smooth(t)),
-    };
-  }
-  return {
-    lngLat: [WANO[0], WANO[1]],
-    groundLngLat: WANO,
-    liftPx: lerp(104, 0, smooth(t)),
-  };
-}
-
 export type JourneyTreatmentSample = {
   chapter: number;
   cam: CamTarget;
   focus: [number, number] | null;
-  ship: JourneyShipTarget | null;
-  media: JourneyMediaPlayback | null;
+  hideShip: boolean;
+  scene: JourneyScenePlayback | null;
   audio: EpicCuePlayback[];
   label: string;
   fact: string;
@@ -142,7 +151,8 @@ export function sampleJourneyTreatment(
 ): JourneyTreatmentSample {
   const elapsed = Math.max(0, Math.min(JOURNEY_DURATION_MS, elapsedMs));
   const shot = JOURNEY_SHOTS.find((candidate) => elapsed < candidate.toMs) ?? JOURNEY_SHOTS.at(-1)!;
-  const t = smooth((elapsed - shot.fromMs) / Math.max(1, shot.toMs - shot.fromMs));
+  const rawT = clamp01((elapsed - shot.fromMs) / Math.max(1, shot.toMs - shot.fromMs));
+  const cameraT = smooth(rawT);
   const cueById = new Map(cues.map((cue) => [cue.id, cue]));
   const audio = AUDIO_WINDOWS.flatMap(({ id, atMs }) => {
     const cue = cueById.get(id);
@@ -150,16 +160,16 @@ export function sampleJourneyTreatment(
     return [{ cue, cueElapsedMs: elapsed - atMs }];
   });
   return {
-    chapter: lerp(shot.fromChapter, shot.toChapter, t),
+    chapter: lerp(shot.fromChapter, shot.toChapter, cameraT),
     cam: {
-      zoom: lerp(shot.fromCam.zoom, shot.toCam.zoom, t),
-      pitch: lerp(shot.fromCam.pitch, shot.toCam.pitch, t),
-      orbitDegPerSec: lerp(shot.fromCam.orbitDegPerSec, shot.toCam.orbitDegPerSec, t),
+      zoom: lerp(shot.fromCam.zoom, shot.toCam.zoom, cameraT),
+      pitch: lerp(shot.fromCam.pitch, shot.toCam.pitch, cameraT),
+      orbitDegPerSec: lerp(shot.fromCam.orbitDegPerSec, shot.toCam.orbitDegPerSec, cameraT),
     },
     focus: shot.focus ?? null,
-    ship: shipAt(shot, t),
-    media: shot.media
-      ? { ...shot.media, elapsedMs: Math.max(0, elapsed - shot.fromMs) }
+    hideShip: Boolean(shot.hideShip),
+    scene: shot.scene
+      ? { sceneId: shot.scene.id, timeMs: Math.min(shot.scene.durationMs, rawT * shot.scene.durationMs) }
       : null,
     audio,
     label: shot.label,
@@ -169,9 +179,36 @@ export function sampleJourneyTreatment(
   };
 }
 
-/** Warm only the small late-island GLBs; the 46 MB 1188 video stays range-loaded. */
+/** Warm the geographic stages that the camera must reveal on a fixed clock. */
 export const JOURNEY_PRELOAD_URLS = [
+  "/art/east-blue-2d/alvida/atlas.png",
+  "/art/east-blue-2d/arlong/atlas.png",
+  "/art/east-blue-2d/buggy/atlas.png",
+  "/art/east-blue-2d/captain-kuro/atlas.png",
+  "/art/east-blue-2d/dracule-mihawk/atlas.png",
+  "/art/east-blue-2d/gol-d-roger/atlas.png",
+  "/art/east-blue-2d/monkey-d-luffy/atlas.png",
+  "/art/east-blue-2d/nami/atlas.png",
+  "/art/east-blue-2d/roronoa-zoro/atlas.png",
+  "/art/east-blue-2d/sanji/atlas.png",
+  "/art/east-blue-2d/usopp/atlas.png",
+  "/art/story-simulations/arabasta-saga-2d-v1/crocodile-arabasta-final/atlas.png",
+  "/art/story-simulations/arabasta-saga-2d-v1/monkey-d-luffy-crocodile-final/atlas.png",
+  "/art/story-simulations/skypiea-saga-2d-v1/enel-skypiea/atlas.png",
+  "/art/story-simulations/skypiea-saga-2d-v1/monkey-d-luffy-skypiea-enel/atlas.png",
+  "/art/story-simulations/enies-lobby-saga-2d-v1/monkey-d-luffy-enies-lobby-lucci/atlas.png",
+  "/art/story-simulations/enies-lobby-saga-2d-v1/rob-lucci-enies-lobby/atlas.png",
+  "/art/story-simulations/sabaody-saga-2d-v1/monkey-d-luffy-sabaody-auction/atlas.png",
+  "/art/story-simulations/sabaody-saga-2d-v1/octy-sabaody-auction/atlas.png",
+  "/art/story-simulations/sabaody-saga-2d-v1/saint-charloss-sabaody-auction/atlas.png",
+  "/art/runtime/reverse-mountain-twin-cape-voyage.glb",
   "/art/runtime/skypiea-knock-up-stream.glb",
+  "/art/runtime/world-government-tarai-system.glb",
+  "/art/runtime/fish-man-red-line-descent.glb",
+  "/art/runtime/punk-hazard-geographic-system.glb",
+  "/art/runtime/dressrosa-green-bit.glb",
+  "/art/runtime/zou-zunesha.glb",
+  "/art/runtime/totto-land-food-geography.glb",
   "/art/runtime/wano-onigashima-country-system.glb",
   "/art/runtime/egghead-future-island-system.glb",
   "/art/runtime/elbaph-adam-world-system.glb",

@@ -22,7 +22,6 @@
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import Link from "next/link";
 import {
   worldAtChapter,
   chapterForEpisode,
@@ -45,9 +44,8 @@ import {
   JOURNEY_PRELOAD_URLS,
   JOURNEY_SHOTS,
   sampleJourneyTreatment,
-  type JourneyMediaPlayback,
-  type JourneyShipTarget,
 } from "@/lib/journey-treatment";
+import { setJourneySimulationOverride } from "@/lib/simulation-journey-bridge";
 import { AudioDirector } from "@/lib/audio-director";
 import { ANY_STORY_SIMULATIONS_ON } from "@/config/story-simulations";
 import WorldMap, { type Projection } from "./WorldMap";
@@ -60,7 +58,6 @@ import CrewRoster from "./CrewRoster";
 import IslandDetail from "./IslandDetail";
 import Legend from "./Legend";
 import Attribution from "./Attribution";
-import JourneyMediaStage from "./JourneyMediaStage";
 
 /* -------------------------------------------------------------------------- */
 /* the chapter engine — sweep tween + story playback, one rAF at a time        */
@@ -101,9 +98,8 @@ function useChapterEngine(world: World, initial: number) {
   const [journeyAudioLabel, setJourneyAudioLabel] = useState("");
   const [journeyMuted, setJourneyMuted] = useState(false);
   const [journeyAudioError, setJourneyAudioError] = useState<string | null>(null);
-  const [journeyMedia, setJourneyMedia] = useState<JourneyMediaPlayback | null>(null);
   const journeyCam = useRef<(CamTarget & { focus: [number, number] | null }) | null>(null);
-  const journeyShip = useRef<JourneyShipTarget | null>(null);
+  const journeyHideShip = useRef(false);
   const journeyRaf = useRef<number | null>(null);
   const journeyAudio = useRef<EpicAudioPlayer | null>(null);
 
@@ -333,11 +329,11 @@ function useChapterEngine(world: World, initial: number) {
     journeyAudio.current?.stop();
     journeyAudio.current = null;
     journeyCam.current = null;
-    journeyShip.current = null;
+    journeyHideShip.current = false;
+    setJourneySimulationOverride(null);
     setJourney(false);
     setJourneyElapsedMs(0);
     setJourneyAudioLabel("");
-    setJourneyMedia(null);
     setJourneyLabel("");
     setJourneyFact("");
   }, []);
@@ -354,8 +350,7 @@ function useChapterEngine(world: World, initial: number) {
     // the sail loop does — we own `pos.current`/`swept` for the duration.
     playingRef.current = true;
 
-    // The click warms only the four small GLBs whose late arrival used to make
-    // the journey look empty. The 1188 master is range-loaded by its video tag.
+    // Warm every geographic stage the fixed-clock edit must reveal.
     for (const url of JOURNEY_PRELOAD_URLS) void fetch(url, { cache: "force-cache" }).catch(() => undefined);
 
     // The same user gesture unlocks both supplied chapter audio and simulation
@@ -371,10 +366,17 @@ function useChapterEngine(world: World, initial: number) {
     }
 
     if (process.env.NODE_ENV !== "production") {
-      (window as Window & { __journeyTreatment?: unknown }).__journeyTreatment = {
+      const auditWindow = window as Window & {
+        __journeyTreatment?: unknown;
+        __journeyElapsedExact?: number;
+        __journeyShotId?: string;
+      };
+      auditWindow.__journeyTreatment = {
         durationMs: JOURNEY_DURATION_MS,
         shots: JOURNEY_SHOTS,
       };
+      auditWindow.__journeyElapsedExact = 0;
+      auditWindow.__journeyShotId = JOURNEY_SHOTS[0]?.id;
     }
 
     pos.current = world.chapterMin;
@@ -384,7 +386,8 @@ function useChapterEngine(world: World, initial: number) {
 
     const first = sampleJourneyTreatment(0, ACTIVE_EPIC_AUDIO_CUES);
     journeyCam.current = { ...first.cam, focus: first.focus };
-    journeyShip.current = first.ship;
+    journeyHideShip.current = first.hideShip;
+    setJourneySimulationOverride(first.scene);
     audio?.sync(first.audio);
     setJourneyLabel(first.label);
     setJourneyFact(first.fact);
@@ -399,6 +402,14 @@ function useChapterEngine(world: World, initial: number) {
     const step = (now: number) => {
       const elapsedMs = Math.min(JOURNEY_DURATION_MS, (now - t0) * auditRate);
       const sample = sampleJourneyTreatment(elapsedMs, ACTIVE_EPIC_AUDIO_CUES);
+      if (process.env.NODE_ENV !== "production") {
+        const auditWindow = window as Window & {
+          __journeyElapsedExact?: number;
+          __journeyShotId?: string;
+        };
+        auditWindow.__journeyElapsedExact = elapsedMs;
+        auditWindow.__journeyShotId = sample.shotId;
+      }
       const ch = Math.min(world.chapterMax, sample.chapter);
       pos.current = ch;
       // React pushes at ~30Hz, not per frame. The CAMERA is full-rate (the
@@ -415,7 +426,8 @@ function useChapterEngine(world: World, initial: number) {
         setChapterState((c) => (c === fl ? c : fl));
       }
       journeyCam.current = { ...sample.cam, focus: sample.focus };
-      journeyShip.current = sample.ship;
+      journeyHideShip.current = sample.hideShip;
+      setJourneySimulationOverride(sample.scene);
       audio?.sync(sample.audio);
       // Strings only re-render when they actually CHANGE (see journeyCam note).
       setJourneyLabel((prev) => (prev === sample.label ? prev : sample.label));
@@ -425,7 +437,6 @@ function useChapterEngine(world: World, initial: number) {
       if (now - lastUiPush >= 100 || sample.done) {
         lastUiPush = now;
         setJourneyElapsedMs(elapsedMs);
-        setJourneyMedia(sample.media);
       }
       if (sample.done) {
         stopJourney();
@@ -449,6 +460,7 @@ function useChapterEngine(world: World, initial: number) {
   useEffect(() => () => {
     if (journeyRaf.current !== null) cancelAnimationFrame(journeyRaf.current);
     journeyAudio.current?.stop();
+    setJourneySimulationOverride(null);
   }, []);
 
   // A manual set (or the sail play) cancels the journey — the reader took the helm.
@@ -462,7 +474,7 @@ function useChapterEngine(world: World, initial: number) {
 
   return {
     chapter, swept, setChapter: setChapterJ, playing, speed, setSpeed, play, pause,
-    journey, journeyCam, journeyShip, journeyLabel, journeyFact, journeyMedia,
+    journey, journeyCam, journeyHideShip, journeyLabel, journeyFact,
     journeyElapsedMs, journeyDurationMs, journeyAudioLabel, journeyMuted,
     journeyAudioError, startJourney, stopJourney, toggleJourneyMuted,
     storyStops, setStoryStops,
@@ -736,28 +748,9 @@ export default function Atlas({
           flyTarget={flyTarget}
           journey={engine.journey}
           journeyCam={engine.journeyCam}
-          journeyShip={engine.journeyShip}
+          journeyHideShip={engine.journeyHideShip}
           preserveBuffer={recordArmed}
         />
-
-        <JourneyMediaStage playback={engine.journeyMedia} />
-
-        {at.chapter >= 1188 && !engine.journey && (
-          <Link
-            href="/breakdown/1188?ch=1188"
-            aria-label="Open the Chapter 1188 animated breakdown"
-            className="absolute right-5 bottom-5 z-[16] w-[210px] overflow-hidden rounded-xl border border-gold/45 bg-ink/92 shadow-2xl transition-transform hover:-translate-y-0.5"
-          >
-            <div
-              className="h-[92px] bg-cover bg-[position:center_18%]"
-              style={{ backgroundImage: "url('/art/breakdowns/1188/poster.jpg')" }}
-            />
-            <div className="px-3 py-2.5">
-              <div className="font-mono text-[8px] uppercase tracking-[0.2em] text-gold">Chapter 1188 · VOHU</div>
-              <div className="mt-1 font-document text-[12px] italic text-parchment">▶ Watch the animated breakdown</div>
-            </div>
-          </Link>
-        )}
 
         <SearchPalette
           world={world}
@@ -979,6 +972,7 @@ export default function Atlas({
             else {
               setProjection("mercator");
               setFollow(false);
+              setLens("off");
               engine.startJourney();
             }
           }}
@@ -993,6 +987,7 @@ export default function Atlas({
           onRecord={() => {
             setProjection("mercator");
             setFollow(false);
+            setLens("off");
             void startRecordedJourney();
           }}
           storyStops={STORY_JOURNEY_ON ? engine.storyStops : undefined}

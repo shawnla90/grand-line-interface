@@ -52,6 +52,7 @@ import { SIM_FADE_IN_MS, SIM_FADE_OUT_MS, SIM_MIN_ZOOM, STAGE_SPAN_M } from "@/c
 import { selectStoryPack, type StoryPackId } from "@/config/story-simulations";
 import { GENERATED_PACKS } from "@/config/story-packs.generated";
 import { getSimAudioSink } from "@/lib/sim-audio-bridge";
+import { getJourneySimulationOverride } from "@/lib/simulation-journey-bridge";
 
 type HostState = {
   map: MlMap;
@@ -105,6 +106,10 @@ function sceneTimeMs(state: HostState, scene: SimScene): number | null {
   // Past the window: the frozen tableau. (Never null DURING the window — the
   // reader who arrives at ch 51 sees the duel play.)
   if (!sceneInActiveWindow(scene, state.chapter)) return null;
+  const journeyOverride = getJourneySimulationOverride();
+  if (journeyOverride?.sceneId === scene.id) {
+    return Math.min(scene.duration_ms, Math.max(0, journeyOverride.timeMs));
+  }
   const clock = state.clocks.get(scene.id);
   if (!clock) return 0;
   return sceneClockElapsedMs(clock, now());
