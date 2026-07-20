@@ -1,8 +1,9 @@
 # Story Simulation + Audio Integration Plan
 
-_Prepared 2026-07-18. This is the app-side handoff for moving the signed East
-Blue and Arabasta scene packs from proof stages into chapter playback, the
-cinematic journey, and the Epic Journey audio timeline._
+_Prepared 2026-07-18. Implemented foundation. For launch, the separate Epic
+entry point was retired: supplied audio, cinematic camera, and scene clocks now
+share one exact 90-second Journey treatment, verified by
+`scripts/audit_launch_journey.py`._
 
 ## Outcome
 

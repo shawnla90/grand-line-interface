@@ -22,6 +22,7 @@
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import {
   worldAtChapter,
   chapterForEpisode,
@@ -35,15 +36,18 @@ import { BRAND } from "@/config/brand";
 import { focusKey, type Focus, type PresenceLens } from "@/lib/lenses";
 import type { BuildLog } from "@/lib/buildlog";
 import type { Art } from "@/lib/art";
-import { buildJourney, type CamTarget, type JourneyMoment } from "@/lib/journey";
-import { buildJourneyStops, SHORT_CUT_SIM_IDS, STORY_JOURNEY_ON } from "@/config/journey-stops";
-import {
-  ACTIVE_EPIC_AUDIO_CUES,
-  EPIC_CROSSFADE_MS,
-  EPIC_TRAVEL_BUDGET_MS,
-} from "@/config/epic-audio-cues";
-import { buildEpicJourneyTimeline } from "@/lib/epic-journey";
+import { type CamTarget, type JourneyMoment } from "@/lib/journey";
+import { buildJourneyStops, STORY_JOURNEY_ON } from "@/config/journey-stops";
+import { ACTIVE_EPIC_AUDIO_CUES, EPIC_AUDIO_SHIPPABLE } from "@/config/epic-audio-cues";
 import { EpicAudioPlayer } from "@/lib/epic-audio-player";
+import {
+  JOURNEY_DURATION_MS,
+  JOURNEY_PRELOAD_URLS,
+  JOURNEY_SHOTS,
+  sampleJourneyTreatment,
+  type JourneyMediaPlayback,
+  type JourneyShipTarget,
+} from "@/lib/journey-treatment";
 import { AudioDirector } from "@/lib/audio-director";
 import { ANY_STORY_SIMULATIONS_ON } from "@/config/story-simulations";
 import WorldMap, { type Projection } from "./WorldMap";
@@ -56,6 +60,7 @@ import CrewRoster from "./CrewRoster";
 import IslandDetail from "./IslandDetail";
 import Legend from "./Legend";
 import Attribution from "./Attribution";
+import JourneyMediaStage from "./JourneyMediaStage";
 
 /* -------------------------------------------------------------------------- */
 /* the chapter engine — sweep tween + story playback, one rAF at a time        */
@@ -65,19 +70,6 @@ export const SPEEDS = [0.5, 1, 2, 4] as const;
 export type Speed = (typeof SPEEDS)[number];
 /** Chapters per second at 1x. 2 ch/s sails the whole story in ~10 minutes. */
 const BASE_CPS = 2;
-/** The cinematic journey's total run. ~90s flag-off (the original TikTok
- * cut); with the story layers on the run carries ~10 story/model dwells and
- * two vertical rides, so it stretches to 150s to keep the sea legs pacing. */
-const JOURNEY_MS = STORY_JOURNEY_ON ? 150_000 : 90_000;
-// The ?cut=short floor: the five-hero roster's weight math lands ~90s on its
-// own; the floor only catches a future roster edit that would undershoot.
-const SHORT_JOURNEY_MS = 88_000;
-// Captured ONCE at module load (the ?record=1 lesson): the app rewrites the
-// query string as the reader navigates, so reading location.search at click
-// time would lose the flag.
-const SHORT_CUT_ARMED =
-  typeof window !== "undefined" &&
-  new URLSearchParams(window.location.search).get("cut") === "short";
 
 /**
  * One float position (`swept`) eased or sailed toward/through chapters.
@@ -104,15 +96,16 @@ function useChapterEngine(world: World, initial: number) {
   const [journey, setJourney] = useState(false);
   const [journeyLabel, setJourneyLabel] = useState("");
   const [journeyFact, setJourneyFact] = useState("");
-  const [epicJourney, setEpicJourney] = useState(false);
-  const [epicElapsedMs, setEpicElapsedMs] = useState(0);
-  const [epicDurationMs, setEpicDurationMs] = useState(0);
-  const [epicCueLabel, setEpicCueLabel] = useState("");
-  const [epicMuted, setEpicMuted] = useState(false);
-  const [epicAudioError, setEpicAudioError] = useState<string | null>(null);
+  const [journeyElapsedMs, setJourneyElapsedMs] = useState(0);
+  const [journeyDurationMs, setJourneyDurationMs] = useState(JOURNEY_DURATION_MS);
+  const [journeyAudioLabel, setJourneyAudioLabel] = useState("");
+  const [journeyMuted, setJourneyMuted] = useState(false);
+  const [journeyAudioError, setJourneyAudioError] = useState<string | null>(null);
+  const [journeyMedia, setJourneyMedia] = useState<JourneyMediaPlayback | null>(null);
   const journeyCam = useRef<(CamTarget & { focus: [number, number] | null }) | null>(null);
+  const journeyShip = useRef<JourneyShipTarget | null>(null);
   const journeyRaf = useRef<number | null>(null);
-  const epicAudio = useRef<EpicAudioPlayer | null>(null);
+  const journeyAudio = useRef<EpicAudioPlayer | null>(null);
 
   // tween toward a manually-set target (skipped while playback owns the float)
   useEffect(() => {
@@ -337,12 +330,14 @@ function useChapterEngine(world: World, initial: number) {
     if (journeyRaf.current !== null) cancelAnimationFrame(journeyRaf.current);
     journeyRaf.current = null;
     playingRef.current = false;
-    epicAudio.current?.stop();
+    journeyAudio.current?.stop();
+    journeyAudio.current = null;
     journeyCam.current = null;
+    journeyShip.current = null;
     setJourney(false);
-    setEpicJourney(false);
-    setEpicElapsedMs(0);
-    setEpicCueLabel("");
+    setJourneyElapsedMs(0);
+    setJourneyAudioLabel("");
+    setJourneyMedia(null);
     setJourneyLabel("");
     setJourneyFact("");
   }, []);
@@ -350,64 +345,35 @@ function useChapterEngine(world: World, initial: number) {
   const startJourney = useCallback(() => {
     if (raf.current !== null) cancelAnimationFrame(raf.current);
     if (journeyRaf.current !== null) cancelAnimationFrame(journeyRaf.current);
-    epicAudio.current?.stop();
+    journeyAudio.current?.stop();
     setPlaying(false);
-    setEpicJourney(false);
-    setEpicAudioError(null);
+    setJourneyAudioError(null);
+    setJourneyElapsedMs(0);
+    setJourneyDurationMs(JOURNEY_DURATION_MS);
     // playingRef true makes the tween effect yield the float to us, exactly as
     // the sail loop does — we own `pos.current`/`swept` for the duration.
     playingRef.current = true;
 
-    // ?cut=short: the phone-length recording cut — the same voyage, the five
-    // hero fights only, no 3D dwells, no transits. Scenes still play their
-    // full authored cut; the ♫ epic keeps its own full-length timeline.
-    const shortCut = SHORT_CUT_ARMED;
-    const allStops = buildJourneyStops(world);
-    const plan = shortCut
-      ? buildJourney(
-          world.voyage.waypoints.map((w) => ({ chapter: w.chapter, slug: w.slug, label: w.label })),
-          world.chapterMax,
-          new Set(),
-          // Tighter ocean crossings and heavier stops than the feature cut:
-          // five fights carry this ride, the sea between them is connective
-          // tissue. momentWeight 380 lands the whole run at ~89s (the run
-          // length is 8000 x totalWeight / momentWeight — see buildJourney).
-          { travelCapCh: 60, momentWeight: 380 },
-          allStops.filter((m) => m.kind === "scene" && m.simId != null && SHORT_CUT_SIM_IDS.has(m.simId)),
-          [],
-        )
-      : buildJourney(
-          world.voyage.waypoints.map((w) => ({ chapter: w.chapter, slug: w.slug, label: w.label })),
-          world.chapterMax,
-          undefined,
-          {},
-          // Scene moments + model spotlights ride their own flags; both off =
-          // today's 90s run, byte for byte.
-          allStops,
-        );
+    // The click warms only the four small GLBs whose late arrival used to make
+    // the journey look empty. The 1188 master is range-loaded by its video tag.
+    for (const url of JOURNEY_PRELOAD_URLS) void fetch(url, { cache: "force-cache" }).catch(() => undefined);
 
-    // Weights are relative, so an authored holdMs only becomes a wall-clock
-    // guarantee once the run is long enough: each moment window must span at
-    // least its holdMs. Today's content still fits inside the 150s floor; a
-    // future long scene stretches the run instead of silently cutting itself.
-    const journeyMs = Math.max(
-      shortCut ? SHORT_JOURNEY_MS : JOURNEY_MS,
-      ...plan.momentSpans().map((s) => (s.moment.holdMs ?? 0) / Math.max(s.t1 - s.t0, 1e-6)),
-    );
+    // The same user gesture unlocks both supplied chapter audio and simulation
+    // SFX. Rights remain an explicit build gate; production cannot accidentally
+    // ship a local-prototype-only track registry.
+    AudioDirector.get().unlock();
+    const audio = EPIC_AUDIO_SHIPPABLE
+      ? new EpicAudioPlayer((message) => setJourneyAudioError(message))
+      : null;
+    if (audio) {
+      audio.setMuted(journeyMuted);
+      journeyAudio.current = audio;
+    }
+
     if (process.env.NODE_ENV !== "production") {
-      // Dev-only, beside window.__simScenes: the built dwell schedule is
-      // otherwise unobservable from a test, and the journey audit would have
-      // to infer skipped dwells from camera samples instead of asserting.
-      (window as Window & { __journeySpans?: unknown }).__journeySpans = {
-        journeyMs,
-        spans: plan.momentSpans().map((s) => ({
-          label: s.moment.label,
-          chapter: s.moment.chapter,
-          holdMs: s.moment.holdMs ?? null,
-          t0: s.t0,
-          t1: s.t1,
-          wallMs: Math.round((s.t1 - s.t0) * journeyMs),
-        })),
+      (window as Window & { __journeyTreatment?: unknown }).__journeyTreatment = {
+        durationMs: JOURNEY_DURATION_MS,
+        shots: JOURNEY_SHOTS,
       };
     }
 
@@ -416,11 +382,24 @@ function useChapterEngine(world: World, initial: number) {
     setChapterState(world.chapterMin);
     setJourney(true);
 
+    const first = sampleJourneyTreatment(0, ACTIVE_EPIC_AUDIO_CUES);
+    journeyCam.current = { ...first.cam, focus: first.focus };
+    journeyShip.current = first.ship;
+    audio?.sync(first.audio);
+    setJourneyLabel(first.label);
+    setJourneyFact(first.fact);
+    setJourneyAudioLabel(first.audio.at(-1)?.cue.label ?? "Sailing the Grand Line");
+
     const t0 = performance.now();
+    const auditRate = process.env.NODE_ENV !== "production"
+      ? Math.max(1, Number((window as Window & { __journeyRate?: number }).__journeyRate ?? 1))
+      : 1;
     let lastPush = 0;
+    let lastUiPush = 0;
     const step = (now: number) => {
-      const t = Math.min(1, (now - t0) / journeyMs);
-      const ch = plan.chapterAt(t);
+      const elapsedMs = Math.min(JOURNEY_DURATION_MS, (now - t0) * auditRate);
+      const sample = sampleJourneyTreatment(elapsedMs, ACTIVE_EPIC_AUDIO_CUES);
+      const ch = Math.min(world.chapterMax, sample.chapter);
       pos.current = ch;
       // React pushes at ~30Hz, not per frame. The CAMERA is full-rate (the
       // chase runs on its own rAF off journeyCam); React only re-renders for
@@ -429,107 +408,25 @@ function useChapterEngine(world: World, initial: number) {
       // per-frame double-setState burst is exactly where React's dev runtime
       // still tripped "Maximum update depth exceeded" (measured: 4 times,
       // all during the Egghead leg).
-      if (now - lastPush >= 33 || t >= 1) {
+      if (now - lastPush >= 33 || sample.done) {
         lastPush = now;
         setSwept(ch);
         const fl = Math.max(world.chapterMin, Math.floor(ch));
         setChapterState((c) => (c === fl ? c : fl));
       }
-      const moment = plan.momentAt(t);
-      journeyCam.current = { ...plan.camAt(t), focus: moment?.focus ?? null };
+      journeyCam.current = { ...sample.cam, focus: sample.focus };
+      journeyShip.current = sample.ship;
+      audio?.sync(sample.audio);
       // Strings only re-render when they actually CHANGE (see journeyCam note).
-      const label = plan.labelAt(t);
-      setJourneyLabel((prev) => (prev === label ? prev : label));
-      const fact = moment?.fact ?? "";
-      setJourneyFact((prev) => (prev === fact ? prev : fact));
-      if (t >= 1) {
-        stopJourney();
-        return;
-      }
-      journeyRaf.current = requestAnimationFrame(step);
-    };
-    journeyRaf.current = requestAnimationFrame(step);
-  }, [world, stopJourney]);
-
-  const startEpicJourney = useCallback(() => {
-    if (raf.current !== null) cancelAnimationFrame(raf.current);
-    if (journeyRaf.current !== null) cancelAnimationFrame(journeyRaf.current);
-    epicAudio.current?.stop();
-    setPlaying(false);
-    playingRef.current = true;
-    setEpicAudioError(null);
-    // The ♫ click is a user gesture — unlock the director here so scene SFX
-    // can fire during Epic dwells without a second opt-in.
-    AudioDirector.get().unlock();
-
-    const visual = buildJourney(
-      world.voyage.waypoints.map((w) => ({ chapter: w.chapter, slug: w.slug, label: w.label })),
-      world.chapterMax,
-      undefined,
-      {},
-      buildJourneyStops(world),
-    );
-    const timeline = buildEpicJourneyTimeline(
-      visual,
-      ACTIVE_EPIC_AUDIO_CUES,
-      EPIC_TRAVEL_BUDGET_MS,
-      EPIC_CROSSFADE_MS,
-    );
-
-    const audio = new EpicAudioPlayer((message) => setEpicAudioError(message));
-    audio.setMuted(epicMuted);
-    epicAudio.current = audio;
-
-    pos.current = world.chapterMin;
-    setSwept(world.chapterMin);
-    setChapterState(world.chapterMin);
-    setJourney(true);
-    setEpicJourney(true);
-    setEpicElapsedMs(0);
-    setEpicDurationMs(timeline.durationMs);
-
-    // The first cue begins synchronously inside the click event, which is the
-    // browser's required user gesture for audible playback.
-    const first = timeline.sampleAt(0);
-    audio.sync(first.audio);
-    setEpicCueLabel(first.cue?.label ?? "Sailing the Grand Line");
-    setJourneyLabel(first.cue?.label ?? visual.labelAt(first.progress));
-    setJourneyFact(first.cue?.caption ?? "");
-
-    const t0 = performance.now();
-    const auditRate = process.env.NODE_ENV !== "production"
-      ? Math.max(1, Number((window as Window & { __epicJourneyRate?: number }).__epicJourneyRate ?? 1))
-      : 1;
-    let lastPush = 0;
-    let lastUiPush = 0;
-    const step = (now: number) => {
-      const elapsedMs = Math.min(timeline.durationMs, (now - t0) * auditRate);
-      const sample = timeline.sampleAt(elapsedMs);
-      const ch = visual.chapterAt(sample.progress);
-      pos.current = ch;
-
-      if (now - lastPush >= 33 || sample.done) {
-        lastPush = now;
-        setSwept(ch);
-        const fl = Math.max(world.chapterMin, Math.floor(ch));
-        setChapterState((current) => (current === fl ? current : fl));
-      }
-
-      const moment = visual.momentAt(sample.progress);
-      journeyCam.current = { ...visual.camAt(sample.progress), focus: moment?.focus ?? null };
-      audio.sync(sample.audio);
-
-      const label = sample.cue?.label ?? visual.labelAt(sample.progress);
-      const fact = sample.cue?.caption ?? moment?.fact ?? "";
-      setJourneyLabel((current) => (current === label ? current : label));
-      setJourneyFact((current) => (current === fact ? current : fact));
-      const cueLabel = sample.cue?.label ?? "Sailing the Grand Line";
-      setEpicCueLabel((current) => (current === cueLabel ? current : cueLabel));
-      if (now - lastUiPush >= 250 || sample.done) {
+      setJourneyLabel((prev) => (prev === sample.label ? prev : sample.label));
+      setJourneyFact((prev) => (prev === sample.fact ? prev : sample.fact));
+      const cueLabel = sample.audio.at(-1)?.cue.label ?? "Sailing the Grand Line";
+      setJourneyAudioLabel((prev) => (prev === cueLabel ? prev : cueLabel));
+      if (now - lastUiPush >= 100 || sample.done) {
         lastUiPush = now;
-        setEpicElapsedMs(elapsedMs);
+        setJourneyElapsedMs(elapsedMs);
+        setJourneyMedia(sample.media);
       }
-
       if (sample.done) {
         stopJourney();
         return;
@@ -537,13 +434,13 @@ function useChapterEngine(world: World, initial: number) {
       journeyRaf.current = requestAnimationFrame(step);
     };
     journeyRaf.current = requestAnimationFrame(step);
-  }, [epicMuted, stopJourney, world]);
+  }, [journeyMuted, stopJourney, world]);
 
-  const toggleEpicMuted = useCallback(() => {
-    setEpicMuted((current) => {
+  const toggleJourneyMuted = useCallback(() => {
+    setJourneyMuted((current) => {
       const next = !current;
-      epicAudio.current?.setMuted(next);
-      // One mute truth: Epic's mute silences the scene SFX world too.
+      journeyAudio.current?.setMuted(next);
+      // One mute truth across the supplied track and simulation SFX.
       AudioDirector.get().setMuted(next);
       return next;
     });
@@ -551,7 +448,7 @@ function useChapterEngine(world: World, initial: number) {
 
   useEffect(() => () => {
     if (journeyRaf.current !== null) cancelAnimationFrame(journeyRaf.current);
-    epicAudio.current?.stop();
+    journeyAudio.current?.stop();
   }, []);
 
   // A manual set (or the sail play) cancels the journey — the reader took the helm.
@@ -565,9 +462,9 @@ function useChapterEngine(world: World, initial: number) {
 
   return {
     chapter, swept, setChapter: setChapterJ, playing, speed, setSpeed, play, pause,
-    journey, journeyCam, journeyLabel, journeyFact, startJourney, stopJourney,
-    epicJourney, epicElapsedMs, epicDurationMs, epicCueLabel, epicMuted,
-    epicAudioError, startEpicJourney, toggleEpicMuted,
+    journey, journeyCam, journeyShip, journeyLabel, journeyFact, journeyMedia,
+    journeyElapsedMs, journeyDurationMs, journeyAudioLabel, journeyMuted,
+    journeyAudioError, startJourney, stopJourney, toggleJourneyMuted,
     storyStops, setStoryStops,
     sceneSound, toggleSceneSound,
   };
@@ -839,8 +736,28 @@ export default function Atlas({
           flyTarget={flyTarget}
           journey={engine.journey}
           journeyCam={engine.journeyCam}
+          journeyShip={engine.journeyShip}
           preserveBuffer={recordArmed}
         />
+
+        <JourneyMediaStage playback={engine.journeyMedia} />
+
+        {at.chapter >= 1188 && !engine.journey && (
+          <Link
+            href="/breakdown/1188?ch=1188"
+            aria-label="Open the Chapter 1188 animated breakdown"
+            className="absolute right-5 bottom-5 z-[16] w-[210px] overflow-hidden rounded-xl border border-gold/45 bg-ink/92 shadow-2xl transition-transform hover:-translate-y-0.5"
+          >
+            <div
+              className="h-[92px] bg-cover bg-[position:center_18%]"
+              style={{ backgroundImage: "url('/art/breakdowns/1188/poster.jpg')" }}
+            />
+            <div className="px-3 py-2.5">
+              <div className="font-mono text-[8px] uppercase tracking-[0.2em] text-gold">Chapter 1188 · VOHU</div>
+              <div className="mt-1 font-document text-[12px] italic text-parchment">▶ Watch the animated breakdown</div>
+            </div>
+          </Link>
+        )}
 
         <SearchPalette
           world={world}
@@ -1056,19 +973,28 @@ export default function Atlas({
             else engine.play();
           }}
           onSpeed={engine.setSpeed}
-          journey={engine.journey && !engine.epicJourney}
-          onJourney={() => (engine.journey ? engine.stopJourney() : engine.startJourney())}
-          epicJourney={engine.epicJourney}
-          epicElapsedMs={engine.epicElapsedMs}
-          epicDurationMs={engine.epicDurationMs}
-          epicCueLabel={engine.epicCueLabel}
-          epicMuted={engine.epicMuted}
-          epicAudioError={engine.epicAudioError}
-          onEpicJourney={() => (engine.epicJourney ? engine.stopJourney() : engine.startEpicJourney())}
-          onEpicMuted={engine.toggleEpicMuted}
+          journey={engine.journey}
+          onJourney={() => {
+            if (engine.journey) engine.stopJourney();
+            else {
+              setProjection("mercator");
+              setFollow(false);
+              engine.startJourney();
+            }
+          }}
+          journeyElapsedMs={engine.journeyElapsedMs}
+          journeyDurationMs={engine.journeyDurationMs}
+          journeyAudioLabel={engine.journeyAudioLabel}
+          journeyMuted={engine.journeyMuted}
+          journeyAudioError={engine.journeyAudioError}
+          onJourneyMuted={engine.toggleJourneyMuted}
           recordArmed={recordArmed}
           recording={recording}
-          onRecord={() => void startRecordedJourney()}
+          onRecord={() => {
+            setProjection("mercator");
+            setFollow(false);
+            void startRecordedJourney();
+          }}
           storyStops={STORY_JOURNEY_ON ? engine.storyStops : undefined}
           onStoryStops={engine.setStoryStops}
           sceneSound={ANY_STORY_SIMULATIONS_ON ? engine.sceneSound : undefined}

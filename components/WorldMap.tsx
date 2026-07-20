@@ -34,6 +34,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 
 import type { World, WorldIsland, WorldFruitReveal, WorldHakiFact } from "@/lib/canon";
 import type { Art } from "@/lib/art";
+import type { JourneyShipTarget } from "@/lib/journey-treatment";
 import {
   voyageGeometryAt, vesselAtChapter, presenceWindowAt, statusHoldersAt, isIslandFogged,
 } from "@/lib/canon";
@@ -127,6 +128,9 @@ type Props = {
     orbitDegPerSec: number;
     focus: [number, number] | null;
   } | null>;
+  /** Optional cinematic-only ship position. Wano uses it to keep the vessel
+   * visually attached to Onigashima while the geographic-shift clip rises. */
+  journeyShip?: React.RefObject<JourneyShipTarget | null>;
   /** ?record=1 only: init WebGL with preserveDrawingBuffer so the in-browser
    * recorder can composite the canvas. Never on by default (perf). */
   preserveBuffer?: boolean;
@@ -1265,6 +1269,7 @@ export default function WorldMap({
   flyTarget = null,
   journey = false,
   journeyCam,
+  journeyShip,
   preserveBuffer = false,
   placingSlug = null,
   onPlaceAt,
@@ -1354,6 +1359,8 @@ export default function WorldMap({
   // reading .current per chase step needs no effects and no re-renders.
   const journeyCamRef = useRef(journeyCam ?? null);
   journeyCamRef.current = journeyCam ?? null;
+  const journeyShipRef = useRef(journeyShip ?? null);
+  journeyShipRef.current = journeyShip ?? null;
   /** Timestamp of the previous chase step, for orbit deg/sec integration. */
   const chasePrevT = useRef<number | null>(null);
 
@@ -2320,7 +2327,7 @@ export default function WorldMap({
         wano: wano.current,
         lens: lensRef.current,
         focus: resolvedFocus(),
-      }, art);
+      }, art, journeyShipRef.current?.current ?? null);
     });
 
     if (process.env.NODE_ENV !== "production") {
@@ -2356,9 +2363,9 @@ export default function WorldMap({
         wano: wano.current,
       lens: lensRef.current,
       focus: resolvedFocus(),
-    }, art);
+    }, art, journeyShipRef.current?.current ?? null);
     chase(); // one damped camera step per sweep frame; settles on its own after
-  }, [chapter, world, art, chase]);
+  }, [chapter, world, art, chase, resolvedFocus]);
 
   /* --------------------------------------------------- islands live-update */
   // The island source is set once at create. When positions change underneath us
@@ -2377,7 +2384,7 @@ export default function WorldMap({
         wano: wano.current,
       lens: lensRef.current,
       focus: resolvedFocus(),
-    }, art);
+    }, art, journeyShipRef.current?.current ?? null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [features]);
 
@@ -2428,7 +2435,7 @@ export default function WorldMap({
         wano: wano.current,
       lens,
       focus: resolvedFocus(),
-    }, art);
+    }, art, journeyShipRef.current?.current ?? null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lens]);
 
@@ -2447,7 +2454,7 @@ export default function WorldMap({
         wano: wano.current,
       lens: lensRef.current,
       focus: resolvedFocus(),
-    }, art);
+    }, art, journeyShipRef.current?.current ?? null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [focus]);
 
@@ -2669,12 +2676,14 @@ function paint(
   ship: ShipHandle | null,
   pools?: PresencePools,
   art?: Art,
+  journeyShip?: JourneyShipTarget | null,
 ) {
   // THE VOYAGE. Re-derive the traveled route and the ship's position for this
   // (fractional) chapter and push both. The line grows leg by leg; the ship glides
   // along the active leg; the vessel glyph swaps at the acquisition chapters.
   // Skypiea's virtual waypoints are in here — the ascent IS this same lerp.
-  const { path, ship: pos } = voyageGeometryAt(expandedWaypoints(world.voyage.waypoints), ch);
+  const { path, ship: routePos } = voyageGeometryAt(expandedWaypoints(world.voyage.waypoints), ch);
+  const pos = journeyShip?.lngLat ?? routePos;
   (m.getSource("voyage") as GeoJSONSource | undefined)?.setData(voyageLine(path));
   if (process.env.NODE_ENV !== "production") {
     // For audit_journey.py: the traveled trail's size, to prove it only grows
@@ -2690,7 +2699,9 @@ function paint(
       const shipArt = art?.ships[vessel.slug];
       // The recorder's boat: DOM markers don't reach a canvas capture, so the
       // ship's screen position + art ride this bridge into the export.
-      recorderBridge.shipScreen = m.project(pos as [number, number]);
+      const recorderShip = m.project(pos as [number, number]);
+      if (journeyShip) recorderShip.y -= journeyShip.liftPx;
+      recorderBridge.shipScreen = recorderShip;
       recorderBridge.shipArt = shipArt ?? null;
       ship.glyph.innerHTML = shipArt ? artImg(shipArt, 52) : vesselGlyph(vessel.slug);
       ship.label.textContent = vessel.name;
@@ -2742,6 +2753,21 @@ function paint(
         } else {
           ship.shadowEl.style.display = "none";
         }
+      }
+
+      // Wano's cinematic attachment point. The geographic model owns its real
+      // chapter animation; this DOM vessel follows the same authored shot so it
+      // visibly rises with Onigashima and returns into the country. Applied last
+      // so the ordinary Skypiea/Fish-Man transforms cannot overwrite it.
+      if (journeyShip) {
+        const lift = journeyShip.liftPx;
+        const scale = 1 + Math.min(0.18, lift / 600);
+        ship.glyph.style.transform = `translateY(${-lift.toFixed(1)}px) scale(${scale.toFixed(3)})`;
+        ship.glyph.style.filter = `drop-shadow(0 ${Math.max(5, lift * 0.08).toFixed(1)}px 8px rgba(245,199,106,0.45))`;
+        ship.shadow.setLngLat(journeyShip.groundLngLat);
+        ship.shadowEl.style.display = "";
+        ship.shadowEl.style.opacity = Math.max(0.08, 0.5 - lift / 260).toFixed(3);
+        ship.shadowEl.style.transform = `scale(${Math.max(0.35, 1 - lift / 180).toFixed(3)})`;
       }
     } else {
       ship.marker.getElement().style.display = "none";

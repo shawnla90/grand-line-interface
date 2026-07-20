@@ -20,7 +20,7 @@
  * the fandom to correct it.
  */
 
-import type { World, WorldAt, FruitType, HakiType, StatusKind } from "@/lib/canon";
+import type { World, WorldAt, FruitType, HakiType } from "@/lib/canon";
 import { presenceWindowAt, statusHoldersAt } from "@/lib/canon";
 import { PONEGLYPH_INK } from "./marks/poneglyph";
 import { affiliationColor, crewColor, WARLORD_COLOR } from "@/lib/crews";

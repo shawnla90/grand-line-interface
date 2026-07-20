@@ -13,7 +13,7 @@
  * MediaElementAudioSourceNode is deliberately deferred.
  *
  * UNLOCK IS A GESTURE. The AudioContext is created/resumed only inside
- * unlock(), which callers invoke from a click handler (the ♫ epic button, the
+ * unlock(), which callers invoke from a click handler (the Journey button, the
  * sound chip). Cold load is silent; nothing here ever attempts autoplay.
  * play() before unlock is a deliberate no-op, not an error — a scene that
  * runs before the reader opts into sound is simply a silent scene.

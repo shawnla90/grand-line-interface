@@ -21,21 +21,26 @@ export function OrbitControls({
   tilted: boolean;
   onLevel: () => void;
 }) {
-  const [hintDone, setHintDone] = useState(false);
   const [showHint, setShowHint] = useState(false);
+  const hintDone = useRef(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    if (orbitTarget && !hintDone) {
-      setShowHint(true);
-      setHintDone(true);
-      timer.current = setTimeout(() => setShowHint(false), 3600);
+    if (!orbitTarget) {
+      const frame = requestAnimationFrame(() => setShowHint(false));
+      return () => cancelAnimationFrame(frame);
     }
-    if (!orbitTarget) setShowHint(false);
+    if (hintDone.current) return;
+    hintDone.current = true;
+    const frame = requestAnimationFrame(() => {
+      setShowHint(true);
+      timer.current = setTimeout(() => setShowHint(false), 3600);
+    });
     return () => {
+      cancelAnimationFrame(frame);
       if (timer.current) clearTimeout(timer.current);
     };
-  }, [orbitTarget, hintDone]);
+  }, [orbitTarget]);
 
   if (!orbitTarget && !tilted) return null;
 
@@ -46,7 +51,7 @@ export function OrbitControls({
           ◎ orbiting {orbitTarget}
         </div>
       )}
-      {showHint && (
+      {showHint && orbitTarget && (
         <div className="rounded-full border border-rope/60 bg-ink/90 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-2 shadow-lg backdrop-blur">
           drag to spin · up/down to tilt · release to pan
         </div>

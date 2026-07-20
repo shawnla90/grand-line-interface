@@ -122,15 +122,14 @@ export default function SearchPalette({ world, shown, offCanon, open, onClose, o
   }, [index, q]);
 
   useEffect(() => {
-    if (open) {
+    if (!open) return;
+    const frame = requestAnimationFrame(() => {
       setQ("");
       setCursor(0);
-      // focus after the overlay mounts
-      requestAnimationFrame(() => inputRef.current?.focus());
-    }
+      inputRef.current?.focus();
+    });
+    return () => cancelAnimationFrame(frame);
   }, [open]);
-
-  useEffect(() => setCursor(0), [q]);
 
   if (!open) return null;
 
@@ -151,7 +150,10 @@ export default function SearchPalette({ world, shown, offCanon, open, onClose, o
         <input
           ref={inputRef}
           value={q}
-          onChange={(e) => setQ(e.target.value)}
+          onChange={(e) => {
+            setQ(e.target.value);
+            setCursor(0);
+          }}
           onKeyDown={(e) => {
             if (e.key === "Escape") onClose();
             else if (e.key === "ArrowDown") setCursor((c) => Math.min(hits.length - 1, c + 1));

@@ -38,14 +38,12 @@ type Props = {
   onSpeed: (s: Speed) => void;
   journey: boolean;
   onJourney: () => void;
-  epicJourney: boolean;
-  epicElapsedMs: number;
-  epicDurationMs: number;
-  epicCueLabel: string;
-  epicMuted: boolean;
-  epicAudioError: string | null;
-  onEpicJourney: () => void;
-  onEpicMuted: () => void;
+  journeyElapsedMs: number;
+  journeyDurationMs: number;
+  journeyAudioLabel: string;
+  journeyMuted: boolean;
+  journeyAudioError: string | null;
+  onJourneyMuted: () => void;
   /** ?record=1 only: the one-click record-the-journey button. */
   recordArmed?: boolean;
   recording?: boolean;
@@ -62,8 +60,8 @@ type Props = {
 export default function ChapterDock({
   world, at, axis, onAxis, onChapter, episode, onEpisode,
   playing, speed, onPlayPause, onSpeed, journey, onJourney,
-  epicJourney, epicElapsedMs, epicDurationMs, epicCueLabel, epicMuted,
-  epicAudioError, onEpicJourney, onEpicMuted,
+  journeyElapsedMs, journeyDurationMs, journeyAudioLabel, journeyMuted,
+  journeyAudioError, onJourneyMuted,
   recordArmed = false, recording = false, onRecord,
   storyStops, onStoryStops,
   sceneSound, onSceneSound,
@@ -104,46 +102,27 @@ export default function ChapterDock({
           <button
             type="button"
             onClick={onJourney}
-            disabled={epicJourney}
-            title={journey ? "Stop the journey" : "Sail the short cinematic Grand Line journey"}
+            title={journey ? "Stop the journey" : "Play the 90-second cinematic Grand Line journey"}
             aria-label={journey ? "Stop journey" : "Play cinematic journey"}
             className={[
               "grid h-9 shrink-0 place-items-center rounded-sm border px-2.5 font-mono text-[10px] uppercase tracking-[0.14em] transition-colors",
               journey
                 ? "border-gold/60 bg-ink/90 text-gold"
-                : epicJourney
-                  ? "cursor-not-allowed border-rope/40 bg-ink/70 text-muted-2/40"
-                  : "border-rope bg-ink/90 text-muted-2 hover:border-gold/60 hover:text-gold",
+                : "border-rope bg-ink/90 text-muted-2 hover:border-gold/60 hover:text-gold",
             ].join(" ")}
           >
             {journey ? "◼ journey" : "⛵ journey"}
           </button>
-          {EPIC_AUDIO_SHIPPABLE && (
+          {journey && EPIC_AUDIO_SHIPPABLE && (
             <button
               type="button"
-              onClick={onEpicJourney}
-              title={epicJourney ? "Stop the Epic Journey" : "Play the full audio-led Epic Journey"}
-              aria-label={epicJourney ? "Stop Epic Journey" : "Play Epic Journey with audio"}
-              className={[
-                "grid h-9 shrink-0 place-items-center rounded-sm border px-2.5 font-mono text-[10px] uppercase tracking-[0.14em] transition-colors",
-                epicJourney
-                  ? "border-gold/70 bg-gold/10 text-gold shadow-[0_0_18px_rgba(212,175,55,0.16)]"
-                  : "border-rope bg-ink/90 text-muted-2 hover:border-gold/60 hover:text-gold",
-              ].join(" ")}
-            >
-              {epicJourney ? "◼ epic" : "♫ epic"}
-            </button>
-          )}
-          {epicJourney && (
-            <button
-              type="button"
-              onClick={onEpicMuted}
-              title={epicMuted ? "Unmute Epic Journey" : "Mute Epic Journey"}
-              aria-label={epicMuted ? "Unmute Epic Journey" : "Mute Epic Journey"}
-              aria-pressed={epicMuted}
+              onClick={onJourneyMuted}
+              title={journeyMuted ? "Unmute Journey" : "Mute Journey"}
+              aria-label={journeyMuted ? "Unmute Journey" : "Mute Journey"}
+              aria-pressed={journeyMuted}
               className="grid h-9 w-9 shrink-0 place-items-center rounded-sm border border-rope bg-ink/90 text-[13px] text-muted-2 transition-colors hover:border-gold/60 hover:text-gold"
             >
-              {epicMuted ? "🔇" : "🔊"}
+              {journeyMuted ? "🔇" : "🔊"}
             </button>
           )}
           {/* record-the-journey: plays the cinematic AND saves a map-only
@@ -225,13 +204,13 @@ export default function ChapterDock({
               </button>
             )}
           </div>
-          {epicJourney && (
+          {journey && (
             <div className="hidden min-w-0 max-w-[160px] flex-col gap-0.5 xl:flex" aria-live="polite">
               <div className="font-mono text-[9px] tabular-nums text-gold/80">
-                {formatClock(epicElapsedMs)} / {formatClock(epicDurationMs)}
+                {formatClock(journeyElapsedMs)} / {formatClock(journeyDurationMs)}
               </div>
               <div className="truncate font-document text-[10px] italic text-parchment/70">
-                {epicAudioError ? "Audio blocked — restart Epic" : epicCueLabel}
+                {journeyAudioError ? "Audio blocked — restart Journey" : journeyAudioLabel}
               </div>
             </div>
           )}
