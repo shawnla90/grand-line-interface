@@ -2,6 +2,8 @@
 
 **A spoiler-safe One Piece atlas. Tell it where you are in the story, and it renders the world exactly as you know it — and fogs everything after.**
 
+**Live demo:** [grandlineinterface.com](https://grandlineinterface.com)
+
 You give it a chapter ("Chapter 1044") and the map redraws to that moment: islands you've sailed to are charted, the rest are dark; crew who've joined are aboard, the rest are silhouettes. Nothing past your bookmark is ever shown.
 
 The category leader, [The Library of Ohara](https://onepieceworldmap.com), mapped **where** the world is — beautifully, over a decade. Its dataset contains the strings "chapter", "episode" and "saga" *zero times*. Nobody mapped **when**. That's the whole idea here: **Ohara mapped WHERE; this maps WHEN.**
